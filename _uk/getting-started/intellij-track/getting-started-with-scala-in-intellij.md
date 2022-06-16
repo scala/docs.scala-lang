@@ -7,7 +7,7 @@ disqus: true
 next-page: /uk/building-a-scala-project-with-intellij-and-sbt
 ---
 
-У цьому туторіалі буде розглянемо як створити мінімальний проєкт Scala за допомогою IntelliJ IDE з плагіном Scala. 
+У цьому посібнику буде розглянемо як створити мінімальний проєкт Scala за допомогою IntelliJ IDE з плагіном Scala.
 У цьому посібнику IntelliJ завантажить для вас Scala.
 
 ## Встановлення
@@ -16,8 +16,8 @@ next-page: /uk/building-a-scala-project-with-intellij-and-sbt
    `javac 1.8.___`
    * Якщо у вас не встановлена версія 1.8 або вище, [встановіть JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 1. Далі, завантажте та встановіть [IntelliJ Community Edition](https://www.jetbrains.com/idea/download/)
-1. Після того, як ви запустили IntelliJ, ви можете завантажити й встановити плагін Scala за інструкцією 
-[як встановлювати плагіни IntelliJ](https://www.jetbrains.com/help/idea/installing-updating-and-uninstalling-repository-plugins.html) (шукайте "Scala" в меню плагінів.)
+1. Після того, як ви запустили IntelliJ, ви можете завантажити й встановити плагін Scala за інструкцією
+   [як встановлювати плагіни IntelliJ](https://www.jetbrains.com/help/idea/installing-updating-and-uninstalling-repository-plugins.html) (шукайте "Scala" в меню плагінів.)
 
 Під час створення проєкту встановиться остання версія Scala.
 Примітка: якщо ви хочете відкрити наявний проєкт Scala, ви можете натиснути **Open** під час запуску IntelliJ.
@@ -26,7 +26,7 @@ next-page: /uk/building-a-scala-project-with-intellij-and-sbt
 1. Запустіть IntelliJ та натисніть **File** => **New** => **Project**
 1. На панелі зліва оберіть Scala, а на панелі справа - IDEA.
 1. Назвіть проєкт **HelloWorld**
-1. Припускаємо, що ви вперше створюєте проект Scala за допомогою IntelliJ,
+1. Припускаємо, що ви вперше створюєте проєкт Scala за допомогою IntelliJ,
    вам потрібно буде встановити Scala SDK. В полі праворуч від Scala SDK натисніть **Create**.
 1. Оберіть останню версію (наприклад, {{ site.scala-version }}) та натисніть **Download**. Це може зайняти декілька хвилин, але наступні проєкти зможуть використати той же SDK.
 1. Після того як створена SDK та ви повернулись до вікна "New Project", натисніть **Finish**.
@@ -35,8 +35,8 @@ next-page: /uk/building-a-scala-project-with-intellij-and-sbt
 ## Написання коду
 
 1. Зліва, на панелі **Project** клацніть кнопкою миші на `src` та оберіть **New** => **Scala class**.
-   Якщо ви не бачите **Scala class**, клацніть правою кнопкою миші на **HelloWorld** та оберіть **Add Framework Support...**, натисніть **Scala** та продовжіть. 
-   Якщо ви бачите **Error: library is not specified**, ви можете або натиснути на кнопку завантаження або обрати шлях бібліотеки вручну. 
+   Якщо ви не бачите **Scala class**, клацніть правою кнопкою миші на **HelloWorld** та оберіть **Add Framework Support...**, натисніть **Scala** та продовжить.
+   Якщо ви бачите **Error: library is not specified**, ви можете або натиснути на кнопку завантаження або обрати шлях бібліотеки вручну.
    Якщо ви бачите тільки **Scala Worksheet** спробуйте розкрити директорію `src` та піддиректорію `main` та клацніть правою кнопкою миші на теку `scala`.
 1. Назвіть клас `Hello` та змініть його **Kind** на `object`.
 1. Змініть код класу на наступний:
@@ -71,7 +71,7 @@ square(2)
 ## Наступні кроки
 
 Тепер ви знаєте, як створити простий проєкт Scala, який можна використовувати,
-щоб почати вивчати мову. У наступному уроці ми познайомимося з важливим інструментом збірки під назвою sbt, 
+щоб почати вивчати мову. У наступному уроці ми познайомимося з важливим інструментом збірки під назвою sbt,
 який можна використовувати як для простих проєктів, так і продакшн програм.
 
 Наступне: [Створення проєкту на Scala з IntelliJ і sbt](building-a-scala-project-with-intellij-and-sbt.html)

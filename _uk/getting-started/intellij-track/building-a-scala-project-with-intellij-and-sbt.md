@@ -8,15 +8,15 @@ previous-page: /uk/getting-started/intellij-track/getting-started-with-scala-in-
 next-page: /uk/testing-scala-in-intellij-with-scalatest
 ---
 
-В цьому туторіалі ми побачимо як будувати Scala проєкти використовуючи [sbt](https://www.scala-sbt.org/1.x/docs/index.html).
+В цьому посібнику ми побачимо як будувати Scala проєкти використовуючи [sbt](https://www.scala-sbt.org/1.x/docs/index.html).
 sbt — популярний інструмент для компіляції, запуску та тестування проєктів Scala будь-якої складності.
 Використання інструменту збірки, такого як sbt (або Maven/Gradle), стає необхідним, коли ви створюєте проєкти із залежностями або кількома файлами коду.
-Ми припускаємо, що ви завершили [перший туторіал](./getting-started-with-scala-in-intellij.html).
+Ми припускаємо, що ви завершили [перший посібник](./getting-started-with-scala-in-intellij.html).
 
 ## Створення проєкту
 У цьому розділі ми покажемо вам, як створити проєкт в IntelliJ. Однак, якщо вам
 комфортніше працювати у терміналі, ми рекомендуємо подивитись [початок роботи зі Scala і sbt у командному рядку](/uk/getting-started/sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html)
- і потім повернутися сюди до розділу «Написання коду на Scala».
+і потім повернутися сюди до розділу «Написання коду на Scala».
 
 1. Якщо ви ще не створили проєкт у терміналі, запустіть IntelliJ та оберіть "Створити новий проєкт (Create New Project)"
   * На панелі зліва оберіть Scala, а на панелі справа оберіть sbt
@@ -60,14 +60,14 @@ object Main extends App {
 }
 ```
 
-Примітка: IntelliJ має власну реалізацію компілятора Scala, тому іноді ваш код є правильним, навіть якщо IntelliJ вказує інше. 
+Примітка: IntelliJ має власну реалізацію компілятора Scala, тому іноді ваш код є правильним, навіть якщо IntelliJ вказує інше.
 Ви завжди можете перевірити у командному рядку, чи може sbt запустити ваш проєкт.
 
 ## Запуск проєкту
 1. З меню **Run** оберіть **Edit configurations**
 1. Натисніть кнопку **+** та оберіть **sbt Task**.
 1. Назвіть його `Run the program`.
-1. В полі **Tasks** наберіть `~run`. Опція `~` змушує sbt пере-збирати та перезапускати проєкт, коли ви зберігаєте зміни у файлі проєкту.
+1. В полі **Tasks** наберіть `~run`. Опція `~` змушує sbt перебудовувати та перезапускати проєкт, коли ви зберігаєте зміни у файлі проєкту.
 1. Натисніть **OK**.
 1. В меню **Run** натисніть **Run 'Run the program'**.
 1. В коді змініть `75` на `61` та подивіться оновлений результат в консолі.
@@ -83,7 +83,7 @@ libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % 
 Тут `libraryDependencies` є набором залежностей та використовуючи `+=`,
 ми додаємо залежність [scala-parser-combinators](https://github.com/scala/scala-parser-combinators) до набору залежностей,
 які необхідні для sbt та які завантажаться при його запуску. Тепер в будь-якому Scala файлі ви можете використати
-класи, об'єкти, тощо з scala-parser-combinators через звичайний "import".
+класи, об'єкти тощо з scala-parser-combinators через звичайний "import".
 
 Більше опублікованих бібліотек можна знайти на
 [Scaladex](https://index.scala-lang.org/) - індекс бібліотек Scala, місце куди ви можете зайти, щоб скопіювати інформацію про бібліотеку
@@ -98,4 +98,4 @@ libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % 
 * [Книга по Scala](/overviews/scala-book/introduction.html), що є набором коротких вступних уроків з основних особливостей.
 * [Тур по Scala](/tour/tour-of-scala.html) серія коротких оглядових статей про можливості Scala.
 * Продовжить вчити Scala інтерактивно виконуючи
- [вправи зі Scala](https://www.scala-exercises.org/scala_tutorial).
+  [вправи зі Scala](https://www.scala-exercises.org/scala_tutorial).

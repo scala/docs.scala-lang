@@ -8,7 +8,7 @@ previous-page: /uk/getting-started-with-scala-and-sbt-on-the-command-line
 ---
 
 Існує кілька бібліотек і методологій тестування для Scala,
-але в цьому туторіалі ми продемонструємо один популярний варіант для фреймворку ScalaTest,
+але в цьому посібнику ми продемонструємо один популярний варіант для фреймворку ScalaTest,
 що називається [AnyFunSuite](https://www.scalatest.org/scaladoc/3.2.2/org/scalatest/funsuite/AnyFunSuite.html).
 
 Ми припускаємо, що ви знаєте [як створити проєкт Scala за допомогою sbt](getting-started-with-scala-and-sbt-on-the-command-line.html).
@@ -63,7 +63,7 @@ sbt test
    Оператор `===` є частиною ScalaTest та надає чисті повідомлення про помилки.
 
 ## Додати інший тест-кейс
-1. Додайте інший тестовий блок з власним `assert`, що перевіряє значення кубу `0`.
+1. Додайте інший тестовий блок з власним `assert`, що перевіряє значення куба '0'.
 
     ```
       import org.scalatest.funsuite.AnyFunSuite
@@ -100,5 +100,5 @@ sbt test
 
 ## Висновок
 Ви побачили один шлях тестування вашого Scala коду. Більше про
-FunSuite ScalaTest на [офіційному вебсайті](https://www.scalatest.org/getting_started_with_fun_suite). 
+FunSuite ScalaTest на [офіційному вебсайті](https://www.scalatest.org/getting_started_with_fun_suite).
 Ви можете проглянути інші фреймворки для тестування такі як [ScalaCheck](https://www.scalacheck.org/) та [Specs2](https://etorreborre.github.io/specs2/).

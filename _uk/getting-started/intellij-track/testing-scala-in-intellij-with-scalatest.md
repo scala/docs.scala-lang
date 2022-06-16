@@ -8,7 +8,7 @@ previous-page: /uk/building-a-scala-project-with-intellij-and-sbt
 ---
 
 Існує кілька бібліотек і методологій тестування для Scala,
-але в цьому туторіалі ми продемонструємо один популярний варіант для фреймворку ScalaTest,
+але в цьому посібнику ми продемонструємо один популярний варіант для фреймворку ScalaTest,
 що називається [FunSuite](https://www.scalatest.org/getting_started_with_fun_suite).
 
 Ми припускаємо, що ви знаєте [як створити проєкт з IntelliJ](building-a-scala-project-with-intellij-and-sbt.html).
@@ -64,10 +64,10 @@ previous-page: /uk/building-a-scala-project-with-intellij-and-sbt
    Оператор `===` є частиною ScalaTest та надає чисті повідомлення про помилки.
 
 ## Додати інший тест-кейс
-1. Додайте інший тестовий блок з власним `assert`, що перевіряє значення кубу `0`.  
+1. Додайте інший тестовий блок з власним `assert`, що перевіряє значення куба `0`.
 1. Виконайте `sbt test` знову, двічі клацнувши правою кнопкою миші на `CubeCalculatorTest` та обравши 'Run **CubeCalculatorTest**'.
 
 ## Висновок
 Ви побачили один шлях тестування вашого Scala коду. Більше про
-FunSuite ScalaTest на [офіційному вебсайті](https://www.scalatest.org/getting_started_with_fun_suite). 
+FunSuite ScalaTest на [офіційному вебсайті](https://www.scalatest.org/getting_started_with_fun_suite).
 Ви можете проглянути інші фреймворки для тестування такі як [ScalaCheck](https://www.scalacheck.org/) та [Specs2](https://etorreborre.github.io/specs2/).
