@@ -8,7 +8,7 @@ next-page: scala-tools
 ---
 
 
-当您想在 Scala 中编写并行和并发应用程序时，您_可以_使用本机 Java `Thread` --- 但 Scala [Future](https://www.scala-lang.org/api/current/scala/concurrent /Future$.html) 提供了一种更高级和惯用的方法，因此它是首选，本章将对此进行介绍。
+当您想在 Scala 中编写并行和并发应用程序时，您_可以_使用本机 Java `Thread` --- 但 Scala [Future](https://www.scala-lang.org/api/current/scala/concurrent/Future$.html) 提供了一种更高级和惯用的方法，因此它是首选，本章将对此进行介绍。
 
 ## 介绍
 
