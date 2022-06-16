@@ -22,7 +22,7 @@ previous-page: /uk/building-a-scala-project-with-intellij-and-sbt
         ```
     1. Ви побачите сповіщення "build.sbt was changed", оберіть **auto-import**.
     1. Ці дві дії призведуть до того, що `sbt` завантажить бібліотеку ScalaTest.
-    1. Зачекайте завершення синхронізації `sbt`; інакше `AnyFunSuite` та `test()` не будуть розпізнані.
+    1. Зачекайте завершення синхронізації `sbt`; інакше `AnyFunSuite` та `test()` не розпізнаються.
 1. На панелі проєкту розкрийте `src` => `main`.
 1. Клацніть правою кнопкою миші на `scala` та оберіть **New** => **Scala class**.
 1. Назвіть його `CubeCalculator` та змініть **Kind** на `object` та натисніть Enter або двічі клацніть на `object`.

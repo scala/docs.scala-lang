@@ -19,8 +19,8 @@ next-page: /uk/building-a-scala-project-with-intellij-and-sbt
 1. Після того, як ви запустили IntelliJ, ви можете завантажити й встановити плагін Scala за інструкцією 
 [як встановлювати плагіни IntelliJ](https://www.jetbrains.com/help/idea/installing-updating-and-uninstalling-repository-plugins.html) (шукайте "Scala" в меню плагінів.)
 
-Коли ми створимо проект, ми встановимо останню версію Scala.
-Примітка: якщо ви хочете відкрити існуючий проект Scala, ви можете натиснути **Open** під час запуску IntelliJ.
+Під час створення проєкту встановиться остання версія Scala.
+Примітка: якщо ви хочете відкрити наявний проєкт Scala, ви можете натиснути **Open** під час запуску IntelliJ.
 
 ## Створення проєкту
 1. Запустіть IntelliJ та натисніть **File** => **New** => **Project**
