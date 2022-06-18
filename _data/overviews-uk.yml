@@ -158,11 +158,11 @@
 - category: Компілятор
   description: "Посібники та огляди компілятора Scala: плагіни компілятора, інструменти відображення та метапрограмування, такі як макроси."
   overviews:
-    - title: Відображення
+    - title: Віддзеркалення
       by: Heather Miller, Eugene Burmako та Philipp Haller
       icon: binoculars
       url: "reflection/overview.html"
-      description: Фреймворк Scala для відображення під час виконання/компіляції.
+      description: Фреймворк Scala для віддзеркалення під час виконання/компіляції.
       label-text: experimental
       subdocs:
         - title: Огляд
