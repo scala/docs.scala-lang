@@ -22,7 +22,7 @@
           url: "collections-2.13/concrete-mutable-collection-classes.html"
         - title: Масиви
           url: "collections-2.13/arrays.html"
-        - title: Строки
+        - title: Рядки
           url: "collections-2.13/strings.html"
         - title: Показники продуктивності
           url: "collections-2.13/performance-characteristics.html"
@@ -192,7 +192,7 @@
           url: "macros/blackbox-whitebox.html"
         - title: Макроси Def
           url: "macros/overview.html"
-        - title: Quasiquotes
+        - title: Квазіцитати
           url: "quasiquotes/intro.html"
         - title: Пакети макросів
           url: "macros/bundles.html"
@@ -305,7 +305,7 @@
           url: "collections/concrete-mutable-collection-classes.html"
         - title: Масиви
           url: "collections/arrays.html"
-        - title: Строки
+        - title: Рядки
           url: "collections/strings.html"
         - title: Показники продуктивності
           url: "collections/performance-characteristics.html"
