@@ -18,9 +18,9 @@ All examples and code snippets in this guide are run under in 2.11 REPL with one
     scala> val universe: scala.reflect.runtime.universe.type = scala.reflect.runtime.universe
     scala> import universe._
 
-A wildcard import from a universe (be it a runtime reflection universe like here or a compile-time universe provided in macros) is all that's needed to use quasiquotes. All of the examples will assume that import.
+A wildcard import from a universe (be it a runtime reflection universe like here or a compile-time universe provided in macros) is all that's needed to use quasiquotes. All the examples will assume that import.
 
-Additionally some examples that use `ToolBox` API will need a few more lines to get things rolling:
+Additionally, some examples that use `ToolBox` API will need a few more lines to get things rolling:
 
     scala> import scala.reflect.runtime.currentMirror
     scala> import scala.tools.reflect.ToolBox

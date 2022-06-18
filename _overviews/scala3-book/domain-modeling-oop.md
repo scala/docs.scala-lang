@@ -23,7 +23,7 @@ Scala provides all the necessary tools for object-oriented design:
 - **Access modifiers** lets you control which members of a class can be accessed by which part of the code.
 
 ## Traits
-Perhaps different than other languages with support for OOP, such as Java, the primary tool of decomposition in Scala is not classes, but traits.
+Perhaps different from other languages with support for OOP, such as Java, the primary tool of decomposition in Scala is not classes, but traits.
 They can serve to describe abstract interfaces like:
 
 ```scala
@@ -78,7 +78,7 @@ To compose the two services, we can simply create a new trait extending them:
 trait ComposedService extends GreetingService, TranslationService
 ```
 Abstract members in one trait (such as `translate` in `GreetingService`) are automatically matched with concrete members in another trait.
-This not only works with methods as in this example, but also with all of the other abstract members mentioned above (that is, types, value definitions, etc.).
+This not only works with methods as in this example, but also with all the other abstract members mentioned above (that is, types, value definitions, etc.).
 
 ## Classes
 Traits are great to modularize components and describe interfaces (required and provided).
@@ -239,7 +239,7 @@ Specifically, we define a _singleton_ object `SensorReader` that extends `Subjec
 In the implementation of `SensorReader`, we say that type `S` is now defined as type `Sensor`, and type `O` is defined to be equal to type `Display`.
 Both `Sensor` and `Display` are defined as nested classes within `SensorReader`, implementing the traits `Subject` and `Observer`, correspondingly.
 
-Besides being an example of a service oriented design, this code also highlights many aspects of object-oriented programming:
+Besides, being an example of a service oriented design, this code also highlights many aspects of object-oriented programming:
 
 - The class `Sensor` introduces its own private state (`currentValue`) and encapsulates modification of the state behind the method `changeValue`.
 - The implementation of `changeValue` uses the method `publish` defined in the extended trait.

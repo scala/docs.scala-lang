@@ -34,7 +34,7 @@ If you have a code snippet that is resulting in bytecode which you believe is be
 
    1. Gradually remove parts from the original failing code snippet until you believe you have the simplest representation of your problem.
 
-   2. Ensure that you have decoupled your code snippet from any library that could be introducing the incorrect behavior. One way to achieve this is to try to recompile the offending code snippet in isolation, outside of the context of any complex build environment. If your code depends on some strictly Java library and source code is available for it, make sure that the latter is also minimized.
+   2. Ensure that you have decoupled your code snippet from any library that could be introducing the incorrect behavior. One way to achieve this is to try to recompile the offending code snippet in isolation, outside the context of any complex build environment. If your code depends on some strictly Java library and source code is available for it, make sure that the latter is also minimized.
 
    3. Make sure you are compiling your project from a clean slate. Your problem could be related to separate compilation, which is difficult to detect without a clean build with new `.class` files.
 
@@ -42,7 +42,7 @@ If you have a code snippet that is resulting in bytecode which you believe is be
 
    5. If you want to file an improvement in the issue tracker please discuss it first on one of the mailing lists. They offer much bigger audience than issue tracker. The latter is not suitable for long discussions.
 
-* Keep in mind that the behavior you are witnessing could be intended. Good formal resources for verifying whether or not the language behavior is intended is either in the [Scala Improvement Proposal Documents][sips] or in the [Scala Language Specification](https://www.scala-lang.org/files/archive/spec/2.13/). If in doubt, you may always ask on the [Community Category](https://contributors.scala-lang.org/c/community) or [Stack Overflow](https://stackoverflow.com/questions/tagged/scala).
+* Keep in mind that the behavior you are witnessing could be intended. Good formal resources for verifying whether the language behavior is intended is either in the [Scala Improvement Proposal Documents][sips] or in the [Scala Language Specification](https://www.scala-lang.org/files/archive/spec/2.13/). If in doubt, you may always ask on the [Community Category](https://contributors.scala-lang.org/c/community) or [Stack Overflow](https://stackoverflow.com/questions/tagged/scala).
 
 In general, if you find yourself stuck on any of these steps, asking on [Scala Contributors](https://contributors.scala-lang.org/) can be helpful:
 

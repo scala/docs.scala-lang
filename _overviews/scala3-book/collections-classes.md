@@ -55,7 +55,7 @@ And this figure shows all collections in package _scala.collection.mutable_:
 
 ![Mutable collection hierarchy][collections3]
 
-Having seen that detailed view of all of the collections types, the following sections introduce some of the common types you’ll use on a regular basis.
+Having seen that detailed view of all the collections types, the following sections introduce some common types you’ll use on a regular basis.
 
 {% comment %}
 NOTE: those images come from this page: https://docs.scala-lang.org/overviews/collections-2.13/overview.html
@@ -150,7 +150,7 @@ val things: List[Any] = List(1, "two", 3.0)
 ### Adding elements to a List
 
 Because `List` is immutable, you can’t add new elements to it.
-Instead you create a new list by prepending or appending elements to an existing `List`.
+Instead, you create a new list by prepending or appending elements to an existing `List`.
 For instance, given this `List`:
 
 ```scala
@@ -269,7 +269,7 @@ scala> x.take(1).foreach(println)
 1
 ````
 
-For more information on the uses, benefits, and drawbacks of strict and non-strict (lazy) collections, see the “strict” and “non-strict” discussions on the [The Architecture of Scala 2.13’s Collections][strict] page.
+For more information on the uses, benefits, and drawbacks of strict and non-strict (lazy) collections, see the “strict” and “non-strict” discussions on [The Architecture of Scala 2.13’s Collections][strict] page.
 
 <!--
 Given that definition, collections can also be thought of in terms of being strict or lazy. In a _strict_ collection, memory for the elements is allocated immediately, and all of its elements are immediately evaluated when a transformer method is invoked. In a _lazy_ collection, memory for the elements is not allocated immediately, and transformer methods do not construct new elements until they are demanded.
@@ -300,7 +300,7 @@ val people = Vector(
 ```
 
 Because `Vector` is immutable, you can’t add new elements to it.
-Instead you create a new sequence by appending or prepending elements to an existing `Vector`.
+Instead, you create a new sequence by appending or prepending elements to an existing `Vector`.
 These examples show how to _append_ elements to a `Vector`:
 
 ```scala
@@ -338,7 +338,7 @@ Ed
 ## ArrayBuffer
 
 Use `ArrayBuffer` when you need a general-purpose, mutable indexed sequence in your Scala applications.
-It’s mutable so you can change its elements, and also resize it.
+It’s mutable, so you can change its elements, and also resize it.
 Because it’s indexed, random access of elements is fast.
 
 ### Creating an ArrayBuffer
@@ -453,7 +453,7 @@ val ak = states("AK")   // ak: String = Alaska
 val al = states("AL")   // al: String = Alabama
 ```
 
-In practice you’ll also use methods like `keys`, `keySet`, `keysIterator`, `for` loops, and higher-order functions like `map` to work with `Map` keys and values.
+In practice, you’ll also use methods like `keys`, `keySet`, `keysIterator`, `for` loops, and higher-order functions like `map` to work with `Map` keys and values.
 
 ### Adding elements to a Map
 

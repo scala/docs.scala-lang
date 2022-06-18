@@ -35,7 +35,7 @@ You should not actually need to modify the Scala compiler very
 frequently, because Scala's light, flexible syntax will frequently
 allow you to provide a better solution using a clever library.
 
-There are some times, though, where a compiler modification is the
+There are some cases, though, where a compiler modification is the
 best choice even for Scala.  Popular compiler plugins (as of 2018)
 include:
 

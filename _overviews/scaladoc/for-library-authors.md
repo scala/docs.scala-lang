@@ -82,7 +82,7 @@ include:
 ### Usage tags
 - `@see` reference other sources of information like external document links or
   related entities in the documentation.
-- `@note` add a note for pre or post conditions, or any other notable restrictions
+- `@note` add a note for pre- or post-conditions, or any other notable restrictions
   or expectations.
 - `@example` for providing example code or related example documentation.
 - `@usecase` provide a simplified method definition for when the full method
@@ -97,7 +97,7 @@ They allow you to organize the Scaladoc page into distinct sections, with
 each one shown separately, in the order that you choose.
 
 These tags are *not* enabled by default! You must pass the `-groups`
-flag to Scaladoc in order to turn them on. Typically the sbt for this
+flag to Scaladoc in order to turn them on. Typically, the sbt for this
 will look something like:
 ```
 scalacOptions in (Compile, doc) ++= Seq(
@@ -130,7 +130,7 @@ the resulting documentation.
 
 ### Diagram tags
 - `@contentDiagram` - use with traits and classes to include a content hierarchy diagram showing included types.
-   The diagram content can be fine tuned with additional specifiers taken from `hideNodes`, `hideOutgoingImplicits`,
+   The diagram content can be fine-tuned with additional specifiers taken from `hideNodes`, `hideOutgoingImplicits`,
    `hideSubclasses`, `hideEdges`, `hideIncomingImplicits`, `hideSuperclasses` and `hideInheritedNode`.
    `hideDiagram` can be supplied to prevent a diagram from being created if it would be created by default. Packages
    and objects have content diagrams by default.
@@ -168,7 +168,7 @@ If a comment is not provided for an entity at the current inheritance level, but
 is supplied for the overridden entity at a higher level in the inheritance
 hierarchy, the comment from the super-class will be used.
 
-Likewise if `@param`, `@tparam`, `@return` and other entity tags are omitted
+Likewise, if `@param`, `@tparam`, `@return` and other entity tags are omitted
 but available from a superclass, those comments will be used.
 
 ### Explicit
@@ -180,7 +180,7 @@ For explicit comment inheritance, use the `@inheritdoc` tag.
 It is still possible to embed HTML tags in Scaladoc (like with Javadoc), but
 not necessary most of the time as markup may be used instead.
 
-Some of the standard markup available:
+Some standard markup available:
 
     `monospace`
     ''italic text''

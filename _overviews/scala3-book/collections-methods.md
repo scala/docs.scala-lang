@@ -76,7 +76,7 @@ In those numbered examples:
    This much verbosity is _rarely_ required, and only needed in the most complex usages.
 2. The compiler knows that `a` contains `Int`, so it’s not necessary to restate that here.
 3. Parentheses aren’t needed when you have only one parameter, such as `i`.
-4. When you have a single parameter and it appears only once in your anonymous function, you can replace the parameter with `_`.
+4. When you have a single parameter, and it appears only once in your anonymous function, you can replace the parameter with `_`.
 
 The [Anonymous Function][lambdas] provides more details and examples of the rules related to shortening lambda expressions.
 
@@ -245,7 +245,7 @@ Because of this you may want to use `headOption` instead of `head`, especially w
 emptyList.headOption          // None
 ```
 
-As shown, it doesn’t throw an exception, it simply returns the type `Option` that has the value `None`.
+As shown, it doesn't throw an exception, it simply returns the type `Option` that has the value `None`.
 You can learn more about this programming style in the [Functional Programming][fp-intro] chapter.
 
 
@@ -270,7 +270,7 @@ Just like `head`, `tail` also works on strings:
 "bar".tail   // "ar"
 ```
 
-`tail` throws an _java.lang.UnsupportedOperationException_ if the list is empty, so just like `head` and `headOption`, there’s also a `tailOption` method, which is preferred in functional programming.
+`tail` throws a _java.lang.UnsupportedOperationException_ if the list is empty, so just like `head` and `headOption`, there’s also a `tailOption` method, which is preferred in functional programming.
 
 A list can also be matched, so you can write expressions like this:
 

@@ -329,5 +329,5 @@ be `List[Int]`.
   as parameter,
   - To also support `String`, `Array` and `View`, use `IsIterable`,
 - To produce a collection given its type, use a `Factory`,
-- To produce a collection based on the type of a source collection and the type of elements of the collection
+- To produce a collection based on the type of source collection and the type of elements of the collection
   to produce, use `BuildFrom`.

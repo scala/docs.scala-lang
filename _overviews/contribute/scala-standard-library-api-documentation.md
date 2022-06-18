@@ -81,7 +81,7 @@ new API documentation to save time, effort, mistakes and repetition.
 * [Scaladoc for library authors][scaladoc-lib-authors]
   covers the use of scaladoc tags, markdown and other features.
 * [Scaladoc's interface][scaladoc-interface]
-  covers all of the features of Scaladoc's interface, e.g. switching between
+  covers all the features of Scaladoc's interface, e.g. switching between
   companions, browsing package object documentation, searching, token searches
   and so on.
 * Prior to commit, be sure to read
@@ -92,11 +92,11 @@ new API documentation to save time, effort, mistakes and repetition.
   message formats, noting *present tense*, *length limits* and that it must merge
   cleanly. Remember that the title of the pull request will become the commit
   message when merged. **Also**, be sure to assign one or more reviewers to the PR, if this is
-  not possible for you, you could mention a user in **in the pull request comments**.
+  not possible for you, you could mention a user **in the pull request comments**.
 
 ### Extra Requirements for Scaladoc Documentation Commits
 
-Although some of the requirements for bug fix pull requests are not needed for
+Although some requirements for bug fix pull requests are not needed for
 API documentation commits, here are the step by step requirements to ensure your API documentation
 PR is merged in smoothly:
 

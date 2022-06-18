@@ -44,7 +44,7 @@ You can assign an object to a variable. Afterwards, the variable will refer to t
 Extra constructors defined inside the curly braces of the class definition, which look like method definitions named `this`, but with no result type.
 
 * #### block
-One or more expressions and declarations surrounded by curly braces. When the block evaluates, all of its expressions and declarations are processed in order, and then the block returns the value of the last expression as its own value. Blocks are commonly used as the bodies of functions, [for expressions](#for-expression), `while` loops, and any other place where you want to group a number of statements together. More formally, a block is an encapsulation construct for which you can only see side effects and a result value. The curly braces in which you define a class or object do not, therefore, form a block, because fields and methods (which are defined inside those curly braces) are visible from the out- side. Such curly braces form a template.
+One or more expressions and declarations surrounded by curly braces. When the block evaluates, all of its expressions and declarations are processed in order, and then the block returns the value of the last expression as its own value. Blocks are commonly used as the bodies of functions, [for expressions](#for-expression), `while` loops, and any other place where you want to group a number of statements together. More formally, a block is an encapsulation construct for which you can only see side effects and a result value. The curly braces in which you define a class or object do not, therefore, form a block, because fields and methods (which are defined inside those curly braces) are visible from the out-side. Such curly braces form a template.
 
 * #### bound variable
 A bound variable of an expression is a variable that’s both used and defined inside the expression. For instance, in the function literal expression `(x: Int) => (x, y)`, both variables `x` and `y` are used, but only `x` is bound, because it is defined in the expression as an `Int` and the sole argument to the function described by the expression.
@@ -68,10 +68,10 @@ A class that shares the same name with a singleton object defined in the same so
 A singleton object that shares the same name with a class defined in the same source file. Companion objects and classes have access to each other’s private members. In addition, any implicit conversions defined in the companion object will be in scope anywhere the class is used.
 
 * #### contravariant
-A _contravariant_ annotation can be applied to a type parameter of a class or trait by putting a minus sign (-) before the type parameter. The class or trait then subtypes contravariantly with—in the opposite direction as—the type annotated parameter. For example, `Function1` is contravariant in its first type parameter, and so `Function1[Any, Any]` is a subtype of `Function1[String, Any]`.
+A _contravariant_ annotation can be applied to a type parameter of a class or trait by putting a minus sign (-) before the type parameter. The class or trait then subtypes contravariant with—in the opposite direction as—the type annotated parameter. For example, `Function1` is contravariant in its first type parameter, and so `Function1[Any, Any]` is a subtype of `Function1[String, Any]`.
 
 * #### covariant
-A _covariant_ annotation can be applied to a type parameter of a class or trait by putting a plus sign (+) before the type parameter. The class or trait then subtypes covariantly with—in the same direction as—the type annotated parameter. For example, `List` is covariant in its type parameter, so `List[String]` is a subtype of `List[Any]`.
+A _covariant_ annotation can be applied to a type parameter of a class or trait by putting a plus sign (+) before the type parameter. The class or trait then subtypes covariant with—in the same direction as—the type annotated parameter. For example, `List` is covariant in its type parameter, so `List[String]` is a subtype of `List[Any]`.
 
 * #### currying
 A way to write functions with multiple parameter lists. For instance `def f(x: Int)(y: Int)` is a curried function with two parameter lists. A curried function is applied by passing several arguments lists, as in: `f(3)(4)`. However, it is also possible to write a _partial application_ of a curried function, such as `f(3)`.
@@ -284,7 +284,7 @@ A function in a Scala program _returns_ a value. You can call this value the [re
 The Java Virtual Machine, or [JVM](#jvm), that hosts a running Scala program. Runtime encompasses both the virtual machine, as defined by the Java Virtual Machine Specification, and the runtime libraries of the Java API and the standard Scala API. The phrase at run time (with a space between run and time) means when the program is running, and contrasts with compile time.
 
 * #### runtime type
-The type of an object at run time. To contrast, a [static type](#static-type) is the type of an expression at compile time. Most runtime types are simply bare classes with no type parameters. For example, the runtime type of `"Hi"` is `String`, and the runtime type of `(x: Int) => x + 1` is `Function1`. Runtime types can be tested with `isInstanceOf`.
+The type of object at run time. To contrast, a [static type](#static-type) is the type of expression at compile time. Most runtime types are simply bare classes with no type parameters. For example, the runtime type of `"Hi"` is `String`, and the runtime type of `(x: Int) => x + 1` is `Function1`. Runtime types can be tested with `isInstanceOf`.
 
 * #### script
 A file containing top level definitions and statements, which can be run directly with `scala` without explicitly compiling. A script must end in an expression, not a definition.
@@ -293,13 +293,13 @@ A file containing top level definitions and statements, which can be run directl
 The value being matched on in a `match` expression. For example, in “`s match { case _ => }`”, the selector is `s`.
 
 * #### self type
-A _self type_ of a trait is the assumed type of `this`, the receiver, to be used within the trait. Any concrete class that mixes in the trait must ensure that its type conforms to the trait’s self type. The most common use of self types is for dividing a large class into several traits (as described in Chapter 29 of [Programming in Scala](https://www.artima.com/shop/programming_in_scala)).
+A _self type_ of trait is the assumed type of `this`, the receiver, to be used within the trait. Any concrete class that mixes in the trait must ensure that its type conforms to the trait’s self type. The most common use of self types is for dividing a large class into several traits (as described in Chapter 29 of [Programming in Scala](https://www.artima.com/shop/programming_in_scala)).
 
 * #### semi-structured data
 XML data is semi-structured. It is more structured than a flat binary file or text file, but it does not have the full structure of a programming language’s data structures.
 
 * #### serialization
-You can _serialize_ an object into a byte stream which can then be saved to files or transmitted over the network. You can later _deserialize_ the byte stream, even on different computer, and obtain an object that is the same as the original serialized object.
+You can _serialize_ an object into a byte stream which can then be saved to file or transmitted over the network. You can later _deserialize_ the byte stream, even on different computer, and obtain an object that is the same as the original serialized object.
 
 * #### shadow
 A new declaration of a local variable _shadows_ one of the same name in an enclosing scope.
@@ -308,7 +308,7 @@ A new declaration of a local variable _shadows_ one of the same name in an enclo
 _Signature_ is short for [type signature](#type-signature).
 
 * #### singleton object
-An object defined with the object keyword. Each singleton object has one and only one instance. A singleton object that shares its name with a class, and is defined in the same source file as that class, is that class’s [companion object](#companion-object). The class is its [companion class](#companion-class). A singleton object that doesn’t have a companion class is a [standalone object](#standalone-object).
+An object defined with the object keyword. Each singleton object has one and only one instance. A singleton object that shares its name with a class, and is defined in the same source file as that class, is that class’s [companion object](#companion-object). The class is its [companion class](#companion-class). A singleton object that doesn't have a companion class is a [standalone object](#standalone-object).
 
 * #### standalone object
 A [singleton object](#singleton-object) that has no [companion class](#companion-class).

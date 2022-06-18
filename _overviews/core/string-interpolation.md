@@ -44,7 +44,7 @@ Prepending `s` to any string literal allows the usage of variables directly in t
 Here `$name` is nested inside an `s` processed string.  The `s` interpolator knows to insert the value of the `name` variable at this location
 in the string, resulting in the string `Hello, James`.  With the `s` interpolator, any name that is in scope can be used within a string.
 
-String interpolators can also take arbitrary expressions.  For example:
+String interpolators can also take arbitrary expressions. For example:
 
 {% tabs example-3 %}
 {% tab 'Scala 2 and 3' for=example-3 %}

@@ -484,9 +484,9 @@ This is how the expression works:
 1. The `for` expression starts to iterate over the values in the range `(10, 11, 12)`.
    It first works on the value `10`, multiplies it by `2`, then _yields_ that result, the value `20`.
 2. Next, it works on the `11`---the second value in the range.
-   It multiples it by `2`, then yields the value `22`.
+   It multiplies it by `2`, then yields the value `22`.
    You can think of these yielded values as accumulating in a temporary holding place.
-3. Finally the loop gets the number `12` from the range, multiplies it by `2`, yielding the number `24`.
+3. Finally, the loop gets the number `12` from the range, multiplies it by `2`, yielding the number `24`.
   The loop completes at this point and yields the final result, the `Vector(20, 22, 24)`.
 
 {% comment %}
@@ -503,7 +503,7 @@ val list = (10 to 12).map(i => i * 2)
 {% endtab %}
 {% endtabs %}
 
-`for` expressions can be used any time you need to traverse all of the elements in a collection and apply an algorithm to those elements to create a new list.
+`for` expressions can be used any time you need to traverse all the elements in a collection and apply an algorithm to those elements to create a new list.
 
 Here’s an example that shows how to use a block of code after the `yield`:
 
@@ -538,7 +538,7 @@ val capNames = for name <- names yield
 ### Using a `for` expression as the body of a method
 
 Because a `for` expression yields a result, it can be used as the body of a method that returns a useful value.
-This method returns all of the values in a given list of integers that are between `3` and `10`:
+This method returns all the values in a given list of integers that are between `3` and `10`:
 
 {% tabs control-structures-20 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-20 %}
@@ -856,7 +856,7 @@ Using a `match` expression as the body of a method is a very common use.
 
 #### Match expressions support many different types of patterns
 There are many different forms of patterns that can be used to write `match` expressions.
-Examples includes:
+Examples include:
 
 - Constant patterns (such as `case 3 => `)
 - Sequence patterns (such as `case List(els : _*) =>`)
@@ -986,6 +986,6 @@ finally
 {% endtab %}
 {% endtabs %}
 
-Assuming that the `openAndReadAFile` method uses the Java `java.io.*` classes to read a file and doesn’t catch its exceptions, attempting to open and read a file can result in both a `FileNotFoundException` and an `IOException`, and those two exceptions are caught in the `catch` block of this example.
+Assuming that the `openAndReadAFile` method uses the Java `java.io.*` classes to read a file and doesn't catch its exceptions, attempting to open and read a file can result in both a `FileNotFoundException` and an `IOException`, and those two exceptions are caught in the `catch` block of this example.
 
 [matchable]: {{ site.scala3ref }}/other-new-features/matchable.html

@@ -27,7 +27,7 @@ One approach would be to go the [Scala 2 bug tracker](https://github.com/scala/b
 Sometimes it's appealing to hack alone and not to have to interact with others. However, in the context a big project such as Scala, there might be better ways. There are people in the Scala community who have spent years accumulating knowledge about Scala libraries and internals. They might provide
 unique insights and, what's even better, direct assistance in their areas, so it is not only advantageous, but recommended to communicate with the community about your new patch.
 
-Typically bug fixes and new features start out as an idea or an experiment posted on one of [our forums](https://scala-lang.org/community/index.html#forums) to find out how people feel
+Typically, bug fixes and new features start out as an idea or an experiment posted on one of [our forums](https://scala-lang.org/community/index.html#forums) to find out how people feel
 about things you want to implement. People proficient in certain areas of Scala usually monitor forums and discussion rooms, so you'll often get some help by posting a message.
 But the most efficient way to connect is to mention in your message one of the people responsible for maintaining the aspect of Scala which you wish to contribute to.
 
@@ -38,7 +38,7 @@ In our running example, since Martin is the person who submitted the string inte
 As alluded to earlier, one must also choose an appropriate avenue to discuss the issue. Typically, one would use the [Scala Contributor's Forum][contrib-forum], as there are post categories devoted to discussions about the core internal design and implementation of the Scala system.
 
 In this example, the issue was previously discussed on the (now unused) scala-user mailing list, at the time,
-we would have posted to the [the (now unused) scala-user mailing list](https://groups.google.com/group/scala-user) about our issue:
+we would have posted to [the (now unused) scala-user mailing list](https://groups.google.com/group/scala-user) about our issue:
 
 <img src="{{ site.baseurl }}/resources/img/01-post.png" alt="Posting to scala-user" class="centerclear" />
 <img src="{{ site.baseurl }}/resources/img/02-post.png" alt="Response from Martin" class="centerclear" />
@@ -53,7 +53,7 @@ it probably makes sense to familiarize yourself with Git first. We recommend
 
 * the [Git Pro](https://git-scm.com/book/en/) online book.
 * the help page on [Forking a Git Repository](https://help.github.com/articles/fork-a-repo).
-* this great training tool [LearnGitBranching](https://pcottle.github.io/learnGitBranching/). One hour hands-on training helps more than 1000 hours reading.
+* this great training tool [LearnGitBranching](https://pcottle.github.io/learnGitBranching/). One-hour hands-on training helps more than 1000 hours reading.
 
 ### Fork
 
@@ -67,8 +67,8 @@ If you're new to Git, don't be afraid of messing up-- there is no way you can co
 ### Clone
 
 If everything went okay, you will be redirected to your own fork at `https://github.com/user-name/scala`, where `username`
-is your GitHub user name. You might find it helpful to read [https://help.github.com/fork-a-repo/](https://help.github.com/fork-a-repo/),
-which covers some of the things that will follow below. Then, _clone_ your repository (i.e. pull a copy from GitHub to your local machine) by running the following on the command line:
+is your GitHub username. You might find it helpful to read [https://help.github.com/fork-a-repo/](https://help.github.com/fork-a-repo/),
+which covers some things that will follow below. Then, _clone_ your repository (i.e. pull a copy from GitHub to your local machine) by running the following on the command line:
 
     16:35 ~/Projects$ git clone https://github.com/xeno-by/scala
     Cloning into 'scala'...
@@ -129,7 +129,7 @@ We recognise that there exist preferences towards specific IDE/editor experience
 ## 3. Hack
 
 When hacking on your topic of choice, you'll be modifying Scala, compiling it and testing it on relevant input files.
-Typically you would want to first make sure that your changes work on a small example and afterwards verify that nothing break
+Typically, you would want to first make sure that your changes work on a small example and afterwards verify that nothing break
 by running a comprehensive test suite.
 
 We'll start by creating a `sandbox` directory (`./sandbox` is listed in the .gitignore of the Scala repository), which will hold a single test file and its compilation results. First, let's make sure that
@@ -200,12 +200,12 @@ The [Scala Collections Guide][collections-intro] is more general, covering the s
 
 ##### The Scala Compiler
 
-Documentation about the internal workings of the Scala compiler is scarce, and most of the knowledge is passed around by forum ([Scala Contributors](https://contributors.scala-lang.org/) forum), chat-rooms (see `#scala-contributors` on [Discord][discord-contrib]), ticket, or word of mouth. However the situation is steadily improving. Here are the resources that might help:
+Documentation about the internal workings of the Scala compiler is scarce, and most of the knowledge is passed around by forum ([Scala Contributors](https://contributors.scala-lang.org/) forum), chat-rooms (see `#scala-contributors` on [Discord][discord-contrib]), ticket, or word of mouth. However, the situation is steadily improving. Here are the resources that might help:
 
 * [Compiler internals videos by Martin Odersky](https://www.scala-lang.org/old/node/598.html) are quite dated, but still very useful. In this three-video
   series Martin explains the general architecture of the compiler, and the basics of the front-end, which later became the `scala-reflect` module's API.
 * [Reflection documentation][reflect-overview] describes fundamental data structures (like `Tree`s, `Symbol`s, and `Types`) that
-  are used to represent Scala programs and operations defined on then. Since much of the compiler has been factored out and made accessible via the `scala-reflect` module, all of the fundamentals needed for reflection are the same for the compiler.
+  are used to represent Scala programs and operations defined on then. Since much of the compiler has been factored out and made accessible via the `scala-reflect` module, all the fundamentals needed for reflection are the same for the compiler.
 * [Scala compiler corner](https://lampwww.epfl.ch/~magarcia/ScalaCompilerCornerReloaded/) contains extensive documentation about
   most of the post-typer phases (i.e. the backend) in the Scala compiler.
 * [Scala Contributors](https://contributors.scala-lang.org/), a forum which hosts discussions about the core
@@ -306,7 +306,7 @@ This means your change is backward or forward binary incompatible with the speci
 ### Verify
 
 Now to make sure that my fix doesn't break anything I need to run the test suite. The Scala test suite uses [JUnit](https://junit.org/junit4/) and [partest][partest-guide], a tool we wrote for testing Scala.
-Run `sbt test` and `sbt partest` to run all of the JUnit and partest tests, respectively.
+Run `sbt test` and `sbt partest` to run all the JUnit and partest tests, respectively.
 `partest` (not `sbt partest`) also allows you to run a subset of the tests using wildcards:
 
     18:52 ~/Projects/scala/sandbox (ticket/6725)$ cd ../test
@@ -358,7 +358,7 @@ Once you are satisfied with your work, synced with `master` and cleaned up your 
 
 ### Submit
 
-Now, we must simply submit our proposed patch. Navigate to your branch in GitHub (for me it was `https://github.com/xeno-by/scala/tree/ticket/6725`)
+Now, we must simply submit our proposed patch. Navigate to your branch in GitHub (for me, it was `https://github.com/xeno-by/scala/tree/ticket/6725`)
 and click the pull request button to submit your patch as a pull request to Scala. If you've never submitted patches to Scala, you will
 need to sign the contributor license agreement, which [can be done online](https://www.lightbend.com/contribute/cla/scala) within a few minutes.
 

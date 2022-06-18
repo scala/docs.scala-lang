@@ -35,7 +35,7 @@ to learn more about our support guarantees.
 
 Some features in macro paradise bring a compile-time dependency on the macro paradise plugin,
 some features do not, however none of those features need macro paradise at runtime.
-Proceed to the [the feature list](roadmap.html) document for more information.
+Proceed to [the feature list](roadmap.html) document for more information.
 
 Consult [https://github.com/scalamacros/sbt-example-paradise](https://github.com/scalamacros/sbt-example-paradise)
 for an end-to-end example, but in a nutshell working with macro paradise is as easy as adding the following two lines

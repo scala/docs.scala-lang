@@ -192,7 +192,7 @@ println(aBook == pBook)   // true (works because of `equals` in `AudioBook`)
 println(pBook == aBook)   // false
 ```
 
-Currently the `PrintedBook` book doesn’t have an `equals` method, so the second comparison returns `false`.
+Currently, the `PrintedBook` book doesn't have an `equals` method, so the second comparison returns `false`.
 To enable that comparison, just override the `equals` method in `PrintedBook`.
 
 You can find additional information on [multiversal equality][ref-equal] in the reference documentation.

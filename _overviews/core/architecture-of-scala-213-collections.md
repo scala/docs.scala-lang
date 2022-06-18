@@ -142,7 +142,7 @@ trait List[+A] extends Iterable[A]
 ## Four branches of templates traits ##
 
 The astute reader might have noticed that the given type signature
-for the `map` operation doesn’t work with `Map` collections because
+for the `map` operation doesn't work with `Map` collections because
 the `CC[_]` type parameter of the `IterableOps` trait takes one type
 parameter whereas `Map[K, V]` takes two type parameters.
 
@@ -223,7 +223,7 @@ trait SortedSet[A] extends SortedSetOps[A, SortedSet, SortedSet[A]]
 
 Last, there is a fourth kind of collection that requires a specialized template
 trait: `SortedMap[K, V]`. This type of collection has two type parameters and
-needs an implicit ordering instance on the type of keys. Therefore we have a
+needs an implicit ordering instance on the type of keys. Therefore, we have a
 `SortedMapOps` template trait that provides the appropriate overloads.
 
 In total, we’ve seen that we have four branches of template traits:
@@ -351,7 +351,7 @@ trait MapFactory[+CC[_, _]] {
 ## When a strict evaluation is preferable (or unavoidable) ##
 
 In the previous sections we explained that the “strictness” of concrete collections
-should be preserved by default operation implementations. However in some cases this
+should be preserved by default operation implementations. However, in some cases this
 leads to less efficient implementations. For instance, `partition` has to perform
 two traversals of the underlying collection. In some other case (e.g. `groupBy`) it
 is simply not possible to implement the operation without evaluating the collection
@@ -394,7 +394,7 @@ trait IterableFactory[+CC[_]] {
 }
 ~~~
 
-Note that, in general, an operation that doesn’t *have to* be strict should
+Note that, in general, an operation that doesn't *have to* be strict should
 be implemented in a non-strict mode, otherwise it would lead to surprising
 behaviour when used on a non-strict concrete collection (you can read more
 about that statement in

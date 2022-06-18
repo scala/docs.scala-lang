@@ -96,7 +96,7 @@ only if each blocking call is wrapped inside a `blocking` call (more on that bel
 Otherwise, there is a risk that the thread pool in the global execution context is starved,
 and no computation can proceed.
 
-By default the `ExecutionContext.global` sets the parallelism level of its underlying fork-join pool to the number of available processors
+By default, the `ExecutionContext.global` sets the parallelism level of its underlying fork-join pool to the number of available processors
 ([Runtime.availableProcessors](https://docs.oracle.com/javase/7/docs/api/java/lang/Runtime.html#availableProcessors%28%29)).
 This configuration can be overridden by setting one (or more) of the following VM attributes:
 
@@ -185,7 +185,7 @@ Fortunately the concurrent package provides a convenient way for doing so:
 
 Note that `blocking` is a general construct that will be discussed more in depth [below](#blocking-inside-a-future).
 
-Last but not least, you must remember that the `ForkJoinPool` is not designed for long lasting blocking operations.
+Last but not least, you must remember that the `ForkJoinPool` is not designed for long-lasting blocking operations.
 Even when notified with `blocking` the pool might not spawn new workers as you would expect,
 and when new workers are created they can be as many as 32767.
 To give you an idea, the following code will use 32000 threads:
@@ -216,7 +216,7 @@ To give you an idea, the following code will use 32000 threads:
 
 {% endtabs %}
 
-If you need to wrap long lasting blocking operations we recommend using a dedicated `ExecutionContext`, for instance by wrapping a Java `Executor`.
+If you need to wrap long-lasting blocking operations we recommend using a dedicated `ExecutionContext`, for instance by wrapping a Java `Executor`.
 
 
 ### Adapting a Java Executor
@@ -371,7 +371,7 @@ Our example was based on a hypothetical social network API where
 the computation consists of sending a network request and waiting
 for a response.
 It is fair to offer an example involving an asynchronous computation
-which you can try out of the box. Assume you have a text file and
+which you can try out of the box. Assume you have a text file, and
 you want to find the position of the first occurrence of a particular keyword.
 This computation may involve blocking while the file contents
 are being retrieved from the disk, so it makes sense to perform it
@@ -578,10 +578,10 @@ callbacks may be executed concurrently with one another.
 However, a particular `ExecutionContext` implementation may result
 in a well-defined order.
 
-5. In the event that some of the callbacks throw an exception, the
+5. In the event that some callbacks throw an exception, the
 other callbacks are executed regardless.
 
-6. In the event that some of the callbacks never complete (e.g. the
+6. In the event that some callbacks never complete (e.g. the
 callback contains an infinite loop), the other callbacks may not be
 executed at all. In these cases, a potentially blocking callback must
 use the `blocking` construct (see below).
@@ -635,7 +635,7 @@ be done using callbacks:
 We start by creating a future `rateQuote` which gets the current exchange
 rate.
 After this value is obtained from the server and the future successfully
-completed, the computation proceeds in the `foreach` callback and we are
+completed, the computation proceeds in the `foreach` callback, and we are
 ready to decide whether to buy or not.
 We therefore create another future `purchase` which makes a decision to buy only if it's profitable
 to do so, and then sends a request.
@@ -723,7 +723,7 @@ combinators. The `flatMap` method takes a function that maps the value
 to a new future `g`, and then returns a future which is completed once
 `g` is completed.
 
-Lets assume that we want to exchange US dollars for Swiss francs
+Let's assume that we want to exchange US dollars for Swiss francs
 (CHF). We have to fetch quotes for both currencies, and then decide on
 buying based on both quotes.
 Here is an example of `flatMap` and `withFilter` usage within for-comprehensions:
@@ -1043,7 +1043,7 @@ However, blocking may be necessary in certain situations and is supported by
 the Futures and Promises API.
 
 In the currency trading example above, one place to block is at the
-end of the application to make sure that all of the futures have been completed.
+end of the application to make sure that all the futures have been completed.
 Here is an example of how to block on the result of a future:
 
 {% tabs futures-14 class=tabs-scala-version %}
@@ -1358,7 +1358,7 @@ Abstract `Duration` contains methods that allow:
 for example, `val d = Duration(100, MILLISECONDS)`.
 3. By parsing a string that represent a time period, for example, `val d = Duration("1.2 µs")`.
 
-Duration also provides `unapply` methods so it can be used in pattern matching constructs.
+Duration also provides `unapply` methods, so it can be used in pattern matching constructs.
 Examples:
 
 {% tabs futures-17 class=tabs-scala-version %}

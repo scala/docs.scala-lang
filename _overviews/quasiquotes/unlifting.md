@@ -65,7 +65,7 @@ Here one must pay attention to a few nuances:
 
 1. Similarly to `Liftable`, `Unliftable` defines a helper `apply` function in
    the companion object to simplify the creation of `Unliftable` instances. It
-   take a type parameter `T` as well as a partial function `PartialFunction[Tree, T]`
+   takes a type parameter `T` as well as a partial function `PartialFunction[Tree, T]`
    and returns an `Unliftable[T]`. At all inputs where a partial function is defined
    it is expected to return an instance of `T` unconditionally.
 

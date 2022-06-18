@@ -54,7 +54,7 @@ Just like an array buffer is useful for building arrays, and a list buffer is us
 
 ## Linked Lists
 
-Linked lists are mutable sequences that consist of nodes which are linked with next pointers. They are supported by class [LinkedList](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/mutable/LinkedList.html). In most languages `null` would be picked as the empty linked list. That does not work for Scala collections, because even empty sequences must support all sequence methods. In particular `LinkedList.empty.isEmpty` should return `true` and not throw a `NullPointerException`. Empty linked lists are encoded instead in a special way: Their `next` field points back to the node itself. Like their immutable cousins, linked lists are best traversed sequentially. In addition linked lists make it easy to insert an element or linked list into another linked list.
+Linked lists are mutable sequences that consist of nodes which are linked with next pointers. They are supported by class [LinkedList](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/mutable/LinkedList.html). In most languages `null` would be picked as the empty linked list. That does not work for Scala collections, because even empty sequences must support all sequence methods. In particular `LinkedList.empty.isEmpty` should return `true` and not throw a `NullPointerException`. Empty linked lists are encoded instead in a special way: Their `next` field points back to the node itself. Like their immutable cousins, linked lists are best traversed sequentially. In addition, linked lists make it easy to insert an element or linked list into another linked list.
 
 ## Double Linked Lists
 
@@ -85,7 +85,7 @@ Scala provides mutable queues in addition to immutable ones. You use a `mQueue` 
 
 Array sequences are mutable sequences of fixed size which store their elements internally in an `Array[Object]`. They are implemented in Scala by class [ArraySeq](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/mutable/ArraySeq.html).
 
-You would typically use an `ArraySeq` if you want an array for its performance characteristics, but you also want to create generic instances of the sequence where you do not know the type of the elements and you do not have a `ClassTag` to provide it at run-time. These issues are explained in the section on [arrays]({{ site.baseurl }}/overviews/collections/arrays.html).
+You would typically use an `ArraySeq` if you want an array for its performance characteristics, but you also want to create generic instances of the sequence where you do not know the type of the elements, and you do not have a `ClassTag` to provide it at run-time. These issues are explained in the section on [arrays]({{ site.baseurl }}/overviews/collections/arrays.html).
 
 ## Stacks
 

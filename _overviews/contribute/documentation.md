@@ -22,7 +22,7 @@ The Scala API documentation lives with the scala project source code. There are 
 
 * [Log issues for missing scaladoc documentation][report-api-doc-bugs] -
 Please *follow the issue submission process closely* to help prevent duplicate issues being created.
-* [Claim Scaladoc Issues and Provide Documentation][scala-standard-library-api-documentation] - please claim issues prior to working on a specific scaladoc task to prevent duplication of effort. If you sit on an issue for too long without submitting a pull request, it will revert back to unassigned and you will need to re-claim it.
+* [Claim Scaladoc Issues and Provide Documentation][scala-standard-library-api-documentation] - please claim issues prior to working on a specific scaladoc task to prevent duplication of effort. If you sit on an issue for too long without submitting a pull request, it will revert to unassigned, and you will need to re-claim it.
 * You can also just
 [submit new Scaladoc][scala-standard-library-api-documentation]
 without creating an issue, but please look to see if there is an issue already submitted for your task and claim it if there is. If not, please post your intention to work on a specific scaladoc task on [Scala Contributors](https://contributors.scala-lang.org/) so that people know what you are doing.
@@ -42,7 +42,7 @@ without creating an issue, but please look to see if there is an issue already s
 and more
 
 Please read [Add New Guides/Tutorials][add-guides] through before embarking on changes. The site uses
-the [Jekyll](https://jekyllrb.com/) markdown engine so you will need to follow the instructions to get that running as well.
+the [Jekyll](https://jekyllrb.com/) markdown engine, so you will need to follow the instructions to get that running as well.
 
 ### Updating scala-lang.org
 

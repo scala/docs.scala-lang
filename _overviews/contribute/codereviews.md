@@ -19,7 +19,7 @@ own pull requests.
 * Attach comments to particular lines or regions they pertain to whenever possible.
 * Short code examples are often more descriptive than prose.
 * If you have thoroughly reviewed the PR and thought through all angles, LGTM (Looks Good To Me) is the preferred acceptance response.
-* Additional reviews should try to offer additional insights: "I also thought about it from this angle and it still looks good.."
+* Additional reviews should try to offer additional insights: "I also thought about it from this angle, and it still looks good.."
 * Above all, remember that the people you are reviewing might be reviewing your PRs one day too.
 * If you are receiving the review, consider that the advice is being given to make you, and Scala, better rather than as a negative critique. Assume the best, rather than the worst.
 
@@ -39,7 +39,7 @@ own pull requests.
    <div class="row">
      <div class="span4 doc-block">
        <h4><a href="https://github.com/scala/scala-lang/pulls">scala/scala-lang</a></h4>
-       <p>The Scala language web site.</p>
+       <p>The Scala language website.</p>
      </div>
      <div class="span4 doc-block">
        <h4><a href="https://github.com/scala/docs.scala-lang.org/pulls">scala/docs.scala-lang.org</a></h4>

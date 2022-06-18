@@ -30,7 +30,7 @@ The [reference documentation][matchable] contains more information about `Matcha
 `Matchable` has two important subtypes: `AnyVal` and `AnyRef`.
 
 *`AnyVal`* represents value types.
-There are a couple of predefined value types and they are non-nullable: `Double`, `Float`, `Long`, `Int`, `Short`, `Byte`, `Char`, `Unit`, and `Boolean`.
+There are a couple of predefined value types, and they are non-nullable: `Double`, `Float`, `Long`, `Int`, `Short`, `Byte`, `Char`, `Unit`, and `Boolean`.
 `Unit` is a value type which carries no meaningful information.
 There is exactly one instance of `Unit` which we can refer to as: `()`.
 
@@ -190,7 +190,7 @@ println(s"x.abs = ${x.abs}")   // prints "x.abs = 1"
 
 The `s` that you place before the string is just one possible interpolator.
 If you use an `f` instead of an `s`, you can use `printf`-style formatting syntax in the string.
-Furthermore, a string interpolator is a just special method and it is possible to define your own.
+Furthermore, a string interpolator is a just special method, and it is possible to define your own.
 For instance, some database libraries define the very powerful `sql` interpolator.
 
 
@@ -262,7 +262,7 @@ This will be covered later in the tour.
 
 `Nothing` is a subtype of all types, also called the **bottom type**.
 There is no value that has the type `Nothing`.
-A common use is to signal non-termination, such as a thrown exception, program exit, or an infinite loop---i.e., it is the type of an expression which does not evaluate to a value, or a method that does not return normally.
+A common use is to signal non-termination, such as a thrown exception, program exit, or an infinite loop---i.e., it is the type of expression which does not evaluate to a value, or a method that does not return normally.
 
 `Null` is a subtype of all reference types (i.e. any subtype of `AnyRef`).
 It has a single value identified by the keyword literal `null`.

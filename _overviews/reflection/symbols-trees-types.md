@@ -27,7 +27,7 @@ A symbol can provide a wealth of information ranging from the basic `name`
 method available on all symbols to other, more involved, concepts such as
 getting the `baseClasses` from `ClassSymbol`. Other common use cases of
 symbols include inspecting members' signatures, getting type parameters of a
-class, getting the parameter type of a method or finding out the type of a
+class, getting the parameter type of method or finding out the type of
 field.
 
 ### The Symbol Owner Hierarchy
@@ -109,8 +109,8 @@ types by using `-Xlog-free-types`.
 
 ## Types
 
-As its name suggests, instances of `Type` represent information about the type
-of a corresponding symbol. This includes its members (methods, fields, type
+As its name suggests, instances of `Type` represent information about the type 
+of corresponding symbol. This includes its members (methods, fields, type
 aliases, abstract types, nested classes, traits, etc.) either declared
 directly or inherited, its base types, its erasure and so on. Types also
 provide operations to test for type conformance or equivalence.
@@ -298,7 +298,7 @@ with different type arguments.
     scala> getType(List(1,2,3)) =:= getType(List(9,8,7))
     res2: Boolean = true
 
-Also important to note is that `=:=` should _always_ be used to compare types
+Also, important to note is that `=:=` should _always_ be used to compare types
 for equality. That is, never use `==`, as it can't check for type equality in
 the presence of type aliases, whereas `=:=` can:
 
@@ -694,11 +694,11 @@ section:
 
 It's important to note that, unlike `reify`, toolboxes aren't limited by the
 typeability requirement-- although this flexibility is achieved by sacrificing
-robustness. That is, here we can see that `parse`, unlike `reify`, doesn’t
+robustness. That is, here we can see that `parse`, unlike `reify`, doesn't
 reflect the fact that `println` should be bound to the standard `println`
 method.
 
-_Note:_ when using macros, one shouldn’t use `ToolBox.parse`. This is because
+_Note:_ when using macros, one shouldn't use `ToolBox.parse`. This is because
 there’s already a `parse` method built into the macro context. For example:
 
     bash$ scala -Yrepl-class-based:false
@@ -726,7 +726,7 @@ and execute trees.
 In addition to outlining the structure of the program, trees also hold
 important information about the semantics of the program encoded in `symbol`
 (a symbol assigned to trees that introduce or reference definitions), and
-`tpe` (the type of the tree). By default these fields are empty, but
+`tpe` (the type of the tree). By default, these fields are empty, but
 typechecking fills them in.
 
 When using the runtime reflection framework, typechecking is implemented by

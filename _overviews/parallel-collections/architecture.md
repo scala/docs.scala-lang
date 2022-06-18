@@ -67,7 +67,7 @@ While in the case of sequential collections, elements can be added to a
 `Builder`, and a collection can be produced by invoking the `result` method,
 in the case of parallel collections, a `Combiner` has a method called
 `combine` which takes another `Combiner` and produces a new `Combiner` that
-contains the union of both's elements. After `combine` has been invoked, both
+contains the union of both elements. After `combine` has been invoked, both
 `Combiner`s become invalidated.
 
     trait Combiner[Elem, To] extends Builder[Elem, To] {
@@ -93,7 +93,7 @@ regular collections framework's corresponding traits, as shown below.
 <br/>
 
 The goal is of course to integrate parallel collections as tightly as possible
-with sequential collections, so as to allow for straightforward substitution
+with sequential collections, to allow for straightforward substitution
 of sequential and parallel collections.
 
 In order to be able to have a reference to a collection which may be either

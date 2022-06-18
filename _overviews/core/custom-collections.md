@@ -337,7 +337,7 @@ That is it. The final [`Capped` class](#final-version-of-capped-class):
   `knownSize` operation is also overridden because the size is always
   known.
 
-Its implementation requires a little bit of protocol. In essence, you
+Its implementation requires a little of protocol. In essence, you
 have to inherit from the `Ops` template trait in addition to just
 inheriting from a collection type, override the `iterableFactory`
 member to return a more specific factory, and finally implement abstract
@@ -968,7 +968,7 @@ However, in all these cases, to build the right kind of collection
 you need to start with an empty collection of that kind. This is
 provided by the `empty` method, which simply returns a fresh `PrefixMap`.
 
-We'll now turn to the companion object `PrefixMap`. In fact it is not
+We'll now turn to the companion object `PrefixMap`. In fact, it is not
 strictly necessary to define this companion object, as class `PrefixMap`
 can stand well on its own. The main purpose of object `PrefixMap` is to
 define some convenience factory methods. It also defines an implicit
@@ -980,7 +980,7 @@ can not because a `Factory` fixes the type of collection elements,
 whereas `PrefixMap` has a polymorphic type of values).
 
 The two convenience methods are `empty` and `apply`. The same methods are
-present for all other collections in Scala's collection framework so
+present for all other collections in Scala's collection framework, so
 it makes sense to define them here, too. With the two methods, you can
 write `PrefixMap` literals like you do for any other collection:
 

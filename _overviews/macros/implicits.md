@@ -140,7 +140,7 @@ macro, which synthesizes `Iso[C, L]`, scalac will helpfully infer `L` as `Nothin
 As demonstrated by [https://github.com/scala/scala/pull/2499](https://github.com/scala/scala/pull/2499), the solution to the outlined
 problem is extremely simple and elegant.
 
-In 2.10 we don't allow macro applications to expand until all their type arguments are inferred. However we don't have to do that.
+In 2.10 we don't allow macro applications to expand until all their type arguments are inferred. However, we don't have to do that.
 The typechecker can infer as much as it possibly can (e.g. in the running example `C` will be inferred to `Foo` and
 `L` will remain uninferred) and then stop. After that we expand the macro and then proceed with type inference using the type of the
 expansion to help the typechecker with previously undetermined type arguments. This is how it's implemented in Scala 2.11.0.

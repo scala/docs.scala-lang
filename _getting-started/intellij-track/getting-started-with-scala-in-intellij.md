@@ -34,7 +34,7 @@ you'll need to install a Scala SDK. To the right of the Scala SDK field,
 click the **Create** button.
 1. Select the highest version number (e.g. {{ site.scala-version }}) and click **Download**. This might
 take a few minutes but subsequent projects can use the same SDK.
-1. Once the SDK is created and you're back to the "New Project" window click **Finish**.
+1. Once the SDK is created, and you're back to the "New Project" window click **Finish**.
 
 
 ## Writing code

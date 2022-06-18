@@ -16,7 +16,7 @@ called [FunSuite](https://www.scalatest.org/getting_started_with_fun_suite).
 This assumes you know [how to build a project in IntelliJ](building-a-scala-project-with-intellij-and-sbt.html).
 
 ## Setup
-1. Create an sbt project in IntelliJ.
+1. Create a sbt project in IntelliJ.
 1. Add the ScalaTest dependency:
     1. Add the ScalaTest dependency to your `build.sbt` file:
         ```
@@ -28,7 +28,7 @@ This assumes you know [how to build a project in IntelliJ](building-a-scala-proj
         unrecognized.
 1. On the project pane on the left, expand `src` => `main`.
 1. Right-click on `scala` and select **New** => **Scala class**.
-1. Call it `CubeCalculator`, change the **Kind** to `object`, and hit enter or double click on `object`.
+1. Call it `CubeCalculator`, change the **Kind** to `object`, and hit enter or double-click on `object`.
 1. Replace the code with the following:
     ```
     object CubeCalculator extends App {
@@ -41,7 +41,7 @@ This assumes you know [how to build a project in IntelliJ](building-a-scala-proj
 ## Creating a test
 1. On the project pane on the left, expand `src` => `test`.
 1. Right-click on `scala` and select **New** => **Scala class**.
-1. Name the class `CubeCalculatorTest` and hit enter or double click on `class`.
+1. Name the class `CubeCalculatorTest` and hit enter or double-click on `class`.
 1. Replace the code with the following:
     ```
     import org.scalatest.funsuite.AnyFunSuite

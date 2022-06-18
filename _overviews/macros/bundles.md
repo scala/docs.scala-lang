@@ -18,7 +18,7 @@ Macro bundles are a feature of Scala 2.11.x and Scala 2.12.x. Macro bundles are 
 ## Macro bundles
 
 In Scala 2.10.x, macro implementations are represented with functions. Once the compiler sees an application of a macro definition,
-it calls the macro implementation - as simple as that. However practice shows that just functions are often not enough due to the
+it calls the macro implementation - as simple as that. However, practice shows that just functions are often not enough due to the
 following reasons:
 
 1. Being limited to functions makes modularizing complex macros awkward. It's quite typical to see macro logic concentrate in helper

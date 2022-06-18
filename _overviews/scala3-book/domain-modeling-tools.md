@@ -7,7 +7,7 @@ previous-page: domain-modeling-intro
 next-page: domain-modeling-oop
 ---
 
-Scala 3 provides many different constructs so we can model the world around us:
+Scala 3 provides many different constructs, so we can model the world around us:
 
 - Classes
 - Objects
@@ -34,7 +34,7 @@ class Movie(var name: String, var director: String, var year: Int)
 
 These examples show that Scala has a very lightweight way to declare classes.
 
-All of the parameters of our example classes are defined as `var` fields, which means they are mutable: you can read them, and also modify them.
+All the parameters of our example classes are defined as `var` fields, which means they are mutable: you can read them, and also modify them.
 If you want them to be immutable---read only---create them as `val` fields instead, or use a case class.
 
 Prior to Scala 3, you used the `new` keyword to create a new instance of a class:
@@ -572,7 +572,7 @@ val cubs2016 = cubs1908.copy(lastWorldSeriesWin = 2016)
 
 As mentioned, case classes support functional programming (FP):
 
-- In FP you try to avoid mutating data structures.
+- In FP, you try to avoid mutating data structures.
   It thus makes sense that constructor fields default to `val`.
   Since instances of case classes can’t be changed, they can easily be shared without fearing mutation or race conditions.
 - Instead of mutating an instance, you can use the `copy` method as a template to create a new (potentially changed) instance.
