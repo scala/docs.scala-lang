@@ -172,7 +172,7 @@
         The Scala REPL is a tool (<code>scala</code>) for evaluating expressions in Scala.
         <br><br>
         The <code>scala</code> command will execute a source script by wrapping it in a template and then compiling and executing the resulting program
-    - title: The New Scaladoc
+    - title: Scaladoc For Scala 3
       by: Krzysztof Romanowski, Aleksander Boruch-Gruszecki, Andrzej Ratajczak, Kacper Korban, Filip Zybała
       icon: book
       root: "scala3/guides/"
