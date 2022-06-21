@@ -1,5 +1,5 @@
 ---
-layout: documentation
+layout: inner-page-documentation
 languages: [ja, zh-cn, ru, uk]
 title: Learn Scala
 namespace: root
@@ -10,7 +10,7 @@ redirect_from:
   - /scala3/
   - /scala3/index.html
 
-scala2-sections:
+sections:
   - title: "First Steps..."
     links:
       - title: "Getting Started"
