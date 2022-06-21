@@ -211,7 +211,7 @@ package foo
 
 class ClassA:
   import scala.util.Random   // inside ClassA
-  def printRandom {
+  def printRandom:
     val r = new Random
     // more code here...
 
