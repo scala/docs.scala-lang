@@ -1,12 +1,16 @@
 - title: Getting Started
   url: "/getting-started/index.html"
-- title: Migration
+- title: Scala 3
   url: "#"
   submenu:
-    - title: New in Scala 3
+    - title: What's New?
       url: "/scala3/new-in-scala3.html"
-    - title: Scala 3 Migration Guide
+    - title: Migrating From Scala 2
       url: "/scala3/guides/migration/compatibility-intro.html"
+    - title: New Features for Scaladoc
+      url: "/scala3/scaladoc.html"
+    - title: Videos and Talks 
+      url: "/scala3/talks.html"
 - title: Learn
   url: "#"
   submenu:
