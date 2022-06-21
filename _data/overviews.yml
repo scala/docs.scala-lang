@@ -59,18 +59,12 @@
 - category: Language
   description: "Guides and overviews covering features in the Scala language."
   overviews:
-    - title: String Interpolation
-      icon: dollar-sign
-      url: "core/string-interpolation.html"
-      description: >
-        String Interpolation allows users to embed variable references directly in processed string literals. Here’s an example:
-          <pre><code>val name = "James"
-          println(s"Hello, $name")  // Hello, James</code></pre>
-        In the above, the literal <code>s"Hello, $name"</code> is a processed string literal. This means that the compiler does some additional work to this literal. A processed string literal is denoted by a set of characters preceding the ". String interpolation was introduced by SIP-11, which contains all details of the implementation.
-    - title: Implicit Classes
-      by: Josh Suereth
-      description: "Scala 2.10 introduced a new feature called implicit classes. An implicit class is a class marked with the implicit keyword. This keyword makes the class’ primary constructor available for implicit conversions when the class is in scope."
-      url: "core/implicit-classes.html"
+    - title: "Migration from Scala 2 to Scala 3"
+      by: Adrien Piquerez
+      icon: suitcase
+      root: "scala3/guides/"
+      url: "migration/compatibility-intro.html"
+      description: "Everything you need to know about compatibility and migration to Scala 3."
     - title: Scala 3 Macros
       by: Nicolas Stucki
       icon: magic
@@ -83,6 +77,25 @@
       description: "Value classes are a new mechanism in Scala to avoid allocating runtime objects. This is accomplished through the definition of new AnyVal subclasses."
       icon: gem
       url: "core/value-classes.html"
+    - title: An Overview of TASTy
+      by: Alvin Alexander
+      icon: birthday-cake
+      label-text: new in Scala 3
+      root: "scala3/guides/"
+      url: "tasty-overview.html"
+      description: "An overview over the TASTy format aimed at end-users of the Scala language."
+    - title: String Interpolation
+      icon: dollar-sign
+      url: "core/string-interpolation.html"
+      description: >
+        String Interpolation allows users to embed variable references directly in processed string literals. Here’s an example:
+          <pre><code>val name = "James"
+          println(s"Hello, $name")  // Hello, James</code></pre>
+        In the above, the literal <code>s"Hello, $name"</code> is a processed string literal. This means that the compiler does some additional work to this literal. A processed string literal is denoted by a set of characters preceding the ". String interpolation was introduced by SIP-11, which contains all details of the implementation.
+    - title: Implicit Classes
+      by: Josh Suereth
+      description: "Scala 2.10 introduced a new feature called implicit classes. An implicit class is a class marked with the implicit keyword. This keyword makes the class’ primary constructor available for implicit conversions when the class is in scope."
+      url: "core/implicit-classes.html"
     - title: The Scala Book
       by: Alvin Alexander
       icon: book
@@ -101,12 +114,6 @@
       icon: tasks
       url: "contributors/index.html"
       description: "Lists all the tools that library authors should setup to publish and document their libraries."
-    - title: "Migration from Scala 2 to Scala 3"
-      by: Adrien Piquerez
-      icon: suitcase
-      root: "scala3/guides/"
-      url: "migration/compatibility-intro.html"
-      description: "Everything you need to know about compatibility and migration to Scala 3."
 
 - category: Parallel and Concurrent Programming
   description: "Complete guides covering some of Scala's libraries for parallel and concurrent programming."
@@ -193,12 +200,6 @@
       root: "scala3/guides/"
       url: "contribution/contribution-intro.html"
       description: "Guide to the Scala 3 Compiler and fixing an issue"
-    - title: An Overview of TASTy
-      by: Alvin Alexander
-      icon: birthday-cake
-      root: "scala3/guides/"
-      url: "tasty-overview.html"
-      description: "An overview over the TASTy format aimed at end-users of the Scala language."
     - title: Scala 2 Reflection
       by: Heather Miller, Eugene Burmako, and Philipp Haller
       icon: binoculars
