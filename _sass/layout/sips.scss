@@ -103,41 +103,29 @@
 
 .sips {
 
-  .pending,
-  .completed,
-  .dormant,
-  .rejected {
-    .date {
-      display: block;
-      font-size: $font-size-small;
-      text-transform: uppercase;
-      font-weight: $font-bold;
-      color: $base-font-color-light;
-      margin-top: 4px;
-    }
+  .sip-list {
 
     strong {
       font-weight: $font-black;
+      display: block;
+    }
+
+    .no-fragmentation {
+      break-inside: avoid;
     }
 
     .tag {
       float: left;
-      position: relative;
       display: block;
-      top: 3px;
       color: #fff;
       text-transform: uppercase;
       font-size: 11px;
       font-weight: 700;
       padding: 1px 5px;
+      margin-left: 1px;
+      margin-top: 1px;
     }
-  }
 
-  .pending {
-    display: flex;
-    // flex-direction: column;
-    // flex-wrap: wrap;
-    // max-height: 400px;
     ul {
       list-style: inside disc;
       -webkit-column-count: 2; /* Chrome, Safari, Opera */
@@ -163,41 +151,4 @@
     }
   }
 
-  .other-sips {
-    @include display(flex);
-    @include flex-direction(row);
-    @include flex-wrap(wrap);
-    @include justify-content(space-between);
-
-    .completed,
-    .dormant,
-    .rejected {
-      display: flex;
-      flex-direction: column;
-      // justify-content: flex-end;
-      position: relative;
-      flex: 0 1 calc(50% - 1em);
-
-      @include bp(medium) {
-        flex: 0 1 calc(100% - 0.5em);
-      }
-
-      ul {
-        // padding-left: 0px;
-
-        li {
-          // margin-left: 1em;
-          padding-bottom: 24px;
-          line-height: 1;
-        }
-
-        a {
-          color: $gray-darker;
-          &:hover {
-            color: $brand-primary;
-          }
-        }
-      }
-    }
-  }
 }

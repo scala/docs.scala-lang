@@ -2,7 +2,7 @@
 title: Getting Started with Scala in IntelliJ
 layout: singlepage-overview
 partof: getting-started-with-scala-in-intellij
-languages: [ja]
+languages: [ja, uk]
 disqus: true
 next-page: building-a-scala-project-with-intellij-and-sbt
 

@@ -20,7 +20,7 @@ scala3-sections:
       - title: "Початок роботи"
         description: "Встанови Scala 3 на свій комп'ютер і почни писати код Scala!"
         icon: "fa fa-rocket"
-        link: /scala3/getting-started.html
+        link: /uk/scala3/getting-started.html
       - title: "Книга по Scala 3"
         description: "Вивчи Scala, прочитавши серію коротких уроків."
         icon: "fa fa-book-open"
@@ -66,7 +66,7 @@ scala2-sections:
       - title: "Початок роботи"
         description: "Встанови Scala на свій комп'ютер і почни писати код Scala!"
         icon: "fa fa-rocket"
-        link: /getting-started.html
+        link: /uk/getting-started/index.html
       - title: "Екскурсія по Скала"
         description: "Короткі введення в основні особливості мови."
         icon: "fa fa-flag"
@@ -97,7 +97,7 @@ scala2-sections:
       - title: "Посібники та огляди"
         description: "Поглиблена документація, що покриває багато особливостей Scala."
         icon: "fa fa-database"
-        link: /overviews/index.html
+        link: /uk/overviews/index.html
       - title: "Довідник по стилю"
         description: "Поглиблений посібник з написання ідіоматичного коду на Scala."
         icon: "fa fa-bookmark"
@@ -105,7 +105,7 @@ scala2-sections:
       - title: "Шпаргалка"
         description: "Зручна шпаргалка з основ синтаксису Scala."
         icon: "fa fa-list"
-        link: /cheatsheets/index.html
+        link: /uk/cheatsheets/index.html
       - title: "Питання-Відповіді"
         description: "Відповіді на часті запитання про Scala."
         icon: "fa fa-question-circle"

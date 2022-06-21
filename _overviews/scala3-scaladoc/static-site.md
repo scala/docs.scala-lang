@@ -186,7 +186,7 @@ Blog feature is described in [a separate document]({% link _overviews/scala3-sca
 ```
 .
 └── <site-root>/
-    ├── _layouts_/
+    ├── _layouts/
     │   └── ...
     ├── _docs/
     │   └── ...
