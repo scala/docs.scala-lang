@@ -97,7 +97,7 @@ scala2-sections:
       - title: "Посібники та огляди"
         description: "Поглиблена документація, що покриває багато особливостей Scala."
         icon: "fa fa-database"
-        link: /overviews/index.html
+        link: /uk/overviews/index.html
       - title: "Довідник по стилю"
         description: "Поглиблений посібник з написання ідіоматичного коду на Scala."
         icon: "fa fa-bookmark"
