@@ -9,7 +9,7 @@ num: 12
 outof: 54
 previous-page: two-notes-about-strings
 next-page: control-structures
-new-version: /scala3/book/introduction.html
+new-version: /scala3/book/taste-hello-world.html#ask-for-user-input
 ---
 
 
