@@ -9,7 +9,7 @@ num: 3
 outof: 54
 previous-page: prelude-taste-of-scala
 next-page: scala-features
-new-version: /scala3/book/taste-intro.html
+new-version: /scala3/book/taste-intro.html#setting-up-scala
 ---
 
 

@@ -1,14 +1,10 @@
 ---
-type: chapter
-layout: multipage-overview
 title: Where To Go Next
+type: chapter
 description: Where to go next after reading the Scala Book
-partof: scala_book
-overview-name: Scala Book
-num: 54
-outof: 54
-previous-page: futures
-new-version: /scala3/book/where-next.html
+num: 76
+previous-page: scala-for-python-devs
+next-page:
 ---
 
 We hope you enjoyed this introduction to the Scala programming language, and we also hope we were able to share some of the beauty of the language.
