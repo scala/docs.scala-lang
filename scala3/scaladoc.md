@@ -25,19 +25,19 @@ Thanks to this feature, you can store your documentation along-side with the gen
 
 For more information on how to configure the generation of static sites check out [Static documentation][static-documentation] chapter
 
-![](../resources/images/scala3/scaladoc/static-site.png)
+![](../../resources/images/scala3/scaladoc/static-site.png)
 
 ### Blog posts
 
 Blog posts are a specific type of static sites. In the Scaladoc manual you can find additional information about how to work with [blog posts][built-in-blog].
 
-![](../resources/images/scala3/scaladoc/blog-post.png)
+![](../../resources/images/scala3/scaladoc/blog-post.png)
 
 ### Social links
 
 Furthermore, Scaladoc provides an easy way to configure your [social media links][social-links] e.g. Twitter or Discord.
 
-![](../resources/images/scala3/scaladoc/social-links.png){: style="width: 180px"}
+![](../../resources/images/scala3/scaladoc/social-links.png){: style="width: 180px"}
 
 ## Experimental features
 
@@ -70,7 +70,7 @@ Instead of searching for `span` we can also search for `IArray[A] => (A => Boole
 
 To use this feature simply type the signature of the function you are looking for in the scaladoc searchbar. This is how it works:
 
-![](../resources/images/scala3/scaladoc/inkuire-1.0.0-M2_js_flatMap.gif)
+![](../../resources/images/scala3/scaladoc/inkuire-1.0.0-M2_js_flatMap.gif)
 
 This feature is provided by the [Inkuire](https://github.com/VirtusLab/Inkuire) search engine, which works for Scala 3 and Kotlin. To be up-to-date with the development of this feature, follow the [Inkuire repository](https://github.com/VirtusLab/Inkuire).
 
