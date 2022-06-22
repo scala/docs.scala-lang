@@ -9,7 +9,7 @@ num: 17
 outof: 54
 previous-page: for-expressions
 next-page: try-catch-finally
-new-version: /scala3/book/taste-control-structures.html#match-expressions
+new-version: /scala3/book/control-structures.html#match-expressions
 ---
 
 

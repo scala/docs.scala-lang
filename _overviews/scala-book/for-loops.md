@@ -9,7 +9,7 @@ num: 15
 outof: 54
 previous-page: if-then-else-construct
 next-page: for-expressions
-new-version: /scala3/book/taste-control-structures.html#for-loops-and-expressions
+new-version: /scala3/book/control-structures.html#for-loops
 ---
 
 

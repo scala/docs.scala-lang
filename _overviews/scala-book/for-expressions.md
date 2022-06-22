@@ -9,7 +9,7 @@ num: 16
 outof: 54
 previous-page: for-loops
 next-page: match-expressions
-new-version: /scala3/book/taste-control-structures.html#for-expressions
+new-version: /scala3/book/control-structures.html#for-expressions
 ---
 
 

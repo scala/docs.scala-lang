@@ -9,7 +9,7 @@ num: 14
 outof: 54
 previous-page: control-structures
 next-page: for-loops
-new-version: /scala3/book/taste-control-structures.html#ifelse
+new-version: /scala3/book/control-structures.html#the-ifthenelse-construct
 ---
 
 

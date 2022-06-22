@@ -9,7 +9,7 @@ num: 13
 outof: 54
 previous-page: command-line-io
 next-page: if-then-else-construct
-new-version: /scala3/book/taste-control-structures.html
+new-version: /scala3/book/control-structures.html
 ---
 
 
