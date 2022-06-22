@@ -9,7 +9,7 @@ num: 10
 outof: 54
 previous-page: type-is-optional
 next-page: two-notes-about-strings
-new-version: /scala3/book/taste-vars-data-types.html#built-in-data-types
+new-version: /scala3/book/first-look-at-types.html#scalas-value-types
 ---
 
 

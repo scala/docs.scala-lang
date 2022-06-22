@@ -9,7 +9,7 @@ num: 24
 outof: 54
 previous-page: enumerations-pizza-class
 next-page: traits-interfaces
-new-version: /scala3/book/taste-modeling.html#traits
+new-version: /scala3/book/domain-modeling-tools.html#traits
 ---
 
 
