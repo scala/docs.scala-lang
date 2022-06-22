@@ -1,13 +1,12 @@
+{% assign pagetype = page.type %}
 <div class="content-nav">
-	<div class="inner-box sidebar-toc-wrapper" style="">
+  <div class="inner-box sidebar-toc-wrapper {% if pagetype %}book{% endif %}" style="">
 		<h5 class="contents">Contents</h5>
-        {% assign type = page.type %}
-        {% if type %}
-          <div class="inner-toc book" id="sidebar-toc">
-        {% else %}
-          <div class="inner-toc" id="sidebar-toc">
-        {% endif %}
-
+      {% if pagetype %}
+        <div class="inner-toc book" id="sidebar-toc">
+      {% else %}
+        <div class="inner-toc" id="sidebar-toc">
+      {% endif %}
       <ul>
         {% assign sorted = site[page.collection] | sort: 'num' %}
         {% for pg in sorted %}

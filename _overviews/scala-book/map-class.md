@@ -9,6 +9,7 @@ num: 32
 outof: 54
 previous-page: vector-class
 next-page: set-class
+new-version: /scala3/book/collections-classes.html#maps
 ---
 
 
@@ -157,12 +158,3 @@ ratings.foreach {
 ## See also
 
 There are other ways to work with Scala Maps, and a nice collection of Map classes for different needs. See the [Map class documentation]({{site.baseurl}}/overviews/collections-2.13/maps.html) for more information and examples.
-
-
-
-
-
-
-
-
-

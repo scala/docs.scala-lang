@@ -9,8 +9,8 @@ num: 52
 outof: 54
 previous-page: functional-error-handling
 next-page: futures
+new-version: /scala3/book/concurrency.html
 ---
 
 
 In the next lesson you’ll see a primary tool for writing parallel and concurrent applications, the Scala `Future`.
-

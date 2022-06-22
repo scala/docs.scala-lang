@@ -9,6 +9,7 @@ num: 8
 outof: 54
 previous-page: scala-repl
 next-page: type-is-optional
+new-version: /scala3/book/taste-vars-data-types.html
 ---
 
 
@@ -111,12 +112,3 @@ age: Int = 19
 ```
 
 `val` fields can’t be redefined like that in the real world, but they can be redefined in the REPL playground.
-
-
-
-
-
-
-
-
-

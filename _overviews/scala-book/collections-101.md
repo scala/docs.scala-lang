@@ -9,6 +9,7 @@ num: 28
 outof: 54
 previous-page: abstract-classes
 next-page: arraybuffer-examples
+new-version: /scala3/book/collections-intro.html
 ---
 
 
@@ -33,6 +34,3 @@ The main Scala collections classes you’ll use on a regular basis are:
 We’ll demonstrate the basics of these classes in the following lessons.
 
 >In the following lessons on Scala collections classes, whenever we use the word *immutable*, it’s safe to assume that the class is intended for use in a *functional programming* (FP) style. With these classes you don’t modify the collection; you apply functional methods to the collection to create a new result. You’ll see what this means in the examples that follow.
-
-
-

@@ -9,6 +9,7 @@ num: 12
 outof: 54
 previous-page: two-notes-about-strings
 next-page: control-structures
+new-version: /scala3/book/taste-hello-world.html#ask-for-user-input
 ---
 
 
@@ -97,12 +98,3 @@ import scala.io.StdIn.readLine
 ```
 
 That import statement brings the `readLine` method into the current scope so you can use it in the application.
-
-
-
-
-
-
-
-
-

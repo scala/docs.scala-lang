@@ -1,8 +1,15 @@
 <!DOCTYPE html>
-{% if page.scala3 %}
-<html class="scala3">
+{% if page.scala3 or page.new-version %}
+  {% assign classes='' %}
+  {% if page.scala3 %}
+    {% assign classes= classes | append: ' scala3' %}
+  {% endif %}
+  {% if page.new-version %}
+    {% assign classes= classes | append: ' outdated-page' %}
+  {% endif %}
+  <html class="{{classes}}">
 {% else %}
-<html>
+  <html>
 {% endif %}
   <head>
     <title>

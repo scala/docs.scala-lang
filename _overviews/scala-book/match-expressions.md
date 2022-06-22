@@ -9,6 +9,7 @@ num: 17
 outof: 54
 previous-page: for-expressions
 next-page: try-catch-finally
+new-version: /scala3/book/control-structures.html#match-expressions
 ---
 
 
@@ -246,11 +247,3 @@ stock match {
 ## Even more
 
 `match` expressions are very powerful, and there are even more things you can do with them, but hopefully these examples provide a good start towards using them.
-
-
-
-
-
-
-
-

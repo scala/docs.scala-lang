@@ -9,6 +9,7 @@ num: 3
 outof: 54
 previous-page: prelude-taste-of-scala
 next-page: scala-features
+new-version: /scala3/book/taste-intro.html#setting-up-scala
 ---
 
 
@@ -59,12 +60,3 @@ Another good thing to know is that Scala naming conventions follow the same “c
 - Class names: `Person`, `StoreEmployee`
 - Variable names: `name`, `firstName`
 - Method names: `convertToInt`, `toUpper`
-
-
-
-
-
-
-
-
-

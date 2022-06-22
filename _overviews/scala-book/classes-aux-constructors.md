@@ -9,6 +9,7 @@ num: 20
 outof: 54
 previous-page: classes
 next-page: constructors-default-values
+new-version: /scala3/book/domain-modeling-tools.html#auxiliary-constructors
 ---
 
 
@@ -71,11 +72,3 @@ class Pizza(
     var crustType: String = DefaultCrustType
 )
 ```
-
-
-
-
-
-
-
-
