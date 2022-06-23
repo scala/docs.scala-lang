@@ -59,6 +59,31 @@
 - category: Мова
   description: "Посібники та огляди, що охоплюють функції на мові Scala."
   overviews:
+    - title: Міграція зі Scala 2 на Scala 3
+      by: Adrien Piquerez
+      icon: suitcase
+      root: "scala3/guides/"
+      url: "migration/compatibility-intro.html"
+      description: "Все, що потрібно знати про сумісність і міграцію на Scala 3."
+    - title: Макроси Scala 3
+      by: Nicolas Stucki
+      icon: magic
+      root: "scala3/guides/"
+      url: "macros"
+      description: "Детальний підручник, який охоплює всі можливості, пов'язані з написанням макросів у Scala 3."
+      label-text: нове в Scala 3
+    - title: Класи значень та універсальні трейти
+      by: Mark Harrah
+      description: "Класи значень – це новий механізм у Scala, що дозволяє уникнути виділення об'єктів під час виконання. Це досягається за допомогою визначення нових підкласів AnyVal."
+      icon: gem
+      url: "core/value-classes.html"
+    - title: Огляд TASTy
+      by: Alvin Alexander
+      icon: birthday-cake
+      label-text: нове в Scala 3
+      root: "scala3/guides/"
+      url: "tasty-overview.html"
+      description: "Огляд формату TASTy, призначеного для користувачів мови Scala."
     - title: Інтерполяція строк
       icon: dollar-sign
       url: "core/string-interpolation.html"
