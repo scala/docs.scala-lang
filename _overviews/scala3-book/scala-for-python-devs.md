@@ -4,7 +4,7 @@ type: chapter
 description: This page is for Python developers who are interested in learning about Scala 3.
 num: 75
 previous-page: scala-for-javascript-devs
-next-page:
+next-page: where-next
 ---
 
 {% include_relative scala4x.css %}

@@ -1,8 +1,4 @@
-{% if page.scala3 %}
-  {% assign navdata = site.data.scala3-doc-nav-header %}
-{% else %}
-  {% assign navdata = site.data.doc-nav-header %}
-{% endif %}
+{% assign navdata = site.data.doc-nav-header %}
 
 {% include site-header.html %}
 
@@ -18,9 +14,6 @@
       <a href="{{ site.baseurl }}/{{ docsRootTranslated.language }}">
         <img src="{{ site.baseurl }}/resources/img/documentation-logo@2x.png" alt="docs">
       </a>
-      <span class="doc-language-version">
-        — Scala {% if page.scala3 %} 3 {% else %} 2 {% endif %}
-      </span>
       </div>
       <div class="navigation-ellipsis">
         <i class="fa fa-ellipsis-v"></i>

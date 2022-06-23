@@ -9,6 +9,7 @@ num: 23
 outof: 54
 previous-page: methods-first-look
 next-page: traits-intro
+new-version: /scala3/book/domain-modeling-fp.html#modeling-the-data
 ---
 
 
@@ -185,7 +186,3 @@ Toppings:   ArrayBuffer(Cheese, Pepperoni)
 That code combines several different concepts — including two things we haven’t discussed yet in the `import` statement and the `ArrayBuffer` — but if you have experience with Java and other languages, hopefully it’s not too much to throw at you at one time.
 
 At this point we encourage you to work with that code as desired. Make changes to the code, and try using the `removeTopping` and `removeAllToppings` methods to make sure they work the way you expect them to work.
-
-
-
-

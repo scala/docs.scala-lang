@@ -9,6 +9,7 @@ num: 22
 outof: 54
 previous-page: constructors-default-values
 next-page: enumerations-pizza-class
+new-version: /scala3/book/methods-intro.html
 ---
 
 
@@ -103,9 +104,3 @@ If you paste that code into the REPL, you’ll see that it works just like the p
 scala> addThenDouble(1, 1)
 res0: Int = 4
 ```
-
-
-
-
-
-

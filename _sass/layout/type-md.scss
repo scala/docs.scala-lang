@@ -212,6 +212,11 @@
         font-style: italic;
         @include border-radius($border-radius-base);
 
+        &.help-info {
+            border: 2px dashed $brand-tertiary-dotty;
+            color: $brand-tertiary-dotty;
+        }
+
         p {
             margin: 0;
         }

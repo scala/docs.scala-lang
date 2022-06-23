@@ -9,6 +9,7 @@ num: 31
 outof: 54
 previous-page: list-class
 next-page: map-class
+new-version: /scala3/book/collections-classes.html#vector
 ---
 
 [The Vector class](https://www.scala-lang.org/api/current/scala/collection/immutable/Vector.html) is an indexed, immutable sequence. The “indexed” part of the description means that you can access `Vector` elements very rapidly by their index value, such as accessing `listOfPeople(999999)`.
@@ -95,11 +96,3 @@ Joel
 Chris
 Ed
 ```
-
-
-
-
-
-
-
-

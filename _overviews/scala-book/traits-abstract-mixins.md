@@ -9,6 +9,7 @@ num: 26
 outof: 54
 previous-page: traits-interfaces
 next-page: abstract-classes
+new-version: /scala3/book/domain-modeling-tools.html#traits
 ---
 
 
@@ -194,12 +195,3 @@ I'm running
 ```
 
 This example works because all of the methods in the `TailWagger` and `Runner` traits are defined (they’re not abstract).
-
-
-
-
-
-
-
-
-

@@ -9,6 +9,7 @@ num: 49
 outof: 54
 previous-page: companion-objects
 next-page: case-objects
+new-version: /scala3/book/domain-modeling-tools.html#case-classes
 ---
 
 
@@ -184,5 +185,3 @@ res0: Person = Person(Christina,niece)
 ## The biggest advantage
 
 While all of these features are great benefits to functional programming, as they write in the book, [Programming in Scala](https://www.amazon.com/Programming-Scala-Updated-2-12/dp/0981531687/) (Odersky, Spoon, and Venners), “the biggest advantage of case classes is that they support pattern matching.” Pattern matching is a major feature of FP languages, and Scala’s case classes provide a simple way to implement pattern matching in match expressions and other areas.
-
-

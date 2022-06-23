@@ -50,6 +50,7 @@ For example, given this `@main` method that takes an `Int`, a `String`, and a va
   val sb = StringBuilder(s"Happy $age$suffix birthday, $name")
   for other <- others do sb.append(" and ").append(other)
   sb.toString
+  println(sb)
 ```
 
 When you compile that code, it creates a main program named `happyBirthday` that’s called like this:

@@ -9,6 +9,7 @@ num: 47
 outof: 54
 previous-page: passing-functions-around
 next-page: companion-objects
+new-version: /scala3/book/fp-functional-error-handling.html
 ---
 
 
@@ -300,10 +301,3 @@ This lesson was a little longer than the others, so here’s a quick review of t
 ## See also
 
 - Tony Hoare invented the null reference in 1965, and refers to it as his “[billion dollar mistake](https://en.wikipedia.org/wiki/Tony_Hoare#Apologies_and_retractions).”
-
-
-
-
-
-
-

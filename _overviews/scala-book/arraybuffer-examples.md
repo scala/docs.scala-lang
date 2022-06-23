@@ -9,6 +9,7 @@ num: 29
 outof: 54
 previous-page: collections-101
 next-page: list-class
+new-version: /scala3/book/collections-classes.html#arraybuffer
 ---
 
 
@@ -130,12 +131,3 @@ val a = ArrayBuffer.range('a', 'h')  // ArrayBuffer(a, b, c, d, e, f, g)
 a.dropInPlace(2)                     // ArrayBuffer(c, d, e, f, g)
 a.dropRightInPlace(2)                // ArrayBuffer(c, d, e)
 ```
-
-
-
-
-
-
-
-
-

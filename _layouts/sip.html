@@ -14,19 +14,32 @@ includeTOC: true
 		<!-- TOC -->
     <div class="content-nav">
     	<div class="inner-box sidebar-toc-wrapper sip-toc" style="">
-      {% if page.vote-status %}
-        <h5 class="contents">SIP Committee Decision</h5>
-         <div class="tag" style="background-color: {{ site.data.sip-data[page.vote-status].color }}">{{ site.data.sip-data[page.vote-status].text }}</div>
-           <p class="vote-text" style="color: {{ site.data.sip-data[page.vote-status].color }}">
-             {% if page.vote-text %}{{ page.vote-text }}{% endif %}
-           </p>
-        {% endif %}
+        <h5 class="contents">Status</h5>
+				{% if page.stage == "implementation" %}
+				<p>
+					This proposal has been accepted by the committee.
+					{% if page.status == "waiting-for-implementation" %}
+					  An implementation is welcome in the compiler.
+					{% else %}
+					  It might be available as an experimental feature in the latest version of the compiler.
+					{% endif %}
+				</p>
+				{% else if page.stage == "completed" %}
+				<p>
+					This proposal has been implemented,
+					{% if page.status == "accepted" %}
+					  it will be available in the next minor release of the compiler.
+					{% else if page.status == "shipped" %}
+					  it is available in the latest version of the compiler.
+					{% endif %}
+				</p>
+				{% endif %}
     		<h5 class="contents">SIP Contents</h5>
     		<div class="inner-toc" id="sidebar-toc">
           <div id="toc"></div>
     		</div>
     		<hr>
-    		<div class="help-us"><a href="https://github.com/scala/docs.scala-lang/blob/main/{% if page.collection %}{{ page.relative_path }}{% else %}{{ page.path }}{% endif %}"><i class="fa fa-pencil" aria-hidden="true"></i> Problem with this page?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please help us fix it!</a></div>
+    		<div class="help-us"><a href="https://github.com/scala/improvement-proposals/blob/main/content/{{ page.name }}"><i class="fa fa-pencil" aria-hidden="true"></i> Problem with this page?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please help us fix it!</a></div>
     	</div>
     </div>
 

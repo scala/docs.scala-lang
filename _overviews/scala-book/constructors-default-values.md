@@ -9,6 +9,7 @@ num: 21
 outof: 54
 previous-page: classes-aux-constructors
 next-page: methods-first-look
+new-version: /scala3/book/domain-modeling-tools.html#default-parameter-values
 ---
 
 Scala lets you supply default values for constructor parameters. For example, in previous lessons we showed that you can define a `Socket` class like this:
@@ -87,12 +88,3 @@ is more readable than this code:
 ```scala
 val s = new Socket(2000, 3000)
 ```
-
-
-
-
-
-
-
-
-

@@ -9,6 +9,7 @@ num: 53
 outof: 54
 previous-page: concurrency-signpost
 next-page: where-next
+new-version: /scala3/book/concurrency.html
 ---
 
 When you want to write parallel and concurrent applications in Scala, you *could* still use the native Java `Thread` — but the Scala [Future](https://www.scala-lang.org/api/current/scala/concurrent/Future$.html) makes parallel/concurrent programming much simpler, and it’s preferred.
@@ -347,12 +348,3 @@ While this was a short introduction, hopefully those examples give you an idea o
 
 - A small demo GUI application named *Future Board* was written to accompany this lesson. It works a little like [Flipboard](https://flipboard.com), updating a group of news sources simultaneously. You can find the source code for Future Board in [this Github repository](https://github.com/alvinj/FPFutures).
 - While futures are intended for one-short, relatively short-lived concurrent processes, [Akka](https://akka.io) is an “actor model” library for Scala, and provides a terrific way to implement long-running parallel processes. (If this term is new to you, an *actor* is a long-running process that runs in parallel to the main application thread, and responds to messages that are sent to it.)
-
-
-
-
-
-
-
-
-

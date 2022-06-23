@@ -8,6 +8,14 @@ includeTOC: true
 		<div class="content-primary documentation">
 			<div class="inner-box">
 				<div class="toc-context">
+					{% if page.versionSpecific %}
+						{% if page.scala3 %}
+							{% assign versionSpecificLang = 'scala3' %}
+						{% else if page.scala2 %}
+							{% assign versionSpecificLang = 'scala2' %}
+						{% endif %}
+						{% include version-specific-notice.html language=versionSpecificLang %}
+					{% endif %}
 					{{content}}
 				</div>
 
