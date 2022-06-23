@@ -98,7 +98,7 @@ sections:
         description: "Повний посібник із участі в проекті Scala."
         icon: "fa fa-cogs"
         link: /contribute/
-      - title: "Внесок у Scala 3"
+      - title: "Посібник з внесення змін у Scala 3"
         description: "Посібник з компілятора Scala 3 та вирішення проблем."
         icon: "fa fa-cogs"
         link: /scala3/guides/contribution/contribution-intro.html

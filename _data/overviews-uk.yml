@@ -1,4 +1,3 @@
-
 - category: Стандартна бібліотека
   description: "Посібники та огляди стандартної бібліотеки Scala."
   overviews:
@@ -84,7 +83,7 @@
       root: "scala3/guides/"
       url: "tasty-overview.html"
       description: "Огляд формату TASTy, призначеного для користувачів мови Scala."
-    - title: Інтерполяція строк
+    - title: Інтерполяція рядків
       icon: dollar-sign
       url: "core/string-interpolation.html"
       description: >
@@ -96,11 +95,6 @@
       by: Josh Suereth
       description: "Scala 2.10 представила нову функцію під назвою неявні класи. Неявний клас — це клас, позначений ключовим словом implicit. Це ключове слово робить основний конструктор класу доступним для неявних перетворень, коли клас знаходиться в області видимості."
       url: "core/implicit-classes.html"
-    - title: Класи значень та універсальні трейти
-      by: Mark Harrah
-      description: "Класи значень – це новий механізм у Scala, який дозволяє уникнути виділення об'єктів часу виконання. Це досягається за допомогою визначення нових підкласів AnyVal."
-      icon: gem
-      url: "core/value-classes.html"
 
 - category: Створення бібліотек
   description: "Посібники щодо розробки бібліотек з відкритим кодом для екосистеми Scala."
@@ -161,13 +155,20 @@
 - category: Інструменти
   description: "Довідковий матеріал про основні інструменти Scala, такі як покоління Scala REPL і Scaladoc."
   overviews:
-    - title: Scala REPL
+    - title: Scala 2 REPL
       icon: terminal
       url: "repl/overview.html"
       description: |
         Scala REPL це інструмент (<code>scala</code>) для виконання виразів в Scala.
         <br><br>
         Команда <code>scala</code> виконає скрипт шляхом обгортання його в шаблон, а потім компіляції та виконання отриманої програми
+    - title: Scaladoc для Scala 3
+      by: Krzysztof Romanowski, Aleksander Boruch-Gruszecki, Andrzej Ratajczak, Kacper Korban, Filip Zybała
+      icon: book
+      root: "scala3/guides/"
+      url: "scaladoc"
+      label-text: оновлено
+      description: "Оновлення в Scala 3 для інструменту генерації документації API."
     - title: Scaladoc
       url: "scaladoc/overview.html"
       icon: book
@@ -183,12 +184,18 @@
 - category: Компілятор
   description: "Посібники та огляди компілятора Scala: плагіни компілятора, інструменти рефлексії та метапрограмування, такі як макроси."
   overviews:
-    - title: Рефлексія
+    - title: "Посібник з внесення змін у Scala 3"
+      by: Jamie Thompson, Anatolii Kmetiuk
+      icon: cogs
+      root: "scala3/guides/"
+      url: "contribution/contribution-intro.html"
+      description: "Посібник з компілятора Scala 3 та вирішення проблем."
+    - title: Рефлексія в Scala 2
       by: Heather Miller, Eugene Burmako та Philipp Haller
       icon: binoculars
       url: "reflection/overview.html"
       description: Фреймворк Scala для рефлексії під час виконання/компіляції.
-      label-text: experimental
+      label-text: відсутнє в Scala 3
       subdocs:
         - title: Огляд
           url: "reflection/overview.html"
@@ -204,12 +211,12 @@
           url: "reflection/thread-safety.html"
         - title: Зміни в Scala 2.11
           url: "reflection/changelog211.html"
-    - title: Макроси
+    - title: Макроси в Scala 2
       by: Eugene Burmako
       icon: magic
       url: "macros/usecases.html"
       description: "Фреймворк метапрограмування Scala."
-      label-text: experimental
+      label-text: відсутнє в Scala 3
       subdocs:
         - title: Випадки використання
           url: "macros/usecases.html"
@@ -235,12 +242,12 @@
           url: "macros/roadmap.html"
         - title: Зміни в 2.11
           url: "macros/changelog211.html"
-    - title: Quasiquotes
+    - title: Квазіцитати в Scala 2
       by: Denys Shabalin
       icon: quote-left
       url: "quasiquotes/setup.html"
-      description: "Quasiquotes — це зручний спосіб маніпулювати синтаксичними деревами Scala."
-      label-text: experimental
+      description: "Квазіцитати — це зручний спосіб маніпулювати синтаксичними деревами Scala."
+      label-text: відсутнє в Scala 3
       subdocs:
         - title: Залежності та налаштування
           url: "quasiquotes/setup.html"
@@ -303,7 +310,7 @@
       url: "core/actors.html"
       description: "У цьому посібнику описано API пакету scala.actors Scala 2.8/2.9. Організація слідує за групами типів, які логічно належать один до одного. Для структурування окремих розділів враховується ієрархія ознак. Основна увага приділяється поведінці під час виконання різних методів, що визначаються цими ознаками, тим самим доповнюючи документацію API, що існує на основі Scaladoc."
       label-color: "#899295"
-      label-text: deprecated
+      label-text: застаріле
     - title: Колекції Scala з 2.8 до 2.12
       by: Martin Odersky
       icon: sitemap
