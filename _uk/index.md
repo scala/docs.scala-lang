@@ -1,5 +1,5 @@
 ---
-layout: documentation
+layout: inner-page-documentation
 title: Документація
 language: uk
 partof: documentation
@@ -10,57 +10,7 @@ more-resources-label: Додаткові Матеріали
 # Content masthead links
 
 
-scala3-sections:
-  - title: "Перші кроки"
-    links:
-      - title: "Нове у Scala 3"
-        description: "Огляд нових функцій у Scala 3."
-        icon: "fa fa-star"
-        link: /scala3/new-in-scala3.html
-      - title: "Початок роботи"
-        description: "Встанови Scala 3 на свій комп'ютер і почни писати код Scala!"
-        icon: "fa fa-rocket"
-        link: /uk/scala3/getting-started.html
-      - title: "Книга по Scala 3"
-        description: "Вивчи Scala, прочитавши серію коротких уроків."
-        icon: "fa fa-book-open"
-        link: /scala3/book/introduction.html
-  - title: "Детальніше"
-    links:
-      - title: "Посібник з міграції"
-        description: "Посібник, що допоможе перейти від Scala 2 до Scala 3."
-        icon: "fa fa-suitcase"
-        link: /scala3/guides/migration/compatibility-intro.html
-      - title: "Посібники"
-        description: "Детальні посібники про окремі аспекти мови."
-        icon: "fa fa-map"
-        link: /scala3/guides.html
-      - title: "API бібліотек Scala"
-        description: "Документація API для кожної версії стандартної бібліотеки Scala 3."
-        icon: "fa fa-file-alt"
-        link: https://scala-lang.org/api/3.x/
-      - title: "Довідник про мову"
-        description: "Довідкова інформація про мову Scala 3."
-        icon: "fa fa-book"
-        link: https://docs.scala-lang.org/scala3/reference
-      - title: "Зробити внесок у Scala 3"
-        description: "Посібник з компілятора Scala 3 та вирішення проблем."
-        icon: "fa fa-cogs"
-        link: /scala3/guides/contribution/contribution-intro.html
-      - title: "Новий Scaladoc для Scala 3"
-        description: "Основні характеристики нових функцій у Scaladoc."
-        icon: "fa fa-star"
-        link: /scala3/scaladoc.html
-      - title: "Доповіді"
-        description: "Онлайн доповіді про Scala 3."
-        icon: "fa fa-play-circle"
-        link: /scala3/talks.html
-      - title: "Онлайн курси"
-        description: "MOOC для вивчення Scala для початківців і досвідчених програмістів."
-        icon: "fa fa-cloud"
-        link: /online-courses.html
-
-scala2-sections:
+sections:
   - title: "Перші кроки..."
     links:
       - title: "Початок роботи"
@@ -71,10 +21,10 @@ scala2-sections:
         description: "Короткі введення в основні особливості мови."
         icon: "fa fa-flag"
         link: /tour/tour-of-scala.html
-      - title: "Книга по Scala"
+      - title: "Книга по Scala 3"
         description: "Вивчи Scala, прочитавши серію коротких уроків."
         icon: "fa fa-book-open"
-        link: /overviews/scala-book/introduction.html
+        link: /scala3/book/introduction.html
       - title: "Онлайн курси"
         description: "MOOC для вивчення Scala для початківців і досвідчених програмістів."
         icon: "fa fa-cloud"
@@ -114,6 +64,29 @@ scala2-sections:
         description: "Специфікація формальної мови Scala."
         icon: "fa fa-book"
         link: https://scala-lang.org/files/archive/spec/2.13/
+      - title: "Довідник про мову"
+        description: "Довідкова інформація про мову Scala 3."
+        icon: "fa fa-book"
+        link: https://docs.scala-lang.org/scala3/reference
+
+  - title: "Дослідіть Scala 3"
+    links:
+      - title: "Посібник з міграції"
+        description: "Посібник, що допоможе перейти від Scala 2 до Scala 3."
+        icon: "fa fa-suitcase"
+        link: /scala3/guides/migration/compatibility-intro.html
+      - title: "Нове у Scala 3"
+        description: "Огляд нових функцій у Scala 3."
+        icon: "fa fa-star"
+        link: /scala3/new-in-scala3.html
+      - title: "Новий Scaladoc для Scala 3"
+        description: "Основні характеристики нових функцій у Scaladoc."
+        icon: "fa fa-star"
+        link: /scala3/scaladoc.html
+      - title: "Доповіді"
+        description: "Онлайн доповіді про Scala 3."
+        icon: "fa fa-play-circle"
+        link: /scala3/talks.html
 
   - title: "Еволюція Scala"
     links:
@@ -125,4 +98,8 @@ scala2-sections:
         description: "Повний посібник із участі в проекті Scala."
         icon: "fa fa-cogs"
         link: /contribute/
+      - title: "Внесок у Scala 3"
+        description: "Посібник з компілятора Scala 3 та вирішення проблем."
+        icon: "fa fa-cogs"
+        link: /scala3/guides/contribution/contribution-intro.html
 ---
