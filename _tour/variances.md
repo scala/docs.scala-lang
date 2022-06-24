@@ -56,7 +56,7 @@ Why could this be a problem? We can get the cat from the box, and it's still an 
   mayAnimalBox.content = Dog("fido")
 ```
 
-There now is a Dog in the Animal box. That's all fine, you can put Dogs in Animal boxes, because Dogs are Animals. But our Animal Box is a Cat Box! You can't put a Dog in a Cat box. Doing so would not only be unpleasant for the dog, if we try to get the cat from our catbox, it would turn out to be a dog, breaking type soundness
+There now is a Dog in the Animal box. That's all fine, you can put Dogs in Animal boxes, because Dogs are Animals. But our Animal Box is a Cat Box! You can't put a Dog in a Cat box. If we could, and then try to get the cat from our catbox, it would turn out to be a dog, breaking type soundness.
 
 ```scala
   val myCat: Cat = myCatBox.content //myCat would be fido the dog!
