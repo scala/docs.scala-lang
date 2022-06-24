@@ -14,7 +14,7 @@ previous-page: tour-of-scala
 
 Вы можете запустить Scala в браузере с помощью ScalaFiddle.
 
-1. Зайдите на [https://scalafiddle.io](https://scalafiddle.io).
+1. Зайдите на [Scastie](https://scastie.scala-lang.org/).
 2. Вставьте `println("Hello, world!")` в левую панель.
 3. Нажмите кнопку "Run". Вывод отобразится в правой панели.
 

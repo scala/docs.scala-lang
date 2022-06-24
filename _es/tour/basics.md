@@ -15,7 +15,7 @@ En esta página, practicaremos conceptos básicos de Scala.
 
 Puedes ejecutar Scala en tu navegador con ScalaFiddle.
 
-1. Ve a [https://scalafiddle.io](https://scalafiddle.io).
+1. Ve a [Scastie](https://scastie.scala-lang.org/).
 2. Escribe `println("Hello, world!")` en el panel a la izquierda.
 3. Presiona el botón "Run". En el panel de la derecha aparecerá el resultado.
 

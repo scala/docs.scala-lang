@@ -14,7 +14,7 @@ previous-page: tour-of-scala
 
 ScalaFiddleを利用することでブラウザ上でScalaを実行することができます。
 
-1. [https://scalafiddle.io](https://scalafiddle.io)を開きます。
+1. [Scastie](https://scastie.scala-lang.org/)を開きます。
 2. 左側のパネルに`println("Hello, world!")`を貼り付けます。
 3. "Run"ボタンを押すと、右側のパネルに出力が表示されます。
 

@@ -15,7 +15,7 @@ Na tej stronie omówimy podstawy języka Scala.
 
 Dzięki ScalaFiddle możesz uruchomić Scalę w swojej przeglądarce.
 
-1. Przejdź do [https://scalafiddle.io](https://scalafiddle.io).
+1. Przejdź do [Scastie](https://scastie.scala-lang.org/).
 2. Wklej kod `println("Hello, world!")` w polu po lewej stronie.
 3. Naciśnij przycisk "Run". W panelu po prawej stronie pojawi się wynik działania programu.
 

@@ -17,7 +17,7 @@ In this page, we will cover basics of Scala.
 
 เราสามารถรัน Scala ในเว็บเบราว์เซอร์ด้วย ScalaFiddle
 
-1. ไปที่ [https://scalafiddle.io](https://scalafiddle.io).
+1. ไปที่ [Scastie](https://scastie.scala-lang.org/).
 2. วาง `println("Hello, world!")` ในด้านซ้าย.
 3. กดที่ปุ่ม "Run" . output จะแสดงในด้านขวา
 

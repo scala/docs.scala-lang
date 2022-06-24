@@ -16,7 +16,7 @@ previous-page: tour-of-scala
 
 你可以在浏览器上使用ScalaFiddle运行Scala。
 
-1. 打开[https://scalafiddle.io](https://scalafiddle.io)；
+1. 打开[Scastie](https://scastie.scala-lang.org/)；
 2. 在左侧窗格中粘贴`println("Hello, world!")`；
 3. 点击"Run"按钮，输出将展现在右侧窗格中。
 

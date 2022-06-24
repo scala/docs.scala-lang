@@ -16,7 +16,7 @@ previous-page: tour-of-scala
 
 ScalaFiddle를 사용하면 브라우저에서 스칼라를 실행해 볼 수 있다.
 
-1. [https://scalafiddle.io](https://scalafiddle.io) 로 간다.
+1. [Scastie](https://scastie.scala-lang.org/) 로 간다.
 2. 왼쪽 창에 `println("Hello, world!")` 를 붙여 넣는다.
 3. 실행 버튼을 누르면 오른쪽 창에서 출력을 확인할 수 있다.
 
