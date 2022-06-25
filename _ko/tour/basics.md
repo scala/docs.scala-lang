@@ -14,7 +14,7 @@ previous-page: tour-of-scala
 
 ## 브라우저에서 스칼라 사용하기
 
-ScalaFiddle를 사용하면 브라우저에서 스칼라를 실행해 볼 수 있다.
+Scastie를 사용하면 브라우저에서 스칼라를 실행해 볼 수 있다.
 
 1. [Scastie](https://scastie.scala-lang.org/) 로 간다.
 2. 왼쪽 창에 `println("Hello, world!")` 를 붙여 넣는다.
@@ -22,7 +22,7 @@ ScalaFiddle를 사용하면 브라우저에서 스칼라를 실행해 볼 수 �
 
 이는 설정 없이 스칼라 코드들을 손쉽게 실험할 수 있는 방법이다.
 
-이 페이지의 많은 예제 코드가 ScalaFiddle와 통합되어 있어 간단히 실행 버튼만 눌러 직접 실험해 볼 수 있다.
+이 페이지의 많은 예제 코드가 Scastie와 통합되어 있어 간단히 실행 버튼만 눌러 직접 실험해 볼 수 있다.
 
 ## 표현식
 

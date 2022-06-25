@@ -14,7 +14,7 @@ previous-page: tour-of-scala
 
 ## 在浏览器上尝试Scala
 
-你可以在浏览器上使用ScalaFiddle运行Scala。
+你可以在浏览器上使用Scastie运行Scala。
 
 1. 打开[Scastie](https://scastie.scala-lang.org/)；
 2. 在左侧窗格中粘贴`println("Hello, world!")`；
@@ -22,7 +22,7 @@ previous-page: tour-of-scala
 
 这是一种简单的、零设置的方法来实践Scala的代码片段。
 
-这篇文档中的大部分代码示例与 ScalaFiddle 进行了集成，可以通过点击 “Run” 按钮即来直接运行 Scala 代码。
+这篇文档中的大部分代码示例与 Scastie 进行了集成，可以通过点击 “Run” 按钮即来直接运行 Scala 代码。
 
 ## 表达式
 

@@ -12,7 +12,7 @@ previous-page: tour-of-scala
 
 ## Scalaをブラウザで試してみる
 
-ScalaFiddleを利用することでブラウザ上でScalaを実行することができます。
+Scastieを利用することでブラウザ上でScalaを実行することができます。
 
 1. [Scastie](https://scastie.scala-lang.org/)を開きます。
 2. 左側のパネルに`println("Hello, world!")`を貼り付けます。
@@ -20,7 +20,7 @@ ScalaFiddleを利用することでブラウザ上でScalaを実行すること�
 
 このサイトを使えば、簡単にセットアップせずScalaのコードの一部を試すことができます。
 
-このドキュメントの多くのコードの例はScalaFiddleで開発されています。
+このドキュメントの多くのコードの例はScastieで開発されています。
 そのため、サンプルコード内のRunボタンをクリックするだけで、そのまま簡単にコードを試すことができます。
 
 ## 式

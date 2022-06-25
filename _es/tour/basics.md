@@ -13,7 +13,7 @@ En esta página, practicaremos conceptos básicos de Scala.
 
 ## Probando Scala en el navegador
 
-Puedes ejecutar Scala en tu navegador con ScalaFiddle.
+Puedes ejecutar Scala en tu navegador con Scastie.
 
 1. Ve a [Scastie](https://scastie.scala-lang.org/).
 2. Escribe `println("Hello, world!")` en el panel a la izquierda.
@@ -21,7 +21,7 @@ Puedes ejecutar Scala en tu navegador con ScalaFiddle.
 
 Así, de manera fácil y sin preparación, puedes probar fragmentos de código Scala.
 
-Muchos ejemplos de código en esta documentación están integrados con ScalaFiddle, y así puedes probarlos directamente solo con pulsar el botón "Run".
+Muchos ejemplos de código en esta documentación están integrados con Scastie, y así puedes probarlos directamente solo con pulsar el botón "Run".
 
 ## Expresiones
 

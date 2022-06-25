@@ -15,7 +15,7 @@ In this page, we will cover basics of Scala.
 
 ## ทดลอง Scala ในเว็บบราวเซอร์
 
-เราสามารถรัน Scala ในเว็บเบราว์เซอร์ด้วย ScalaFiddle
+เราสามารถรัน Scala ในเว็บเบราว์เซอร์ด้วย Scastie
 
 1. ไปที่ [Scastie](https://scastie.scala-lang.org/).
 2. วาง `println("Hello, world!")` ในด้านซ้าย.
@@ -23,7 +23,7 @@ In this page, we will cover basics of Scala.
 
 ในขั้นตอนนี้ง่ายมาก ที่จะได้ประสบการณ์ของเรากับ Scala
 
-หลายๆ โค้ดตัวอย่างในเอกสารนี้จะฝังใน ScalaFiddle ซึ่งคุณสามารถกดที่ปุ่ม Run เพื่อดูว่าโด้นนั้นๆ จะได้ผลลัพธ์อย่างไร
+หลายๆ โค้ดตัวอย่างในเอกสารนี้จะฝังใน Scastie ซึ่งคุณสามารถกดที่ปุ่ม Run เพื่อดูว่าโด้นนั้นๆ จะได้ผลลัพธ์อย่างไร
 
 ## Expressions
 

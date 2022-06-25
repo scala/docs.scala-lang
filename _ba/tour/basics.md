@@ -14,7 +14,7 @@ Na ovoj stranici ćemo objasniti osnove Scale.
 
 ## Probavanje Scale u browseru
 
-Scalu možete probati u Vašem browser sa ScalaFiddle aplikacijom.
+Scalu možete probati u Vašem browser sa Scastie aplikacijom.
 
 1. Idite na [Scastie](https://scastie.scala-lang.org/).
 2. Zalijepite `println("Hello, world!")` u lijevi panel.
