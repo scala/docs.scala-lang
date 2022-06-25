@@ -9,6 +9,7 @@ num: 11
 outof: 54
 previous-page: built-in-types
 next-page: command-line-io
+new-version: /scala3/book/first-look-at-types.html#two-notes-about-strings
 ---
 
 
@@ -109,6 +110,3 @@ our fathers ...
 ```
 
 Because this is what you generally want, this is a common way to create multiline strings.
-
-
-

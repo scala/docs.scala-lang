@@ -1,7 +1,6 @@
 ---
 title: Online Courses from The Scala Center
 layout: singlepage-overview
-scala3: true
 testimonials:
   - /resources/images/online-courses/testimonial000.jpg
   - /resources/images/online-courses/testimonial001.jpg
@@ -167,4 +166,3 @@ You can find other online resources contributed by the community on
 [Big Data Analysis with Scala and Spark]: https://www.coursera.org/learn/scala-spark-big-data
 [Functional Programming in Scala Capstone]: https://www.coursera.org/learn/scala-capstone
 [Programming Reactive Systems]: https://www.coursera.org/learn/scala-akka-reactive
-

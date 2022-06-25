@@ -17,7 +17,7 @@ keywords:
 
 scala-version: 2.13.8
 scala-212-version: 2.12.16
-scala-3-version: 3.1.2
+scala-3-version: 3.1.3
 
 collections:
   contribute_resources:
@@ -98,6 +98,42 @@ defaults:
       overview-name: "Tour of Scala"
   -
     scope:
+      path: "_overviews/macros"
+    values:
+      scala2: true
+      versionSpecific: true
+  -
+    scope:
+      path: "_overviews/reflection"
+    values:
+      scala2: true
+      versionSpecific: true
+  -
+    scope:
+      path: "_overviews/quasiquotes"
+    values:
+      scala2: true
+      versionSpecific: true
+  -
+    scope:
+      path: "_overviews/repl"
+    values:
+      scala2: true
+      versionSpecific: true
+  -
+    scope:
+      path: "_overviews/plugins"
+    values:
+      scala2: true
+      versionSpecific: true
+  -
+    scope:
+      path: "_overviews/compiler-options"
+    values:
+      scala2: true
+      versionSpecific: true
+  -
+    scope:
       path: "_overviews/scala3-book"
     values:
       scala3: true
@@ -141,6 +177,7 @@ defaults:
       path: "_overviews/scala3-macros"
     values:
       scala3: true
+      versionSpecific: true
       partof: scala3-macros
       overview-name: "Macros in Scala 3"
       layout: multipage-overview
@@ -150,6 +187,7 @@ defaults:
       path: "_overviews/scala3-scaladoc"
     values:
       scala3: true
+      versionSpecific: true
       partof: scala3-scaladoc
       overview-name: "Scaladoc"
       layout: multipage-overview

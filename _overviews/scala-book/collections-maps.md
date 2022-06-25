@@ -9,6 +9,7 @@ num: 36
 outof: 54
 previous-page: collections-methods
 next-page: misc
+new-version: /scala3/book/collections-methods.html
 ---
 
 
@@ -101,13 +102,3 @@ states.filterInPlace((k,v) => k == "AK")
 ## See also
 
 There are many more things you can do with maps. See the [Map class documentation]({{site.baseurl}}/overviews/collections-2.13/maps.html) for more details and examples.
-
-
-
-
-
-
-
-
-
-

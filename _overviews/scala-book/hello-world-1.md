@@ -9,6 +9,7 @@ num: 5
 outof: 54
 previous-page: scala-features
 next-page: hello-world-2
+new-version: /scala3/book/taste-hello-world.html
 ---
 
 Since the release of the book, *C Programming Language*, most programming books have begun with a simple “Hello, world” example, and in keeping with tradition, here’s the source code for a Scala “Hello, world” example:
@@ -86,7 +87,3 @@ public final class Hello {
 ````
 
 As that output shows, the `javap` command reads that *.class* file just as if it was created from Java source code. Scala code runs on the JVM and can use existing Java libraries — and both are terrific benefits for Scala programmers.
-
-
-
-

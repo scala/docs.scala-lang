@@ -9,6 +9,7 @@ num: 34
 outof: 54
 previous-page: set-class
 next-page: collections-methods
+new-version: /scala3/book/fun-anonymous-functions.html
 ---
 
 
@@ -200,16 +201,3 @@ is the same as this example:
 ```scala
 val y = ints.filter(_ < 5)
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-

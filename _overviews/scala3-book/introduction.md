@@ -12,6 +12,12 @@ The goal of this book is to provide an informal introduction to the Scala langua
 It touches on all Scala topics, in a relatively light manner.
 If at any time while you’re reading this book and want more information on a specific feature, you’ll find links to our [_Reference_ documentation][reference], which covers many new features of the Scala language in more detail.
 
+<blockquote class="help-info">
+<i class="fa fa-info"></i>&nbsp;&nbsp;If you are interested in the archived Scala 2 edition of the book, you
+can <a href="/overviews/scala-book/introduction.html">access it here</a>. We are currently in the process of
+merging the two books and you can <a href="{% link scala3/contribute-to-docs.md %}">help us</a>.
+</blockquote>
+
 Over the course of this book, we hope to demonstrate that Scala is a beautiful, expressive programming language, with a clean, modern syntax, which supports functional programming (FP) and object-oriented programming (OOP), and that provides a safe static type system.
 Scala’s syntax, grammar, and features have been re-thought, debated in an open process, and updated in 2020 to be clearer and easier to understand than ever before.
 
@@ -22,9 +28,5 @@ After that tour, the sections that follow it provide more details on those langu
 We should have a link structure on the whole tour here
 {% endcomment %}
 
-> We are still in the process of writing the book.
-> You can [help us improve it][contributing]
-
-[contributing]: {% link scala3/contribute-to-docs.md %}
 [reference]: {{ site.scala3ref }}/overview.html
 [taste]: {% link _overviews/scala3-book/taste-intro.md %}

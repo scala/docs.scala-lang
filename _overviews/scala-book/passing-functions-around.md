@@ -9,6 +9,7 @@ num: 46
 outof: 54
 previous-page: pure-functions
 next-page: no-null-values
+new-version: /scala3/book/fp-functions-are-values.html
 ---
 
 
@@ -103,11 +104,3 @@ Those examples that use a “regular” function are equivalent to these anonymo
 List("foo", "bar").map(s => s.toUpperCase)
 List("foo", "bar").map(_.toUpperCase)
 ```
-
-
-
-
-
-
-
-
