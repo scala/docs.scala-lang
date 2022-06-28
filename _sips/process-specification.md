@@ -244,8 +244,23 @@ Any further changes would have to come as an entirely new SIP.
 
 ## The SIP Committee
 
-The list of committee members is not yet known. We will update this section
-as soon as the full committee is defined.
+The current committee members are:
+
+- Björn Regnell ([@bjornregnell](https://github.com/bjornregnell)), Lund University
+- Chris Andrews ([@chrisandrews-ms](https://github.com/chrisandrews-ms)), Morgan Stanley
+- Gabriele Petronella ([@gabro](https://github.com/gabro)), buildo
+- Guillaume Martres ([@smarter](https://github.com/smarter)), EPFL
+- Iulian Dragos ([@dragos](https://github.com/dragos)), Databricks
+- Lukas Rytz ([@lrytz](https://github.com/lrytz)), Lightbend
+- Martin Odersky ([@odersky](https://github.com/odersky)), EPFL
+- Oron Port ([@soronpo](https://github.com/soronpo)), DFiant Inc
+- Paweł Marks ([@Kordyjan](https://github.com/Kordyjan)), VirtusLab
+- Raúl Raja ([@raulraja](https://github.com/raulraja)), 47Degrees
+- Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), Scala Center
+
+The current Chairperson is:
+
+- Julien Richard-Foy ([@julienrf](https://github.com/julienrf)), Scala Center
 
 ### Committee Meetings
 
