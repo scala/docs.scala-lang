@@ -7,7 +7,7 @@ redirect_from:
 
 ## Try Scala in your browser!
 
-There are a handful of websites where you can interactively run Scala code in your browser! Have a look at [ScalaFiddle](https://scalafiddle.io/) and [Scastie](https://scastie.org/).
+There are a handful of websites where you can interactively run Scala code in your browser! Have a look at [Scastie](https://scastie.scala-lang.org/).
 
 ## Online courses from the Scala Center
 
