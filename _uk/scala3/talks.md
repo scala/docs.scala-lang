@@ -1,8 +1,10 @@
 ---
 layout: singlepage-overview
 title: Розмови
+partof: scala3-talks
 language: uk
 scala3: true
+versionSpecific: true
 ---
 
 Серія "Поговорімо про Scala 3"

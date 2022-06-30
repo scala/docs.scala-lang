@@ -1,8 +1,10 @@
 ---
 layout: singlepage-overview
 title: Огляд TASTy
+partof: tasty-overview
 language: uk
 scala3: true
+versionSpecific: true
 ---
 Створіть файл вихідного коду Scala 3 _Hello.scala_:
 

@@ -1,6 +1,7 @@
 ---
 layout: singlepage-overview
 title: Нові можливості в Scaladoc
+partof: scala3-scaladoc
 language: uk
 scala3: true
 ---
