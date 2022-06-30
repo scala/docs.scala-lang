@@ -382,6 +382,78 @@ $(document).ready(function() {
   }
 });
 
+// Browser Storage Support (https://stackoverflow.com/a/41462752/2538602)
+function storageAvailable(type) {
+  try {
+    var storage = window[type],
+        x = '__storage_test__';
+    storage.setItem(x, x);
+    storage.removeItem(x);
+    return true;
+  }
+  catch (e) {
+    return false;
+  }
+}
+
+// Store preference for Scala 2 vs 3
+$(document).ready(function() {
+
+  const Storage = (namespace) => {
+    return ({
+      getPreference(key, defaultValue) {
+        const res = localStorage.getItem(`${namespace}.${key}`);
+        return !res ? defaultValue : res;
+      },
+      setPreference(key, value, onChange) {
+        const old = this.getPreference(key, null);
+        if (old !== value) { // activate effect only if value changed.
+          localStorage.setItem(`${namespace}.${key}`, value);
+          onChange(old);
+        }
+      }
+    });
+  };
+
+  function setupScalaVersionTabs(scalaVersionTabs) {
+    const BookStorage = Storage('org.scala-lang.docs.scala3.book');
+    const Scala3 = 'scala-3';
+    const scalaVersion = BookStorage.getPreference('scalaVersion', Scala3);
+    
+    function activateTab(tabs, scalaVersion) {
+      // click the code tab corresponding to the preferred Scala version.
+      tabs.find('input[data-target=' + scalaVersion + ']').prop("checked", true);
+    }
+
+    activateTab(scalaVersionTabs, scalaVersion);
+
+    // setup listeners to record new preferred Scala version.
+    scalaVersionTabs.find('input').on('change', function() {
+      // if checked then set the preferred version, and activate the other tabs on page.
+      if ($(this).is(':checked')) {
+        const parent = $(this).parent();
+        const scalaVersion = $(this).data('target');
+
+        BookStorage.setPreference('scalaVersion', scalaVersion, oldValue => {
+          // when we set a new scalaVersion, find scalaVersionTabs except current one
+          // and activate those tabs.
+          activateTab(scalaVersionTabs.not(parent), scalaVersion);
+        });
+
+      }
+
+    });
+  }
+
+  if (storageAvailable('localStorage')) {
+    var scalaVersionTabs = $(".tabsection.tabs-scala-version");
+    if (scalaVersionTabs.length) {
+      setupScalaVersionTabs(scalaVersionTabs);
+    }
+  }
+
+});
+
 // OS detection
 function getOS() {
   var osname = "linux";
