@@ -122,6 +122,12 @@
             left: -999em;
         }
     }
+
+    blockquote {
+        border: none;
+        border-left: 4px solid $base-border-color-gray;
+        padding: 4px 20px;
+    }
 }
 
 .tabsection>input:nth-child(1):checked~.tabcontent section:nth-child(1),

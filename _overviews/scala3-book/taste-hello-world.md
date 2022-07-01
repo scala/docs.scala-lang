@@ -30,7 +30,7 @@ object hello {
 ```
 > In this code, we defined a method named `main`, inside a Scala `object` named `hello`.
 > An `object` in Scala is similar to a `class`, but defines a singleton instance that you can pass around.
-> `main` takes an input parameter named `args` that must be typed as `Array[String]`, (ignore it for now).
+> `main` takes an input parameter named `args` that must be typed as `Array[String]`, (ignore `args` for now).
 
 {% endtab %}
 

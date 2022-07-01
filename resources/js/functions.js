@@ -403,7 +403,7 @@ $(document).ready(function() {
     return ({
       getPreference(key, defaultValue) {
         const res = localStorage.getItem(`${namespace}.${key}`);
-        return !res ? defaultValue : res;
+        return res === null ? defaultValue : res;
       },
       setPreference(key, value, onChange) {
         const old = this.getPreference(key, null);
@@ -415,6 +415,14 @@ $(document).ready(function() {
     });
   };
 
+  /** Links all tabs created in Liquid templates with class ".tabs-scala-version"
+   *  on the page together, such that
+   *  changing a tab to `Scala 2` will activate all other tab sections to
+   *  also change to "Scala 2".
+   *  Also records a preference for the Scala version in localStorage, so
+   *  that when the page is refreshed, the same tab will be selected.
+   *  On page load, selects the tab corresponding to stored Scala version.
+   */
   function setupScalaVersionTabs(scalaVersionTabs) {
     const BookStorage = Storage('org.scala-lang.docs.scala3.book');
     const Scala3 = 'scala-3';
