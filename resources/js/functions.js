@@ -147,7 +147,7 @@ $(document).ready(function() {
   old.empty();
 
   // if there are no translations, hide language dropdown box
-  if (items.length <= 1) {
+  if (items.length === 0) {
     $("#dd").hide();
   }
 });
