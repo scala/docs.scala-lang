@@ -2,6 +2,8 @@
 layout: singlepage-overview
 title: Talks
 scala3: true
+partof: scala3-talks
+languages: ["uk"]
 versionSpecific: true
 ---
 

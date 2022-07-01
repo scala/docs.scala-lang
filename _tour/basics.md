@@ -14,13 +14,13 @@ In this page, we will cover the basics of Scala.
 
 ## Trying Scala in the Browser
 
-You can run Scala in your browser with _ScalaFiddle_. This is an easy, zero-setup way to experiment with pieces of Scala code:
+You can run Scala in your browser with _Scastie_. This is an easy, zero-setup way to experiment with pieces of Scala code:
 
-1. Go to [https://scalafiddle.io](https://scalafiddle.io).
+1. Go to [Scastie](https://scastie.scala-lang.org/).
 2. Paste `println("Hello, world!")` in the left pane.
 3. Click __Run__. The output appears in the right pane.
 
-_ScalaFiddle_ is integrated with some of the code examples in this documentation; if you see a __Run__ button in a code example below, click it to directly experiment with the code.
+_Scastie_ is integrated with some of the code examples in this documentation; if you see a __Run__ button in a code example below, click it to directly experiment with the code.
 
 ## Expressions
 

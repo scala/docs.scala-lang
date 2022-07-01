@@ -78,15 +78,15 @@ sections:
       - title: "Нове у Scala 3"
         description: "Огляд нових функцій у Scala 3."
         icon: "fa fa-star"
-        link: /scala3/new-in-scala3.html
+        link: /uk/scala3/new-in-scala3.html
       - title: "Новий Scaladoc для Scala 3"
         description: "Основні характеристики нових функцій у Scaladoc."
         icon: "fa fa-star"
-        link: /scala3/scaladoc.html
+        link: /uk/scala3/scaladoc.html
       - title: "Доповіді"
         description: "Онлайн доповіді про Scala 3."
         icon: "fa fa-play-circle"
-        link: /scala3/talks.html
+        link: /uk/scala3/talks.html
 
   - title: "Еволюція Scala"
     links:
@@ -98,7 +98,7 @@ sections:
         description: "Повний посібник із участі в проекті Scala."
         icon: "fa fa-cogs"
         link: /contribute/
-      - title: "Внесок у Scala 3"
+      - title: "Посібник з внесення змін у Scala 3"
         description: "Посібник з компілятора Scala 3 та вирішення проблем."
         icon: "fa fa-cogs"
         link: /scala3/guides/contribution/contribution-intro.html

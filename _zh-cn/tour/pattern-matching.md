@@ -42,9 +42,9 @@ matchTest(1)  // one
 ```
 这个`match`表达式是String类型的，因为所有的情况（case）均返回String，所以`matchTest`函数的返回值是String类型。
 
-## 案例类（case classes）的匹配
+## 样例类（case classes）的匹配
 
-案例类非常适合用于模式匹配。
+样例类非常适合用于模式匹配。
 
 ```scala mdoc
 abstract class Notification
@@ -58,7 +58,7 @@ case class VoiceRecording(contactName: String, link: String) extends Notificatio
 
 ```
 
-`Notification` 是一个虚基类，它有三个具体的子类`Email`, `SMS`和`VoiceRecording`，我们可以在这些案例类(Case Class)上像这样使用模式匹配：
+`Notification` 是一个虚基类，它有三个具体的子类`Email`, `SMS`和`VoiceRecording`，我们可以在这些样例类(Case Class)上像这样使用模式匹配：
 
 ```
 def showNotification(notification: Notification): String = {
@@ -147,5 +147,5 @@ def findPlaceToSit(piece: Furniture): String = piece match {
 
 ## 备注
 
-Scala的模式匹配语句对于使用[案例类（case classes）](case-classes.html)表示的类型非常有用，同时也可以利用[提取器对象（extractor objects）](extractor-objects.html)中的`unapply`方法来定义非案例类对象的匹配。
+Scala的模式匹配语句对于使用[样例类（case classes）](case-classes.html)表示的类型非常有用，同时也可以利用[提取器对象（extractor objects）](extractor-objects.html)中的`unapply`方法来定义非样例类对象的匹配。
 

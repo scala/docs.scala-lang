@@ -1,7 +1,7 @@
 ---
-title: SIP-NN - Uncluttering Abuse of Match
-status: submitted
+title: SIP-39 - Uncluttering Abuse of Match
+status: under-review
 pull-request-number: 37
-stage: pre-sip
+stage: design
 
 ---
