@@ -424,9 +424,9 @@ $(document).ready(function() {
    *  On page load, selects the tab corresponding to stored Scala version.
    */
   function setupScalaVersionTabs(scalaVersionTabs) {
-    const BookStorage = Storage('org.scala-lang.docs.scala3.book');
+    const DocsPreferences = Storage('org.scala-lang.docs.preferences');
     const Scala3 = 'scala-3';
-    const scalaVersion = BookStorage.getPreference('scalaVersion', Scala3);
+    const scalaVersion = DocsPreferences.getPreference('scalaVersion', Scala3);
     
     function activateTab(tabs, scalaVersion) {
       // click the code tab corresponding to the preferred Scala version.
@@ -442,7 +442,7 @@ $(document).ready(function() {
         const parent = $(this).parent();
         const scalaVersion = $(this).data('target');
 
-        BookStorage.setPreference('scalaVersion', scalaVersion, oldValue => {
+        DocsPreferences.setPreference('scalaVersion', scalaVersion, oldValue => {
           // when we set a new scalaVersion, find scalaVersionTabs except current one
           // and activate those tabs.
           activateTab(scalaVersionTabs.not(parent), scalaVersion);
