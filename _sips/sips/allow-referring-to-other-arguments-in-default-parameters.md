@@ -1,7 +1,7 @@
 ---
 title: SIP-32 - Allow referring to other arguments in default parameters
-status: submitted
+status: under-review
 pull-request-number: 29
-stage: pre-sip
+stage: design
 
 ---
