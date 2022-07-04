@@ -38,7 +38,7 @@ plus1("1")
 
 ## 讨论
 
-Predef 包包含“自动装箱”转换，将原始数字类型映射到 `java.lang.Number` 的子类。
+Predef 包包含“自动装箱”转换，将基本数字类型映射到 `java.lang.Number` 的子类。
 例如，从 `Int` 到 `java.lang.Integer` 的转换可以定义如下： 
 
 ```scala

@@ -8,7 +8,7 @@ next-page: ca-implicit-conversions
 ---
 
 
-以前，Scala 具有*普遍相等性*：任何类型的两个值都可以使用 `==` 和 `!=` 相互比较。
+以前，Scala 具有*通用相等性*：任何类型的两个值都可以使用 `==` 和 `!=` 相互比较。
 这是因为 `==` 和 `!=` 是根据 Java 的 `equals` 方法实现的，该方法还可以比较任何两种引用类型的值。
 
 普遍平等很方便，但也很危险，因为它破坏了类型安全。
@@ -25,7 +25,7 @@ x == y        // typechecks, will always yield false
 但它可能会产生意想不到的结果并在运行时失败。
 
 类型安全的编程语言可以做得更好，多重平等是使普遍平等更安全的一种选择方式。
-它使用二进制类型类“CanEqual”来指示两个给定类型的值可以相互比较。
+它使用二元类型类“CanEqual”来指示两个给定类型的值可以相互比较。
 
 ## 允许比较类实例
 
@@ -84,7 +84,7 @@ given CanEqual[Dog, Dog] = CanEqual.derived
 import scala.language.strictEquality
 ```
 
-然后像往常一样创建你的域对象：
+然后像往常一样创建你的领域对象：
 
 ```scala
 // [2] create your class hierarchy
@@ -134,7 +134,7 @@ println(pBook == aBook)   // compiler error
 Values of types PrintedBook and AudioBook cannot be compared with == or !=
 ````
 
-这就是多重​元平等性在编译时捕获非法类型比较的方式。
+这就是多元相等性在编译时捕获非法类型比较的方式。
 
 ### 启用“PrintedBook == AudioBook”
 
@@ -157,8 +157,8 @@ println(aBook == pBook)   // false
 #### 实施“等于”以使它们真正起作用
 
 虽然现在允许进行这些比较，但它们将始终为 `false`，因为它们的 `equals` 方法不知道如何进行这些比较。
-因此，解决方案是重载每个类的 `equals` 方法。
-例如，当您重载 `AudioBook` 的 `equals` 方法时：
+因此，解决方案是覆盖每个类的 `equals` 方法。
+例如，当您覆盖 `AudioBook` 的 `equals` 方法时：
 
 ```scala
 case class AudioBook(
@@ -190,7 +190,7 @@ println(pBook == aBook)   // false
 ```
 
 目前 `PrintedBook` 书没有 `equals` 方法，所以第二个比较返回 `false`。
-要启用该比较，只需重载 `PrintedBook` 中的 `equals` 方法。
+要启用该比较，只需覆盖 `PrintedBook` 中的 `equals` 方法。
 
 您可以在参考文档中找到有关[多元相等性][ref-equal] 的更多信息。
 
