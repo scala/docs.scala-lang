@@ -82,8 +82,10 @@ module Jekyll
 
             def render(context)
                 site = context.registers[:site]
+                mdoc_converter = site.find_converter_instance(::Jekyll::MdocConverter)
                 converter = site.find_converter_instance(::Jekyll::Converters::Markdown)
-                content = converter.convert(render_block(context))
+                pre_content = mdoc_converter.convert(render_block(context))
+                content = converter.convert(pre_content)
                 tabcontent = TabDetails.new(label: @tab, anchor: @anchor, defaultTab: @defaultTab, content: content)
                 environment = context.environments.first
                 environment["tabs-#{@name}"] ||= []
