@@ -120,21 +120,47 @@ As you learn more about Scala you’ll find yourself writing more _expressions_ 
 In its most simple use, a Scala `for` loop can be used to iterate over the elements in a collection.
 For example, given a sequence of integers, you can loop over its elements and print their values like this:
 
+{% tabs simple-for-loop class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=simple-for-loop %}
+```scala
+val ints = Seq(1, 2, 3)
+for (i <- ints) println(i)
+```
+
+{% endtab %}
+
+{% tab 'Scala 3' for=simple-for-loop %}
 ```scala
 val ints = Seq(1, 2, 3)
 for i <- ints do println(i)
 ```
 
-The code `i <- ints` is referred to as a _generator_, and if you leave the parentheses off of the generator, the `do` keyword is required before the code that follows it.
-Otherwise you can write the code like this:
+{% endtab %}
 
-```scala
-for (i <- ints) println(i)
+{% endtabs %}
+
+The code `i <- ints` is referred to as a _generator_.
+
+This is what the result looks like in the Scala REPL:
+
+{% tabs simple-for-loop-example class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=simple-for-loop-example %}
+```
+scala> val ints = Seq(1,2,3)
+ints: Seq[Int] = List(1, 2, 3)
+
+scala> for (i <- ints) println(i)
+1
+2
+3
 ```
 
-Regardless of which approach you use, this is what the result looks like in the Scala REPL:
+{% endtab %}
 
-````
+{% tab 'Scala 3' for=simple-for-loop-example%}
+```
 scala> val ints = Seq(1,2,3)
 ints: Seq[Int] = List(1, 2, 3)
 
@@ -142,10 +168,27 @@ scala> for i <- ints do println(i)
 1
 2
 3
-````
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 When you need a multiline block of code following the `for` generator, use the following syntax:
 
+{% tabs multi-for-loop class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=multi-for-loop %}
+```scala
+for (i <- ints) {
+  val x = i * 2
+  println(s"i = $i, x = $x")
+}
+```
+
+{% endtab %}
+
+{% tab 'Scala 3' for=multi-for-loop%}
 ```scala
 for
   i <- ints
@@ -154,9 +197,30 @@ do
   println(s"i = $i, x = $x")
 ```
 
+{% endtab %}
+
+{% endtabs %}
+
 ### Multiple generators
 
 `for` loops can have multiple generators, as shown in this example:
+
+{% tabs multi-gen-for-loop class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=multi-gen-for-loop %}
+
+```scala
+for {
+  i <- 1 to 2
+  j <- 'a' to 'b'
+  k <- 1 to 10 by 5
+} println(s"i = $i, j = $j, k = $k")
+```
+
+
+{% endtab %}
+
+{% tab 'Scala 3' for=multi-gen-for-loop%}
 
 ```scala
 for
@@ -166,6 +230,10 @@ for
 do
   println(s"i = $i, j = $j, k = $k")
 ```
+
+{% endtab %}
+
+{% endtabs %}
 
 That expression prints this output:
 
