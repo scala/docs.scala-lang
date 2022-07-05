@@ -32,14 +32,12 @@ previous-page: tour-of-scala
 ```
 你可以使用`println`来输出表达式的结果。
 
-{% scalafiddle %}
 ```scala mdoc
 println(1) // 1
 println(1 + 1) // 2
 println("Hello!") // Hello!
 println("Hello," + " world!") // Hello, world!
 ```
-{% endscalafiddle %}
 
 ### 常量（`Values`）
 
@@ -110,21 +108,17 @@ println({
 
 你也可以给函数命名。
 
-{% scalafiddle %}
 ```scala mdoc
 val addOne = (x: Int) => x + 1
 println(addOne(1)) // 2
 ```
-{% endscalafiddle %}
 
 函数可带有多个参数。
 
-{% scalafiddle %}
 ```scala mdoc
 val add = (x: Int, y: Int) => x + y
 println(add(1, 2)) // 3
 ```
-{% endscalafiddle %}
 
 或者不带参数。
 
@@ -139,23 +133,19 @@ println(getTheAnswer()) // 42
 
 方法由`def`关键字定义。`def`后面跟着一个名字、参数列表、返回类型和方法体。
 
-{% scalafiddle %}
 ```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
-{% endscalafiddle %}
 
 注意返回类型是怎么在函数列表和一个冒号`: Int`之后声明的。
 
 方法可以接受多个参数列表。
 
-{% scalafiddle %}
 ```scala mdoc
 def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
 println(addThenMultiply(1, 2)(3)) // 9
 ```
-{% endscalafiddle %}
 
 或者没有参数列表。
 
@@ -168,7 +158,6 @@ println("Hello, " + name + "!")
 
 方法也可以有多行的表达式。
 
-{% scalafiddle %}
 ```scala mdoc
 def getSquareString(input: Double): String = {
   val square = input * input
@@ -176,7 +165,6 @@ def getSquareString(input: Double): String = {
 }
 println(getSquareString(2.5)) // 6.25
 ```
-{% endscalafiddle %}
 
 方法体的最后一个表达式就是方法的返回值。（Scala中也有一个`return`关键字，但是很少使用）
 
@@ -276,7 +264,6 @@ trait Greeter {
 
 特质也可以有默认的实现。
 
-{% scalafiddle %}
 ```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
@@ -301,7 +288,6 @@ greeter.greet("Scala developer") // Hello, Scala developer!
 val customGreeter = new CustomizableGreeter("How are you, ", "?")
 customGreeter.greet("Scala developer") // How are you, Scala developer?
 ```
-{% endscalafiddle %}
 
 这里，`DefaultGreeter`仅仅继承了一个特质，它还可以继承多个特质。
 

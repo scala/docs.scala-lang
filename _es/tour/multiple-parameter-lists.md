@@ -26,18 +26,15 @@ def foldLeft[B](z: B)(op: (B, A) => B): B
 
 Comenzando con un valor inicial 0, `foldLeft` aplica la función `(m, n) => m + n` a cada uno de los elementos de la lista y al valor acumulado previo.
 
-{% scalafiddle %}
 ```scala mdoc
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val res = numbers.foldLeft(0)((m, n) => m + n)
 println(res) // 55
 ```
-{% endscalafiddle %}
 
 
 A continuación se muestra otro ejemplo:
 
-{% scalafiddle %}
 ```scala mdoc
     object CurryTest extends App {
 
@@ -53,7 +50,6 @@ A continuación se muestra otro ejemplo:
       println(filter(nums, modN(3)))
     }
 ```
-{% endscalafiddle %}
 
 _Nota: el método `modN` está parcialmente aplicado en las dos llamadas a `filter`; esto significa que solo su primer argumento es realmente aplicado. El término `modN(2)` devuelve una función de tipo `Int => Boolean` y es por eso un posible candidato para el segundo argumento de la función `filter`._
 

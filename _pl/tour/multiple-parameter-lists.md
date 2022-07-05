@@ -23,13 +23,11 @@ Poniżej omówiony jest przykład użycia.
 
 Zaczynając od początkowej wartości 0, funkcja `foldLeft` stosuje funkcję `(m, n) => m + n` na każdym elemencie listy oraz poprzedniej zakumulowanej wartości.
 
-{% scalafiddle %}
 ```scala mdoc
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val res = numbers.foldLeft(0)((m, n) => m + n)
 println(res) // 55
 ```
-{% endscalafiddle %}
 
 Metody z wieloma listami parametrów mają bardziej dosadną składnię wywoływania, dlatego powinny być używane oszczędnie.
 Sugerowane przypadki użycia obejmują:

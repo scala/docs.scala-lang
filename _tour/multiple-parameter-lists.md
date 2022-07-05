@@ -28,13 +28,11 @@ trait Iterable[A] {
 
 Starting with an initial value of 0, `foldLeft` here applies the function `(m, n) => m + n` to each element in the List and the previous accumulated value.
 
-{% scalafiddle %}
 ```scala mdoc
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val res = numbers.foldLeft(0)((m, n) => m + n)
 println(res) // 55
 ```
-{% endscalafiddle %}
 
 ### Use cases
 
