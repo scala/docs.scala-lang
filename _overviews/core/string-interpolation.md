@@ -67,14 +67,36 @@ interpolator, all variable references should be followed by a `printf`-style for
 The `f` interpolator is typesafe.  If you try to pass a format string that only works for integers but pass a double, the compiler will issue an
 error.  For example:
 
-    val height: Double = 1.9d
+{% tabs f-interpolator-error class=tabs-scala-version %}
 
-    scala> f"$height%4d"
-    <console>:9: error: type mismatch;
-     found   : Double
-     required: Int
-               f"$height%4d"
-                  ^
+{% tab 'Scala 2' for=f-interpolator-error %}
+```scala
+val height: Double = 1.9d
+
+scala> f"$height%4d"
+<console>:9: error: type mismatch;
+  found   : Double
+  required: Int
+            f"$height%4d"
+              ^
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=f-interpolator-error %}
+```scala
+val height: Double = 1.9d
+
+scala> f"$height%4d"
+-- Error: ----------------------------------------------------------------------
+1 |f"$height%4d"
+  |   ^^^^^^
+  |   Found: (height : Double), Required: Int, Long, Byte, Short, BigInt
+1 error found
+
+```
+{% endtab %}
+
+{% endtabs %}
 
 The `f` interpolator makes use of the string format utilities available from Java.   The formats allowed after the `%` character are outlined in the
 [Formatter javadoc](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Formatter.html#detail).   If there is no `%` character after a variable
@@ -105,42 +127,100 @@ In Scala, all processed string literals are simple code transformations.   Anyti
     id"string content"
 
 it transforms it into a method call (`id`) on an instance of [StringContext](https://www.scala-lang.org/api/current/scala/StringContext.html).
-This method can also be available on implicit scope.   To define our own string interpolation, we simply need to create an implicit class that adds a new method
-to `StringContext`.  Here's an example:
+This method can also be available on implicit scope.
+To define our own string interpolation, we need to create an implicit class (Scala 2) or an `extension` method (Scala 3) that adds a new method to `StringContext`.
+Here's an example:
 
-    // Note: We extends AnyVal to prevent runtime instantiation.  See
-    // value class guide for more info.
-    implicit class JsonHelper(val sc: StringContext) extends AnyVal {
-      def json(args: Any*): JSONObject = sys.error("TODO - IMPLEMENT")
-    }
+{% tabs json-definition-and-usage class=tabs-scala-version %}
 
-    def giveMeSomeJson(x: JSONObject): Unit = ...
+{% tab 'Scala 2' for=json-definition-and-usage %}
+```scala
+// Note: We extends AnyVal to prevent runtime instantiation.  See
+// value class guide for more info.
+implicit class JsonHelper(val sc: StringContext) extends AnyVal {
+  def json(args: Any*): JSONObject = sys.error("TODO - IMPLEMENT")
+}
 
-    giveMeSomeJson(json"{ name: $name, id: $id }")
+def giveMeSomeJson(x: JSONObject): Unit = ...
+
+giveMeSomeJson(json"{ name: $name, id: $id }")
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=json-definition-and-usage %}
+```scala
+extension (sc: StringContext)
+  def json(args: Any*): JSONObject = sys.error("TODO - IMPLEMENT")
+
+def giveMeSomeJson(x: JSONObject): Unit = ...
+
+giveMeSomeJson(json"{ name: $name, id: $id }")
+```
+{% endtab %}
+
+{% endtabs %}
 
 In this example, we're attempting to create a JSON literal syntax using string interpolation.   The `JsonHelper` implicit class must be in scope to use this syntax, and the json method would need a complete implementation.   However, the result of such a formatted string literal would not be a string, but a `JSONObject`.
 
 When the compiler encounters the literal `json"{ name: $name, id: $id }"` it rewrites it to the following expression:
 
-    new StringContext("{ name: ", ", id: ", " }").json(name, id)
+{% tabs extension-desugaring class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=extension-desugaring %}
+```scala
+new StringContext("{ name: ", ", id: ", " }").json(name, id)
+```
 
 The implicit class is then used to rewrite it to the following:
 
-    new JsonHelper(new StringContext("{ name: ", ", id: ", " }")).json(name, id)
+```scala
+new JsonHelper(new StringContext("{ name: ", ", id: ", " }")).json(name, id)
+```
+{% endtab %}
 
-So, the `json` method has access to the raw pieces of strings and each expression as a value.   A simple (buggy) implementation of this method could be:
+{% tab 'Scala 3' for=extension-desugaring %}
+```scala
+StringContext("{ name: ", ", id: ", " }").json(name, id)
+```
+{% endtab %}
 
-    implicit class JsonHelper(val sc: StringContext) extends AnyVal {
-      def json(args: Any*): JSONObject = {
-        val strings = sc.parts.iterator
-        val expressions = args.iterator
-        var buf = new StringBuilder(strings.next())
-        while(strings.hasNext) {
-          buf.append(expressions.next())
-          buf.append(strings.next())
-        }
-        parseJson(buf)
-      }
+{% endtabs %}
+
+So, the `json` method has access to the raw pieces of strings and each expression as a value.   A simplified (buggy) implementation of this method could be:
+
+{% tabs json-fake-implementation class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=json-fake-implementation %}
+```scala
+implicit class JsonHelper(val sc: StringContext) extends AnyVal {
+  def json(args: Any*): JSONObject = {
+    val strings = sc.parts.iterator
+    val expressions = args.iterator
+    var buf = new StringBuilder(strings.next())
+    while (strings.hasNext) {
+      buf.append(expressions.next())
+      buf.append(strings.next())
     }
+    parseJson(buf)
+  }
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=json-fake-implementation %}
+```scala
+extension (sc: StringContext)
+  def json(args: Any*): JSONObject =
+    val strings = sc.parts.iterator
+    val expressions = args.iterator
+    var buf = new StringBuilder(strings.next())
+    while strings.hasNext do
+      buf.append(expressions.next())
+      buf.append(strings.next())
+    parseJson(buf)
+```
+{% endtab %}
+
+{% endtabs %}
 
 Each of the string portions of the processed string are exposed in the `StringContext`'s `parts` member.  Each of the expression values is passed into the `json` method's `args` parameter.   The `json` method takes this and generates a big string which it then parses into JSON.   A more sophisticated implementation could avoid having to generate this string and simply construct the JSON directly from the raw strings and expression values.
