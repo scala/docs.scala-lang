@@ -93,10 +93,8 @@
 }
 
 .tabsection {
-    border-bottom: $base-border-gray;
-    border-left: $base-border-gray;
-    border-right: $base-border-gray;
-    border-radius: $border-radius-medium;
+    padding: 0.1px 0; // ensure inner content is correctly padded
+    border-left: 2px solid $base-border-color-gray;
 
     .nav-tab {
         padding-left: 0;
