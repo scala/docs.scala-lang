@@ -38,7 +38,6 @@ Rozszerzenie cechy `trait Iterator[A]` wymaga wskazania parametru typu `A` oraz 
 Aby rozszerzyć cechę należy użyć słowa kluczowego `extends`.
 Następnie wymagane jest zaimplementowanie abstrakcyjnych składników danej cechy używając słowa kluczowego `override.`
 
-{% scalafiddle %}
 ```scala mdoc:nest
 trait Iterator[A] {
   def hasNext: Boolean
@@ -61,7 +60,6 @@ val iterator = new IntIterator(10)
 println(iterator.next())  // wyświetli 0
 println(iterator.next())  // wyświetli 1
 ```
-{% endscalafiddle %}
 
 Klasa `IntIterator` przyjmuje parametr `to` (do) jako ograniczenie górne, oraz rozszerza `extends Iterator[Int]` - co oznacza, że metoda `next` musi zwrócić wartość typu Int.
 
@@ -69,7 +67,6 @@ Klasa `IntIterator` przyjmuje parametr `to` (do) jako ograniczenie górne, oraz 
 
 Jeżeli w jakimś miejscu wymagana jest cecha pewnego typu, to zamiast niej można użyć jej podtypu.
 
-{% scalafiddle %}
 ```scala mdoc
 import scala.collection.mutable.ArrayBuffer
 
@@ -88,7 +85,6 @@ animals.append(dog)
 animals.append(cat)
 animals.foreach(pet => println(pet.name))  // wyświetli Harry Sally
 ```
-{% endscalafiddle %}
 
 Cecha `trait Pet` posiada abstrakcyjne pole `name`, które zostaje zaimplementowane przez klasy `Cat` i `Dog` w ich konstruktorach.
 W ostatnim wierszu wywołujemy `pet.name` musi być ono zaimplementowane przez każdy podtyp cechy `Pet`.

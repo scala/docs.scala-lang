@@ -30,14 +30,12 @@ Expressions are computable statements:
 ```
 You can output the results of expressions using `println`:
 
-{% scalafiddle %}
 ```scala mdoc
 println(1) // 1
 println(1 + 1) // 2
 println("Hello!") // Hello!
 println("Hello," + " world!") // Hello, world!
 ```
-{% endscalafiddle %}
 
 ### Values
 
@@ -109,21 +107,17 @@ On the left of `=>` is a list of parameters. On the right is an expression invol
 
 You can also name functions:
 
-{% scalafiddle %}
 ```scala mdoc
 val addOne = (x: Int) => x + 1
 println(addOne(1)) // 2
 ```
-{% endscalafiddle %}
 
 A function can have multiple parameters:
 
-{% scalafiddle %}
 ```scala mdoc
 val add = (x: Int, y: Int) => x + y
 println(add(1, 2)) // 3
 ```
-{% endscalafiddle %}
 
 Or it can have no parameters at all:
 
@@ -138,23 +132,19 @@ Methods look and behave very similar to functions, but there are a few key diffe
 
 Methods are defined with the `def` keyword.  `def` is followed by a name, parameter list(s), a return type, and a body:
 
-{% scalafiddle %}
 ```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
-{% endscalafiddle %}
 
 Notice how the return type `Int` is declared _after_ the parameter list and a `:`.
 
 A method can take multiple parameter lists:
 
-{% scalafiddle %}
 ```scala mdoc
 def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
 println(addThenMultiply(1, 2)(3)) // 9
 ```
-{% endscalafiddle %}
 
 Or no parameter lists at all:
 
@@ -167,7 +157,6 @@ There are some other differences, but for now, you can think of methods as somet
 
 Methods can have multi-line expressions as well:
 
-{% scalafiddle %}
 ```scala mdoc
 def getSquareString(input: Double): String = {
   val square = input * input
@@ -175,7 +164,6 @@ def getSquareString(input: Double): String = {
 }
 println(getSquareString(2.5)) // 6.25
 ```
-{% endscalafiddle %}
 
 The last expression in the body is the method's return value. (Scala does have a `return` keyword, but it is rarely used.)
 
@@ -277,7 +265,6 @@ trait Greeter {
 
 Traits can also have default implementations:
 
-{% scalafiddle %}
 ```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
@@ -302,7 +289,6 @@ greeter.greet("Scala developer") // Hello, Scala developer!
 val customGreeter = new CustomizableGreeter("How are you, ", "?")
 customGreeter.greet("Scala developer") // How are you, Scala developer?
 ```
-{% endscalafiddle %}
 
 Here, `DefaultGreeter` extends only one single trait, but it could extend multiple traits.
 

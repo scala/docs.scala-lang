@@ -200,7 +200,7 @@ Related links
   - One in scalaz-deriving: https://gitlab.com/fommil/scalaz-deriving/tree/master/examples/xmlformat/src/main/scala/xmlformat (link behind a login wall, it seems)
 - JSX-style libraries for Scala:
   - https://github.com/OlivierBlanvillain/monadic-html
-  - Binding.scala, TODO app: https://scalafiddle.io/sf/dGkVqlV/9
+  - Binding.scala,
 - Ammonite script to convert HTML to the VDOM DSL of scalajs-react (a ScalaTags flavor):
 https://gist.github.com/nafg/112bf83e5676ed316f17cea505ea5d93
 

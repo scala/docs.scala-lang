@@ -31,14 +31,12 @@ previous-page: tour-of-scala
 ```
 Вы можете выводить результаты выражений, используя `println`.
 
-{% scalafiddle %}
 ```scala mdoc
 println(1) // 1
 println(1 + 1) // 2
 println("Hello!") // Hello!
 println("Hello," + " world!") // Hello, world!
 ```
-{% endscalafiddle %}
 
 ### Значения
 
@@ -110,21 +108,17 @@ println({
 
 Вы также можете назвать функции.
 
-{% scalafiddle %}
 ```scala mdoc
 val addOne = (x: Int) => x + 1
 println(addOne(1)) // 2
 ```
-{% endscalafiddle %}
 
 Функции могут принимать множество параметров.
 
-{% scalafiddle %}
 ```scala mdoc
 val add = (x: Int, y: Int) => x + y
 println(add(1, 2)) // 3
 ```
-{% endscalafiddle %}
 
 Или вообще не принимать никаких параметров.
 
@@ -139,23 +133,19 @@ println(getTheAnswer()) // 42
 
 Методы задаются ключевым словом `def`.  За `def` следует имя, список параметров, возвращаемый тип и тело.
 
-{% scalafiddle %}
 ```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
-{% endscalafiddle %}
 
 Обратите внимание, как объявлен возвращаемый тип сразу _после_ списка параметров и двоеточия `: Int`.
 
 Методы могут принимать несколько списков параметров.
 
-{% scalafiddle %}
 ```scala mdoc
 def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
 println(addThenMultiply(1, 2)(3)) // 9
 ```
-{% endscalafiddle %}
 
 Или вообще ни одного списка параметров.
 
@@ -168,7 +158,6 @@ println("Hello, " + name + "!")
 
 Методы также могут иметь многострочные выражения.
 
-{% scalafiddle %}
 ```scala mdoc
 def getSquareString(input: Double): String = {
   val square = input * input
@@ -176,7 +165,6 @@ def getSquareString(input: Double): String = {
 }
 println(getSquareString(2.5)) // 6.25
 ```
-{% endscalafiddle %}
 
 Последнее выражение в теле становится возвращаемым значением метода (у Scala есть ключевое слово `return`, но оно практически не используется).
 
@@ -276,7 +264,6 @@ trait Greeter {
 
 Трейты также могут иметь реализации методов и полей, которые предполагается использовать умолчанию.
 
-{% scalafiddle %}
 ```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
@@ -301,7 +288,6 @@ greeter.greet("Scala developer") // Hello, Scala developer!
 val customGreeter = new CustomizableGreeter("How are you, ", "?")
 customGreeter.greet("Scala developer") // How are you, Scala developer?
 ```
-{% endscalafiddle %}
 
 Здесь `DefaultGreeter` наследуется только от одного трейта, но можно наследоваться от нескольких.
 

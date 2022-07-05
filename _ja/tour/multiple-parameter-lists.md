@@ -22,13 +22,11 @@ def foldLeft[B](z: B)(op: (B, A) => B): B
 
 初期値0から始まり、`foldLeft`はここではリスト内の各要素とその一つ前の累積値に関数`(m, n) => m + n`を適用します。
 
-{% scalafiddle %}
 ```scala mdoc
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val res = numbers.foldLeft(0)((m, n) => m + n)
 println(res) // 55
 ```
-{% endscalafiddle %}
 
 ### ユースケース
 推奨される複数パラメータリストのユースケースは次の通りです。
