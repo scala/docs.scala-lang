@@ -59,7 +59,7 @@ key: height value: 108px
 key: width value: 100
 ```
 
-Moreover, you can combine Pattern Matching and Regular Expression Patterns:
+Moreover, regular expressions can be used as patterns (in `match` expressions) to conveniently extract the matched groups:
 
 ```scala mdoc
 def saveContactInfomation(contact: String): Unit = {
