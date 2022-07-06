@@ -67,7 +67,7 @@ $(document).ready(function() {
   hljs.configure({
     languages: ["scala", "bash"]
   })
-  hljs.initHighlighting();
+  hljs.highlightAll();
 });
 
 // Show Blog
