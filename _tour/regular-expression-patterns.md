@@ -58,3 +58,35 @@ key: margin value: 0
 key: height value: 108px
 key: width value: 100
 ```
+
+Moreover, you can combine Pattern Matching and Regular Expression Patterns:
+
+```scala mdoc
+def saveContactInfomation(contact: String): Unit = {
+  import scala.util.matching.Regex
+
+  val emailPattern: Regex = """^(\w+)@(\w+(.\w+)+)$""".r
+  val phonePattern: Regex = """^(\d{3}-\d{3}-\d{4})$""".r
+
+  contact match {
+    case emailPattern(localPart, domainName, _) => 
+      println(s"Hi $localPart, we have saved your email address.")
+    case phonePattern(phoneNumber) => 
+      println(s"Hi, we have saved your phone number $phoneNumber.")
+    case _ => 
+      println("Invalid contact information, neither an email address nor phone number.")
+  }
+}
+
+saveContactInfomation("123-456-7890")
+saveContactInfomation("JohnSmith@sample.domain.com")
+saveContactInfomation("2 Franklin St, Mars, Milky Way")
+```
+
+The output would be:
+
+```
+Hi, we have saved your phone number 123-456-7890.
+Hi JohnSmith, we have saved your email address.
+Invalid contact information, neither an email address nor phone number.
+```
