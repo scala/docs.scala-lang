@@ -1,7 +1,7 @@
 ---
-title: SIP-NN - Curried varargs
-status: submitted
+title: SIP-45 - Curried varargs
+status: under-review
 pull-request-number: 41
-stage: pre-sip
+stage: design
 
 ---
