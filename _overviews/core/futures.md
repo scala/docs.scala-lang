@@ -136,7 +136,7 @@ As explained in the `ForkJoinPool` API, this is only possible if the pool is exp
 {% endtab %}
 {% tab 'Scala 3' for=futures-02 %}
     import scala.concurrent.{ Future, ExecutionContext }
-    import scala.concurrent.forkjoin._
+    import scala.concurrent.forkjoin.*
 
     // the following is equivalent to `given ExecutionContext = ExecutionContext.global`
     import ExecutionContext.Implicits.global
