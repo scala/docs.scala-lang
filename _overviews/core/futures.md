@@ -151,7 +151,7 @@ As explained in the `ForkJoinPool` API, this is only possible if the pool is exp
                myLock.lock()
                // ...
              finally
-              done = true
+               done = true
              true
 
            def isReleasable: Boolean = done
