@@ -589,7 +589,6 @@ be done using callbacks:
 
       for amount <- purchase do
         println("Purchased " + amount + " USD")
-    }
 {% endtab %}
 {% endtabs %}
 
