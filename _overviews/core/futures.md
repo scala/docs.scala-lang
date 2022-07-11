@@ -198,7 +198,7 @@ To give you an idea, the following code will use 32000 threads:
 {% tab 'Scala 3' for=futures-03 %}
     given ExecutionContext = ExecutionContext.global
 
-    for( i <- 1 to 32000 ) {
+    for i <- 1 to 32000 do {
       Future {
         blocking {
           Thread.sleep(999999)
