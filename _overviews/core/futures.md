@@ -187,7 +187,7 @@ To give you an idea, the following code will use 32000 threads:
 {% tab 'Scala 2' for=futures-03 %}
     implicit val ec = ExecutionContext.global
 
-    for( i <- 1 to 32000 ) {
+    for (i <- 1 to 32000) {
       Future {
         blocking {
           Thread.sleep(999999)
@@ -198,13 +198,12 @@ To give you an idea, the following code will use 32000 threads:
 {% tab 'Scala 3' for=futures-03 %}
     given ExecutionContext = ExecutionContext.global
 
-    for i <- 1 to 32000 do {
+    for i <- 1 to 32000 do
       Future {
         blocking {
           Thread.sleep(999999)
         }
       }
-    }
 {% endtab %}
 
 {% endtabs %}
@@ -950,15 +949,17 @@ will do nothing, as shown in the following:
 
 {% tabs futures-13 class=tabs-scala-version %}
 {% tab 'Scala 2' for=futures-13 %}
-    implicit val ec = ExecutionContext.fromExecutor(
-                        Executors.newFixedThreadPool(4))
+    implicit val ec =
+      ExecutionContext.fromExecutor(Executors.newFixedThreadPool(4))
+
     Future {
       blocking { blockingStuff() }
     }
 {% endtab %}
 {% tab 'Scala 3' for=futures-13 %}
-    given ExecutionContext = ExecutionContext.fromExecutor(
-                        Executors.newFixedThreadPool(4))
+    given ExecutionContext =
+      ExecutionContext.fromExecutor(Executors.newFixedThreadPool(4))
+
     Future {
       blocking { blockingStuff() }
     }
@@ -989,24 +990,26 @@ Here is an example of how to block on the result of a future:
     import scala.concurrent._
     import scala.concurrent.duration._
 
-    def main(args: Array[String]) {
-      val rateQuote = Future {
-        connection.getCurrentValue(USD)
-      }
+    object awaitPurchase {
+      def main(args: Array[String]) {
+        val rateQuote = Future {
+          connection.getCurrentValue(USD)
+        }
 
-      val purchase = rateQuote.map { quote =>
-        if (isProfitable(quote)) connection.buy(amount, quote)
-        else throw new Exception("not profitable")
-      }
+        val purchase = rateQuote.map { quote =>
+          if (isProfitable(quote)) connection.buy(amount, quote)
+          else throw new Exception("not profitable")
+        }
 
-      Await.result(purchase, 0 nanos)
+        Await.result(purchase, 0.nanos)
+      }
     }
 {% endtab %}
 {% tab 'Scala 3' for=futures-14 %}
     import scala.concurrent.*
     import scala.concurrent.duration.*
 
-    def main(args: Array[String]) =
+    @main def awaitPurchase =
       val rateQuote = Future {
         connection.getCurrentValue(USD)
       }
@@ -1016,7 +1019,7 @@ Here is an example of how to block on the result of a future:
         else throw Exception("not profitable")
       }
 
-      Await.result(purchase, 0 nanos)
+      Await.result(purchase, 0.nanos)
 {% endtab %}
 {% endtabs %}
 
