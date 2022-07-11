@@ -1315,6 +1315,6 @@ Examples:
     val d4 = Duration("1.2 µs") // from String
 
     // pattern matching
-    val Duration(length, unit) = 5 millis
+    val Duration(length, unit) = 5.millis
 {% endtab %}
 {% endtabs %}
