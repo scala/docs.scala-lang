@@ -60,7 +60,7 @@ Or with the more idiomatic:
     given ExecutionContext = ...
     val inverseFuture : Future[Matrix] = Future {
       fatMatrix.inverse()
-    } // ec is implicitly passed
+    } // execution context is implicitly passed
 {% endtab %}
 
 {% endtabs %}
