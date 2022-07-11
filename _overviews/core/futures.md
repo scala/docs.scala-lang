@@ -958,7 +958,7 @@ will do nothing, as shown in the following:
     }
 {% endtab %}
 {% tab 'Scala 3' for=futures-13 %}
-    given = ExecutionContext.fromExecutor(
+    given ExecutionContext = ExecutionContext.fromExecutor(
                         Executors.newFixedThreadPool(4))
     Future {
       blocking { blockingStuff() }
