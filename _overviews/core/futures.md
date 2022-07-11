@@ -1310,7 +1310,7 @@ Examples:
     // instantiation
     val d1 = Duration(100, MILLISECONDS) // from Long and TimeUnit
     val d2 = Duration(100, "millis") // from Long and String
-    val d3 = 100 millis // implicitly from Long, Int or Double
+    val d3 = 100.millis // implicitly from Long, Int or Double
     val d4 = Duration("1.2 µs") // from String
 
     // pattern matching
