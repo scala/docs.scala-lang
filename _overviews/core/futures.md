@@ -403,7 +403,7 @@ a `List[String]`-- a list of recent textual posts:
     import scala.util.{Success, Failure}
 
     val f: Future[List[String]] = Future {
-      session.getRecentPosts
+      session.getRecentPosts()
     }
 
     f.onComplete {
