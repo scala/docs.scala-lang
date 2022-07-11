@@ -828,7 +828,7 @@ and then renders all the posts to the screen:
     val allPosts = mutable.Set[String]()
 
     Future {
-      session.getRecentPosts
+      session.getRecentPosts()
     }.andThen {
       case Success(posts) => allPosts ++= posts
     }.andThen {
