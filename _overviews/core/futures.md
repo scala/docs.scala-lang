@@ -433,7 +433,7 @@ handled, the `foreach` callback can be used:
 {% tabs futures-06 class=tabs-scala-version %}
 {% tab 'Scala 2' for=futures-06 %}
     val f: Future[List[String]] = Future {
-      session.getRecentPosts
+      session.getRecentPosts()
     }
 
     for {
