@@ -193,6 +193,19 @@ We say that `Serializer` is *contravariant* in `A`, and this is indicated by the
 
 More formally, that gives us the reverse relationship: given some `class Contra[-T]`, then if `A` is a subtype of `B`, `Contra[B]` is a subtype of `Contra[A]`. 
 
+### Immutability and Variance
+Immutability constitutes an important part of the design decision behind the variance. As previously explained, Scala collections systematically distinguish between [Mutable and Immutable Collections](https://docs.scala-lang.org/overviews/collections-2.13/overview.html). For collections, mutability combined with covariance may break type safety. ```List``` is a covariant collection, while ```Array``` is an invariant collection. ```List``` is a collection in package ```scala.collection.immutable```, therefore it is guaranteed to be immutable for everyone. Whereas, ```Array``` is mutable, that is, you can change, add, or remove elements of an ```Array```. Following initialization wouldn't get compiled since ```Array[Int]``` is not a subtype of ```Array[Any]``` although ```Int``` is a subtype of ```Any```.
+```scala mdoc
+val arr:Array[Any] = Array[Int](1,2,3)
+```
+The reason is that if Scala allowed mutable collections to be covariant, then the type error in the following statements wouldn't be catched by the compiler and it would break type safety.
+```scala mdoc
+val arr:Array[Int] = Array[Int](1,2,3)
+val arr2:Array[Any] = arr    
+arr2(0) = 3.14                 
+```
+
+
 ### Comparison With Other Languages
 
 Variance is supported in different ways by some languages that are similar to Scala. For example, variance annotations in Scala closely resemble those in C#, where the annotations are added when a class abstraction is defined (declaration-site variance). In Java, however, variance annotations are given by clients when a class abstraction is used (use-site variance).
