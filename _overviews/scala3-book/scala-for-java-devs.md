@@ -126,19 +126,8 @@ equivalent to the Scala code that follows it.
   <tbody>
     <tr>
       <td class="java-block">
-        <code>class Person {
-          <br>&nbsp; public String firstName;
-          <br>&nbsp; public String lastName;
-          <br>&nbsp; public int age;
-          <br>&nbsp; public Person(
-          <br>&nbsp;&nbsp;&nbsp; String firstName, 
-          <br>&nbsp;&nbsp;&nbsp; String lastName,
-          <br>&nbsp;&nbsp;&nbsp; int age
-          <br>&nbsp; ) {
-          <br>&nbsp;&nbsp;&nbsp; this.firstName = firstName;
-          <br>&nbsp;&nbsp;&nbsp; this.lastName = lastName;
-          <br>&nbsp;&nbsp;&nbsp; this.age = age;
-          <br>&nbsp; }
+        <code>record Person(String firstName, String lastName, int age) {
+          <br>&nbsp; @Override
           <br>&nbsp; public String toString() {
           <br>&nbsp;&nbsp;&nbsp; return String.format("%s %s is %d years old.", firstName, lastName, age);
           <br>&nbsp; }
@@ -165,22 +154,7 @@ equivalent to the Scala code that follows it.
   <tbody>
     <tr>
       <td class="java-block">
-        <code>public class Person {
-        <br>&nbsp; public String firstName;
-        <br>&nbsp; public String lastName;
-        <br>&nbsp; public int age;
-        <br>
-        <br>&nbsp; // primary constructor
-        <br>&nbsp; public Person(
-        <br>&nbsp;&nbsp;&nbsp; String firstName,
-        <br>&nbsp;&nbsp;&nbsp; String lastName,
-        <br>&nbsp;&nbsp;&nbsp; int age
-        <br>&nbsp; ) {
-        <br>&nbsp;&nbsp;&nbsp; this.firstName = firstName;
-        <br>&nbsp;&nbsp;&nbsp; this.lastName = lastName;
-        <br>&nbsp;&nbsp;&nbsp; this.age = age;
-        <br>&nbsp; }
-        <br>
+        <code>record Person(String firstName, String lastName, int age) {
         <br>&nbsp; // zero-arg constructor
         <br>&nbsp; public Person() {
         <br>&nbsp;&nbsp;&nbsp; this("", "", 0);
@@ -192,10 +166,8 @@ equivalent to the Scala code that follows it.
         <br>&nbsp; }
         <br>
         <br>&nbsp; // two-arg constructor
-        <br>&nbsp; public Person(
-        <br>&nbsp;&nbsp;&nbsp; String firstName, 
-        <br>&nbsp;&nbsp;&nbsp; String lastName
-        <br>&nbsp; ) {
+        <br>&nbsp; public Person(String firstName, String lastName)
+        <br>&nbsp; {
         <br>&nbsp;&nbsp;&nbsp; this(firstName, lastName, 0);
         <br>&nbsp; }
         <br>
@@ -316,7 +288,8 @@ equivalent to the Scala code that follows it.
   <tbody>
     <tr>
       <td class="java-block">
-        <code>final int i = 1;</code>
+        <code>final int i = 1;
+        <br>final var i = 1;</code>
       </td>
     </tr>
     <tr>
@@ -359,7 +332,7 @@ This section compares Java interfaces to Scala traits, including how classes ext
   <tbody>
     <tr>
       <td class="java-block">
-        <code>public interface Marker;</code>
+        <code>public interface Marker {}</code>
       </td>
     </tr>
     <tr>
@@ -378,7 +351,7 @@ This section compares Java interfaces to Scala traits, including how classes ext
     <tr>
       <td class="java-block">
         <code>public interface Adder {
-        <br>&nbsp; public int add(int a, int b);
+        <br>&nbsp; int add(int a, int b);
         <br>}</code>
       </td>
     </tr>
@@ -400,9 +373,7 @@ This section compares Java interfaces to Scala traits, including how classes ext
       <td class="java-block">
         <code>public interface Adder {
         <br>&nbsp; int add(int a, int b);
-        <br>&nbsp; default int multiply(
-        <br>&nbsp;&nbsp;&nbsp; int a, int b
-        <br>&nbsp; ) {
+        <br>&nbsp; default int multiply(int a, int b) {
         <br>&nbsp;&nbsp;&nbsp; return a * b;
         <br>&nbsp; }
         <br>}</code>
@@ -453,17 +424,14 @@ These interfaces and traits have concrete, implemented methods (default methods)
         <br>}
         <br>
         <br>interface Multiplier {
-        <br>&nbsp; default int multiply (
-        <br>&nbsp; &nbsp; int a,
-        <br>&nbsp; &nbsp; int b)
-        <br>&nbsp; {
+        <br>&nbsp; default int multiply (int a, int b) {
         <br>&nbsp;&nbsp;&nbsp; return a * b;
         <br>&nbsp; }
         <br>}
         <br>
         <br>public class JavaMath <br>implements Adder, Multiplier {}
         <br>
-        <br>JavaMath jm = new JavaMath();
+        <br>var jm = new JavaMath();
         <br>jm.add(1,1);
         <br>jm.multiply(2,2);</code>
       </td>
@@ -743,12 +711,9 @@ Called a _ternary operator_ in Java:
   <tbody>
     <tr>
       <td class="java-block">
-        <code>List ints = 
-        <br>&nbsp; ArrayList(1,2,3,4,5,6,7,8,9,10);
-        <br>
-        <br>for (int i: ints) {
+        <code>for (int i = 1; i <= 10; i++) {
         <br>&nbsp; if (i % 2 == 0 &amp;&amp; i &lt; 5) {
-        <br>&nbsp;&nbsp;&nbsp; System.out.println(x);
+        <br>&nbsp;&nbsp;&nbsp; System.out.println(i);
         <br>&nbsp; }
         <br>}</code>
       </td>
@@ -796,15 +761,12 @@ Called a _ternary operator_ in Java:
   <tbody>
     <tr>
       <td class="java-block">
-        <code>String monthAsString = "";
-        <br>switch(day) {
-        <br>&nbsp; case 1: monthAsString = "January";
-        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;
-        <br>&nbsp; case 2: monthAsString = "February";
-        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;
-        <br>&nbsp; default: monthAsString = "Other";
-        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;
-        <br>}</code>
+        <code>var monthAsString = switch (day) {
+        <br>&nbsp;&nbsp;case 1 -> "January";
+        <br>&nbsp;&nbsp;case 2 -> "February";
+        <br>&nbsp;&nbsp;default -> "Other";
+        <br>};      
+        </code>
       </td>
     </tr>
     <tr>
@@ -826,20 +788,11 @@ Called a _ternary operator_ in Java:
   <tbody>
     <tr>
       <td class="java-block">
-        <code>String numAsString = "";
-        <br>switch (i) {
-        <br>&nbsp; case 1: case 3:
-        <br>&nbsp; case 5: case 7: case 9: 
-        <br>&nbsp;&nbsp;&nbsp; numAsString = "odd";
-        <br>&nbsp;&nbsp;&nbsp; break;
-        <br>&nbsp; case 2: case 4:
-        <br>&nbsp; case 6: case 8: case 10: 
-        <br>&nbsp;&nbsp;&nbsp; numAsString = "even";
-        <br>&nbsp;&nbsp;&nbsp; break;
-        <br>&nbsp; default:
-        <br>&nbsp;&nbsp;&nbsp; numAsString = "too big";
-        <br>&nbsp;&nbsp;&nbsp; break;
-        <br>}</code>
+        <code>var numAsString = switch (i) {
+        <br>&nbsp;&nbsp;case 1, 3, 5, 7, 9 -> "odd";
+        <br>&nbsp;&nbsp;case 2, 4, 6, 8, 10 -> "even";
+        <br>&nbsp;&nbsp;default -> "too big";
+        <br>};</code>
       </td>
     </tr>
     <tr>
@@ -862,13 +815,11 @@ Called a _ternary operator_ in Java:
     <tr>
       <td class="java-block">
         <code>try {
-        <br>&nbsp; writeTextToFile(text);
-        <br>} catch (IOException ioe) {
-        <br>&nbsp; println(ioe.getMessage())
-        <br>} catch (NumberFormatException nfe) {
-        <br>&nbsp; println(nfe.getMessage())
+        <br>&nbsp;&nbsp;&nbsp;writeTextToFile(text);
+        <br>} catch (IOException | NumberFormatException ex) {
+        <br>&nbsp;&nbsp;&nbsp;System.out.println(ex.getMessage());
         <br>} finally {
-        <br>&nbsp; println("Clean up resources here.")
+        <br>&nbsp;&nbsp;&nbsp;System.out.println("Clean up resources here.");
         <br>}</code>
       </td>
     </tr>
@@ -906,7 +857,7 @@ Examples of how to create instances of immutable collections.
   <tbody>
     <tr>
       <td class="java-block">
-        <code>List strings = List.of("a", "b", "c");</code>
+        <code>var strings = List.of("a", "b", "c");</code>
       </td>
     </tr>
     <tr>
@@ -925,7 +876,7 @@ Examples of how to create instances of immutable collections.
   <tbody>
     <tr>
       <td class="java-block">
-        <code>Set set = Set.of("a", "b", "c");</code>
+        <code>var set = Set.of("a", "b", "c");</code>
       </td>
     </tr>
     <tr>
@@ -943,7 +894,7 @@ Examples of how to create instances of immutable collections.
   <tbody>
     <tr>
       <td class="java-block">
-        <code>Map map = Map.of(
+        <code>var map = Map.of(
         <br>&nbsp; "a", 1, 
         <br>&nbsp; "b", 2,
         <br>&nbsp; "c", 3
@@ -1041,11 +992,12 @@ With the ability to treat Java collections as streams, Java and Scala now have m
 - `filter`
 - `forEach`/`foreach`
 - `findFirst`/`find`
-- `reduce`  
+- `reduce`
+- `distinct`
 
 If you’re used to using these methods with lambda expressions in Java, you’ll find it easy to use the same methods on Scala’s [collection classes][collections-classes].
 
-Scala also has _dozens_ of other [collections methods][collections-methods], including `head`, `tail`, `drop`, `take`, `distinct`, `flatten`, and many more.
+Scala also has _dozens_ of other [collections methods][collections-methods], including `head`, `tail`, `drop`, `take`, `flatten`, and many more.
 At first you may wonder why there are so many methods, but after working with Scala you’ll realize that _because_ of these methods, you rarely ever need to write custom `for` loops any more.
 
 (This also means that you rarely need to _read_ custom `for` loops, as well.
