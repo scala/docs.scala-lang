@@ -157,6 +157,9 @@ There are some other differences, but for now, you can think of methods as somet
 
 Methods can have multi-line expressions as well:
 
+{% tabs get-square-string class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=get-square-string %}
 ```scala mdoc
 def getSquareString(input: Double): String = {
   val square = input * input
@@ -164,6 +167,19 @@ def getSquareString(input: Double): String = {
 }
 println(getSquareString(2.5)) // 6.25
 ```
+{% endtab %}
+
+{% tab 'Scala 3' for=get-square-string %}
+```scala
+def getSquareString(input: Double): String =
+  val square = input * input
+  square.toString
+  
+println(getSquareString(2.5)) // 6.25
+```
+{% endtab %}
+
+{% endtabs %}
 
 The last expression in the body is the method's return value. (Scala does have a `return` keyword, but it is rarely used.)
 
@@ -171,20 +187,48 @@ The last expression in the body is the method's return value. (Scala does have a
 
 You can define classes with the `class` keyword, followed by its name and constructor parameters:
 
+{% tabs greeter-definition class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=greeter-definition %}
 ```scala mdoc
 class Greeter(prefix: String, suffix: String) {
   def greet(name: String): Unit =
     println(prefix + name + suffix)
 }
 ```
+{% endtab %}
+
+{% tab 'Scala 3' for=greeter-definition %}
+```scala
+class Greeter(prefix: String, suffix: String):
+  def greet(name: String): Unit =
+    println(prefix + name + suffix)
+```
+{% endtab %}
+
+{% endtabs %}
+
 The return type of the method `greet` is `Unit`, which signifies that there is nothing meaningful to return. It is used similarly to `void` in Java and C. (A difference is that, because every Scala expression must have some value, there is actually a singleton value of type Unit, written (). It carries no information.)
 
 You can make an instance of a class with the `new` keyword:
 
+{% tabs greeter-usage class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=greeter-usage %}
 ```scala mdoc:nest
 val greeter = new Greeter("Hello, ", "!")
 greeter.greet("Scala developer") // Hello, Scala developer!
 ```
+{% endtab %}
+
+{% tab 'Scala 3' for=greeter-usage %}
+```scala
+val greeter = Greeter("Hello, ", "!")
+greeter.greet("Scala developer") // Hello, Scala developer!
+```
+{% endtab %}
+
+{% endtabs %}
 
 We will cover classes in depth [later](classes.html).
 
@@ -208,6 +252,9 @@ val yetAnotherPoint = Point(2, 2)
 
 Instances of case classes are compared by value, not by reference:
 
+{% tabs compare-case-class-equality class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=compare-case-class-equality %}
 ```scala mdoc
 if (point == anotherPoint) {
   println(s"$point and $anotherPoint are the same.")
@@ -221,6 +268,25 @@ if (point == yetAnotherPoint) {
   println(s"$point and $yetAnotherPoint are different.")
 } // Point(1,2) and Point(2,2) are different.
 ```
+{% endtab %}
+
+{% tab 'Scala 3' for=compare-case-class-equality %}
+```scala
+if point == anotherPoint then
+  println(s"$point and $anotherPoint are the same.")
+else
+  println(s"$point and $anotherPoint are different.")
+// ==> Point(1,2) and Point(1,2) are the same.
+
+if point == yetAnotherPoint then
+  println(s"$point and $yetAnotherPoint are the same.")
+else
+  println(s"$point and $yetAnotherPoint are different.")
+// ==> Point(1,2) and Point(2,2) are different.
+```
+{% endtab %}
+
+{% endtabs %}
 
 There is a lot more to case classes that we would like to introduce, and we are convinced you will fall in love with them! We will cover them in depth [later](case-classes.html).
 
@@ -230,6 +296,9 @@ Objects are single instances of their own definitions. You can think of them as 
 
 You can define objects with the `object` keyword:
 
+{% tabs id-factory-definition class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=id-factory-definition %}
 ```scala mdoc
 object IdFactory {
   private var counter = 0
@@ -239,6 +308,19 @@ object IdFactory {
   }
 }
 ```
+{% endtab %}
+
+{% tab 'Scala 3' for=id-factory-definition %}
+```scala
+object IdFactory:
+  private var counter = 0
+  def create(): Int =
+    counter += 1
+    counter
+```
+{% endtab %}
+
+{% endtabs %}
 
 You can access an object by referring to its name:
 
@@ -257,23 +339,53 @@ Traits are abstract data types containing certain fields and methods. In Scala i
 
 You can define traits with the `trait` keyword:
 
+{% tabs greeter-trait-def class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=greeter-trait-def %}
 ```scala mdoc:nest
 trait Greeter {
   def greet(name: String): Unit
 }
 ```
+{% endtab %}
+
+{% tab 'Scala 3' for=greeter-trait-def %}
+```scala
+trait Greeter:
+  def greet(name: String): Unit
+```
+{% endtab %}
+
+{% endtabs %}
 
 Traits can also have default implementations:
 
+{% tabs greeter-trait-def-impl class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=greeter-trait-def-impl %}
 ```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
     println("Hello, " + name + "!")
 }
 ```
+{% endtab %}
+
+{% tab 'Scala 3' for=greeter-trait-def-impl %}
+```scala
+trait Greeter:
+  def greet(name: String): Unit =
+    println("Hello, " + name + "!")
+```
+{% endtab %}
+
+{% endtabs %}
 
 You can extend traits with the `extends` keyword and override an implementation with the `override` keyword:
 
+{% tabs greeter-implementations class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=greeter-implementations %}
 ```scala mdoc
 class DefaultGreeter extends Greeter
 
@@ -289,18 +401,41 @@ greeter.greet("Scala developer") // Hello, Scala developer!
 val customGreeter = new CustomizableGreeter("How are you, ", "?")
 customGreeter.greet("Scala developer") // How are you, Scala developer?
 ```
+{% endtab %}
+
+{% tab 'Scala 3' for=greeter-implementations %}
+```scala
+class DefaultGreeter extends Greeter
+
+class CustomizableGreeter(prefix: String, postfix: String) extends Greeter:
+  override def greet(name: String): Unit =
+    println(prefix + name + postfix)
+
+val greeter = DefaultGreeter()
+greeter.greet("Scala developer") // Hello, Scala developer!
+
+val customGreeter = CustomizableGreeter("How are you, ", "?")
+customGreeter.greet("Scala developer") // How are you, Scala developer?
+```
+{% endtab %}
+
+{% endtabs %}
 
 Here, `DefaultGreeter` extends only one single trait, but it could extend multiple traits.
 
 We will cover traits in depth [later](traits.html).
 
-## Main Method
+## Program Entry Point
 
 The main method is the entry point of a Scala program.  The Java Virtual
 Machine requires a main method, named `main`, that takes one
 argument: an array of strings.
 
-Using an object, you can define the main method as follows:
+{% tabs hello-world-demo class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=hello-world-demo %}
+
+In Scala 2 you must define a main method manually. Using an object, you can define the main method as follows:
 
 ```scala mdoc
 object Main {
@@ -308,6 +443,18 @@ object Main {
     println("Hello, Scala developer!")
 }
 ```
+{% endtab %}
+
+{% tab 'Scala 3' for=hello-world-demo %}
+
+In Scala 3, with the `@main` annotation, a main method is automatically generated from a method as follows:
+
+```scala
+@main def hello() = println("Hello, Scala developer!")
+```
+{% endtab %}
+
+{% endtabs %}
 
 ## More resources
 
