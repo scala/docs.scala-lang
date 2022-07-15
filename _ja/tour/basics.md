@@ -32,14 +32,12 @@ Scastieを利用することでブラウザ上でScalaを実行することが�
 ```
 `println`を使うことで、式の結果を出力できます。
 
-{% scalafiddle %}
 ```scala mdoc
 println(1) // 1
 println(1 + 1) // 2
 println("Hello!") // Hello!
 println("Hello," + " world!") // Hello, world!
 ```
-{% endscalafiddle %}
 
 ### 値
 
@@ -110,21 +108,17 @@ println({
 
 関数には名前をつけることもできます。
 
-{% scalafiddle %}
 ```scala mdoc
 val addOne = (x: Int) => x + 1
 println(addOne(1)) // 2
 ```
-{% endscalafiddle %}
 
 関数は複数のパラメーターをとることもできます。
 
-{% scalafiddle %}
 ```scala mdoc
 val add = (x: Int, y: Int) => x + y
 println(add(1, 2)) // 3
 ```
-{% endscalafiddle %}
 
 またパラメーターを取らないこともありえます。
 
@@ -139,23 +133,19 @@ println(getTheAnswer()) // 42
 
 メソッドは `def` キーワードで定義されます。 `def` の後ろには名前、パラメーターリスト、戻り値の型、処理の内容が続きます。
 
-{% scalafiddle %}
 ```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
-{% endscalafiddle %}
 
 戻り値の型は引数リストとコロンの「後ろ」に宣言することに注意してください。`: Int`
 
 メソッドは複数のパラメーターリストを受け取ることができます。
 
-{% scalafiddle %}
 ```scala mdoc
 def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
 println(addThenMultiply(1, 2)(3)) // 9
 ```
-{% endscalafiddle %}
 
 また、パラメーターリストを一切受け取らないこともあります。
 
@@ -167,7 +157,6 @@ println("Hello, " + name + "!")
 
 メソッドは複数行の式も持つことができます。
 
-{% scalafiddle %}
 ```scala mdoc
 def getSquareString(input: Double): String = {
   val square = input * input
@@ -175,7 +164,6 @@ def getSquareString(input: Double): String = {
 }
 println(getSquareString(2.5)) // 6.25
 ```
-{% endscalafiddle %}
 
 メソッド本体にある最後の式はメソッドの戻り値になります。(Scalaには`return`キーワードはありますが、めったに使われません。)
 
@@ -278,7 +266,6 @@ trait Greeter {
 
 トレイトはデフォルトの実装を持つこともできます。
 
-{% scalafiddle %}
 ```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
@@ -303,7 +290,6 @@ greeter.greet("Scala developer") // Hello, Scala developer!
 val customGreeter = new CustomizableGreeter("How are you, ", "?")
 customGreeter.greet("Scala developer") // How are you, Scala developer?
 ```
-{% endscalafiddle %}
 
 ここでは、`DefaultGreeter`は一つのトレイトだけを継承していますが、複数のトレイトを継承することもできます。
 

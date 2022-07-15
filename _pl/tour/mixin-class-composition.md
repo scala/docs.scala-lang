@@ -11,7 +11,6 @@ previous-page: tuples
 
 Domieszka (ang. mixin) to cecha (trait), która używana jest do komponowania klas.
 
-{% scalafiddle %}
 ```scala mdoc
 abstract class A {
   val message: String
@@ -28,7 +27,6 @@ val d = new D
 println(d.message)  // wyświetli "Jestem instancją klasy B"
 println(d.loudMessage)  // wyświetli "JESTEM INSTANCJĄ KLASY B"
 ```
-{% endscalafiddle %}
 
 Klasa `D` posiada nadklasę `B` oraz domieszkę `C`.
 Klasy mogą mieć tylko jedną nadklasę, ale wiele domieszek (używając kolejno słów kluczowych `extends`, a następnie `with`).

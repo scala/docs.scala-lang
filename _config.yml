@@ -206,4 +206,3 @@ scala3ref: "https://docs.scala-lang.org/scala3/reference"
 exclude: ["vendor"]
 plugins:
   - jekyll-redirect-from
-  - jekyll-scalafiddle

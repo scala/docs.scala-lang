@@ -14,23 +14,21 @@ Scala 3 offers a new way to define programs that can be invoked from the command
 @main def hello() = println("Hello, world")
 ```
 
-Just save that line of code in a file named something like *Hello.scala*---the filename doesn’t have to match the method name---and compile it with `scalac`:
+Just save that line of code in a file named something like *Hello.scala*---the filename doesn’t have to match the method name---and run it with `scala`:
 
 ```bash
-$ scalac Hello.scala
-```
-
-Then run it with `scala`:
-
-```bash
-$ scala hello
+$ scala Hello.scala
 Hello, world
 ```
 
 A `@main` annotated method can be written either at the top-level (as shown), or inside a statically accessible object.
 In either case, the name of the program is in each case the name of the method, without any object prefixes.
 
+Learn more about the `@main` annotation by reading the following sections, or by watching this video:
 
+<div style="text-align: center">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/uVMGPrH5_Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 ### Command line arguments
 
@@ -49,8 +47,7 @@ For example, given this `@main` method that takes an `Int`, a `String`, and a va
 
   val sb = StringBuilder(s"Happy $age$suffix birthday, $name")
   for other <- others do sb.append(" and ").append(other)
-  sb.toString
-  println(sb)
+  println(sb.toString)
 ```
 
 When you compile that code, it creates a main program named `happyBirthday` that’s called like this:

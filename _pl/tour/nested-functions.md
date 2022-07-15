@@ -12,7 +12,6 @@ previous-page: higher-order-functions
 Scala pozwala na zagnieżdżanie definicji funkcji.
 Poniższy obiekt określa funkcję `factorial`, która oblicza silnię dla danej liczby:
 
-{% scalafiddle %}
 ```scala mdoc
  def factorial(x: Int): Int = {
     def fact(x: Int, accumulator: Int): Int = {
@@ -25,7 +24,6 @@ Poniższy obiekt określa funkcję `factorial`, która oblicza silnię dla dane
  println("Factorial of 2: " + factorial(2))
  println("Factorial of 3: " + factorial(3))
 ```
-{% endscalafiddle %}
 
 Wynik działania powyższego programu:
 
