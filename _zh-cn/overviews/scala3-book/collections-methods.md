@@ -338,7 +338,7 @@ names.dropWhile(_ != "chris")   // List(chris, david)
 
 ## `reduce`
 
-当您听到“映射归约”这个术语时，“归约”部分指的是诸如 `reduce` 之类的方法。
+当您听到 “map reduce” 术语时，“reduce” 部分指的是诸如 `reduce` 之类的方法。
 它接受一个函数（或匿名函数）并将该函数应用于列表中的连续元素。
 
 解释 `reduce` 的最好方法是创建一个可以传递给它的小辅助方法。
@@ -387,7 +387,7 @@ res1: Int = 24
 
 ## 更多
 
-在 Scala 集合类型上确实有几十个额外的方法，可以让你不再需要编写另一个 `for` 循环。有关 Scala 集合的更多详细信息，请参阅[可变和不可变集合][mut-immut-colls]和[Scala集合的构架][architecture]。
+在 Scala 集合类型上确实有几十个额外的方法，可以让你不再需要编写另一个 `for` 循环。有关 Scala 集合的更多详细信息，请参阅[可变和不可变集合][mut-immut-colls]和[Scala集合的架构][architecture]。
 
 > 最后一点，如果您在 Scala 项目中使用 Java 代码，您可以将 Java 集合转换为 Scala 集合。
 > 通过这样做，您可以在 `for` 表达式中使用这些集合，还可以利用 Scala 的函数式集合方法。

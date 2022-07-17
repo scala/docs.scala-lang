@@ -8,7 +8,7 @@ next-page: scala-tools
 ---
 
 
-当您想在 Scala 中编写并行和并发应用程序时，您_可以_使用本机 Java `Thread` --- 但 Scala [Future](https://www.scala-lang.org/api/current/scala/concurrent/Future$.html) 提供了一种更高级和惯用的方法，因此它是首选，本章将对此进行介绍。
+当您想在 Scala 中编写并行和并发应用程序时，您_可以_使用原生 Java `Thread` --- 但 Scala [Future](https://www.scala-lang.org/api/current/scala/concurrent/Future$.html) 提供了一种更高级和惯用的方法，因此它是首选，本章将对此进行介绍。
 
 ## 介绍
 
@@ -150,36 +150,33 @@ eventualInt.onComplete {
 `Future` 类还有其他可以使用的方法。
 它具有您在 Scala 集合类中找到的一些方法，包括：
 
-- `过滤器`
--`平面地图`
-- `地图`
+- `filter`
+- `flatMap` 
+- `map`
 
 它的回调方法有：
 
 - `onComplete`
-- `然后`
+- `andThen`
 - `foreach`
 
 其他转换方法包括：
 
--`fallbackTo`
-- `恢复`
+- `fallbackTo`
+- `recover`
 - `recoverWith`
 
 请参阅 [Futures and Promises][futures] 页面，了解有关 future 可用的其他方法的讨论。
 
-
-
 ## 运行多个 future 并加入他们的结果
 
-要并行运行多个计算并在所有 future 完成后加入它们的结果，请使用“for”表达式。
+要并行运行多个计算并在所有 future 完成后加入它们的结果，请使用 “for” 表达式。
 
 正确的做法是：
 
 1. 开始计算返回 `Future` 结果
 2. 将他们的结果合并到一个 `for` 表达式中
 3. 使用 `onComplete` 或类似技术提取合并结果
-
 
 ### 一个例子
 
@@ -242,7 +239,7 @@ result = 6
 如该输出所示， future 的创建速度非常快，仅在两毫秒内就到达了方法末尾的 `sleep(3000)` 语句之前的打印语句。
 所有这些代码都在 JVM 的主线程上运行。
 然后，在 806 毫秒，三个 future 完成并运行 `yield` 块中的代码。
-然后代码立即转到 `onComplete` 方法中的 `Success` 案例。
+然后代码立即转到 `onComplete` 方法中的 `Success` 分支。
 
 806 毫秒的输出是看到三个计算并行运行的关键。
 如果它们按顺序运行，总时间约为 1,400 毫秒——三个计算的睡眠时间之和。
@@ -295,7 +292,7 @@ val res1: concurrent.Future[Int] = Future(Success(4))
 总而言之，关于 future 的几个关键点是：
 
 - 您构建 future 以在主线程之外运行任务
-- Futures 用于一次性的、可能长时间运行的并发任务，这些任务*最终*返回一个值；他们创造了一个临时的并发包
+- Futures 用于一次性的、可能长时间运行的并发任务，这些任务*最终*返回一个值；他们创造了一个临时的并发的容器 
 - 一旦你构建了 future，它就会开始运行
 - future 相对于线程的一个好处是它们可以使用 `for` 表达式，并带有各种回调方法，可以简化使用并发线程的过程
 - 当您使用 future 时，您不必关心线程管理的低级细节
@@ -305,7 +302,7 @@ val res1: concurrent.Future[Int] = Future(Success(4))
 
 此外，正如您在这些示例中看到的 `import` 语句，Scala `Future` 依赖于 `ExecutionContext`。
 
-有关 future 的更多详细信息，请参阅[Future 和 Promises][future]，这是一篇讨论 future 、promises 和执行上下文的文章。
+有关 future 的更多详细信息，请参阅[Future 和 Promises][future]，这是一篇讨论 future 、promises 和 ExecutionContext 的文章。
 它还讨论了如何将 `for` 表达式转换为 `flatMap` 操作。
 
 

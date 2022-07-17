@@ -1,5 +1,5 @@
 ---
-title: Contextual Abstractions
+title: 上下文抽象
 type: chapter
 description: This chapter provides an introduction to the Scala 3 concept of Contextual Abstractions.
 num: 58
@@ -8,74 +8,73 @@ next-page: ca-given-using-clauses
 ---
 
 
-## Background
+## 背景
 
-Implicits in Scala 2 were a major distinguishing design feature.
-They are *the* fundamental way to abstract over context.
-They represent a unified paradigm with a great variety of use cases, among them:
+Scala 2 中的隐式是一个主要的显着设计特征。
+它们是*那个*抽象上下文的基本方法。
+它们代表了具有多种用例的统一范式，其中包括：
 
-- Implementing type classes
-- Establishing context
-- Dependency injection
-- Expressing capabilities
-- Computing new types, and proving relationships between them
+- 实现类型类
+- 建立上下文
+- 依赖注入
+- 表达能力
+- 计算新类型，并证明它们之间的关系
 
-Since then, other languages have followed suit, e.g., Rust’s traits or Swift’s protocol extensions.
-Design proposals are also on the table for Kotlin as compile time dependency resolution, for C# as Shapes and Extensions or for F# as Traits.
-Implicits are also a common feature of theorem provers such as Coq or Agda.
+从那时起，其他语言也纷纷效仿，例如 Rust 的特征或 Swift 的协议扩展。
+这样的设计提案也已出现。对于 Kotlin 是作为编译时依赖解决方案，对于 C# 是作为 Shapes 和 Extensions，对于 F# 是作为 Traits。
+隐式也是 Coq 或 Agda 等定理证明器的共同特征。
 
-Even though these designs use different terminology, they’re all variants of the core idea of *term inference*:
-Given a type, the compiler synthesizes a “canonical” term that has that type.
+尽管这些设计使用不同的术语，但它们都是*术语推理*核心思想的变体：
+给定一个类型，编译器会合成一个具有该类型的“规范”术语。
 
+## 重新设计
 
-## Redesign
+Scala 3 重新设计了 Scala 中的上下文抽象。
+虽然这些概念是在 Scala 2 中逐渐“发现”的，但它们现在已广为人知和理解，并且重新设计利用了这些知识。
 
-Scala 3 includes a redesign of contextual abstractions in Scala.
-While these concepts were gradually “discovered” in Scala 2, they’re now well known and understood, and the redesign takes advantage of that knowledge.
+Scala 3 的设计侧重于 **意图** 而不是 **机制**。
+Scala 3 没有提供一个非常强大的隐式特性，而是提供了几个面向用例的特性：
 
-The design of Scala 3 focuses on **intent** rather than **mechanism**.
-Instead of offering one very powerful feature of implicits, Scala 3 offers several use-case oriented features:
+- **抽象上下文信息**。
+  [使用子句][givens] 允许程序员对调用上下文中可用的信息进行抽象，并且应该隐式传递。
+  作为对 Scala 2 隐式的改进，可以按类型指定 using 子句，从而将函数签名从从未显式引用的术语变量名称中释放出来。
 
-- **Abstracting over contextual information**.
-  [Using clauses][givens] allow programmers to abstract over information that is available in the calling context and should be passed implicitly.
-  As an improvement over Scala 2 implicits, using clauses can be specified by type, freeing function signatures from term variable names that are never explicitly referred to.
+- **提供类型类实例**。
+  [给定实例][type-classes]允许程序员定义某种类型的_规范值_。
+  这使得使用类型类的编程更加简单，而不会泄露实现细节。
 
-- **Providing Type-class instances**.
-  [Given instances][type-classes] allow programmers to define the _canonical value_ of a certain type.
-  This makes programming with type-classes more straightforward without leaking implementation details.
+- **追溯扩展类**。
+  在 Scala 2 中，扩展方法必须使用隐式转换或隐式类进行编码。
+  相比之下，在 Scala 3 [扩展方法][extension-methods] 现在直接内置到语言中，产生了更好的错误消息和改进的类型推断。
 
-- **Retroactively extending classes**.
-  In Scala 2, extension methods had to be encoded using implicit conversions or implicit classes.
-  In contrast, in Scala 3 [extension methods][extension-methods] are now directly built into the language, leading to better error messages and improved type inference.
+- **将一种类型视为另一种类型**。
+  隐式转换已从头开始[重新设计][implicit-conversions]，作为类型类 `Conversion` 的实例。
 
-- **Viewing one type as another**.
-  Implicit conversion have been [redesigned][implicit-conversions] from the ground up as instances of a type-class `Conversion`.
+- **高阶上下文抽象**。
+  [上下文函数][contextual-functions] 的_全新_特性使上下文抽象成为一等公民。
+  它们是库作者的重要工具，可以表达简洁的领域特定语言。
 
-- **Higher-order contextual abstractions**.
-  The _all-new_ feature of [context functions][contextual-functions] makes contextual abstractions a first-class citizen.
-  They are an important tool for library authors and allow to express concise domain specific languages.
+- **来自编译器的可操作反馈**。
+  如果编译器无法解析隐式参数，它现在会为您提供 [导入建议](https://www.scala-lang.org/blog/2020/05/05/scala-3-import-suggestions. html) 来解决问题。
 
-- **Actionable feedback from the compiler**.
-  In case an implicit parameter can not be resolved by the compiler, it now provides you [import suggestions](https://www.scala-lang.org/blog/2020/05/05/scala-3-import-suggestions.html) that may fix the problem.
+## 好处
 
+Scala 3 中的这些更改实现了术语推理与语言其余部分的更好分离：
 
-## Benefits
+- 仅有一种定义 given 的方法
+- 仅有一种方法可以引入隐式参数和自变量
+- [导入 givens][given-imports] 仅有一种单独的方法，不允许它们隐藏在正常导入的海洋中
+- 定义 [隐式转换][implicit-conversions] 的方法仅有一种，它被清楚地标记为这样，并且不需要特殊的语法
 
-These changes in Scala 3 achieve a better separation of term inference from the rest of the language:
+这些变化的好处包括：
 
-- There’s a single way to define givens
-- There’s a single way to introduce implicit parameters and arguments
-- There’s a separate way to [import givens][given-imports] that does not allow them to hide in a sea of normal imports
-- There’s a single way to define an [implicit conversion][implicit-conversions], which is clearly marked as such, and does not require special syntax
+- 新设计避免了特性交织，从而使语言更加一致
+- 它使隐式更容易学习和更难滥用
+- 它极大地提高了 95% 使用隐式的 Scala 程序的清晰度
+- 它有可能以一种易于理解和友好的原则方式进行术语推理
 
-Benefits of these changes include:
+本章将在以下各节中介绍其中的许多新功能。
 
-- The new design thus avoids feature interactions and makes the language more consistent
-- It makes implicits easier to learn and harder to abuse
-- It greatly improves the clarity of the 95% of Scala programs that use implicits
-- It has the potential to enable term inference in a principled way that is also accessible and friendly
-
-This chapter introduces many of these new features in the following sections.
 
 [givens]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
 [given-imports]: {% link _overviews/scala3-book/ca-given-imports.md %}
