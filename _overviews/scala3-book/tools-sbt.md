@@ -2,7 +2,7 @@
 title: Building and Testing Scala Projects with sbt
 type: section
 description: This section looks at a commonly-used build tool, sbt, and a testing library, ScalaTest.
-num: 70
+num: 71
 previous-page: scala-tools
 next-page: tools-worksheets
 ---

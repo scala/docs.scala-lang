@@ -2,7 +2,7 @@
 title: OOP Modeling
 type: section
 description: This chapter provides an introduction to OOP domain modeling with Scala 3.
-num: 21
+num: 22
 previous-page: domain-modeling-tools
 next-page: domain-modeling-fp
 ---

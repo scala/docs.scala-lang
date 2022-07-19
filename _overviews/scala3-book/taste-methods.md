@@ -2,7 +2,7 @@
 title: Methods
 type: section
 description: This section provides an introduction to defining and using methods in Scala 3.
-num: 10
+num: 11
 previous-page: taste-modeling
 next-page: taste-functions
 ---

@@ -2,7 +2,7 @@
 title: Singleton Objects
 type: section
 description: This section provides an introduction to the use of singleton objects in Scala 3.
-num: 12
+num: 13
 previous-page: taste-functions
 next-page: taste-collections
 ---

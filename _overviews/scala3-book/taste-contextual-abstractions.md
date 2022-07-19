@@ -2,7 +2,7 @@
 title: Contextual Abstractions
 type: section
 description: This section provides an introduction to Contextual Abstractions in Scala 3.
-num: 14
+num: 15
 previous-page: taste-collections
 next-page: taste-toplevel-definitions
 ---

@@ -2,7 +2,7 @@
 title: First-Class Functions
 type: section
 description: This page provides an introduction to functions in Scala 3.
-num: 11
+num: 12
 previous-page: taste-methods
 next-page: taste-objects
 ---

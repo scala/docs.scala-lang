@@ -2,7 +2,7 @@
 title: Concurrency
 type: chapter
 description: This page discusses how Scala concurrency works, with an emphasis on Scala Futures.
-num: 68
+num: 69
 previous-page: ca-summary
 next-page: scala-tools
 ---
