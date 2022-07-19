@@ -9,6 +9,7 @@ num: 25
 outof: 54
 previous-page: traits-intro
 next-page: traits-abstract-mixins
+new-version: /scala3/book/domain-modeling-tools.html#traits
 ---
 
 ## Using Scala Traits as Interfaces
@@ -145,10 +146,3 @@ Key points of this code:
 - Use `with` to extend subsequent traits
 
 From what you’ve seen so far, Scala traits work just like Java interfaces. But there’s more ...
-
-
-
-
-
-
-

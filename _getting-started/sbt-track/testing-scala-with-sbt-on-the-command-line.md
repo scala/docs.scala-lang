@@ -2,7 +2,7 @@
 title: Testing Scala with sbt and ScalaTest on the Command Line
 layout: singlepage-overview
 partof: testing-scala-with-sbt-on-the-command-line
-languages: [ja]
+languages: [ja, uk]
 disqus: true
 previous-page: getting-started-with-scala-and-sbt-on-the-command-line
 

@@ -9,6 +9,7 @@ num: 33
 outof: 54
 previous-page: map-class
 next-page: anonymous-functions
+new-version: /scala3/book/collections-classes.html#working-with-sets
 ---
 
 
@@ -121,11 +122,3 @@ res3: Boolean = false
 ## More Sets
 
 Scala has several more `Set` classes, including `SortedSet`, `LinkedHashSet`, and more. Please see the [Set class documentation]({{site.baseurl}}/overviews/collections-2.13/sets.html) for more details on those classes.
-
-
-
-
-
-
-
-

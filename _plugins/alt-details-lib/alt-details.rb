@@ -3,7 +3,7 @@ require 'erb'
 module Jekyll
     module AltDetails
         class AltDetailsBlock < Liquid::Block
-            SYNTAX = /^\s*(#{Liquid::QuotedFragment})\s+(#{Liquid::QuotedFragment})/o
+            SYNTAX = /^\s*(#{Liquid::QuotedFragment})\s+(#{Liquid::QuotedFragment})(?=\s+class=(#{Liquid::QuotedFragment}))?/o
             Syntax = SYNTAX
 
             alias_method :render_block, :render
@@ -18,6 +18,11 @@ module Jekyll
                 if markup =~ SYNTAX
                     @name = unquote($1)
                     @title = unquote($2)
+                    @css_classes = ""
+                    if $3
+                        # append $3 to @css_classes
+                        @css_classes = "#{@css_classes} #{unquote($3)}"
+                    end
                 else
                     raise SyntaxError.new("Block #{block_name} requires an id and a title")
                 end

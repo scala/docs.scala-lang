@@ -1,11 +1,24 @@
 - title: Getting Started
   url: "/getting-started/index.html"
+- title: Scala 3
+  url: "#"
+  submenu:
+    - title: What's New?
+      url: "/scala3/new-in-scala3.html"
+    - title: Migrating From Scala 2
+      url: "/scala3/guides/migration/compatibility-intro.html"
+    - title: New Features for Scaladoc
+      url: "/scala3/scaladoc.html"
+    - title: Videos and Talks 
+      url: "/scala3/talks.html"
 - title: Learn
   url: "#"
   submenu:
     - title: Tour of Scala
       url: "/tour/tour-of-scala.html"
-    - title: Scala Book
+    - title: Scala 3 Book
+      url: "/scala3/book/introduction.html"
+    - title: Scala 2 Book
       url: "/overviews/scala-book/introduction.html"
     - title: Online Courses
       url: "/online-courses.html"
@@ -33,10 +46,14 @@
       url: "/books.html"
     - title: Scala FAQ
       url: "/tutorials/FAQ/index.html"
-    - title: Language Specification
+    - title: Scala Language Specification
       url: http://scala-lang.org/files/archive/spec/2.13/
-    - title: Contribution Guide
+    - title: Scala 3 Language Reference
+      url: "https://docs.scala-lang.org/scala3/reference"
+    - title: Scala Contribution Guide
       url: "/contribute/"
+    - title: Scala 3 Compiler Contributing Guide
+      url: "/scala3/guides/contribution/contribution-intro.html"
     - title: Style Guide
       url: "/style/index.html"
     - title: Cheatsheet
@@ -44,11 +61,6 @@
     - title: Glossary
       url: "/glossary/index.html"
 - title: API
-  url: "#"
-  submenu:
-    - title: Current
-      url: https://www.scala-lang.org/api/current/
-    - title: All Versions
-      url: "/api/all.html"
+  url: "/api/all.html"
 - title: SIPs
   url: "/sips/index.html"

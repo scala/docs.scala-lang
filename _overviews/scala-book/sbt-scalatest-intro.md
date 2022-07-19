@@ -9,6 +9,7 @@ num: 40
 outof: 54
 previous-page: oop-pizza-example
 next-page: scala-build-tool-sbt
+new-version: /scala3/book/tools-sbt.html
 ---
 
 
@@ -18,5 +19,3 @@ In the next few lessons you’ll see a couple of tools that are commonly used in
 - [ScalaTest](http://www.scalatest.org), a code testing framework
 
 We’ll start by showing how to use sbt, and then you’ll see how to use ScalaTest and sbt together to build and test your Scala projects.
-
-

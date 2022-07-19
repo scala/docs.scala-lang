@@ -9,6 +9,7 @@ num: 15
 outof: 54
 previous-page: if-then-else-construct
 next-page: for-expressions
+new-version: /scala3/book/control-structures.html#for-loops
 ---
 
 
@@ -106,7 +107,3 @@ ratings.foreach {
     case(movie, rating) => println(s"key: $movie, value: $rating")
 }
 ```
-
-
-
-

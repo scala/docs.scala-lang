@@ -9,6 +9,7 @@ num: 48
 outof: 54
 previous-page: no-null-values
 next-page: case-classes
+new-version: /scala3/book/domain-modeling-tools.html#companion-objects
 ---
 
 
@@ -270,13 +271,3 @@ The key points of this lesson are:
 - A companion object and its class can access each other’s private members
 - A companion object’s `apply` method lets you create new instances of a class without using the `new` keyword
 - A companion object’s `unapply` method lets you de-construct an instance of a class into its individual components
-
-
-
-
-
-
-
-
-
-

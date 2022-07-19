@@ -9,6 +9,7 @@ num: 35
 outof: 54
 previous-page: anonymous-functions
 next-page: collections-maps
+new-version: /scala3/book/collections-methods.html
 ---
 
 
@@ -319,8 +320,3 @@ That might be a little mind-blowing if you’ve never seen it before, but after 
 ## Even more!
 
 There are literally dozens of additional methods on the Scala sequence classes that will keep you from ever needing to write another `for` loop. However, because this is a simple introduction book they won’t all be covered here. For more information, see [the collections overview of sequence traits]({{site.baseurl}}/overviews/collections-2.13/seqs.html).
-
-
-
-
-

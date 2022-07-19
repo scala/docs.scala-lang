@@ -9,6 +9,7 @@ num: 9
 outof: 54
 previous-page: two-types-variables
 next-page: built-in-types
+new-version: /scala3/book/taste-vars-data-types.html#declaring-variable-types
 ---
 
 
@@ -55,13 +56,3 @@ val p: Person = new Person("Candy")   // unnecessarily verbose
 ## Use the explicit form when you need to be clear
 
 One place where you’ll want to show the data type is when you want to be clear about what you’re creating. That is, if you don’t explicitly declare the data type, the compiler may make a wrong assumption about what you want to create. Some examples of this are when you want to create numbers with specific data types. We show this in the next lesson.
-
-
-
-
-
-
-
-
-
-

@@ -3,35 +3,45 @@
 //------------------------------------------------
 
 .wrap {
-	@include outer-container;
-	@include padding(0 20px);
+    @include outer-container;
+    @include padding(0 20px);
 }
 
 .place-inline {
-	// add vertical margin
-	@include outer-container;
-	@include margin(20px 0);
+    // add vertical margin
+    @include outer-container;
+    @include margin(20px 0);
+}
+
+.inline-sticky-top {
+    position: sticky;
+    top: 15px;
+    background: #fff;
+    -webkit-box-shadow: 0 0 18px 20px #fff;
+    -moz-box-shadow: 0 0 18px 20px #fff;
+    box-shadow: 0 0 18px 20px #fff;
+    z-index: 5;
 }
 
 .wrap-inline {
-	// add vertical padding
-	@include outer-container;
-	@include padding(20px 0);
+    // add vertical padding
+    @include outer-container;
+    @include padding(20px 0);
 }
 
 .wrap-tab {
-	@extend .wrap-narrow;
-	margin-top: 20px;
-	margin-bottom: 20px;
+    @extend .wrap-narrow;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .wrap-narrow {
-	@include outer-container;
-	@include padding(0 10px);
+    @include outer-container;
+    @include padding(0 10px);
 }
 
 .dot {
-	font-size: 10px;
-	color: rgba($base-font-color-light, 0.6);
-	margin: 0 3px;
+    font-size: 10px;
+    color: rgba($base-font-color-light, 0.6);
+    margin: 0 3px;
 }
