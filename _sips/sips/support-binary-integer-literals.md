@@ -1,8 +1,8 @@
 ---
-status: vote-requested
-pull-request-number: 40
-recommendation: accept
-title: SIP-42 - Support Binary Integer Literals
 stage: design
+pull-request-number: 40
+title: SIP-42 - Support Binary Integer Literals
+status: vote-requested
+recommendation: accept
 
 ---
