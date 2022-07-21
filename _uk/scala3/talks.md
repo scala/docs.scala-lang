@@ -17,8 +17,7 @@ versionSpecific: true
 Talks on Scala 3
 ----------------
 - (ScalaDays 2019, Lausanne) [Тур по Scala 3](https://www.youtube.com/watch?v=_Rnrx2lo9cw) 
-  від [Martin Odersky](http://twitter.com/odersky) 
-  [\[слайди\]](https://www.slideshare.net/Odersky/a-tour-of-scala-3)
+  від [Martin Odersky](http://twitter.com/odersky)
 
 - (ScalaDays 2016, Berlin) [Попереду дорога Scala](https://www.youtube.com/watch?v=GHzWqJKFCk4) 
   від [Martin Odersky](http://twitter.com/odersky) 
