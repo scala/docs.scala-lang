@@ -130,19 +130,19 @@ res1: scala.concurrent.Future[Int] = Future(Success(84))
 ### 在 future 中使用回调方法
 
 除了像`map`这样的高阶函数，你还可以使用回调方法和futures。
-一种常用的回调方法是 `onComplete`，它采用*部分函数*，您可以在其中处理 `Success` 和 `Failure` 情况：
+一种常用的回调方法是 `onComplete`，它采用*偏函数*，您可以在其中处理 `Success` 和 `Failure` 情况：
 
 ```scala
 eventualInt.onComplete {
-  case Success(value) => println(s"得到回调，value = $value")
-  案例失败（e）=> e.printStackTrace
+  case Success(value) => println(s"Got the callback，value = $value")
+  case Failure(e) => e.printStackTrace
 }
 ```
 
 当您将该代码粘贴到 REPL 中时，您最终会看到结果：
 
 ```scala
-收到回调，value = 42
+Got the callback, value = 42
 ```
 
 ## 其他 future 方法

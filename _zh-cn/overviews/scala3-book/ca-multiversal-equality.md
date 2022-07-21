@@ -147,7 +147,7 @@ given CanEqual[PrintedBook, AudioBook] = CanEqual.derived
 given CanEqual[AudioBook, PrintedBook] = CanEqual.derived
 ```
 
-现在，您可以将实体书与有声书进行比较，而不会出现编译器错误：
+现在，您可以将实体书与有声书进行比较，而不会出现编译错误：
 
 ```scala
 println(pBook == aBook)   // false
