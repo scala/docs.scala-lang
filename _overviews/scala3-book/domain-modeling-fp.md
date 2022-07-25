@@ -377,7 +377,7 @@ You can think of this approach as a “hybrid FP/OOP design” because you:
 
 #### Example
 
-Using this approach, you can directly implement the functionality on pizzas in the case case:
+Using this approach, you can directly implement the functionality on pizzas in the case class:
 
 ```scala
 case class Pizza(
