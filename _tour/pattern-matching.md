@@ -78,6 +78,8 @@ This match expression has a type String because all of the cases return String. 
 
 Case classes are especially useful for pattern matching.
 
+{% tabs notification %}
+{% tab 'Scala 2 and 3' for=notification %}
 ```scala mdoc
 sealed trait Notification
 
@@ -87,6 +89,9 @@ case class SMS(caller: String, message: String) extends Notification
 
 case class VoiceRecording(contactName: String, link: String) extends Notification
 ```
+{% endtab %}
+{% endtabs %}
+
 `Notification` is a sealed trait which has three concrete Notification types implemented with case classes `Email`, `SMS`, and `VoiceRecording`. Now we can do pattern matching on these case classes:
 
 {% tabs pattern-matching-4 class=tabs-scala-version %}

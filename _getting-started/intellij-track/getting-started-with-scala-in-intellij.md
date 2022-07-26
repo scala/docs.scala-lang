@@ -98,11 +98,15 @@ A good way to try out code samples is with Scala Worksheets
 2. Name your new Scala worksheet "Mathematician".
 3. Enter the following code into the worksheet:
 
+{% tabs square %}
+{% tab 'Scala 2 and 3' for=square %}
 ```
 def square(x: Int): Int = x * x
 
 square(2)
 ```
+{% endtab %}
+{% endtabs %}
 
 As you change your code, you'll notice that it gets evaluated
 in the right pane. If you do not see a right pane, right-click on your Scala worksheet in the Project pane, and click on Evaluate Worksheet.
