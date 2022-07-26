@@ -10,14 +10,14 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 
 ## Version compatibility table
 
-| JDK version | Minimum Scala versions           | Recommended Scala versions                                 |
-|:-----------:|:---------------------------------|:-----------------------------------------------------------|
-| 19          | 2.13.9 (forthcoming), 2.12.16    | 2.13.9 (forthcoming), 2.12.16                              |
-| 18          | 2.13.7, 2.12.15                  | 2.13.8, 2.12.16                                            |
-| 17          | 2.13.6, 2.12.15                  | 2.13.8, 2.12.16                                            |
-| 11          | 2.13.0, 2.12.4, 2.11.12          | 2.13.8, 2.12.16, 2.11.12                                   |
-| 8           | 2.13.0, 2.12.0, 2.11.0, 2.10.2   | 2.13.8, 2.12.16, 2.11.12, 2.10.7                           |
-| 6, 7        | 2.11.0, 2.10.0                   | 2.11.12, 2.10.7                                            |
+| JDK version | Minimum Scala versions                  | Recommended Scala versions                                 |
+|:-----------:|:----------------------------------------|:-----------------------------------------------------------|
+| 19          | 2.13.9 (forthcoming), 2.12.16           | 2.13.9 (forthcoming), 2.12.16                                     |
+| 18          | 3.1.3, 2.13.7, 2.12.15                  | 2.13.8, 2.12.16                                            |
+| 17          | 3.0.0, 2.13.6, 2.12.15                  | 2.13.8, 2.12.16                                            |
+| 11          | 3.0.0, 2.13.0, 2.12.4, 2.11.12          | 2.13.8, 2.12.16, 2.11.12                                   |
+| 8           | 3.0.0, 2.13.0, 2.12.0, 2.11.0, 2.10.2   | 2.13.8, 2.12.16, 2.11.12, 2.10.7                           |
+| 6, 7        | 2.11.0, 2.10.0                          | 2.11.12, 2.10.7                                            |
 
 Even when a version combination isn't listed as supported, most features may still work.  (But Scala 2.12+ definitely doesn't work at all on JDK 6 or 7.)
 
