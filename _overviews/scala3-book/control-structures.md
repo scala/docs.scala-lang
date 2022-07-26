@@ -393,6 +393,8 @@ do
 You can also use `for` loops with a `Map`.
 For example, given this `Map` of state abbreviations and their full names:
 
+{% tabs map %}
+{% tab 'Scala 2 and 3' for=map %}
 ```scala
 val states = Map(
   "AK" -> "Alaska",
@@ -400,6 +402,8 @@ val states = Map(
   "AR" -> "Arizona"
 )
 ```
+{% endtab %}
+{% endtabs %}
 
 You can print the keys and values using `for`, like this:
 
@@ -491,9 +495,13 @@ NOTE: This is a place where it would be great to have a TIP or NOTE block:
 
 While the intent of this section is to demonstrate `for` expressions, it can help to know that the `for` expression shown is equivalent to this `map` method call:
 
+{% tabs map-call %}
+{% tab 'Scala 2 and 3' for=map-call %}
 ```scala
 val list = (10 to 12).map(i => i * 2)
 ```
+{% endtab %}
+{% endtabs %}
 
 `for` expressions can be used any time you need to traverse all of the elements in a collection and apply an algorithm to those elements to create a new list.
 
@@ -831,6 +839,8 @@ The first one checks whether the given value is either the integer `0`,  an empt
 In the default case, we return `true` for any other value.
 These examples show how this method works:
 
+{% tabs is-truthy-call %}
+{% tab 'Scala 2 and 3' for=is-truthy-call %}
 ```scala
 isTruthy(0)      // false
 isTruthy(false)  // false
@@ -839,6 +849,8 @@ isTruthy(1)      // true
 isTruthy(" ")    // true
 isTruthy(2F)     // true
 ```
+{% endtab %}
+{% endtabs %}
 
 Using a `match` expression as the body of a method is a very common use.
 
