@@ -26,6 +26,10 @@ We assume you know how to use a terminal.
     * [Linux](https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Linux.html)
 
 ## Create the project
+
+{% tabs sbt-welcome-1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=sbt-welcome-1 %}
+
 1. `cd` to an empty folder.
 1. Run the following command `sbt new scala/hello-world.g8`.
 This pulls the 'hello-world' template from GitHub.
@@ -33,6 +37,21 @@ It will also create a `target` folder, which you can ignore.
 1. When prompted, name the application `hello-world`. This will
 create a project called "hello-world".
 1. Let's take a look at what just got generated:
+
+{% endtab %}
+{% tab 'Scala 3' for=sbt-welcome-1 %}
+
+1. `cd` to an empty folder.
+1. Run the following command `sbt new scala/scala3.g8`.
+This pulls the 'scala3' template from GitHub.
+It will also create a `target` folder, which you can ignore.
+1. When prompted, name the application `hello-world`. This will
+create a project called "hello-world".
+1. Let's take a look at what just got generated:
+
+{% endtab %}
+{% endtabs %}
+
 
 ```
 - hello-world

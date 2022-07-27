@@ -17,9 +17,13 @@ Traits are used to share interfaces and fields between classes. They are similar
 ## Defining a trait
 A minimal trait is simply the keyword `trait` and an identifier:
 
+{% tabs trait-hair-color %}
+{% tab 'Scala 2 and 3' for=trait-hair-color %}
 ```scala mdoc
 trait HairColor
 ```
+{% endtab %}
+{% endtabs %}
 
 Traits become especially useful as generic types and with abstract methods.
 

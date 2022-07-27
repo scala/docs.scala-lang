@@ -102,9 +102,13 @@ In our next example let's ask for the user's name before we greet them!
 There are several ways to read input from a command-line, but a simple way is to use the
 `readLine` method in the _scala.io.StdIn_ object. To use it, you need to first import it, like this:
 
+{% tabs import-readline %}
+{% tab 'Scala 2 and 3' for=import-readline %}
 ```scala
 import scala.io.StdIn.readLine
 ```
+{% endtab %}
+{% endtabs %}
 
 To demonstrate how this works, let’s create a little example. Put this source code in a file named _helloInteractive.scala_:
 
@@ -176,9 +180,13 @@ Hello, Alvin Alexander!
 As you saw in this application, sometimes certain methods, or other kinds of definitions that we'll see later,
 are not available unless you use an `import` clause like so:
 
+{% tabs import-readline-2 %}
+{% tab 'Scala 2 and 3' for=import-readline-2 %}
 ```scala
 import scala.io.StdIn.readLine
 ```
+{% endtab %}
+{% endtabs %}
 
 Imports help you write code in a few ways:
   - you can put code in multiple files, to help avoid clutter, and to help navigate large projects.

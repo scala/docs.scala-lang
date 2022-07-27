@@ -108,11 +108,17 @@ def f(x: String): String
 
 Assume further that `f` has no side-effects, so invoking it again with the same argument will always yield the same result. In that case you could save time by storing previously computed bindings of argument and results of `f` in a map and only computing the result of `f` if a result of an argument was not found there. One could say the map is a _cache_ for the computations of the function `f`.
 
+{% tabs cache-creation %}
+{% tab 'Scala 2 and 3' for=cache-creation %}
     scala> val cache = collection.mutable.Map[String, String]()
     cache: scala.collection.mutable.Map[String,String] = Map()
+{% endtab %}
+{% endtabs %}
 
 You can now create a more efficient caching version of the `f` function:
 
+{% tabs cache-usage %}
+{% tab 'Scala 2 and 3' for=cache-usage %}
     scala> def cachedF(s: String): String = cache.getOrElseUpdate(s, f(s))
     cachedF: (s: String)String
     scala> cachedF("abc")
@@ -120,6 +126,8 @@ You can now create a more efficient caching version of the `f` function:
     res3: String = cba
     scala> cachedF("abc")
     res4: String = cba
+{% endtab %}
+{% endtabs %}
 
 Note that the second argument to `getOrElseUpdate` is "by-name", so the computation of `f("abc")` above is only performed if `getOrElseUpdate` requires the value of its second argument, which is precisely if its first argument is not found in the `cache` map. You could also have implemented `cachedF` directly, using just basic map operations, but it would take more code to do so:
 
