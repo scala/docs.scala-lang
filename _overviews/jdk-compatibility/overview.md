@@ -94,7 +94,7 @@ also be included in Scala 2.13.9 (forthcoming).
 ## GraalVM Native Image compatibility notes
 
 There are several records of successfully using Scala with [GraalVM](https://www.graalvm.org) Native Image(i.e.: ahead of time compiler) to produce directly executable binaries.
-Beware that, even using solely the Scala standard library, Native Image compilation have some heavy requirements in terms of [reflective access](https://www.graalvm.org/reference-manual/native-image/Reflection/), and it very likely require additional configuration steps to be performed.
+Beware that, even using solely the Scala standard library, Native Image compilation have some heavy requirements in terms of [reflective access](https://www.graalvm.org/reference-manual/native-image/metadata/), and it very likely require additional configuration steps to be performed.
 
 A few sbt plugins are offering support for GraalVM Native Image compilation:
 
