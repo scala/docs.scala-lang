@@ -51,7 +51,7 @@ Scala 3 没有提供一个非常强大的隐式特性，而是提供了几个面
   它们是库作者的重要工具，可以表达简洁的领域特定语言。
 
 - **来自编译器的可操作反馈**。
-  如果编译器无法解析隐式参数，它现在会为您提供 [导入建议](https://www.scala-lang.org/blog/2020/05/05/scala-3-import-suggestions. html) 来解决问题。
+  如果编译器无法解析隐式参数，它现在会为您提供 [导入建议](https://www.scala-lang.org/blog/2020/05/05/scala-3-import-suggestions.html) 来解决问题。
 
 ## 好处
 
