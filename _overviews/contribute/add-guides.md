@@ -134,7 +134,7 @@ It is crucial that you use the `tabs-scala-version` class to benefit from some c
 - the tab picked will be remembered across the site, and when the user returns to the page after some time.
 
 For code snippets that are valid in both Scala 2 and Scala 3, please use a single tab labelled
-“Scala 2 and 3”:
+“Scala 2 and 3” (please note that the `tabs-scala-version` class is also dropped):
 
 <!-- {% raw  %} -->
 ~~~liquid
