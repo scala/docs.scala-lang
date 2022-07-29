@@ -149,7 +149,7 @@ open class Person(name: String)
 ```
 
 用 [`open`][open] 标记类是 Scala 3 的一个新特性。必须将类显式标记为开放可以避免面向对象设计中的许多常见缺陷。
-特别是，它要求库设计者明确计划扩展，例如记录标记为开放的类以及附加的扩展合同。
+特别是，它要求库设计者明确计划扩展，例如用额外的扩展契约来记录那些被标记为开放的类。
 
 {% comment %}
 NOTE/FWIW: In his book, “Effective Java,” Joshua Bloch describes this as “Item 19: Design and document for inheritance or else prohibit it.”

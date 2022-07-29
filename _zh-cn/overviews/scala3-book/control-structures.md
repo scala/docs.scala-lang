@@ -391,10 +391,10 @@ val evenOrOdd = i match
   case _ => println("some other number")
 ```
 
-### 在  `case`  子句中使用  `if`  防护
+### 在  `case`  子句中使用  `if`  守卫
 
-您还可以在匹配表达式的 `case` 中使用防护装置。
-在此示例中，第二个和第三个 `case` 都使用防护来匹配多个整数值：
+您还可以在匹配表达式的 `case` 中使用守卫装置。
+在此示例中，第二个和第三个 `case` 都使用守卫来匹配多个整数值：
 
 ```scala
 i match
@@ -416,7 +416,7 @@ i match
 
 #### 样例类和 match 表达式
 
-您还可以从 `case` 类中提取字段 —— 以及正确编写了 `apply`/`unapply` 方法的类 —— 并在防护条件下使用这些字段。
+您还可以从 `case` 类中提取字段 —— 以及正确编写了 `apply`/`unapply` 方法的类 —— 并在守卫条件下使用这些字段。
 下面是一个使用简单 `Person` 案例类的示例：
 
 ```scala
