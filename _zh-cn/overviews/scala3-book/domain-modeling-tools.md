@@ -326,7 +326,7 @@ val fred = Person("Fred", 29)
 
 ## Traits
 
-如果你熟悉Java，Scala trait 类似于Java 8+中的接口。性状可以包含：
+如果你熟悉Java，Scala trait 类似于Java 8+中的接口。特质可以包含：
 
 - 抽象方法和成员
 - 具体方法和成员
