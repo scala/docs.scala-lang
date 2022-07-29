@@ -22,7 +22,7 @@ Scala具有您希望在编程语言中找到的控制结构，包括：
 
 这些都将在以下各节中进行演示。
 
-## if/then/else 结构nstruct
+## if/then/else 结构
 
 单行 Scala `if` 语句像这样：
 
