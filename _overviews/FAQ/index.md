@@ -108,19 +108,24 @@ Your sbt 1.x build definition is always a Scala 2.12 program.
 Regardless, in your `build.sbt`, you can set `scalaVersion` to whichever
 available distribution you want and your program code will be compiled with that version.
 
-### I want Scala 3.1.1 (etc); why does std lib say it's using Scala 2.13?
+### I want Scala 3. Why does `versionNumberString` say I'm on 2.13?
 
-Scala 3 currently uses the Scala 2.13 library by leveraging its seamless
-interoperability. Note that it does not necessarily ingest the latest
-version of the Scala 2.13 library.
+To aid migration, Scala 3 currently uses the Scala 2.13 library as-is,
+with only minor supplements.  That's why `versionString` and
+`versionNumberString` report that Scala 2 is in use:
 
 ```
-Welcome to Scala 3.1.1 (17.0.2, Java OpenJDK 64-Bit Server VM).
+Welcome to Scala 3.1.3 (17.0.3, Java OpenJDK 64-Bit Server VM).
 Type in expressions for evaluation. Or try :help.
 
-scala> util.Properties.versionString
-val res0: String = version 2.13.6
+scala> util.Properties.versionNumberString
+val res0: String = 2.13.8
 ```
+
+Note that Scala 3 offers
+`dotty.tools.dotc.config.Properties.versionNumberString`, but only if
+you have scala3-compiler on the classpath. So that works in the Scala 3
+REPL, but won't work in typical Scala 3 application code.
 
 ### Why is my (abstract or overridden) `val` null?
 
