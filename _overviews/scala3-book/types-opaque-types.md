@@ -124,12 +124,12 @@ However, outside of the module the type `Logarithm` is completely encapsulated, 
 
 ```scala
 import Logarithms.*
-val l2 = Logarithm(2.0)
-val l3 = Logarithm(3.0)
-println((l2 * l3).toDouble) // prints 6.0
-println((l2 + l3).toDouble) // prints 4.999...
+val log2 = Logarithm(2.0)
+val log3 = Logarithm(3.0)
+println((log2 * log3).toDouble) // prints 6.0
+println((log2 + log3).toDouble) // prints 4.999...
 
-val d: Double = l2 // ERROR: Found Logarithm required Double
+val d: Double = log2 // ERROR: Found Logarithm required Double
 ```
 
 Even though we abstracted over `Logarithm`, the abstraction comes for free:
