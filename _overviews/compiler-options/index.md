@@ -27,7 +27,7 @@ title: Scala Compiler Options
 
 The Scala compiler `scalac` offers various **compiler options**, or **flags**, that change the compiler's default behavior. Some options just generate more compiler output in the form of diagnostics or warnings, while others change the result of compilation.
 
-The Scala command `scala`, which runs scripts or compiled code, accepts the compiler options plus a few more that determine how to run a program.
+The Scala command `scala`, which runs scripts or compiled code, accepts the same options as the `scalac` compiler, plus a few more that determine how to run a program.
 
 Options may be specified on the command line to `scalac` or in the configuration of a build tool or IDE.
 
@@ -52,27 +52,33 @@ Options that take just a single argument accept traditional syntax:
 
 `scalac -d /tmp`
 
-Default paths can be listed by running a tool in the distribution:
+Conventionally, options have a prefix `-V` if they show "verbose" output;
+`-W` to manage warnings; `-X` for extended options that modify tool behavior;
+`-Y` for private options with limited support, where `Y` may suggest forking behavior.
+Several options have historical aliases, such as `-Xfatal-warnings` for `-Werror`.
+
+In Scala 2, default paths can be listed by running a tool in the distribution:
 ```
 scala scala.tools.util.PathResolver [ <options> ]
 ```
+That can help debug errors in options such as `--classpath`.
 
 ### Use compiler options with sbt
 
 Here is a typical configuration of the `scalacOptions` setting in `sbt`:
 
 ```scala
-scalacOptions ++= Seq(
+scalacOptions ++= Seq(          // use ++= to add to existing options
   "-encoding", "utf8",          // if an option takes an arg, supply it on the same line
-  "-feature",                   // put the next option on a new line
+  "-feature",                   // then put the next option on a new line for easy editing
   "-language:implicitConversions",
   "-language:existentials",
   "-unchecked",
   "-Werror",
-  "-Xlint",
-)
+  "-Xlint",                     // exploit "trailing comma" syntax so you can add an option without editing this line
+)                               // for "trailing comma", the closing paren must be on the next line
 ```
-The convention is always to append to the setting with `++=` and to supply an option per line.
+The convention is always to append to the setting with `++=` and to supply one option per line.
 
 Normally the last option will have a trailing comma so that `git diff` is a bit cleaner when options are added.
 
