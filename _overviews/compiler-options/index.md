@@ -135,8 +135,6 @@ Like the option for `javac`, it allows building against an earlier version of th
 
 The deprecated option `-target` does not compile against the desired API, but only specifies a target class file format.
 
-The `-release` option has an alias `-java-output-version` which clarifies that the option specifies the platform target and not a version of the Scala language.
-
 ## Additional resources
 
 ### Compilation Phases
