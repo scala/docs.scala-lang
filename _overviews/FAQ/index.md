@@ -127,6 +127,9 @@ Note that Scala 3 offers
 you have scala3-compiler on the classpath. So that works in the Scala 3
 REPL, but won't work in typical Scala 3 application code.
 
+For an alternative way to detect the Scala 3 version, see
+[this gist](https://gist.github.com/romanowski/de14691cab7340134e197419bc48919a).
+
 ### Why is my (abstract or overridden) `val` null?
 
 <!-- this is left over from a previous version of the FAQ.
