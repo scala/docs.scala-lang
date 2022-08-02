@@ -25,17 +25,13 @@ title: Scala Compiler Options
 
 ## Introduction
 
-Scala compiler `scalac` offers various **compiler options**, also referred to as **compiler flags**, to change how to compile your program.
+The Scala compiler `scalac` offers various **compiler options**, or **flags**, that change the compiler's default behavior. Some options just generate more compiler output in the form of diagnostics or warnings, while others change the result of compilation.
 
-Nowadays, most people are not running `scalac` from the command line.
-Instead, they use sbt, an IDE, and other tools as their interface to the compiler.
-Therefore they may not even have `scalac` installed, and won't think to do `man scalac`.
+The Scala command `scala`, which runs scripts or compiled code, accepts the same options as the `scalac` compiler, plus a few more that determine how to run a program.
 
-This page comes to the rescue for the people to find&hellip;
+Options may be specified on the command line to `scalac` or in the configuration of a build tool or IDE.
 
-* What compiler options `scalac` offers
-* How to use compiler options
-
+The Scala distribution includes a `man` page. If Scala is installed as a system command, that documentation may be available from `man scalac`.
 
 ## How to use compiler options
 
@@ -44,34 +40,47 @@ This page comes to the rescue for the people to find&hellip;
 ```bash
 scalac [ <options> ] <source files>
 ```
+Boolean flags are specified in the usual way:
 
-E.g. `scalac -encoding utf8 -Xfatal-warnings Hello.scala`
+`scalac -Werror -Xlint Hello.scala`
 
-Default paths can be listed by running a command line tool:
+Options that require arguments use "colon" syntax:
+
+`scalac -Vprint:parser,typer`
+
+Options that take just a single argument accept traditional syntax:
+
+`scalac -d /tmp`
+
+Conventionally, options have a prefix `-V` if they show "verbose" output;
+`-W` to manage warnings; `-X` for extended options that modify tool behavior;
+`-Y` for private options with limited support, where `Y` may suggest forking behavior.
+Several options have historical aliases, such as `-Xfatal-warnings` for `-Werror`.
+
+In Scala 2, default paths can be listed by running a tool in the distribution:
 ```
 scala scala.tools.util.PathResolver [ <options> ]
 ```
-
-
+That can help debug errors in options such as `--classpath`.
 
 ### Use compiler options with sbt
 
-
+Here is a typical configuration of the `scalacOptions` setting in `sbt`:
 
 ```scala
-scalacOptions ++= Seq(
-  "-encoding", "utf8", // Option and arguments on same line
-  "-Xfatal-warnings",  // New lines for each options
-  "-deprecation",
-  "-unchecked",
+scalacOptions ++= Seq(          // use ++= to add to existing options
+  "-encoding", "utf8",          // if an option takes an arg, supply it on the same line
+  "-feature",                   // then put the next option on a new line for easy editing
   "-language:implicitConversions",
-  "-language:higherKinds",
   "-language:existentials",
-  "-language:postfixOps"
-)
+  "-unchecked",
+  "-Werror",
+  "-Xlint",                     // exploit "trailing comma" syntax so you can add an option without editing this line
+)                               // for "trailing comma", the closing paren must be on the next line
 ```
+The convention is always to append to the setting with `++=` and to supply one option per line.
 
-
+Normally the last option will have a trailing comma so that `git diff` is a bit cleaner when options are added.
 
 {% for category in site.data.compiler-options %}
 <h2>{{ category.category }}</h2>
@@ -116,6 +125,15 @@ scalacOptions ++= Seq(
 
 {% endfor %}  
 
+### Targeting a version of the JVM
+
+Applications or libraries targeting the JVM may wish to specify a target version.
+
+The `-release` option specifies the target version, such as "8" or "18".
+
+Like the option for `javac`, it allows building against an earlier version of the JDK. It will compile against the API for that version and also output class files for that version.
+
+The deprecated option `-target` does not compile against the desired API, but only specifies a target class file format.
 
 ## Additional resources
 
