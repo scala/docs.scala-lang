@@ -9,6 +9,7 @@ num: 39
 outof: 54
 previous-page: tuples
 next-page: sbt-scalatest-intro
+new-version: /scala3/book/domain-modeling-oop.html
 ---
 
 
@@ -216,8 +217,3 @@ To experiment with this on your own, please see the *PizzaOopExample* project in
 - [github.com/alvinj/HelloScalaExamples](https://github.com/alvinj/HelloScalaExamples)
 
 To compile this project it will help to either (a) use IntelliJ IDEA or Eclipse, or (b) know how to use the [Scala Build Tool](http://www.scala-sbt.org).
-
-
-
-
-

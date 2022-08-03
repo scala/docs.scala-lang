@@ -9,6 +9,7 @@ num: 41
 outof: 54
 previous-page: sbt-scalatest-intro
 next-page: sbt-scalatest-tdd
+new-version: /scala3/book/tools-sbt.html#building-scala-projects-with-sbt
 ---
 
 
@@ -162,12 +163,3 @@ Here’s a list of other build tools you can use to build Scala projects:
 - [Maven](https://maven.apache.org/)
 - [Fury](https://propensive.com/opensource/fury)
 - [Mill](https://com-lihaoyi.github.io/mill/)
-
-
-
-
-
-
-
-
-

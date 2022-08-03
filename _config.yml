@@ -16,11 +16,12 @@ keywords:
 - Guide
 
 scala-version: 2.13.8
-scala-212-version: 2.12.15
-scala-3-version: 3.1.2
+scala-212-version: 2.12.16
+scala-3-version: 3.1.3
 
 collections:
   contribute_resources:
+    output: false
   style:
     output: true
   overviews:
@@ -45,8 +46,6 @@ collections:
   getting-started:
     output: true
     permalink: /:collection/:path.html
-  scala3-reference: # not really a collection, but this is the only way I found to be able to generate the navigation bar on the right
-    output: true
   ja: # Japanese translations
     output: true
     permalink: /:collection/:path.html
@@ -86,6 +85,9 @@ collections:
   th: # Thai translations
     output: true
     permalink: /:collection/:path.html
+  uk: # Ukrainian translations
+    output: true
+    permalink: /:collection/:path.html
 
 defaults:
   -
@@ -94,6 +96,42 @@ defaults:
       type: "tour"
     values:
       overview-name: "Tour of Scala"
+  -
+    scope:
+      path: "_overviews/macros"
+    values:
+      scala2: true
+      versionSpecific: true
+  -
+    scope:
+      path: "_overviews/reflection"
+    values:
+      scala2: true
+      versionSpecific: true
+  -
+    scope:
+      path: "_overviews/quasiquotes"
+    values:
+      scala2: true
+      versionSpecific: true
+  -
+    scope:
+      path: "_overviews/repl"
+    values:
+      scala2: true
+      versionSpecific: true
+  -
+    scope:
+      path: "_overviews/plugins"
+    values:
+      scala2: true
+      versionSpecific: true
+  -
+    scope:
+      path: "_overviews/compiler-options"
+    values:
+      scala2: true
+      versionSpecific: true
   -
     scope:
       path: "_overviews/scala3-book"
@@ -139,6 +177,7 @@ defaults:
       path: "_overviews/scala3-macros"
     values:
       scala3: true
+      versionSpecific: true
       partof: scala3-macros
       overview-name: "Macros in Scala 3"
       layout: multipage-overview
@@ -148,20 +187,11 @@ defaults:
       path: "_overviews/scala3-scaladoc"
     values:
       scala3: true
+      versionSpecific: true
       partof: scala3-scaladoc
       overview-name: "Scaladoc"
       layout: multipage-overview
       permalink: "/scala3/guides/scaladoc/:title.html"
-  -
-    scope:
-      path: "_scala3-reference"
-    values:
-      scala3: true
-      partof: scala3-reference
-      type: section
-      overview-name: "Scala 3 Language Reference"
-      layout: multipage-overview
-      permalink: "/scala3/reference/:path.html"
   -
     scope:
       path: "scala3"
@@ -172,8 +202,7 @@ defaults:
 highlighter: rouge
 permalink: /:categories/:title.html:output_ext
 baseurl:
-scala3ref: "/scala3/reference"
+scala3ref: "https://docs.scala-lang.org/scala3/reference"
 exclude: ["vendor"]
 plugins:
   - jekyll-redirect-from
-  - jekyll-scalafiddle

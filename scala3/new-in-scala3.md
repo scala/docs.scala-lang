@@ -1,7 +1,7 @@
 ---
 layout: singlepage-overview
 title: New in Scala 3
-languages: ["ja","zh-cn"]
+languages: ["ja","zh-cn","uk"]
 ---
 The exciting new version of Scala 3 brings many improvements and
 new features. Here we provide you with a quick overview of the most important
@@ -113,7 +113,7 @@ If you want to learn more about metaprogramming in Scala 3, we invite you to tak
 [migration]: {% link _overviews/scala3-migration/compatibility-intro.md %}
 [contribution]: {% link _overviews/scala3-contribution/contribution-intro.md %}
 
-[implicits]: {{ site.scala3ref }}/contextual.html
+[implicits]: {{ site.scala3ref }}/contextual
 [contextual-using]: {{ site.scala3ref }}/contextual/using-clauses.html
 [contextual-givens]: {{ site.scala3ref }}/contextual/givens.html
 [contextual-extension]: {{ site.scala3ref }}/contextual/extension-methods.html
@@ -131,7 +131,7 @@ If you want to learn more about metaprogramming in Scala 3, we invite you to tak
 [meta-quotes]: {% link _overviews/scala3-macros/tutorial/quotes.md %}
 [meta-reflection]: {% link _overviews/scala3-macros/tutorial/reflection.md %}
 
-[oo-explicit-null]: {{ site.scala3ref }}/other-new-features/explicit-nulls.html
+[oo-explicit-null]: {{ site.scala3ref }}/experimental/explicit-nulls.html
 [oo-safe-init]: {{ site.scala3ref }}/other-new-features/safe-initialization.html
 [oo-trait-parameters]: {{ site.scala3ref }}/other-new-features/trait-parameters.html
 [oo-open]: {{ site.scala3ref }}/other-new-features/open-classes.html

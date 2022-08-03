@@ -9,6 +9,7 @@ num: 30
 outof: 54
 previous-page: arraybuffer-examples
 next-page: vector-class
+new-version: /scala3/book/collections-classes.html#list
 ---
 
 [The List class](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html) is a linear, immutable sequence. All this means is that it’s a linked-list that you can’t modify. Any time you want to add or remove `List` elements, you create a new `List` from an existing `List`.
@@ -139,15 +140,3 @@ list: List[Int] = List(1, 2, 3)
 ```
 
 This works because a `List` is a singly-linked list that ends with the `Nil` element.
-
-
-
-
-
-
-
-
-
-
-
-

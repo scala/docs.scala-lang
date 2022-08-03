@@ -9,6 +9,7 @@ num: 7
 outof: 54
 previous-page: hello-world-2
 next-page: two-types-variables
+new-version: /scala3/book/taste-repl.html
 ---
 
 
@@ -72,13 +73,5 @@ In addition to the REPL there are a couple of other, similar tools you can use:
 - [Scastie](https://scastie.scala-lang.org) is “an interactive playground for Scala” with several nice features, including being able to control build settings and share code snippets
 - IntelliJ IDEA has a Worksheet plugin that lets you do the same things inside your IDE
 - The Scala IDE for Eclipse also has a Worksheet plugin
-- [scalafiddle.io](https://scalafiddle.io) lets you run similar experiments in a web browser
 
 For more information on the Scala REPL, see the [Scala REPL overview]({{site.baseurl}}/overviews/repl/overview.html)
-
-
-
-
-
-
-

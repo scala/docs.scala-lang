@@ -40,7 +40,7 @@ scala3-sections:
     - title: "语言参考手册"
       description: "Scala 3 语言参考手册"
       icon: "fa fa-book"
-      link: /scala3/reference/overview.html
+      link: https://docs.scala-lang.org/scala3/reference
     - title: "贡献指南"
       description: "Scala 3 编译器指南及如何贡献代码"
       icon: "fa fa-cogs"

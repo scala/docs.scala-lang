@@ -13,15 +13,15 @@ En esta página, practicaremos conceptos básicos de Scala.
 
 ## Probando Scala en el navegador
 
-Puedes ejecutar Scala en tu navegador con ScalaFiddle.
+Puedes ejecutar Scala en tu navegador con Scastie.
 
-1. Ve a [https://scalafiddle.io](https://scalafiddle.io).
+1. Ve a [Scastie](https://scastie.scala-lang.org/).
 2. Escribe `println("Hello, world!")` en el panel a la izquierda.
 3. Presiona el botón "Run". En el panel de la derecha aparecerá el resultado.
 
 Así, de manera fácil y sin preparación, puedes probar fragmentos de código Scala.
 
-Muchos ejemplos de código en esta documentación están integrados con ScalaFiddle, y así puedes probarlos directamente solo con pulsar el botón "Run".
+Muchos ejemplos de código en esta documentación están integrados con Scastie, y así puedes probarlos directamente solo con pulsar el botón "Run".
 
 ## Expresiones
 
@@ -33,14 +33,12 @@ Las expresiones son sentencias computables.
 
 Se puede ver el resultado de evaluar expresiones usando `println`.
 
-{% scalafiddle %}
 ```scala mdoc
 println(1) // 1
 println(1 + 1) // 2
 println("Hello!") // Hello!
 println("Hello," + " world!") // Hello, world!
 ```
-{% endscalafiddle %}
 
 ## Valores
 
@@ -110,21 +108,17 @@ La lista de parámetros de la función está a la izquierda de la flecha `=>`, y
 
 También podemos asignarle un nombre a la función.
 
-{% scalafiddle %}
 ```scala mdoc
 val addOne = (x: Int) => x + 1
 println(addOne(1)) // 2
 ```
-{% endscalafiddle %}
 
 Las funciones pueden tomar varios parámetros.
 
-{% scalafiddle %}
 ```scala mdoc
 val add = (x: Int, y: Int) => x + y
 println(add(1, 2)) // 3
 ```
-{% endscalafiddle %}
 
 O ninguno.
 
@@ -139,23 +133,19 @@ Los métodos se parecen y comportan casi como a las funciones, pero se diferenci
 
 Un método se define con la palabra reservada `def`, seguida por el nombre del método, la lista de parámetros, el tipo de valores que el método devuelve, y el cuerpo del método.
 
-{% scalafiddle %}
 ```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
-{% endscalafiddle %}
 
 Observe que el tipo de retorno se declara _después_ de la lista de parámetros, y separado con dos puntos, p.ej. `: Int`.
 
 Un método puede tener varias listas de parámetros.
 
-{% scalafiddle %}
 ```scala mdoc
 def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
 println(addThenMultiply(1, 2)(3)) // 9
 ```
-{% endscalafiddle %}
 
 O ninguna lista de parámetros.
 
@@ -168,7 +158,6 @@ Hay otras diferencias, pero para simplificar, podemos pensar que son similares a
 
 Los métodos también pueden tener expresiones de varias lineas.
 
-{% scalafiddle %}
 ```scala mdoc
 def getSquareString(input: Double): String = {
   val square = input * input
@@ -176,7 +165,6 @@ def getSquareString(input: Double): String = {
 }
 println(getSquareString(2.5)) // 6.25
 ```
-{% endscalafiddle %}
 
 La ultima expresión en el cuerpo del método es el valor de retorno del mismo.
 (Scala tiene una palabra reservada `return`, pero se usa raramente y no se aconseja usarla)
@@ -279,7 +267,6 @@ trait Greeter {
 
 Un `trait` también puede definir un método, o un valor, con una implementación por defecto.
 
-{% scalafiddle %}
 ```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
@@ -304,7 +291,6 @@ greeter.greet("Scala developer") // Hello, Scala developer!
 val customGreeter = new CustomizableGreeter("How are you, ", "?")
 customGreeter.greet("Scala developer") // How are you, Scala developer?
 ```
-{% endscalafiddle %}
 
 Aquí, `DefaultGreeter` extiende un solo trait, pero puede extender múltiples traits.
 

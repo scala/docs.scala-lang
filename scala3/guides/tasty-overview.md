@@ -1,6 +1,10 @@
 ---
 layout: singlepage-overview
 title: An Overview of TASTy
+partof: tasty-overview
+languages: ["uk"]
+scala3: true
+versionSpecific: true
 ---
 If you create a Scala 3 source code file named _Hello.scala_:
 

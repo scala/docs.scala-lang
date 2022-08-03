@@ -13,15 +13,15 @@ Na tej stronie omówimy podstawy języka Scala.
 
 ## Uruchamianie Scali w przeglądarce
 
-Dzięki ScalaFiddle możesz uruchomić Scalę w swojej przeglądarce.
+Dzięki Scastie możesz uruchomić Scalę w swojej przeglądarce.
 
-1. Przejdź do [https://scalafiddle.io](https://scalafiddle.io).
+1. Przejdź do [Scastie](https://scastie.scala-lang.org/).
 2. Wklej kod `println("Hello, world!")` w polu po lewej stronie.
 3. Naciśnij przycisk "Run". W panelu po prawej stronie pojawi się wynik działania programu.
 
 Jest to prosta i niewymagająca żadnej instalacji metoda do eksperymentowania z kodem w Scali.
 
-Wiele przykładów kodu w tym przewodniku jest również zintegrowana ze ScalaFiddle,
+Wiele przykładów kodu w tym przewodniku jest również zintegrowana ze Scastie,
 dzięki czemu można je wypróbować wciskając po prostu przycisk "Run".
 
 ## Wyrażenia
@@ -34,14 +34,12 @@ Wyrażenia są rezultatem ewaluacji fragmentów kodu.
 
 Wyniki wyrażeń można wyświetlić za pomocą funkcji `println`.
 
-{% scalafiddle %}
 ```scala mdoc
 println(1) // 1
 println(1 + 1) // 2
 println("Hello!") // Hello!
 println("Hello," + " world!") // Hello, world!
 ```
-{% endscalafiddle %}
 
 ### Wartości
 
@@ -74,13 +72,11 @@ Zauważ, że deklaracja `Int` pojawia po identyfikatorze `x`, potrzebny jest ró
 Zmienne są podobne do wartości, ale z tym wyjątkiem, że można je ponownie przypisywać.
 Zmienną można zdefiniować używając słowa kluczowego `var`.
 
-{% scalafiddle %}
 ```scala mdoc:nest
 var x = 1 + 1
 x = 3 // Kompiluje się, ponieważ "x" jest zdefiniowane z użyciem "var".
 println(x * x) // 9
 ```
-{% endscalafiddle %}
 
 Tak jak przy wartościach, można wyraźnie zdefiniować żądany typ:
 
@@ -94,14 +90,12 @@ Wyrażenia mogą być łączone poprzez zamknięcie ich w nawiasie klamrowym`{}`
 Taką konstrukcję nazywamy blokiem.
 Wynikiem całego bloku kodu jest wynik ostatniego wyrażenia w tym bloku.
 
-{% scalafiddle %}
 ```scala mdoc
 println({
   val x = 1 + 1
   x + 1
 }) // 3
 ```
-{% endscalafiddle %}
 
 ## Funkcje
 
@@ -118,30 +112,24 @@ Po prawej stronie - wyrażenie wykorzystujące te parametry.
 
 Funkcje można również nazywać.
 
-{% scalafiddle %}
 ```scala mdoc
 val addOne = (x: Int) => x + 1
 println(addOne(1)) // 2
 ```
-{% endscalafiddle %}
 
 Funkcje mogą przyjmować wiele parametrów.
 
-{% scalafiddle %}
 ```scala mdoc
 val add = (x: Int, y: Int) => x + y
 println(add(1, 2)) // 3
 ```
-{% endscalafiddle %}
 
 Mogą też wcale nie mieć parametrow.
 
-{% scalafiddle %}
 ```scala mdoc
 val getTheAnswer = () => 42
 println(getTheAnswer()) // 42
 ```
-{% endscalafiddle %}
 
 ## Metody
 
@@ -150,38 +138,31 @@ Metody wyglądają i zachowują się bardzo podobnie jak funkcje, jednak jest mi
 Metody są definiowane z użyciem słowa kluczowego `def`.
 Po `def` następuje nazwa metody, lista parametrów, zwracany typ i ciało metody.
 
-{% scalafiddle %}
 ```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
-{% endscalafiddle %}
 
 Zauważ, że zwracany typ jest zadeklarowany _po_ liście parametrów i dwukropku `: Int`.
 
 Metody mogą mieć wiele list parametrów.
 
-{% scalafiddle %}
 ```scala mdoc
 def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
 println(addThenMultiply(1, 2)(3)) // 9
 ```
-{% endscalafiddle %}
 
 Mogą również wcale ich nie posiadać.
 
-{% scalafiddle %}
 ```scala mdoc
 def name: String = System.getProperty("user.name")
 println("Hello, " + name + "!")
 ```
-{% endscalafiddle %}
 
 Od funkcji odróżnia je jeszcze kilka innych rzeczy, ale na razie możesz o nich myśleć jak o bardzo podobnych do funkcji.
 
 Metody mogą zawierać również wyrażenia wielowierszowe.
 
-{% scalafiddle %}
 ```scala mdoc
 def getSquareString(input: Double): String = {
   val square = input * input
@@ -189,7 +170,6 @@ def getSquareString(input: Double): String = {
 }
 println(getSquareString(2.5)) // 6.25
 ```
-{% endscalafiddle %}
 
 Ostatnie wyrażenie w ciele metody jest wartością, jaką zwraca cała metoda.
 Scala posiada słowo kluczowe `return`, ale jest ono wykorzystywane bardzo rzadko.
@@ -198,7 +178,6 @@ Scala posiada słowo kluczowe `return`, ale jest ono wykorzystywane bardzo rzadk
 
 Klasy są definiowane za pomocą słowa kluczowego `class`, po którym następuje nazwa klasy i parametry konstruktora.
 
-{% scalafiddle %}
 ```scala mdoc
 class Greeter(prefix: String, suffix: String) {
   def greet(name: String): Unit =
@@ -216,7 +195,6 @@ Nowe instancje klasy tworzy się za pomocą słowa kluczowego `new`.
 val greeter = new Greeter("Hello, ", "!")
 greeter.greet("Scala developer") // Hello, Scala developer!
 ```
-{% endscalafiddle %}
 
 Klasy zostaną szerzej omówione w [dalszej części](classes.html) tego przewodnika.
 
@@ -226,7 +204,6 @@ W Scali istnieje spacjalny typ klasy - klasa "przypadku" (case class).
 Klasy przypadku są domyślnie niezmienne i porównywane przez wartości.
 Klasy te można definiować używająć słów kluczowych `case class`.
 
-{% scalafiddle %}
 ```scala mdoc
 case class Point(x: Int, y: Int)
 ```
@@ -254,7 +231,6 @@ if (point == yetAnotherPoint) {
   println(point + " i " + yetAnotherPoint + " są inne.")
 } // Point(1,2) i Point(2,2) są inne.
 ```
-{% endscalafiddle %}
 
 Klasy przypadków to dużo szerszy temat, do zapoznania z którym bardzo zachęcamy. Jesteśmy pewni, że Ci się spodoba!
 Jest on dokładnie omówiony w [późniejszym rozdziale](case-classes.html).
@@ -266,7 +242,6 @@ Można o nich myśleć jak o instancjach ich własnych klas - singletonach.
 
 Objekty definiuje się z użyciem słowa kluczowego `object`.
 
-{% scalafiddle %}
 ```scala mdoc
 object IdFactory {
   private var counter = 0
@@ -285,7 +260,6 @@ println(newId) // 1
 val newerId: Int = IdFactory.create()
 println(newerId) // 2
 ```
-{% endscalafiddle %}
 
 Obiekty zostaną szerzej omówione [później](singleton-objects.html).
 
@@ -304,7 +278,6 @@ trait Greeter {
 
 Cechy mogą zawierać domyślną implementację.
 
-{% scalafiddle %}
 ```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
@@ -329,7 +302,6 @@ greeter.greet("Scala developer") // Hello, Scala developer!
 val customGreeter = new CustomizableGreeter("How are you, ", "?")
 customGreeter.greet("Scala developer") // How are you, Scala developer?
 ```
-{% endscalafiddle %}
 
 W tym przykładzie `DefaultGreeter` rozszerza tylko jedną cechę (trait), ale równie dobrze może rozszerzać ich wiele.
 

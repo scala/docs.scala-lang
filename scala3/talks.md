@@ -1,6 +1,10 @@
 ---
 layout: singlepage-overview
 title: Talks
+scala3: true
+partof: scala3-talks
+languages: ["uk"]
+versionSpecific: true
 ---
 
 Let’s Talk About Scala 3 Series
@@ -12,7 +16,7 @@ advantage of the new language features, or how to migrate from Scala 2.
 
 Talks on Scala 3
 ----------------
-- (ScalaDays 2019, Lausanne) [A Tour of Scala 3](https://www.youtube.com/watch?v=_Rnrx2lo9cw) by [Martin Odersky](http://twitter.com/odersky) [\[slides\]](https://www.slideshare.net/Odersky/a-tour-of-scala-3)
+- (ScalaDays 2019, Lausanne) [A Tour of Scala 3](https://www.youtube.com/watch?v=_Rnrx2lo9cw) by [Martin Odersky](http://twitter.com/odersky)
 
 - (ScalaDays 2016, Berlin) [Scala's Road Ahead](https://www.youtube.com/watch?v=GHzWqJKFCk4) by [Martin Odersky](http://twitter.com/odersky) [\[slides\]](http://www.slideshare.net/Odersky/scala-days-nyc-2016)
 
@@ -66,4 +70,3 @@ Deep Dive with Scala 3
   Dmitry introduces the call-graph analysis algorithm
   that Dotty implements and the performance benefits we can get in terms of number of methods, bytecode size, JVM code size
   and the number of objects allocated in the end.
-

@@ -1,0 +1,29 @@
+<div class="place-inline">
+  <div id="<%= @name %>" class="tabsection<%= @css_classes %>">
+    <% environment["tabs-#{@name}"].each do | tab | %>
+      <input
+        type="radio"
+        name="<%= @name %>_tabs"
+        id="<%= @name %>_<%= tab.anchor %>_description"
+        data-target="<%= tab.anchor %>"
+        hidden aria-hidden="true"
+        <%= tab.defaultTab ? 'checked' : ''%>>
+    <% end %>
+    <ul hidden aria-hidden="true" class="nav-tab">
+      <% environment["tabs-#{@name}"].each do | tab | %>
+        <li class="item-tab">
+          <label class="item-tab-link" for="<%= @name %>_<%= tab.anchor %>_description"><%= tab.label %></label>
+        </li>
+      <% end %>
+    </ul>
+    <div class="tabcontent">
+      <% environment["tabs-#{@name}"].each do | tab | %>
+        <section id="<%= tab.anchor %>_content">
+          <div class="wrap-tab">
+            <%= tab.content %>
+          </div>
+        </section>
+      <% end %>
+    </div>
+  </div>
+</div>

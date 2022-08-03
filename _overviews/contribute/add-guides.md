@@ -61,24 +61,6 @@ on [docs.scala-lang.org][home].
 
     And a paragraph, with a [link](https://www.scala-lang.org).
 
-You can contribute code in a markdown document by either
-- in-line by putting backticks around it,
-- surrounding by triple backticks,
-- or indenting it by 4 spaces, e.g.:
-
-~~~
-inline example: `val x = 23`
-
-block example:
-```scala
-println("hello")
-```
-
-indented example:
-
-    case class Foo(x: Int)
-~~~
-
 Tables of contents will be automatically generated in a sidebar for your document, and syntax highlighting
 is provided.
 
@@ -97,6 +79,130 @@ If you have something you're thinking about contributing, or that you're thinkin
 -- we'd love to consider it! Please don't hesitate to use GitHub issues and pull requests and the
 `#scala-contributors` room [on Discord](https://discord.com/invite/scala) for any questions, concerns,
 clarifications, etc.
+
+## Code blocks
+
+It's common for various kinds of documents to require code examples.
+You can contribute code in a markdown document by either
+- in-line by putting backticks around it,
+- surrounding by triple backticks,
+- or indenting it by 4 spaces, e.g.:
+
+~~~
+inline example: `val x = 23`
+
+block example:
+```scala
+println("hello")
+```
+
+indented example:
+
+    case class Foo(x: Int)
+~~~
+
+### Scala 2 vs Scala 3
+
+Sometimes you would like to compare between Scala 2 and Scala 3 in a document, for example in
+our [Hello World][hello-world] chapter of the Scala Book. Here is an example of how you
+can generate the same tabs in markdown with the `tabs` directive and class `tabs-scala-version`:
+
+<!-- {% raw  %} -->
+~~~liquid
+{% tabs hello-world-demo class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=hello-world-demo %}
+```scala
+object hello extends App {
+  println("Hello, World!")
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=hello-world-demo %}
+```scala
+@main def hello() = println("Hello, World!")
+```
+{% endtab %}
+
+{% endtabs %}
+~~~
+<!-- {% endraw  %} -->
+
+It is crucial that you use the `tabs-scala-version` class to benefit from some cool user interactions:
+- all other Scala version tabs on the same page will also switch to current tab, whenever one is changed.
+- the tab picked will be remembered across the site, and when the user returns to the page after some time.
+
+For code snippets that are valid in both Scala 2 and Scala 3, please use a single tab labelled
+“Scala 2 and 3” (please note that the `tabs-scala-version` class is also dropped):
+
+<!-- {% raw  %} -->
+~~~liquid
+{% tabs scala-2-and-3-demo %}
+{% tab 'Scala 2 and 3' for=scala-2-and-3-demo %}
+```scala
+List(1, 2, 3).map(x => x + 1).sum
+```
+{% endtab %}
+{% endtabs %}
+~~~
+<!-- {% endraw  %} -->
+
+### Typechecked Examples
+
+The site build process uses [mdoc](https://scalameta.org/mdoc/) to typecheck
+code snippets in markdown. This is a great way to ensure the code snippets that
+you're including typecheck and are valid. Here are a few quick tips to get
+started:
+
+First, add `mdoc` after `scala` when you are creating a
+code block. The `mdoc` modifier here will make sure that `mdoc` runs the code
+snippet and ensures that it's valid.
+
+<div class="language-plaintext highlighter-rouge">
+    <div class="highlight">
+        <pre class="highlight">
+            <code class="hljs scala">&#96;&#96;&#96;scala mdoc
+<span class="hljs-keyword">val</span> a = <span class="hljs-number">1</span>
+```</code></pre></div></div>
+
+If you have a snippet that you expect to fail, you can also account for this by
+using `mdoc:fail` for a compile error `mdoc:crash` for a runtime-error.
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs scala">&#96;&#96;&#96;scala mdoc:fail
+<span class="hljs-keyword">val</span> b: <span class="hljs-type">String</span> = <span class="hljs-number">3</span> <span class="hljs-comment">// won't compile</span>
+```</code></pre></div></div>
+
+Keep in mind that a single file is all compiled as a single unit, so you can't
+redefine a variable that was defined above in another code snippet. _However_
+there are a couple ways to get around this. Firstly, you can use the `mdoc:nest`
+modifier with will wrap the snippet in a `scala.Predef.locally{...}`. This will
+essentially "hide" the snippet from the others. Another way around this is to
+use the `mdoc:reset` modifier, which _resets_ and forgets about everything up
+above. Here is an example using the various modifiers.
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs scala">&#96;&#96;&#96;scala mdoc
+<span class="hljs-keyword">import</span> java.time.<span class="hljs-type">Instant</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">now</span></span>() = <span class="hljs-type">Instant</span>.now()
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Foo</span> </span>{}
+```</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs scala">&#96;&#96;&#96;scala mdoc:nest
+<span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span>(<span class="hljs-params">a: <span class="hljs-type">Int</span></span>) <span class="hljs-comment">// conflicts with Foo above, but it's nested so it's fine</span></span>
+```</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs scala">&#96;&#96;&#96;scala mdoc
+<span class="hljs-keyword">val</span> a = <span class="hljs-string">s"The time is <span class="hljs-subst">${now()}</span>"</span> <span class="hljs-comment">// still have access to the now method from above</span>
+```</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs scala">&#96;&#96;&#96;scala mdoc:reset
+<span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span>(<span class="hljs-params">a: <span class="hljs-type">String</span></span>) <span class="hljs-comment">// forget the previous Foo's and start fresh</span></span>
+```</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs scala">&#96;&#96;&#96;scala mdoc
+<span class="hljs-keyword">val</span> myFoo = <span class="hljs-type">Foo</span>(<span class="hljs-string">"hi"</span>) <span class="hljs-comment">// now we only have access to the last Foo</span>
+```</code></pre></div></div>
 
 ## Document Templates
 
@@ -197,64 +303,9 @@ you should use the following format:
     |---------|---------|
     | content | more    |
 
-### Code blocks
-
-The site build process uses [mdoc](https://scalameta.org/mdoc/) to typecheck
-code snippets in markdown. This is a great way to ensure the code snippets that
-you're including typecheck and are valid. Here are a few quick tips to get
-started:
-
-First, add `mdoc` after `scala` when you are creating a
-code block. The `mdoc` modifier here will make sure that `mdoc` runs the code
-snippet and ensures that it's valid.
-
-<div class="language-plaintext highlighter-rouge">
-    <div class="highlight">
-        <pre class="highlight">
-            <code class="hljs scala">&#96;&#96;&#96;scala mdoc
-<span class="hljs-keyword">val</span> a = <span class="hljs-number">1</span>
-```</code></pre></div></div>
-
-If you have a snippet that you expect to fail, you can also account for this by
-using `mdoc:fail` for a compile error `mdoc:crash` for a runtime-error.
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs scala">&#96;&#96;&#96;scala mdoc:fail
-<span class="hljs-keyword">val</span> b: <span class="hljs-type">String</span> = <span class="hljs-number">3</span> <span class="hljs-comment">// won't compile</span>
-```</code></pre></div></div>
-
-Keep in mind that a single file is all compiled as a single unit, so you can't
-redefine a variable that was defined above in another code snippet. _However_
-there are a couple ways to get around this. Firstly, you can use the `mdoc:nest`
-modifier with will wrap the snippet in a `scala.Predef.locally{...}`. This will
-essentially "hide" the snippet from the others. Another way around this is to
-use the `mdoc:reset` modifier, which _resets_ and forgets about everything up
-above. Here is an example using the various modifiers.
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs scala">&#96;&#96;&#96;scala mdoc
-<span class="hljs-keyword">import</span> java.time.<span class="hljs-type">Instant</span>
-
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">now</span></span>() = <span class="hljs-type">Instant</span>.now()
-<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Foo</span> </span>{}
-```</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs scala">&#96;&#96;&#96;scala mdoc:nest
-<span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span>(<span class="hljs-params">a: <span class="hljs-type">Int</span></span>) <span class="hljs-comment">// conflicts with Foo above, but it's nested so it's fine</span></span>
-```</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs scala">&#96;&#96;&#96;scala mdoc
-<span class="hljs-keyword">val</span> a = <span class="hljs-string">s"The time is <span class="hljs-subst">${now()}</span>"</span> <span class="hljs-comment">// still have access to the now method from above</span>
-```</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs scala">&#96;&#96;&#96;scala mdoc:reset
-<span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span>(<span class="hljs-params">a: <span class="hljs-type">String</span></span>) <span class="hljs-comment">// forget the previous Foo's and start fresh</span></span>
-```</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs scala">&#96;&#96;&#96;scala mdoc
-<span class="hljs-keyword">val</span> myFoo = <span class="hljs-type">Foo</span>(<span class="hljs-string">"hi"</span>) <span class="hljs-comment">// now we only have access to the last Foo</span>
-```</code></pre></div></div>
-
 [collections-overview]: {% link _overviews/collections-2.13/introduction.md %}
 [why-contribute]: {% link contribute.md %}
 [home]: {% link index.md %}
 [overviews-index]: {% link _overviews/index.md %}
-[scala-3-reference]: https://docs.scala-lang.org/scala3/reference/overview.html
+[scala-3-reference]: {{ site.scala3ref }}
+[hello-world]: {% link _overviews/scala3-book/taste-hello-world.md %}

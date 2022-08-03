@@ -44,6 +44,11 @@ layout: inner-page-parent
 				{% if category.description %}<p>{{ category.description }}</p>{% endif %}
 				<div class="card-group">
 					{% for overview in category.overviews %}
+					{% if overview.root %}
+						{% assign overviewroot = overview.root %}
+					{% else %}
+						{% assign overviewroot = 'overviews/' %}
+					{% endif %}
 					<div class="white-card">
 						<div class="card-wrap">
 							<div class="card-header">
@@ -52,8 +57,8 @@ layout: inner-page-parent
 									<div class="icon"><i class="fa fa-{{ overview.icon }}" aria-hidden="true"></i></div>
 								</div>
 								{% endif %}
-								{% capture originalOverviewUrl %}/overviews/{{ overview.url }}{% endcapture %}
-								{% capture translatedOverviewId %}/{{page.language}}/overviews/{{ overview.url | remove_first: '.html' }}{% endcapture %}
+								{% capture originalOverviewUrl %}/{{overviewroot}}{{ overview.url }}{% endcapture %}
+								{% capture translatedOverviewId %}/{{page.language}}/{{overviewroot}}{{ overview.url | remove_first: '.html' }}{% endcapture %}
 								{% assign translatedOverview = site.documents | where: 'id', translatedOverviewId | first %}
 								<a href="{{ translatedOverview.url | default: originalOverviewUrl }}"><h3>{{ overview.title }}</h3></a>
 							</div>
@@ -65,8 +70,8 @@ layout: inner-page-parent
 								<strong>Contents</strong>
 								<ul class="subdocs">
 									{% for doc in overview.subdocs %}
-									{% capture originalDocUrl %}/overviews/{{ doc.url }}{% endcapture %}
-									{% capture translatedDocId %}/{{page.language}}/overviews/{{ doc.url | remove_first: '.html' }}{% endcapture %}
+									{% capture originalDocUrl %}/{{overviewroot}}{{ doc.url }}{% endcapture %}
+									{% capture translatedDocId %}/{{page.language}}/{{overviewroot}}{{ doc.url | remove_first: '.html' }}{% endcapture %}
 									{% assign translatedDoc = site.documents | where: 'id', translatedDocId | first %}
 									<li><a href="{{ translatedDoc.url | default: originalDocUrl }}">{{ doc.title }}</a></li>
 									{% endfor %}

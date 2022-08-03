@@ -4,7 +4,7 @@ type: chapter
 description: This page is for Python developers who are interested in learning about Scala 3.
 num: 75
 previous-page: scala-for-javascript-devs
-next-page:
+next-page: where-next
 ---
 
 {% include_relative scala4x.css %}
@@ -1313,7 +1313,7 @@ sbt compile
 
 automatically resolves all dependencies for that particular project. The location of downloaded dependencies is largely an implementation detail of the build tool, and users do not have to interact with these downloaded dependencies directly. For example, if we delete the whole sbt dependencies cache, on the next compilation of the project, sbt simply resolves and downloads all the required dependencies again, automatically.
 
-This differs from Python, were by default dependencies are installed in system-wide or user-wide directories, so to obtain an isolated environment on a per-project basis one has to create a corresponding virtual environment. For example, using the `venv` module, we might create one for a particular project like so
+This differs from Python, where by default dependencies are installed in system-wide or user-wide directories, so to obtain an isolated environment on a per-project basis one has to create a corresponding virtual environment. For example, using the `venv` module, we might create one for a particular project like so
 
 ```
 cd myapp

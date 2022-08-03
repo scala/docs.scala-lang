@@ -154,8 +154,8 @@ given ToExpr[Boolean] with {
 }
 
 given ToExpr[StringContext] with {
-  def apply(x: StringContext)(using Quotes) =
-    val parts = Varargs(x.parts.map(Expr(_)))
+  def apply(stringContext: StringContext)(using Quotes) =
+    val parts = Varargs(stringContext.parts.map(Expr(_)))
     '{ StringContext($parts: _*) }
 }
 ```

@@ -14,9 +14,9 @@ Na ovoj stranici ćemo objasniti osnove Scale.
 
 ## Probavanje Scale u browseru
 
-Scalu možete probati u Vašem browser sa ScalaFiddle aplikacijom.
+Scalu možete probati u Vašem browser sa Scastie aplikacijom.
 
-1. Idite na [https://scalafiddle.io](https://scalafiddle.io).
+1. Idite na [Scastie](https://scastie.scala-lang.org/).
 2. Zalijepite `println("Hello, world!")` u lijevi panel.
 3. Kliknite "Run" dugme. Izlaz će se pojaviti u desnom panelu.
 
@@ -157,7 +157,6 @@ Postoje i neke druge razlike, ali zasad, možete misliti o njima kao nečemu sli
 
 Metode mogu imati višelinijske izraze također.
 
-{% scalafiddle %}
 ```scala mdoc
 def getSquareString(input: Double): String = {
   val square = input * input
@@ -165,7 +164,6 @@ def getSquareString(input: Double): String = {
 }
 println(getSquareString(2.5)) // 6.25
 ```
-{% endscalafiddle %}
 
 Zadnjo izraz u tijelu metode je povratna vrijednost metode. (Scala ima ključnu riječ `return`, ali se rijetko koristi.)
 

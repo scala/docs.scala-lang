@@ -12,15 +12,16 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 
 | JDK version | Minimum Scala versions           | Recommended Scala versions                                 |
 |:-----------:|:---------------------------------|:-----------------------------------------------------------|
-| 18          | 2.13.7, 2.12.15                  | 2.13.8, 2.12.15                                            |
-| 17          | 2.13.6, 2.12.15                  | 2.13.8, 2.12.15                                            |
-| 11          | 2.13.0, 2.12.4, 2.11.12          | 2.13.8, 2.12.15, 2.11.12                                   |
-| 8           | 2.13.0, 2.12.0, 2.11.0, 2.10.2   | 2.13.8, 2.12.15, 2.11.12, 2.10.7                           |
+| 19          | 2.13.9 (forthcoming), 2.12.16    | 2.13.9 (forthcoming), 2.12.16                              |
+| 18          | 2.13.7, 2.12.15                  | 2.13.8, 2.12.16                                            |
+| 17          | 2.13.6, 2.12.15                  | 2.13.8, 2.12.16                                            |
+| 11          | 2.13.0, 2.12.4, 2.11.12          | 2.13.8, 2.12.16, 2.11.12                                   |
+| 8           | 2.13.0, 2.12.0, 2.11.0, 2.10.2   | 2.13.8, 2.12.16, 2.11.12, 2.10.7                           |
 | 6, 7        | 2.11.0, 2.10.0                   | 2.11.12, 2.10.7                                            |
 
 Even when a version combination isn't listed as supported, most features may still work.  (But Scala 2.12+ definitely doesn't work at all on JDK 6 or 7.)
 
-In general, Scala works on JDK 11+, including GraalVM, but it probably won't take special advantage of features that were added after JDK 8. See [below](#jdk-11-compatibility-notes).
+In general, Scala works on JDK 11+, including GraalVM, but may not take special advantage of features that were added after JDK 8. See [below](#jdk-11-compatibility-notes).
 
 Lightbend offers [commercial support](https://www.lightbend.com/lightbend-platform-subscription) for Scala 2. The linked page includes contact information for inquiring about supported and recommended versions.
 
@@ -79,14 +80,21 @@ For possible Scala issues, see the [jdk11](https://github.com/scala/bug/labels/j
 
 ## JDK 18 compatibility notes
 
-Early access builds of JDK 18, a non-LTS release, are already available.
+JDK 18, a non-LTS release, came out in March 2022.
 
-Initial support for JDK 18 was included in Scala 2.13.7 and 2.12.15.
+Support for JDK 18 was included in Scala 2.13.7 and 2.12.15.
+
+## JDK 19 compatibility notes
+
+Early access builds of JDK 19, a non-LTS release, are already available.
+
+Initial support for JDK 19 was included in Scala 2.12.16 and will
+also be included in Scala 2.13.9 (forthcoming).
 
 ## GraalVM Native Image compatibility notes
 
 There are several records of successfully using Scala with [GraalVM](https://www.graalvm.org) Native Image(i.e.: ahead of time compiler) to produce directly executable binaries.
-Beware that, even using solely the Scala standard library, Native Image compilation have some heavy requirements in terms of [reflective access](https://www.graalvm.org/reference-manual/native-image/Reflection/), and it very likely require additional configuration steps to be performed.
+Beware that, even using solely the Scala standard library, Native Image compilation have some heavy requirements in terms of [reflective access](https://www.graalvm.org/reference-manual/native-image/metadata/), and it very likely require additional configuration steps to be performed.
 
 A few sbt plugins are offering support for GraalVM Native Image compilation:
 

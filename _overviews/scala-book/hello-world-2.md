@@ -9,6 +9,7 @@ num: 6
 outof: 54
 previous-page: hello-world-1
 next-page: scala-repl
+new-version: /scala3/book/taste-hello-world.html
 ---
 
 While that first “Hello, World” example works just fine, Scala provides a way to write applications more conveniently. Rather than including a `main` method, your `object` can just extend the `App` trait, like this:
@@ -61,15 +62,3 @@ This shows:
 - Command-line arguments are automatically made available to you in a variable named `args`.
 - You determine the number of elements in `args` with `args.size` (or `args.length`, if you prefer).
 - `args` is an `Array`, and you access `Array` elements as `args(0)`, `args(1)`, etc. Because `args` is an object, you access the array elements with parentheses (not `[]` or any other special syntax).
-
-
-
-
-
-
-
-
-
-
-
-

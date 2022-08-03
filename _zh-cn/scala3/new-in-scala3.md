@@ -100,7 +100,7 @@ Scala 2 中的宏只是一个实验性的功能，而 Scala 3 则为元编程提
 [migration]: {% link _overviews/scala3-migration/compatibility-intro.md %}
 [contribution]: {% link _overviews/scala3-contribution/contribution-intro.md %}
 
-[implicits]: {{ site.scala3ref }}/contextual.html
+[implicits]: {{ site.scala3ref }}/contextual
 [contextual-using]: {{ site.scala3ref }}/contextual/using-clauses.html
 [contextual-givens]: {{ site.scala3ref }}/contextual/givens.html
 [contextual-extension]: {{ site.scala3ref }}/contextual/extension-methods.html
@@ -118,7 +118,7 @@ Scala 2 中的宏只是一个实验性的功能，而 Scala 3 则为元编程提
 [meta-quotes]: {% link _overviews/scala3-macros/tutorial/quotes.md %}
 [meta-reflection]: {% link _overviews/scala3-macros/tutorial/reflection.md %}
 
-[oo-explicit-null]: {{ site.scala3ref }}/other-new-features/explicit-nulls.html
+[oo-explicit-null]: {{ site.scala3ref }}/experimental/explicit-nulls.html
 [oo-safe-init]: {{ site.scala3ref }}/other-new-features/safe-initialization.html
 [oo-trait-parameters]: {{ site.scala3ref }}/other-new-features/trait-parameters.html
 [oo-open]: {{ site.scala3ref }}/other-new-features/open-classes.html

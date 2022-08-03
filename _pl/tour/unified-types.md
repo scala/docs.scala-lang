@@ -35,7 +35,6 @@ Jeżeli Scala użyta jest w kontekście środowiska uruchomieniowego Javy, to `A
 
 Poniższy przykład pokazuje, że łańcuchy znakowe, liczby całkowite, znaki, wartości logiczne oraz funkcje są obiektami tak samo jak każdy inny obiekt:
 
-{% scalafiddle %}
 ```scala mdoc
 val list: List[Any] = List(
   "Łancuch znaków",
@@ -47,7 +46,6 @@ val list: List[Any] = List(
 
 list.foreach(element => println(element))
 ```
-{% endscalafiddle %}
 
 Program deklaruje wartość `list` typu `List[Any]`.
 Lista jest zainicjowana elementami różnego typu, ale będącymi podtypami `scala.Any` - dlatego można je umieścić na tej liście.

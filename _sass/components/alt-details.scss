@@ -1,0 +1,83 @@
+// ALT-DETAILS
+//------------------------------------------------
+//------------------------------------------------
+
+.alt-details.help-info {
+    .alt-details-toggle {
+        background-color: $brand-primary;
+        color: white;
+
+        &:hover {
+            background-color: darken($brand-primary, 15%);
+        }
+    }
+
+    .alt-details-detail {
+        background: #fae6e6
+    }
+}
+
+.alt-details {
+    @include span-columns(12);
+
+    .alt-details-toggle {
+        @include span-columns(12);
+        font-family: $base-font-family;
+        line-height: normal;
+        text-align: center;
+        border: none;
+        background-color: $brand-tertiary;
+        padding: 5px 10px;
+        border-radius: $border-radius-large;
+        font-size: $font-size-medium;
+        cursor: pointer;
+        font-weight: 500;
+        color: $gray-dark;
+
+        &:hover {
+            background-color: darken($brand-tertiary, 15%);
+        }
+
+        &:after {
+            // show a right arrow at the end of the toggle element
+            content: "\f138"; // <i class="fa-solid fa-circle-chevron-right"></i>
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            font-size: 15px;
+            float: right;
+            margin-top: 2px;
+        }
+
+    }
+
+    .alt-details-control {
+        margin: 0;
+    }
+
+    .alt-details-control+.alt-details-toggle+.alt-details-detail {
+        // by default, hide the details
+        position: absolute;
+        top: -999em;
+        left: -999em;
+    }
+
+    .alt-details-control:checked+.alt-details-toggle+.alt-details-detail {
+        // show the details when the control is checked
+        position: static;
+    }
+
+    .alt-details-control:checked+.alt-details-toggle:after {
+        // change the marker on the toggle label to a down arrow
+        content: "\f13a"; // <i class="fa-solid fa-circle-chevron-down"></i>
+    }
+
+    .alt-details-detail {
+        // The detail box appears to be underneath the toggle button
+        // so we add a padding to the top and push it up.
+        border-bottom: $base-border-gray;
+        border-left: $base-border-gray;
+        border-right: $base-border-gray;
+        padding-top: 15px;
+        margin-top: 15px;
+    }
+}

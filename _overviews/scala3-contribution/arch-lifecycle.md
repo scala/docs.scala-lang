@@ -88,7 +88,7 @@ tools // contains helpers and the `scala` generic runner
 [dotty.tools]: https://github.com/lampepfl/dotty/tree/master/compiler/src/dotty/tools
 [ScalaSettings]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/config/ScalaSettings.scala
 [phase-categories]: {% link _overviews/scala3-contribution/arch-phases.md %}#phase-categories
-[syntax]: {% link _scala3-reference/syntax.md %}
+[syntax]: {{ site.scala3ref }}/syntax.html
 [Main]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/Main.scala
 [Driver]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/Driver.scala
 [Compiler]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/Compiler.scala

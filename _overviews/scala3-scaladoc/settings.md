@@ -42,7 +42,7 @@ Currently we support two syntaxes: `markdown` or `wiki`
 If setting is not present, scaladoc defaults `markdown`
 
 ##### -revision
-Revision (branch or ref) used to build project project. Useful with sourcelinks to prevent them from pointing always to the newest master that is subject to changes.
+Revision (branch or ref) used to build project. Useful with sourcelinks to prevent them from pointing always to the newest main that is subject to changes.
 
 ##### -source-links
 Source links provide a mapping between file in documentation and code repository.
@@ -66,7 +66,7 @@ where \<source-link> is one of following:
 
 \<scaladoc-template> is a format for `doc-source-url` parameter from old scaladoc.
 NOTE: We only supports `€{FILE_PATH_EXT}`, `€{TPL_NAME}`, `€{FILE_EXT}`,
- €{FILE_PATH}, and €{FILE_LINE} patterns.
+ `€{FILE_PATH}`, and `€{FILE_LINE}` patterns.
 
 
 Template can defined only by subset of sources defined by path prefix represented by `<sub-path>`.
@@ -89,7 +89,7 @@ Links to social sites. For example:
 
 `-social-links:github::https://github.com/lampepfl/dotty,discord::https://discord.com/invite/scala,twitter::https://twitter.com/scala_lang`
 
-Valid values are of the form: '\[github|twitter|gitter|discord]::link'. Scaladoc also supports 'custom::link::white_icon_name::black_icon_name'. In this case icons must be present in 'images/' directory.
+Valid values are of the form: `\[github|twitter|gitter|discord]::link`. Scaladoc also supports `custom::link::white_icon_name::black_icon_name`. In this case icons must be present in `images/` directory.
 
 ##### -skip-by-id
 
@@ -160,7 +160,7 @@ compile - Enables snippet checking.
 nocompile - Disables snippet checking.
 fail - Enables snippet checking, asserts that snippet doesn't compile.
 
-The fail flag comes in handy for snippets that present that some action would eventually fail during compilation, e. g. [Opaques page]({% link _scala3-reference/other-new-features/opaques.md %})
+The fail flag comes in handy for snippets that present that some action would eventually fail during compilation, e. g. [Opaques page]({{ site.scala3ref }}/other-new-features/opaques.html)
 
 Example usage:
 

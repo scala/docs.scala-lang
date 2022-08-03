@@ -53,10 +53,10 @@ contains a comprehensive overview over contribution to and internals of the Scal
 - [Issues](https://github.com/scala/docs.scala-lang/issues)
 
 ## Scala 3 Language Reference
-The [Scala 3 reference](/scala3/reference/overview.html) contains a formal presentation and detailed technical information about the various features of the language.
+The [Scala 3 reference]({{ site.scala3ref }}) contains a formal presentation and detailed technical information about the various features of the language.
 
-- [Sources](https://github.com/scala/docs.scala-lang/tree/main/_scala3-reference)
-- [Issues](https://github.com/scala/docs.scala-lang/issues)
+- [Sources](https://github.com/lampepfl/dotty/tree/main/docs/_docs)
+- [Issues](https://github.com/lampepfl/dotty/issues)
 
 
 [scala3-book]: {% link _overviews/scala3-book/introduction.md %}

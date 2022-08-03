@@ -40,18 +40,34 @@ environment to resize itself if necessary to guarantee progress.
 
 A typical future looks like this:
 
+{% tabs futures-00 %}
+{% tab 'Scala 2 and 3' for=futures-00 %}
     val inverseFuture: Future[Matrix] = Future {
       fatMatrix.inverse() // non-blocking long lasting computation
     }(executionContext)
+{% endtab %}
+{% endtabs %}
 
 
 Or with the more idiomatic:
 
+{% tabs futures-01 class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=futures-01 %}
     implicit val ec: ExecutionContext = ...
     val inverseFuture : Future[Matrix] = Future {
       fatMatrix.inverse()
     } // ec is implicitly passed
+{% endtab %}
 
+{% tab 'Scala 3' for=futures-01 %}
+    given ExecutionContext = ...
+    val inverseFuture : Future[Matrix] = Future {
+      fatMatrix.inverse()
+    } // execution context is implicitly passed
+{% endtab %}
+
+{% endtabs %}
 
 Both code snippets delegate the execution of `fatMatrix.inverse()` to an `ExecutionContext` and embody the result of the computation in `inverseFuture`.
 
@@ -93,7 +109,10 @@ The parallelism level will be set to `numThreads` as long as it remains within `
 As stated above the `ForkJoinPool` can increase the number of threads beyond its `parallelismLevel` in the presence of blocking computation.
 As explained in the `ForkJoinPool` API, this is only possible if the pool is explicitly notified:
 
-    import scala.concurrent.Future
+{% tabs futures-02 class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=futures-02 %}
+    import scala.concurrent.{ Future, ExecutionContext }
     import scala.concurrent.forkjoin._
 
     // the following is equivalent to `implicit val ec = ExecutionContext.global`
@@ -118,10 +137,40 @@ As explained in the `ForkJoinPool` API, this is only possible if the pool is exp
         }
       )
     }
+{% endtab %}
+{% tab 'Scala 3' for=futures-02 %}
+    import scala.concurrent.{ Future, ExecutionContext }
+    import scala.concurrent.forkjoin.*
+
+    // the following is equivalent to `given ExecutionContext = ExecutionContext.global`
+    import ExecutionContext.Implicits.global
+
+    Future {
+      ForkJoinPool.managedBlock(
+        new ManagedBlocker {
+           var done = false
+
+           def block(): Boolean =
+             try
+               myLock.lock()
+               // ...
+             finally
+               done = true
+             true
+
+           def isReleasable: Boolean = done
+        }
+      )
+    }
+{% endtab %}
+
+{% endtabs %}
 
 
 Fortunately the concurrent package provides a convenient way for doing so:
 
+{% tabs blocking %}
+{% tab 'Scala 2 and 3' for=blocking %}
     import scala.concurrent.Future
     import scala.concurrent.blocking
 
@@ -131,6 +180,8 @@ Fortunately the concurrent package provides a convenient way for doing so:
         // ...
       }
     }
+{% endtab %}
+{% endtabs %}
 
 Note that `blocking` is a general construct that will be discussed more in depth [below](#blocking-inside-a-future).
 
@@ -139,16 +190,31 @@ Even when notified with `blocking` the pool might not spawn new workers as you w
 and when new workers are created they can be as many as 32767.
 To give you an idea, the following code will use 32000 threads:
 
+{% tabs futures-03 class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=futures-03 %}
     implicit val ec = ExecutionContext.global
 
-    for( i <- 1 to 32000 ) {
+    for (i <- 1 to 32000) {
       Future {
         blocking {
           Thread.sleep(999999)
         }
       }
     }
+{% endtab %}
+{% tab 'Scala 3' for=futures-03 %}
+    given ExecutionContext = ExecutionContext.global
 
+    for i <- 1 to 32000 do
+      Future {
+        blocking {
+          Thread.sleep(999999)
+        }
+      }
+{% endtab %}
+
+{% endtabs %}
 
 If you need to wrap long lasting blocking operations we recommend using a dedicated `ExecutionContext`, for instance by wrapping a Java `Executor`.
 
@@ -158,26 +224,43 @@ If you need to wrap long lasting blocking operations we recommend using a dedica
 Using the `ExecutionContext.fromExecutor` method you can wrap a Java `Executor` into an `ExecutionContext`.
 For instance:
 
+{% tabs executor class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=executor %}
     ExecutionContext.fromExecutor(new ThreadPoolExecutor( /* your configuration */ ))
+{% endtab %}
+{% tab 'Scala 3' for=executor %}
+    ExecutionContext.fromExecutor(ThreadPoolExecutor( /* your configuration */ ))
+{% endtab %}
+
+{% endtabs %}
 
 
 ### Synchronous Execution Context
 
 One might be tempted to have an `ExecutionContext` that runs computations within the current thread:
 
+{% tabs bad-example %}
+{% tab 'Scala 2 and 3' for=bad-example %}
     val currentThreadExecutionContext = ExecutionContext.fromExecutor(
       new Executor {
         // Do not do this!
-        def execute(runnable: Runnable) { runnable.run() }
+        def execute(runnable: Runnable) = runnable.run()
     })
+{% endtab %}
+{% endtabs %}
 
 This should be avoided as it introduces non-determinism in the execution of your future.
 
+{% tabs bad-example-2 %}
+{% tab 'Scala 2 and 3' for=bad-example-2 %}
     Future {
       doSomething
     }(ExecutionContext.global).map {
       doSomethingElse
     }(currentThreadExecutionContext)
+{% endtab %}
+{% endtabs %}
 
 The `doSomethingElse` call might either execute in `doSomething`'s thread or in the main thread, and therefore be either asynchronous or synchronous.
 As explained [here](https://blog.ometer.com/2011/07/24/callbacks-synchronous-and-asynchronous/) a callback should not be both.
@@ -219,6 +302,9 @@ popular social network to obtain a list of friends for a given user.
 We will open a new session and then send
 a request to obtain a list of friends of a particular user:
 
+{% tabs futures-04 class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=futures-04 %}
     import scala.concurrent._
     import ExecutionContext.Implicits.global
 
@@ -226,6 +312,17 @@ a request to obtain a list of friends of a particular user:
     val f: Future[List[Friend]] = Future {
       session.getFriends()
     }
+{% endtab %}
+{% tab 'Scala 3' for=futures-04 %}
+    import scala.concurrent.*
+    import ExecutionContext.Implicits.global
+
+    val session = socialNetwork.createSessionFor("user", credentials)
+    val f: Future[List[Friend]] = Future {
+      session.getFriends()
+    }
+{% endtab %}
+{% endtabs %}
 
 Above, we first import the contents of the `scala.concurrent` package
 to make the type `Future` visible.
@@ -251,10 +348,14 @@ the following example, the `session` value is incorrectly
 initialized, so the computation in the `Future` block will throw a `NullPointerException`.
 This future `f` is then failed with this exception instead of being completed successfully:
 
+{% tabs futures-04b %}
+{% tab 'Scala 2 and 3' for=futures-04b %}
     val session = null
     val f: Future[List[Friend]] = Future {
       session.getFriends()
     }
+{% endtab %}
+{% endtabs %}
 
 The line `import ExecutionContext.Implicits.global` above imports
 the default global execution context.
@@ -276,10 +377,14 @@ This computation may involve blocking while the file contents
 are being retrieved from the disk, so it makes sense to perform it
 concurrently with the rest of the computation.
 
+{% tabs futures-04c %}
+{% tab 'Scala 2 and 3' for=futures-04c %}
     val firstOccurrence: Future[Int] = Future {
       val source = scala.io.Source.fromFile("myText.txt")
       source.toSeq.indexOfSlice("myKeyword")
     }
+{% endtab %}
+{% endtabs %}
 
 
 ### Callbacks
@@ -325,29 +430,60 @@ fetch a list of our own recent posts and render them to the screen.
 We do so by calling a method `getRecentPosts` which returns
 a `List[String]`-- a list of recent textual posts:
 
+{% tabs futures-05 class=tabs-scala-version %}
+{% tab 'Scala 2' for=futures-05 %}
     import scala.util.{Success, Failure}
 
     val f: Future[List[String]] = Future {
-      session.getRecentPosts
+      session.getRecentPosts()
     }
 
-    f onComplete {
+    f.onComplete {
       case Success(posts) => for (post <- posts) println(post)
       case Failure(t) => println("An error has occurred: " + t.getMessage)
     }
+{% endtab %}
+{% tab 'Scala 3' for=futures-05 %}
+    import scala.util.{Success, Failure}
+
+    val f: Future[List[String]] = Future {
+      session.getRecentPosts()
+    }
+
+    f.onComplete {
+      case Success(posts) => for post <- posts do println(post)
+      case Failure(t) => println("An error has occurred: " + t.getMessage)
+    }
+{% endtab %}
+{% endtabs %}
 
 The `onComplete` method is general in the sense that it allows the
 client to handle the result of both failed and successful future
 computations. In the case where only successful results need to be
 handled, the `foreach` callback can be used:
 
+{% tabs futures-06 class=tabs-scala-version %}
+{% tab 'Scala 2' for=futures-06 %}
     val f: Future[List[String]] = Future {
-      session.getRecentPosts
+      session.getRecentPosts()
     }
 
-    f foreach { posts =>
-      for (post <- posts) println(post)
+    for {
+      posts <- f
+      post <- posts
+    } println(post)
+{% endtab %}
+{% tab 'Scala 3' for=futures-06 %}
+    val f: Future[List[String]] = Future {
+      session.getRecentPosts()
     }
+
+    for
+      posts <- f
+      post <- posts
+    do println(post)
+{% endtab %}
+{% endtabs %}
 
 `Future`s provide a clean way of handling only failed results using
 the `failed` projection which converts a `Failure[Throwable]` to a
@@ -358,15 +494,19 @@ Coming back to the previous example with searching for the first
 occurrence of a keyword, you might want to print the position
 of the keyword to the screen:
 
+{% tabs futures-oncomplete %}
+{% tab 'Scala 2 and 3' for=futures-oncomplete %}
     val firstOccurrence: Future[Int] = Future {
       val source = scala.io.Source.fromFile("myText.txt")
       source.toSeq.indexOfSlice("myKeyword")
     }
 
-    firstOccurrence onComplete {
+    firstOccurrence.onComplete {
       case Success(idx) => println("The keyword first appears at position: " + idx)
       case Failure(t) => println("Could not process file: " + t.getMessage)
     }
+{% endtab %}
+{% endtabs %}
 
 
 The `onComplete` and `foreach` methods both have result type `Unit`, which
@@ -393,19 +533,23 @@ This means that in the following example the variable `totalA` may not be set
 to the correct number of lower case and upper case `a` characters from the computed
 text.
 
+{% tabs volatile %}
+{% tab 'Scala 2 and 3' for=volatile %}
     @volatile var totalA = 0
 
     val text = Future {
       "na" * 16 + "BATMAN!!!"
     }
 
-    text foreach { txt =>
+    text.foreach { txt =>
       totalA += txt.count(_ == 'a')
     }
 
-    text foreach { txt =>
+    text.foreach { txt =>
       totalA += txt.count(_ == 'A')
     }
+{% endtab %}
+{% endtabs %}
 
 Above, the two callbacks may execute one after the other, in
 which case the variable `totalA` holds the expected value `18`.
@@ -456,20 +600,37 @@ interfacing with a currency trading service. Suppose we want to buy US
 dollars, but only when it's profitable. We first show how this could
 be done using callbacks:
 
+{% tabs futures-07 class=tabs-scala-version %}
+{% tab 'Scala 2' for=futures-07 %}
     val rateQuote = Future {
       connection.getCurrentValue(USD)
     }
 
-    rateQuote foreach { quote =>
+    for (quote <- rateQuote) {
       val purchase = Future {
         if (isProfitable(quote)) connection.buy(amount, quote)
         else throw new Exception("not profitable")
       }
 
-      purchase foreach { amount =>
+      for (amount <- purchase)
         println("Purchased " + amount + " USD")
-      }
     }
+{% endtab %}
+{% tab 'Scala 3' for=futures-07 %}
+    val rateQuote = Future {
+      connection.getCurrentValue(USD)
+    }
+
+    for quote <- rateQuote do
+      val purchase = Future {
+        if isProfitable(quote) then connection.buy(amount, quote)
+        else throw Exception("not profitable")
+      }
+
+      for amount <- purchase do
+        println("Purchased " + amount + " USD")
+{% endtab %}
+{% endtabs %}
 
 We start by creating a future `rateQuote` which gets the current exchange
 rate.
@@ -504,18 +665,36 @@ about mapping collections.
 
 Let's rewrite the previous example using the `map` combinator:
 
+{% tabs futures-08 class=tabs-scala-version %}
+{% tab 'Scala 2' for=futures-08 %}
     val rateQuote = Future {
       connection.getCurrentValue(USD)
     }
 
-    val purchase = rateQuote map { quote =>
+    val purchase = rateQuote.map { quote =>
       if (isProfitable(quote)) connection.buy(amount, quote)
       else throw new Exception("not profitable")
     }
 
-    purchase foreach { amount =>
+    purchase.foreach { amount =>
       println("Purchased " + amount + " USD")
     }
+{% endtab %}
+{% tab 'Scala 3' for=futures-08 %}
+    val rateQuote = Future {
+      connection.getCurrentValue(USD)
+    }
+
+    val purchase = rateQuote.map { quote =>
+      if isProfitable(quote) then connection.buy(amount, quote)
+      else throw Exception("not profitable")
+    }
+
+    purchase.foreach { amount =>
+      println("Purchased " + amount + " USD")
+    }
+{% endtab %}
+{% endtabs %}
 
 By using `map` on `rateQuote` we have eliminated one `foreach` callback and,
 more importantly, the nesting.
@@ -549,6 +728,8 @@ Lets assume that we want to exchange US dollars for Swiss francs
 buying based on both quotes.
 Here is an example of `flatMap` and `withFilter` usage within for-comprehensions:
 
+{% tabs futures-09 class=tabs-scala-version %}
+{% tab 'Scala 2' for=futures-09 %}
     val usdQuote = Future { connection.getCurrentValue(USD) }
     val chfQuote = Future { connection.getCurrentValue(CHF) }
 
@@ -561,6 +742,22 @@ Here is an example of `flatMap` and `withFilter` usage within for-comprehensions
     purchase foreach { amount =>
       println("Purchased " + amount + " CHF")
     }
+{% endtab %}
+{% tab 'Scala 3' for=futures-09 %}
+    val usdQuote = Future { connection.getCurrentValue(USD) }
+    val chfQuote = Future { connection.getCurrentValue(CHF) }
+
+    val purchase = for
+      usd <- usdQuote
+      chf <- chfQuote
+      if isProfitable(usd, chf)
+    yield connection.buy(amount, chf)
+
+    purchase.foreach { amount =>
+      println("Purchased " + amount + " CHF")
+    }
+{% endtab %}
+{% endtabs %}
 
 The `purchase` future is completed only once both `usdQuote`
 and `chfQuote` are completed-- it depends on the values
@@ -569,12 +766,16 @@ earlier.
 
 The for-comprehension above is translated into:
 
-    val purchase = usdQuote flatMap {
+{% tabs for-translation %}
+{% tab 'Scala 2 and 3' for=for-translation %}
+    val purchase = usdQuote.flatMap {
       usd =>
-      chfQuote
-        .withFilter(chf => isProfitable(usd, chf))
-        .map(chf => connection.buy(amount, chf))
+        chfQuote
+          .withFilter(chf => isProfitable(usd, chf))
+          .map(chf => connection.buy(amount, chf))
     }
+{% endtab %}
+{% endtabs %}
 
 which is a bit harder to grasp than the for-comprehension, but
 we analyze it to better understand the `flatMap` operation.
@@ -611,11 +812,15 @@ amount. The `connection.buy` method takes an `amount` to buy and the expected
 future to contain `0` instead of the exception, we use the `recover`
 combinator:
 
-    val purchase: Future[Int] = rateQuote map {
+{% tabs recover %}
+{% tab 'Scala 2 and 3' for=recover %}
+    val purchase: Future[Int] = rateQuote.map {
       quote => connection.buy(amount, quote)
-    } recover {
+    }.recover {
       case QuoteChangedException() => 0
     }
+{% endtab %}
+{% endtabs %}
 
 The `recover` combinator creates a new future which holds the same
 result as the original future if it completed successfully. If it did
@@ -640,20 +845,24 @@ the exception from this future, as in the following example which
 tries to print US dollar value, but prints the Swiss franc value in
 the case it fails to obtain the dollar value:
 
+{% tabs fallback-to %}
+{% tab 'Scala 2 and 3' for=fallback-to %}
 	val usdQuote = Future {
 	  connection.getCurrentValue(USD)
-	} map {
+	}.map {
 	  usd => "Value: " + usd + "$"
 	}
 	val chfQuote = Future {
 	  connection.getCurrentValue(CHF)
-	} map {
+	}.map {
 	  chf => "Value: " + chf + "CHF"
 	}
 
-	val anyQuote = usdQuote fallbackTo chfQuote
+	val anyQuote = usdQuote.fallbackTo(chfQuote)
 
-	anyQuote foreach { println(_) }
+	anyQuote.foreach { println(_) }
+{% endtab %}
+{% endtabs %}
 
 The `andThen` combinator is used purely for side-effecting purposes.
 It returns a new future with exactly the same result as the current
@@ -665,17 +874,34 @@ multiple `andThen` calls are ordered, as in the following example
 which stores the recent posts from a social network to a mutable set
 and then renders all the posts to the screen:
 
-	val allPosts = mutable.Set[String]()
+{% tabs futures-10 class=tabs-scala-version %}
+{% tab 'Scala 2' for=futures-10 %}
+    val allPosts = mutable.Set[String]()
 
-	Future {
-	  session.getRecentPosts
-	} andThen {
-	  case Success(posts) => allPosts ++= posts
-	} andThen {
-	  case _ =>
-	  clearAll()
-	  for (post <- allPosts) render(post)
-	}
+    Future {
+      session.getRecentPosts()
+    }.andThen {
+      case Success(posts) => allPosts ++= posts
+    }.andThen {
+      case _ =>
+        clearAll()
+        for (post <- allPosts) render(post)
+    }
+{% endtab %}
+{% tab 'Scala 3' for=futures-10 %}
+    val allPosts = mutable.Set[String]()
+
+    Future {
+      session.getRecentPosts()
+    }.andThen {
+      case Success(posts) => allPosts ++= posts
+    }.andThen {
+      case _ =>
+        clearAll()
+        for post <- allPosts do render(post)
+    }
+{% endtab %}
+{% endtabs %}
 
 In summary, the combinators on futures are purely functional.
 Every combinator returns a new future which is related to the
@@ -691,10 +917,20 @@ futures also have projections. If the original future fails, the
 fails with a `NoSuchElementException`. The following is an example
 which prints the exception to the screen:
 
+{% tabs futures-11 class=tabs-scala-version %}
+{% tab 'Scala 2' for=futures-11 %}
     val f = Future {
       2 / 0
     }
     for (exc <- f.failed) println(exc)
+{% endtab %}
+{% tab 'Scala 3' for=futures-11 %}
+    val f = Future {
+      2 / 0
+    }
+    for exc <- f.failed do println(exc)
+{% endtab %}
+{% endtabs %}
 
 The for-comprehension in this example is translated to:
 
@@ -704,10 +940,20 @@ Because `f` is unsuccessful here, the closure is registered to
 the `foreach` callback on a newly-successful `Future[Throwable]`.
 The following example does not print anything to the screen:
 
+{% tabs futures-12 class=tabs-scala-version %}
+{% tab 'Scala 2' for=futures-12 %}
     val g = Future {
       4 / 2
     }
     for (exc <- g.failed) println(exc)
+{% endtab %}
+{% tab 'Scala 3' for=futures-12 %}
+    val g = Future {
+      4 / 2
+    }
+    for exc <- g.failed do println(exc)
+{% endtab %}
+{% endtabs %}
 
 <!--
 There is another projection called `timedout` which is specific to the
@@ -750,19 +996,40 @@ As seen with the global `ExecutionContext`, it is possible to notify an `Executi
 The implementation is however at the complete discretion of the `ExecutionContext`. While some `ExecutionContext` such as `ExecutionContext.global`
 implement `blocking` by means of a `ManagedBlocker`, some execution contexts such as the fixed thread pool:
 
+{% tabs fixed-thread-pool %}
+{% tab 'Scala 2 and 3' for=fixed-thread-pool %}
     ExecutionContext.fromExecutor(Executors.newFixedThreadPool(x))
+{% endtab %}
+{% endtabs %}
 
 will do nothing, as shown in the following:
 
-    implicit val ec = ExecutionContext.fromExecutor(
-                        Executors.newFixedThreadPool(4))
+{% tabs futures-13 class=tabs-scala-version %}
+{% tab 'Scala 2' for=futures-13 %}
+    implicit val ec =
+      ExecutionContext.fromExecutor(Executors.newFixedThreadPool(4))
+
     Future {
       blocking { blockingStuff() }
     }
+{% endtab %}
+{% tab 'Scala 3' for=futures-13 %}
+    given ExecutionContext =
+      ExecutionContext.fromExecutor(Executors.newFixedThreadPool(4))
+
+    Future {
+      blocking { blockingStuff() }
+    }
+{% endtab %}
+{% endtabs %}
 
 Has the same effect as
 
+{% tabs alternative %}
+{% tab 'Scala 2 and 3' for=alternative %}
     Future { blockingStuff() }
+{% endtab %}
+{% endtabs %}
 
 The blocking code may also throw an exception. In this case, the exception is forwarded to the caller.
 
@@ -779,21 +1046,43 @@ In the currency trading example above, one place to block is at the
 end of the application to make sure that all of the futures have been completed.
 Here is an example of how to block on the result of a future:
 
+{% tabs futures-14 class=tabs-scala-version %}
+{% tab 'Scala 2' for=futures-14 %}
     import scala.concurrent._
     import scala.concurrent.duration._
 
-    def main(args: Array[String]) {
+    object awaitPurchase {
+      def main(args: Array[String]) {
+        val rateQuote = Future {
+          connection.getCurrentValue(USD)
+        }
+
+        val purchase = rateQuote.map { quote =>
+          if (isProfitable(quote)) connection.buy(amount, quote)
+          else throw new Exception("not profitable")
+        }
+
+        Await.result(purchase, 0.nanos)
+      }
+    }
+{% endtab %}
+{% tab 'Scala 3' for=futures-14 %}
+    import scala.concurrent.*
+    import scala.concurrent.duration.*
+
+    @main def awaitPurchase =
       val rateQuote = Future {
         connection.getCurrentValue(USD)
       }
 
-      val purchase = rateQuote map { quote =>
-        if (isProfitable(quote)) connection.buy(amount, quote)
-        else throw new Exception("not profitable")
+      val purchase = rateQuote.map { quote =>
+        if isProfitable(quote) then connection.buy(amount, quote)
+        else throw Exception("not profitable")
       }
 
-      Await.result(purchase, 0 nanos)
-    }
+      Await.result(purchase, 0.nanos)
+{% endtab %}
+{% endtabs %}
 
 In the case that the future fails, the caller is forwarded the
 exception that the future is failed with. This includes the `failed`
@@ -860,6 +1149,8 @@ Consider the following producer-consumer example, in which one computation
 produces a value and hands it off to another computation which consumes
 that value. This passing of the value is done using a promise.
 
+{% tabs promises %}
+{% tab 'Scala 2 and 3' for=promises %}
     import scala.concurrent.{ Future, Promise }
     import scala.concurrent.ExecutionContext.Implicits.global
 
@@ -868,16 +1159,18 @@ that value. This passing of the value is done using a promise.
 
     val producer = Future {
       val r = produceSomething()
-      p success r
+      p.success(r)
       continueDoingSomethingUnrelated()
     }
 
     val consumer = Future {
       startDoingSomething()
-      f foreach { r =>
+      f.foreach { r =>
         doSomethingWithResult()
       }
     }
+{% endtab %}
+{% endtabs %}
 
 Here, we create a promise and use its `future` method to obtain the
 `Future` that it completes. Then, we begin two asynchronous
@@ -895,18 +1188,35 @@ promise that has already been completed (or failed) will throw an
 
 The following example shows how to fail a promise.
 
+{% tabs futures-15 class=tabs-scala-version %}
+{% tab 'Scala 2' for=futures-15 %}
     val p = Promise[T]()
     val f = p.future
 
     val producer = Future {
       val r = someComputation
       if (isInvalid(r))
-        p failure (new IllegalStateException)
+        p.failure(new IllegalStateException)
       else {
         val q = doSomeMoreComputation(r)
-        p success q
+        p.success(q)
       }
     }
+{% endtab %}
+{% tab 'Scala 3' for=futures-15 %}
+    val p = Promise[T]()
+    val f = p.future
+
+    val producer = Future {
+      val r = someComputation
+      if isInvalid(r) then
+        p.failure(new IllegalStateException)
+      else
+        val q = doSomeMoreComputation(r)
+        p.success(q)
+    }
+{% endtab %}
+{% endtabs %}
 
 Here, the `producer` computes an intermediate result `r`, and checks
 whether it's valid. In the case that it's invalid, it fails the
@@ -943,14 +1253,18 @@ The method `completeWith` completes the promise with another
 future. After the future is completed, the promise gets completed with
 the result of that future as well. The following program prints `1`:
 
+{% tabs promises-2 %}
+{% tab 'Scala 2 and 3' for=promises-2 %}
     val f = Future { 1 }
     val p = Promise[Int]()
 
-    p completeWith f
+    p.completeWith(f)
 
-    p.future foreach { x =>
+    p.future.foreach { x =>
       println(x)
     }
+{% endtab %}
+{% endtabs %}
 
 When failing a promise with an exception, three subtypes of `Throwable`s
 are handled specially. If the `Throwable` used to break the promise is
@@ -969,19 +1283,37 @@ two futures `f` and `g` and produces a third future which is completed by either
 
 Here is an example of how to do it:
 
+{% tabs futures-16 class=tabs-scala-version %}
+{% tab 'Scala 2' for=futures-16 %}
     def first[T](f: Future[T], g: Future[T]): Future[T] = {
       val p = Promise[T]
 
-      f foreach { x =>
+      f.foreach { x =>
         p.trySuccess(x)
       }
 
-      g foreach { x =>
+      g.foreach { x =>
         p.trySuccess(x)
       }
 
       p.future
     }
+{% endtab %}
+{% tab 'Scala 3' for=futures-16 %}
+    def first[T](f: Future[T], g: Future[T]): Future[T] =
+      val p = Promise[T]
+
+      f.foreach { x =>
+        p.trySuccess(x)
+      }
+
+      g.foreach { x =>
+        p.trySuccess(x)
+      }
+
+      p.future
+{% endtab %}
+{% endtabs %}
 
 Note that in this implementation, if neither `f` nor `g` succeeds, then `first(f, g)` never completes (either with a value or with an exception).
 
@@ -1029,6 +1361,8 @@ for example, `val d = Duration(100, MILLISECONDS)`.
 Duration also provides `unapply` methods so it can be used in pattern matching constructs.
 Examples:
 
+{% tabs futures-17 class=tabs-scala-version %}
+{% tab 'Scala 2' for=futures-17 %}
     import scala.concurrent.duration._
     import java.util.concurrent.TimeUnit._
 
@@ -1040,3 +1374,18 @@ Examples:
 
     // pattern matching
     val Duration(length, unit) = 5 millis
+{% endtab %}
+{% tab 'Scala 3' for=futures-17 %}
+    import scala.concurrent.duration.*
+    import java.util.concurrent.TimeUnit.*
+
+    // instantiation
+    val d1 = Duration(100, MILLISECONDS) // from Long and TimeUnit
+    val d2 = Duration(100, "millis") // from Long and String
+    val d3 = 100.millis // implicitly from Long, Int or Double
+    val d4 = Duration("1.2 µs") // from String
+
+    // pattern matching
+    val Duration(length, unit) = 5.millis
+{% endtab %}
+{% endtabs %}

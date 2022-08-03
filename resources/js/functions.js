@@ -67,7 +67,7 @@ $(document).ready(function() {
   hljs.configure({
     languages: ["scala", "bash"]
   })
-  hljs.initHighlighting();
+  hljs.highlightAll();
 });
 
 // Show Blog
@@ -147,7 +147,7 @@ $(document).ready(function() {
   old.empty();
 
   // if there are no translations, hide language dropdown box
-  if (items.length <= 1) {
+  if (items.length === 0) {
     $("#dd").hide();
   }
 });
@@ -382,25 +382,118 @@ $(document).ready(function() {
   }
 });
 
+// Browser Storage Support (https://stackoverflow.com/a/41462752/2538602)
+function storageAvailable(type) {
+  try {
+    var storage = window[type],
+        x = '__storage_test__';
+    storage.setItem(x, x);
+    storage.removeItem(x);
+    return true;
+  }
+  catch (e) {
+    return false;
+  }
+}
+
+// Store preference for Scala 2 vs 3
+$(document).ready(function() {
+
+  const Storage = (namespace) => {
+    return ({
+      getPreference(key, defaultValue) {
+        const res = localStorage.getItem(`${namespace}.${key}`);
+        return res === null ? defaultValue : res;
+      },
+      setPreference(key, value, onChange) {
+        const old = this.getPreference(key, null);
+        if (old !== value) { // activate effect only if value changed.
+          localStorage.setItem(`${namespace}.${key}`, value);
+          onChange(old);
+        }
+      }
+    });
+  };
+
+  /** Links all tabs created in Liquid templates with class ".tabs-scala-version"
+   *  on the page together, such that
+   *  changing a tab to `Scala 2` will activate all other tab sections to
+   *  also change to "Scala 2".
+   *  Also records a preference for the Scala version in localStorage, so
+   *  that when the page is refreshed, the same tab will be selected.
+   *  On page load, selects the tab corresponding to stored Scala version.
+   */
+  function setupScalaVersionTabs(scalaVersionTabs) {
+    const DocsPreferences = Storage('org.scala-lang.docs.preferences');
+    const Scala3 = 'scala-3';
+    const scalaVersion = DocsPreferences.getPreference('scalaVersion', Scala3);
+    
+    function activateTab(tabs, scalaVersion) {
+      // click the code tab corresponding to the preferred Scala version.
+      tabs.find('input[data-target=' + scalaVersion + ']').prop("checked", true);
+    }
+
+    activateTab(scalaVersionTabs, scalaVersion);
+
+    // setup listeners to record new preferred Scala version.
+    scalaVersionTabs.find('input').on('change', function() {
+      // if checked then set the preferred version, and activate the other tabs on page.
+      if ($(this).is(':checked')) {
+        const parent = $(this).parent();
+        const scalaVersion = $(this).data('target');
+
+        DocsPreferences.setPreference('scalaVersion', scalaVersion, oldValue => {
+          // when we set a new scalaVersion, find scalaVersionTabs except current one
+          // and activate those tabs.
+          activateTab(scalaVersionTabs.not(parent), scalaVersion);
+        });
+
+      }
+
+    });
+  }
+
+  if (storageAvailable('localStorage')) {
+    var scalaVersionTabs = $(".tabsection.tabs-scala-version");
+    if (scalaVersionTabs.length) {
+      setupScalaVersionTabs(scalaVersionTabs);
+    }
+  }
+
+});
+
 // OS detection
 function getOS() {
   var osname = "linux";
   if (navigator.appVersion.indexOf("Win") != -1) osname = "windows";
-  if (navigator.appVersion.indexOf("Mac") != -1) osname = "osx";
+  if (navigator.appVersion.indexOf("Mac") != -1) osname = "macos";
   if (navigator.appVersion.indexOf("Linux") != -1) osname = "linux";
   if (navigator.appVersion.indexOf("X11") != -1) osname = "unix";
   return osname;
 }
 
-$(document).ready(function() {
-  if ($(".main-download").length) {
+$(document).ready(function () {
+  // for each code snippet area, find the copy button,
+  // and add a click listener that will copy text from
+  // the code area to the clipboard
+  $(".code-snippet-area").each(function () {
+    var area = this;
+    $(area).children(".code-snippet-buttons").children("button.copy-button").click(function () {
+      var code = $(area).children(".code-snippet-display").children("code").text();
+      window.navigator.clipboard.writeText(code);
+    });
+  });
+});
+
+$(document).ready(function () {
+  // click the get-started tab corresponding to the users OS.
+  var platformOSOptions = $(".tabsection.platform-os-options");
+  if (platformOSOptions.length) {
     var os = getOS();
-    var intelliJlink = $("#intellij-" + os).text();
-    var sbtLink = $("#sbt-" + os).text();
-    var stepOneContent = $("#stepOne-" + os).html()
-    $("#download-intellij-link").attr("href", intelliJlink);
-    $("#download-sbt-link").attr("href", sbtLink);
-    $("#download-step-one").html(stepOneContent);
+    if (os === 'unix') {
+      os = 'linux';
+    }
+    platformOSOptions.find('input[data-target=' + os + ']').prop("checked", true);
   }
 });
 
@@ -467,18 +560,18 @@ $('#filter-glossary-terms').focus();
 
 
 //Footer scroll to top button
-$(document).ready(function(){ 
-    $(window).scroll(function(){ 
-        if ($(this).scrollTop() > 100) { 
-            $('#scroll-to-top-btn').fadeIn(); 
-        } else { 
-            $('#scroll-to-top-btn').fadeOut(); 
-        } 
-    }); 
-    $('#scroll-to-top-btn').click(function(){ 
-        $("html, body").animate({ scrollTop: 0 }, 600); 
-        return false; 
-    }); 
+$(document).ready(function(){
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 100) {
+            $('#scroll-to-top-btn').fadeIn();
+        } else {
+            $('#scroll-to-top-btn').fadeOut();
+        }
+    });
+    $('#scroll-to-top-btn').click(function(){
+        $("html, body").animate({ scrollTop: 0 }, 600);
+        return false;
+    });
 });
 
 //Contributors widget
@@ -490,7 +583,7 @@ $(document).ready(function () {
    * - some files aren't prefixed with underscore, see rootFiles
    * - some files are placed in _overviews but rendered to its folder, see overviewsFolders
    */
-  
+
   let rootFiles = ['getting-started', 'learn', 'glossary'];
   let overviewsFolders = ['FAQ', 'cheatsheets', 'collections', 'compiler-options',
     'core', 'jdk-compatibility', 'macros', 'parallel-collections',

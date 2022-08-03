@@ -9,6 +9,7 @@ num: 50
 outof: 54
 previous-page: case-classes
 next-page: functional-error-handling
+new-version: /scala3/book/domain-modeling-tools.html#case-objects
 ---
 
 
@@ -122,11 +123,3 @@ class Speak extends Actor {
 ```
 
 This is a good, safe way to pass messages around in Scala applications.
-
-
-
-
-
-
-
-

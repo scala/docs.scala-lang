@@ -15,15 +15,15 @@ In this page, we will cover basics of Scala.
 
 ## ทดลอง Scala ในเว็บบราวเซอร์
 
-เราสามารถรัน Scala ในเว็บเบราว์เซอร์ด้วย ScalaFiddle
+เราสามารถรัน Scala ในเว็บเบราว์เซอร์ด้วย Scastie
 
-1. ไปที่ [https://scalafiddle.io](https://scalafiddle.io).
+1. ไปที่ [Scastie](https://scastie.scala-lang.org/).
 2. วาง `println("Hello, world!")` ในด้านซ้าย.
 3. กดที่ปุ่ม "Run" . output จะแสดงในด้านขวา
 
 ในขั้นตอนนี้ง่ายมาก ที่จะได้ประสบการณ์ของเรากับ Scala
 
-หลายๆ โค้ดตัวอย่างในเอกสารนี้จะฝังใน ScalaFiddle ซึ่งคุณสามารถกดที่ปุ่ม Run เพื่อดูว่าโด้นนั้นๆ จะได้ผลลัพธ์อย่างไร
+หลายๆ โค้ดตัวอย่างในเอกสารนี้จะฝังใน Scastie ซึ่งคุณสามารถกดที่ปุ่ม Run เพื่อดูว่าโด้นนั้นๆ จะได้ผลลัพธ์อย่างไร
 
 ## Expressions
 
@@ -33,14 +33,12 @@ Expression หรือ นิพจน์ เป็นโค้ดที่ท�
 ```
 เราสามารถแสดงผลลัพธ์ของ Expression ด้วยการใช้ `println`
 
-{% scalafiddle %}
 ```scala mdoc
 println(1) // 1
 println(1 + 1) // 2
 println("Hello!") // Hello!
 println("Hello," + " world!") // Hello, world!
 ```
-{% endscalafiddle %}
 
 ### Values
 
@@ -111,21 +109,17 @@ function เป็น expression ที่รับ parameter ได้
 
 เราสามารถตั้งชื่อของ function ได้ดังนี้
 
-{% scalafiddle %}
 ```scala mdoc
 val addOne = (x: Int) => x + 1
 println(addOne(1)) // 2
 ```
-{% endscalafiddle %}
 
 function สามารถรับ parameter ได้หลายตัว
 
-{% scalafiddle %}
 ```scala mdoc
 val add = (x: Int, y: Int) => x + y
 println(add(1, 2)) // 3
 ```
-{% endscalafiddle %}
 
 หรือ เราจะไม่รับ parameter เลยก็ได้
 
@@ -140,23 +134,19 @@ Method มีลักษณะเหมือนกับ function มาก �
 
 Method จะประกาศได้ด้วย keyword `def` ตามด้วยชื่อของ function, รายการ parameter, return type และ body ของ function
 
-{% scalafiddle %}
 ```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
-{% endscalafiddle %}
 
 สังเกตว่า การ return type จะประกาศ _หลังจาก_ รายการ parameter และ colon `: Int`
 
 Method ยังสามารถรับรายการ parameter ได้หลายรายการ
 
-{% scalafiddle %}
 ```scala mdoc
 def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
 println(addThenMultiply(1, 2)(3)) // 9
 ```
-{% endscalafiddle %}
 
 หรือ ไม่มีรายการ parameter เลยก็ได้ อย่างเช่น
 
@@ -169,7 +159,6 @@ println("Hello, " + name + "!")
 
 Method สามารถมี expression ได้หลายบรรทัด
 
-{% scalafiddle %}
 ```scala mdoc
 def getSquareString(input: Double): String = {
   val square = input * input
@@ -177,7 +166,6 @@ def getSquareString(input: Double): String = {
 }
 println(getSquareString(2.5)) // 6.25
 ```
-{% endscalafiddle %}
 
 expression สุดท้ายใน body เป็น expression ที่ return value ของ method (Scala ก็มี keyword `return` แต่ว่าไม่ค่อยได้ใช้)
 
@@ -277,7 +265,6 @@ trait Greeter {
 
 Trait สามารถมี default implementation ได้
 
-{% scalafiddle %}
 ```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
@@ -302,7 +289,6 @@ greeter.greet("Scala developer") // Hello, Scala developer!
 val customGreeter = new CustomizableGreeter("How are you, ", "?")
 customGreeter.greet("Scala developer") // How are you, Scala developer?
 ```
-{% endscalafiddle %}
 
 จากตัวอย่างนี้ `defaultGreeter` ขยายเพียง trait เดียว แต่มันสามารถขยายหลาย trait
 

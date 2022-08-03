@@ -52,7 +52,6 @@ println(quantity) // wyświetli 25
 
 Dekonstrukcja krotek może być bardzo przydatna w dopasowywaniu wzorców (ang. pattern matching)
 
-{% scalafiddle %}
 ```scala mdoc
 val planetDistanceFromSun = List(
   ("Mercury", 57.9),
@@ -69,11 +68,9 @@ planetDistanceFromSun.foreach {
     case _                    => println("Zbyt daleko...")
 }
 ```
-{% endscalafiddle %}
 
 Ma ona też zastosowanie w wyrażeniach 'for'.
 
-{% scalafiddle %}
 ```scala mdoc
 val numPairs = List((2, 5), (3, -7), (20, 56))
 
@@ -81,7 +78,6 @@ for ((a, b) <- numPairs) {
   println(a * b)
 }
 ```
-{% endscalafiddle %}
 
 Wartość `()` typu `Unit` jest koncepcyjnie taka sama jak wartość `()` typu `Tuple0`.
 Może być tylko jedna wartość tego typu, ponieważ nie zawiera żadnych elementów.

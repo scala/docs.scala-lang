@@ -427,10 +427,10 @@ Hopefully you’ll discover more great Scala features as you use the language.
 [java]: {% link _overviews/scala3-book/interacting-with-java.md %}
 [given]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
 [contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}
-[reference]: {{ site.scala3ref }}/overview.html
-[dropped]: https://docs.scala-lang.org/scala3/reference/dropped-features.html
-[changed]: https://docs.scala-lang.org/scala3/reference/changed-features.html
-[added]: https://docs.scala-lang.org/scala3/reference/other-new-features.html
+[reference]: {{ site.scala3ref }}
+[dropped]: {{ site.scala3ref }}/dropped-features
+[changed]: {{ site.scala3ref }}/changed-features
+[added]:{{ site.scala3ref }}/other-new-features
 
 [union-types]: {% link _overviews/scala3-book/types-union.md %}
 [opaque-types]: {% link _overviews/scala3-book/types-opaque-types.md %}

@@ -14,15 +14,15 @@ previous-page: tour-of-scala
 
 ## 브라우저에서 스칼라 사용하기
 
-ScalaFiddle를 사용하면 브라우저에서 스칼라를 실행해 볼 수 있다.
+Scastie를 사용하면 브라우저에서 스칼라를 실행해 볼 수 있다.
 
-1. [https://scalafiddle.io](https://scalafiddle.io) 로 간다.
+1. [Scastie](https://scastie.scala-lang.org/) 로 간다.
 2. 왼쪽 창에 `println("Hello, world!")` 를 붙여 넣는다.
 3. 실행 버튼을 누르면 오른쪽 창에서 출력을 확인할 수 있다.
 
 이는 설정 없이 스칼라 코드들을 손쉽게 실험할 수 있는 방법이다.
 
-이 페이지의 많은 예제 코드가 ScalaFiddle와 통합되어 있어 간단히 실행 버튼만 눌러 직접 실험해 볼 수 있다.
+이 페이지의 많은 예제 코드가 Scastie와 통합되어 있어 간단히 실행 버튼만 눌러 직접 실험해 볼 수 있다.
 
 ## 표현식
 
@@ -34,14 +34,12 @@ ScalaFiddle를 사용하면 브라우저에서 스칼라를 실행해 볼 수 �
 
 `println` 표현식을 사용해 결과를 출력할 수 있다.
 
-{% scalafiddle %}
 ```scala mdoc
 println(1) // 1
 println(1 + 1) // 2
 println("Hello!") // Hello!
 println("Hello," + " world!") // Hello, world!
 ```
-{% endscalafiddle %}
 
 ### 값
 
@@ -110,21 +108,17 @@ println({
 
 함수에 이름을 지정할 수 있다.
 
-{% scalafiddle %}
 ```scala mdoc
 val addOne = (x: Int) => x + 1
 println(addOne(1)) // 2
 ```
-{% endscalafiddle %}
 
 함수는 여러 매개변수를 가질 수 있다.
 
-{% scalafiddle %}
 ```scala mdoc
 val add = (x: Int, y: Int) => x + y
 println(add(1, 2)) // 3
 ```
-{% endscalafiddle %}
 
 또는 매개변수를 가지지 않을 수도 있다.
 
@@ -139,23 +133,19 @@ println(getTheAnswer()) // 42
 
 `def` 키워드로 메소드를 정의하고 이름, 매개변수 목록, 반환 타입 그리고 본문이 뒤따른다.
 
-{% scalafiddle %}
 ```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
-{% endscalafiddle %}
 
 매개변수 목록과 `: Int` 뒤에 반환 타입이 어떻게 선언되는지 주목하자.
 
 메소드는 여러 매개변수 목록을 가질 수 있다.
 
-{% scalafiddle %}
 ```scala mdoc
 def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
 println(addThenMultiply(1, 2)(3)) // 9
 ```
-{% endscalafiddle %}
 
 또는 매개변수 목록을 가지지 않을 수도 있다.
 
@@ -168,7 +158,6 @@ println("Hello, " + name + "!")
 
 메소드는 여러 줄의 표현식을 가질 수 있다.
 
-{% scalafiddle %}
 ```scala mdoc
 def getSquareString(input: Double): String = {
   val square = input * input
@@ -176,7 +165,6 @@ def getSquareString(input: Double): String = {
 }
 println(getSquareString(2.5)) // 6.25
 ```
-{% endscalafiddle %}
 
 본문의 마지막 표현식은 메소드의 반환 값이다. (스칼라는 `return` 키워드가 있지만 거의 사용하지 않고 생략한다.)
 
@@ -277,7 +265,6 @@ trait Greeter {
 
 또한 트레이트는 기본 구현도 가질 수 있다.
 
-{% scalafiddle %}
 ```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
@@ -302,7 +289,6 @@ greeter.greet("Scala developer") // Hello, Scala developer!
 val customGreeter = new CustomizableGreeter("How are you, ", "?")
 customGreeter.greet("Scala developer") // How are you, Scala developer?
 ```
-{% endscalafiddle %}
 
 `DefaultGreeter` 는 트레이트 하나만 상속하고 있지만 다중 상속도 가능하다.
 

@@ -2,7 +2,7 @@
 title: Getting Started with Scala in IntelliJ
 layout: singlepage-overview
 partof: getting-started-with-scala-in-intellij
-languages: [ja]
+languages: [ja, uk]
 disqus: true
 next-page: building-a-scala-project-with-intellij-and-sbt
 
@@ -42,7 +42,11 @@ take a few minutes but subsequent projects can use the same SDK.
 1. On the **Project** pane on the left, right-click `src` and select
 **New** => **Scala class**. If you don't see **Scala class**, right-click on **HelloWorld** and click on **Add Framework Support...**, select **Scala** and proceed. If you see **Error: library is not specified**, you can either click download button, or select the library path manually. If you only see **Scala Worksheet** try expanding the `src` folder and its `main` subfolder, and right-click on the `scala` folder.
 1. Name the class `Hello` and change the **Kind** to `object`.
-1. Change the code in the class to the following:
+1. Change the code in the file to the following:
+
+{% tabs hello-world-entry-point class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=hello-world-entry-point %}
 
 ```
 object Hello extends App {
@@ -50,9 +54,41 @@ object Hello extends App {
 }
 ```
 
+{% endtab %}
+
+{% tab 'Scala 3' for=hello-world-entry-point %}
+
+```
+@main def hello(): Unit =
+  println("Hello, World!")
+```
+
+In Scala 3, you can remove the object `Hello` and define a top-level method
+`hello` instead, which you annotate with `@main`.
+
+{% endtab %}
+
+{% endtabs %}
+
 ## Running it
+
+{% tabs hello-world-run class=tabs-scala-version %}
+
+{% tab  'Scala 2' for=hello-world-run %}
+
 * Right click on `Hello` in your code and select **Run 'Hello'**.
 * You're done!
+
+{% endtab %}
+
+{% tab 'Scala 3' for=hello-world-run %}
+
+* Right click on `hello` in your code and select **Run 'hello'**.
+* You're done!
+
+{% endtab %}
+
+{% endtabs %}
 
 ## Experimenting with Scala
 A good way to try out code samples is with Scala Worksheets
@@ -62,14 +98,18 @@ A good way to try out code samples is with Scala Worksheets
 2. Name your new Scala worksheet "Mathematician".
 3. Enter the following code into the worksheet:
 
+{% tabs square %}
+{% tab 'Scala 2 and 3' for=square %}
 ```
-def square(x: Int) = x * x
+def square(x: Int): Int = x * x
 
 square(2)
 ```
+{% endtab %}
+{% endtabs %}
 
 As you change your code, you'll notice that it gets evaluated
-in the right pane. If you do not see a right pane, right click on your Scala worksheet in the Project pane, and click on Evaluate Worksheet.
+in the right pane. If you do not see a right pane, right-click on your Scala worksheet in the Project pane, and click on Evaluate Worksheet.
 
 ## Next Steps
 

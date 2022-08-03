@@ -9,6 +9,7 @@ num: 38
 outof: 54
 previous-page: misc
 next-page: oop-pizza-example
+new-version: /scala3/book/taste-collections.html#tuples
 ---
 
 
@@ -114,9 +115,3 @@ For cases like this where it feels like overkill to create a class for the metho
 ## Tuples aren’t collections
 
 Technically, Scala 2.x tuples aren’t collections classes, they’re just a convenient little container. Because they aren’t a collection, they don’t have methods like `map`, `filter`, etc.
-
-
-
-
-
-

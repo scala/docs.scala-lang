@@ -9,11 +9,12 @@ num: 2
 outof: 54
 previous-page: introduction
 next-page: preliminaries
+new-version: /scala3/book/taste-intro.html
 ---
 
 Our hope in this book is to demonstrate that [Scala](http://scala-lang.org) is a beautiful, modern, expressive programming language. To help demonstrate that, in this first chapter we’ll jump right in and provide a whirlwind tour of Scala’s main features. After this tour, the book begins with a more traditional “Getting Started” chapter.
 
->In this book we assume that you’ve used a language like Java before, and are ready to see a series of Scala examples to get a feel for what the language looks like. Although it’s not 100% necessary, it will also help if you’ve already [downloaded and installed Scala](https://www.scala-lang.org/download) so you can test the examples as you go along. You can also test these examples online with [ScalaFiddle.io](https://scalafiddle.io).
+>In this book we assume that you’ve used a language like Java before, and are ready to see a series of Scala examples to get a feel for what the language looks like. Although it’s not 100% necessary, it will also help if you’ve already [downloaded and installed Scala](https://www.scala-lang.org/download) so you can test the examples as you go along. You can also test these examples online with [Scastie](https://scastie.scala-lang.org/).
 
 
 
@@ -552,11 +553,3 @@ If you like what you’ve seen so far, we hope you’ll like the rest of the boo
 ## A bit of background
 
 Scala was created by [Martin Odersky](https://en.wikipedia.org/wiki/Martin_Odersky), who studied under [Niklaus Wirth](https://en.wikipedia.org/wiki/Niklaus_Wirth), who created Pascal and several other languages. Mr. Odersky is one of the co-designers of Generic Java, and is also known as the “father” of the `javac` compiler.
-
-
-
-
-
-
-
-

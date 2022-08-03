@@ -2,15 +2,21 @@
 //------------------------------------------------
 //------------------------------------------------
 
+// dynamic tab switching based on https: //levelup.gitconnected.com/tabbed-interfaces-without-javascript-661bab1eaec8
+
 .nav-tab {
     border-bottom: $base-border-gray;
     @include display(flex);
     @include align-items(center);
     @include justify-content(flex-start);
-    margin-bottom: 10px;
+    overflow-x: auto; // scrollbar when width is too small.
+    overflow-y: hidden;
 
     .item-tab {
+
+        label,
         a {
+            transition: none; // do not animate the transition to active
             color: $base-font-color-light;
             display: block;
             padding: 0 20px 10px;
@@ -23,21 +29,107 @@
                 color: $base-font-color;
             }
 
-            &.active {
-                border-bottom: 2px solid $brand-primary;
-                color: $brand-primary;
-                pointer-events: none;
+            &:hover {
+                cursor: pointer;
             }
         }
 
+        label {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
     }
+
     @include bp(small) {
         @include justify-content(space-between);
+
         .item-tab {
-        a {
-            padding: 0 10px 10px;
-            font-size: $font-size-medium;
-        }
+            label,
+            a {
+                transition: none; // do not animate the transition to active
+                padding: 0 10px 10px;
+                font-size: $font-size-medium;
+            }
         }
     }
+}
+
+/* Active Tabs for standard screen size */
+.nav-tab>.item-tab>a.active, // used in the blog
+.tabsection>input:nth-child(1):checked~.nav-tab .item-tab:nth-child(1) label,
+.tabsection>input:nth-child(2):checked~.nav-tab .item-tab:nth-child(2) label,
+.tabsection>input:nth-child(3):checked~.nav-tab .item-tab:nth-child(3) label,
+.tabsection>input:nth-child(4):checked~.nav-tab .item-tab:nth-child(4) label,
+.tabsection>input:nth-child(5):checked~.nav-tab .item-tab:nth-child(5) label,
+.tabsection>input:nth-child(6):checked~.nav-tab .item-tab:nth-child(6) label,
+.tabsection>input:nth-child(7):checked~.nav-tab .item-tab:nth-child(7) label,
+.tabsection>input:nth-child(8):checked~.nav-tab .item-tab:nth-child(8) label,
+.tabsection>input:nth-child(9):checked~.nav-tab .item-tab:nth-child(9) label {
+    border-bottom: 2px solid $brand-primary;
+    padding: 0 20px 8px; // so text does not jump up when active
+    color: $brand-primary;
+    pointer-events: none;
+}
+
+/* Active Tabs for small screen size */
+@include bp(small) {
+    .nav-tab>.item-tab>a.active,
+    .tabsection>input:nth-child(1):checked~.nav-tab .item-tab:nth-child(1) label,
+    .tabsection>input:nth-child(2):checked~.nav-tab .item-tab:nth-child(2) label,
+    .tabsection>input:nth-child(3):checked~.nav-tab .item-tab:nth-child(3) label,
+    .tabsection>input:nth-child(4):checked~.nav-tab .item-tab:nth-child(4) label,
+    .tabsection>input:nth-child(5):checked~.nav-tab .item-tab:nth-child(5) label,
+    .tabsection>input:nth-child(6):checked~.nav-tab .item-tab:nth-child(6) label,
+    .tabsection>input:nth-child(7):checked~.nav-tab .item-tab:nth-child(7) label,
+    .tabsection>input:nth-child(8):checked~.nav-tab .item-tab:nth-child(8) label,
+    .tabsection>input:nth-child(9):checked~.nav-tab .item-tab:nth-child(9) label {
+        padding: 0 10px 8px; // match narrower padding for inactive tabs
+    }
+}
+
+.tabsection {
+    padding: 0.1px 0; // ensure inner content is correctly padded
+    border-left: 2px solid $base-border-color-gray;
+
+    .nav-tab {
+        padding-left: 0;
+        margin-bottom: 0;
+
+        .item-tab {
+            padding: 0;
+            margin-bottom: 0;
+            list-style: none;
+        }
+    }
+
+    input { // hide the input because they are not interactive
+        display: block; /* "enable" hidden elements in IE/edge */
+        position: absolute; /* then hide them off-screen */
+        left: -100%;
+    }
+
+    .tabcontent {
+        section { // by default, hide all sections until the user clicks on the associated label
+            position: absolute;
+            top: -999em;
+            left: -999em;
+        }
+    }
+}
+
+.tabsection>input:nth-child(1):checked~.tabcontent section:nth-child(1),
+.tabsection>input:nth-child(2):checked~.tabcontent section:nth-child(2),
+.tabsection>input:nth-child(3):checked~.tabcontent section:nth-child(3),
+.tabsection>input:nth-child(4):checked~.tabcontent section:nth-child(4),
+.tabsection>input:nth-child(5):checked~.tabcontent section:nth-child(5),
+.tabsection>input:nth-child(6):checked~.tabcontent section:nth-child(6),
+.tabsection>input:nth-child(7):checked~.tabcontent section:nth-child(7),
+.tabsection>input:nth-child(8):checked~.tabcontent section:nth-child(8),
+.tabsection>input:nth-child(9):checked~.tabcontent section:nth-child(9) {
+    position: static;
 }

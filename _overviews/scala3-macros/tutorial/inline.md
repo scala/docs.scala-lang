@@ -276,8 +276,8 @@ val x = 2
 val x2 = x * x
 x2 * {
   if (0 == 0) 1.0
-  else if (0 % 2 == 1) x * power(x, 0 - 1) // dead branch
-  else power(x * x, 0 / 2) // dead branch
+  else if (0 % 2 == 1) x2 * power(x2, 0 - 1) // dead branch
+  else power(x2 * x2, 0 / 2) // dead branch
 }
 // partially evaluated to
 val x = 2
@@ -499,7 +499,7 @@ def powerCode(x: Expr[Double], n: Expr[Int])(using Quotes): Expr[Double] = ...
 ```
 
 
-[soft-modifier]: {% link _scala3-reference/soft-modifier.md %}
+[soft-modifier]: {{ site.scala3ref }}/soft-modifier.html
 
 [contributing]: {% link scala3/contribute-to-docs.md %}
 [best-practices]: {% link _overviews/scala3-macros/best-practices.md %}

@@ -24,15 +24,46 @@ Nous recommandons l'utilisation de l'outil d'installation "Coursier" qui va auto
 ### Utilisation de l'installateur Scala (recommandé)
 
 L'installateur Scala est un outil nommé [Coursier](https://get-coursier.io/docs/cli-overview), la commande principale de l'outil est `cs`.
-Il s'assure que la JVM est les outils standards de Scala sont installés sur votre système. 
+Il s'assure que la JVM est les outils standards de Scala sont installés sur votre système.
 Installez-le sur votre système avec les instructions suivantes.
 
-<div class="main-download">
-    <div id="download-step-one">
-        <p>Suivez <a href="https://get-coursier.io/docs/cli-installation.html#native-launcher" target="_blank">les instructions pour installer la commande <code>cs</code></a> puis exécutez :</p>
-        <p><code>$ ./cs setup</code></p>
-    </div>
-</div>
+<!-- Display tabs for each OS -->
+{% tabs install-cs-setup-tabs class=platform-os-options %}
+
+<!-- macOS -->
+{% tab macOS for=install-cs-setup-tabs %}
+{% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-brew %}
+{% altDetails cs-setup-macos-nobrew  "Alternativement, si vous n'utilisez pas Homebrew:" %}
+  {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-default %}
+{% endaltDetails %}
+{% endtab %}
+<!-- end macOS -->
+
+<!-- Linux -->
+{% tab Linux for=install-cs-setup-tabs %}
+  {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.linux %}
+{% endtab %}
+<!-- end Linux -->
+
+<!-- Windows -->
+{% tab Windows for=install-cs-setup-tabs %}
+  Téléchargez et exécutez [l'intallateur Scala pour Windows]({{site.data.setup-scala.windows-link}}) basé sur Coursier.
+{% endtab %}
+<!-- end Windows -->
+
+<!-- Other -->
+{% tab Other for=install-cs-setup-tabs defaultTab %}
+  <noscript>
+    <p><span style="font-style:italic;">JavaScript est désacivé. Cliquez sur l'onglet correspondant à votre système d'exploitation.</span></p>
+  </noscript>
+  Suivez 
+    [les instructions pour installer la commande `cs`](https://get-coursier.io/docs/cli-installation)
+    puis exécutez `./cs setup`.
+{% endtab %}
+<!-- end Other -->
+
+{% endtabs %}
+<!-- End tabs -->
 
 En plus de gérer les JVMs, `cs setup` installe aussi des utilitaires en ligne de commande :
 
@@ -165,30 +196,3 @@ Une fois que vous avez terminé le tutoriel ce dessus, vous pouvez consulter :
 Il y a plusieurs listes de diffusion et canaux de discussions instantanés si vous souhaitez rencontrer rapidement d'autres utilisateurs de Scala. Allez faire un tour sur notre page [community](https://scala-lang.org/community/) pour consulter la liste des ces ressources et obtenir de l'aide.
 
 Traduction par Antoine Pointeau.
-
-<!-- Hidden elements whose content are used to provide OS-specific download instructions.
- -- This is handled in `resources/js/functions.js`.
- --> 
-<div style="display:none" id="stepOne-linux">
-       <code class="hljs">$ curl -fLo cs https://git.io/coursier-cli-linux && chmod +x cs && ./cs setup </code> <br>
-</div>
-
-<div style="display:none" id="stepOne-unix">
-    <p>Suivez <a href="https://get-coursier.io/docs/cli-installation" target="_blank">les instructions pour installer la commande 
-    <code>cs</code></a>puis exécutez :</p>
-    <p><code>$ ./cs setup</code></p>
-</div>
-
-<div style="display:none" id="stepOne-osx">
-    <div class="highlight">
-        <code class="hljs">$ brew install coursier/formulas/coursier && cs setup </code> <br>
-    </div>
-    <p>Alternativement, si vous n'utilisez pas Homebrew</p>
-    <div class="highlight">
-        <code class="hljs">$ curl -fLo cs https://git.io/coursier-cli-macos && chmod +x cs &&  (xattr -d com.apple.quarantine cs || true) && ./cs setup</code> <br>
-    </div>
-</div>
-
-<div style="display:none" id="stepOne-windows">
-    <p>Téléchargez et exécutez <a href="https://git.io/coursier-cli-windows-exe">l'intallateur Scala pour Windows</a> basé sur Coursier</p>
-</div>

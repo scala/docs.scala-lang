@@ -40,7 +40,7 @@ scala3-sections:
       - title: "Language Reference"
         description: "Scala 3 の言語仕様"
         icon: "fa fa-book"
-        link: /scala3/reference/overview.html
+        link: https://docs.scala-lang.org/scala3/reference
 
 scala2-sections:
 

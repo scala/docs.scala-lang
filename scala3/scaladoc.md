@@ -1,11 +1,13 @@
 ---
 layout: singlepage-overview
 title: New features for Scaladoc
+partof: scala3-scaladoc
+languages: ["uk"]
 ---
 
 The new Scala version 3 comes with a completely new implementation of the documentation generator _Scaladoc_, rewritten from scratch. 
 In this article you can find highlights of new features that are or will be introduced to Scaladoc.
-For general reference, visit [Scaladoc manual](https://dotty.epfl.ch/docs/usage/scaladoc/)
+For general reference, visit [Scaladoc manual]({% link _overviews/scala3-scaladoc/index.md %}).
 
 ## New features
 
@@ -25,19 +27,19 @@ Thanks to this feature, you can store your documentation along-side with the gen
 
 For more information on how to configure the generation of static sites check out [Static documentation][static-documentation] chapter
 
-![](../resources/images/scala3/scaladoc/static-site.png)
+![](../../resources/images/scala3/scaladoc/static-site.png)
 
 ### Blog posts
 
 Blog posts are a specific type of static sites. In the Scaladoc manual you can find additional information about how to work with [blog posts][built-in-blog].
 
-![](../resources/images/scala3/scaladoc/blog-post.png)
+![](../../resources/images/scala3/scaladoc/blog-post.png)
 
 ### Social links
 
 Furthermore, Scaladoc provides an easy way to configure your [social media links][social-links] e.g. Twitter or Discord.
 
-![](../resources/images/scala3/scaladoc/social-links.png){: style="width: 180px"}
+![](../../resources/images/scala3/scaladoc/social-links.png){: style="width: 180px"}
 
 ## Experimental features
 
@@ -70,7 +72,7 @@ Instead of searching for `span` we can also search for `IArray[A] => (A => Boole
 
 To use this feature simply type the signature of the function you are looking for in the scaladoc searchbar. This is how it works:
 
-![](../resources/images/scala3/scaladoc/inkuire-1.0.0-M2_js_flatMap.gif)
+![](../../resources/images/scala3/scaladoc/inkuire-1.0.0-M2_js_flatMap.gif)
 
 This feature is provided by the [Inkuire](https://github.com/VirtusLab/Inkuire) search engine, which works for Scala 3 and Kotlin. To be up-to-date with the development of this feature, follow the [Inkuire repository](https://github.com/VirtusLab/Inkuire).
 
@@ -82,4 +84,4 @@ If you encounter a bug or have an idea for improvement, don't hesitate to create
 [scaladoc-docstrings]: {% link _overviews/scala3-scaladoc/docstrings.md %}
 [static-documentation]: {% link _overviews/scala3-scaladoc/static-site.md %}
 [built-in-blog]: {% link _overviews/scala3-scaladoc/blog.md %}
-[social-links]: https://dotty.epfl.ch/docs/usage/scaladoc/settings.html#-social-links
+[social-links]: {% link _overviews/scala3-scaladoc/settings.md %}#-social-links

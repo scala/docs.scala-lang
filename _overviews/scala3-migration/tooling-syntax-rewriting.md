@@ -13,7 +13,7 @@ Both are optional so that the Scala 2 code style is still perfectly valid in Sca
 The new syntax for control structures makes it possible to write the condition of an `if`-expression, the condition of a `while`-loop or the generators of a `for`-expression without enclosing parentheses.
 
 The significant indentation syntax makes braces `{...}` not needed in many occurences: class and method bodies, `if`-expressions, `match`-expressions and more.
-You can find a complete description in the [Optional Braces](https://docs.scala-lang.org/scala3/reference/other-new-features/indentation.html) page of the Scala 3 reference website.
+You can find a complete description in the [Optional Braces]({{ site.scala3ref }}/other-new-features/indentation.html) page of the Scala 3 reference website.
 
 Converting existing Scala code to the new syntax by hand is tedious and error-prone.
 In this chapter we show how you can use the compiler to rewrite your code automatically from the classic Scala 2 style to the new style, or conversely. 

@@ -6,20 +6,20 @@ includeTOC: true
 
 ## Latest releases
 
-* Scala 3.1.2
-  * [Library API](https://www.scala-lang.org/api/3.1.2/)
+* Scala 3.1.3
+  * [Library API](https://www.scala-lang.org/api/3.1.3/)
 * Scala 2.13.8
   * [Library API](https://www.scala-lang.org/api/2.13.8/)
   * [Compiler API](https://www.scala-lang.org/api/2.13.8/scala-compiler/scala/)
   * [Reflection API](https://www.scala-lang.org/api/2.13.8/scala-reflect/scala/reflect/)
-* Scala 2.12.15
-  * [Library API](https://www.scala-lang.org/api/2.12.15/)
-  * [Compiler API](https://www.scala-lang.org/api/2.12.15/scala-compiler/scala/)
-  * [Reflection API](https://www.scala-lang.org/api/2.12.15/scala-reflect/scala/reflect/)
+* Scala 2.12.16
+  * [Library API](https://www.scala-lang.org/api/2.12.16/)
+  * [Compiler API](https://www.scala-lang.org/api/2.12.16/scala-compiler/scala/)
+  * [Reflection API](https://www.scala-lang.org/api/2.12.16/scala-reflect/scala/reflect/)
   * Scala Modules
-    * [XML API](https://www.scala-lang.org/api/2.12.15/scala-xml/scala/xml/)
-    * [Parser Combinators API](https://www.scala-lang.org/api/2.12.15/scala-parser-combinators/scala/util/parsing/)
-    * [Swing API](https://www.scala-lang.org/api/2.12.15/scala-swing/scala/swing/)
+    * [XML API](https://www.scala-lang.org/api/2.12.16/scala-xml/scala/xml/)
+    * [Parser Combinators API](https://www.scala-lang.org/api/2.12.16/scala-parser-combinators/scala/util/parsing/)
+    * [Swing API](https://www.scala-lang.org/api/2.12.16/scala-swing/scala/swing/)
 * Scala 2.11.12
   * [Library API](https://www.scala-lang.org/api/2.11.12/)
   * [Compiler API](https://www.scala-lang.org/api/2.11.12/scala-compiler/)
@@ -60,6 +60,8 @@ https://scala-ci.typesafe.com/artifactory/scala-integration/org/scala-lang/
 
 ## Previous releases
 
+* Scala 3.1.2
+  * [Library API](https://www.scala-lang.org/api/3.1.2/)
 * Scala 3.1.1
   * [Library API](https://www.scala-lang.org/api/3.1.1/)
 * Scala 3.1.0
@@ -102,6 +104,14 @@ https://scala-ci.typesafe.com/artifactory/scala-integration/org/scala-lang/
   * [Library API](https://www.scala-lang.org/api/2.13.0/)
   * [Compiler API](https://www.scala-lang.org/api/2.13.0/scala-compiler/scala/)
   * [Reflection API](https://www.scala-lang.org/api/2.13.0/scala-reflect/scala/reflect/)
+* Scala 2.12.15
+  * [Library API](https://www.scala-lang.org/api/2.12.15/)
+  * [Compiler API](https://www.scala-lang.org/api/2.12.15/scala-compiler/scala/)
+  * [Reflection API](https://www.scala-lang.org/api/2.12.15/scala-reflect/scala/reflect/)
+  * Scala Modules
+    * [XML API](https://www.scala-lang.org/api/2.12.15/scala-xml/scala/xml/)
+    * [Parser Combinators API](https://www.scala-lang.org/api/2.12.15/scala-parser-combinators/scala/util/parsing/)
+    * [Swing API](https://www.scala-lang.org/api/2.12.15/scala-swing/scala/swing/)
 * Scala 2.12.14
   * [Library API](https://www.scala-lang.org/api/2.12.14/)
   * [Compiler API](https://www.scala-lang.org/api/2.12.14/scala-compiler/scala/)
