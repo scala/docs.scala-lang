@@ -17,7 +17,7 @@ You start a REPL session by running the `scala` or `scala3` command depending on
 {% tab 'Scala 3' for=command-line %}
 ```bash
 $ scala
-Welcome to Scala 3.1.3 (1.8.0_322, Java OpenJDK 64-Bit Server VM).
+Welcome to Scala {{site.scala-3-version}} (1.8.0_322, Java OpenJDK 64-Bit Server VM).
 Type in expressions for evaluation. Or try :help.
 
 scala> _
