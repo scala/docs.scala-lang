@@ -67,7 +67,7 @@ While in the case of sequential collections, elements can be added to a
 `Builder`, and a collection can be produced by invoking the `result` method,
 in the case of parallel collections, a `Combiner` has a method called
 `combine` which takes another `Combiner` and produces a new `Combiner` that
-contains the union of both elements. After `combine` has been invoked, both
+contains the union of both's elements. After `combine` has been invoked, both
 `Combiner`s become invalidated.
 
     trait Combiner[Elem, To] extends Builder[Elem, To] {

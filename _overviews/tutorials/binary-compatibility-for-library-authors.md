@@ -124,7 +124,7 @@ Unfortunately at 2am, we get frantic calls from customers saying that our applic
 Why did we get a `NoSuchMethodError`? Remember that `A v1.0.0` is compiled with `C v1.0.0` and thus calls methods available in `C v1.0.0`.  
 While `B v1.1.0` and `App` has been recompiled with `C v2.0.0`, `A v1.0.0`'s bytecode hasn't changed - it still calls the method that is now missing in `C v2.0.0`!
 
-This situation can only be resolved by ensuring that the chosen version of `C` is binary compatible with all others evicted versions of `C` in your dependency tree. In this case, we need a new version of `A` that depends
+This situation can only be resolved by ensuring that the chosen version of `C` is binary compatible with all other evicted versions of `C` in your dependency tree. In this case, we need a new version of `A` that depends
 on `C v2.0.0` (or any other future `C` version that is binary compatible with `C v2.0.0`).
 
 Now imagine if `App` is more complex with lots of dependencies themselves depending on `C` (either directly or transitively) - it becomes extremely difficult to upgrade any dependencies because it now

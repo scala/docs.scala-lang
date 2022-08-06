@@ -16,7 +16,7 @@ called [FunSuite](https://www.scalatest.org/getting_started_with_fun_suite).
 This assumes you know [how to build a project in IntelliJ](building-a-scala-project-with-intellij-and-sbt.html).
 
 ## Setup
-1. Create a sbt project in IntelliJ.
+1. Create an sbt project in IntelliJ.
 1. Add the ScalaTest dependency:
     1. Add the ScalaTest dependency to your `build.sbt` file:
         ```

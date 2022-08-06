@@ -42,7 +42,7 @@ However, be aware that a class can extend only one abstract class.
 
 ## When Scala code will be called from Java code
 
-Regarding the second point — the second time when you’ll need to use an abstract class — because Java doesn't know anything about Scala traits, if you want to call your Scala code from Java code, you’ll need to use an abstract class rather than a trait.
+Regarding the second point — the second time when you’ll need to use an abstract class — because Java doesn’t know anything about Scala traits, if you want to call your Scala code from Java code, you’ll need to use an abstract class rather than a trait.
 
 
 

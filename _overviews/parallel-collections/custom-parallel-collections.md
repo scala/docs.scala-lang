@@ -39,7 +39,7 @@ In this case, we return the `WrappedString` class:
       def seq = new collection.immutable.WrappedString(str)
 
 Finally, we have to define a splitter for our parallel string collection. We
-name the splitter `ParStringSplitter` and have it inherits a sequence splitter,
+name the splitter `ParStringSplitter` and have it inherit a sequence splitter,
 that is, `SeqSplitter[Char]`:
 
       def splitter = new ParStringSplitter(str, 0, str.length)

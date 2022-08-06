@@ -45,7 +45,7 @@ The other operations that `Iterator` has in common with `Iterable` have the same
     scala> it.hasNext
     res4: Boolean = false
 
-As you can see, after the call to `it.map`, the `it` iterator hasn't advanced to its end, but traversing the iterator
+As you can see, after the call to `it.map`, the `it` iterator hasn’t advanced to its end, but traversing the iterator
 resulting from the call to `res1.foreach` also traverses `it` and advances it to its end.
 
 Another example is the `dropWhile` method, which can be used to find the first elements of an iterator that has a certain property. For instance, to find the first word in the iterator above that has at least two characters you could write:

@@ -25,7 +25,7 @@ Besides many (minor) cleanups, the Scala 3 syntax offers the following  improvem
 
 - A new "quiet" syntax for control structures like `if`, `while`, and `for` ([new control syntax][syntax-control])
 - The `new` keyword is optional (_aka_ [creator applications][creator])
-- [Optional braces][syntax-indentation] that support a distraction-free, indentation sensitive style of programming
+- [Optional braces][syntax-indentation] that supports a distraction-free, indentation sensitive style of programming
 - Change of [type-level wildcards][syntax-wildcard] from `_` to `?`.
 - Implicits (and their syntax) have been [heavily revised][implicits].
 

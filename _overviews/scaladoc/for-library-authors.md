@@ -180,7 +180,7 @@ For explicit comment inheritance, use the `@inheritdoc` tag.
 It is still possible to embed HTML tags in Scaladoc (like with Javadoc), but
 not necessary most of the time as markup may be used instead.
 
-Some standard markup available:
+Some types of markup available:
 
     `monospace`
     ''italic text''

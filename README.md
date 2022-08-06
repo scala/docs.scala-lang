@@ -31,7 +31,7 @@ Please have a look at [Add New Guides/Tutorials](https://docs.scala-lang.org/con
 This document gives an overview of the type of documentation contained within the Scala Documentation repository and the repository's structure.
 
 Small changes, or corrected typos will generally be pulled in right away. Large changes, like the addition of new documents, or the rewriting of
-existing documents will be thoroughly reviewed-- please keep in mind that, mostly, new documents must be very well-polished, complete, and maintained
+existing documents will be thoroughly reviewed-- please keep in mind that, generally, new documents must be very well-polished, complete, and maintained
 in order to be accepted.
 
 ## Dependencies ##

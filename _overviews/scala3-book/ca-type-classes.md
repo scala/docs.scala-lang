@@ -78,7 +78,7 @@ val person = Person("John", "Doe")
 println(person.show)
 ```
 
-Again, if Scala didn't have a `toString` method available to every class, you could use this technique to add `Showable` behavior to any class that you want to be able to convert to a `String`.
+Again, if Scala didn’t have a `toString` method available to every class, you could use this technique to add `Showable` behavior to any class that you want to be able to convert to a `String`.
 
 ### Writing methods that use the type class
 

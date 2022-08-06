@@ -27,7 +27,7 @@ A symbol can provide a wealth of information ranging from the basic `name`
 method available on all symbols to other, more involved, concepts such as
 getting the `baseClasses` from `ClassSymbol`. Other common use cases of
 symbols include inspecting members' signatures, getting type parameters of a
-class, getting the parameter type of method or finding out the type of
+class, getting the parameter type of a method or finding out the type of a
 field.
 
 ### The Symbol Owner Hierarchy
@@ -109,8 +109,8 @@ types by using `-Xlog-free-types`.
 
 ## Types
 
-As its name suggests, instances of `Type` represent information about the type 
-of corresponding symbol. This includes its members (methods, fields, type
+As its name suggests, instances of `Type` represent information about the type
+of a corresponding symbol. This includes its members (methods, fields, type
 aliases, abstract types, nested classes, traits, etc.) either declared
 directly or inherited, its base types, its erasure and so on. Types also
 provide operations to test for type conformance or equivalence.

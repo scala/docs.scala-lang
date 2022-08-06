@@ -42,7 +42,7 @@ We recognize the importance of both blackbox and whitebox macros, however we fee
 
 In the 2.11 release, we take first step of standardization by expressing the distinction between blackbox and whitebox macros in signatures of def macros, so that `scalac` can treat such macros differently. This is just a preparatory step, so both blackbox and whitebox macros remain experimental in Scala 2.11.
 
-We express the distinction by replacing `scala.reflect.macros.Context` with `scala.reflect.macros.blackbox.Context` and `scala.reflect.macros.whitebox.Context`. If a macro impl is defined with `blackbox.Context` as its first argument, then macro defs, that are using it, are considered blackbox, and analogously for `whitebox.Context`. Of course, the vanilla `Context` is still there for compatibility reasons, but it issues a deprecation warning encouraging to choose between blackbox and whitebox macros.
+We express the distinction by replacing `scala.reflect.macros.Context` with `scala.reflect.macros.blackbox.Context` and `scala.reflect.macros.whitebox.Context`. If a macro impl is defined with `blackbox.Context` as its first argument, then macro defs that are using it are considered blackbox, and analogously for `whitebox.Context`. Of course, the vanilla `Context` is still there for compatibility reasons, but it issues a deprecation warning encouraging to choose between blackbox and whitebox macros.
 
 Blackbox def macros are treated differently from def macros of Scala 2.10. The following restrictions are applied to them by the Scala typechecker:
 

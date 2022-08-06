@@ -142,7 +142,7 @@ trait List[+A] extends Iterable[A]
 ## Four branches of templates traits ##
 
 The astute reader might have noticed that the given type signature
-for the `map` operation doesn't work with `Map` collections because
+for the `map` operation doesn’t work with `Map` collections because
 the `CC[_]` type parameter of the `IterableOps` trait takes one type
 parameter whereas `Map[K, V]` takes two type parameters.
 

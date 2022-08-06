@@ -269,7 +269,7 @@ scala> x.take(1).foreach(println)
 1
 ````
 
-For more information on the uses, benefits, and drawbacks of strict and non-strict (lazy) collections, see the “strict” and “non-strict” discussions on [The Architecture of Scala 2.13’s Collections][strict] page.
+For more information on the uses, benefits, and drawbacks of strict and non-strict (lazy) collections, see the “strict” and “non-strict” discussions on the [The Architecture of Scala 2.13’s Collections][strict] page.
 
 <!--
 Given that definition, collections can also be thought of in terms of being strict or lazy. In a _strict_ collection, memory for the elements is allocated immediately, and all of its elements are immediately evaluated when a transformer method is invoked. In a _lazy_ collection, memory for the elements is not allocated immediately, and transformer methods do not construct new elements until they are demanded.

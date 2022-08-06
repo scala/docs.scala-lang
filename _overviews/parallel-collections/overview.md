@@ -206,7 +206,7 @@ variable.
 
 In the above example, it's possible for two threads to read the _same_ value
 in `sum`, to spend some time doing some operation on that value of `sum`, and
-then to attempt to write a new value to `sum`, potentially resulting in
+then to attempt to write a new value to `sum`, potentially resulting in an
 overwrite (and thus, loss) of a valuable result, as illustrated below:
 
     ThreadA: read value in sum, sum = 0                value in sum: 0

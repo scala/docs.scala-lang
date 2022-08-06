@@ -7,7 +7,7 @@ previous-page: domain-modeling-intro
 next-page: domain-modeling-oop
 ---
 
-Scala 3 provides many different constructs, so we can model the world around us:
+Scala 3 provides many different constructs so we can model the world around us:
 
 - Classes
 - Objects

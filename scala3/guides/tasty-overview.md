@@ -111,11 +111,11 @@ A second key point is to understand that there are differences between the infor
 
 - At **compile time**, as `scalac` reads and analyzes your code, it knows that `xs` is a `List[Int]`
 - When the compiler writes your code to a class file, it writes that `xs` is a `List[Object]`, and it adds casting information everywhere else `xs` is accessed
-- Then at **run time** --- with your code running inside the JVM --- the JVM doesn't know that your list is a `List[Int]`
+- Then at **run time** --- with your code running inside the JVM --- the JVM doesn’t know that your list is a `List[Int]`
 
 With Scala 3 and Tasty, here’s another important note about compile time:
 
-- When you write Scala 3 code that uses other Scala 3 libraries, `scalac` doesn't have to read their _.class_ files anymore; it can read their _.tasty_ files, which, as mentioned, are an _exact_ representation of your code. This is important to enable separate compilation and compatibility between Scala 2.13 and Scala 3.
+- When you write Scala 3 code that uses other Scala 3 libraries, `scalac` doesn’t have to read their _.class_ files anymore; it can read their _.tasty_ files, which, as mentioned, are an _exact_ representation of your code. This is important to enable separate compilation and compatibility between Scala 2.13 and Scala 3.
 
 
 

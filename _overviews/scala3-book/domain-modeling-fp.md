@@ -94,7 +94,7 @@ case class Pizza(
 
 And that’s it.
 That’s the data model for an FP-style pizza system.
-This solution is very concise because it doesn't require the operations on a pizza to be combined with the data model.
+This solution is very concise because it doesn’t require the operations on a pizza to be combined with the data model.
 The data model is easy to read, like declaring the design for a relational database.
 It is also very easy to create values of our data model and inspect them:
 
@@ -198,9 +198,9 @@ Mine (Alvin, now modified, from fp-pure-functions.md):
 ------------------------------------------------------
 - A function `f` is pure if, given the same input `x`, it always returns the same output `f(x)`
 - The function’s output depends *only* on its input variables and its internal algorithm
-- It doesn't modify its input parameters
-- It doesn't mutate any hidden state
-- It doesn't have any “back doors”: It doesn't read data from the outside world (including the console, web services, databases, files, etc.), or write data to the outside world
+- It doesn’t modify its input parameters
+- It doesn’t mutate any hidden state
+- It doesn’t have any “back doors”: It doesn’t read data from the outside world (including the console, web services, databases, files, etc.), or write data to the outside world
 {% endcomment %}
 
 

@@ -46,7 +46,7 @@ To do that, simply replace macro definition parameter types with underscores and
 ## Details
 
 The cease-typechecking underscore can be used in exactly three places in Scala programs: 1) as a parameter type in a macro,
-2) as a vararg parameter type in a macro, 3) as a return type of macro. Usages outside macros or as parts of complex types won't work.
+2) as a vararg parameter type in a macro, 3) as a return type of a macro. Usages outside macros or as parts of complex types won't work.
 The former will lead to a compile error, the latter, as in e.g. `List[_]`, will produce existential types as usual.
 
 Note that untyped macros enable extractor macros: [SI-5903](https://issues.scala-lang.org/browse/SI-5903). In 2.10.x, it is possible

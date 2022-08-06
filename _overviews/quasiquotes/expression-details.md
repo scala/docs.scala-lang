@@ -16,7 +16,7 @@ permalink: /overviews/quasiquotes/:title.html
 
 1. `Val`s, `Var`s and `Def`s without the right-hand side have it set to `q""`.
 2. Abstract type definitions without bounds have them set to `q""`.
-3. `Try` expressions without a "finally" clause have it set to `q""`.
+3. `Try` expressions without a `finally` clause have it set to `q""`.
 4. `Case` clauses without guards have them set to `q""`.
 
 The default `toString` formats `q""` as `<empty>`.
@@ -145,7 +145,7 @@ This can be accomplished with the following:
     type arguments: List(Int), value arguments: List(1, 2)
     type arguments: List(), value arguments: List(scala.Symbol("a"), scala.Symbol("b"))
 
-As you can see, we were able to match both calls regardless whether a specific type application exists. This happens because the type application matcher extracts the empty list of type arguments if the tree is not an actual type application, making it possible to handle both situations uniformly.
+As you can see, we were able to match both calls regardless of whether a specific type application exists. This happens because the type application matcher extracts the empty list of type arguments if the tree is not an actual type application, making it possible to handle both situations uniformly.
 
 It is recommended to always include type applications when you match on a function with type arguments, as they will be inserted by the compiler during type checking, even if the user didn't write them explicitly:
 

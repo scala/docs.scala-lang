@@ -55,7 +55,7 @@ Extractors are a neat way to delegate pattern matching to another object's unapp
 
 ## Type Pattern
 
-Type patterns are a way to check the type of scrutinee:
+Type patterns are a way to check the type of a scrutinee:
 
     scala> val isT = pq"_: T"
     isT: universe.Typed = (_: T)
