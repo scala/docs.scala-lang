@@ -27,7 +27,7 @@ scala> _
 {% tab 'Scala 2' for=command-line %}
 ```bash
 $ scala
-Welcome to Scala 2.13.8 (OpenJDK 64-Bit Server VM, Java 1.8.0_342).
+Welcome to Scala {{site.scala-version}} (OpenJDK 64-Bit Server VM, Java 1.8.0_342).
 Type in expressions for evaluation. Or try :help.
 
 scala> _
