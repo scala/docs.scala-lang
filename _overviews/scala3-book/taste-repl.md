@@ -14,20 +14,20 @@ You start a REPL session by running the `scala` or `scala3` command depending on
 
 {% tabs command-line class=tabs-scala-version %}
 
-{% tab 'Scala 3' for=command-line %}
+{% tab 'Scala 2' for=command-line %}
 ```bash
 $ scala
-Welcome to Scala {{site.scala-3-version}} (1.8.0_322, Java OpenJDK 64-Bit Server VM).
+Welcome to Scala {{site.scala-version}} (OpenJDK 64-Bit Server VM, Java 1.8.0_342).
 Type in expressions for evaluation. Or try :help.
 
 scala> _
 ```
 {% endtab %}
 
-{% tab 'Scala 2' for=command-line %}
+{% tab 'Scala 3' for=command-line %}
 ```bash
 $ scala
-Welcome to Scala {{site.scala-version}} (OpenJDK 64-Bit Server VM, Java 1.8.0_342).
+Welcome to Scala {{site.scala-3-version}} (1.8.0_322, Java OpenJDK 64-Bit Server VM).
 Type in expressions for evaluation. Or try :help.
 
 scala> _
