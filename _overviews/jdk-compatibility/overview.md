@@ -90,7 +90,7 @@ Support for JDK 18 was included in Scala 2.13.7 and 2.12.15.
 Early access builds of JDK 19, a non-LTS release, are already available.
 
 Initial support for JDK 19 was included in Scala 2.12.16 and will
-also be included in Scala 2.13.9 (forthcoming).
+also be included in Scala 2.13.9 (forthcoming) and Scala 3.2.0 (forthcoming).
 
 ## GraalVM Native Image compatibility notes
 
