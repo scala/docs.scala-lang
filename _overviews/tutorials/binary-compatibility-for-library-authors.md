@@ -52,7 +52,7 @@ Similarly to the JVM, Scala.js and Scala Native have their respective equivalent
 
 However, contrary to the JVM, Scala.js and Scala Native link their respective IR files at link time, so eagerly, instead of lazily at run-time. Failure to correctly link the entire program results in linking errors reported while trying to invoke `fastOptJS`/`fullOptJS` or `nativeLink`.
 
-Besides that difference in the timing of linkage errors, the models are extremely similar. **Unless otherwise noted, the contents of this guide apply equally to the JVM, Scala.js and Scala Native.**
+Besides, that difference in the timing of linkage errors, the models are extremely similar. **Unless otherwise noted, the contents of this guide apply equally to the JVM, Scala.js and Scala Native.**
 
 Before we look at how to avoid binary incompatibility errors, let us first
 establish some key terminologies we will be using for the rest of the guide.
@@ -67,7 +67,7 @@ Because of this, having multiple versions of the same library in the classpath i
 * Unexpected runtime behavior if the order of class files changes
 
 Therefore, build tools like sbt and Gradle will pick one version and **evict** the rest when resolving JARs to use for compilation and packaging. 
-By default they pick the latest version of each library, but it is possible to specify another version if required.
+By default, they pick the latest version of each library, but it is possible to specify another version if required.
 
 ### Source Compatibility
 Two library versions are **Source Compatible** with each other if switching one for the other does not incur any compile errors or unintended behavioral changes (semantic errors).  
@@ -115,7 +115,7 @@ Our application `App` depends on library `A` and `B`. Both `A` and `B` depends o
 
 ![Initial dependency graph]({{ site.baseurl }}/resources/images/library-author-guide/before_update.png){: style="width: 50%; margin: auto; display: block;"}
 
-Sometime later, we see `B v1.1.0` is available and upgrade its version in our build. Our code compiles and seems to work so we push it to production and go home for dinner.
+Sometime later, we see `B v1.1.0` is available and upgrade its version in our build. Our code compiles and seems to work, so we push it to production and go home for dinner.
 
 Unfortunately at 2am, we get frantic calls from customers saying that our application is broken! Looking at the logs, you find lots of `NoSuchMethodError` are being thrown by some code in `A`! 
 
@@ -171,7 +171,7 @@ in library releases:
 
 You can find detailed explanations, runnable examples and tips to maintain binary compatibility in [Binary Compatibility Code Examples & Explanation](https://github.com/jatcwang/binary-compatibility-guide).
 
-Again, we recommend using MiMa to double check that you have not broken binary compatibility after making changes.
+Again, we recommend using MiMa to double-check that you have not broken binary compatibility after making changes.
 
 ## Versioning Scheme - Communicating compatibility breakages
 

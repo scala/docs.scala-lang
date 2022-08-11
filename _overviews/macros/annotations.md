@@ -57,8 +57,8 @@ results have to be wrapped in a `Block` for the lack of better notion in the ref
 At this point you might be wondering. A single annottee and a single result is understandable, but what is the many-to-many
 mapping supposed to mean? There are several rules guiding the process:
 
-1. If a class is annotated and it has a companion, then both are passed into the macro. (But not vice versa - if an object
-   is annotated and it has a companion class, only the object itself is expanded).
+1. If a class is annotated, and it has a companion, then both are passed into the macro. (But not vice versa - if an object
+   is annotated, and it has a companion class, only the object itself is expanded).
 1. If a parameter of a class, method or type member is annotated, then it expands its owner. First comes the annottee,
    then the owner and then its companion as specified by the previous rule.
 1. Annottees can expand into whatever number of trees of any flavor, and the compiler will then transparently
@@ -109,8 +109,8 @@ at a later point in the future).
 In the spirit of Scala macros, macro annotations are as untyped as possible to stay flexible and
 as typed as possible to remain useful. On the one hand, macro annottees are untyped, so that we can change their signatures (e.g. lists
 of class members). But on the other hand, the thing about all flavors of Scala macros is integration with the typechecker, and
-macro annotations are not an exceptions. During expansion we can have all the type information that's possible to have
-(e.g. we can reflect against the surrounding program or perform type checks / implicit lookups in the enclosing context).
+macro annotations are not an exceptions. During expansion, we can have all the type information that's possible to have
+(e.g. we can reflect against the surrounding program or perform type checks / implicit lookup in the enclosing context).
 
 ## Blackbox vs whitebox
 

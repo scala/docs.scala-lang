@@ -12,7 +12,7 @@ involved with complex tools like the compiler.
 
 ## Architecture
 
-This documentation website is backed by an open-source [github repository](https://github.com/scala/docs.scala-lang),
+This documentation website is backed by an open-source [GitHub repository](https://github.com/scala/docs.scala-lang),
 and is always contribution-ready.
 
 ### Content
@@ -34,10 +34,10 @@ The website is statically generated from [Markdown](https://en.wikipedia.org/wik
 This workflow was chosen to help contributors to focus on writing helpful content, rather than on configuration and
 boilerplate. It also aids publishing a static site in a central location.
 
-The markdown syntax being used supports [Maruku](https://github.com/bhollis/maruku) extensions, and has automatic
+The Markdown syntax being used supports [Maruku](https://github.com/bhollis/maruku) extensions, and has automatic
 syntax highlighting, without the need for any tags.
 
-Additionally [mdoc](https://github.com/scalameta/mdoc) is used during pull requests to validate Scala code blocks.
+Additionally, [mdoc](https://github.com/scalameta/mdoc) is used during pull requests to validate Scala code blocks.
 To use this feature you must use the backtick notation as documented by mdoc,
 [see here](#code-blocks) for an example.
 
@@ -271,7 +271,7 @@ the metadata of `/tutorials.md`. e.g. it could look like
       icon: code
     ---
 
-You must also add the tutorial to the drop down list in the navigation bar. To do this, add an extra entry to
+You must also add the tutorial to the drop-down list in the navigation bar. To do this, add an extra entry to
 `_data/doc-nav-header.yml`. i.e.
 
     ---
@@ -290,7 +290,7 @@ You must also add the tutorial to the drop down list in the navigation bar. To d
 
 ### Cheatsheets
 
-Cheatsheets have a special layout, and the content is expected to be a markdown table. To contribute a cheatsheet,
+Cheatsheets have a special layout, and the content is expected to be a Markdown table. To contribute a cheatsheet,
 you should use the following format:
 
     ---

@@ -49,9 +49,9 @@ The first reason for setting up a continuous integration (CI) server is to syste
 Examples of CI servers that are free for open source projects are [GitHub Actions](https://github.com/features/actions),
 [Travis CI](https://travis-ci.com), [Drone](https://drone.io) or [AppVeyor](https://appveyor.com).
 
-Our example uses Github Actions. This feature is enabled by default on GitHub repositories. You can verify if that is
+Our example uses GitHub Actions. This feature is enabled by default on GitHub repositories. You can verify if that is
 the case in the *Actions* section of the *Settings* tab of the repository.
-If *Disable all actions* is checked, then Actions are not enabled and you can activate them
+If *Disable all actions* is checked, then Actions are not enabled, and you can activate them
 by selecting *Allow all actions*, *Allow local actions only* or *Allow select actions*.
 
 With Actions enabled, you can create a *workflow definition file*. A **workflow** is an automated procedure,
@@ -81,7 +81,7 @@ jobs:
         run: sbt +test
 ~~~
 
-This workflow is called *Continuous integration* and it will run every time one
+This workflow is called *Continuous integration*, and it will run every time one
 or more commits are pushed to the repository. It contains only one job called
 *ci*, which will run on an Ubuntu runner and that is composed of three
 actions. The action `setup-java` installs a JDK and caches the library dependencies
@@ -181,7 +181,7 @@ credentials += Credentials("Sonatype Nexus Repository Manager",
         "(Sonatype password)")
 ~~~
 
-(Put your actual user name and password in place of `(Sonatype user name)` and `(Sonatype password)`)
+(Put your actual username and password in place of `(Sonatype user name)` and `(Sonatype password)`)
 
 **Never** check this file into version control.
 
@@ -375,7 +375,7 @@ an sbt-site to GitHub Pages.
 ### Create the Documentation Site
 
 In this example we choose to use [Paradox](https://developer.lightbend.com/docs/paradox/current/index.html)
-because it runs on the JVM and thus doesn’t require setting up another VM on your system (in contrast with
+because it runs on the JVM and thus doesn't require setting up another VM on your system (in contrast with
 most other documentation generators, which are based on Ruby, Node.js or Python).
 
 To install Paradox and sbt-site, add the following lines to your `project/plugins.sbt` file:
@@ -392,7 +392,7 @@ enablePlugins(ParadoxPlugin, ParadoxSitePlugin)
 Paradox / sourceDirectory := sourceDirectory.value / "documentation"
 {% endhighlight %}
 
-The `ParadoxPlugin` is responsible of generating the website, and the `ParadoxSitePlugin` provides
+The `ParadoxPlugin` is responsible for generating the website, and the `ParadoxSitePlugin` provides
 integration with `sbt-site`.
 The second line is optional, it defines the location of the website source files. In our case, in
 `src/documentation`.
@@ -642,11 +642,11 @@ jobs:
 From the user point of view, upgrading to a new version of a library should be a smooth process. Possibly,
 it should even be a “non-event”.
 
-Breaking changes and migration steps should be thoroughly documented, and a we recommend following the
+Breaking changes and migration steps should be thoroughly documented, and we recommend following the
 [semantic versioning](/overviews/core/binary-compatibility-for-library-authors.html#versioning-scheme---communicating-compatibility-breakages)
 policy.
 
-The [MiMa](https://github.com/lightbend/migration-manager) tool can help you checking that you don’t
+The [MiMa](https://github.com/lightbend/migration-manager) tool can help you to check that you don't
 break this versioning policy. Add the `sbt-mima-plugin` to your build with the following, in your
 `project/plugins.sbt` file:
 
@@ -654,7 +654,7 @@ break this versioning policy. Add the `sbt-mima-plugin` to your build with the f
 addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "0.9.2")
 ~~~
 
-Configure it as follow, in `build.sbt`:
+Configure it as follows, in `build.sbt`:
 
 ~~~ scala
 mimaPreviousArtifacts := previousStableVersion.value.map(organization.value %% name.value % _).toSet

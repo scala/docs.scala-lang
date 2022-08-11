@@ -30,7 +30,7 @@ The [reference documentation][matchable] contains more information about `Matcha
 `Matchable` has two important subtypes: `AnyVal` and `AnyRef`.
 
 *`AnyVal`* represents value types.
-There are a couple of predefined value types and they are non-nullable: `Double`, `Float`, `Long`, `Int`, `Short`, `Byte`, `Char`, `Unit`, and `Boolean`.
+There are a couple of predefined value types, and they are non-nullable: `Double`, `Float`, `Long`, `Int`, `Short`, `Byte`, `Char`, `Unit`, and `Boolean`.
 `Unit` is a value type which carries no meaningful information.
 There is exactly one instance of `Unit` which we can refer to as: `()`.
 
@@ -190,7 +190,7 @@ println(s"x.abs = ${x.abs}")   // prints "x.abs = 1"
 
 The `s` that you place before the string is just one possible interpolator.
 If you use an `f` instead of an `s`, you can use `printf`-style formatting syntax in the string.
-Furthermore, a string interpolator is a just special method and it is possible to define your own.
+Furthermore, a string interpolator is a just special method, and it is possible to define your own.
 For instance, some database libraries define the very powerful `sql` interpolator.
 
 

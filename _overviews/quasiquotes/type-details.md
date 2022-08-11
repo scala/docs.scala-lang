@@ -37,7 +37,7 @@ It is recommended to always ascribe the name as `TypeName` when you work with ty
 
 ## Singleton Type
 
-A singleton type is a way to express a type of a term definition that is being referenced:
+A singleton type is a way to express a type of term definition that is being referenced:
 
     scala> val singleton = tq"foo.bar.type".sr
     singleton: String = SingletonTypeTree(Select(Ident(TermName("foo")), TermName("bar")))
@@ -124,7 +124,7 @@ A compound type lets users express a combination of a number of types with an op
     parents: List[universe.Tree] = List(A, B, C)
     defns: List[universe.Tree] = List()
 
-Braces after parents are required to signal that this type is a compound type, even if there are no refinements and we just want to extract a sequence of types combined with the `with` keyword.
+Braces after parents are required to signal that this type is a compound type, even if there are no refinements, and we just want to extract a sequence of types combined with the `with` keyword.
 
 On the other side of the spectrum are pure refinements without explicit parents (a.k.a. structural types):
 

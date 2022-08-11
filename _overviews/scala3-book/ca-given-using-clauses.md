@@ -32,7 +32,7 @@ Let us assume that the configuration does not change throughout most of our code
 Passing `c` to each and every method call (like `renderWidget`) becomes very tedious and makes our program more difficult to read, since we need to ignore the `c` argument.
 
 #### Using `using` to mark parameters as contextual
-In Scala 3, we can mark some of the parameters of our methods as _contextual_.
+In Scala 3, we can mark some parameters of our methods as _contextual_.
 ```scala
 def renderWebsite(path: String)(using c: Config): String =
     "<html>" + renderWidget(List("cart"))    + "</html>"
@@ -65,7 +65,7 @@ Like we specified our parameter section with `using`, we can also explicitly pro
 ```scala
 renderWebsite("/home")(using config)
 ```
-Explicitly providing contextual parameters can be useful if we have multiple different values in scope that would make sense and we want to make sure that the correct one is passed to the function.
+Explicitly providing contextual parameters can be useful if we have multiple different values in scope that would make sense, and we want to make sure that the correct one is passed to the function.
 
 For all other cases, as we will see in the next Section, there is also another way to bring contextual values into scope.
 

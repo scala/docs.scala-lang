@@ -79,4 +79,4 @@ Its facilities can be witnessed using `:imports` or `-Xprint:parser`.
 ### Contributing to Scala REPL
 
 The REPL source is part of the Scala project. Issues are tracked by the standard
-mechanism for the project and pull requests are accepted at [the github repository](https://github.com/scala/scala).
+mechanism for the project and pull requests are accepted at [the GitHub repository](https://github.com/scala/scala).

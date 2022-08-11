@@ -93,7 +93,7 @@ regular collections framework's corresponding traits, as shown below.
 <br/>
 
 The goal is of course to integrate parallel collections as tightly as possible
-with sequential collections, so as to allow for straightforward substitution
+with sequential collections, to allow for straightforward substitution
 of sequential and parallel collections.
 
 In order to be able to have a reference to a collection which may be either

@@ -19,7 +19,7 @@ Separation of macros into blackbox ones and whitebox ones is a feature of Scala 
 
 With macros becoming a part of the official Scala 2.10 release, programmers in research and industry have found creative ways of using macros to address all sorts of problems, far extending our original expectations.
 
-In fact, macros became an important part of our ecosystem so quickly that just a couple months after the release of Scala 2.10, when macros were introduced in experimental capacity, we had a Scala language team meeting and decided to standardize macros and make them a full-fledged feature of Scala by 2.12.
+In fact, macros became an important part of our ecosystem so quickly that just a couple of months after the release of Scala 2.10, when macros were introduced in experimental capacity, we had a Scala language team meeting and decided to standardize macros and make them a full-fledged feature of Scala by 2.12.
 
 <span class="label success">UPDATE</span> It turned out that it was not that simple to stabilize macros by Scala 2.12. Our research into that has resulted in establishing a new metaprogramming foundation for Scala, called [scala.meta](https://scalameta.org), whose first beta is expected to be released simultaneously with Scala 2.12 and might later be included in future versions of Scala. In the meanwhile, Scala 2.12 is not going to see any changes to reflection and macros - everything is going to stay experimental as it was in Scala 2.10 and Scala 2.11, and no features are going to be removed. However, even though circumstances under which this document has been written have changed, the information still remains relevant, so please continue reading.
 
@@ -30,13 +30,13 @@ comprehensibility.
 
 ## Blackbox and whitebox macros
 
-However sometimes def macros transcend the notion of "just a regular method". For example, it is possible for a macro expansion to yield an expression of a type that is more specific than the return type of a macro. In Scala 2.10, such expansion will retain its precise type as highlighted in the ["Static return type of Scala macros"](https://stackoverflow.com/questions/13669974/static-return-type-of-scala-macros) article at Stack Overflow.
+However, sometimes def macros transcend the notion of "just a regular method". For example, it is possible for a macro expansion to yield an expression of a type that is more specific than the return type of macro. In Scala 2.10, such expansion will retain its precise type as highlighted in the ["Static return type of Scala macros"](https://stackoverflow.com/questions/13669974/static-return-type-of-scala-macros) article at Stack Overflow.
 
 This curious feature provides additional flexibility, enabling [fake type providers](https://meta.plasm.us/posts/2013/07/11/fake-type-providers-part-2/), [extended vanilla materialization](https://github.com/scala/improvement-proposals/pull/18), [fundep materialization]({{ site.baseurl }}/overviews/macros/implicits.html#fundep-materialization) and [extractor macros](https://github.com/scala/scala/commit/84a335916556cb0fe939d1c51f27d80d9cf980dc), but it also sacrifices clarity - both for humans and for machines.
 
 To concretize the crucial distinction between macros that behave just like normal methods and macros that refine their return types, we introduce the notions of blackbox macros and whitebox macros. Macros that faithfully follow their type signatures are called **blackbox macros** as their implementations are irrelevant to understanding their behaviour (could be treated as black boxes). Macros that can't have precise signatures in Scala's type system are called **whitebox macros** (whitebox def macros do have signatures, but these signatures are only approximations).
 
-We recognize the importance of both blackbox and whitebox macros, however we feel more confidence in blackbox macros, because they are easier to explain, specify and support. Therefore our plans to standardize macros only include blackbox macros. Later on, we might also include whitebox macros into our plans, but it's too early to tell.
+We recognize the importance of both blackbox and whitebox macros, however we feel more confidence in blackbox macros, because they are easier to explain, specify and support. Therefore, our plans to standardize macros only include blackbox macros. Later on, we might also include whitebox macros into our plans, but it's too early to tell.
 
 ## Codifying the distinction
 

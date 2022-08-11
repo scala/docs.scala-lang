@@ -84,7 +84,7 @@ the original array’s elements.
 ## Vectors
 
 We have seen in the previous sections that `List` and `ArraySeq` are efficient data structures in some specific
-use cases but they are also inefficient in other use cases: for instance, prepending an element is constant for `List`,
+use cases, but they are also inefficient in other use cases: for instance, prepending an element is constant for `List`,
 but linear for `ArraySeq`, and, conversely, indexed access is constant for `ArraySeq` but linear for `List`.
 
 [Vector](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Vector.html) is a collection type that provides good performance for all its operations. Vectors allow accessing any element of the sequence in "effectively" constant time. It's a larger constant than for access to the head of a List or for reading an element of an ArraySeq, but it's a constant nonetheless. As a result, algorithms using vectors do not have to be careful about accessing just the head of the sequence. They can access and modify elements at arbitrary locations, and thus they can be much more convenient to write.

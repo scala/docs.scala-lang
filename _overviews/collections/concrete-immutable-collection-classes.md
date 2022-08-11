@@ -19,7 +19,7 @@ A [List](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/colle
 
 Lists have always been the workhorse for Scala programming, so not much needs to be said about them here. The major change in 2.8 is that the `List` class together with its subclass `::` and its subobject `Nil` is now defined in package `scala.collection.immutable`, where it logically belongs. There are still aliases for `List`, `Nil`, and `::` in the `scala` package, so from a user perspective, lists can be accessed as before.
 
-Another change is that lists now integrate more closely into the collections framework, and are less of a special case than before. For instance all of the numerous methods that originally lived in the `List` companion object have been deprecated. They are replaced by the [uniform creation methods]({{ site.baseurl }}/overviews/collections/creating-collections-from-scratch.html) inherited by every collection.
+Another change is that lists now integrate more closely into the collections framework, and are less of a special case than before. For instance all the numerous methods that originally lived in the `List` companion object have been deprecated. They are replaced by the [uniform creation methods]({{ site.baseurl }}/overviews/collections/creating-collections-from-scratch.html) inherited by every collection.
 
 ## Streams
 

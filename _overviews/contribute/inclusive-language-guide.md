@@ -125,7 +125,7 @@ Prefer the direct meaning instead.
 ## Backward compatibility
 
 Sometimes, we have existing code, APIs or commands that do not follow the above recommendations.
-It is generally advisable to perform renamings to address the issue, but that should not be done to the detriment of backward compatibility (in particular, backward binary compatibility of libraries).
+It is generally advisable to perform renaming to address the issue, but that should not be done to the detriment of backward compatibility (in particular, backward binary compatibility of libraries).
 Deprecated aliases should be retained when possible.
 
 Sometimes, it is not possible to preserve backward compatibility through renaming; for example for methods intended to be overridden by user-defined subclasses.

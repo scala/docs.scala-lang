@@ -170,7 +170,7 @@ A lazy operation does not immediately compute all of its results. Instead, it co
 
 So the expression `(1 to 10).iterator.map(println)` would not print anything to the screen. The `map` method in this case doesn't apply its argument function to the values in the range, it returns a new `Iterator` that will do this as each one is requested. Adding `.toList` to the end of that expression will actually print the elements.
 
-A consequence of this is that a method like `map` or `filter` won't necessarily apply its argument function to all of the input elements. The expression `(1 to 10).iterator.map(println).take(5).toList` would only print the values `1` to `5`, for instance, since those are only ones that will be requested from the `Iterator` returned by `map`.
+A consequence of this is that a method like `map` or `filter` won't necessarily apply its argument function to all the input elements. The expression `(1 to 10).iterator.map(println).take(5).toList` would only print the values `1` to `5`, for instance, since those are only ones that will be requested from the `Iterator` returned by `map`.
 
 This is one of the reasons why it's important to only use pure functions as arguments to `map`, `filter`, `fold` and similar methods. Remember, a pure function has no side-effects, so one would not normally use `println` in a `map`. `println` is used to demonstrate laziness as it's not normally visible with pure functions.
 

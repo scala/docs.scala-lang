@@ -18,7 +18,7 @@ for an explanation and suggested migration strategy.
 ## Intuition
 
 Being statically typed is great, but sometimes that is too much of a burden. Take for example, the latest experiment of Alois Cochard with
-implementing enums using type macros - the so called [Enum Paradise](https://github.com/aloiscochard/enum-paradise). Here's how Alois has
+implementing enums using type macros - the so-called [Enum Paradise](https://github.com/aloiscochard/enum-paradise). Here's how Alois has
 to write his type macro, which synthesizes an enumeration module from a lightweight spec:
 
     object Days extends Enum('Monday, 'Tuesday, 'Wednesday...)
@@ -56,9 +56,9 @@ of the linked JIRA issue. Untyped macros make the full power of textual abstract
 unit test provides details on this matter.
 
 If a macro has one or more untyped parameters, then when typing its expansions, the typechecker will do nothing to its arguments
-and will pass them to the macro untyped. Even if some of the parameters do have type annotations, they will currently be ignored. This
+and will pass them to the macro untyped. Even if some parameters do have type annotations, they will currently be ignored. This
 is something we plan on improving: [SI-6971](https://issues.scala-lang.org/browse/SI-6971). Since arguments aren't typechecked, you
-also won't having implicits resolved and type arguments inferred (however, you can do both with `c.typeCheck` and `c.inferImplicitValue`).
+also won't have implicits resolved and type arguments inferred (however, you can do both with `c.typeCheck` and `c.inferImplicitValue`).
 
 Explicitly provided type arguments will be passed to the macro as is. If type arguments aren't provided, they will be inferred as much as
 possible without typechecking the value arguments and passed to the macro in that state. Note that type arguments still get typechecked, but
@@ -69,6 +69,6 @@ the first typecheck of a def macro expansion is performed against the return typ
 against the expected type of the expandee. More information can be found at Stack Overflow: [Static return type of Scala macros](https://stackoverflow.com/questions/13669974/static-return-type-of-scala-macros). Type macros never underwent the first typecheck, so
 nothing changes for them (and you won't be able to specify any return type for a type macro to begin with).
 
-Finally the untyped macros patch enables using `c.Tree` instead of `c.Expr[T]` everywhere in signatures of macro implementations.
+Finally, the untyped macros patch enables using `c.Tree` instead of `c.Expr[T]` everywhere in signatures of macro implementations.
 Both for parameters and return types, all four combinations of untyped/typed in macro def and tree/expr in macro impl are supported.
 Check our unit tests for more information: test/files/run/macro-untyped-conformance.

@@ -47,7 +47,7 @@ The following features are currently (May 2021) not stable to be released with s
 
 ### Snippet compiling
 
-One of the experimental features of Scaladoc is a snippets compiler. This tool will allow you to compile snippets that you attach to your docstring
+One of the experimental features of Scaladoc is a compiler for snippets. This tool will allow you to compile snippets that you attach to your docstring
 to check that they actually behave as intended, e.g., to properly compile. This feature is very similar to the `tut` or `mdoc` tools, 
 but will be shipped with Scaladoc out of the box for easy setup and integration into your project. Making snippets interactive---e.g., letting users edit and compile them in the browser---is under consideration, though this feature is not in scope at this time.
 
@@ -64,7 +64,7 @@ Searching for functions by their symbolic names can be time-consuming.
 That is why the new scaladoc allows you to search for methods and fields by their types.
 
 
-So, for a declatation:
+So, for a declaration:
 ```
 extension [T](arr: IArray[T]) def span(p: T => Boolean): (IArray[T], IArray[T]) = ...
 ```

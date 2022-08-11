@@ -33,7 +33,7 @@ Those of you reading this who were enrolled in the course might recall that, sev
 
 For example, as mentioned above, a success rate of 20% is quite high for an online course. One might suspect that it was because the course was very easy, but in our previous experience that's not the case. In fact, the online course is a direct adaptation of a 2nd year course that was given at EPFL for a number of years and that has a reputation of being rather tough. If anything, the material in the online course was a bit more compressed than in the previous on-campus class.
 
-In particular, 57% of all respondents to the survey rated the overall course as being 3, "Just Right", on a scale from 1 to 5, with 1 being "Too Easy" and 5 being "Too Difficult. With regard to programming assignments specifically, 40% rated the assignments as being 3, "Just Right", while 46% rated assignments as being 4 "Challenging".
+In particular, 57% of all respondents to the survey rated the overall course as being 3, "Just Right", on a scale from 1 to 5, with 1 being "Too Easy" and 5 being "Too Difficult". With regard to programming assignments specifically, 40% rated the assignments as being 3, "Just Right", while 46% rated assignments as being 4 "Challenging".
 
 Another point which might be particularly interesting is the fact that the difficulty rating appears to be independent of whether people have a background in Computer Science/Software Engineering or not. One might guess that this could mean that learning Scala is not much more difficult without a formal educational background in Computer Science.
 
@@ -43,7 +43,7 @@ While a majority of the students in the course have degrees in Computer Science/
 
 <div style="text-align: center;"><h6>Participants' Fields of Study</h6><div id="fields-of-study">&nbsp;</div></div>
 
-However, we were still interested to see how the formal education of participants influenced their assessment of the perceived difficulty. It turns out that, of those who have or have pursued university degrees&mdash; Bachelors or Masters degrees, there was almost no difference in perceived difficulty. The only marked differences appeared to the far left and the far right of the spectrum.
+However, we were still interested to see how the formal education of participants influenced their assessment of the perceived difficulty. It turns out that, of those who have or have pursued university degrees&mdash; Bachelors or Master's degrees, there was almost no difference in perceived difficulty. The only marked differences appeared to the far left and the far right of the spectrum.
 
 <div style="text-align: center;"><h6>Perceived Difficulty Relative to Level of Education</h6><div id="difficulty-to-education">&nbsp;</div><span style="font-size: 10px;"><i><b>Scale:</b> 1 - Too Easy, 2 - Easy, 3 - Just Right, 4 - Challenging, 5 - Too Difficult</i></span><p>&nbsp;</p></div>
 
@@ -93,7 +93,7 @@ Here's that graph again, relating that population of students who enrolled in th
 
 ## Get the data and explore it with Scala!
 
-For those of you who want to have a little bit of fun with the numbers, we've made all of the data publicly available, and we've made a small Scala project out of it. In particular, we put the code that we used to produce the above plots on [github (progfun-stats)](https://www.github.com/heathermiller/progfun-stats).
+For those of you who want to have a little bit of fun with the numbers, we've made all the data publicly available, and we've made a small Scala project out of it. In particular, we put the code that we used to produce the above plots on [github (progfun-stats)](https://www.github.com/heathermiller/progfun-stats).
 
 For those of you who have taken the course and are itching for some fun additional exercises in functional programming, one of our suggestions is to tinker with and extend this project! You'll find the code examples for generating most of these plots available in this post, in the above repository.
 

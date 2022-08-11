@@ -11,7 +11,7 @@ kindly helping others in return. So why not join the Scala community and help
 everyone make things better?
 
 **What Can I Do?**
-That depends on what you want to contribute. Below are some getting started resources for different contribution domains. Please read all of the documentation and follow all the links from the topic pages below before attempting to contribute, as many of the questions you have will already be answered.
+That depends on what you want to contribute. Below are some getting started resources for different contribution domains. Please read all the documentation and follow all the links from the topic pages below before attempting to contribute, as many of the questions you have will already be answered.
 
 ### Reporting bugs
 

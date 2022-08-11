@@ -72,10 +72,10 @@ Finally, methods `split` and `psplit` are used to create splitters which
 traverse subsets of the elements of the current splitter. Method `split` has
 the contract that it returns a sequence of splitters which traverse disjoint,
 non-overlapping subsets of elements that the current splitter traverses, none
-of which is empty. If the current splitter has 1 or less elements, then
+of which is empty. If the current splitter has 1 or fewer elements, then
 `split` just returns a sequence of this splitter. Method `psplit` has to
 return a sequence of splitters which traverse exactly as many elements as
-specified by the `sizes` parameter. If the `sizes` parameter specifies less
+specified by the `sizes` parameter. If the `sizes` parameter specifies fewer
 elements than the current splitter, then an additional splitter with the rest
 of the elements is appended at the end. If the `sizes` parameter requires more
 elements than there are remaining in the current splitter, it will append an
@@ -112,9 +112,9 @@ may be suboptimal - producing a string again from the vector after filtering may
 
 ## Parallel collections with combiners
 
-Lets say we want to `filter` the characters of the parallel string, to get rid
+Let's say we want to `filter` the characters of the parallel string, to get rid
 of commas for example. As noted above, calling `filter` produces a parallel
-vector and we want to obtain a parallel string (since some interface in the
+vector, and we want to obtain a parallel string (since some interface in the
 API might require a sequential string).
 
 To avoid this, we have to write a combiner for the parallel string collection.
@@ -134,7 +134,7 @@ is internally used by `filter`.
       protected[this] override def newCombiner: Combiner[Char, ParString] = new ParStringCombiner
 
 Next we define the `ParStringCombiner` class. Combiners are subtypes of
-builders and they introduce an additional method called `combine`, which takes
+builders, and they introduce an additional method called `combine`, which takes
 another combiner as an argument and returns a new combiner which contains the
 elements of both the current and the argument combiner. The current and the
 argument combiner are invalidated after calling `combine`. If the argument is
@@ -195,7 +195,7 @@ live with this sequential bottleneck.
 
 There are no predefined recipes-- it depends on the data-structure at
 hand, and usually requires a bit of ingenuity on the implementer's
-part. However there are a few approaches usually taken:
+part. However, there are a few approaches usually taken:
 
 1. Concatenation and merge. Some data-structures have efficient
 implementations (usually logarithmic) of these operations.
