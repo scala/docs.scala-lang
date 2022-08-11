@@ -8,7 +8,7 @@ The Scala programming language is an open source project with a very
 diverse community, where people from all over the world contribute their work,
 with everyone benefiting from friendly help and advice, and
 kindly helping others in return. So why not join the Scala community and help
-everyone to make things better?
+everyone make things better?
 
 **What Can I Do?**
 That depends on what you want to contribute. Below are some getting started resources for different contribution domains. Please read all the documentation and follow all the links from the topic pages below before attempting to contribute, as many of the questions you have will already be answered.

@@ -217,7 +217,7 @@ maps the key/value pair to an integer, namely its value component. In
 that case, we cannot form a `Map` from the results, but we can still
 form an `Iterable`, a supertrait of `Map`.
 
-You might ask why not restrict `map` so that it can always return the
+You might ask why, not restrict `map` so that it can always return the
 same kind of collection? For instance, on bit sets `map` could accept
 only `Int`-to-`Int` functions and on `Map`s it could only accept
 pair-to-pair functions. Not only are such restrictions undesirable

@@ -337,7 +337,7 @@ That is it. The final [`Capped` class](#final-version-of-capped-class):
   `knownSize` operation is also overridden because the size is always
   known.
 
-Its implementation requires a little of protocol. In essence, you
+Its implementation requires a little bit of protocol. In essence, you
 have to inherit from the `Ops` template trait in addition to just
 inheriting from a collection type, override the `iterableFactory`
 member to return a more specific factory, and finally implement abstract

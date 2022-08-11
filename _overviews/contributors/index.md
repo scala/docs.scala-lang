@@ -370,7 +370,7 @@ or for publishing the resulting documentation to a web server.
 Finally, a simple solution for publishing the documentation online consists in using the
 [GitHub Pages](https://pages.github.com/) service, which is automatically available for each GitHub
 repository. The [sbt-ghpages](https://github.com/sbt/sbt-ghpages) plugin can automatically upload
-a sbt-site to GitHub Pages.
+an sbt-site to GitHub Pages.
 
 ### Create the Documentation Site
 

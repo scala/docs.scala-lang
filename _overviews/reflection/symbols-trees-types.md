@@ -298,7 +298,7 @@ with different type arguments.
     scala> getType(List(1,2,3)) =:= getType(List(9,8,7))
     res2: Boolean = true
 
-Also, important to note is that `=:=` should _always_ be used to compare types
+Also important to note is that `=:=` should _always_ be used to compare types
 for equality. That is, never use `==`, as it can't check for type equality in
 the presence of type aliases, whereas `=:=` can:
 

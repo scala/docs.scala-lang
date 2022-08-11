@@ -42,7 +42,7 @@ without creating an issue, but please look to see if there is an issue already s
 and more
 
 Please read [Add New Guides/Tutorials][add-guides] through before embarking on changes. The site uses
-the [Jekyll](https://jekyllrb.com/) markdown engine, so you will need to follow the instructions to get that running as well.
+the [Jekyll](https://jekyllrb.com/) Markdown engine, so you will need to follow the instructions to get that running as well.
 
 ### Updating scala-lang.org
 
