@@ -5,6 +5,19 @@ partof: getting-started
 languages: [fr, ja, uk]
 includeTOC: true
 
+newcomer_resources:
+  - title: "Resources For Newcomers"
+    links:
+      - title: Are You Coming From Java?
+        description: What you should know to get to speed with Scala after your initial setup.
+        icon: "fa fa-coffee"
+        link: /scala3/newcomers/java.html
+      - title: Scala in the Browser
+        description: >
+          To start experimenting with Scala right away, use "Scastie" in your browser.
+        icon: "fa fa-cloud"
+        link: https://scastie.scala-lang.org/pEBYc5VMT02wAGaDrfLnyw
+
 redirect_from:
   - /getting-started.html
   - /scala3/getting-started.html # we deleted the scala 3 version of this page
@@ -19,14 +32,7 @@ The instructions below cover both Scala 2 and Scala 3.
 {% endaltDetails %}
 </div>
 
-## Try Scala without installing anything
-
-To start experimenting with Scala right away, use <a href="https://scastie.scala-lang.org/pEBYc5VMT02wAGaDrfLnyw" target="_blank">“Scastie” in your browser</a>.
-_Scastie_ is an online “playground” where you can experiment with Scala examples to see how things work, with access to all Scala compilers and published libraries.
-
-> Scastie supports both Scala 2 and Scala 3, but it defaults
-> to Scala 3. If you are looking for a Scala 2 snippet to play with,
-> [click here](https://scastie.scala-lang.org/MHc7C9iiTbGfeSAvg8CKAA).
+{% include inner-documentation-sections.html sections=page.newcomer_resources %}
 
 ##  Install Scala on your computer
 

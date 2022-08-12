@@ -65,7 +65,8 @@
             @include justify-content(flex-start);
             margin-bottom: 10px;
 
-            .fa {
+            .fa,
+            .fa-brands {
                 font-size: 1.563rem;
                 margin-right: 14px;
                 color: $brand-primary;
@@ -92,9 +93,9 @@
             }
         }
 
-        &:active,
-        &:focus,
-        &:hover {
+        &.doc-item-link:active,
+        &.doc-item-link:focus,
+        &.doc-item-link:hover {
             text-decoration: none;
             background: $gray-lighter;
         }

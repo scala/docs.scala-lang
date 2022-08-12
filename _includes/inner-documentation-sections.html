@@ -1,0 +1,20 @@
+{% comment %}
+	Layouts using this include should pass an include variable called 'collection' referencing a collection carrying the data (i.e.: contribute_community_tickets, contribute_resources...)
+{% endcomment %}
+
+{% for section in include.sections %}
+<h2 class="frontpage">{{ section.title }}</h2>
+<div class="documentation">
+	{% for link in section.links %}
+	<a href="{% if link.link contains '://' %}{{link.link}}{% else %}{{site.baseurl}}{{link.link}}{% endif %}" class="doc-item doc-item-link">
+	<div class="doc-item-header">
+		<i class="{{link.icon}}"></i>
+		<h4>{{link.title}}</h4>
+	</div>
+	<div class="doc-item-main">
+		<p>{{link.description}}</p>
+	</div>
+	</a>
+	{% endfor %}
+</div>
+{% endfor %}

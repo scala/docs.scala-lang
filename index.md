@@ -25,10 +25,6 @@ sections:
         description: "Learn Scala by reading a series of short lessons."
         icon: "fa fa-book-open"
         link: /scala3/book/introduction.html
-      - title: "Scala for Java Programmers"
-        description: "An effective approach to learning Scala as a programmer with the Java background."
-        icon: "fa fa-coffee"
-        link: /scala3/newcomers/java.html
       - title: Online Courses
         description: "MOOCs to learn Scala, for beginners and experienced programmers."
         icon: "fa fa-cloud"
