@@ -10,7 +10,7 @@ changes. If you want to dig deeper, there are a few references at your disposal:
 - The [Scala 3 Book]({% link _overviews/scala3-book/introduction.md %}) targets developers new to the Scala language.
 - The [Syntax Summary][syntax-summary] provides you with a formal description of the new syntax.
 - The [Language Reference][reference] gives a detailed description of the changes from Scala 2 to Scala 3.
-- The [Migration Guide][migration] provides you with all of the information necessary to move from Scala 2 to Scala 3.
+- The [Migration Guide][migration] provides you with all the information necessary to move from Scala 2 to Scala 3.
 - The [Scala 3 Contributing Guide][contribution] dives deeper into the compiler, including a guide to fix issues.
 
 ## What's new in Scala 3
@@ -60,7 +60,7 @@ Besides greatly improved type inference, the Scala 3 type system also offers man
 
 - **Opaque Types**. Hide implementation details behind [opaque type aliases][types-opaque] without paying for it in performance! Opaque types supersede value classes and allow you to set up an abstraction barrier without causing additional boxing overhead.
 
-- **Intersection and union types**. Basing the type system on new foundations led to the introduction of new type system features: instances of [intersection types][types-intersection], like `A & B`, are instances of _both_ `A` and of `B`. Instances of [union types][types-union], like `A | B`, are instances of _either_ `A` or `B`. Both constructs allow programmers to flexibly express type constraints outside of the inheritance hierarchy.
+- **Intersection and union types**. Basing the type system on new foundations led to the introduction of new type system features: instances of [intersection types][types-intersection], like `A & B`, are instances of _both_ `A` and of `B`. Instances of [union types][types-union], like `A | B`, are instances of _either_ `A` or `B`. Both constructs allow programmers to flexibly express type constraints outside the inheritance hierarchy.
 
 - **Dependent function types**. Scala 2 already allowed return types to depend on (value) arguments. In Scala 3 it is now possible to abstract over this pattern and express [dependent function types][types-dependent]. In the type `type F = (e: Entry) => e.Key`  the result type _depends_ on the argument!
 

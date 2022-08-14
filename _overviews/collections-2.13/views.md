@@ -87,7 +87,7 @@ The main reason for using views is performance. You have seen that by switching 
     def isPalindrome(x: String) = x == x.reverse
     def findPalindrome(s: Seq[String]) = s find isPalindrome
 
-Now, assume you have a very long sequence words and you want to find a palindrome in the first million words of that sequence. Can you re-use the definition of `findPalindrome`? Of course, you could write:
+Now, assume you have a very long sequence words, and you want to find a palindrome in the first million words of that sequence. Can you re-use the definition of `findPalindrome`? Of course, you could write:
 
     findPalindrome(words take 1000000)
 

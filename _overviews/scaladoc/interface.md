@@ -26,7 +26,7 @@ unaware of some of the more powerful features of Scaladoc.
 - Known subclasses lists all subclasses for this entity within the current
   Scaladoc.
 - Type hierarchy shows a graphical view of this class related to its super
-  classes and traits, immediate sub-types, and important related entities. The
+  classes and traits, immediate subtypes, and important related entities. The
   graphics themselves are links to the various entities.
 - The link in the Source section takes you to the online source for the class
   assuming it is available (and it certainly is for the core libraries and for

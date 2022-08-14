@@ -12,7 +12,7 @@ permalink: /overviews/quasiquotes/:title.html
 
 The notion of hygiene has been widely popularized by macro research in Scheme. A code generator is called hygienic if it ensures the absence of name clashes between regular and generated code, preventing accidental capture of identifiers. As numerous experience reports show, hygiene is of great importance to code generation, because name binding problems are often non-obvious and lack of hygiene might manifest itself in subtle ways.
 
-Sophisticated macro systems such as Racket's have mechanisms that make macros hygienic without any effort from macro writers. In Scala we don't have automatic hygiene - both of our codegen facilities (compile-time codegen with macros and runtime codegen with toolboxes) require programmers to handle hygiene manually. You must know how to work around the absence of hygiene, which is what this section is about.
+Sophisticated macro systems such as Racket's have mechanisms that make macros hygienic without any effort from macro writers. In Scala, we don't have automatic hygiene - both of our codegen facilities (compile-time codegen with macros and runtime codegen with toolboxes) require programmers to handle hygiene manually. You must know how to work around the absence of hygiene, which is what this section is about.
 
 Preventing name clashes between regular and generated code means two things. First, we must ensure that, regardless of the context in which we put generated code, its meaning will not change (*referential transparency*). Second, we must make certain that regardless of the context in which we splice regular code, its meaning will not change (often called *hygiene in the narrow sense*). Let's see what can be done to this end on a series of examples.
 
@@ -56,7 +56,7 @@ Here we can see that the unqualified reference to `Map` does not respect our cus
       MyMacro(2)
     }
 
-If we compile both the macro and it's usage, we'll see that `println` will not be called when the application runs. This will happen because, after macro expansion, `Test.scala` will look like:
+If we compile both the macro, and it's usage, we'll see that `println` will not be called when the application runs. This will happen because, after macro expansion, `Test.scala` will look like:
 
     // Expanded Test.scala
     package example

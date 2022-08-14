@@ -29,7 +29,7 @@ The most important changes in the Scala 2.13 collections library are:
 
 ## Tools for migrating and cross-building
 
-The [scala-collection-compat](https://github.com/scala/scala-collection-compat) is a library released for 2.11, 2.12 and 2.13 that provides some of the new APIs from Scala 2.13 for the older versions. This simplifies cross-building projects.
+The [scala-collection-compat](https://github.com/scala/scala-collection-compat) is a library released for 2.11, 2.12 and 2.13 that provides some new APIs from Scala 2.13 for the older versions. This simplifies cross-building projects.
 
 The module also provides [migration rules](https://github.com/scala/scala-collection-compat#migration-tool) for [scalafix](https://scalacenter.github.io/scalafix/docs/users/installation.html) that can update a project's source code to work with the 2.13 collections library.
 
@@ -42,7 +42,7 @@ a method such as `orderFood(xs: _*)` the varargs parameter `xs` must be an immut
 
 [SLS 6.6]: https://www.scala-lang.org/files/archive/spec/2.12/06-expressions.html#function-applications
 
-Therefore any method signature in Scala 2.13 which includes `scala.Seq`, varargs, or `scala.IndexedSeq` is going
+Therefore, any method signature in Scala 2.13 which includes `scala.Seq`, varargs, or `scala.IndexedSeq` is going
 to have a breaking change in API semantics (as the immutable sequence types require more &mdash; immutability &mdash; than the
 not-immutable types).  For example, users of a method like `def orderFood(order: Seq[Order]): Seq[Food]` would
 previously have been able to pass in an `ArrayBuffer` of `Order`, but cannot in 2.13.
@@ -68,7 +68,7 @@ We recommend using `import scala.collection`/`import scala.collection.immutable`
 `collection.Seq`/`immutable.Seq`.
 
 We recommend against using `import scala.collection.Seq`, which shadows the automatically imported `scala.Seq`,
-because even if it's a oneline change it causes name confusion.  For code generation or macros the safest option
+because even if it's a one-line change it causes name confusion.  For code generation or macros the safest option
 is using the fully-qualified `_root_.scala.collection.Seq`.
 
 As an example, the migration would look something like this:
@@ -81,7 +81,7 @@ object FoodToGo {
 }
 ~~~
 
-However users of this code in Scala 2.13 would also have to migrate, as the result type is source-incompatible
+However, users of this code in Scala 2.13 would also have to migrate, as the result type is source-incompatible
 with any `scala.Seq` (or just `Seq`) usage in their code:
 
 ~~~ scala
@@ -233,7 +233,7 @@ Other notable changes are:
               You can make this conversion explicit by writing `f _` or `f(_)` instead of `f`.
         scala> Map(1 -> "a").map(f _)
         res10: scala.collection.immutable.Map[Int,String] = ChampHashMap(2 -> a)
-  - `View`s have been completely redesigned and we expect their usage to have a more predictable evaluation model.
+  - `View`s have been completely redesigned, and we expect their usage to have a more predictable evaluation model.
     You can read more about the new design [here](https://scala-lang.org/blog/2017/11/28/view-based-collections.html).
   - `mutable.ArraySeq` (which wraps an `Array[AnyRef]` in 2.12, meaning that primitives were boxed in the array) can now wrap boxed and unboxed arrays. `mutable.ArraySeq` in 2.13 is in fact equivalent to `WrappedArray` in 2.12, there are specialized subclasses for primitive arrays. Note that a `mutable.ArraySeq` can be used either way for primitive arrays (TODO: document how). `WrappedArray` is deprecated.
   - There is no "default" `Factory` (previously known as `[A, C] => CanBuildFrom[Nothing, A, C]`): use `Factory[A, Vector[A]]` explicitly instead.

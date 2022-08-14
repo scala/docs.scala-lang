@@ -44,7 +44,7 @@ You can assign an object to a variable. Afterwards, the variable will refer to t
 Extra constructors defined inside the curly braces of the class definition, which look like method definitions named `this`, but with no result type.
 
 * #### block
-One or more expressions and declarations surrounded by curly braces. When the block evaluates, all of its expressions and declarations are processed in order, and then the block returns the value of the last expression as its own value. Blocks are commonly used as the bodies of functions, [for expressions](#for-expression), `while` loops, and any other place where you want to group a number of statements together. More formally, a block is an encapsulation construct for which you can only see side effects and a result value. The curly braces in which you define a class or object do not, therefore, form a block, because fields and methods (which are defined inside those curly braces) are visible from the out- side. Such curly braces form a template.
+One or more expressions and declarations surrounded by curly braces. When the block evaluates, all of its expressions and declarations are processed in order, and then the block returns the value of the last expression as its own value. Blocks are commonly used as the bodies of functions, [for expressions](#for-expression), `while` loops, and any other place where you want to group a number of statements together. More formally, a block is an encapsulation construct for which you can only see side effects and a result value. The curly braces in which you define a class or object do not, therefore, form a block, because fields and methods (which are defined inside those curly braces) are visible from the outside. Such curly braces form a template.
 
 * #### bound variable
 A bound variable of an expression is a variable that’s both used and defined inside the expression. For instance, in the function literal expression `(x: Int) => (x, y)`, both variables `x` and `y` are used, but only `x` is bound, because it is defined in the expression as an `Int` and the sole argument to the function described by the expression.
@@ -299,7 +299,7 @@ A _self type_ of a trait is the assumed type of `this`, the receiver, to be used
 XML data is semi-structured. It is more structured than a flat binary file or text file, but it does not have the full structure of a programming language’s data structures.
 
 * #### serialization
-You can _serialize_ an object into a byte stream which can then be saved to files or transmitted over the network. You can later _deserialize_ the byte stream, even on different computer, and obtain an object that is the same as the original serialized object.
+You can _serialize_ an object into a byte stream which can then be saved to a file or transmitted over the network. You can later _deserialize_ the byte stream, even on different computer, and obtain an object that is the same as the original serialized object.
 
 * #### shadow
 A new declaration of a local variable _shadows_ one of the same name in an enclosing scope.

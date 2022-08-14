@@ -694,11 +694,11 @@ section:
 
 It's important to note that, unlike `reify`, toolboxes aren't limited by the
 typeability requirement-- although this flexibility is achieved by sacrificing
-robustness. That is, here we can see that `parse`, unlike `reify`, doesn’t
+robustness. That is, here we can see that `parse`, unlike `reify`, doesn't
 reflect the fact that `println` should be bound to the standard `println`
 method.
 
-_Note:_ when using macros, one shouldn’t use `ToolBox.parse`. This is because
+_Note:_ when using macros, one shouldn't use `ToolBox.parse`. This is because
 there’s already a `parse` method built into the macro context. For example:
 
     bash$ scala -Yrepl-class-based:false
@@ -726,7 +726,7 @@ and execute trees.
 In addition to outlining the structure of the program, trees also hold
 important information about the semantics of the program encoded in `symbol`
 (a symbol assigned to trees that introduce or reference definitions), and
-`tpe` (the type of the tree). By default these fields are empty, but
+`tpe` (the type of the tree). By default, these fields are empty, but
 typechecking fills them in.
 
 When using the runtime reflection framework, typechecking is implemented by

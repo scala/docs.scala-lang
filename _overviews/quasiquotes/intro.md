@@ -90,7 +90,7 @@ Similarly, patterns and expressions are also not equivalent:
 
 It's extremely important to use the right interpolator for the job in order to construct a valid syntax tree.
 
-Additionally there are two auxiliary interpolators that let you work with minor areas of scala syntax:
+Additionally, there are two auxiliary interpolators that let you work with minor areas of scala syntax:
 
     | Used for
 ----|-------------------------------------

@@ -94,7 +94,7 @@ Usually the best answer.  Unfortunately you cannot declare an abstract lazy val.
 2. Declare an abstract def, and hope subclasses will implement it as a lazy val.  If they do not, it will be re-evaluated on every access.
 3. Declare a concrete lazy val which throws an exception, and hope subclasses override it.  If they do not, it will... throw an exception.
 
-An exception during initialization of a lazy val will cause the right hand side to be re-evaluated on the next access: see SLS 5.2.
+An exception during initialization of a lazy val will cause the right-hand side to be re-evaluated on the next access: see SLS 5.2.
 
 Note that using multiple lazy vals creates a new risk: cycles among lazy vals can result in a stack overflow on first access.
 

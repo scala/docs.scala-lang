@@ -59,7 +59,7 @@ value or conversion.
 
 Implicit classes have the following restrictions:
 
-**1. They must be defined inside of another `trait`/`class`/`object`.**
+**1. They must be defined inside another `trait`/`class`/`object`.**
 
 
     object Helpers {

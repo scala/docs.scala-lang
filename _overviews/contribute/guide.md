@@ -23,7 +23,7 @@ Just to name a few common reasons:
 
 The main Scala project consists of the standard Scala library, the Scala reflection and macros library,
 the Scala compiler and the Scaladoc tool. This means there's plenty to choose from when deciding what to work on.
-Typically the scaladoc tool provides a low entry point for new committers, so it is a good first step into contributing.
+Typically, the scaladoc tool provides a low entry point for new committers, so it is a good first step into contributing.
 
 On the [Scala bug tracker](https://github.com/scala/bug) you will find the bugs that you could pick up. Once you decided on a ticket to look at, see the next step on how to proceed further.
 
@@ -53,7 +53,7 @@ https://github.com/scala/scala#git-hygiene). For bug fixes, a single commit is r
 10. [Work with a reviewer](https://github.com/scala/scala#reviewing) to [get your pull request merged in][hackers-review].
 11. Celebrate!
 
-Need more information or a little more hand-holding for the first one? We got you covered: take a read through the entire [Hacker Guide][hackers] (or the [equivalent Scala 3 Contributing Guide][scala3-hackers]) for an example of implementing a new feature (some of the steps can be skipped for bug fixes, this will be obvious from reading it, but many of the steps here will help with bug fixes too).
+Need more information or a little more hand-holding for the first one? We got you covered: take a read through the entire [Hacker Guide][hackers] (or the [equivalent Scala 3 Contributing Guide][scala3-hackers]) for an example of implementing a new feature (some steps can be skipped for bug fixes, this will be obvious from reading it, but many of the steps here will help with bug fixes too).
 
 ### Larger Changes, New Features
 

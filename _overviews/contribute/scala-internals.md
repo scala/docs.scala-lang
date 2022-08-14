@@ -54,7 +54,7 @@ Even if you do not wish to post on [Scala Contributors][scala-contributors], ple
 anyway, as posting to the forum is *not* criteria for it to be accepted. For smaller, self-contained bugs it is
 especially less important to make a post, however larger issues or features take more time to consider accepting them.
 For large contributions we strongly recommend that you do to notify of your intention, which will help you determine if
-there is large community support for your change, making it more likely that your large contribution will accepted,
+there is large community support for your change, making it more likely that your large contribution will be accepted,
 before you spend a long time implementing it.
 
 [scala-contributors]: https://contributors.scala-lang.org

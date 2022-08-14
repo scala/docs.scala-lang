@@ -82,7 +82,7 @@ fatal.
 opinionated sbt plugin that sets many options automatically, depending
 on Scala version; you can see
 [here](https://github.com/DavidGregory084/sbt-tpolecat/blob/master/src/main/scala/io/github/davidgregory084/TpolecatPlugin.scala)
-what it sets.  Some of the choices it makes are oriented towards
+what it sets.  Some choices it makes are oriented towards
 pure-functional programmers.
 
 ### How do I find what some symbol means or does?
@@ -126,6 +126,9 @@ Note that Scala 3 offers
 `dotty.tools.dotc.config.Properties.versionNumberString`, but only if
 you have scala3-compiler on the classpath. So that works in the Scala 3
 REPL, but won't work in typical Scala 3 application code.
+
+For an alternative way to detect the Scala 3 version, see
+[this gist](https://gist.github.com/romanowski/de14691cab7340134e197419bc48919a).
 
 ### Why is my (abstract or overridden) `val` null?
 
@@ -202,7 +205,7 @@ So for example, a `List[Int]` in Scala code will appear to Java as a
 appear as type parameters, but couldn't they appear as their boxed
 equivalents, such as `List[java.lang.Integer]`?
 
-One would hope so, but doing it that way was tried and it proved impossible.
+One would hope so, but doing it that way was tried, and it proved impossible.
 [This SO question](https://stackoverflow.com/questions/11167430/why-are-primitive-types-such-as-int-erased-to-object-in-scala)
 sadly lacks a concise explanation, but it does link to past discussions.
 

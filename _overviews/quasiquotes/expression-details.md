@@ -16,7 +16,7 @@ permalink: /overviews/quasiquotes/:title.html
 
 1. `Val`s, `Var`s and `Def`s without the right-hand side have it set to `q""`.
 2. Abstract type definitions without bounds have them set to `q""`.
-3. `Try` expressions without a finally clause have it set to `q""`.
+3. `Try` expressions without a `finally` clause have it set to `q""`.
 4. `Case` clauses without guards have them set to `q""`.
 
 The default `toString` formats `q""` as `<empty>`.
@@ -58,13 +58,13 @@ During deconstruction you can use [unlifting]({{ site.baseurl }}/overviews/quasi
     scala> val q"${x: Int}" = q"1"
     x: Int = 1
 
-Similarly it would work with all the literal types except `Null`. (see [standard unliftables]({{ site.baseurl }}/overviews/quasiquotes/unlifting.html#standard-unliftables))
+Similarly, it would work with all the literal types except `Null`. (see [standard unliftables]({{ site.baseurl }}/overviews/quasiquotes/unlifting.html#standard-unliftables))
 
 ## Identifier and Selection
 
 Identifiers and member selections are two fundamental primitives that let you refer to other definitions. A combination of two of them is also known as a `RefTree`.
 
-Each term identifier is defined by its name and whether or not it is backquoted:
+Each term identifier is defined by its name and whether it is backquoted:
 
     scala> val name = TermName("Foo")
     name: universe.TermName = Foo
@@ -90,7 +90,7 @@ Apart from matching on identifiers with a given name, you can also extract their
 
 Name ascription is important here because without it you'll get a pattern that is equivalent to regular pattern variable binding.
 
-Similarly you can create and extract member selections:
+Similarly, you can create and extract member selections:
 
     scala> val member = TermName("bar")
     member: universe.TermName = bar
@@ -112,7 +112,7 @@ This tree supports following variations:
 
 So an unqualified `q"this"` is equivalent to `q"${tpnme.EMPTY}.this"`.
 
-Similarly for `super` we have:
+Similarly, for `super` we have:
 
     scala> val q"$name.super[$qual].$field" = q"super.foo"
     name: universe.TypeName =
@@ -145,7 +145,7 @@ This can be accomplished with the following:
     type arguments: List(Int), value arguments: List(1, 2)
     type arguments: List(), value arguments: List(scala.Symbol("a"), scala.Symbol("b"))
 
-As you can see, we were able to match both calls regardless as to whether or not a specific type application exists. This happens because the type application matcher extracts the empty list of type arguments if the tree is not an actual type application, making it possible to handle both situations uniformly.
+As you can see, we were able to match both calls regardless of whether a specific type application exists. This happens because the type application matcher extracts the empty list of type arguments if the tree is not an actual type application, making it possible to handle both situations uniformly.
 
 It is recommended to always include type applications when you match on a function with type arguments, as they will be inserted by the compiler during type checking, even if the user didn't write them explicitly:
 
@@ -175,7 +175,7 @@ Here we might get one, or two subsequent value applications:
     scala> val q"g(...$argss)" = q"g"
     argss: List[List[universe.Tree]] = List()
 
-Therefore it's recommended to use more specific patterns that check that ensure the extracted `argss` is not empty.
+Therefore, it's recommended to use more specific patterns that check that ensure the extracted `argss` is not empty.
 
 Similarly to type arguments, implicit value arguments are automatically inferred during type checking:
 
@@ -244,7 +244,7 @@ The *throw* expression is used to throw a throwable:
 
 ## Ascription
 
-Ascriptions let users annotate the type of an intermediate expression:
+Ascriptions let users annotate the type of intermediate expression:
 
     scala> val ascribed = q"(1 + 1): Int"
     ascribed: universe.Typed = (1.$plus(1): Int)
@@ -469,7 +469,7 @@ There are three ways to create anonymous function:
     scala> val f3 = q"(a: Int) => a + 1"
     anon3: universe.Function = ((a: Int) => a.$plus(1))
 
-The first one uses the placeholder syntax. The second one names the function parameter but still relies on type inference to infer its type. An the last one explicitly defines the function parameter. Due to an implementation restriction, the second notation can only be used in parentheses or inside another expression. If you leave them out the you must specify the parameter types.
+The first one uses the placeholder syntax. The second one names the function parameter but still relies on type inference to infer its type. An the last one explicitly defines the function parameter. Due to an implementation restriction, the second notation can only be used in parentheses or inside another expression. If you leave them out then you must specify the parameter types.
 
 Parameters are represented as [Vals]({{ site.baseurl }}/overviews/quasiquotes/definition-details.html#val-and-var-definitions). If you want to programmatically create a `val` that should have its type inferred you need to use the [empty type]({{ site.baseurl }}/overviews/quasiquotes/type-details.html#empty-type):
 
@@ -576,7 +576,7 @@ Each enumerator in the comprehension can be expressed with the `fq"..."` interpo
     scala> val `for-yield` = q"for (..$enums) yield y"
     for-yield: universe.Tree
 
-Similarly one can deconstruct the `for-yield` back into a list of enumerators and body:
+Similarly, one can deconstruct the `for-yield` back into a list of enumerators and body:
 
     scala> val q"for (..$enums) yield $body" = `for-yield`
     enums: List[universe.Tree] = List(`<-`((x @ _), xs), `if`(x.$greater(0)), (y @ _) = x.$times(2))
@@ -609,10 +609,10 @@ Selectors are extracted as pattern trees that are syntactically similar to selec
 
 1. Simple identifier selectors are represented as pattern bindings: `pq"bar"`
 2. Renaming selectors are represented as thin arrow patterns: `pq"baz -> boo"`
-3. Unimport selectors are represented as thin arrows with a wildcard right hand side: `pq"poison -> _"`
+3. Unimport selectors are represented as thin arrows with a wildcard right-hand side: `pq"poison -> _"`
 4. The wildcard selector is represented as a wildcard pattern: `pq"_"`
 
-Similarly one construct imports back from a programmatically created list of selectors:
+Similarly, one construct imports back from a programmatically created list of selectors:
 
     scala> val ref = q"a.b"
     scala> val sels = List(pq"foo -> _", pq"_")

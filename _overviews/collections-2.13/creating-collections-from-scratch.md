@@ -41,7 +41,7 @@ Besides `apply`, every collection companion object also defines a member `empty`
 The operations provided by collection companion objects are summarized in the following table. In short, there's
 
 * `concat`, which concatenates an arbitrary number of collections together,
-* `fill` and `tabulate`, which generate single or multi-dimensional collections of given dimensions initialized by some expression or tabulating function,
+* `fill` and `tabulate`, which generate single or multidimensional collections of given dimensions initialized by some expression or tabulating function,
 * `range`, which generates integer collections with some constant step length, and
 * `iterate` and `unfold`, which generates the collection resulting from repeated application of a function to a start element or state.
 

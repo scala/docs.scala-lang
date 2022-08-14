@@ -24,7 +24,7 @@ More details on [this page]({% link online-courses.md %}).
 
 ## Dr. Mark C Lewis's lectures from Trinity University
 
-[Dr. Mark C Lewis](https://www.cs.trinity.edu/~mlewis/) from Trinity University, San Antonio, TX, teaches programming courses using the Scala language. Course videos are available in YouTube for free. Some of the courses below.
+[Dr. Mark C Lewis](https://www.cs.trinity.edu/~mlewis/) from Trinity University, San Antonio, TX, teaches programming courses using the Scala language. Course videos are available in YouTube for free. Some courses below.
 
    * [Introduction to Programming and Problem Solving Using Scala](https://www.youtube.com/playlist?list=PLLMXbkbDbVt9MIJ9DV4ps-_trOzWtphYO)
    * [Object-Orientation, Abstraction, and Data Structures Using Scala](https://www.youtube.com/playlist?list=PLLMXbkbDbVt8JLumqKj-3BlHmEXPIfR42)

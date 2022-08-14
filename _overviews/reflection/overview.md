@@ -21,7 +21,7 @@ and logic programming paradigms.
 While some languages are built around reflection as a guiding principle, many
 languages progressively evolve their reflection abilities over time.
 
-Reflection involves the ability to **reify** (ie. make explicit) otherwise-implicit
+Reflection involves the ability to **reify** (i.e. make explicit) otherwise-implicit
 elements of a program. These elements can be either static program elements
 like classes, methods, or expressions, or dynamic elements like the current
 continuation or execution events such as method invocations and field accesses.

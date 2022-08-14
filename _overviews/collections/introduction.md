@@ -55,7 +55,7 @@ lines run at first try.
 
 **Fast:** Collection operations are tuned and optimized in the
 libraries. As a result, using collections is typically quite
-efficient. You might be able to do a little bit better with carefully
+efficient. You might be able to do a little better with carefully
 hand-tuned data structures and operations, but you might also do a lot
 worse by making some suboptimal implementation decisions along the
 way.  What's more, collections have been recently adapted to parallel

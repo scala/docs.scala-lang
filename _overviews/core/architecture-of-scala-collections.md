@@ -217,7 +217,7 @@ maps the key/value pair to an integer, namely its value component. In
 that case, we cannot form a `Map` from the results, but we can still
 form an `Iterable`, a supertrait of `Map`.
 
-You might ask, why not restrict `map` so that it can always return the
+You might ask why, not restrict `map` so that it can always return the
 same kind of collection? For instance, on bit sets `map` could accept
 only `Int`-to-`Int` functions and on `Map`s it could only accept
 pair-to-pair functions. Not only are such restrictions undesirable
@@ -646,7 +646,7 @@ function, which is also the element type of the new collection. The
 `That` appears as the result type of `map`, so it represents the type of
 the new collection that gets created.
 
-How is the `That` type determined? In fact it is linked to the other
+How is the `That` type determined? In fact, it is linked to the other
 types by an implicit parameter `cbf`, of type `CanBuildFrom[Repr, B, That]`.
 These `CanBuildFrom` implicits are defined by the individual
 collection classes. Recall that an implicit value of type
@@ -747,7 +747,7 @@ ignoring its argument.
 
 That is it. The final [`RNA` class](#final-version-of-rna-strands-class)
 implements all collection methods at
-their expected types. Its implementation requires a little bit of
+their expected types. Its implementation requires a little of
 protocol. In essence, you need to know where to put the `newBuilder`
 factories and the `canBuildFrom` implicits. On the plus side, with
 relatively little code you get a large number of methods automatically
@@ -979,14 +979,14 @@ provided by the `empty` method, which is the last method defined in
           }
     }
 
-We'll now turn to the companion object `PrefixMap`. In fact it is not
+We'll now turn to the companion object `PrefixMap`. In fact, it is not
 strictly necessary to define this companion object, as class `PrefixMap`
 can stand well on its own. The main purpose of object `PrefixMap` is to
 define some convenience factory methods. It also defines a
 `CanBuildFrom` implicit to make typing work out better.
 
 The two convenience methods are `empty` and `apply`. The same methods are
-present for all other collections in Scala's collection framework so
+present for all other collections in Scala's collection framework, so
 it makes sense to define them here, too. With the two methods, you can
 write `PrefixMap` literals like you do for any other collection:
 

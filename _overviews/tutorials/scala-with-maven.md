@@ -108,7 +108,7 @@ Example structure:
 Again, you can read more about the Scala Maven Plugin at its [website][22].
 
 ### Creating a Jar
-By default the jar created by the Scala Maven Plugin doesn't include a `Main-Class` attribute in the manifest. I had to add the [Maven Assembly Plugin][19] to my `pom.xml` in order to specify custom attributes in the manifest. You can check the latest version of this plugin at the [project summary][20] or at [The Central Repository][21]
+By default, the jar created by the Scala Maven Plugin doesn't include a `Main-Class` attribute in the manifest. I had to add the [Maven Assembly Plugin][19] to my `pom.xml` in order to specify custom attributes in the manifest. You can check the latest version of this plugin at the [project summary][20] or at [The Central Repository][21]
 
     <project ...>
         <modelVersion>X.X.X</modelVersion>
@@ -212,7 +212,7 @@ Unfortunately, the integration isn't perfect. Firstly, open up the generated `.c
 
 Change the `*.java` to `*.scala` (or duplicate the lines and change them to `*.scala` if you also have Java sources).
 
-Secondly, open the `.project` eclipse file (again, in the same folder). Change `<buildSpec>` and `<natures>` to look like this. Now Eclipse knows to use the Scala editor and it won't think that everything is a syntax error.
+Secondly, open the `.project` eclipse file (again, in the same folder). Change `<buildSpec>` and `<natures>` to look like this. Now Eclipse knows to use the Scala editor, and it won't think that everything is a syntax error.
 
     <buildSpec>
       <buildCommand>

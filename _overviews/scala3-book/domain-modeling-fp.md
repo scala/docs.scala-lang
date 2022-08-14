@@ -178,12 +178,12 @@ To compute the price of the crust we simultaneously pattern match on both the si
 > All they do is simply receive values and compute the result.
 
 {% comment %}
-I’ve added this comment per [this Github comment](https://github.com/scalacenter/docs.scala-lang/pull/3#discussion_r543372428).
+I’ve added this comment per [this GitHub comment](https://github.com/scalacenter/docs.scala-lang/pull/3#discussion_r543372428).
 To that point, I’ve added these definitions here from our Slack conversation, in case anyone wants to update the “pure function” definition. If not, please delete this comment.
 
 Sébastien:
 ----------
-A function `f` is pure if, given the same input `x`, it will always return the same output `f(x)`, and it never modifies any state outside of it (therefore potentially causing other functions to behave differently in the future).
+A function `f` is pure if, given the same input `x`, it will always return the same output `f(x)`, and it never modifies any state outside it (therefore potentially causing other functions to behave differently in the future).
 
 Jonathan:
 ---------
@@ -266,13 +266,13 @@ However, there are also a few tradeoffs that should be considered:
 
 - It tightly couples the functionality to your data model.
   In particular, the companion object needs to be defined in the same file as your `case` class.
-- It might be unclear where to define functions like `crustPrice` that could equally well be placed in an companion object of `CrustSize` or `CrustType`.
+- It might be unclear where to define functions like `crustPrice` that could equally well be placed in a companion object of `CrustSize` or `CrustType`.
 
 
 ## Modules
 
 A second way to organize behavior is to use a “modular” approach.
-The book, *Programming in Scala*, defines a *module* as, “a ‘smaller program piece’ with a well defined interface and a hidden implementation.”
+The book, *Programming in Scala*, defines a *module* as, “a ‘smaller program piece’ with a well-defined interface and a hidden implementation.”
 Let’s look at what this means.
 
 ### Creating a `PizzaService` interface

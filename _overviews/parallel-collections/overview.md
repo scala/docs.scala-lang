@@ -17,7 +17,7 @@ If you're using Scala 2.13+ and want to use Scala's parallel collections, you'll
 ## Motivation
 
 Amidst the shift in recent years by processor manufacturers from single to
-multi-core architectures, academia and industry alike have conceded that
+multicore architectures, academia and industry alike have conceded that
 _Popular Parallel Programming_ remains a formidable challenge.
 
 Parallel collections were included in the Scala standard library in an effort
@@ -65,7 +65,7 @@ from Scala's (sequential) collection library, including:
 In addition to a common architecture, Scala's parallel collections library
 additionally shares _extensibility_ with the sequential collections library.
 That is, like normal sequential collections, users can integrate their own
-collection types and automatically inherit all of the predefined (parallel)
+collection types and automatically inherit all the predefined (parallel)
 operations available on the other parallel collections in the standard
 library.
 
@@ -155,13 +155,13 @@ sections of this guide.
 
 While the parallel collections abstraction feels very much the same as normal
 sequential collections, it's important to note that its semantics differs,
-especially with regards to side-effects and non-associative operations.
+especially in regard to side-effects and non-associative operations.
 
 In order to see how this is the case, first, we visualize _how_ operations are
 performed in parallel. Conceptually, Scala's parallel collections framework
 parallelizes an operation on a parallel collection by recursively "splitting"
 a given collection, applying an operation on each partition of the collection
-in parallel, and re-"combining" all of the results that were completed in
+in parallel, and re-"combining" all the results that were completed in
 parallel.
 
 These concurrent, and "out-of-order" semantics of parallel collections lead to
@@ -176,7 +176,7 @@ Given the _concurrent_ execution semantics of the parallel collections
 framework, operations performed on a collection which cause side-effects
 should generally be avoided, in order to maintain determinism. A simple
 example is by using an accessor method, like `foreach` to increment a `var`
-declared outside of the closure which is passed to `foreach`.
+declared outside the closure which is passed to `foreach`.
 
     scala> var sum = 0
     sum: Int = 0

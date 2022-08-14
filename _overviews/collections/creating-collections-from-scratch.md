@@ -40,7 +40,7 @@ Besides `apply`, every collection companion object also defines a member `empty`
 Descendants of `Seq` classes provide also other factory operations in their companion objects. These are summarized in the following table. In short, there's
 
 * `concat`, which concatenates an arbitrary number of traversables together,
-* `fill` and `tabulate`, which generate single or multi-dimensional sequences of given dimensions initialized by some expression or tabulating function,
+* `fill` and `tabulate`, which generate single or multidimensional sequences of given dimensions initialized by some expression or tabulating function,
 * `range`, which generates integer sequences with some constant step length, and
 * `iterate`, which generates the sequence resulting from repeated application of a function to a start element.
 

@@ -8,7 +8,7 @@ next-page: scala-tools
 ---
 
 
-When you want to write parallel and concurrent applications in Scala, you _can_ use the native Java `Thread`---but the Scala [Future](https://www.scala-lang.org/api/current/scala/concurrent/Future$.html) offers a more high level and idiomatic approach so it’s preferred, and covered in this chapter.
+When you want to write parallel and concurrent applications in Scala, you _can_ use the native Java `Thread`---but the Scala [Future](https://www.scala-lang.org/api/current/scala/concurrent/Future$.html) offers a more high level and idiomatic approach, so it’s preferred, and covered in this chapter.
 
 
 
@@ -48,7 +48,7 @@ val x = aShortRunningTask()
 println("Here")
 ```
 
-Conversely, if `aShortRunningTask` is created as a `Future`, the `println` statement is printed almost immediately because `aShortRunningTask` is spawned off on some other thread---it doesn’t block.
+Conversely, if `aShortRunningTask` is created as a `Future`, the `println` statement is printed almost immediately because `aShortRunningTask` is spawned off on some other thread---it doesn't block.
 
 In this chapter you’ll see how to use futures, including how to run multiple futures in parallel and combine their results in a `for` expression.
 You’ll also see examples of methods that are used to handle the value in a future once it returns.
@@ -83,7 +83,7 @@ def longRunningAlgorithm() =
   42
 ```
 
-That fancy algorithm returns the integer value `42` after a ten second delay.
+That fancy algorithm returns the integer value `42` after a ten-second delay.
 Now call that algorithm by wrapping it into the `Future` constructor, and assigning the result to a variable:
 
 ```scala
@@ -92,7 +92,7 @@ eventualInt: scala.concurrent.Future[Int] = Future(<not completed>)
 ```
 
 Right away, your computation---the call to `longRunningAlgorithm()`---begins running.
-If you immediately check the value of the variable `eventualInt`, you see that the future hasn’t been completed yet:
+If you immediately check the value of the variable `eventualInt`, you see that the future hasn't been completed yet:
 
 ```scala
 scala> eventualInt
@@ -157,7 +157,7 @@ Got the callback, value = 42
 ## Other Future methods
 
 The `Future` class has other methods you can use.
-It has some of the methods that you find on Scala collections classes, including:
+It has some methods that you find on Scala collections classes, including:
 
 - `filter`
 - `flatMap`
@@ -269,7 +269,7 @@ But because they’re run in parallel, the total time is just slightly longer th
 >   r1 + r2 + r3
 > ~~~
 > So, if you want the computations to be possibly run in parallel, remember
-> to run them outside of the `for` expression.
+> to run them outside the `for` expression.
 
 ### A method that returns a future
 
