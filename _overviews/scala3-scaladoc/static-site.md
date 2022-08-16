@@ -36,6 +36,15 @@ getting-started.html
 
 Scaladoc can transform both files and directories (to organize your documentation into a tree-like structure). By default, directories have a title based on the file name and have empty content. It is possible to provide index pages for each section by creating `index.html` or `index.md` (not both) in the dedicated directory.
 
+Keep in mind that viewing your site locally with all the features it offers, like search or snippets, require a
+local server. For example if your output directory was `output` you could use a python server to view everything
+by doing the following and opening `localhost:8080`:
+
+```sh
+cd output
+python3 -m http.server 8080
+```
+
 ## Properties
 
 Scaladoc uses the [Liquid](https://shopify.github.io/liquid/) templating engine
