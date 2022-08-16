@@ -116,3 +116,21 @@ being derived from single-parameter functions.
 2) There is danger of confusion with the Scala standard library's
 [`curried`](https://www.scala-lang.org/api/current/scala/Function2.html#curried:T1=%3E(T2=%3ER))
 and [`uncurried`](https://www.scala-lang.org/api/current/scala/Function$.html#uncurried[T1,T2,R](f:T1=%3E(T2=%3ER)):(T1,T2)=%3ER) methods, which don't involve multiple parameter lists at all.
+
+Regardless, there are certainly similarities to be found between
+multiple parameter lists and currying. Though they are different at
+the definition site, the call site might nonetheless look identical,
+as in this example:
+
+```scala mdoc
+// version with multiple parameter lists
+def addMultiple(n1: Int)(n2: Int) = n1 + n2
+// two different ways of arriving at a curried version instead
+def add(n1: Int, n2: Int) = n1 + n2
+val addCurried1 = (add _).curried
+val addCurried2 = (n1: Int) => (n2: Int) => n1 + n2
+// regardless, all three call sites are identical
+addMultiple(3)(4)  // 7
+addCurried1(3)(4)  // 7
+addCurried2(3)(4)  // 7
+```
