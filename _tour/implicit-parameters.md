@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: Implicit Parameters
+title: Contextual Parameters, aka Implicit Parameters
 partof: scala-tour
 
 num: 28
@@ -10,61 +10,93 @@ previous-page: self-types
 redirect_from: "/tutorials/tour/implicit-parameters.html"
 ---
 
-A method can have an _implicit_ parameter list, marked by the _implicit_ keyword at the start of the parameter list. If the parameters in that parameter list are not passed as usual, Scala will look if it can get an implicit value of the correct type, and if it can, pass it automatically.
+A method can have *contextual parameters*, also called *implicit parameters*, or more concisely *implicits*.
+Parameter lists starting with the keyword `using` (or `implicit` in Scala 2) mark contextual parameters.
+Unless the call site explicitly provides arguments for those parameters, Scala will look for implicitly available `given` (or `implicit` in Scala 2) values of the correct type.
+If it can find appropriate values, it automatically passes them.
 
-The places Scala will look for these parameters fall into two categories:
+This is best shown using a small example first.
+We define an interface `Comparator[A]` that can compare elements of type `A`, and provide two implementations, for `Int`s and `String`s.
+We then define a method `max[A](x: A, y: A)` that returns the greater of the two arguments.
+Since `x` and `y` are generically typed, in general we do not know how to compare them, but we can ask for an appropriate comparator.
+As there is typically a canonical comparator for any given type `A`, we can declare them as *given*s, or *implicitly* available.
 
-* Scala will first look for implicit definitions and implicit parameters that can be accessed directly (without a prefix) at the point the method with the implicit parameter block is called.
-* Then it looks for members marked implicit in all the companion objects associated with the implicit candidate type.
+{% tabs implicits-comparator class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=implicits-comparator %}
+```scala mdoc
+trait Comparator[A] {
+  def compare(x: A, y: A): Int
+}
+
+object Comparator {
+  implicit object IntComparator extends Comparator[Int] {
+    def compare(x: Int, y: Int): Int = Integer.compare(x, y)
+  }
+
+  implicit object StringComparator extends Comparator[String] {
+    def compare(x: String, y: String): Int = x.compareTo(y)
+  }
+}
+
+def max[A](x: A, y: A)(implicit comparator: Comparator[A]): A =
+  if (comparator.compare(x, y) >= 0) x
+  else y
+
+println(max(10, 6))             // 10
+println(max("hello", "world"))  // world
+```
+
+```scala mdoc:fail
+// does not compile:
+println(max(false, true))
+//         ^
+//     error: could not find implicit value for parameter comparator: Comparator[Boolean]
+```
+
+The `comparator` parameter is automatically filled in with `Comparator.IntComparator` for `max(10, 6)`, and with `Comparator.StringComparator` for `max("hello", "world")`.
+Since no implicit `Comparator[Boolean]` can be found, the call `max(false, true)` fails to compile.
+{% endtab %}
+
+{% tab 'Scala 3' for=implicits-comparator %}
+```scala
+trait Comparator[A]:
+  def compare(x: A, y: A): Int
+
+object Comparator:
+  given Comparator[Int] with
+    def compare(x: Int, y: Int): Int = Integer.compare(x, y)
+
+  given Comparator[String] with
+    def compare(x: String, y: String): Int = x.compareTo(y)
+end Comparator
+
+def max[A](x: A, y: A)(using comparator: Comparator[A]): A =
+  if comparator.compare(x, y) >= 0 then x
+  else y
+
+println(max(10, 6))             // 10
+println(max("hello", "world"))  // world
+```
+
+```scala
+// does not compile:
+println(max(false, true))
+-- Error: ----------------------------------------------------------------------
+1 |println(max(false, true))
+  |                        ^
+  |no given instance of type Comparator[Boolean] was found for parameter comparator of method max
+```
+
+The `comparator` parameter is automatically filled in with the `given Comparator[Int]` for `max(10, 6)`, and with the `given Comparator[String]` for `max("hello", "world")`.
+Since no `given Comparator[Boolean]` can be found, the call `max(false, true)` fails to compile.
+{% endtab %}
+
+{% endtabs %}
+
+Scala will look for available given values in two places:
+
+* Scala will first look for given definitions and using parameters that can be accessed directly (without a prefix) at the call site of `max`.
+* Then it looks for members marked `given`/`implicit` in the companion objects associated with the implicit candidate type (for example: `object Comparator` for the candidate type `Comparator[Int]`).
 
 A more detailed guide to where Scala looks for implicits can be found in [the FAQ](//docs.scala-lang.org/tutorials/FAQ/finding-implicits.html).
-
-In the following example we define a method `sum` which computes the sum of a list of elements using the monoid's `add` and `unit` operations. Please note that implicit values cannot be top-level.
-
-```scala mdoc
-abstract class Monoid[A] {
-  def add(x: A, y: A): A
-  def unit: A
-}
-
-object ImplicitTest {
-  implicit val stringMonoid: Monoid[String] = new Monoid[String] {
-    def add(x: String, y: String): String = x concat y
-    def unit: String = ""
-  }
-  
-  implicit val intMonoid: Monoid[Int] = new Monoid[Int] {
-    def add(x: Int, y: Int): Int = x + y
-    def unit: Int = 0
-  }
-  
-  def sum[A](xs: List[A])(implicit m: Monoid[A]): A =
-    if (xs.isEmpty) m.unit
-    else m.add(xs.head, sum(xs.tail))
-    
-  def main(args: Array[String]): Unit = {
-    println(sum(List(1, 2, 3)))       // uses intMonoid implicitly
-    println(sum(List("a", "b", "c"))) // uses stringMonoid implicitly
-  }
-}
-```
-
-`Monoid` defines an operation called `add` here, that combines a pair of `A`s and returns another `A`, together with an operation called `unit` that is able to create some (specific) `A`.
-
-To show how implicit parameters work, we first define monoids `stringMonoid` and `intMonoid` for strings and integers, respectively. The `implicit` keyword indicates that the corresponding object can be used implicitly.
-
-The method `sum` takes a `List[A]` and returns an `A`, which takes the initial `A` from `unit`, and combines each next `A` in the list to that with the `add` method. Making the parameter `m` implicit here means we only have to provide the `xs` parameter when we call the method if Scala can find an implicit `Monoid[A]` to use for the implicit `m` parameter.
-
-In our `main` method we call `sum` twice, and only provide the `xs` parameter. Scala will now look for an implicit in the scope mentioned above. The first call to `sum` passes a `List[Int]` for `xs`, which means that `A` is `Int`. The implicit parameter list with `m` is left out, so Scala will look for an implicit of type `Monoid[Int]`. The first lookup rule reads
-
-> Scala will first look for implicit definitions and implicit parameters that can be accessed directly (without a prefix) at the point the method with the implicit parameter block is called.
-
-`intMonoid` is an implicit definition that can be accessed directly in `main`. It is also of the correct type, so it's passed to the `sum` method automatically.
-
-The second call to `sum` passes a `List[String]`, which means that `A` is `String`. Implicit lookup will go the same way as with `Int`, but will this time find `stringMonoid`, and pass that automatically as `m`.
-
-The program will output
-```
-6
-abc
-```
