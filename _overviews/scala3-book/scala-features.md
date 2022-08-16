@@ -1,7 +1,7 @@
 ---
-title: Scala 3 Features
+title: Scala Features
 type: chapter
-description: This page discusses the main features of the Scala 3 programming language.
+description: This page discusses the main features of the Scala programming language.
 num: 2
 previous-page: introduction
 next-page: why-scala-3
@@ -50,13 +50,15 @@ Second, with the use of lambdas and higher-order functions, you write your code 
 As the functional programming saying goes, in Scala you write _what_ you want, not _how_ to achieve it.
 That is, we don’t write imperative code like this:
 
+{% tabs scala-features-1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=scala-features-1 %}
 ```scala
 import scala.collection.mutable.ListBuffer
 
 def double(ints: List[Int]): List[Int] = {
   val buffer = new ListBuffer[Int]()
   for (i <- ints) {
-      buffer += i * 2
+    buffer += i * 2
   }
   buffer.toList
 }
@@ -64,13 +66,34 @@ def double(ints: List[Int]): List[Int] = {
 val oldNumbers = List(1, 2, 3)
 val newNumbers = double(oldNumbers)
 ```
+{% endtab %}
+{% tab 'Scala 3' for=scala-features-1 %}
+```scala
+import scala.collection.mutable.ListBuffer
+
+def double(ints: List[Int]): List[Int] =
+  val buffer = new ListBuffer[Int]()
+  for i <- ints do
+    buffer += i * 2
+  buffer.toList
+
+val oldNumbers = List(1, 2, 3)
+val newNumbers = double(oldNumbers)
+```
+{% endtab %}
+{% endtabs %}
 
 That code instructs the compiler what to do on a step-by-step basis.
 Instead, we write high-level, functional code using higher-order functions and lambdas like this to compute the same result:
 
+{% tabs scala-features-2 %}
+{% tab 'Scala 2 and 3' for=scala-features-2 %}
 ```scala
 val newNumbers = oldNumbers.map(_ * 2)
 ```
+{% endtab %}
+{% endtabs %}
+
 
 As you can see, that code is much more concise, easier to read, and easier to maintain.
 
@@ -80,13 +103,20 @@ As you can see, that code is much more concise, easier to read, and easier to ma
 Scala has a concise, readable syntax.
 For instance, variables are created concisely, and their types are clear:
 
+{% tabs scala-features-3 %}
+{% tab 'Scala 2 and 3' for=scala-features-3 %}
 ```scala
 val nums = List(1,2,3)
 val p = Person("Martin", "Odersky")
 ```
+{% endtab %}
+{% endtabs %}
+
 
 Higher-order functions and lambdas make for concise code that’s readable:
 
+{% tabs scala-features-4 %}
+{% tab 'Scala 2 and 3' for=scala-features-4 %}
 ```scala
 nums.map(i => i * 2)   // long form
 nums.map(_ * 2)        // short form
@@ -94,9 +124,29 @@ nums.map(_ * 2)        // short form
 nums.filter(i => i > 1)
 nums.filter(_ > 1)
 ```
+{% endtab %}
+{% endtabs %}
 
 Traits, classes, and methods are defined with a clean, light syntax:
 
+{% tabs scala-features-5 class=tabs-scala-version %}
+{% tab 'Scala 2' for=scala-features-5 %}
+```scala mdoc
+trait Animal {
+  def speak(): Unit
+}
+
+trait HasTail {
+  def wagTail(): Unit
+}
+
+class Dog extends Animal with HasTail {
+  def speak(): Unit = println("Woof")
+  def wagTail(): Unit = println("⎞⎜⎛  ⎞⎜⎛")
+}
+```
+{% endtab %}
+{% tab 'Scala 3' for=scala-features-5 %}
 ```scala
 trait Animal:
   def speak(): Unit
@@ -105,9 +155,12 @@ trait HasTail:
   def wagTail(): Unit
 
 class Dog extends Animal, HasTail:
-  def speak() = println("Woof")
-  def wagTail() = println("⎞⎜⎛  ⎞⎜⎛")
+  def speak(): Unit = println("Woof")
+  def wagTail(): Unit = println("⎞⎜⎛  ⎞⎜⎛")
 ```
+{% endtab %}
+{% endtabs %}
+
 
 Studies have shown that the time a developer spends _reading_ code to _writing_ code is at least a 10:1 ratio, so writing code that is concise _and_ readable is important.
 
@@ -117,15 +170,33 @@ Studies have shown that the time a developer spends _reading_ code to _writing_ 
 Scala is a statically-typed language, but thanks to its type inference capabilities it feels dynamic.
 All of these expressions look like a dynamically-typed language like Python or Ruby, but they’re all Scala:
 
+{% tabs scala-features-6 class=tabs-scala-version %}
+{% tab 'Scala 2' for=scala-features-6 %}
+```scala
+val s = "Hello"
+val p = Person("Al", "Pacino")
+val sum = nums.reduceLeft(_ + _)
+val y = for (i <- nums) yield i * 2
+val z = nums
+  .filter(_ > 100)
+  .filter(_ < 10_000)
+  .map(_ * 2)
+```
+{% endtab %}
+{% tab 'Scala 3' for=scala-features-6 %}
 ```scala
 val s = "Hello"
 val p = Person("Al", "Pacino")
 val sum = nums.reduceLeft(_ + _)
 val y = for i <- nums yield i * 2
-val z = nums.filter(_ > 100)
-            .filter(_ < 10_000)
-            .map(_ * 2)
+val z = nums
+  .filter(_ > 100)
+  .filter(_ < 10_000)
+  .map(_ * 2)
 ```
+{% endtab %}
+{% endtabs %}
+
 
 As Heather Miller states, Scala is considered to be a [strong, statically-typed language](https://heather.miller.am/blog/types-in-scala.html), and you get all the benefits of static types:
 
@@ -266,20 +337,28 @@ In regards to the second point, large libraries like [Akka](https://akka.io) and
 In regards to the first point, Java classes and libraries are used in Scala applications every day.
 For instance, in Scala you can read files with a Java `BufferedReader` and `FileReader`:
 
+{% tabs scala-features-7 %}
+{% tab 'Scala 2 and 3' for=scala-features-7 %}
 ```scala
 import java.io.*
 val br = BufferedReader(FileReader(filename))
 // read the file with `br` ...
 ```
+{% endtab %}
+{% endtabs %}
 
 Using Java code in Scala is generally seamless.
 
 Java collections can also be used in Scala, and if you want to use Scala’s rich collection class methods with them, you can convert them with just a few lines of code:
 
+{% tabs scala-features-8 %}
+{% tab 'Scala 2 and 3' for=scala-features-8 %}
 ```scala
 import scala.jdk.CollectionConverters.*
 val scalaList: Seq[Integer] = JavaClass.getJavaList().asScala.toSeq
 ```
+{% endtab %}
+{% endtabs %}
 
 
 ### Wealth of libraries
@@ -303,7 +382,7 @@ Assuming you told someone about the previous high-level features and then they s
 
 ## Lower-level language features
 
-Where the previous section covered high-level features of Scala 3, it’s interesting to note that at a high level you can make the same statements about both Scala 2 and Scala 3.
+Where the previous section covered high-level features of Scala, it’s interesting to note that at a high level you can make the same statements about both Scala 2 and Scala 3.
 A decade ago Scala started with a strong foundation of desirable features, and as you’ll see in this section, those benefits have been improved with Scala 3.
 
 At a “sea level” view of the details---i.e., the language features programmers use everyday---Scala 3 has significant advantages over Scala 2:
