@@ -25,6 +25,8 @@ In Scala, all values have a type, including numerical values and functions. The 
 
 Here is an example that demonstrates that strings, integers, characters, boolean values, and functions are all of type `Any` just like every other object:
 
+{% tabs unified-types-1 %}
+{% tab 'Scala 2 and 3' for=unified-types-1 %}
 ```scala mdoc
 val list: List[Any] = List(
   "a string",
@@ -36,6 +38,8 @@ val list: List[Any] = List(
 
 list.foreach(element => println(element))
 ```
+{% endtab %}
+{% endtabs %}
 
 It defines a value `list` of type `List[Any]`. The list is initialized with elements of various types, but each is an instance of `scala.Any`, so you can add them to the list.
 
@@ -55,6 +59,8 @@ Value types can be cast in the following way:
 
 For example:
 
+{% tabs unified-types-2 %}
+{% tab 'Scala 2 and 3' for=unified-types-2 %}
 ```scala mdoc
 val x: Long = 987654321
 val y: Float = x  // 9.8765434E8 (note that some precision is lost in this case)
@@ -62,14 +68,22 @@ val y: Float = x  // 9.8765434E8 (note that some precision is lost in this case)
 val face: Char = '☺'
 val number: Int = face  // 9786
 ```
+{% endtab %}
+{% endtabs %}
+
 
 Casting is unidirectional. This will not compile:
 
-```
+{% tabs unified-types-3 %}
+{% tab 'Scala 2 and 3' for=unified-types-3 %}
+```scala
 val x: Long = 987654321
 val y: Float = x  // 9.8765434E8
 val z: Long = y  // Does not conform
 ```
+{% endtab %}
+{% endtabs %}
+
 
 You can also cast a reference type to a subtype. This will be covered later in the tour.
 
