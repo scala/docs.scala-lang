@@ -1,6 +1,6 @@
 ---
 title: Documentation Contributions
-num: 5
+num: 6
 ---
 ## Contributing Documentation to the Scala project
 

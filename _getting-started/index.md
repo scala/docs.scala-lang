@@ -6,17 +6,15 @@ languages: [fr, ja, uk]
 includeTOC: true
 
 newcomer_resources:
-  - title: "Resources For Newcomers"
-    links:
-      - title: Are You Coming From Java?
-        description: What you should know to get to speed with Scala after your initial setup.
-        icon: "fa fa-coffee"
-        link: /scala3/newcomers/java.html
-      - title: Scala in the Browser
-        description: >
-          To start experimenting with Scala right away, use "Scastie" in your browser.
-        icon: "fa fa-cloud"
-        link: https://scastie.scala-lang.org/pEBYc5VMT02wAGaDrfLnyw
+  - title: Are You Coming From Java?
+    description: What you should know to get to speed with Scala after your initial setup.
+    icon: "fa fa-coffee"
+    link: /scala3/newcomers/java.html
+  - title: Scala in the Browser
+    description: >
+      To start experimenting with Scala right away, use "Scastie" in your browser.
+    icon: "fa fa-cloud"
+    link: https://scastie.scala-lang.org/pEBYc5VMT02wAGaDrfLnyw
 
 redirect_from:
   - /getting-started.html
@@ -32,7 +30,9 @@ The instructions below cover both Scala 2 and Scala 3.
 {% endaltDetails %}
 </div>
 
-{% include inner-documentation-sections.html sections=page.newcomer_resources %}
+## Resources For Newcomers
+
+{% include inner-documentation-sections.html links=page.newcomer_resources %}
 
 ##  Install Scala on your computer
 

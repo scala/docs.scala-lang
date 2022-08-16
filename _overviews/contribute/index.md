@@ -1,7 +1,29 @@
 ---
-title: Introduction
+title: Becoming a Scala OSS Contributor
 num: 1
+
+explore_resources:
+  - title: Why Contribute?
+    description: "Giving back to the community has many benefits..."
+    icon: "fa fa-circle-question"
+    link: "become-contributor.html#why-contribute"
+  - title: Ways to Contribute
+    description: "From documentation to coding a bug-fix, there is lots to do..."
+    icon: "fa fa-clipboard-list"
+    link: "become-contributor.html#ways-to-contribute"
+  - title: Choosing Where to Contribute
+    description: "If you are using OSS, you are already a contributor..."
+    icon: "fa fa-check-to-slot"
+    link: "become-contributor.html#choosing-where-to-contribute"
 ---
+
+Regardless of your background, contributing to open source Scala libraries has its own benefits for you.
+You could be a confident Scala programmer who is looking to give back to the community. Or maybe you are only at the
+start of your Scala journey and are looking for good ways to improve your expertise.
+
+### Explore Scala OSS
+
+{% include inner-documentation-sections.html links=page.explore_resources %}
 
 ### Why You Should Contribute To Scala
 The Scala programming language is an open source project with a very

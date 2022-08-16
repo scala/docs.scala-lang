@@ -1,6 +1,6 @@
 ---
 title: Inclusive Language Guide
-num: 2
+num: 3
 ---
 
 We are committed to providing a friendly, safe and welcoming environment for
