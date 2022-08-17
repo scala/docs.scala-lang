@@ -202,7 +202,7 @@ Some types of markup available:
 - **Headings** are defined with surrounding `=` characters, with more `=` denoting
   subheadings. E.g. `=Heading=`, `==Sub-Heading==`, etc.
 - **Tables** are defined using `|` to separate elements in a row,
-  as described in the [[https://scala-lang.org/blog/2018/10/04/scaladoc-tables.html blog]].
+  as described in the [blog](https://scala-lang.org/blog/2018/10/04/scaladoc-tables.html).
 - **List blocks** are a sequence of list items with the same style and level,
   with no interruptions from other block styles. Unordered lists can be bulleted
   using `-`; numbered lists can be denoted using `1.`, `i.`, `I.`, or `a.` for the
