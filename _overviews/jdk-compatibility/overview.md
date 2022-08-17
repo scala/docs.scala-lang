@@ -10,18 +10,17 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 
 ## Version compatibility table
 
-| JDK version | Minimum Scala versions                                       | 
+| JDK version | Minimum Scala versions                                       |
 |:-----------:|:-------------------------------------------------------------|
 | 19          | 3.2.0 (forthcoming), 2.13.9 (forthcoming), 2.12.16           |
 | 18          | 3.1.3, 2.13.7, 2.12.15                                       |
 | 17          | 3.0.0, 2.13.6, 2.12.15                                       |
 | 11          | 3.0.0, 2.13.0, 2.12.4, 2.11.12                               |
-| 8           | 3.0.0, 2.13.0, 2.12.0, 2.11.0, 2.10.2                        |
-| 6, 7        | 2.11.0, 2.10.0                                               |
+| 8           | 3.0.0, 2.13.0, 2.12.0, 2.11.0                                |
 
 **Using latest patch version is always recommended**
 
-Even when a version combination isn't listed as supported, most features may still work.  (But Scala 2.12+ definitely doesn't work at all on JDK 6 or 7.)
+Even when a version combination isn't listed as supported, most features may still work.
 
 In general, Scala works on JDK 11+, including GraalVM, but may not take special advantage of features that were added after JDK 8. See [below](#jdk-11-compatibility-notes).
 
@@ -91,7 +90,7 @@ Support for JDK 18 was included in Scala 2.13.7 and 2.12.15.
 Early access builds of JDK 19, a non-LTS release, are already available.
 
 Initial support for JDK 19 was included in Scala 2.12.16 and will
-also be included in Scala 2.13.9 (forthcoming).
+also be included in Scala 2.13.9 (forthcoming) and Scala 3.2.0 (forthcoming).
 
 ## GraalVM Native Image compatibility notes
 
