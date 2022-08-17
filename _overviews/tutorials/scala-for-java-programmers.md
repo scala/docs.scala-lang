@@ -274,7 +274,7 @@ second.
 ```scala
 object Timer {
   def oncePerSecond(callback: () => Unit): Unit = {
-    while (true) { callback(); Thread sleep 1000 }
+    while (true) { callback(); Thread.sleep(1000) }
   }
   def timeFlies(): Unit = {
     println("time flies like an arrow...")
@@ -319,7 +319,7 @@ program, passing an anonymous function to `oncePerSecond` instead of `timeFlies`
 ```scala
 object TimerAnonymous {
   def oncePerSecond(callback: () => Unit): Unit = {
-    while (true) { callback(); Thread sleep 1000 }
+    while (true) { callback(); Thread.sleep(1000) }
   }
   def main(args: Array[String]): Unit = {
     oncePerSecond(() =>
@@ -802,9 +802,9 @@ several operations on the expression `(x+x)+(7+y)`: it first computes
 its value in the environment `{ x -> 5, y -> 7 }`, then
 computes its derivative relative to `x` and then `y`.
 
-{% tabs hello-world-demo class=tabs-scala-version %}
+{% tabs calc-main class=tabs-scala-version %}
 
-{% tab 'Scala 2' for=hello-world-demo %}
+{% tab 'Scala 2' for=calc-main %}
 ```scala
 import Tree._
 
@@ -825,7 +825,7 @@ object Calc {
 ```
 {% endtab %}
 
-{% tab 'Scala 3' for=hello-world-demo %}
+{% tab 'Scala 3' for=calc-main %}
 ```scala
 import Tree.*
 
@@ -966,7 +966,7 @@ follows the class name and parameters. It declares that the
 Then, we redefine the `equals` method, inherited from
 `Object`, so that it correctly compares dates by comparing their
 individual fields. The default implementation of `equals` is not
-usable, because as in Java it compares objects physically. We arrive
+usable, because as in Java it compares objects by their identity. We arrive
 at the following definition:
 
 {% tabs equals-definition class=tabs-scala-version %}
@@ -976,11 +976,10 @@ at the following definition:
 class Date(y: Int, m: Int, d: Int) extends Ord {
   // previous decls here
 
-  override def equals(that: Any): Boolean =
-    that.isInstanceOf[Date] && {
-      val o = that.asInstanceOf[Date]
-      o.day == day && o.month == month && o.year == year
-    }
+  override def equals(that: Any): Boolean = that match {
+    case d: Date => d.day == day && d.month == month && d.year == year
+    case _ => false
+  }
 
   // rest of implementation will go here
 }
@@ -992,11 +991,9 @@ class Date(y: Int, m: Int, d: Int) extends Ord {
 class Date(y: Int, m: Int, d: Int) extends Ord:
   // previous decls here
 
-  override def equals(that: Any): Boolean =
-    that.isInstanceOf[Date] && {
-      val o = that.asInstanceOf[Date]
-      o.day == day && o.month == month && o.year == year
-    }
+  override def equals(that: Any): Boolean = that match
+    case d: Date => d.day == day && d.month == month && d.year == year
+    case _ => false
 
   // rest of implementation will go here
 end Date
@@ -1005,17 +1002,12 @@ end Date
 
 {% endtabs %}
 
-This method makes use of the predefined methods `isInstanceOf`
-and `asInstanceOf`. The first one, `isInstanceOf`,
-corresponds to Java's `instanceof` operator, and returns true
-if and only if the object on which it is applied is an instance of the
-given type. The second one, `asInstanceOf`, corresponds to
-Java's cast operator: if the object is an instance of the given type,
-it is viewed as such, otherwise a `ClassCastException` is
-thrown.
+While in Java (pre 16) you might use the `instanceof` operator followed by a cast
+(equivalent to calling `that.isInstanceOf[Date]` and `that.asInstanceOf[Date]` in Scala);
+in Scala it is more idiomatic to use a _type pattern_, shown in the example above which checks if `that` is an
+instance of `Date`, and binds it to a new variable `d`, which is then used in the right hand side of the `case`.
 
-Finally, the last method to define is the predicate which tests for
-inferiority, as follows. It makes use of another method,
+Finally, the last method to define is the `<` test, as follows. It makes use of another method,
 `error` from the package object `scala.sys`, which throws an exception with the given error message.
 
 {% tabs lt-definition class=tabs-scala-version %}
@@ -1025,14 +1017,13 @@ inferiority, as follows. It makes use of another method,
 class Date(y: Int, m: Int, d: Int) extends Ord {
   // previous decls here
 
-  def <(that: Any): Boolean = {
-    if (!that.isInstanceOf[Date])
-      sys.error("cannot compare " + that + " and a Date")
+  def <(that: Any): Boolean = that match {
+    case d: Date =>
+      (year < d.year) ||
+      (year == d.year && (month < d.month ||
+                         (month == d.month && day < d.day)))
 
-    val o = that.asInstanceOf[Date]
-    (year < o.year) ||
-    (year == o.year && (month < o.month ||
-                       (month == o.month && day < o.day)))
+    case _ => sys.error("cannot compare " + that + " and a Date")
   }
 }
 ```
@@ -1043,14 +1034,13 @@ class Date(y: Int, m: Int, d: Int) extends Ord {
 class Date(y: Int, m: Int, d: Int) extends Ord:
   // previous decls here
 
-  def <(that: Any): Boolean =
-    if !that.isInstanceOf[Date] then
-      sys.error("cannot compare " + that + " and a Date")
+  def <(that: Any): Boolean = that match
+    case d: Date =>
+      (year < d.year) ||
+      (year == d.year && (month < d.month ||
+                         (month == d.month && day < d.day)))
 
-    val o = that.asInstanceOf[Date]
-    (year < o.year) ||
-    (year == o.year && (month < o.month ||
-                       (month == o.month && day < o.day)))
+    case _ => sys.error("cannot compare " + that + " and a Date")
   end <
 end Date
 ```
