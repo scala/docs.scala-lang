@@ -148,7 +148,7 @@ defaults:
       path: "_overviews/contribute"
     values:
       partof: scala-contribution
-      overview-name: Contributing to Scala
+      overview-name: Contributing to Scala's OSS Ecosystem
       layout: multipage-overview
       permalink: "/contribute/:title.html"
   -

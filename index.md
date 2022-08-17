@@ -98,8 +98,4 @@ sections:
         description: "From start to finish: discover how you can help Scala's open-source ecosystem"
         icon: "fa fa-code-branch"
         link: /contribute/
-      - title: "Scala 3 Contributing Guide"
-        description: "Guide to the Scala 3 Compiler and fixing an issue"
-        icon: "fa fa-cogs"
-        link: /scala3/guides/contribution/contribution-intro.html
 ---
