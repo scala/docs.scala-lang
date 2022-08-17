@@ -82,8 +82,8 @@ import logging.Logger.info
 class Project(name: String, daysToComplete: Int)
 
 class Test:
-  val project1 = new Project("TPS Reports", 1)
-  val project2 = new Project("Website redesign", 5)
+  val project1 = Project("TPS Reports", 1)
+  val project2 = Project("Website redesign", 5)
   info("Created projects")  // Prints "INFO: Created projects"
 ```
 {% endtab %}
@@ -104,7 +104,7 @@ An object with the same name as a class is called a _companion object_. Converse
 
 {% tab 'Scala 2' for=companion-object-circle %}
 ```scala
-import scala.math._
+import scala.math.pow
 
 case class Circle(radius: Double) {
   import Circle._
@@ -123,10 +123,10 @@ circle1.area
 
 {% tab 'Scala 3' for=companion-object-circle %}
 ```scala
-import scala.math._
+import scala.math.pow
 
 case class Circle(radius: Double):
-  import Circle._
+  import Circle.*
   def area: Double = calculateArea(radius)
 
 object Circle:
@@ -172,13 +172,13 @@ scalaCenterEmail match {
 {% endtab %}
 
 {% tab 'Scala 3' for=companion-object-email %}
-```scala mdoc
+```scala
 class Email(val username: String, val domainName: String)
 
 object Email:
   def fromString(emailString: String): Option[Email] = 
     emailString.split('@') match
-      case Array(a, b) => Some(new Email(a, b))
+      case Array(a, b) => Some(Email(a, b))
       case _ => None
 
 val scalaCenterEmail = Email.fromString("scala.center@epfl.ch")
