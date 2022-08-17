@@ -20,23 +20,28 @@ assumed.
 
 ## A First Example
 
-As a first example, we will use the standard *Hello world* program. It
+As a first example, we will use the standard *Hello World* program. It
 is not very fascinating but makes it easy to demonstrate the use of
 the Scala tools without knowing too much about the language. Here is
 how it looks:
 
-    object HelloWorld {
-      def main(args: Array[String]): Unit = {
-        println("Hello, world!")
-      }
-    }
+{% tabs hello-world-demo class=tabs-scala-version %}
 
+{% tab 'Scala 2' for=hello-world-demo %}
+```scala
+object HelloWorld {
+  def main(args: Array[String]): Unit = {
+    println("Hello, World!")
+  }
+}
+```
 The structure of this program should be familiar to Java programmers:
-it consists of one method called `main` which takes the command
-line arguments, an array of strings, as parameter; the body of this
+it's entry-point consists of one method called `main` which takes the command
+line arguments, an array of strings, as a parameter; the body of this
 method consists of a single call to the predefined method `println`
 with the friendly greeting as argument. The `main` method does not
-return a value. Therefore, its return type is declared as `Unit`.
+return a value. Therefore, its return type is declared as `Unit`
+(equivalent to `void` in Java).
 
 What is less familiar to Java programmers is the `object`
 declaration containing the `main` method. Such a declaration
@@ -46,25 +51,66 @@ both a class called `HelloWorld` and an instance of that class,
 also called `HelloWorld`. This instance is created on demand,
 the first time it is used.
 
-The astute reader might have noticed that the `main` method is
+Another difference from Java is that the `main` method is
 not declared as `static` here. This is because static members
 (methods or fields) do not exist in Scala. Rather than defining static
 members, the Scala programmer declares these members in singleton
 objects.
+{% endtab %}
+
+{% tab 'Scala 3' for=hello-world-demo %}
+```scala
+@main def HelloWorld(args: String*): Unit =
+  println("Hello, World!")
+```
+The structure of this program may not be familiar to Java programmers:
+there is no method called `main`, instead the `HelloWorld` method is marked
+as an entry-point by adding the `@main` annotation.
+
+program entry-points optionally take parameters, which are populated by the
+command line arguments. Here `HelloWorld` captures all the arguments in
+a variable-length sequence of strings called `args`.
+
+The body of the method consists of a single call to the
+predefined method `println` with the friendly greeting as argument.
+The `HelloWorld` method does not
+return a value. Therefore, its return type is declared as `Unit`
+(equivalent to `void` in Java).
+
+Even less familiar to Java programmers is that `HelloWorld`
+does not need to be wrapped in a class definition. Scala 3
+supports top-level method definitions, which are ideal for
+program entry-points.
+
+The method also does not need to be declared as `static`.
+This is because static members (methods or fields) do not exist in Scala.
+Instead, top-level methods and fields are members of their enclosing
+package, so can be accessed from anywhere in a program.
+
+> **Implementation detail**: so that the JVM can execute the program,
+> the `@main` annotation generates a class `HelloWorld` with a
+> static `main` method which calls the `HelloWorld` method with the
+> command line arguments.
+> This class is only visible at runtime.
+{% endtab %}
+
+{% endtabs %}
 
 ### Compiling the example
 
 To compile the example, we use `scalac`, the Scala compiler. `scalac`
 works like most compilers: it takes a source file as argument, maybe
-some options, and produces one or several object files. The object
-files it produces are standard Java class files.
+some options, and produces one or several output files. The outputs
+it produces are standard Java class files.
 
 If we save the above program in a file called
 `HelloWorld.scala`, we can compile it by issuing the following
 command (the greater-than sign `>` represents the shell prompt
 and should not be typed):
 
-    > scalac HelloWorld.scala
+```shell
+> scalac HelloWorld.scala
+```
 
 This will generate a few class files in the current directory. One of
 them will be called `HelloWorld.class`, and contains a class
@@ -79,9 +125,11 @@ programs, and accepts the same options. The above example can be
 executed using the following command, which produces the expected
 output:
 
-    > scala -classpath . HelloWorld
+```shell
+> scala -classpath . HelloWorld
 
-    Hello, world!
+Hello, World!
+```
 
 ## Interaction with Java
 
@@ -95,52 +143,65 @@ specific country, say France. (Other regions such as the
 French-speaking part of Switzerland use the same conventions.)
 
 Java's class libraries define powerful utility classes, such as
-`Date` and `DateFormat`. Since Scala interoperates
+`LocalDate` and `DateTimeFormatter`. Since Scala interoperates
 seamlessly with Java, there is no need to implement equivalent
-classes in the Scala class library--we can simply import the classes
+classes in the Scala class library; instead, we can import the classes
 of the corresponding Java packages:
 
-    import java.util.{Date, Locale}
-    import java.text.DateFormat._
+{% tabs date-time-demo class=tabs-scala-version %}
 
-    object FrenchDate {
-      def main(args: Array[String]): Unit = {
-        val now = new Date
-        val df = getDateInstance(LONG, Locale.FRANCE)
-        println(df format now)
-      }
-    }
+{% tab 'Scala 2' for=date-time-demo %}
+```scala
+import java.time.format.{DateTimeFormatter, FormatStyle}
+import java.time.LocalDate
+import java.util.Locale._
 
+object FrenchDate {
+  def main(args: Array[String]): Unit = {
+    val now = LocalDate.now
+    val df = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).withLocale(FRANCE)
+    println(df.format(now))
+  }
+}
+```
 Scala's import statement looks very similar to Java's equivalent,
 however, it is more powerful. Multiple classes can be imported from
 the same package by enclosing them in curly braces as on the first
 line. Another difference is that when importing all the names of a
-package or class, one uses the underscore character (`_`) instead
-of the asterisk (`*`). That's because the asterisk is a valid
-Scala identifier (e.g. method name), as we will see later.
+package or class, in Scala 2 we use the underscore character (`_`) instead
+of the asterisk (`*`).
+{% endtab %}
 
-The import statement on the second line therefore imports all members
-of the `DateFormat` class. This makes the static method
-`getDateInstance` and the static field `LONG` directly
+{% tab 'Scala 3' for=date-time-demo %}
+```scala
+import java.time.format.{DateTimeFormatter, FormatStyle}
+import java.time.LocalDate
+import java.util.Locale.*
+
+@main def FrenchDate: Unit =
+  val now = LocalDate.now
+  val df = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).withLocale(FRANCE)
+  println(df.format(now))
+```
+Scala's import statement looks very similar to Java's equivalent,
+however, it is more powerful. Multiple classes can be imported from
+the same package by enclosing them in curly braces as on the first
+line. Like with Java, in Scala 3 we use the asterisk (`*`) to import all
+the names of a package or class.
+{% endtab %}
+
+{% endtabs %}
+
+The import statement on the third line therefore imports all members
+of the `Locale` enum. This makes the static field `FRANCE` directly
 visible.
 
-Inside the `main` method we first create an instance of Java's
-`Date` class which by default contains the current date. Next, we
-define a date format using the static `getDateInstance` method
+Inside the entry-point method we first create an instance of Java's
+`DateTime` class, containing today's date. Next, we
+define a date format using the `DateTimeFormatter.ofLocalizedDate` method,
+passing the `LONG` format style, then further passing the `FRANCE` locale
 that we imported previously. Finally, we print the current date
-formatted according to the localized `DateFormat` instance. This
-last line shows an interesting property of Scala's syntax. Methods
-taking one argument can be used with an infix syntax. That is, the
-expression
-
-    df format now
-
-is just another, slightly less verbose way of writing the expression
-
-    df.format(now)
-
-This might seem like a minor syntactic detail, but it has important
-consequences, one of which will be explored in the next section.
+formatted according to the localized `DateTimeFormatter` instance.
 
 To conclude this section about integration with Java, it should be
 noted that it is also possible to inherit from Java classes and
@@ -159,85 +220,133 @@ types.
 Since numbers are objects, they also have methods. And in fact, an
 arithmetic expression like the following:
 
-    1 + 2 * 3 / x
+{% tabs math-expression-inline %}
+{% tab 'Scala 2 and 3' for=math-expression-inline %}
+```scala
+1 + 2 * 3 / x
+```
+{% endtab %}
+{% endtabs %}
 
 consists exclusively of method calls, because it is equivalent to the
 following expression, as we saw in the previous section:
 
-    1.+(2.*(3)./(x))
+{% tabs math-expression-explicit %}
+{% tab 'Scala 2 and 3' for=math-expression-explicit %}
+```scala
+1.+(2.*(3)./(x))
+```
+{% endtab %}
+{% endtabs %}
 
-This also means that `+`, `*`, etc. are valid identifiers
+This also means that `+`, `*`, etc. are valid identifiers for fields/methods/etc
 in Scala.
 
 ### Functions are objects
 
-Functions are also
-objects in Scala. It is therefore possible to pass functions as
-arguments, to store them in variables, and to return them from other
-functions. This ability to manipulate functions as values is one of
-the cornerstone of a very interesting programming paradigm called
-*functional programming*.
+True to _everything_ being an object, in Scala even functions are objects, going beyond Java's support for
+lambda expressions.
 
-As a very simple example of why it can be useful to use functions as
-values, let's consider a timer function whose aim is to perform some
-action every second. How do we pass it the action to perform? Quite
-logically, as a function. This very simple kind of function passing
-should be familiar to many programmers: it is often used in
-user-interface code, to register call-back functions which get called
-when some event occurs.
+Compared to Java, there is very little difference between function objects and methods: you can pass methods as
+arguments, store them in variables, and return them from other functions, all without special syntax.
+This ability to manipulate functions as values is one of the cornerstones of a very
+interesting programming paradigm called *functional programming*.
+
+To demonstrate, consider a timer function which
+performs some action every second. The action to be performed is supplied by the
+caller as a function value.
 
 In the following program, the timer function is called
 `oncePerSecond`, and it gets a call-back function as argument.
 The type of this function is written `() => Unit` and is the type
-of all functions which take no arguments and return nothing (the type
-`Unit` is similar to `void` in C/C++). The main function of
-this program simply calls this timer function with a call-back which
-prints a sentence on the terminal. In other words, this program
-endlessly prints the sentence "time flies like an arrow" every
+of all functions which take no arguments and return no useful value
+(as before, the type `Unit` is similar to `void` in Java).
+
+The entry-point of this program calls `oncePerSecond` by directly passing
+the `timeFlies` method.
+
+In the end this program will infitely print the sentence `time flies like an arrow` every
 second.
 
-    object Timer {
-      def oncePerSecond(callback: () => Unit): Unit = {
-        while (true) { callback(); Thread sleep 1000 }
-      }
-      def timeFlies(): Unit = {
-        println("time flies like an arrow...")
-      }
-      def main(args: Array[String]): Unit = {
-        oncePerSecond(timeFlies)
-      }
-    }
+{% tabs callback-demo class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=callback-demo %}
+```scala
+object Timer {
+  def oncePerSecond(callback: () => Unit): Unit = {
+    while (true) { callback(); Thread.sleep(1000) }
+  }
+  def timeFlies(): Unit = {
+    println("time flies like an arrow...")
+  }
+  def main(args: Array[String]): Unit = {
+    oncePerSecond(timeFlies)
+  }
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=callback-demo %}
+```scala
+def oncePerSecond(callback: () => Unit): Unit =
+  while true do { callback(); Thread.sleep(1000) }
+
+def timeFlies(): Unit =
+  println("time flies like an arrow...")
+
+@main def Timer: Unit =
+  oncePerSecond(timeFlies)
+```
+{% endtab %}
+
+{% endtabs %}
 
 Note that in order to print the string, we used the predefined method
 `println` instead of using the one from `System.out`.
 
 #### Anonymous functions
 
-While this program is easy to understand, it can be refined a bit.
-First of all, notice that the function `timeFlies` is only
-defined in order to be passed later to the `oncePerSecond`
-function. Having to name that function, which is only used once, might
-seem unnecessary, and it would in fact be nice to be able to construct
-this function just as it is passed to `oncePerSecond`. This is
-possible in Scala using *anonymous functions*, which are exactly
-that: functions without a name. The revised version of our timer
-program using an anonymous function instead of *timeFlies* looks
-like that:
+In Scala, lambda expressions are known as anonymous functions.
+They are useful when a function so short it is perhaps unneccesary
+to give them a name.
 
-    object TimerAnonymous {
-      def oncePerSecond(callback: () => Unit): Unit = {
-        while (true) { callback(); Thread sleep 1000 }
-      }
-      def main(args: Array[String]): Unit = {
-        oncePerSecond(() =>
-          println("time flies like an arrow..."))
-      }
-    }
+Here is a revised version of the timer
+program, passing an anonymous function to `oncePerSecond` instead of `timeFlies`:
+
+{% tabs callback-demo-refined class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=callback-demo-refined %}
+```scala
+object TimerAnonymous {
+  def oncePerSecond(callback: () => Unit): Unit = {
+    while (true) { callback(); Thread.sleep(1000) }
+  }
+  def main(args: Array[String]): Unit = {
+    oncePerSecond(() =>
+      println("time flies like an arrow..."))
+  }
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=callback-demo-refined %}
+```scala
+def oncePerSecond(callback: () => Unit): Unit =
+  while true do { callback(); Thread.sleep(1000) }
+
+@main def TimerAnonymous: Unit =
+  oncePerSecond(() =>
+    println("time flies like an arrow..."))
+```
+{% endtab %}
+
+{% endtabs %}
 
 The presence of an anonymous function in this example is revealed by
-the right arrow `=>` which separates the function's argument
-list from its body. In this example, the argument list is empty, as
-witnessed by the empty pair of parenthesis on the left of the arrow.
+the right arrow (`=>`), different from Java's thin arrow (`->`), which
+separates the function's argument list from its body.
+In this example, the argument list is empty, so we put empty parentheses
+on the left of the arrow.
 The body of the function is the same as the one of `timeFlies`
 above.
 
@@ -252,31 +361,59 @@ Java's syntax. One important difference is that classes in Scala can
 have parameters. This is illustrated in the following definition of
 complex numbers.
 
-    class Complex(real: Double, imaginary: Double) {
-      def re() = real
-      def im() = imaginary
-    }
+{% tabs class-demo class=tabs-scala-version %}
 
+{% tab 'Scala 2' for=class-demo %}
+```scala
+class Complex(real: Double, imaginary: Double) {
+  def re() = real
+  def im() = imaginary
+}
+```
 This `Complex` class takes two arguments, which are the real and
 imaginary part of the complex number. These arguments must be passed when
-creating an instance of class `Complex`, as follows: `new
-  Complex(1.5, 2.3)`. The class contains two methods, called `re`
+creating an instance of class `Complex`, as follows:
+```scala
+new Complex(1.5, 2.3)
+```
+The class contains two methods, called `re`
 and `im`, which give access to these two parts.
+{% endtab %}
+
+{% tab 'Scala 3' for=class-demo %}
+```scala
+class Complex(real: Double, imaginary: Double):
+  def re() = real
+  def im() = imaginary
+```
+This `Complex` class takes two arguments, which are the real and
+imaginary part of the complex number. These arguments must be passed when
+creating an instance of class `Complex`, as follows:
+```scala
+new Complex(1.5, 2.3)
+```
+where `new` is optional.
+The class contains two methods, called `re`
+and `im`, which give access to these two parts.
+{% endtab %}
+
+{% endtabs %}
 
 It should be noted that the return type of these two methods is not
 given explicitly. It will be inferred automatically by the compiler,
 which looks at the right-hand side of these methods and deduces that
 both return a value of type `Double`.
 
-The compiler is not always able to infer types like it does here, and
-there is unfortunately no simple rule to know exactly when it will be
-able to. In practice, this is usually not a problem since the
-compiler complains when it is not able to infer a type which was not
-given explicitly. As a simple rule, beginner Scala programmers should
-try to omit type declarations which seem to be easy to deduce from the
-context, and see if the compiler agrees. After some time, the
-programmer should get a good feeling about when to omit types, and
-when to specify them explicitly.
+> **Important:** The inferred result type of a method can change
+> in subtle ways if the implementation changes, which could have a
+> knock-on effect. Hence it is a best practise to put explicit
+> result types for public members of classes.
+
+For local values in methods, it is encouraged to infer result types.
+Try to experiment by omitting type declarations when they seem to be
+easy to deduce from the context, and see if the compiler agrees.
+After some time, the programmer should get a good feeling about when
+to omit types, and when to specify them explicitly.
 
 ### Methods without arguments
 
@@ -284,12 +421,28 @@ A small problem of the methods `re` and `im` is that, in
 order to call them, one has to put an empty pair of parenthesis after
 their name, as the following example shows:
 
-    object ComplexNumbers {
-      def main(args: Array[String]): Unit = {
-        val c = new Complex(1.2, 3.4)
-        println("imaginary part: " + c.im())
-      }
-    }
+{% tabs method-call-with-args-demo class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=method-call-with-args-demo %}
+```scala
+object ComplexNumbers {
+  def main(args: Array[String]): Unit = {
+    val c = new Complex(1.2, 3.4)
+    println("imaginary part: " + c.im())
+  }
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=method-call-with-args-demo %}
+```scala
+@main def ComplexNumbers: Unit =
+  val c = Complex(1.2, 3.4)
+  println("imaginary part: " + c.im())
+```
+{% endtab %}
+
+{% endtabs %}
 
 It would be nicer to be able to access the real and imaginary parts
 like if they were fields, without putting the empty pair of
@@ -299,10 +452,26 @@ methods with zero arguments in that they don't have parenthesis after
 their name, neither in their definition nor in their use. Our
 `Complex` class can be rewritten as follows:
 
-    class Complex(real: Double, imaginary: Double) {
-      def re = real
-      def im = imaginary
-    }
+{% tabs class-no-method-params-demo class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=class-no-method-params-demo %}
+```scala
+class Complex(real: Double, imaginary: Double) {
+  def re = real
+  def im = imaginary
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=class-no-method-params-demo %}
+```scala
+class Complex(real: Double, imaginary: Double):
+  def re = real
+  def im = imaginary
+```
+{% endtab %}
+
+{% endtabs %}
 
 
 ### Inheritance and overriding
@@ -318,27 +487,63 @@ avoid accidental overriding. As an example, our `Complex` class
 can be augmented with a redefinition of the `toString` method
 inherited from `Object`.
 
-    class Complex(real: Double, imaginary: Double) {
-      def re = real
-      def im = imaginary
-      override def toString() =
-        "" + re + (if (im >= 0) "+" else "") + im + "i"
-    }
+{% tabs class-inheritance-demo class=tabs-scala-version %}
 
-We can call overridden `toString` method as below.
+{% tab 'Scala 2' for=class-inheritance-demo %}
+```scala
+class Complex(real: Double, imaginary: Double) {
+  def re = real
+  def im = imaginary
+  override def toString() =
+    "" + re + (if (im >= 0) "+" else "") + im + "i"
+}
+```
+{% endtab %}
 
-    object ComplexNumbers {
-      def main(args: Array[String]): Unit = {
-        val c = new Complex(1.2, 3.4)
-        println("Overridden toString(): " + c.toString)
-      }
-    }
+{% tab 'Scala 3' for=class-inheritance-demo %}
+```scala
+class Complex(real: Double, imaginary: Double):
+  def re = real
+  def im = imaginary
+  override def toString() =
+    "" + re + (if im >= 0 then "+" else "") + im + "i"
+```
+{% endtab %}
 
-## Case Classes and Pattern Matching
+{% endtabs %}
+
+We can call the overridden `toString` method as below:
+
+{% tabs class-inheritance-toString-demo class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=class-inheritance-toString-demo %}
+```scala
+object ComplexNumbers {
+  def main(args: Array[String]): Unit = {
+    val c = new Complex(1.2, 3.4)
+    println("Overridden toString(): " + c.toString)
+  }
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=class-inheritance-toString-demo %}
+```scala
+@main def ComplexNumbers: Unit =
+  val c = Complex(1.2, 3.4)
+  println("Overridden toString(): " + c.toString)
+```
+{% endtab %}
+
+{% endtabs %}
+
+
+
+## Algebraic Data Types and Pattern Matching
 
 A kind of data structure that often appears in programs is the tree.
 For example, interpreters and compilers usually represent programs
-internally as trees; XML documents are trees; and several kinds of
+internally as trees; JSON payloads are trees; and several kinds of
 containers are based on trees, like red-black trees.
 
 We will now examine how such trees are represented and manipulated in
@@ -351,29 +556,39 @@ We first have to decide on a representation for such expressions. The
 most natural one is the tree, where nodes are operations (here, the
 addition) and leaves are values (here constants or variables).
 
-In Java, such a tree would be represented using an abstract
+In Java, before the introduction of records, such a tree would be
+represented using an abstract
 super-class for the trees, and one concrete sub-class per node or
 leaf. In a functional programming language, one would use an algebraic
-data-type for the same purpose. Scala provides the concept of
+data-type (ADT) for the same purpose.
+
+{% tabs algebraic-data-demo class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=algebraic-data-demo %}
+Scala 2 provides the concept of
 *case classes* which is somewhat in between the two. Here is how
 they can be used to define the type of the trees for our example:
 
-    abstract class Tree
-    case class Sum(l: Tree, r: Tree) extends Tree
-    case class Var(n: String) extends Tree
-    case class Const(v: Int) extends Tree
+```scala
+abstract class Tree
+object Tree {
+  case class Sum(l: Tree, r: Tree) extends Tree
+  case class Var(n: String) extends Tree
+  case class Const(v: Int) extends Tree
+}
+```
 
 The fact that classes `Sum`, `Var` and `Const` are
 declared as case classes means that they differ from standard classes
 in several respects:
 
 - the `new` keyword is not mandatory to create instances of
-  these classes (i.e., one can write `Const(5)` instead of
-  `new Const(5)`),
+  these classes (i.e., one can write `Tree.Const(5)` instead of
+  `new Tree.Const(5)`),
 - getter functions are automatically defined for the constructor
   parameters (i.e., it is possible to get the value of the `v`
   constructor parameter of some instance `c` of class
-  `Const` just by writing `c.v`),
+  `Tree.Const` just by writing `c.v`),
 - default definitions for methods `equals` and
   `hashCode` are provided, which work on the *structure* of
   the instances and not on their identity,
@@ -382,6 +597,35 @@ in several respects:
   `x+1` prints as `Sum(Var(x),Const(1))`),
 - instances of these classes can be decomposed through
   *pattern matching* as we will see below.
+{% endtab %}
+
+{% tab 'Scala 3' for=algebraic-data-demo %}
+Scala 3 provides the concept of *enums* which can be used like Java's enum,
+but also to implement ADTs. Here is how they can be used to define the type
+of the trees for our example:
+```scala
+enum Tree:
+  case Sum(l: Tree, r: Tree)
+  case Var(n: String)
+  case Const(v: Int)
+```
+The cases of the enum `Sum`, `Var` and `Const` are similar to standard classes,
+but differ in several respects:
+- getter functions are automatically defined for the constructor
+  parameters (i.e., it is possible to get the value of the `v`
+  constructor parameter of some instance `c` of case
+  `Tree.Const` just by writing `c.v`),
+- default definitions for methods `equals` and
+  `hashCode` are provided, which work on the *structure* of
+  the instances and not on their identity,
+- a default definition for method `toString` is provided, and
+  prints the value in a "source form" (e.g., the tree for expression
+  `x+1` prints as `Sum(Var(x),Const(1))`),
+- instances of these enum cases can be decomposed through
+  *pattern matching* as we will see below.
+{% endtab %}
+
+{% endtabs %}
 
 Now that we have defined the data-type to represent our arithmetic
 expressions, we can start defining operations to manipulate them. We
@@ -395,42 +639,61 @@ We therefore have to find a way to represent environments. We could of
 course use some associative data-structure like a hash table, but we
 can also directly use functions! An environment is really nothing more
 than a function which associates a value to a (variable) name. The
-environment `{ x -> 5 }` given above can simply be written as
+environment `{ x -> 5 }` given above can be written as
 follows in Scala:
 
-    { case "x" => 5 }
+{% tabs env-definition %}
+{% tab 'Scala 2 and 3' for=env-definition %}
+```scala
+type Environment = String => Int
+val ev: Environment = { case "x" => 5 }
+```
+{% endtab %}
+{% endtabs %}
 
 This notation defines a function which, when given the string
 `"x"` as argument, returns the integer `5`, and fails with an
 exception otherwise.
 
-Before writing the evaluation function, let us give a name to the type
-of the environments. We could of course always use the type
-`String => Int` for environments, but it simplifies the program
-if we introduce a name for this type, and makes future changes easier.
-This is accomplished in Scala with the following notation:
+Above we defined a _type alias_ called `Environment` which is more
+readable than the plain function type `String => Int`, and makes
+future changes easier.
 
-    type Environment = String => Int
+We can now give the definition of the evaluation function. Here is
+a brief specification: the value of a `Sum` is the addition of the
+evaluations of its two inner expressions; the value of a `Var` is obtained
+by lookup of its inner name in the environment; and the value of a
+`Const` is its inner value itself. This specification translates exactly into
+Scala as followa, using a pattern match on a tree value `t`:
 
-From then on, the type `Environment` can be used as an alias of
-the type of functions from `String` to `Int`.
+{% tabs patt-match-demo class=tabs-scala-version %}
 
-We can now give the definition of the evaluation function.
-Conceptually, it is very simple: the value of a sum of two expressions
-is simply the sum of the value of these expressions; the value of a
-variable is obtained directly from the environment; and the value of a
-constant is the constant itself. Expressing this in Scala is not more
-difficult:
+{% tab 'Scala 2' for=patt-match-demo %}
+```scala
+import Tree._
 
-    def eval(t: Tree, env: Environment): Int = t match {
-      case Sum(l, r) => eval(l, env) + eval(r, env)
-      case Var(n)    => env(n)
-      case Const(v)  => v
-    }
+def eval(t: Tree, ev: Environment): Int = t match {
+  case Sum(l, r) => eval(l, ev) + eval(r, ev)
+  case Var(n)    => ev(n)
+  case Const(v)  => v
+}
+```
+{% endtab %}
 
-This evaluation function works by performing *pattern matching*
-on the tree `t`. Intuitively, the meaning of the above definition
-should be clear:
+{% tab 'Scala 3' for=patt-match-demo %}
+```scala
+import Tree.*
+
+def eval(t: Tree, ev: Environment): Int = t match
+  case Sum(l, r) => eval(l, ev) + eval(r, ev)
+  case Var(n)    => ev(n)
+  case Const(v)  => v
+```
+{% endtab %}
+
+{% endtabs %}
+
+You can understand the precise meaning of the pattern match as follows:
 
 1. it first checks if the tree `t` is a `Sum`, and if it
    is, it binds the left sub-tree to a new variable called `l` and
@@ -456,23 +719,30 @@ a value to a series of patterns, and as soon as a pattern matches,
 extract and name various parts of the value, to finally evaluate some
 code which typically makes use of these named parts.
 
-A seasoned object-oriented programmer might wonder why we did not
-define `eval` as a *method* of class `Tree` and its
-subclasses. We could have done it actually, since Scala allows method
-definitions in case classes just like in normal classes. Deciding
-whether to use pattern matching or methods is therefore a matter of
-taste, but it also has important implications on extensibility:
+### Comparison to OOP
 
-- when using methods, it is easy to add a new kind of node as this
-  can be done just by defining a sub-class of `Tree` for it; on
-  the other hand, adding a new operation to manipulate the tree is
-  tedious, as it requires modifications to all sub-classes of
-  `Tree`,
+A programmer familiar with the object-oriented paradigm
+might wonder why define a single function for `eval` outside
+the scope of `Tree`, and not make `eval` and abstract method in
+`Tree`, providing overrides in each subclass of `Tree`.
+
+We could have done it actually, it is a choice to make, which has
+important implications on extensibility:
+
+- when using method overriding, adding a new operation to
+  manipulate the tree implies far-reaching changes to the code,
+  as it requires to add the method in all sub-classes of `Tree`,
+  however, adding a new subclass only requires implementing the
+  operations in one place. This design favours a few core operations
+  and many growing subclasses,
 - when using pattern matching, the situation is reversed: adding a
   new kind of node requires the modification of all functions which do
   pattern matching on the tree, to take the new node into account; on
-  the other hand, adding a new operation is easy, by just defining it
-  as an independent function.
+  the other hand, adding a new operation only requires defining the function
+  in one place. If your data structure has a stable set of nodes,
+  it favours the ADT and pattern matching design.
+
+### Adding a New Operation
 
 To explore pattern matching further, let us define another operation
 on arithmetic expressions: symbolic derivation. The reader might
@@ -487,11 +757,32 @@ remember the following rules regarding this operation:
 These rules can be translated almost literally into Scala code, to
 obtain the following definition:
 
-    def derive(t: Tree, v: String): Tree = t match {
-      case Sum(l, r) => Sum(derive(l, v), derive(r, v))
-      case Var(n) if (v == n) => Const(1)
-      case _ => Const(0)
-    }
+{% tabs derivation-demo class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=derivation-demo %}
+```scala
+import Tree._
+
+def derive(t: Tree, v: String): Tree = t match {
+  case Sum(l, r)        => Sum(derive(l, v), derive(r, v))
+  case Var(n) if v == n => Const(1)
+  case _                => Const(0)
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=derivation-demo %}
+```scala
+import Tree.*
+
+def derive(t: Tree, v: String): Tree = t match
+  case Sum(l, r)        => Sum(derive(l, v), derive(r, v))
+  case Var(n) if v == n => Const(1)
+  case _                => Const(0)
+```
+{% endtab %}
+
+{% endtabs %}
 
 This function introduces two new concepts related to pattern matching.
 First of all, the `case` expression for variables has a
@@ -511,25 +802,54 @@ several operations on the expression `(x+x)+(7+y)`: it first computes
 its value in the environment `{ x -> 5, y -> 7 }`, then
 computes its derivative relative to `x` and then `y`.
 
-    def main(args: Array[String]): Unit = {
-      val exp: Tree = Sum(Sum(Var("x"),Var("x")),Sum(Const(7),Var("y")))
-      val env: Environment = { case "x" => 5 case "y" => 7 }
-      println("Expression: " + exp)
-      println("Evaluation with x=5, y=7: " + eval(exp, env))
-      println("Derivative relative to x:\n " + derive(exp, "x"))
-      println("Derivative relative to y:\n " + derive(exp, "y"))
-    }
+{% tabs calc-main class=tabs-scala-version %}
 
-You will need to wrap the `Environment` type and `eval`, `derive`, and
-`main` methods in a `Calc` object before compiling.  Executing this
-program, we get the expected output:
+{% tab 'Scala 2' for=calc-main %}
+```scala
+import Tree._
 
-    Expression: Sum(Sum(Var(x),Var(x)),Sum(Const(7),Var(y)))
-    Evaluation with x=5, y=7: 24
-    Derivative relative to x:
-     Sum(Sum(Const(1),Const(1)),Sum(Const(0),Const(0)))
-    Derivative relative to y:
-     Sum(Sum(Const(0),Const(0)),Sum(Const(0),Const(1)))
+object Calc {
+  type Environment = String => Int
+  def eval(t: Tree, ev: Environment): Int = ...
+  def derive(t: Tree, v: String): Tree = ...
+
+  def main(args: Array[String]): Unit = {
+    val exp: Tree = Sum(Sum(Var("x"),Var("x")),Sum(Const(7),Var("y")))
+    val env: Environment = { case "x" => 5 case "y" => 7 }
+    println("Expression: " + exp)
+    println("Evaluation with x=5, y=7: " + eval(exp, env))
+    println("Derivative relative to x:\n " + derive(exp, "x"))
+    println("Derivative relative to y:\n " + derive(exp, "y"))
+  }
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=calc-main %}
+```scala
+import Tree.*
+
+@main def Calc: Unit =
+  val exp: Tree = Sum(Sum(Var("x"),Var("x")),Sum(Const(7),Var("y")))
+  val env: Environment = { case "x" => 5 case "y" => 7 }
+  println("Expression: " + exp)
+  println("Evaluation with x=5, y=7: " + eval(exp, env))
+  println("Derivative relative to x:\n " + derive(exp, "x"))
+  println("Derivative relative to y:\n " + derive(exp, "y"))
+```
+{% endtab %}
+
+{% endtabs %}
+
+Executing this program, we should get the following output:
+```
+Expression: Sum(Sum(Var(x),Var(x)),Sum(Const(7),Var(y)))
+Evaluation with x=5, y=7: 24
+Derivative relative to x:
+  Sum(Sum(Const(1),Const(1)),Sum(Const(0),Const(0)))
+Derivative relative to y:
+  Sum(Sum(Const(0),Const(0)),Sum(Const(0),Const(1)))
+```
 
 By examining the output, we see that the result of the derivative
 should be simplified before being presented to the user. Defining a
@@ -565,12 +885,30 @@ is, given the equal and smaller predicates (for example), one can
 express the other ones. In Scala, all these observations can be
 nicely captured by the following trait declaration:
 
-    trait Ord {
-      def < (that: Any): Boolean
-      def <=(that: Any): Boolean =  (this < that) || (this == that)
-      def > (that: Any): Boolean = !(this <= that)
-      def >=(that: Any): Boolean = !(this < that)
-    }
+{% tabs ord-definition class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=ord-definition %}
+```scala
+trait Ord {
+  def < (that: Any): Boolean
+  def <=(that: Any): Boolean =  (this < that) || (this == that)
+  def > (that: Any): Boolean = !(this <= that)
+  def >=(that: Any): Boolean = !(this < that)
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=ord-definition %}
+```scala
+trait Ord:
+  def < (that: Any): Boolean
+  def <=(that: Any): Boolean =  (this < that) || (this == that)
+  def > (that: Any): Boolean = !(this <= that)
+  def >=(that: Any): Boolean = !(this < that)
+```
+{% endtab %}
+
+{% endtabs %}
 
 This definition both creates a new type called `Ord`, which
 plays the same role as Java's `Comparable` interface, and
@@ -591,11 +929,35 @@ dates are composed of a day, a month and a year, which we will all
 represent as integers. We therefore start the definition of the
 `Date` class as follows:
 
-    class Date(y: Int, m: Int, d: Int) extends Ord {
-      def year = y
-      def month = m
-      def day = d
-      override def toString(): String = s"$year-$month-$day"
+{% tabs date-definition class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=date-definition %}
+```scala
+class Date(y: Int, m: Int, d: Int) extends Ord {
+  def year = y
+  def month = m
+  def day = d
+  override def toString(): String = s"$year-$month-$day"
+
+  // rest of implementation will go here
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=date-definition %}
+```scala
+class Date(y: Int, m: Int, d: Int) extends Ord:
+  def year = y
+  def month = m
+  def day = d
+  override def toString(): String = s"$year-$month-$day"
+
+  // rest of implementation will go here
+end Date
+```
+{% endtab %}
+
+{% endtabs %}
 
 The important part here is the `extends Ord` declaration which
 follows the class name and parameters. It declares that the
@@ -604,37 +966,87 @@ follows the class name and parameters. It declares that the
 Then, we redefine the `equals` method, inherited from
 `Object`, so that it correctly compares dates by comparing their
 individual fields. The default implementation of `equals` is not
-usable, because as in Java it compares objects physically. We arrive
+usable, because as in Java it compares objects by their identity. We arrive
 at the following definition:
 
-    override def equals(that: Any): Boolean =
-      that.isInstanceOf[Date] && {
-        val o = that.asInstanceOf[Date]
-        o.day == day && o.month == month && o.year == year
-      }
+{% tabs equals-definition class=tabs-scala-version %}
 
-This method makes use of the predefined methods `isInstanceOf`
-and `asInstanceOf`. The first one, `isInstanceOf`,
-corresponds to Java's `instanceof` operator, and returns true
-if and only if the object on which it is applied is an instance of the
-given type. The second one, `asInstanceOf`, corresponds to
-Java's cast operator: if the object is an instance of the given type,
-it is viewed as such, otherwise a `ClassCastException` is
-thrown.
+{% tab 'Scala 2' for=equals-definition %}
+```scala
+class Date(y: Int, m: Int, d: Int) extends Ord {
+  // previous decls here
 
-Finally, the last method to define is the predicate which tests for
-inferiority, as follows. It makes use of another method,
+  override def equals(that: Any): Boolean = that match {
+    case d: Date => d.day == day && d.month == month && d.year == year
+    case _ => false
+  }
+
+  // rest of implementation will go here
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=equals-definition %}
+```scala
+class Date(y: Int, m: Int, d: Int) extends Ord:
+  // previous decls here
+
+  override def equals(that: Any): Boolean = that match
+    case d: Date => d.day == day && d.month == month && d.year == year
+    case _ => false
+
+  // rest of implementation will go here
+end Date
+```
+{% endtab %}
+
+{% endtabs %}
+
+While in Java (pre 16) you might use the `instanceof` operator followed by a cast
+(equivalent to calling `that.isInstanceOf[Date]` and `that.asInstanceOf[Date]` in Scala);
+in Scala it is more idiomatic to use a _type pattern_, shown in the example above which checks if `that` is an
+instance of `Date`, and binds it to a new variable `d`, which is then used in the right hand side of the `case`.
+
+Finally, the last method to define is the `<` test, as follows. It makes use of another method,
 `error` from the package object `scala.sys`, which throws an exception with the given error message.
 
-    def <(that: Any): Boolean = {
-      if (!that.isInstanceOf[Date])
-        sys.error("cannot compare " + that + " and a Date")
+{% tabs lt-definition class=tabs-scala-version %}
 
-      val o = that.asInstanceOf[Date]
-      (year < o.year) ||
-      (year == o.year && (month < o.month ||
-                         (month == o.month && day < o.day)))
-    }
+{% tab 'Scala 2' for=lt-definition %}
+```scala
+class Date(y: Int, m: Int, d: Int) extends Ord {
+  // previous decls here
+
+  def <(that: Any): Boolean = that match {
+    case d: Date =>
+      (year < d.year) ||
+      (year == d.year && (month < d.month ||
+                         (month == d.month && day < d.day)))
+
+    case _ => sys.error("cannot compare " + that + " and a Date")
+  }
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=lt-definition %}
+```scala
+class Date(y: Int, m: Int, d: Int) extends Ord:
+  // previous decls here
+
+  def <(that: Any): Boolean = that match
+    case d: Date =>
+      (year < d.year) ||
+      (year == d.year && (month < d.month ||
+                         (month == d.month && day < d.day)))
+
+    case _ => sys.error("cannot compare " + that + " and a Date")
+  end <
+end Date
+```
+{% endtab %}
+
+{% endtabs %}
 
 This completes the definition of the `Date` class. Instances of
 this class can be seen either as dates or as comparable objects.
@@ -673,12 +1085,16 @@ solve this problem. Let us examine this with an example of the
 simplest container class possible: a reference, which can either be
 empty or point to an object of some type.
 
-    class Reference[T] {
-      private var contents: T = _
-      def set(value: T): Unit = { contents = value }
-      def get: T = contents
-    }
+{% tabs reference-definition class=tabs-scala-version %}
 
+{% tab 'Scala 2' for=reference-definition %}
+```scala
+class Reference[T] {
+  private var contents: T = _
+  def set(value: T): Unit = { contents = value }
+  def get: T = contents
+}
+```
 The class `Reference` is parametrized by a type, called `T`,
 which is the type of its element. This type is used in the body of the
 class as the type of the `contents` variable, the argument of
@@ -687,22 +1103,64 @@ the `set` method, and the return type of the `get` method.
 The above code sample introduces variables in Scala, which should not
 require further explanations. It is however interesting to see that
 the initial value given to that variable is `_`, which represents
-a default value. This default value is 0 for numeric types,
+a default value. This default value is `0` for numeric types,
 `false` for the `Boolean` type, `()` for the `Unit`
 type and `null` for all object types.
+{% endtab %}
+
+{% tab 'Scala 3' for=reference-definition %}
+```scala
+import compiletime.uninitialized
+
+class Reference[T]:
+  private var contents: T = uninitialized
+  def set(value: T): Unit = contents = value
+  def get: T = contents
+```
+The class `Reference` is parametrized by a type, called `T`,
+which is the type of its element. This type is used in the body of the
+class as the type of the `contents` variable, the argument of
+the `set` method, and the return type of the `get` method.
+
+The above code sample introduces variables in Scala, which should not
+require further explanations. It is however interesting to see that
+the initial value given to that variable is `uninitialized`, which represents
+a default value. This default value is `0` for numeric types,
+`false` for the `Boolean` type, `()` for the `Unit`
+type and `null` for all object types.
+{% endtab %}
+
+{% endtabs %}
 
 To use this `Reference` class, one needs to specify which type to use
 for the type parameter `T`, that is the type of the element
 contained by the cell. For example, to create and use a cell holding
 an integer, one could write the following:
 
-    object IntegerReference {
-      def main(args: Array[String]): Unit = {
-        val cell = new Reference[Int]
-        cell.set(13)
-        println("Reference contains the half of " + (cell.get * 2))
-      }
-    }
+{% tabs reference-usage class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=reference-usage %}
+```scala
+object IntegerReference {
+  def main(args: Array[String]): Unit = {
+    val cell = new Reference[Int]
+    cell.set(13)
+    println("Reference contains the half of " + (cell.get * 2))
+  }
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=reference-usage %}
+```scala
+@main def IntegerReference: Unit =
+  val cell = new Reference[Int]
+  cell.set(13)
+  println("Reference contains the half of " + (cell.get * 2))
+```
+{% endtab %}
+
+{% endtabs %}
 
 As can be seen in that example, it is not necessary to cast the value
 returned by the `get` method before using it as an integer. It
