@@ -20,15 +20,42 @@ explore_resources:
     icon: "fa fa-check-to-slot"
     link: "#how-do-i-choose-where-to-contribute"
 
-contrib_resources:
+compiler_resources:
   - title: "Scala 3 Contributing Guide"
     description: "Guide to the Scala 3 Compiler and fixing an issue"
     icon: "fa fa-code-merge"
     link: /scala3/guides/contribution/contribution-intro.html
-  - title: "Scala 2 Hackers Guide"
-    description: "Guide to the Scala 3 Compiler and fixing an issue"
-    icon: "fa fa-code-pull-request"
-    link: /scala3/guides/contribution/contribution-intro.html
+  - title: "Compiler Academy Videos"
+    description: "In-depth tours of the Scala 3 compiler's internals"
+    icon: "fa fa-circle-play"
+    link: https://www.youtube.com/channel/UCIH0OgqE54-KEvYDg4LRhKQ
+
+scala_resources:
+  - title: Documentation
+    description: "Library API docs, new guides on docs.scala-lang.org, and help with scala-lang.org."
+    icon: fa fa-book
+    link: /contribute/documentation.html
+  - title: Bug fixes
+    description: "Issues with the tools, core libraries and compiler. Also, you can help us by reporting bugs."
+    icon: fa fa-bug
+    link: /contribute/guide.html
+  - title: Code Reviews
+    description: "Review pull requests against scala/scala, lampepfl/dotty, scala/scala-lang, scala/docs.scala-lang,
+    and others."
+    icon: fa fa-eye
+    link: /contribute/codereviews.html
+  - title: Core Libraries
+    description: "Update and expand the capabilities of the core (and associated) Scala libraries."
+    icon: fa fa-clipboard
+    link: /contribute/corelibs.html
+  - title: IDE and Build Tools
+    description: "Enhance the Scala tools with features for build tools, IDE plug-ins and other related projects."
+    icon: fa fa-terminal
+    link: /contribute/tools.html
+  - title: Compiler/Language
+    description: "Larger language features and compiler enhancements including language specification and SIPs."
+    icon: fa fa-cogs
+    link: /contribute/guide.html#larger-changes-new-features
 
 library_resources:
   - title: Library Authors Guide
@@ -39,6 +66,10 @@ library_resources:
     description: "How you can write code and documentation that welcomes all"
     icon: "fa fa-door-open"
     link: "inclusive-language-guide.html"
+  - title: Create a Welcoming Community
+    description: "Our code of conduct is practical agreement for a healthy community"
+    icon: "fa fa-handshake-simple"
+    link: "https://scala-lang.org/conduct"
   - title: Binary Compatability Guide
     description: "Evolve your library over time, giving users the confidence to upgrade safely."
     icon: "fa fa-puzzle-piece"
@@ -50,11 +81,25 @@ Welcome to the guide on contributing to all parts of Scala's open-source ecosyst
 ## Newcomers' FAQ
 
 If you are reading this page, we welcome you, regardless of your background, to begin contributing to Scala's
-open-source ecosystem. Find out more by clicking the links:
+open-source ecosystem. We have answered some common questions for you below:
 
 {% include inner-documentation-sections.html links=page.explore_resources %}
 
 ## Ways to Start Today
+
+### The Scala Compiler Academy
+
+The [Scala Center](https://scala.epfl.ch)
+runs the **Scala Compiler Academy** project to onboard and educate new people in the Scala 3 compiler.
+One of the Compiler Academy
+projects is an Issue Spree – an event that takes place every 3 weeks where people fix Scala 3 compiler issues
+in pair programming sessions while learning the compiler together. You can apply for the Spree participation
+by [filling the form](https://forms.gle/DfoSuHFm3T6MA3L59).
+
+Before you begin, you can learn more about the Scala 3 compiler
+from the following links:
+
+{% include inner-documentation-sections.html links=page.compiler_resources %}
 
 ### So You Want To Write A Library...
 
@@ -62,23 +107,78 @@ Read these guides if you are a maintainer of a library, or are thinking of start
 
 {% include inner-documentation-sections.html links=page.library_resources %}
 
-### Scala Project
+### Want to Improve Scala Itself?
+The Scala programming language is an open source project with a very
+diverse community, where people from all over the world contribute their work,
+with everyone benefiting from friendly help and advice, and
+kindly helping others in return.
 
-There is also an option to contribute to the Scala 3 compiler itself. The Scala Center runs the
-Compiler Academy project to onboard and educate new people in the Scala 3 compiler. One of the Compiler Academy
-projects is an Issue Spree – an event that takes place every 3 weeks where people fix Scala 3 compiler issues
-in pair programming sessions while learning the compiler together. You can apply for the Spree participation
-by [filling the form](https://forms.gle/DfoSuHFm3T6MA3L59).
+Read on to learn how to join the Scala community and help
+everyone make things better.
 
-{% include inner-documentation-sections.html links=page.contrib_resources %}
+## Contributing to the Scala Project
+
+**What Can I Do?**
+That depends on what you want to contribute. Below are some getting started resources for different contribution domains. Please read all the documentation and follow all the links from the topic pages below before attempting to contribute, as many of the questions you have will already be answered.
+
+### Reporting bugs
+
+See our [bug reporting guide][bug-reporting-guide] to learn
+how to efficiently report a bug.
+
+### Contribute
+
+Coordination of contribution efforts takes place on
+[Scala Contributors](https://contributors.scala-lang.org/).
+
+{% include inner-documentation-sections.html links=page.scala_resources %}
+
+### Guidelines
+
+When contributing, please follow:
+
+* The [Scala Code of Conduct](https://scala-lang.org/conduct/)
+* The [Inclusive Language Guide][inclusive-language-guide]
+
+### Community Tickets
+
+All issues can be found in the [Scala bug tracker](https://github.com/scala/bug), or the [Scala 3 issue tracker](https://github.com/lampepfl/dotty/issues). Most issues are labeled
+to make it easier to find issues you are interested in.
+
+### Tools and Libraries
+
+The Scala ecosystem includes a great many diverse open-source projects
+with their own maintainers and community of contributors.  Helping out
+one of these projects is another way to help Scala.  Consider lending
+on a hand on a project you're already using.  Or, to find out about
+other projects, see the
+[Libraries and Tools section](https://scala-lang.org/community/#community-libraries-and-tools)
+on our Community page.
+
+### Scala Community Build
+
+The Scala community build enables the Scala compiler team
+to build and test a corpus of
+Scala open source projects
+against development versions of the Scala compiler and standard
+library in order to discover regressions prior to releases.
+The build uses Lightbend's
+[dbuild](https://github.com/typesafehub/dbuild) tool,
+which leverages [sbt](https://www.scala-sbt.org).
+
+If you're the maintainer -- or just an interested user! -- of an
+open-source Scala library or tool, please visit the
+[community build documentation](https://github.com/scala/community-build/wiki)
+for guidelines on what projects are suitable for the community build
+and how projects can be added.
 
 ## Your Questions, Answered
 
 {% capture backButton %}
 <p>
   <a href="#newcomers-faq">
-    <i class="fa-solid fa-angle-left"></i>
-    <span> back</span>
+    <i class="fa-solid fa-angle-up"></i>
+    <span> return to FAQ</span>
   </a>
 </p>
 {% endcapture %}
@@ -163,3 +263,8 @@ The above benefits are something good to achieve regardless of your level of exp
   in the Google Summer of Code program where you are paid to work on open source Scala projects over the course
   of summer.
 {{backButton}}
+
+
+
+[bug-reporting-guide]: {% link _overviews/contribute/bug-reporting-guide.md %}
+[inclusive-language-guide]: {% link _overviews/contribute/inclusive-language-guide.md %}
