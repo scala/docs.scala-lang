@@ -64,7 +64,7 @@ For example, a fragment of a data type that represents a distance might look lik
       def +(m: Meter): Meter = new Meter(value + m.value)
     }
 
-Code that adds two distances, such as
+Code that adds two distances, such as:
 
     val x = new Meter(3.4)
     val y = new Meter(4.3)
@@ -93,7 +93,7 @@ Whenever a value class is treated as another type, including a universal trait, 
 As an example, consider the `Meter` value class:
 
     trait Distance extends Any
-    case class Meter(val value: Double) extends AnyVal with Distance
+    case class Meter(value: Double) extends AnyVal with Distance
 
 A method that accepts a value of type `Distance` will require an actual `Meter` instance.
 In the following example, the `Meter` classes are actually instantiated:
@@ -107,7 +107,7 @@ If the signature of `add` were instead:
 
 then allocations would not be necessary.
 Another instance of this rule is when a value class is used as a type argument.
-For example, the actual Meter instance must be created for even a call to identity:
+For example, the actual Meter instance must be created for even a call to `identity`:
 
     def identity[T](t: T): T = t
     identity(Meter(5.0))
@@ -122,12 +122,12 @@ The array here contains actual `Meter` instances and not just the underlying dou
 
 Lastly, type tests such as those done in pattern matching or `asInstanceOf` require actual value class instances:
 
-    case class P(val i: Int) extends AnyVal
+    case class P(i: Int) extends AnyVal
 
-    val p = new P(3)
+    val p = P(3)
     p match { // new P instantiated here
       case P(3) => println("Matched 3")
-      case P(x) => println("Not 3")
+      case P(_) => println("Not 3")
     }
 
 ## Limitations
@@ -141,15 +141,15 @@ A value class ...
 
 1. ... must have only a primary constructor with exactly one public, val parameter whose type is not a user-defined value class. (From Scala 2.11.0, the parameter may be non-public.)
 2. ... may not have `@specialized` type parameters.
-3. ... may not have nested or local classes, traits, or objects
+3. ... may not have nested or local classes, traits, or objects.
 4. ... may not define concrete `equals` or `hashCode` methods.
-5. ... must be a top-level class or a member of a statically accessible object
+5. ... must be a top-level class or a member of a statically accessible object.
 6. ... can only have defs as members.  In particular, it cannot have lazy vals, vars, or vals as members.
 7. ... cannot be extended by another class.
 
 ### Examples of Limitations
 
-This section provides many concrete consequences of these limitations not already described in the necessary allocations section.
+This section provides many concrete examples of the limitations already described in the previous section.
 
 Multiple constructor parameters are not allowed:
 
@@ -163,7 +163,7 @@ and the Scala compiler will generate the following error message:
 
 Because the constructor parameter must be a `val`, it cannot be a by-name parameter:
 
-    NoByName.scala:1: error: `val' parameters may not be call-by-name
+    NoByName.scala:1: error: `val` parameters may not be call-by-name
     class NoByName(val x: => Int) extends AnyVal
                           ^
 
@@ -178,25 +178,29 @@ Multiple constructors are not allowed:
       def this(y: Double) = this(y.toInt)
           ^
 
-A value class cannot have lazy vals or vals as members and cannot have nested classes, traits, or objects:
+A value class cannot have lazy vals, vars, or vals as members and cannot have nested classes, traits, or objects:
 
     class NoLazyMember(val evaluate: () => Double) extends AnyVal {
       val member: Int = 3
+      var y: Int = 4
       lazy val x: Double = evaluate()
       object NestedObject
       class NestedClass
     }
 
-    Invalid.scala:2: error: this statement is not allowed in value class: private[this] val member: Int = 3
+    Invalid.scala:2: error: this statement is not allowed in value class: val member: Int = 3
       val member: Int = 3
           ^
-    Invalid.scala:3: error: this statement is not allowed in value class: lazy private[this] var x: Double = NoLazyMember.this.evaluate.apply()
+    Invalid.scala:3: error: this statement is not allowed in value class: var y: Int = 4
+      var y: Int = 4
+          ^
+    Invalid.scala:4: error: this statement is not allowed in value class: lazy val x: Double = NoLazyMember.this.evaluate.apply()
       lazy val x: Double = evaluate()
                ^
-    Invalid.scala:4: error: value class may not have nested module definitions
+    Invalid.scala:5: error: value class may not have nested module definitions
       object NestedObject
              ^
-    Invalid.scala:5: error: value class may not have nested class definitions
+    Invalid.scala:6: error: value class may not have nested class definitions
       class NestedClass
             ^
 
@@ -208,6 +212,10 @@ Note that local classes, traits, and objects are not allowed either, as in the f
         ...
       }
     }
+    
+    Local.scala:3: error: implementation restriction: nested class is not allowed in value class
+      class Local
+            ^
 
 A current implementation restriction is that value classes cannot be nested:
 
