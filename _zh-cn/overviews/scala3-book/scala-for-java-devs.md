@@ -1,5 +1,5 @@
 ---
-title: 为 Java 开发者介绍Scala
+title: 向 Java 开发者介绍Scala
 type: chapter
 description: This page is for Java developers who are interested in learning about Scala 3.
 num: 73
