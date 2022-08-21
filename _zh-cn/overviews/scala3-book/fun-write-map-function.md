@@ -60,7 +60,7 @@ def map[A](f: (Int) => A, xs: List[Int]): List[A] =
   for x <- xs yield f(x)
 ```
 
-### 使其通型化
+### 使其泛型化
 
 作为奖励，请注意 `for` 表达式不做任何取决于 `List` 中的类型为 `Int` 的事情。
 因此，您可以将类型签名中的 `Int` 替换为泛型类型参数 `B`：
