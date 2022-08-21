@@ -1,5 +1,5 @@
 ---
-title: Singleton Objects
+title: 单例对象
 type: section
 description: This section provides an introduction to the use of singleton objects in Scala 3.
 num: 12
