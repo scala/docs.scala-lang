@@ -85,9 +85,9 @@ object LogarithmsImpl extends Logarithms:
 
 在 `LogarithmsImpl` 的实现中，等式 `Logarithm = Double` 允许我们实现各种方法。
 
-#### 泄漏抽象
+#### 暴露抽象
 
-但是，这种抽象有点泄漏。
+但是，这种抽象有点暴露。
 我们必须确保_只_针对抽象接口 `Logarithms` 进行编程，并且永远不要直接使用 `LogarithmsImpl`。
 直接使用 `LogarithmsImpl` 会使等式 `Logarithm = Double` 对用户可见，用户可能会意外使用 `Double`，而实际上是需要 对数双精度。
 例如：

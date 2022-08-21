@@ -1,5 +1,5 @@
 ---
-title: 变型
+title: 型变
 type: section
 description: This section introduces and demonstrates variance in Scala 3.
 num: 53
@@ -8,9 +8,9 @@ next-page: types-opaque-types
 ---
 
 
-类型参数_变型_控制参数化类型（如类或 traits）的子类型。
+类型参数_型变_控制参数化类型（如类或 traits）的子类型。
 
-为了解释变型，让我们假设以下类型定义：
+为了解释型变，让我们假设以下类型定义：
 
 ```scala
 trait Item { def productNumber: String }

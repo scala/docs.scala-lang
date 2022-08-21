@@ -1,5 +1,5 @@
 ---
-title: 推断类型
+title: 类型推断
 type: section
 description: This section introduces and demonstrates inferred types in Scala 3
 num: 48

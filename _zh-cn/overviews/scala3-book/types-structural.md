@@ -1,5 +1,5 @@
 ---
-title: 构造类型
+title: 结构化类型
 type: section
 description: This section introduces and demonstrates structural types in Scala 3.
 num: 55
@@ -21,12 +21,12 @@ NOTE: It would be nice to simplify this more.
 这需要大量样板文件，这导致开发人员将静态类型的优势换成更简单的方案，其中列名表示为字符串并传递给其他运算符，例如 `row.select("columnName")`。
 这种方法即便放弃了静态类型的优点，也仍然不如动态类型的版本自然。
 
-在您希望在动态上下文中支持简单的点表示法而又不失静态类型优势的情况下，构造类型会有所帮助。
+在您希望在动态上下文中支持简单的点表示法而又不失静态类型优势的情况下，结构化类型会有所帮助。
 它们允许开发人员使用点表示法并配置应如何解析字段和方法。
 
 ## 例子
 
-这是一个构造类型 `Person` 的示例：
+这是一个结构化类型 `Person` 的示例：
 
 ```scala
 class Record(elems: (String, Any)*) extends Selectable:
@@ -57,10 +57,10 @@ println(s"${person.name} is ${person.age} years old.")
 该参数是一个序列，该序列的元素是 `String` 类型的标签和 `Any` 类型的值组成的对。
 当您将 `Person` 创建为 `Record` 时，您必须使用类型转换断言该记录定义了正确类型的正确字段。
 `Record` 本身的类型太弱了，所以编译器在没有用户帮助的情况下无法知道这一点。
-实际上，构造类型与其底层通用表示之间的连接很可能由数据库层完成，因此最终用户没必要关注。
+实际上，结构化类型与其底层通用表示之间的连接很可能由数据库层完成，因此最终用户没必要关注。
 
 `Record` 扩展了标记 trait `scala.Selectable` 并定义了一个方法 `selectDynamic`，它将字段名称映射到其值。
-通过调用此方法来选择构造类型成员。
+通过调用此方法来选择结构化类型成员。
 Scala 编译器把选择 `person.name` 和 `person.age` 翻译成：
 
 ```scala
@@ -70,7 +70,7 @@ person.selectDynamic("age").asInstanceOf[Int]
 
 ## 第二个例子
 
-为了强化您刚刚看到的内容，这里有另一个名为 `Book` 的构造类型，它表示您可能从数据库中读取的一本书：
+为了强化您刚刚看到的内容，这里有另一个名为 `Book` 的结构化类型，它表示您可能从数据库中读取的一本书：
 
 ```scala
 type Book = Record {

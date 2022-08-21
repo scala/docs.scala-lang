@@ -1,5 +1,5 @@
 ---
-title: 工作表
+title: worksheet
 type: section
 description: This section looks at worksheets, an alternative to Scala projects.
 num: 71

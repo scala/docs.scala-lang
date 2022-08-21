@@ -1,5 +1,5 @@
 ---
-title: FP 建模
+title: 函数式领域建模
 type: section
 description: This chapter provides an introduction to FP domain modeling with Scala 3.
 num: 22
@@ -50,12 +50,12 @@ FP设计以类似的方式实现：
 
 在 Scala 中，描述编程问题的数据模型很简单：
 
-- 如果您想使用不同的替代方案对数据进行建模，请使用 `enum` 结构
-- 如果您只想对事物进行分组（或需要更细粒度的控制），请使用 `case` 类
+- 如果您想使用不同的替代方案对数据进行建模，请使用 枚举
+- 如果您只想对事物进行分组（或需要更细粒度的控制），请使用 样例类
 
 ### 描述替代方案
 
-简单地由不同的选择组成的数据，如面饼大小、面饼类型和馅料，使用 Scala 3 `enum` 结构进行简洁的建模：
+简单地由不同的选择组成的数据，如面饼大小、面饼类型和馅料，使用 Scala 3 枚举进行简洁的建模：
 
 ```scala
 enum CrustSize:
@@ -73,7 +73,7 @@ enum Topping:
 ### 描述复合数据
 
 可以将披萨饼视为上述不同属性的_组件_容器。
-我们可以使用 `case` 类来描述 `Pizza` 由 `crustSize`、`crustType` 和可能的多个 `Topping` 组成：
+我们可以使用 样例类来描述 `Pizza` 由 `crustSize`、`crustType` 和可能的多个 `Topping` 组成：
 
 ```scala
 import CrustSize.*
@@ -103,7 +103,7 @@ println(myFavPizza.crustType) // prints Regular
 #### 更多数据模型
 
 我们可能会以同样的方式对整个披萨订购系统进行建模。
-下面是一些用于对此类系统建模的其他 `case` 类：
+下面是一些用于对此类系统建模的其他 样例类：
 
 ```scala
 case class Address(
@@ -363,7 +363,7 @@ println(price(p4)) // prints 8.75
 
 您可以将此方法视为“混合 FP/OOP 设计”，因为您：
 
-- 使用不可变的 `case` 类对数据进行建模。
+- 使用不可变的 样例类对数据进行建模。
 - 定义_同类型_数据中的行为（方法）。
 - 将行为实现为纯函数：它们不会改变任何内部状态；相反，他们返回一个副本。
 
@@ -464,7 +464,7 @@ Pizza(Small, Thin, Seq(Cheese))
 
 ## 这种方法的总结
 
-在 Scala/FP 中定义数据模型往往很简单：只需使用枚举对数据的变体进行建模，并使用 `case` 类对复合数据进行建模。
+在 Scala/FP 中定义数据模型往往很简单：只需使用枚举对数据的变体进行建模，并使用 样例类对复合数据进行建模。
 然后，为了对行为建模，定义对数据模型的值进行操作的函数。
 我们已经看到了组织函数的不同方法：
 

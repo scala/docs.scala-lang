@@ -41,6 +41,6 @@ println(stack.pop())  // prints 2
 println(stack.pop())  // prints 1
 ```
 
-> 有关如何用泛型类型表达可变的详细信息，请参阅[可变（Variance）部分][variance]。
+> 有关如何用泛型类型表达可变的详细信息，请参阅[型变（Variance）部分][variance]。
 
 [variance]: {% link _overviews/scala3-book/types-variance.md %}
