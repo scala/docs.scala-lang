@@ -1,5 +1,5 @@
 ---
-title: 写你自己的 map 方法
+title: 自定义 map 函数
 type: section
 description: This page demonstrates how to create and use higher-order functions in Scala.
 num: 32
