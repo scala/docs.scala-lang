@@ -359,7 +359,7 @@ This section compares Java interfaces to Scala traits, including how classes ext
   <tbody>
     <tr>
       <td class="java-block">
-        <code>public interface Marker;</code>
+        <code>public interface Marker {};</code>
       </td>
     </tr>
     <tr>
