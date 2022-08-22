@@ -1,6 +1,6 @@
 ---
 title: Contribute to API Documentation
-num: 7
+num: 6
 ---
 
 This page is specific to API documentation contributions – that is, API

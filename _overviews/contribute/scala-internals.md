@@ -1,6 +1,6 @@
 ---
 title: Scala Contributors Forum
-num: 10
+num: 9
 ---
 
 The [Scala Contributors Forum][scala-contributors] is where discussions about the Scala ecosystem

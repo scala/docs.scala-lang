@@ -194,7 +194,6 @@ and how projects can be added.
   your expertise.
 - **Got a cool idea?** Perhaps you have gained confidence in your skills and are looking to give back to the community,
   start a new project that fills that perfect niche, or maybe is the life-changing tool everyone never knew they needed.
-{{backButton}}
 
 ### Why Should I Contribute to Open Source?
 {{backButton}}
@@ -213,7 +212,6 @@ and how projects can be added.
   a maintainer team can be a source of personal satisfaction, and working on an innovative library can be a lot of fun.
 
 The above benefits are something good to achieve regardless of your level of experience.
-{{backButton}}
 
 ### How Can I Contribute to Open Source?
 {{backButton}}
@@ -244,7 +242,6 @@ The above benefits are something good to achieve regardless of your level of exp
   solve a problem for other programmers who may also have it. If you are interested in going open-source, the
   [Library Author's Guide](https://docs.scala-lang.org/overviews/contributors/index.html) is an
   excellent resource on how to get started.
-{{backButton}}
 
 ### How Do I Choose Where To Contribute?
 {{backButton}}

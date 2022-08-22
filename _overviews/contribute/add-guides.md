@@ -1,6 +1,6 @@
 ---
 title: Add New Guides/Tutorials
-num: 8
+num: 7
 ---
 
 ## Why Contribute New Learning Material?

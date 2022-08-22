@@ -1,6 +1,6 @@
 ---
 title: Contributing guide
-num: 11
+num: 10
 ---
 
 | **Shortcut**                           | **Description** |
