@@ -93,12 +93,16 @@ libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % 
 Here, `libraryDependencies` is a set of dependencies, and by using `+=`,
 we're adding the [scala-parser-combinators](https://github.com/scala/scala-parser-combinators) dependency to the set of dependencies that sbt will go
 and fetch when it starts up. Now, in any Scala file, you can import classes,
-objects, etc, from scala-parser-combinators with a regular import.
+objects, etc, from `scala-parser-combinators` with a regular import.
 
 You can find more published libraries on
 [Scaladex](https://index.scala-lang.org/), the Scala library index, where you
 can also copy the above dependency information for pasting into your `build.sbt`
 file.
+
+> **Note for Java Libraries:** For a regular Java library, you should only use one percent (`%`) between the
+> organization name and artifact name. Double percent (`%%`) is a specialisation for Scala libraries.
+> You can learn more about the reason for this in the [sbt documentation][sbt-docs-lib-dependencies].
 
 ## Next steps
 
@@ -109,3 +113,5 @@ Continue to the next tutorial in the _getting started with sbt_ series, and lear
 - Continue learning Scala interactively online on
  [Scala Exercises](https://www.scala-exercises.org/scala_tutorial).
 - Learn about Scala's features in bite-sized pieces by stepping through our [Tour of Scala]({{ site.baseurl }}/tour/tour-of-scala.html).
+
+[sbt-docs-lib-dependencies]: https://www.scala-sbt.org/1.x/docs/Library-Dependencies.html#Getting+the+right+Scala+version+with

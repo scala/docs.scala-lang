@@ -6,19 +6,79 @@ partof: scala-for-java-programmers
 
 languages: [es, ko, de, it, ja, zh-tw]
 permalink: /tutorials/:title.html
+
+get_started_resources:
+  - title: "Getting Started"
+    description: "Install Scala on your computer and start writing some Scala code!"
+    icon: "fa fa-rocket"
+    link: /getting-started.html
+  - title: Scala in the Browser
+    description: >
+      To start experimenting with Scala right away, use "Scastie" in your browser.
+    icon: "fa fa-cloud"
+    link: https://scastie.scala-lang.org/pEBYc5VMT02wAGaDrfLnyw
+java_resources:
+  - title: Scala for Java Developers
+    description: A cheatsheet with a comprehensive side-by-side comparison of Java and Scala.
+    icon: "fa fa-coffee"
+    link: /scala3/book/scala-for-java-devs.html
+next_resources:
+  - title: Scala Book
+    description: Learn Scala by reading a series of short lessons.
+    icon: "fa fa-book-open"
+    link: /scala3/book/scala-for-java-devs.html
+  - title: Online Courses
+    description: MOOCs to learn Scala, for beginners and experienced programmers.
+    icon: "fa fa-cloud"
+    link: /scala3/book/scala-for-java-devs.html
 ---
 
-By Michel Schinz and Philipp Haller
+If you are coming to Scala with some Java experience already, this page should give a good overview of
+the differences, and what to expect when you begin programming with Scala. For best results we suggest
+to either set up a Scala toolchain on your computer, or try compiling Scala snippets in the browser with Scastie:
 
-## Introduction
+{% include inner-documentation-sections.html links=page.get_started_resources %}
 
-This document gives a quick introduction to the Scala language and
-compiler. It is intended for people who already have some programming
-experience and want an overview of what they can do with Scala. A
-basic knowledge of object-oriented programming, especially in Java, is
-assumed.
+## At a Glance: Why Scala?
 
-## A First Example
+**Java without Semicolons:** There's a saying that Scala is Java without semicolons.
+There is a lot of a truth to this statement: Scala simplifies much of the noise and boilerplate of Java,
+while building upon the same foundation, sharing the same underlying types and runtime.
+
+**Seamless Interop:** Scala can use any Java library out of the box; including the Java standard library!
+And pretty much any Java program will work the same in Scala, just by converting the syntax.
+
+**A Scalable Language:** the name Scala comes from Scalable Language. Scala scales not only with hardware
+resources and load requirements, but also with the level of programmer's skill. If you choose, Scala
+rewards you with expressive additional features, which when compared to Java, boost developer productivity and
+readability of code.
+
+**It Grows with You:** Learning these extras are optional steps to approach at your own pace.
+The most fun and effective way to learn, in our opinion, is to ensure you are productive first with what knowledge
+you have from Java. And then, learn one thing at a time following the [Scala Book][scala-book]. Pick the learning pace convenient for you and ensure whatever you are learning is fun.
+
+**TL;DR:** You can start writing Scala as if it were Java with new syntax, then explore from there as you see fit.
+
+## Next Steps
+
+### Compare Java and Scala
+The remainder of this tutorial expands upon some of the key differences between Java and Scala,
+with further explanations. **If you only want a quick reference** between the two, read
+*Scala for Java Developers*, it comes
+with many snippets which you can try out in your chosen Scala setup:
+
+{% include inner-documentation-sections.html links=page.java_resources %}
+
+### Explore Further
+
+When you finish these guides, we recommend to continue your Scala journey by reading the
+*Scala Book* or following a number of *online MOOCs*.
+
+{% include inner-documentation-sections.html links=page.next_resources %}
+
+## Your First Program
+
+### Writing Hello World
 
 As a first example, we will use the standard *Hello World* program. It
 is not very fascinating but makes it easy to demonstrate the use of
@@ -96,7 +156,11 @@ package, so can be accessed from anywhere in a program.
 
 {% endtabs %}
 
-### Compiling the example
+### Running Hello World
+
+> **Note:** The following assumes you are using Scala on the command line
+
+#### Compiling From the Command Line
 
 To compile the example, we use `scalac`, the Scala compiler. `scalac`
 works like most compilers: it takes a source file as argument, maybe
@@ -117,7 +181,7 @@ them will be called `HelloWorld.class`, and contains a class
 which can be directly executed using the `scala` command, as the
 following section shows.
 
-### Running the example
+#### Running From the Command Line
 
 Once compiled, a Scala program can be run using the `scala` command.
 Its usage is very similar to the `java` command used to run Java
@@ -131,7 +195,7 @@ output:
 Hello, World!
 ```
 
-## Interaction with Java
+## Using Java Libraries
 
 One of Scala's strengths is that it makes it very easy to interact
 with Java code. All classes from the `java.lang` package are
@@ -206,6 +270,19 @@ formatted according to the localized `DateTimeFormatter` instance.
 To conclude this section about integration with Java, it should be
 noted that it is also possible to inherit from Java classes and
 implement Java interfaces directly in Scala.
+
+### Sidepoint: Third-Party Libraries
+
+Usually the standard library is not enough. As a Java programmer, you might already know a lot of Java libraries
+that you'd like to use in Scala. The good news is that, as with Java, Scala's library ecosystem is built upon Maven coordinates.
+
+**Most Scala projects are built with sbt:** Adding third party libraries is usually managed by a build tool.
+Coming from Java you may be familiar with Maven, Gradle and other such tools.
+It's still possible to [use these][maven-setup] to build Scala projects, however it's common to use sbt.
+See [setup a Scala Project with sbt][sbt-setup] for a guide on how
+to build a project with sbt and add some dependencies.
+<!-- TODO: we should update the getting started guide so that it shows how to add dependencies,
+then reference it here -->
 
 ## Everything is an Object
 
@@ -1174,3 +1251,7 @@ presented some basic examples. The interested reader can go on, for example, by
 reading the *[Tour of Scala](https://docs.scala-lang.org/tour/tour-of-scala.html)*, which
 contains more explanations and examples, and consult the *Scala
   Language Specification* when needed.
+
+[scala-book]: {% link _overviews/scala3-book/introduction.md %}
+[maven-setup]: {% link _overviews/tutorials/scala-with-maven.md %}
+[sbt-setup]: {% link _getting-started/sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.md %}#adding-a-dependency

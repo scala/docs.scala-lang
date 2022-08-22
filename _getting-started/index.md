@@ -9,7 +9,7 @@ newcomer_resources:
   - title: Are You Coming From Java?
     description: What you should know to get to speed with Scala after your initial setup.
     icon: "fa fa-coffee"
-    link: /scala3/newcomers/java.html
+    link: /tutorials/scala-for-java-programmers.html
   - title: Scala in the Browser
     description: >
       To start experimenting with Scala right away, use "Scastie" in your browser.
