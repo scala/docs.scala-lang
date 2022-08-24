@@ -1,7 +1,7 @@
 {% assign pagetype = page.type %}
 <div class="content-nav">
   <div class="inner-box sidebar-toc-wrapper {% if pagetype %}book{% endif %}" style="">
-		<h5 class="contents">Contents</h5>
+    <h5 class="contents">Contents</h5>
       {% if pagetype %}
         <div class="inner-toc book" id="sidebar-toc">
       {% else %}
@@ -10,11 +10,11 @@
       <ul>
         {% assign sorted = site[page.collection] | sort: 'num' %}
         {% for pg in sorted %}
-					{% if pg.num == page.num %}
-						{% capture toc %}
-						<div id="toc"></div>
-						{% endcapture %}
-					{% endif %}
+          {% capture toc %}
+            {% if pg.num == page.num %}
+              <div id="toc"></div>
+            {% endif %}
+          {% endcapture %}
 
           {% if pg.num and (page.partof == pg.partof) %}
             {% if page.language %} <!-- if page is a translation, get the translated title -->
@@ -23,7 +23,7 @@
               {% for lpg in site.[page.language] %}
                 {% if lpg.id == localizedId %}
                   <li><a {% if page.title == lpg.title %}class="active"{% endif %} href="/{{ site.baseurl }}{{ page.language }}{{ pg.url }}">{{ lpg.title }}</a>
-									{{ toc }}</li>
+                  {{ toc }}</li>
                 {% endif %}
               {% endfor %}
             {% else %} <!-- this must be English, so get the other documents' titles -->
@@ -44,8 +44,8 @@
           {% for l in page.languages %}
             {% capture intermediate %}{{ page.url }}{% endcapture %}
             {% capture rootTutorialURL %}{{ intermediate | remove_first: '/' }}{% endcapture %}
-      			{% assign lang = site.data.languages[l] %}
-      			<li><a href="{{ site.baseurl }}/{{ l }}/{{ rootTutorialURL }}" class="lang">{{ lang.name }}</a></li>
+            {% assign lang = site.data.languages[l] %}
+            <li><a href="{{ site.baseurl }}/{{ l }}/{{ rootTutorialURL }}" class="lang">{{ lang.name }}</a></li>
           {% endfor %}
         </ul>
       {% elsif page.language %}
@@ -59,8 +59,8 @@
           {% endfor %}
         </ul>
       {% endif %}
-		</div>
-		<hr>
-		<div class="help-us"><a href="https://github.com/scala/docs.scala-lang/blob/main/{% if page.collection %}{{ page.relative_path }}{% else %}{{ page.path }}{% endif %}"><i class="fa fa-pencil" aria-hidden="true"></i> Problem with this page?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please help us fix it!</a></div>
-	</div>
+    </div>
+    <hr>
+    <div class="help-us"><a href="https://github.com/scala/docs.scala-lang/blob/main/{% if page.collection %}{{ page.relative_path }}{% else %}{{ page.path }}{% endif %}"><i class="fa fa-pencil" aria-hidden="true"></i> Problem with this page?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please help us fix it!</a></div>
+  </div>
 </div>
