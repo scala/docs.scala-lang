@@ -1,5 +1,5 @@
 ---
-title: Online Courses from The Scala Center
+title: Online Courses (MOOCs) from The Scala Center
 layout: singlepage-overview
 testimonials:
   - /resources/images/online-courses/testimonial000.jpg
@@ -19,7 +19,7 @@ testimonials:
   - /resources/images/online-courses/testimonial014.jpg
 ---
 
-The [Scala Center] produces online courses of various levels, from beginner 
+The [Scala Center] produces online courses (a.k.a. MOOCs) of various levels, from beginner 
 to advanced.
 
 **If you are a programmer and want to learn Scala**, there are two recommended 
@@ -51,7 +51,7 @@ In case you take the Scala Specialization, you will end with the Scala Capstone 
 
 ## Learning Platforms
 
-Currently, all our courses are available on the platform [Coursera](https://coursera.org),
+Currently, all our MOOCs are available on the platform [Coursera](https://coursera.org),
 and some of them are available on [edX](https://edx.org) or the [Extension School](https://extensionschool.ch).
 This section explains the differences between these learning platforms.
 
