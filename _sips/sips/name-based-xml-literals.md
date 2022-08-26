@@ -1,8 +1,6 @@
 ---
 title: SIP-40 - Name Based XML Literals
-status: vote-requested
+status: rejected
 pull-request-number: 42
-stage: design
-recommendation: reject
 
 ---
