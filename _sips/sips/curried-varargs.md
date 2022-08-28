@@ -1,8 +1,6 @@
 ---
 title: SIP-45 - Curried varargs
-status: vote-requested
+status: rejected
 pull-request-number: 41
-stage: design
-recommendation: reject
 
 ---
