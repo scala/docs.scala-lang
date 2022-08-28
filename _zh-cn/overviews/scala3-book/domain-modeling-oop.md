@@ -60,7 +60,7 @@ class Document(text: String) extends Showable:
 - 抽象方法（`def m(): T`）
 - 抽象值定义（`val x: T`）
 - 抽象类型成员（`type T`），可能有界限（`type T <: S`）
-- 抽象给定（`given t: T`）
+- 抽象given（`given t: T`）
 
 上述每个特性都可用于指定对 trait 实现者的某种形式的要求。
 
