@@ -194,7 +194,7 @@ c1.count // 2
 这些示例改编自 Martin Odersky 和 ​​Matthias Zenger 的论文 ["Scalable Component Abstractions"][scalable]。
 如果您不了解示例的所有细节，请不要担心；它的主要目的是演示如何使用多种类型特性来构造更大的组件。
 
-我们的目标是定义一个_种类繁多_的软件组件，而对组件的细化，可以放到以后的实现中
+我们的目标是定义一个_种类丰富_的软件组件，而对组件的细化，可以放到以后的实现中
 具体来说，以下代码将组件 `SubjectObserver` 定义为具有两个抽象类型成员的trait， `S` （用于主题）和 `O` （用于观察者）：
 
 ```scala

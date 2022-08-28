@@ -31,8 +31,8 @@ NOTE: Could mention “grammar” as a way of showing that Scala isn’t a large
 Scala 比任何其他语言都更支持 FP 和 OOP 范式的融合。
 正如 Martin Odersky 所说，Scala 的本质是在类型化环境中融合了函数式和面向对象编程，具有：
 
-- 逻辑函数，以及
-- 模块化对象
+- 函数用于编写逻辑 （局部）
+- 对象用于构建模块化 （整体）
 
 模块化的一些最佳示例可能是标准库中的类。
 例如，`List` 被定义为一个类---从技术上讲，它是一个抽象类---并且像这样创建了一个新实例：
