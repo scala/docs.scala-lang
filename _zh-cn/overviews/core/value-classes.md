@@ -11,7 +11,7 @@ language: zh-cn
 
 ## 引言
 
-值类型（Value Class 或值类）是在[SIP-15](https://docs.scala-lang.org/sips/pending/value-classes.html)中提出的一种通过继承AnyVal类来避免运行时对象分配的新机制。以下是一个最简的值类型。
+值类型（Value Class 或值类）是在[SIP-15](https://docs.scala-lang.org/sips/pending/value-classes.html)中提出的一种通过继承AnyVal类来避免运行时对象分配的新机制。以下是一个最简单的值类型。
 
     class Wrapper(val underlying: Int) extends AnyVal
 
