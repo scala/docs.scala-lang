@@ -11,17 +11,17 @@ language: zh-cn
 
 ## 引言
 
-Value classes是在[SIP-15](https://docs.scala-lang.org/sips/pending/value-classes.html)中提出的一种通过继承AnyVal类来避免运行时对象分配的新机制。以下是一个最简的value class。
+值类型（Value Class 或值类）是在[SIP-15](https://docs.scala-lang.org/sips/pending/value-classes.html)中提出的一种通过继承AnyVal类来避免运行时对象分配的新机制。以下是一个最简的值类型。
 
     class Wrapper(val underlying: Int) extends AnyVal
 
-它仅有一个被用作运行时底层表示的公有val参数。在编译期，其类型为Wrapper，但在运行时，它被表示为一个Int。Value class可以带有def定义，但不能再定义额外的val、var，以及内嵌的trait、class或object：
+它仅有一个被用作运行时底层表示的公有val参数。在编译期，其类型为Wrapper，但在运行时，它被表示为一个Int。值类型可以带有def定义，但不能再定义额外的val、var，以及内嵌的trait、class或object：
 
     class Wrapper(val underlying: Int) extends AnyVal {
       def foo: Wrapper = new Wrapper(underlying * 19)
     }
 
-Value class只能继承universal traits，但其自身不能再被继承。所谓universal trait就是继承自Any的、只有def成员，且不作任何初始化工作的trait。继承自某个universal trait的value class同时继承了该trait的方法，但是（调用这些方法）会带来一定的对象分配开销。例如：
+值类型只能继承universal traits，但其自身不能再被继承。所谓universal trait就是继承自Any的、只有def成员，且不作任何初始化工作的trait。继承自某个universal trait的value class同时继承了该trait的方法，但是（调用这些方法）会带来一定的对象分配开销。例如：
 
     trait Printable extends Any {
       def print(): Unit = println(this)
@@ -31,11 +31,11 @@ Value class只能继承universal traits，但其自身不能再被继承。所�
     val w = new Wrapper(3)
     w.print() // 这里实际上会生成一个Wrapper类的实例
 
-本文后续篇幅将介绍相关用例和与对象分配时机相关的细节，并给出一些有关value class自身限制的具体实例。
+本文后续篇幅将介绍相关用例和与对象分配时机相关的细节，并给出一些有关值类型自身限制的具体实例。
 
 ## 扩展方法
 
-关于value类的一个用例，是将它们和隐含类联合（[SIP-13](https://docs.scala-lang.org/sips/pending/implicit-classes.html)）以获得免分配扩展方法。使用隐含类可以提供便捷的语法来定义扩展方法，同时 value 类移除运行时开销。一个好的例子是在标准库里的RichInt类。RichInt 继承自Int类型并附带一些方法。由于它是一个 value类，使用RichInt 方法时不需要创建一个RichInt 的实例。
+关于值类的一个用例，是将它们和隐式类联合（[SIP-13](https://docs.scala-lang.org/sips/pending/implicit-classes.html)）以获得免分配扩展方法。使用隐式类可以提供便捷的语法来定义扩展方法，同时利用值类来移除运行时开销。一个好的例子是在标准库里的RichInt类。RichInt 继承自Int类型并附带一些方法。由于它是一个值类，使用RichInt 方法时不需要创建一个RichInt 的实例。
 
 下面有关RichInt的代码片段示范了RichInt是如何继承Int来允许3.toHexString的表达式：
 
@@ -47,7 +47,7 @@ Value class只能继承universal traits，但其自身不能再被继承。所�
 
 ## 正确性
 
-关于value类的另一个用例是：不增加运行时开销的同时，获得数据类型的类型安全。例如，一个数据类型片断代表一个距离 ，如：
+关于值类的另一个用例是：不增加运行时开销的同时，获得数据类型的类型安全。例如，一个数据类型片断代表一个距离 ，如：
 
     class Meter(val value: Double) extends AnyVal {
       def +(m: Meter): Meter = new Meter(value + m.value)
@@ -61,23 +61,23 @@ Value class只能继承universal traits，但其自身不能再被继承。所�
 
 实际上不会分配任何Meter实例，而是在运行时仅使用原始双精浮点数（double） 。
 
-注意：在实践中，可以使用条件类（case）and/or 扩展方法来让语句更清晰。
+注意：在实践中，可以使用样例类（case）and/or 扩展方法来让语句更清晰。
 
 ## 必须进行分配的情况
 
-由于JVM不支持value类，Scala 有时需要真正实例化value类。详细细节见[SIP-15]。
+由于JVM不支持值类，Scala 有时需要真正实例化值类。详细细节见[SIP-15]。
 
 ### 分配概要
 
-value类在以下情况下，需要真正实例化：
+值类在以下情况下，需要真正实例化：
 
-1. value类作为另一种类型使用时。
-2. value类被赋值给数组。
+1. 值类作为另一种类型使用时。
+2. 值类被赋值给数组。
 3. 执行运行时类型测试，例如模式匹配。
 
 ### 分配细节
 
-无论何时，将value类作为另一种类型进行处理时（包括universal trait），此value类实例必须被实例化。例如，value类Meter ：
+无论何时，将值类型作为另一种类型进行处理时（包括universal trait），此值类实例必须被实例化。例如，值类Meter ：
 
     trait Distance extends Any
     case class Meter(val value: Double) extends AnyVal with Distance
@@ -91,37 +91,37 @@ value类在以下情况下，需要真正实例化：
 
     def add(a: Meter, b: Meter): Meter = ...
 
-那么就不必进行分配了。此规则的另一个例子是value类作为类型参数使用。例如：即使是调用identity方法，也必须创建真正的Meter实例。
+那么就不必进行分配了。此规则的另一个例子是值类作为类型参数使用。例如：即使是调用identity方法，也必须创建真正的Meter实例。
 
     def identity[T](t: T): T = t
     identity(Meter(5.0))
 
-必须进行分配的另一种情况是：将它赋值给数组。即使这个数组就是value类数组，例如：
+必须进行分配的另一种情况是：将它赋值给数组。即使这个数组就是值类型的数组，例如：
 
     val m = Meter(5.0)
     val array = Array[Meter](m)
 
 数组中包含了真正的Meter 实例，并不只是底层基本类型double。
 
-最后是类型测试。例如，模式匹配中的处理以及asInstanceOf方法都要求一个真正的value类实例：
+最后是类型测试。例如，模式匹配中的处理以及asInstanceOf方法都要求一个真正的值类实例：
 
     case class P(val i: Int) extends AnyVal
 
     val p = new P(3)
-    p match { // 在这里，新的P实例被创建
+    p match { // 在这里，创建了新的P实例
       case P(3) => println("Matched 3")
       case P(x) => println("Not 3")
     }
 
 ## 限制
 
-目前Value类有一些限制，部分原因是JVM不提供value类概念的原生支持。value类的完整实现细节及其限制见[SIP-15]。
+目前值类型有一些限制，部分原因是JVM并不原生支持值类型。值类型的完整实现细节及其限制见[SIP-15]。
 
 ### 限制概要
 
-一个value类 ...
+一个值类 ...
 
-1. ... 必须只有一个主构造器。该构造器有且仅有一个public修饰的不可变（val）参数，且参数的类型不是用户自定义的value类。
+1. ... 必须只有一个主构造器。该构造器有且仅有一个public修饰的不可变（val）参数，且参数的类型不是用户自定义的值类。
 2. ... 不能有特殊的类型参数。
 3. ... 不能有嵌套或局部的类、特质或对象。
 4. ... 不能定义equals或hashCode方法。
@@ -145,14 +145,14 @@ value类在以下情况下，需要真正实例化：
     class Complex(val real: Double, val imag: Double) extends AnyVal
           ^
 
-由于构造函数参数必须是val，而不能是一个按名（by-name）参数：
+由于构造函数参数必须是val，而不能是一个传名（by-name）参数：
 
     NoByName.scala:1: error: `val' parameters may not be call-by-name
     （NoByName.scala:1: 错误: `val' 不能为 call-by-name）
     class NoByName(val x: => Int) extends AnyVal
                           ^
 
-Scala不允许惰性val作为构造函数参数， 所以value类也不允许。并且不允许多个构造函数。
+Scala不允许惰性val作为构造函数参数， 所以值类也不允许。并且不允许多个构造函数。
 
     class Secondary(val x: Int) extends AnyVal {
       def this(y: Double) = this(y.toInt)
@@ -163,7 +163,7 @@ Scala不允许惰性val作为构造函数参数， 所以value类也不允许。
       def this(y: Double) = this(y.toInt)
           ^
 
-value class不能将惰性val或val作为成员，也不能有嵌套类、trait或对象。
+值类不能将惰性val或val作为成员，也不能有嵌套类、trait或对象。
 
     class NoLazyMember(val evaluate: () => Double) extends AnyVal {
       val member: Int = 3
@@ -189,7 +189,7 @@ value class不能将惰性val或val作为成员，也不能有嵌套类、trait�
       class NestedClass
             ^
 
-注意：value类中也不允许出现本地类、trait或对象，如下：
+注意：值类中也不允许出现本地类、trait或对象，如下：
 
     class NoLocalTemplates(val x: Int) extends AnyVal {
       def aMethod = {
@@ -198,7 +198,7 @@ value class不能将惰性val或val作为成员，也不能有嵌套类、trait�
       }
     }
 
-在目前value类实现的限制下，value类不能嵌套：
+在目前值类实现的限制下，值类不能嵌套：
 
     class Outer(val inner: Inner) extends AnyVal
     class Inner(val value: Int) extends AnyVal
@@ -208,7 +208,7 @@ value class不能将惰性val或val作为成员，也不能有嵌套类、trait�
     class Outer(val inner: Inner) extends AnyVal
                     ^
 
-此外，结构类型不能使用value类作为方法的参数或返回值类型。
+此外，结构类型不能使用值类作为方法的参数或返回值类型。
 
     class Value(val x: Int) extends AnyVal
     object Usage {
@@ -221,7 +221,7 @@ value class不能将惰性val或val作为成员，也不能有嵌套类、trait�
       def anyValue(v: { def value: Value }): Value =
                                    ^
 
-value类不能继承non-universal trait，并且其本身不能被继承：
+值类不能继承non-universal trait，并且其本身不能被继承：
 
     trait NotUniversal
     class Value(val x: Int) extends AnyVal with NotUniversal
@@ -238,16 +238,16 @@ value类不能继承non-universal trait，并且其本身不能被继承：
     class Extend(x: Int) extends Value(x)
                                  ^
 
-第二条错误信息显示：虽然value类没有显式地用final关键字修饰，但依然认为value类是final类。
+第二条错误信息显示：虽然值类没有显式地用final关键字修饰，但依然认为值类是final类。
 
-另一个限制是：一个类仅支持单个参数的话，则value类必须是顶级类，或静态访问对象的成员。这是由于嵌套value类需要第二个参数来引用封闭类。所以不允许下述代码：
+另一个限制是：一个类仅支持单个参数的话，则值类必须是顶级类，或静态访问对象的成员。这是由于嵌套值类需要第二个参数来引用封闭类。所以不允许下述代码：
 
     class Outer {
       class Inner(val x: Int) extends AnyVal
     }
 
     Outer.scala:2: error: value class may not be a member of another class
-    （Outer.scala:2: 错误：value类不能作为其它类的成员）
+    （Outer.scala:2: 错误：值类不能作为其它类的成员）
     class Inner(val x: Int) extends AnyVal
           ^
 
