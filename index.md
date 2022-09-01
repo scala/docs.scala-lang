@@ -90,8 +90,8 @@ sections:
 
   - title: "Scala Evolution"
     links:
-      - title: "SIPs"
-        description: "The Scala Improvement Process. Language & compiler evolution."
+      - title: "Scala Improvement Process"
+        description: "Description of the process for evolving the language, and list of all the Scala Improvement Proposals (SIPs)."
         icon: "fa fa-cogs"
         link: /sips/index.html
       - title: "Become a Scala OSS Contributor"
