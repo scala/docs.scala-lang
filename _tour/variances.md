@@ -116,7 +116,7 @@ We've seen we can accomplish covariance by making sure that we can't put somethi
 
 We say that `Serializer` is *contravariant* in `A`, and this is indicated by the `-` before the `A`. A more general serializer is a subtype of a more specific serializer.
 
-More formally, that gives us the reverse relationship: given some `class Contra[-T]`, then if `A` is a subtype of `B`, `Cov[B]` is a subtype of `Cov[A]`. 
+More formally, that gives us the reverse relationship: given some `class Contra[-T]`, then if `A` is a subtype of `B`, `Contra[B]` is a subtype of `Contra[A]`. 
 
 ### Comparison With Other Languages
 

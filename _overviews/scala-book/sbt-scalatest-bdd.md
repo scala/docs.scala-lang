@@ -45,9 +45,9 @@ Next, create a file named *MathUtilsTests.scala* in the *src/test/scala/simplete
 ```scala
 package simpletest
 
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
-class MathUtilsSpec extends FunSpec {
+class MathUtilsSpec extends AnyFunSpec {
   
     describe("MathUtils::double") {
 
