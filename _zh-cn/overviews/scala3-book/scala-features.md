@@ -4,7 +4,7 @@ type: chapter
 description: This page discusses the main features of the Scala 3 programming language.
 num: 2
 previous-page: introduction
-next-page: why-scala-3
+next-page: 
 
 scala3: true
 partof: scala3-book
