@@ -1,0 +1,27 @@
+---
+layout: sips
+---
+
+<p>The Committee discussed and voted on the proposals listed below.</p>
+
+<table>
+  <thead>
+    <tr><th>Proposal</th><th>Result</th></tr>
+  </thead>
+  <tbody>
+  {% for proposal in page.proposals %}
+    <tr>
+      <td><a href="{{ proposal.url }}">{{proposal.name}}</a></td>
+      <td>
+        {% if proposal.result == 'rejected' %}
+          Rejected <span class="fa fa-xmark"></span>
+        {% elsif proposal.result == 'accepted' %}
+          Accepted <span class="fa fa-check"></span>
+        {% else %}
+          Under Review <span class="fa fa-clipboard-list"></span>
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
