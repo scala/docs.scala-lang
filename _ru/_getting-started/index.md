@@ -26,29 +26,33 @@ newcomer_resources:
 {% endaltDetails %}
 </div>
 
-## Resources For Newcomers
+## Ресурсы для новичков
 
 {% include inner-documentation-sections.html links=page.newcomer_resources %}
 
-##  Install Scala on your computer
+## Установка Scala на компьютер
 
-Installing Scala means installing various command-line tools such as the Scala compiler and build tools.
-We recommend using the Scala installer tool "Coursier" that automatically installs all the requirements, but you can still manually install each tool.
+Установка Scala означает установку различных инструментов командной строки, 
+таких как компилятор Scala и инструменты сборки. 
+Мы рекомендуем использовать инструмент установки "Coursier", 
+который автоматически устанавливает все зависимости, 
+но также возможно по отдельности установить каждый инструмент вручную.
 
-### Using the Scala Installer (recommended way)
+### Использование Scala Installer (рекомендованный путь)
 
-The Scala installer is a tool named [Coursier](https://get-coursier.io/docs/cli-overview), whose main command is named `cs`.
-It ensures that a JVM and standard Scala tools are installed on your system.
-Install it on your system with the following instructions.
+Установщик Scala — это инструмент [Coursier](https://get-coursier.io/docs/cli-overview), 
+основная команда которого называется `cs`. 
+Он гарантирует, что в системе установлены JVM и стандартные инструменты Scala. 
+Установите его в своей системе, следуя следующим инструкциям.
 
 <!-- Display tabs for each OS -->
 {% tabs install-cs-setup-tabs class=platform-os-options %}
 
 <!-- macOS -->
 {% tab macOS for=install-cs-setup-tabs %}
-Run the following command in your terminal, following the on-screen instructions:
+Запустите в терминале следующую команду, следуя инструкциям на экране:
 {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-brew %}
-{% altDetails cs-setup-macos-nobrew  "Alternatively, if you don't use Homebrew:" %}
+{% altDetails cs-setup-macos-nobrew  "В качестве альтернативы, если вы не используете Homebrew:" %}
   {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-default %}
 {% endaltDetails %}
 {% endtab %}
@@ -56,25 +60,25 @@ Run the following command in your terminal, following the on-screen instructions
 
 <!-- Linux -->
 {% tab Linux for=install-cs-setup-tabs %}
-  Run the following command in your terminal, following the on-screen instructions:
+  Запустите в терминале следующую команду, следуя инструкциям на экране:
   {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.linux %}
 {% endtab %}
 <!-- end Linux -->
 
 <!-- Windows -->
 {% tab Windows for=install-cs-setup-tabs %}
-  Download and execute [the Scala installer for Windows]({{site.data.setup-scala.windows-link}})
-  based on Coursier, and follow the on-screen instructions.
+  Загрузите и запустите [установщик Scala для Windows]({{site.data.setup-scala.windows-link}})
+  на базе Coursier и следуйте инструкциям на экране.
 {% endtab %}
 <!-- end Windows -->
 
 <!-- Other -->
-{% tab Other for=install-cs-setup-tabs defaultTab %}
+{% tab Иное for=install-cs-setup-tabs defaultTab %}
   <noscript>
     <p><span style="font-style:italic;">JavaScript is disabled, click the tab relevant for your OS.</span></p>
   </noscript>
-  Follow the documentation from Coursier on
-    [how to install and run `cs setup`](https://get-coursier.io/docs/cli-installation).
+  Следуйте документации Coursier о том, 
+  [как установить и запустить `cs setup`](https://get-coursier.io/docs/cli-installation).
 {% endtab %}
 <!-- end Other -->
 
@@ -82,36 +86,35 @@ Run the following command in your terminal, following the on-screen instructions
 <!-- End tabs -->
 
 <!-- Alternative Detail - test the `scala` command -->
-{% altDetails testing-your-setup 'Testing your setup' %}
-Check your setup with the command `scala -version`, which should output:
+{% altDetails testing-your-setup 'Тестирование установки' %}
+Проверьте корректность установки с помощью команды `scala -version`, которая должна вывести:
 ```bash
 $ scala -version
 Scala code runner version {{site.scala-3-version}} -- Copyright 2002-2022, LAMP/EPFL
 ```
-If that does not work, you may need to log out and log back in (or reboot) in order for the changes to take effect.
+Если сообщение не выдано, вам может потребоваться перезайти в терминал (или перезагрузиться), 
+чтобы изменения вступили в силу.
 {% endaltDetails %}
 <!-- end Alternative Detail -->
 
+Наряду с JVM `cs setup` также устанавливает полезные инструменты командной строки:
 
-Along with managing JVMs, `cs setup` also installs useful command-line tools:
+| Commands      | Description                                                                          |
+|---------------|--------------------------------------------------------------------------------------|
+| `scalac`      | компилятор Scala                                                                     |
+| `scala`       | Scala REPL и средство запуска сценариев                                              |
+| `scala-cli`   | [Scala CLI](https://scala-cli.virtuslab.org), интерактивный инструментарий для Scala |
+| `sbt`, `sbtn` | Инструмент сборки [sbt](https://www.scala-sbt.org/)                                  |
+| `amm`         | [Ammonite](https://ammonite.io/) — улучшенный REPL                                   |
+| `scalafmt`    | [Scalafmt](https://scalameta.org/scalafmt/) - средство форматирования кода Scala     |
 
-| Commands | Description |
-|----------|-------------|
-| `scalac` | the Scala compiler |
-| `scala` | the Scala REPL and script runner |
-| `scala-cli`| [Scala CLI](https://scala-cli.virtuslab.org), interactive toolkit for Scala |
-| `sbt`, `sbtn` | The [sbt](https://www.scala-sbt.org/) build tool |
-| `amm` | [Ammonite](https://ammonite.io/) is an enhanced REPL |
-| `scalafmt` | [Scalafmt](https://scalameta.org/scalafmt/) is the Scala code formatter |
+Дополнительная информация о cs [доступна по ссылке](https://get-coursier.io/docs/cli-overview).
 
-For more information about `cs`, read
-[coursier-cli documentation](https://get-coursier.io/docs/cli-overview).
-
-> `cs setup` installs the Scala 3 compiler and runner by default (the `scalac` and
-> `scala` commands, respectively). Whether you intend to use Scala 2 or 3,
-> this is usually not an issue because most projects use a build tool that will
-> use the correct version of Scala irrespective of the one installed "globally".
-> Nevertheless, you can always launch a specific version of Scala using
+> `cs setup` по умолчанию устанавливает компилятор и исполняющую программу Scala 3 
+> (команды `scalac` и `scala` соответственно). Независимо от того, собираетесь ли вы использовать Scala 2 или 3, 
+> обычно это не проблема, потому что в большинстве проектов используется инструмент сборки, 
+> который будет использовать правильную версию Scala независимо от того, какая версия установлена "глобально". 
+> Тем не менее, вы всегда можете запустить конкретную версию Scala, используя
 > ```
 > $ cs launch scala:{{ site.scala-version }}
 > $ cs launch scalac:{{ site.scala-version }}
@@ -121,7 +124,7 @@ For more information about `cs`, read
 > $ cs install scala:{{ site.scala-version }} scalac:{{ site.scala-version }}
 > ```
 
-### ...or manually
+### ...или вручную
 
 You only need two tools to compile, run, test, and package a Scala project: Java 8 or 11,
 and sbt.
