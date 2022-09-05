@@ -1,32 +1,28 @@
 ---
 layout: singlepage-overview
-title: Getting Started
+title: Начало работы
 partof: getting-started
-languages: [fr, ja, ru, uk]
+language: ru
 includeTOC: true
 
 newcomer_resources:
-  - title: Are You Coming From Java?
-    description: What you should know to get to speed with Scala after your initial setup.
+  - title: Вы пришли с Java?
+    description: Что нужно знать, чтобы ускорить работу со Scala после первоначального запуска.
     icon: "fa fa-coffee"
     link: /tutorials/scala-for-java-programmers.html
-  - title: Scala in the Browser
+  - title: Scala в браузере
     description: >
-      To start experimenting with Scala right away, use "Scastie" in your browser.
+    Чтобы сразу начать экспериментировать со Scala, используйте "Scastie" в своем браузере.
     icon: "fa fa-cloud"
     link: https://scastie.scala-lang.org/pEBYc5VMT02wAGaDrfLnyw
-
-redirect_from:
-  - /getting-started.html
-  - /scala3/getting-started.html # we deleted the scala 3 version of this page
 ---
 
-The instructions below cover both Scala 2 and Scala 3.
+Приведенные ниже инструкции охватывают как Scala 3, так и Scala 2.
 
 <div class="inline-sticky-top">
-{% altDetails need-help-info-box 'Need Help?' class=help-info %}
-*If you are having trouble with setting up Scala, feel free to ask for help in the `#scala-users` channel of
-[our Discord](https://discord.com/invite/scala).*
+{% altDetails need-help-info-box 'Нужна помощь?' class=help-info %}
+*Если у вас возникли проблемы с настройкой Scala, смело обращайтесь за помощью в канал `#scala-users`
+[нашего Discord](https://discord.com/invite/scala).*
 {% endaltDetails %}
 </div>
 
