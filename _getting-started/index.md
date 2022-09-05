@@ -85,6 +85,8 @@ Run the following command in your terminal, following the on-screen instructions
 {% endtabs %}
 <!-- End tabs -->
 
+You might need to restart your terminal/shell after you install the tool using the package manager mentioned above.
+
 <!-- Alternative Detail - test the `scala` command -->
 {% altDetails testing-your-setup 'Testing your setup' %}
 Check your setup with the command `scala -version`, which should output:
