@@ -15,6 +15,9 @@ redirect_from:
 
 When calling methods, you can label the arguments with their parameter names like so:
 
+{% tabs named-arguments-when-good class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=named-arguments-when-good %}
 ```scala mdoc
 def printName(first: String, last: String): Unit = {
   println(first + " " + last)
@@ -24,10 +27,31 @@ printName("John", "Smith")  // Prints "John Smith"
 printName(first = "John", last = "Smith")  // Prints "John Smith"
 printName(last = "Smith", first = "John")  // Prints "John Smith"
 ```
+{% endtab %}
+
+{% tab 'Scala 3' for=named-arguments-when-good %}
+```scala mdoc
+def printName(first: String, last: String): Unit =
+  println(first + " " + last)
+
+printName("John", "Smith")  // Prints "John Smith"
+printName(first = "John", last = "Smith")  // Prints "John Smith"
+printName(last = "Smith", first = "John")  // Prints "John Smith"
+```
+{% endtab %}
+
+{% endtabs %}
+
 Notice how the order of named arguments can be rearranged. However, if some arguments are named and others are not, the unnamed arguments must come first and in the order of their parameters in the method signature.
 
+{% tabs scala-2-and-3-demo %}
+
+{% tab 'Scala 2 and 3' for=named-arguments-when-error %}
 ```scala mdoc:fail
 printName(last = "Smith", "john") // error: positional after named argument
 ```
+{% endtab %}
+
+{% endtabs %}
 
 Named arguments work with calls to Java methods, but only if the Java library in question was compiled with `-parameters`.
