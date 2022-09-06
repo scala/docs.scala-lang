@@ -2,7 +2,7 @@
 title: Building a Scala Project with IntelliJ and sbt
 layout: singlepage-overview
 partof: building-a-scala-project-with-intellij-and-sbt
-languages: [ja, uk]
+languages: [ja, ru, uk]
 disqus: true
 previous-page: getting-started/intellij-track/getting-started-with-scala-in-intellij
 next-page: testing-scala-in-intellij-with-scalatest

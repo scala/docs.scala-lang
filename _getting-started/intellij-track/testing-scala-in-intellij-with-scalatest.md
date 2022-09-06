@@ -2,7 +2,7 @@
 title: Testing Scala in IntelliJ with ScalaTest
 layout: singlepage-overview
 partof: testing-scala-in-intellij-with-scalatest
-languages: [ja, uk]
+languages: [ja, ru, uk]
 disqus: true
 previous-page: building-a-scala-project-with-intellij-and-sbt
 
