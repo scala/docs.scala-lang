@@ -14,7 +14,7 @@ sections:
       - title: "Самое начало"
         description: "Установка Scala на ваш компьютер и написание пробного Scala кода!"
         icon: "fa fa-rocket"
-        link: /ru/getting-started.html
+        link: /getting-started.html
       - title: "Тур по Scala"
         description: "Вступительный обзор по основным возможностям языка."
         icon: "fa fa-flag"
