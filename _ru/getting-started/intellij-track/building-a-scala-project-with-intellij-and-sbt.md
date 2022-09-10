@@ -8,102 +8,97 @@ previous-page: /ru/getting-started/intellij-track/getting-started-with-scala-in-
 next-page: /ru/testing-scala-in-intellij-with-scalatest
 ---
 
-In this tutorial, we'll see how to build a Scala project using [sbt](https://www.scala-sbt.org/1.x/docs/index.html). sbt is a popular tool for compiling, running, and testing Scala projects of any
-size. Using a build tool such as sbt (or Maven/Gradle) becomes essential once you create projects with dependencies
-or more than one code file.
- We assume you've completed the
-[first tutorial](getting-started-with-scala-in-intellij.html).
+В этом руководстве мы увидим, как создать проект Scala с помощью [sbt](https://www.scala-sbt.org/1.x/docs/index.html). 
+sbt — популярный инструмент для компиляции, запуска и тестирования проектов Scala любой сложности. 
+Использование инструмента сборки, такого как sbt (или Maven/Gradle), становится необходимым, 
+если вы создаете проекты с зависимостями или несколькими файлами кода. 
+Мы предполагаем, что вы прочитали [первое руководство](getting-started-with-scala-in-intellij.html).
 
-## Creating the project
-In this section, we'll show you how to create the project in IntelliJ. However, if you're
-comfortable with the command line, we recommend you try [Getting
-Started with Scala and sbt on the Command Line]({{site.baseurl}}/getting-started/sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html) and then come back
- here to the section "Writing Scala code".
+## Создание проекта
+В этом разделе мы покажем вам, как создать проект в IntelliJ.
+Однако, если вы знакомы с командной строкой, мы рекомендуем вам попробовать 
+[Начало работы со Scala и sbt в командной строке]({{site.baseurl}}/ru/getting-started/sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html)
+а затем вернуться к разделу "Написание Scala кода".
 
-1. If you didn't create the project from the command line, open up IntelliJ and select "Create New Project"
-  * On the left panel, select Scala and on the right panel, select sbt
-  * Click **Next**
-  * Name the project "SbtExampleProject"
-1. If you already created the project on the command line, open up IntelliJ, select *Import Project* and open the `build.sbt` file for your project
-1. Make sure the **JDK version** is 1.8 and the **sbt version** is at least 0.13.13
-1. Select **Use auto-import** so dependencies are automatically downloaded when available
-1. Select **Finish**
+1. Если вы не создавали проект из командной строки, откройте IntelliJ и выберите "Create New Project"
+  * На левой панели выберите Scala, а на правой панели - sbt
+  * Нажмите **Next**
+  * Назовите проект "SbtExampleProject"
+1. Если вы уже создали проект в командной строке, откройте IntelliJ, выберите *Import Project* и откройте `build.sbt` файл вашего проекта
+1. Убедитесь, что ваша **JDK version** - это 1.8, а **sbt version** не ниже 0.13.13
+1. Выберите **Use auto-import**, чтобы доступные зависимости загружались автоматически.
+1. Выберите **Finish**
 
-## Understanding the directory structure
-sbt creates many directories which can be useful once you start building
-more complex projects. You can ignore most of them for now
-but here's a glance at what everything is for:
-
-```
-- .idea (IntelliJ files)
-- project (plugins and additional settings for sbt)
-- src (source files)
-    - main (application code)
-        - java (Java source files)
-        - scala (Scala source files) <-- This is all we need for now
-        - scala-2.12 (Scala 2.12 specific files)
-    - test (unit tests)
-- target (generated files)
-- build.sbt (build definition file for sbt)
-```
-
-
-## Writing Scala code
-1. On the **Project** panel on the left, expand `SbtExampleProject` => `src`
-=> `main`
-1. Right-click `scala` and select **New** => **Package**
-1. Name the package `example` and click **OK** (or just press the Enter or Return key).
-1. Right-click the package `example` and select **New** => **Scala class** (if you don't see this option, right-click the `SbtExampleProject`, click **Add Frameworks Support**, select **Scala** and proceed)
-1. Name the class `Main` and change the **Kind** to `Object`.
-1. Change the code in the class to the following:
+## Разбор структуры каталогов
+sbt создает множество каталогов, которые могут быть полезны, когда вы начнете создавать более сложные проекты.
+На данный момент вы можете игнорировать большинство из них, но вот объяснение, для чего все это:
 
 ```
-object Main extends App {
+- .idea (файлы IntelliJ)
+- project (плагины и дополнительные настройки sbt)
+- src (исходные файлы)
+    - main (код приложения)
+        - java (исходные файлы Java)
+        - scala (исходные файлы Scala) <-- это все, что вам сейчас нужно
+        - scala-2.12 (файлы, специфичные для Scala 2.12)
+    - test (модульные тесты)
+- target (сгенерированные файлы)
+- build.sbt (файл определения сборки для sbt)
+```
+
+
+## Написание Scala-кода
+1. На панели слева **Project**, разверните `SbtExampleProject` => `src` => `main`
+1. Щелкните правой кнопкой мыши на `scala` и выберете **New** => **Package**
+1. Назовите пакет `example` и нажмите **OK** (или просто нажмите клавишу **Enter** или **Return**).
+1. Щелкните правой кнопкой мыши на пакете `example` и выберите **New** => **Scala class** 
+(если вы не видите эту опцию, щелкните правой кнопкой мыши на `SbtExampleProject`, кликните на **Add Frameworks Support**, выберете **Scala** и продолжите)
+1. Назовите класс `Main` и измените **Kind** на `Object`.
+1. Вставьте следующий код:
+
+```
+@main def run() =
   val ages = Seq(42, 75, 29, 64)
   println(s"The oldest person is ${ages.max}")
-}
 ```
 
-Note: IntelliJ has its own implementation of the Scala compiler, and sometimes your
-code is correct even though IntelliJ indicates otherwise. You can always check
-to see if sbt can run your project on the command line.
+Примечание: IntelliJ имеет собственную реализацию компилятора Scala, 
+и иногда ваш код верен, даже если IntelliJ указывает обратное. 
+Вы всегда можете проверить, может ли sbt запустить ваш проект в командной строке.
 
-## Running the project
-1. From the **Run** menu, select **Edit configurations**
-1. Click the **+** button and select **sbt Task**.
-1. Name it `Run the program`.
-1. In the **Tasks** field, type `~run`. The `~` causes sbt to rebuild and rerun the project
-when you save changes to a file in the project.
-1. Click **OK**.
-1. On the **Run** menu. Click **Run 'Run the program'**.
-1. In the code, change `75` to `61`
-and look at the updated output in the console.
+## Запуск проекта
+1. В меню **Run**, выберите **Edit configurations**
+1. Нажмите кнопку **+** и выберите **sbt Task**.
+1. Назовите задачу `Run the program`.
+1. В поле **Tasks**, введите `~run`. `~` заставляет sbt перекомпилировать 
+и повторно запускать проект при каждом сохранении изменений в файле проекта.
+1. Нажмите **OK**.
+1. В меню **Run** нажмите **'Run the program'**.
+1. В коде измените `75` на `61` и посмотрите на обновленные результаты в консоли.
 
-## Adding a dependency
-Changing gears a bit, let's look at how to use published libraries to add
-extra functionality to our apps.
-1. Open up `build.sbt` and add the following line:
+## Добавление зависимости
+Немного меняя тему, давайте посмотрим, как использовать опубликованные библиотеки 
+для добавления дополнительных функций в наши приложения.
+1. Откройте `build.sbt` и добавьте следующую строку:
 
 ```
 libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.2"
 ```
-Here, `libraryDependencies` is a set of dependencies, and by using `+=`,
-we're adding the [scala-parser-combinators](https://github.com/scala/scala-parser-combinators) dependency to the set of dependencies that sbt will go
-and fetch when it starts up. Now, in any Scala file, you can import classes,
-objects, etc, from scala-parser-combinators with a regular import.
+Здесь `libraryDependencies` представляет набор зависимостей, 
+и с помощью `+=` мы добавляем зависимость [scala-parser-combinators](https://github.com/scala/scala-parser-combinators) 
+к набору зависимостей, которые sbt будет загружать при запуске. 
+Теперь в любой файл Scala можно импортировать классы, объекты и т.д. из `scala-parser-combinators` с помощью обычного импорта.
 
-You can find more published libraries on
-[Scaladex](https://index.scala-lang.org/), the Scala library index, where you
-can also copy the above dependency information for pasting into your `build.sbt`
-file.
+Вы можете найти больше опубликованных библиотек на [Scaladex](https://index.scala-lang.org/), каталоге библиотек Scala, 
+где вы также можете скопировать указанную выше информацию о зависимостях для вставки в свой файл `build.sbt`.
 
-## Next steps
+## Следующие шаги
 
-Continue to the next tutorial in the _getting started with IntelliJ_ series, and learn about [testing Scala code in IntelliJ with ScalaTest](testing-scala-in-intellij-with-scalatest.html).
+Перейдите к следующему руководству из серии _getting started with IntelliJ_ и узнайте, как [тестировать Scala в IntelliJ с помощью ScalaTest](testing-scala-in-intellij-with-scalatest.html).
 
-**or**
+**или**
 
-* [The Scala Book](/overviews/scala-book/introduction.html), which provides a set of short lessons introducing Scala’s main features.
-* [The Tour of Scala](/tour/tour-of-scala.html) for bite-sized introductions to Scala's features.
-- Continue learning Scala interactively online on
+* [The Scala Book](/scala3/book/introduction.html), содержащая набор коротких уроков, знакомящих с основными функциями Scala.
+* [The Tour of Scala](/ru/tour/tour-of-scala.html) для краткого ознакомления с возможностями Scala.
+- Продолжайте изучать Scala в интерактивном режиме на
  [Scala Exercises](https://www.scala-exercises.org/scala_tutorial).
