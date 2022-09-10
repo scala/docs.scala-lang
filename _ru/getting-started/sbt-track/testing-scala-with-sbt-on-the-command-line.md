@@ -102,4 +102,4 @@ sbt test
 ## Заключение
 Вы видели один из способов тестирования Scala кода.
 Узнать больше о AnyFunSuite от ScalaTest можно на [официальном сайте](https://www.scalatest.org/getting_started_with_fun_suite).
-Вы также можете использовать другие тестовые фреймворки, такие как [ScalaCheck](https://www.scalacheck.org/) и [Specs2](https://etorreborre.github.io/specs2/).
+Вы также можете использовать другие тестовые фреймворки, такие, как [ScalaCheck](https://www.scalacheck.org/) и [Specs2](https://etorreborre.github.io/specs2/).
