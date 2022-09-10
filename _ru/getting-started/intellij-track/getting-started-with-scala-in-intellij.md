@@ -7,40 +7,44 @@ disqus: true
 next-page: /ru/building-a-scala-project-with-intellij-and-sbt
 ---
 
-In this tutorial, we'll see how to build a minimal Scala project using IntelliJ
-IDE with the Scala plugin. In this guide, IntelliJ will download Scala for you.
+В этом руководстве мы увидим, как создать минимальный проект Scala с помощью IntelliJ IDE со Scala плагином. 
+В этом руководстве IntelliJ загрузит Scala за вас.
 
-## Installation
-1. Make sure you have the Java 8 JDK (also known as 1.8)
-    * Run `javac -version` on the command line and make sure you see
+## Установка
+
+1. Убедитесь, что у вас установлена Java 8 JDK (также известная как 1.8)
+    * Запустите `javac -version` в командной строке и убедитесь, что выдается
     `javac 1.8.___`
-    * If you don't have version 1.8 or higher, [install the JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-1. Next, download and install [IntelliJ Community Edition](https://www.jetbrains.com/idea/download/)
-1. Then, after starting up IntelliJ, you can download and install the Scala plugin by following the instructions on
-[how to install IntelliJ plugins](https://www.jetbrains.com/help/idea/installing-updating-and-uninstalling-repository-plugins.html) (search for "Scala" in the plugins menu.)
+    * Если у вас нет версии 1.8 или выше, [установите JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+1. Затем загрузите и установите [IntelliJ Community Edition](https://www.jetbrains.com/idea/download/)
+1. Затем, после запуска IntelliJ, вы можете загрузить и установить Scala плагин, следуя 
+   [инструкции по установке плагинов IntelliJ](https://www.jetbrains.com/help/idea/installing-updating-and-uninstalling-repository-plugins.html) (найдите "Scala" в меню плагинов).
 
-When we create the project, we'll install the latest version of Scala.
-Note: If you want to open an existing Scala project, you can click **Open**
-when you start IntelliJ.
+Когда мы создадим проект, то установим последнюю версию Scala.
+Примечание: Если вы хотите открыть существующий проект Scala, вы можете нажать **Open**
+при запуске IntelliJ.
 
-## Creating the Project
-1. Open up IntelliJ and click **File** => **New** => **Project**
-1. On the left panel, select Scala. On the right panel, select IDEA.
-1. Name the project **HelloWorld**
-1. Assuming this is your first time creating a Scala project with IntelliJ,
-you'll need to install a Scala SDK. To the right of the Scala SDK field,
-click the **Create** button.
-1. Select the highest version number (e.g. {{ site.scala-version }}) and click **Download**. This might
-take a few minutes but subsequent projects can use the same SDK.
-1. Once the SDK is created, and you're back to the "New Project" window, click **Finish**.
+## Создание проекта
 
+1. Откройте IntelliJ и нажмите **File** => **New** => **Project**
+1. На левой панели выберите Scala. На правой панели - IDEA.
+1. Назовите проект **HelloWorld**
+1. Если вы впервые создаете Scala проект с помощью IntelliJ, вам необходимо установить Scala SDK.
+   Справа от поля Scala SDK нажмите кнопку **Create**.
+1. Выберите последний номер версии (например, {{ site.scala-version }}) и нажмите **Download**. 
+Это может занять несколько минут, но тот же пакет SDK могут использовать последующие проекты.
+1. Когда SDK будет установлен и вы вернетесь в окно "New Project", нажмите **Finish**.
 
-## Writing code
+## Написание кода
 
-1. On the **Project** pane on the left, right-click `src` and select
-**New** => **Scala class**. If you don't see **Scala class**, right-click on **HelloWorld** and click on **Add Framework Support...**, select **Scala** and proceed. If you see **Error: library is not specified**, you can either click download button, or select the library path manually. If you only see **Scala Worksheet** try expanding the `src` folder and its `main` subfolder, and right-click on the `scala` folder.
-1. Name the class `Hello` and change the **Kind** to `object`.
-1. Change the code in the file to the following:
+1. На левой панели **Project** щелкните правой кнопкой мыши на папке `src` и выберите
+**New** => **Scala class**. Если вы не видите **Scala class**, щелкните правой кнопкой мыши на **HelloWorld**
+и выберите **Add Framework Support...**, затем - **Scala** и продолжить.
+Если вы видите ошибку **Error: library is not specified**, вы можете либо нажать кнопку загрузки,
+либо выбрать путь к библиотеке вручную. Если вы видите только **Scala Worksheet** попробуйте развернуть папку `src` 
+и её подпапку `main`, а затем правой кнопкой мыши на папке `scala`.
+1. Назовите класс `Hello` и измените **Kind** на `object`.
+1. Вставьте следующий код:
 
 {% tabs hello-world-entry-point class=tabs-scala-version %}
 
@@ -61,40 +65,41 @@ object Hello extends App {
   println("Hello, World!")
 ```
 
-In Scala 3, you can remove the object `Hello` and define a top-level method
-`hello` instead, which you annotate with `@main`.
+В Scala 3 вы можете удалить объект `Hello` и вместо него определить метод верхнего уровня `hello`
+с аннотацией `@main`.
 
 {% endtab %}
 
 {% endtabs %}
 
-## Running it
+## Запуск
 
 {% tabs hello-world-run class=tabs-scala-version %}
 
 {% tab  'Scala 2' for=hello-world-run %}
 
-* Right click on `Hello` in your code and select **Run 'Hello'**.
-* You're done!
+* Щелкните правой кнопкой мыши на `Hello` в своем коде и выберите **Run 'Hello'**.
+* Готово!
 
 {% endtab %}
 
 {% tab 'Scala 3' for=hello-world-run %}
 
-* Right click on `hello` in your code and select **Run 'hello'**.
-* You're done!
+* Щелкните правой кнопкой мыши на `hello` в своем коде и выберите **Run 'hello'**.
+* Готово!
 
 {% endtab %}
 
 {% endtabs %}
 
-## Experimenting with Scala
-A good way to try out code samples is with Scala Worksheets
+## Эксперименты со Скалой
 
-1. In the project pane on the left, right click
-`src` and select **New** => **Scala Worksheet**.
-2. Name your new Scala worksheet "Mathematician".
-3. Enter the following code into the worksheet:
+Хороший способ попробовать примеры кода — использовать Scala Worksheets.
+
+1. В левой панели проекта щелкните правой кнопкой мыши на
+`src` и выберите **New** => **Scala Worksheet**.
+2. Назовите новый Scala worksheet "Mathematician".
+3. Введите следующий код в worksheet:
 
 {% tabs square %}
 {% tab 'Scala 2 and 3' for=square %}
@@ -106,14 +111,14 @@ square(2)
 {% endtab %}
 {% endtabs %}
 
-As you change your code, you'll notice that it gets evaluated
-in the right pane. If you do not see a right pane, right-click on your Scala worksheet in the Project pane, and click on Evaluate Worksheet.
+После запуска кода вы заметите, что результаты его выполнения выводятся на правой панели.
+Если вы не видите правую панель, щелкните правой кнопкой мыши на вашем Scala worksheet на панели "Проект" 
+и выберите "Evaluate Worksheet".
 
-## Next Steps
+## Следующие шаги
 
-Now you know how to create a simple Scala project which can be used
-for starting to learn the language. In the next tutorial, we'll introduce
-an important build tool called sbt which can be used for simple projects
-and production apps.
+Теперь вы знаете, как создать простой Scala проект, который можно использовать для изучения языка. 
+В следующем уроке мы представим важный инструмент сборки под названием sbt, 
+который можно использовать для простых проектов и рабочих приложений.
 
-Up Next: [Building a Scala Project with IntelliJ and sbt](building-a-scala-project-with-intellij-and-sbt.html)
+Далее: [Создание проекта Scala с IntelliJ и sbt](building-a-scala-project-with-intellij-and-sbt.html)
