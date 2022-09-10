@@ -28,11 +28,9 @@ previous-page: /uk/building-a-scala-project-with-intellij-and-sbt
 1. Назвіть його `CubeCalculator` та змініть **Kind** на `object` та натисніть Enter або двічі клацніть на `object`.
 1. Замініть код на наступний:
     ```
-    object CubeCalculator extends App {
-      def cube(x: Int) = {
+    object CubeCalculator:
+      def cube(x: Int) =
         x * x * x
-      }
-    }
     ```
 
 ## Створення тесту
@@ -43,11 +41,10 @@ previous-page: /uk/building-a-scala-project-with-intellij-and-sbt
     ```
     import org.scalatest.funsuite.AnyFunSuite
     
-    class CubeCalculatorTest extends AnyFunSuite {
+    class CubeCalculatorTest extends AnyFunSuite:
       test("CubeCalculator.cube") {
         assert(CubeCalculator.cube(3) === 27)
       }
-    }
     ```
 1. У початковому коді клацніть правою кнопкою миші на `CubeCalculatorTest` та оберіть **Run 'CubeCalculatorTest'**.
 

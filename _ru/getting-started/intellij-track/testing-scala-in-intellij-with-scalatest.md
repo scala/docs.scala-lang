@@ -7,73 +7,66 @@ disqus: true
 previous-page: /ru/building-a-scala-project-with-intellij-and-sbt
 ---
 
-There are multiple libraries and testing methodologies for Scala,
-but in this tutorial, we'll demonstrate one popular option from the ScalaTest framework
-called [FunSuite](https://www.scalatest.org/getting_started_with_fun_suite).
+Для Scala существует множество библиотек и методологий тестирования, 
+но в этом руководстве мы продемонстрируем один популярный вариант из фреймворка ScalaTest 
+под названием [FunSuite](https://www.scalatest.org/getting_started_with_fun_suite).
 
-This assumes you know [how to build a project in IntelliJ](building-a-scala-project-with-intellij-and-sbt.html).
+Это предполагает, что вы знаете, [как создать проект в IntelliJ](building-a-scala-project-with-intellij-and-sbt.html).
 
-## Setup
-1. Create an sbt project in IntelliJ.
-1. Add the ScalaTest dependency:
-    1. Add the ScalaTest dependency to your `build.sbt` file:
+## Настройка
+1. Создайте sbt проект в IntelliJ.
+1. Добавьте зависимость ScalaTest:
+    1. Добавьте зависимость ScalaTest в свой файл `build.sbt`:
         ```
         libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.11" % Test
         ```
-    1. If you get a notification "build.sbt was changed", select **auto-import**.
-    1. These two actions will cause `sbt` to download the ScalaTest library.
-    1. Wait for the `sbt` sync to finish; otherwise, `AnyFunSuite` and `test()` will be
-        unrecognized.
-1. On the project pane on the left, expand `src` => `main`.
-1. Right-click on `scala` and select **New** => **Scala class**.
-1. Call it `CubeCalculator`, change the **Kind** to `object`, and hit enter or double-click on `object`.
-1. Replace the code with the following:
+    1. Если вы получили уведомление "build.sbt was changed", выберите **auto-import**.
+    1. Эти два действия заставят `sbt` подгрузить библиотеки ScalaTest.
+    1. Дождитесь окончания синхронизации `sbt`; в противном случае, `AnyFunSuite` и `test()` не будет распознаны.
+1. На панели проекта слева разверните `src` => `main`.
+1. Щелкните правой кнопкой мыши на `scala` и выберите **New** => **Scala class**.
+1. Назовите новый класс `CubeCalculator`, измените **Kind** на `object`, или дважды щелкните на `object`.
+1. Вставьте следующий код:
     ```
-    object CubeCalculator extends App {
-      def cube(x: Int) = {
+    object CubeCalculator:
+      def cube(x: Int) =
         x * x * x
-      }
-    }
     ```
 
-## Creating a test
-1. On the project pane on the left, expand `src` => `test`.
-1. Right-click on `scala` and select **New** => **Scala class**.
-1. Name the class `CubeCalculatorTest` and hit enter or double-click on `class`.
-1. Replace the code with the following:
+## Создание теста
+1. На панели проекта слева разверните `src` => `test`.
+1. Щелкните правой кнопкой мыши на `scala` и выберите **New** => **Scala class**.
+1. Назовите новый класс `CubeCalculatorTest` и нажмите **Enter** или дважды щелкните на `class`.
+1. Вставьте следующий код:
     ```
     import org.scalatest.funsuite.AnyFunSuite
     
-    class CubeCalculatorTest extends AnyFunSuite {
+    class CubeCalculatorTest extends AnyFunSuite:
       test("CubeCalculator.cube") {
         assert(CubeCalculator.cube(3) === 27)
       }
-    }
     ```
-1. In the source code, right-click `CubeCalculatorTest` and select
+1. В исходном коде щелкните правой кнопкой мыши на `CubeCalculatorTest` и выберите
     **Run 'CubeCalculatorTest'**.
 
-## Understanding the code
+## Разбор кода
 
-Let's go over this line by line:
+Давайте разберем код построчно:
 
-* `class CubeCalculatorTest` means we are testing the object `CubeCalculator`
-* `extends AnyFunSuite` lets us use functionality of ScalaTest's AnyFunSuite class
-such as the `test` function
-* `test` is a function that comes from the FunSuite library that collects
-results from assertions within the function body.
-* `"CubeCalculator.cube"` is a name for the test. You can call it anything but
-one convention is "ClassName.methodName".
-* `assert` takes a boolean condition and determines whether the test passes or fails.
-* `CubeCalculator.cube(3) === 27` checks whether the output of the `cube` function is
-indeed 27. The `===` is part of ScalaTest and provides clean error messages.
+* `class CubeCalculatorTest` означает, что мы тестируем `CubeCalculator`
+* `extends AnyFunSuite` позволяет нам использовать функциональность класса AnyFunSuite из ScalaTest,
+  такую как функция `test`
+* `test` это функция из библиотеки FunSuite, которая собирает результаты проверок в теле функции.
+* `"CubeCalculator.cube"` - это имя для теста. Вы можете называть тест как угодно, но по соглашению используется имя — "ClassName.methodName".
+* `assert` принимает логическое условие и определяет, пройден тест или нет.
+* `CubeCalculator.cube(3) === 27` проверяет, действительно ли вывод функции `cube` равен 27. 
+  `===` является частью ScalaTest и предоставляет понятные сообщения об ошибках.
 
-## Adding another test case
-1. Add another `assert` statement after the first one that checks for the cube
-    of `0`.
-1. Re-run the test again by right-clicking `CubeCalculatorTest` and selecting
-    'Run **CubeCalculatorTest**'.
+## Добавление еще одного теста
+1. Добавьте еще один оператор `assert` после первого, который проверяет 0 в кубе.
+1. Перезапустите тест `CubeCalculatorTest`, кликнув правой кнопкой мыши и выбрав
+    **Run 'CubeCalculatorTest'**.
 
-## Conclusion
-You've seen one way to test your Scala code. You can learn more about ScalaTest's
-FunSuite on the [official website](https://www.scalatest.org/getting_started_with_fun_suite).
+## Резюме
+Вы видели один из способов тестирования Scala кода. 
+Узнать больше о FunSuite от ScalaTest можно на [официальном сайте](https://www.scalatest.org/getting_started_with_fun_suite).
