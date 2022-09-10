@@ -9,7 +9,7 @@ previous-page: /ru/building-a-scala-project-with-intellij-and-sbt
 
 Для Scala существует множество библиотек и методологий тестирования, 
 но в этом руководстве мы продемонстрируем один популярный вариант из фреймворка ScalaTest 
-под названием [FunSuite](https://www.scalatest.org/getting_started_with_fun_suite).
+под названием [AnyFunSuite](https://www.scalatest.org/getting_started_with_fun_suite).
 
 Это предполагает, что вы знаете, [как создать проект в IntelliJ](building-a-scala-project-with-intellij-and-sbt.html).
 
@@ -67,6 +67,7 @@ previous-page: /ru/building-a-scala-project-with-intellij-and-sbt
 1. Перезапустите тест `CubeCalculatorTest`, кликнув правой кнопкой мыши и выбрав
     **Run 'CubeCalculatorTest'**.
 
-## Резюме
+## Заключение
 Вы видели один из способов тестирования Scala кода. 
-Узнать больше о FunSuite от ScalaTest можно на [официальном сайте](https://www.scalatest.org/getting_started_with_fun_suite).
+Узнать больше о AnyFunSuite от ScalaTest можно на [официальном сайте](https://www.scalatest.org/getting_started_with_fun_suite).
+Вы также можете использовать другие тестовые фреймворки, такие как [ScalaCheck](https://www.scalacheck.org/) и [Specs2](https://etorreborre.github.io/specs2/).
