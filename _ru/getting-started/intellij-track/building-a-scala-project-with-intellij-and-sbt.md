@@ -87,7 +87,7 @@ libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % 
 Здесь `libraryDependencies` представляет набор зависимостей, 
 и с помощью `+=` мы добавляем зависимость [scala-parser-combinators](https://github.com/scala/scala-parser-combinators) 
 к набору зависимостей, которые sbt будет загружать при запуске. 
-Теперь в любой файл Scala можно импортировать классы, объекты и т.д. из `scala-parser-combinators` с помощью обычного импорта.
+Теперь в любом файле Scala можно импортировать классы, объекты и т.д. из `scala-parser-combinators` с помощью обычного импорта.
 
 Вы можете найти больше опубликованных библиотек на [Scaladex](https://index.scala-lang.org/), каталоге библиотек Scala, 
 где вы также можете скопировать указанную выше информацию о зависимостях для вставки в свой файл `build.sbt`.
