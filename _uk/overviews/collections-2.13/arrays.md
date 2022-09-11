@@ -8,7 +8,7 @@ num: 10
 previous-page: concrete-mutable-collection-classes
 next-page: strings
 
-languages: uk
+language: uk
 ---
 
 [Масиви](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/Array.html) є спеціальним типом колекцій в Scala. З однієї сторони, Scala масиви один в один відповідають масивам в Java. Наприклад, Scala масив `Array[Int]` представлений в Java, як `int[]`, а `Array[Double]` в Java виглядатиме, як `double[]` і `Array[String]` відповідатиме Java `String[]`. Але з іншої сторони, Scala масиви пропонують набагато більше, ніж Java аналоги. По-перше, Scala масиви можуть бути _узагальнені_. Наприклад ви можете мати `Array[T]`, де `T` - це параметр типу або ж абстрактний тип. По-друге, Scala масиви сумісні зі Scala послідовностями (`Seq`), тобто ви можете передати на вхід `Array[T]` де вимагається `Seq[T]`. Врешті-решт, Scala масиви також підтримують усі операції, які можна зробити з послідовностями (`Seq`). Ось приклад цього на ділі:
