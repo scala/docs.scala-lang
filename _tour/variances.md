@@ -53,7 +53,7 @@ What about boxes? Is `Box[Cat]` a subtype of `Box[Animal]`, like `Cat` is a subt
 Why could this be a problem? We can get the cat from the box, and it's still an Animal, isn't it? Well, yes. But that's not all we can do. We can also replace the cat in the box with a different animal
 
 ```scala
-  mayAnimalBox.content = Dog("Fido")
+  myAnimalBox.content = Dog("Fido")
 ```
 
 There now is a Dog in the Animal box. That's all fine, you can put Dogs in Animal boxes, because Dogs are Animals. But our Animal Box is a Cat Box! You can't put a Dog in a Cat box. If we could, and then try to get the cat from our Cat Box, it would turn out to be a dog, breaking type soundness.
