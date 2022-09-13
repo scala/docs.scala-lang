@@ -12,37 +12,37 @@ scala3-sections:
 - title: "第一步"
   links:
     - title: "Scala 3 中的新东西"
-      description: "Scala 3 现存新特性概览"
+      description: "Scala 3 中令人兴奋的新特性概览"
       icon: "fa fa-star"
       link: /scala3/new-in-scala3.html
     - title: "快速开始"
-      description: "安装 Scala 3 并开始写些 Scala 代码"
+      description: "在你的电脑中安装 Scala 3，然后开始写些 Scala 代码！"
       icon: "fa fa-rocket"
       link: /scala3/getting-started.html
-    - title: "Scala 3 书籍"
-      description: "一部介绍主要语言特性的线上书"
+    - title: "Scala 3 册子"
+      description: "通过一系列小课程来学习 Scala。"
       icon: "fa fa-book"
       link: /scala3/book/introduction.html
 - title: "更多细节"
   links:
     - title: "迁移指引"
-      description: "一份帮你从 Scala 2 迁移到 Scala 3 的指引"
+      description: "一份帮你从 Scala 2 迁移到 Scala 3 的指引。"
       icon: "fa fa-suitcase"
       link: /scala3/guides/migration/compatibility-intro.html
     - title: "导览"
-      description: "关于语言特别之处的详细导览"
+      description: "关于语言特别之处的详细导览。"
       icon: "fa fa-map"
       link: /zh-cn/scala3/guides.html
     - title: "Scala 库 API"
-      description: "Scala 3 标准库API文档（多个小版本）"
+      description: "Scala 3 每一个版本的标准库API文档。"
       icon: "fa fa-file-alt"
       link: https://scala-lang.org/api/3.x/
     - title: "语言参考手册"
-      description: "Scala 3 语言参考手册"
+      description: "Scala 3 语言参考手册。"
       icon: "fa fa-book"
       link: https://docs.scala-lang.org/scala3/reference
     - title: "贡献指南"
-      description: "Scala 3 编译器指南及如何贡献代码"
+      description: "Scala 3 编译器指南及如何修复问题"
       icon: "fa fa-cogs"
       link: /scala3/guides/contribution/contribution-intro.html
     - title: "Scala 3 全新的 Scaladoc"
@@ -109,4 +109,8 @@ scala2-sections:
         description: "Scala改进过程（Scala Improvement Process），语言及编译器进展"
         icon: "fa fa-cogs"
         link: /sips/index.html
+      - title: "为 Scala 作贡献"
+        description: "为 Scala 项目作贡献的完整指南"
+        icon: "fa fa-cogs"
+        link: /contribute/
 ---
