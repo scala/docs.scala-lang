@@ -85,7 +85,9 @@ Run the following command in your terminal, following the on-screen instructions
 {% endtabs %}
 <!-- End tabs -->
 
-You might need to restart your terminal/shell after you install the tool using the package manager mentioned above.
+> <i class="fa fa-info"></i>&nbsp;&nbsp; You may need to restart your terminal, log out,
+> or reboot in order for the changes to take effect.
+{: .help-info}
 
 <!-- Alternative Detail - test the `scala` command -->
 {% altDetails testing-your-setup 'Testing your setup' %}
@@ -94,7 +96,6 @@ Check your setup with the command `scala -version`, which should output:
 $ scala -version
 Scala code runner version {{site.scala-3-version}} -- Copyright 2002-2022, LAMP/EPFL
 ```
-If that does not work, you may need to log out and log back in (or reboot) in order for the changes to take effect.
 {% endaltDetails %}
 <!-- end Alternative Detail -->
 
