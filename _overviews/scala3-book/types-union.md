@@ -76,10 +76,10 @@ val password = Password(123)   // password: Password = Password(123)
 This REPL example shows how a union type can be used when binding a variable to the result of an `if`/`else` expression:
 
 ````
-scala> val a = if (true) name else password
+scala> val a = if true then name else password
 val a: Object = Username(Eve)
 
-scala> val b: Password | Username = if (true) name else password
+scala> val b: Password | Username = if true then name else password
 val b: Password | Username = Username(Eve)
 ````
 
