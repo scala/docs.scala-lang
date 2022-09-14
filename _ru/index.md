@@ -11,11 +11,11 @@ sections:
       - title: "Приступая к работе"
         description: "Установите Scala на свой компьютер и начните писать код на Scala!"
         icon: "fa fa-rocket"
-        link: /getting-started.html
+        link: /ru/getting-started.html
       - title: "Тур по Scala"
         description: "Вступительный обзор по основным возможностям языка."
         icon: "fa fa-flag"
-        link: /tour/tour-of-scala.html
+        link: /ru/tour/tour-of-scala.html
       - title: "Книга по Scala 3"
         description: "Изучайте Scala используя серию коротких уроков."
         icon: "fa fa-book-open"
@@ -25,7 +25,7 @@ sections:
         icon: "fa fa-cloud"
         link: /online-courses.html
       - title: Книги
-        description: "Напечатанные а также цифровые книги о Scala."
+        description: "Напечатанные, а также электронные книги о Scala."
         icon: "fa fa-book"
         link: /books.html
       - title: Уроки
@@ -42,7 +42,7 @@ sections:
       - title: "Справочники"
         description: "Подробные справочники по отдельным разделам языка."
         icon: "fa fa-database"
-        link: /overviews/index.html
+        link: /ru/overviews/index.html
       - title: "Стилистика"
         description: "Детальное руководство по написанию каноничного Scala кода."
         icon: "fa fa-bookmark"
@@ -50,9 +50,9 @@ sections:
       - title: "Шпаргалка"
         description: "Краткий справочник, охватывающий основы синтаксиса Scala."
         icon: "fa fa-list"
-        link: /cheatsheets/index.html
+        link: /ru/cheatsheets/index.html
       - title: "Вопрос-Ответ"
-        description: "Список по наиболее часто задаваемых вопросов с ответами по функционалу Scala."
+        description: "Список по наиболее часто задаваемым вопросам с ответами по функционалу Scala."
         icon: "fa fa-question-circle"
         link: /tutorials/FAQ/index.html
       - title: "Спецификация"
@@ -75,11 +75,11 @@ sections:
         icon: "fa fa-star"
         link: /scala3/new-in-scala3.html
       - title: "Новая функциональность Scaladoc для Scala 3"
-        description: "Ключевые особенности новой функциональности Scaladoc"
+        description: "Ключевые особенности новой функциональности Scaladoc."
         icon: "fa fa-star"
         link: /scala3/scaladoc.html
       - title: "Выступления"
-        description: "Доступные онлайн выступления о Scala 3"
+        description: "Доступные онлайн выступления о Scala 3."
         icon: "fa fa-play-circle"
         link: /scala3/talks.html
 
@@ -89,8 +89,8 @@ sections:
         description: "Описание процесса развития языка и список всех предложений по улучшению Scala (SIP)."
         icon: "fa fa-cogs"
         link: /sips/index.html
-      - title: "Станьте участником развитие Scala"
-        description: "От начала до конца: узнайте, как вы можете помочь открытой экосистеме Scala"
+      - title: "Станьте участником развития Scala"
+        description: "От начала до конца: узнайте, как вы можете помочь открытой экосистеме Scala."
         icon: "fa fa-code-branch"
         link: /contribute/
 ---
