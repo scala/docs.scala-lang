@@ -133,7 +133,7 @@ This trait implements `foreach` by continually calling the provided function `f:
 {% endtab %}
 
 {% tab 'Scala 3' for=mixin-extended-abstract-iterator %}
-```scala mdoc
+```scala
 trait RichIterator extends AbsIterator:
   def foreach(f: T => Unit): Unit = while hasNext do f(next())
 }
