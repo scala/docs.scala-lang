@@ -36,7 +36,7 @@ Class `D` has a superclass `B` and a mixin `C`. Classes can only have one superc
 {% endtab %}
 
 {% tab 'Scala 3' for=mixin-first-exemple %}
-```scala mdoc
+```scala
 abstract class A:
   val message: String
 class B extends A:
