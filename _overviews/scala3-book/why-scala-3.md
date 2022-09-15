@@ -453,7 +453,7 @@ _Safety_ is related to several new and changed features:
 Good examples of _ergonomics_ are enumerations and extension methods, which have been added to Scala 3 in a very readable manner:
 
 {% tabs extension %}
-{% tab 'Scala 3' for=extension %}
+{% tab 'Scala 3 Only' for=extension %}
 ```scala
 // enumeration
 enum Color:
