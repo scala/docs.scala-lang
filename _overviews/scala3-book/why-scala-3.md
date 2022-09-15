@@ -108,7 +108,7 @@ def add(a: Int, b: Int) = a + b
 This is more true than ever in Scala 3, such as when using [union types][union-types]:
 
 {% tabs union %}
-{% tab 'Scala 3' for=union %}
+{% tab 'Scala 3 Only' for=union %}
 ```scala
 // union type parameter
 def help(id: Username | Password) =
