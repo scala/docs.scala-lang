@@ -140,7 +140,7 @@ val c = List(1,2,3)
 Creating types like traits, classes, and enumerations are concise:
 
 {% tabs enum %}
-{% tab 'Scala 3' for=enum %}
+{% tab 'Scala 3 Only' for=enum %}
 ```scala
 trait Tail:
   def wagTail(): Unit
