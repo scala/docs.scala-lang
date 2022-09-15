@@ -29,7 +29,7 @@ val salaries = Seq(20000, 70000, 40000)
 val doubleSalary = (x: Int) => x * 2
 val newSalaries = salaries.map(doubleSalary) // List(40000, 140000, 80000)
 ```
-{% end tab %}
+{% endtab %}
 
 {% tab 'Scala 3' for=map_example_1 %}
 ```scala
@@ -37,9 +37,9 @@ val salaries = Seq(20_000, 70_000, 40_000)
 val doubleSalary = (x: Int) => x * 2
 val newSalaries = salaries.map(doubleSalary) // List(40000, 140000, 80000)
 ```
-{% end tab %}
+{% endtab %}
 
-{% end tabs %}
+{% endtabs %}
 
 `doubleSalary` is a function which takes a single Int, `x`, and returns `x * 2`. In general, the tuple on the left of the arrow `=>` is a parameter list and the value of the expression on the right is what gets returned. On line 3, the function `doubleSalary` gets applied to each element in the
 list of salaries.
@@ -54,16 +54,16 @@ an argument to map:
 val salaries = Seq(20000, 70000, 40000)
 val newSalaries = salaries.map(x => x * 2) // List(40000, 140000, 80000)
 ```
-{% end tab %}
+{% endtab %}
 
 {% tab 'Scala 3' for=map_example_2 %}
 ```scala
 val salaries = Seq(20_000, 70_000, 40_000)
 val newSalaries = salaries.map(x => x * 2) // List(40000, 140000, 80000)
 ```
-{% end tab %}
+{% endtab %}
 
-{% end tabs %}
+{% endtabs %}
 
 Notice how `x` is not declared as an Int in the above example. That's because the
 compiler can infer the type based on the type of function map expects (see [Currying](/tour/multiple-parameter-lists.html)). An even more idiomatic way to write the same piece of code would be:
@@ -75,16 +75,16 @@ compiler can infer the type based on the type of function map expects (see [Curr
 val salaries = Seq(20000, 70000, 40000)
 val newSalaries = salaries.map(_ * 2)
 ```
-{% end tab %}
+{% endtab %}
 
 {% tab 'Scala 3' for=map_example_3 %}
 ```scala
 val salaries = Seq(20_000, 70_000, 40_000)
 val newSalaries = salaries.map(_ * 2)
 ```
-{% end tab %}
+{% endtab %}
 
-{% end tabs %}
+{% endtabs %}
 
 Since the Scala compiler already knows the type of the parameters (a single Int),
  you just need to provide the right side of the function. The only
@@ -106,7 +106,7 @@ case class WeeklyWeatherForecast(temperatures: Seq[Double]) {
   def forecastInFahrenheit: Seq[Double] = temperatures.map(convertCtoF) // <-- passing the method convertCtoF
 }
 ```
-{% end tab %}
+{% endtab %}
 
 {% tab 'Scala 3' for=Coercing_methods_into_functions %}
 ```scala
@@ -116,9 +116,9 @@ case class WeeklyWeatherForecast(temperatures: Seq[Double]):
 
   def forecastInFahrenheit: Seq[Double] = temperatures.map(convertCtoF) // <-- passing the method convertCtoF
 ```
-{% end tab %}
+{% endtab %}
 
-{% end tabs %}
+{% endtabs %}
 
 Here the method `convertCtoF` is passed to the higher order function `map`. This is possible because the compiler coerces `convertCtoF` to the function `x => convertCtoF(x)` (note: `x` will
   be a generated name which is guaranteed to be unique within its scope).
@@ -143,7 +143,7 @@ object SalaryRaiser {
     salaries.map(salary => salary * salary)
 }
 ```
-{% end tab %}
+{% endtab %}
 
 {% tab 'Scala 3' for=Functions_that_accept_functions_1 %}
 ```scala
@@ -158,9 +158,9 @@ object SalaryRaiser:
   def hugePromotion(salaries: List[Double]): List[Double] =
     salaries.map(salary => salary * salary)
 ```
-{% end tab %}
+{% endtab %}
 
-{% end tabs %}
+{% endtabs %}
 
 Notice how each of the three methods vary only by the multiplication factor. To simplify,
 you can extract the repeated code into a higher-order function like so:
@@ -184,7 +184,7 @@ object SalaryRaiser {
     promotion(salaries, salary => salary * salary)
 }
 ```
-{% end tab %}
+{% endtab %}
 
 {% tab 'Scala 3' for=Functions_that_accept_functions_2 %}
 ```scala
@@ -202,9 +202,9 @@ object SalaryRaiser:
   def hugePromotion(salaries: List[Double]): List[Double] =
     promotion(salaries, salary => salary * salary)
 ```
-{% end tab %}
+{% endtab %}
 
-{% end tabs %}
+{% endtabs %}
 
 The new method, `promotion`, takes the salaries plus a function of type `Double => Double`
 (i.e. a function that takes a Double and returns a Double) and returns the product.
@@ -231,7 +231,7 @@ val endpoint = "users"
 val query = "id=1"
 val url = getURL(endpoint, query) // "https://www.example.com/users?id=1": String
 ```
-{% end tab %}
+{% endtab %}
 
 {% tab 'Scala 3' for=Functions_that_return_functions %}
 ```scala
@@ -245,9 +245,9 @@ val endpoint = "users"
 val query = "id=1"
 val url = getURL(endpoint, query) // "https://www.example.com/users?id=1": String
 ```
-{% end tab %}
+{% endtab %}
 
-{% end tabs %}
+{% endtabs %}
 
 Notice the return type of urlBuilder `(String, String) => String`. This means that
 the returned anonymous function takes two Strings and returns a String. In this case,
