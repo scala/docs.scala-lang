@@ -35,7 +35,6 @@ val b = a.filter(_.startsWith("j"))
 也就是说，你不要这样写：
 
 ```scala
-```scala
 // don’t do this in FP
 class Person(var firstName: String, var lastName: String)
              ---                    ---
