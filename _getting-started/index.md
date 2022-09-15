@@ -2,7 +2,7 @@
 layout: singlepage-overview
 title: Getting Started
 partof: getting-started
-languages: [fr, ja, uk]
+languages: [fr, ja, ru, uk]
 includeTOC: true
 
 newcomer_resources:

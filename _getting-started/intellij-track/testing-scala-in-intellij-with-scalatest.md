@@ -2,7 +2,7 @@
 title: Testing Scala in IntelliJ with ScalaTest
 layout: singlepage-overview
 partof: testing-scala-in-intellij-with-scalatest
-languages: [ja, uk]
+languages: [ja, ru, uk]
 disqus: true
 previous-page: building-a-scala-project-with-intellij-and-sbt
 
@@ -31,11 +31,9 @@ This assumes you know [how to build a project in IntelliJ](building-a-scala-proj
 1. Call it `CubeCalculator`, change the **Kind** to `object`, and hit enter or double-click on `object`.
 1. Replace the code with the following:
     ```
-    object CubeCalculator extends App {
-      def cube(x: Int) = {
+    object CubeCalculator:
+      def cube(x: Int) =
         x * x * x
-      }
-    }
     ```
 
 ## Creating a test
@@ -46,11 +44,10 @@ This assumes you know [how to build a project in IntelliJ](building-a-scala-proj
     ```
     import org.scalatest.funsuite.AnyFunSuite
     
-    class CubeCalculatorTest extends AnyFunSuite {
+    class CubeCalculatorTest extends AnyFunSuite:
       test("CubeCalculator.cube") {
         assert(CubeCalculator.cube(3) === 27)
       }
-    }
     ```
 1. In the source code, right-click `CubeCalculatorTest` and select
     **Run 'CubeCalculatorTest'**.

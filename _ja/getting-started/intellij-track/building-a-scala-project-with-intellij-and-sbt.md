@@ -56,10 +56,9 @@ sbt は、より複雑なプロジェクトを構築すだしたら便利にな�
 1. クラスのコードを次おように変更します。
 
 ```
-object Main extends App {
+@main def run() =
   val ages = Seq(42, 75, 29, 64)
   println(s"The oldest person is ${ages.max}")
-}
 ```
 
 注：Intellij は Scala コンパイラーの独自実装を持っており、コードが間違っていると Intellij が示しても正しい場合がときどきあります。
