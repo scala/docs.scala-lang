@@ -70,7 +70,7 @@ abstract class AbsIterator {
 {% endtab %}
 
 {% tab 'Scala 3' for=mixin-abstract-iterator %}
-```scala mdoc
+```scala
 abstract class AbsIterator:
   type T
   def hasNext: Boolean
