@@ -348,10 +348,10 @@ nums.sortWith(_ > _)
 {% tab 'Scala 2' for=match %}
 ```scala
 val numAsString = i match {
-    case 1 | 3 | 5 | 7 | 9 => "odd"
-    case 2 | 4 | 6 | 8 | 10 => "even"
-    case _ => "too big"
-  }
+  case 1 | 3 | 5 | 7 | 9 => "odd"
+  case 2 | 4 | 6 | 8 | 10 => "even"
+  case _ => "too big"
+}
 ```
 {% endtab %}
 
@@ -371,9 +371,9 @@ Because they can return values, they’re often used as the body of a method:
 {% tab 'Scala 2' for=match-body %}
 ```scala
 def isTruthy(a: Matchable) = a match {
-    case 0 | "" => false
-    case _ => true
- }
+  case 0 | "" => false
+  case _ => true
+}
 ```
 {% endtab %}
 
