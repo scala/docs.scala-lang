@@ -157,7 +157,7 @@ richStringIter.foreach(println)
 {% endtab %}
 
 {% tab 'Scala 3' for=mixin-combination-class %}
-```scala mdoc
+```scala
 class RichStringIter extends StringIterator("Scala"), RichIterator
 val richStringIter = RichStringIter()
 richStringIter.foreach(println)
