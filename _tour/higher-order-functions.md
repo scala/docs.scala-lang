@@ -78,7 +78,7 @@ val newSalaries = salaries.map(_ * 2)
 {% end tab %}
 
 {% tab 'Scala 3' for=map_example_3 %}
-```scala mdoc
+```scala
 val salaries = Seq(20_000, 70_000, 40_000)
 val newSalaries = salaries.map(_ * 2)
 ```
