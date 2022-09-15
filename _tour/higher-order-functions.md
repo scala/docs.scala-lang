@@ -21,7 +21,7 @@ In a pure Object Oriented world a good practice is to avoid exposing methods par
 One of the most common examples is the higher-order
 function `map` which is available for collections in Scala.
 
-{% tabs map_example_1 %}
+{% tabs map_example_1 class=tabs-scala-version %}
 
 {% tab 'Scala 2' for=map_example_1 %}
 ```scala mdoc
@@ -47,7 +47,7 @@ list of salaries.
 To shrink the code, we could make the function anonymous and pass it directly as
 an argument to map:
 
-{% tabs map_example_2 %}
+{% tabs map_example_2 class=tabs-scala-version %}
 
 {% tab 'Scala 2' for=map_example_2 %}
 ```scala:nest
@@ -68,7 +68,7 @@ val newSalaries = salaries.map(x => x * 2) // List(40000, 140000, 80000)
 Notice how `x` is not declared as an Int in the above example. That's because the
 compiler can infer the type based on the type of function map expects (see [Currying](/tour/multiple-parameter-lists.html)). An even more idiomatic way to write the same piece of code would be:
 
-{% tabs map_example_3 %}
+{% tabs map_example_3 class=tabs-scala-version %}
 
 {% tab 'Scala 2' for=map_example_3 %}
 ```scala mdoc:nest
@@ -95,7 +95,7 @@ the previous example).
 It is also possible to pass methods as arguments to higher-order functions because
 the Scala compiler will coerce the method into a function.
 
-{% tabs Coercing_methods_into_functions %}
+{% tabs Coercing_methods_into_functions class=tabs-scala-version %}
 
 {% tab 'Scala 2' for=Coercing_methods_into_functions %}
 ```scala mdoc
@@ -127,7 +127,7 @@ Here the method `convertCtoF` is passed to the higher order function `map`. This
 One reason to use higher-order functions is to reduce redundant code. Let's say you wanted some methods that could raise someone's salaries by various factors. Without creating a higher-order function,
 it might look something like this:
 
-{% tabs Functions_that_accept_functions_1 %}
+{% tabs Functions_that_accept_functions_1 class=tabs-scala-version %}
 
 {% tab 'Scala 2' for=Functions_that_accept_functions_1 %}
 ```scala mdoc
@@ -165,7 +165,7 @@ object SalaryRaiser:
 Notice how each of the three methods vary only by the multiplication factor. To simplify,
 you can extract the repeated code into a higher-order function like so:
 
-{% tabs Functions_that_accept_functions_2 %}
+{% tabs Functions_that_accept_functions_2 class=tabs-scala-version %}
 
 {% tab 'Scala 2' for=Functions_that_accept_functions_2 %}
 ```scala mdoc:nest
@@ -216,7 +216,7 @@ Methods and functions usually express behaviours or data transformations, theref
 There are certain cases where you want to generate a function. Here's an example
 of a method that returns a function.
 
-{% tabs Functions_that_return_functions %}
+{% tabs Functions_that_return_functions class=tabs-scala-version %}
 
 {% tab 'Scala 2' for=Functions_that_return_functions %}
 ```scala mdoc
