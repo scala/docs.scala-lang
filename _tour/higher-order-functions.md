@@ -23,8 +23,16 @@ function `map` which is available for collections in Scala.
 
 {% tabs map_example_1 %}
 
-{% tab 'Scala 2 and 3' for=map_example_1 %}
+{% tab 'Scala 2' for=map_example_1 %}
 ```scala mdoc
+val salaries = Seq(20000, 70000, 40000)
+val doubleSalary = (x: Int) => x * 2
+val newSalaries = salaries.map(doubleSalary) // List(40000, 140000, 80000)
+```
+{% end tab %}
+
+{% tab 'Scala 3' for=map_example_1 %}
+```scala
 val salaries = Seq(20_000, 70_000, 40_000)
 val doubleSalary = (x: Int) => x * 2
 val newSalaries = salaries.map(doubleSalary) // List(40000, 140000, 80000)
@@ -41,21 +49,36 @@ an argument to map:
 
 {% tabs map_example_2 %}
 
-{% tab 'Scala 2 and 3' for=map_example_2 %}
+{% tab 'Scala 2' for=map_example_2 %}
 ```scala:nest
+val salaries = Seq(20000, 70000, 40000)
+val newSalaries = salaries.map(x => x * 2) // List(40000, 140000, 80000)
+```
+{% end tab %}
+
+{% tab 'Scala 3' for=map_example_2 %}
+```scala
 val salaries = Seq(20_000, 70_000, 40_000)
 val newSalaries = salaries.map(x => x * 2) // List(40000, 140000, 80000)
 ```
 {% end tab %}
 
 {% end tabs %}
+
 Notice how `x` is not declared as an Int in the above example. That's because the
 compiler can infer the type based on the type of function map expects (see [Currying](/tour/multiple-parameter-lists.html)). An even more idiomatic way to write the same piece of code would be:
 
 {% tabs map_example_3 %}
 
-{% tab 'Scala 2 and 3' for=map_example_3 %}
+{% tab 'Scala 2' for=map_example_3 %}
 ```scala mdoc:nest
+val salaries = Seq(20000, 70000, 40000)
+val newSalaries = salaries.map(_ * 2)
+```
+{% end tab %}
+
+{% tab 'Scala 3' for=map_example_3 %}
+```scala mdoc
 val salaries = Seq(20_000, 70_000, 40_000)
 val newSalaries = salaries.map(_ * 2)
 ```
