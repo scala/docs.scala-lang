@@ -102,7 +102,7 @@ class StringIterator(s: String) extends AbsIterator {
 {% endtab %}
 
 {% tab 'Scala 3' for=mixin-concrete-string-iterator %}
-```scala mdoc
+```scala
 class StringIterator(s: String) extends AbsIterator:
   type T = Char
   private var i = 0
