@@ -29,7 +29,7 @@ We can combine the use of [infix/postfix operators](operators.html) with this me
 
 Here is the implementation of a loop-unless statement:
 
-```scala mdoc
+```scala mdoc:reset
 def loop(body: => Unit): LoopUnlessCond =
   new LoopUnlessCond(body)
 protected class LoopUnlessCond(body: => Unit) {
