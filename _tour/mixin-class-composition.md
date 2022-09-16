@@ -136,7 +136,6 @@ This trait implements `foreach` by continually calling the provided function `f:
 ```scala
 trait RichIterator extends AbsIterator:
   def foreach(f: T => Unit): Unit = while hasNext do f(next())
-}
 ```
 This trait implements `foreach` by continually calling the provided function `f: T => Unit` on the next element (`next()`) as long as there are further elements (`while hasNext`). Because `RichIterator` is a trait, it doesn't need to implement the abstract members of AbsIterator.
 
