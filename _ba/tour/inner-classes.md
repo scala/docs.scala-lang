@@ -21,7 +21,7 @@ Radi ilustracije razlike, prikazaćemo implementaciju klase grafa:
 class Graph {
   class Node {
     var connectedNodes: List[Node] = Nil
-    def connectTo(node: Node) {
+    def connectTo(node: Node): Unit = {
       if (!connectedNodes.exists(node.equals)) {
         connectedNodes = node :: connectedNodes
       }
@@ -35,7 +35,7 @@ class Graph {
   }
 }
 ```
- 
+
 U našem programu, grafovi su predstavljeni listom čvorova (`List[Node]`).
 Svaki čvor ima listu drugih čvorova s kojima je povezan (`connectedNodes`). Klasa `Node` je _path-dependent tip_ jer je ugniježdena u klasi `Graph`. Stoga, svi čvorovi u `connectedNodes` moraju biti kreirani koristeći `newNode` iz iste instance klase `Graph`.
 
@@ -47,13 +47,13 @@ val node3: graph1.Node = graph1.newNode
 node1.connectTo(node2)
 node3.connectTo(node1)
 ```
- 
+
 Eksplicitno smo deklarisali tip `node1`, `node2`, i `node3` kao `graph1.Node` zbog jasnosti ali ga je kompajler mogao sam zaključiti. Pošto kada pozivamo `graph1.newNode` koja poziva `new Node`, metoda koristi instancu `Node` specifičnu instanci `graph1`.
 
 Da imamo dva grafa, sistem tipova Scale ne dozvoljava miješanje  čvorova definisanih u različitim grafovima,
 jer čvorovi različitih grafova imaju različit tip.
 Ovo je primjer netačnog programa:
- 
+
 ```scala mdoc:fail
 val graph1: Graph = new Graph
 val node1: graph1.Node = graph1.newNode
@@ -69,7 +69,7 @@ U Javi bi zadnja linija prethodnog primjera bila tačna.
 Za čvorove oba grafa, Java bi dodijelila isti tip `Graph.Node`; npr. `Node` bi imala prefiks klase `Graph`.
 U Scali takav tip je također moguće izraziti, piše se kao `Graph#Node`.
 Ako želimo povezati čvorove različitih grafova, moramo promijeniti definiciju naše inicijalne implementacije grafa:
- 
+
 ```scala mdoc:nest
 class Graph {
   class Node {
@@ -88,6 +88,6 @@ class Graph {
   }
 }
 ```
- 
+
 > Primijetite da ovaj program ne dozvoljava da dodamo čvor u dva različita grafa.
 Ako bi htjeli ukloniti i ovo ograničenje, moramo promijeniti tipski parametar `nodes` u `Graph#Node`.

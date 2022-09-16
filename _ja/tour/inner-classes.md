@@ -19,7 +19,7 @@ Javaのような、内部クラスが外側のクラスのメンバーとなる�
 class Graph {
   class Node {
     var connectedNodes: List[Node] = Nil
-    def connectTo(node: Node) {
+    def connectTo(node: Node): Unit = {
       if (!connectedNodes.exists(node.equals)) {
         connectedNodes = node :: connectedNodes
       }
