@@ -32,7 +32,7 @@ class Graph {
 
 W naszym programie grafy są reprezentowane przez listę wierzchołków. Wierzchołki są obiektami klasy wewnętrznej `Node`. Każdy wierzchołek zawiera listę sąsiadów, które są przechowywane w liście `connectedNodes`. Możemy teraz skonfigurować graf z kilkoma wierzchołkami i połączyć je ze sobą:
 
-```scala mdoc
+```scala mdoc:nest
 def graphTest: Unit = {
   val g = new Graph
   val n1 = g.newNode

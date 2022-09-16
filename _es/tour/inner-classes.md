@@ -12,26 +12,28 @@ previous-page: implicit-parameters
 
 En Scala es posible que las clases tengan como miembro otras clases. A diferencia de lenguajes similares a Java donde ese tipo de clases internas son miembros de las clases que las envuelven, en Scala esas clases internas están ligadas al objeto externo. Para ilustrar esta diferencia, vamos a mostrar rápidamente una implementación del tipo grafo:
 
-    class Graph {
-      class Node {
-        var connectedNodes: List[Node] = Nil
-        def connectTo(node: Node): Unit = {
-          if (!connectedNodes.exists(node.equals)) {
-            connectedNodes = node :: connectedNodes
-          }
-        }
-      }
-      var nodes: List[Node] = Nil
-      def newNode: Node = {
-        val res = new Node
-        nodes = res :: nodes
-        res
+```scala mdoc
+class Graph {
+  class Node {
+    var connectedNodes: List[Node] = Nil
+    def connectTo(node: Node): Unit = {
+      if (!connectedNodes.exists(node.equals)) {
+        connectedNodes = node :: connectedNodes
       }
     }
+  }
+  var nodes: List[Node] = Nil
+  def newNode: Node = {
+    val res = new Node
+    nodes = res :: nodes
+    res
+  }
+}
+```
 
 En nuestro programa, los grafos son representados mediante una lista de nodos. Estos nodos son objetos de la clase interna `Node`. Cada nodo tiene una lista de vecinos que se almacena en la lista `connectedNodes`. Ahora podemos crear un grafo con algunos nodos y conectarlos incrementalmente:
 
-```scala mdoc
+```scala mdoc:nest
 def graphTest: Unit = {
   val g = new Graph
   val n1 = g.newNode

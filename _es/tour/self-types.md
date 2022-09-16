@@ -91,14 +91,12 @@ Por favor nótese que en esta clase nos es posible instanciar `NodoImpl` porque 
 
 Aquí hay un ejemplo de uso de la clase `GrafoDirigidoConcreto`:
 
-```scala mdoc
-def graphTest: Unit = {
-  val g: Grafo = new GrafoDirigidoConcreto
-  val n1 = g.agregarNodo
-  val n2 = g.agregarNodo
-  val n3 = g.agregarNodo
-  n1.conectarCon(n2)
-  n2.conectarCon(n3)
-  n1.conectarCon(n3)
-}
-```
+    def graphTest: Unit = {
+      val g: Grafo = new GrafoDirigidoConcreto
+      val n1 = g.agregarNodo
+      val n2 = g.agregarNodo
+      val n3 = g.agregarNodo
+      n1.conectarCon(n2)
+      n2.conectarCon(n3)
+      n1.conectarCon(n3)
+    }

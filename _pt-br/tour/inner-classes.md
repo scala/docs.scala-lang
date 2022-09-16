@@ -32,7 +32,7 @@ class Graph {
 
 Em nosso programa, os grafos são representados por uma lista de nós. Os nós são objetos da classe interna `Node`. Cada nó tem uma lista de vizinhos, que são armazenados na lista `connectedNodes`. Agora podemos configurar um grafo com alguns nós e conectar os nós de forma incremental:
 
-```scala mdoc
+```scala mdoc:nest
 def graphTest: Unit = {
   val g = new Graph
   val n1 = g.newNode

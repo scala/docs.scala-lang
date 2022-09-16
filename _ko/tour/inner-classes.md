@@ -12,26 +12,28 @@ previous-page: lower-type-bounds
 
 스칼라의 클래스는 다른 클래스를 멤버로 가질 수 있다. 자바와 같은 언어의 내부 클래스는 자신을 감싸고 있는 클래스의 멤버인 반면에, 스칼라에선 내부 클래스가 외부 객체의 경계 안에 있다. 이런 차이점을 분명히 하기 위해 그래프 데이터타입의 구현을 간단히 그려보자.
 
-    class Graph {
-      class Node {
-        var connectedNodes: List[Node] = Nil
-        def connectTo(node: Node): Unit = {
-          if (!connectedNodes.exists(node.equals)) {
-            connectedNodes = node :: connectedNodes
-          }
-        }
-      }
-      var nodes: List[Node] = Nil
-      def newNode: Node = {
-        val res = new Node
-        nodes = res :: nodes
-        res
+```scala mdoc
+class Graph {
+  class Node {
+    var connectedNodes: List[Node] = Nil
+    def connectTo(node: Node): Unit = {
+      if (!connectedNodes.exists(node.equals)) {
+        connectedNodes = node :: connectedNodes
       }
     }
+  }
+  var nodes: List[Node] = Nil
+  def newNode: Node = {
+    val res = new Node
+    nodes = res :: nodes
+    res
+  }
+}
+```
 
 이 프로그램에선 노드의 리스트로 그래프를 나타냈다. 노드는 내부 클래스 `Node`의 객체다. 각 노드는 리스트 `connectedNodes`에 저장되는 이웃의 목록을 갖고 있다. 이제 몇몇 노드를 선택하고 이에 연결된 노드를 추가하면서 점진적으로 그래프를 구축할 수 있다.
 
-```scala mdoc
+```scala mdoc:nest
 def graphTest: Unit = {
   val g = new Graph
   val n1 = g.newNode
