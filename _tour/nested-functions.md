@@ -30,7 +30,7 @@ In Scala it is possible to nest method definitions. The following object provide
 {% endtab %}
 
 {% tab 'Scala 3' for=Nested_functions_definition %}
-```scala mdoc
+```scala
  def factorial(x: Int): Int =
     def fact(x: Int, accumulator: Int): Int =
       if x <= 1 then accumulator
