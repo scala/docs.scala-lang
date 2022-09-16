@@ -69,7 +69,7 @@ Scalaではそのような型も同様に表現することができ、`Graph#No
 class Graph {
   class Node {
     var connectedNodes: List[Graph#Node] = Nil
-    def connectTo(node: Graph#Node) {
+    def connectTo(node: Graph#Node): Unit = {
       if (!connectedNodes.exists(node.equals)) {
         connectedNodes = node :: connectedNodes
       }

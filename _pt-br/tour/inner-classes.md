@@ -77,7 +77,7 @@ Observe que em Java a última linha no programa do exemplo anterior é válida. 
 class Graph {
   class Node {
     var connectedNodes: List[Graph#Node] = Nil
-    def connectTo(node: Graph#Node) {
+    def connectTo(node: Graph#Node): Unit = {
       if (!connectedNodes.exists(node.equals)) {
         connectedNodes = node :: connectedNodes
       }

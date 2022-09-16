@@ -70,7 +70,7 @@ Por favor note que en Java la última linea del ejemplo anterior hubiese sido co
     class Graph {
       class Node {
         var connectedNodes: List[Graph#Node] = Nil   // Graph#Node en lugar de Node
-        def connectTo(node: Graph#Node) {
+        def connectTo(node: Graph#Node): Unit = {
           if (!connectedNodes.exists(node.equals)) {
             connectedNodes = node :: connectedNodes
           }
