@@ -340,7 +340,7 @@ fallbackTo组合器生成的future对象可以在该原future成功完成计算�
     import scala.concurrent._
     import scala.concurrent.duration._
 
-    def main(args: Array[String]) {
+    def main(args: Array[String]): Unit = {
       val rateQuote = Future {
         connection.getCurrentValue(USD)
       }

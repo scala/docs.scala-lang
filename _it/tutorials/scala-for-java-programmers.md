@@ -26,7 +26,7 @@ Scala senza richiedere troppe conoscenze del linguaggio stesso.
 Ecco come appeare il codice:
 
     object HelloWorld {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         println("Hello, world!")
       }
     }
@@ -105,7 +105,7 @@ semplicemente importare le classi dei corrispondenti package Java:
     import java.text.DateFormat._
 
     object FrenchDate {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val now = new Date
         val df = getDateInstance(LONG, Locale.FRANCE)
         println(df format now)
@@ -204,7 +204,7 @@ frase “time flies like an arrow” ogni secondo.
       def timeFlies() {
         println("time flies like an arrow...")
       }
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         oncePerSecond(timeFlies)
       }
     }
@@ -228,7 +228,7 @@ invece di *timeFlies* e appare come di seguito:
       def oncePerSecond(callback: () => Unit) {
         while (true) { callback(); Thread sleep 1000 }
       }
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         oncePerSecond(() =>
           println("time flies like an arrow..."))
       }
@@ -283,7 +283,7 @@ necessario far seguire il nome del metodo da una coppia di parentesi tonde
 vuote, come mostrato nel codice seguente:
 
     object ComplexNumbers {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val c = new Complex(1.2, 3.4)
         println("imaginary part: " + c.im())
       }
@@ -499,7 +499,7 @@ sull’espressione `(x+x)+(7+y)`: prima calcola il suo valore
 nell’environment `{ x -> 5, y -> 7 }`, dopo calcola la
 derivata relativa ad `x` e poi ad `y`.
 
-    def main(args: Array[String]) {
+    def main(args: Array[String]): Unit = {
       val exp: Tree = Sum(Sum(Var("x"),Var("x")),Sum(Const(7),Var("y")))
       val env: Environment = { case "x" => 5 case "y" => 7 }
       println("Expression: " + exp)
@@ -678,7 +678,7 @@ per creare ed usare una cella che contiene un intero si potrebbe scrivere il
 seguente codice:
 
     object IntegerReference {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val cell = new Reference[Int]
         cell.set(13)
         println("Reference contains the half of " + (cell.get * 2))

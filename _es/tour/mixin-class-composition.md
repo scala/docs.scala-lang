@@ -37,7 +37,7 @@ Aquí se muestra una clase iterador concreta, la cual retorna caracteres sucesiv
 Nos gustaría combinar la funcionalidad de `StringIterator` y `RichIterator` en una sola clase. Solo con herencia simple e interfaces esto es imposible, ya que ambas clases contienen implementaciones para sus miembros. Scala nos ayuda con sus _compisiciones de clases mezcladas_. Permite a los programadores reutilizar el delta de la definición de una clase, esto es, todas las nuevas definiciones que no son heredadas. Este mecanismo hace posible combinar `StringIterator` con `RichIterator`, como es hecho en el siguiente programa, el cual imprime una columna de todos los caracteres de una cadena de caracteres dada.
 
     object StringIteratorTest {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         class Iter extends StringIterator("Scala") with RichIterator
         val iter = new Iter
         iter foreach println

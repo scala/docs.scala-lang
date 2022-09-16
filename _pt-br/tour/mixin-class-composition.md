@@ -43,7 +43,7 @@ Poderíamos combinar a funcionalidade de `StringIterator` e `RichIterator` em um
 
 ```scala mdoc
 object StringIteratorTest {
-  def main(args: Array[String]) {
+  def main(args: Array[String]): Unit = {
     class Iter extends StringIterator("Scala") with RichIterator
     val iter = new Iter
     iter foreach println

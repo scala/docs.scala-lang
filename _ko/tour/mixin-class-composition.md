@@ -36,7 +36,7 @@ _단일 상속_ 만을 지원하는 여러 언어와는 달리, 스칼라는 더
 `StringIterator`와 `RichIterator`를 하나의 클래스로 합치고 싶다면 어떻게 할까. 두 클래스 모두는 코드가 포함된 멤버 구현을 담고 있기 때문에 단일 상속과 인터페이스 만으론 불가능한 일이다. 스칼라는 _믹스인 클래스 컴포지션_ 으로 이런 상황을 해결해준다. 프로그래머는 이를 사용해 클래스 정의에서 변경된 부분을 재사용할 수 있다. 이 기법은 주어진 문자열에 포함된 모든 캐릭터를 한 줄로 출력해주는 다음의 테스트 프로그램에서와 같이, `StringIterator`와 `RichIterator`를 통합할 수 있도록 해준다.
 
     object StringIteratorTest {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         class Iter extends StringIterator("Scala") with RichIterator
         val iter = new Iter
         iter foreach println

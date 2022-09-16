@@ -29,7 +29,7 @@ Las clases en Scala son parametrizadas con argumentos constructores (inicializad
 Para instanciar una clase es necesario usar la primitiva `new`, como se muestra en el siguiente ejemplo:
 
     object Classes {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val pt = new Point(1, 2)
         println(pt)
         pt.move(10, 10)

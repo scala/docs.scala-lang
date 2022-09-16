@@ -18,7 +18,7 @@ Lightsing 译
 这里用标准的 *Hello world* 程序作为第一个例子。虽然它很无趣，但让我们可以用少量语言特质来演示 Scala 工具。程序如下：
 
     object HelloWorld {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         println("Hello, world!")
       }
     }
@@ -60,7 +60,7 @@ Java 的标准函数库定义了一些有用的工具类，如 `Date` 跟 `DateF
     import java.text.DateFormat._
 
     object FrenchDate {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val now = new Date
         val df = getDateInstance(LONG, Locale.FRANCE)
         println(df format now)
@@ -114,7 +114,7 @@ Scala 中的函数也是对象，所以将函数当做对象传递、把它们�
       def timeFlies() {
         println("time flies like an arrow...")
       }
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         oncePerSecond(timeFlies)
       }
     }
@@ -129,7 +129,7 @@ Scala 中的函数也是对象，所以将函数当做对象传递、把它们�
       def oncePerSecond(callback: () => Unit) {
         while (true) { callback(); Thread sleep 1000 }
       }
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         oncePerSecond(() =>
           println("time flies like an arrow..."))
       }
@@ -157,7 +157,7 @@ Scala 中的函数也是对象，所以将函数当做对象传递、把它们�
 函数 `re`、`im` 有个小问题，为了调用函数，我们必须在函数名称后面加上一对空括号，如这个例子：
 
     object ComplexNumbers {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val c = new Complex(1.2, 3.4)
         println("imaginary part: " + c.im())
       }
@@ -261,7 +261,7 @@ Java 中我们会将这个树用一个抽象父类表示，然后每种节点跟
 
 我们还没有探讨完模式匹配的全部功能，不过为了让这份文件保持简短，先就此打住。我们还是希望能看到这两个函数在真正的示例如何作用。因此让我们写一个简单的 `main` 函数，对表达式 `(x+x)+(7+y)` 做一些操作：先在环境 `{ x -> 5, y -> 7 }` 下计算结果，然后在对 `x` 接着对 `y` 取导数。
 
-    def main(args: Array[String]) {
+    def main(args: Array[String]): Unit = {
       val exp: Tree = Sum(Sum(Var("x"),Var("x")),Sum(Const(7),Var("y")))
       val env: Environment = { case "x" => 5 case "y" => 7 }
       println("Expression: " + exp)
@@ -361,7 +361,7 @@ Scala 借由可定义泛型类 (跟函数) 来解决这问题。让我们借由�
 为了使用 `Reference` 类型，我们必须指定 `T`，也就是这容器所包容的元素类型。举例来说，创造并使用该容器来容纳整数，我们可以这样写：
 
     object IntegerReference {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val cell = new Reference[Int]
         cell.set(13)
         println("Reference contains the half of " + (cell.get * 2))
