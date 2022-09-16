@@ -18,14 +18,14 @@ Dijagram ispod prikazuje hijerarhiju Scala klasa.
 
 ## Hijerarhija tipova u Scali ##
 
-[`Any`](https://www.scala-lang.org/api/2.12.1/scala/Any.html) je nadtip svih tipova, zove se još i vrh-tip. 
+[`Any`](https://www.scala-lang.org/api/2.12.1/scala/Any.html) je nadtip svih tipova, zove se još i vrh-tip.
 Definiše određene univerzalne metode kao što su `equals`, `hashCode` i `toString`.
 `Any` ima dvije direktne podklase, `AnyVal` i `AnyRef`.
 
 
-`AnyVal` predstavlja vrijednosne tipove. Postoji devet predefinisanih vrijednosnih tipova i oni ne mogu biti `null`: 
+`AnyVal` predstavlja vrijednosne tipove. Postoji devet predefinisanih vrijednosnih tipova i oni ne mogu biti `null`:
 `Double`, `Float`, `Long`, `Int`, `Short`, `Byte`, `Char`, `Unit` i `Boolean`.
-`Unit` je vrijednosni tip koji ne nosi značajnu informaciju. Postoji tačno jedna instanca tipa `Unit` koja se piše `()`. 
+`Unit` je vrijednosni tip koji ne nosi značajnu informaciju. Postoji tačno jedna instanca tipa `Unit` koja se piše `()`.
 Sve funkcije moraju vratiti nešto tako da je `Unit` ponekad koristan povratni tip.
 
 `AnyRef` predstavlja referencne tipove. Svi nevrijednosni tipovi definišu se kao referencni.
@@ -66,7 +66,7 @@ Npr:
 
 ```scala mdoc
 val x: Long = 987654321
-val y: Float = x  // 9.8765434E8 (određena doza preciznosti se gubi ovdje)
+val y: Float = x.toFloat  // 9.8765434E8 (određena doza preciznosti se gubi ovdje)
 
 val face: Char = '☺'
 val number: Int = face  // 9786
@@ -76,17 +76,17 @@ Kastovanje je jednosmjerno. Ovo se ne kompajlira:
 
 ```
 val x: Long = 987654321
-val y: Float = x  // 9.8765434E8
+val y: Float = x.toFloat  // 9.8765434E8
 val z: Long = y  // Does not conform
 ```
 
 Također možete kastovati i referencni tip u podtip. Ovo će biti pokriveno kasnije.
 
 ## Nothing i Null
-`Nothing` je podtip svih tipova, također se zove i donji tip (en. bottom type). Ne postoji vrijednost koja ima tip `Nothing`.  
+`Nothing` je podtip svih tipova, također se zove i donji tip (en. bottom type). Ne postoji vrijednost koja ima tip `Nothing`.
 Česta upotreba ovog tipa je signalizacija neterminacije kao što je bacanje izuzetka, izlaz iz programa, ili beskonačna petlja (tj. tip izraza koji se ne izračunava u vrijednost, ili metoda koja se ne završava normalno).
 
-`Null` je podtip svih referencnih tipova (tj. bilo kog podtipa `AnyRef`). 
-Ima jednu vrijednost koja se piše literalom `null`. 
-`Null` se uglavnom koristi radi interoperabilnosti s ostalim JVM jezicima i skoro nikad se ne koristi u Scala kodu. 
+`Null` je podtip svih referencnih tipova (tj. bilo kog podtipa `AnyRef`).
+Ima jednu vrijednost koja se piše literalom `null`.
+`Null` se uglavnom koristi radi interoperabilnosti s ostalim JVM jezicima i skoro nikad se ne koristi u Scala kodu.
 Alternative za `null` obradićemo kasnije.

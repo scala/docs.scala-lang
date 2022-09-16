@@ -63,7 +63,7 @@ For example:
 {% tab 'Scala 2 and 3' for=unified-types-2 %}
 ```scala mdoc
 val x: Long = 987654321
-val y: Float = x  // 9.8765434E8 (note that some precision is lost in this case)
+val y: Float = x.toFloat  // 9.8765434E8 (note that some precision is lost in this case)
 
 val face: Char = '☺'
 val number: Int = face  // 9786
@@ -78,7 +78,7 @@ Casting is unidirectional. This will not compile:
 {% tab 'Scala 2 and 3' for=unified-types-3 %}
 ```scala
 val x: Long = 987654321
-val y: Float = x  // 9.8765434E8
+val y: Float = x.toFloat  // 9.8765434E8
 val z: Long = y  // Does not conform
 ```
 {% endtab %}

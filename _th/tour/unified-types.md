@@ -57,7 +57,7 @@ Value type สามารถแปลได้ด้วยวิธีดัง
 
 ```scala mdoc
 val x: Long = 987654321
-val y: Float = x  // 9.8765434E8 (หมายเหตุว่าค่าความละเอียดจะสูญหายไปในกรณีนี้)
+val y: Float = x.toFloat  // 9.8765434E8 (หมายเหตุว่าค่าความละเอียดจะสูญหายไปในกรณีนี้)
 
 val face: Char = '☺'
 val number: Int = face  // 9786
@@ -67,7 +67,7 @@ val number: Int = face  // 9786
 
 ```
 val x: Long = 987654321
-val y: Float = x  // 9.8765434E8
+val y: Float = x.toFloat  // 9.8765434E8
 val z: Long = y  // ไม่เป็นไปตามที่ต้องการ
 ```
 
