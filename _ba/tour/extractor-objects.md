@@ -11,7 +11,7 @@ previous-page: regular-expression-patterns
 ---
 
 Ekstraktor objekat je objekat koji ima `unapply` metodu.
-Dok je `apply` metoda kao konstruktor koji uzima argumente i kreira objekat, `unapply` metoda prima objekat i pokušava vratiti argumente. 
+Dok je `apply` metoda kao konstruktor koji uzima argumente i kreira objekat, `unapply` metoda prima objekat i pokušava vratiti argumente.
 Ovo se najčešće koristi u podudaranju uzoraka i parcijalnim funkcijama.
 
 ```scala mdoc
@@ -19,7 +19,7 @@ import scala.util.Random
 
 object CustomerID {
 
-  def apply(name: String) = s"$name--${Random.nextLong}"
+  def apply(name: String) = s"$name--${Random.nextLong()}"
 
   def unapply(customerID: String): Option[String] = {
     val name = customerID.split("--").head
@@ -34,9 +34,9 @@ customer1ID match {
 }
 ```
 
-Metoda `apply` kreira `CustomerID` string od argumenta `name`. 
-Metoda `unapply` radi suprotno da dobije `name` nazad. 
-Kada pozovemo `CustomerID("Sukyoung")`, to je skraćena sintaksa za `CustomerID.apply("Sukyoung")`. 
+Metoda `apply` kreira `CustomerID` string od argumenta `name`.
+Metoda `unapply` radi suprotno da dobije `name` nazad.
+Kada pozovemo `CustomerID("Sukyoung")`, to je skraćena sintaksa za `CustomerID.apply("Sukyoung")`.
 Kada pozovemo `case CustomerID(name) => customer1ID`, ustvari pozivamo `unapply` metodu.
 
 Metoda `unapply` se može koristiti i za dodjelu vrijednosti.
