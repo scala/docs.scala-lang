@@ -18,7 +18,7 @@ class Stack[T] {
   def push(x: T): Unit =
     elems = x :: elems
   def top: T = elems.head
-  def pop() { elems = elems.tail }
+  def pop(): Unit = { elems = elems.tail }
 }
 ```
 

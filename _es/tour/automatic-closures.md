@@ -37,7 +37,7 @@ Aquí mostramos la implementación de una declaración tipo repetir-a-menos-que 
       def loop(body: => Unit): LoopUnlessCond =
         new LoopUnlessCond(body)
       protected class LoopUnlessCond(body: => Unit) {
-        def unless(cond: => Boolean) {
+        def unless(cond: => Boolean): Unit = {
           body
           if (!cond) unless(cond)
         }

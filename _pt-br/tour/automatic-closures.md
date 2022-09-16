@@ -41,7 +41,7 @@ object TargetTest2 extends App {
   def loop(body: => Unit): LoopUnlessCond =
     new LoopUnlessCond(body)
   protected class LoopUnlessCond(body: => Unit) {
-    def unless(cond: => Boolean) {
+    def unless(cond: => Boolean): Unit = {
       body
       if (!cond) unless(cond)
     }
