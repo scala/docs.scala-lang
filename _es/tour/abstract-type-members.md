@@ -40,16 +40,14 @@ abstract class IntSeqBuffer extends SeqBuffer {
   type U = Int
 }
 
-object AbstractTypeTest1 extends App {
-  def newIntSeqBuf(elem1: Int, elem2: Int): IntSeqBuffer =
-    new IntSeqBuffer {
-         type T = List[U]
-         val element = List(elem1, elem2)
-       }
-  val buf = newIntSeqBuf(7, 8)
-  println("length = " + buf.length)
-  println("content = " + buf.element)
-}
+def newIntSeqBuf(elem1: Int, elem2: Int): IntSeqBuffer =
+  new IntSeqBuffer {
+    type T = List[U]
+    val element = List(elem1, elem2)
+  }
+val buf = newIntSeqBuf(7, 8)
+println("length = " + buf.length)
+println("content = " + buf.element)
 ```
 
 El tipo retornado por el método `newIntSeqBuf` está ligado a la especialización del trait `Buffer` en el cual el tipo `U` es ahora equivalente a `Int`. Existe un tipo alias similar en la instancia de la clase anónima dentro del cuerpo del método `newIntSeqBuf`. En ese lugar se crea una nueva instancia de `IntSeqBuffer` en la cual el tipo `T` está ligado a `List[Int]`.
