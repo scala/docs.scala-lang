@@ -63,7 +63,7 @@ x = 3 // この記述はコンパイルされません。
 val x: Int = 1 + 1
 ```
 
-型定義では`Int` は識別子`x`の後にくることに注意してください。そして`:`も必要となります。 
+型定義では`Int` は識別子`x`の後にくることに注意してください。そして`:`も必要となります。
 
 ### 変数
 
@@ -210,15 +210,15 @@ val yetAnotherPoint = Point(2, 2)
 
 ```scala mdoc
 if (point == anotherPoint) {
-  println(point + " と " + anotherPoint + " は同じです。")
+  println(s"$point と $anotherPoint は同じです。")
 } else {
-  println(point + " と " + anotherPoint + " は異なります。")
+  println(s"$point と $anotherPoint は異なります。")
 } // Point(1,2) と Point(1,2) は同じです。
 
 if (point == yetAnotherPoint) {
-  println(point + " と " + yetAnotherPoint + " は同じです。")
+  println(s"$point と $yetAnotherPoint は同じです。")
 } else {
-  println(point + " と " + yetAnotherPoint + " は異なります。")
+  println(s"$point と $yetAnotherPoint は異なります。")
 } // Point(1,2) と Point(2,2) は異なります。
 ```
 
