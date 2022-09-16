@@ -129,7 +129,7 @@ println(getTheAnswer()) // 42
 
 ## Métodos
 
-Los métodos se parecen y comportan casi como a las funciones, pero se diferencian en dos aspectos clave: 
+Los métodos se parecen y comportan casi como a las funciones, pero se diferencian en dos aspectos clave:
 
 Un método se define con la palabra reservada `def`, seguida por el nombre del método, la lista de parámetros, el tipo de valores que el método devuelve, y el cuerpo del método.
 
@@ -200,7 +200,7 @@ Una case class se define con las palabras reservadas  `case class`:
 case class Point(x: Int, y: Int)
 ```
 
-Se puede crear una instancia de una `case class`, sin usar la palabra reservada `new`.  
+Se puede crear una instancia de una `case class`, sin usar la palabra reservada `new`.
 
 ```scala mdoc
 val point = Point(1, 2)
@@ -212,15 +212,15 @@ Y son comparadas por valor.
 
 ```scala mdoc
 if (point == anotherPoint) {
-  println(point + " and " + anotherPoint + " are the same.")
+  println(s"$point and $anotherPoint are the same.")
 } else {
-  println(point + " and " + anotherPoint + " are different.")
+  println(s"$point and $anotherPoint are different.")
 } // Point(1,2) and Point(1,2) are the same.
 
 if (point == yetAnotherPoint) {
-  println(point + " and " + yetAnotherPoint + " are the same.")
+  println(s"$point and $yetAnotherPoint are the same.")
 } else {
-  println(point + " and " + yetAnotherPoint + " are different.")
+  println(s"$point and $yetAnotherPoint are different.")
 } // Point(1,2) and Point(2,2) are different.
 ```
 

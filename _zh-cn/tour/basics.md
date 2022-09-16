@@ -209,15 +209,15 @@ val yetAnotherPoint = Point(2, 2)
 
 ```scala mdoc
 if (point == anotherPoint) {
-  println(point + " and " + anotherPoint + " are the same.")
+  println(s"$point and $anotherPoint are the same.")
 } else {
-  println(point + " and " + anotherPoint + " are different.")
+  println(s"$point and $anotherPoint are different.")
 } // Point(1,2) and Point(1,2) are the same.
 
 if (point == yetAnotherPoint) {
-  println(point + " and " + yetAnotherPoint + " are the same.")
+  println(s"$point and $yetAnotherPoint are the same.")
 } else {
-  println(point + " and " + yetAnotherPoint + " are different.")
+  println(s"$point and $yetAnotherPoint are different.")
 } // Point(1,2) and Point(2,2) are different.
 ```
 
