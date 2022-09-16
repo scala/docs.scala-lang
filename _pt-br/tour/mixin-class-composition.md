@@ -24,7 +24,7 @@ A seguir, considere a classe mixin que estende `AbsIterator` com um método `for
 
 ```scala mdoc
 trait RichIterator extends AbsIterator {
-  def foreach(f: T => Unit) { while (hasNext) f(next()) }
+  def foreach(f: T => Unit): Unit = { while (hasNext) f(next()) }
 }
 ```
 

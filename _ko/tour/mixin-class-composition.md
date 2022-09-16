@@ -21,7 +21,7 @@ _단일 상속_ 만을 지원하는 여러 언어와는 달리, 스칼라는 더
 이어서, 이터레이터가 반환하는 모든 항목에 주어진 함수를 적용해주는 `foreach` 메소드로 `AbsIterator`를 확장한 믹스인 클래스를 살펴보자. 믹스인으로 사용할 수 있는 클래스를 정의하기 위해선 `trait`이란 키워드를 사용한다.
 
     trait RichIterator extends AbsIterator {
-      def foreach(f: T => Unit) { while (hasNext) f(next()) }
+      def foreach(f: T => Unit): Unit = { while (hasNext) f(next()) }
     }
 
 다음은 주어진 문자열의 캐릭터를 차례로 반환해주는 콘크리트 이터레이터 클래스다.

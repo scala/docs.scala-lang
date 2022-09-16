@@ -22,7 +22,7 @@ A diferencia de lenguajes que solo soportan _herencia simple_, Scala tiene una n
 A continuación, considere una clase mezcla la cual extiende `AbsIterator` con un método `foreach` el cual aplica una función dada a cada elemento retornado por el iterador. Para definir una clase que puede usarse como una clase mezcla usamos la palabra clave `trait`.
 
     trait RichIterator extends AbsIterator {
-      def foreach(f: T => Unit) { while (hasNext) f(next()) }
+      def foreach(f: T => Unit): Unit = { while (hasNext) f(next()) }
     }
 
 Aquí se muestra una clase iterador concreta, la cual retorna caracteres sucesivos de una cadena de caracteres dada:
