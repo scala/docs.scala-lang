@@ -31,25 +31,29 @@ previous-page: lower-type-bounds
 
 이 프로그램에선 노드의 리스트로 그래프를 나타냈다. 노드는 내부 클래스 `Node`의 객체다. 각 노드는 리스트 `connectedNodes`에 저장되는 이웃의 목록을 갖고 있다. 이제 몇몇 노드를 선택하고 이에 연결된 노드를 추가하면서 점진적으로 그래프를 구축할 수 있다.
 
-    object GraphTest extends App {
-      val g = new Graph
-      val n1 = g.newNode
-      val n2 = g.newNode
-      val n3 = g.newNode
-      n1.connectTo(n2)
-      n3.connectTo(n1)
-    }
+```scala mdoc
+def graphTest: Unit = {
+  val g = new Graph
+  val n1 = g.newNode
+  val n2 = g.newNode
+  val n3 = g.newNode
+  n1.connectTo(n2)
+  n3.connectTo(n1)
+}
+```
 
 정의된 여러 엔티티의 타입이 무엇인지 명시적으로 알려주는 타입 정보를 사용해 위의 예제를 확장해보자.
 
-    object GraphTest extends App {
-      val g: Graph = new Graph
-      val n1: g.Node = g.newNode
-      val n2: g.Node = g.newNode
-      val n3: g.Node = g.newNode
-      n1.connectTo(n2)
-      n3.connectTo(n1)
-    }
+```scala mdoc:nest
+def graphTest: Unit = {
+  val g: Graph = new Graph
+  val n1: g.Node = g.newNode
+  val n2: g.Node = g.newNode
+  val n3: g.Node = g.newNode
+  n1.connectTo(n2)
+  n3.connectTo(n1)
+}
+```
 
 이 코드는 외부 인스턴스(이 예제의 객체 `g`)를 접두어로 지정해 노드 타입을 분명히 나타내고 있다. 두 그래프가 있는 상황에서, 스칼라의 타입 시스템은 한 그래프에 정의된 노드를 다른 그래프에서도 정의해 공유하는 상황을 허용하지 않는다. 이는 다른 그래프의 노드는 다른 타입을 갖기 때문이다.
 다음은 잘못된 프로그램이다.

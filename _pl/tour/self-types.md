@@ -110,7 +110,7 @@ Należy dodać, że w tej klasie możemy utworzyć `NodeImpl`, ponieważ wiemy j
 Poniżej przykład zastosowania klasy `ConcreteDirectedGraph`:
 
 ```scala mdoc
-object GraphTest extends App {
+def graphTest: Unit = {
   val g: Graph = new ConcreteDirectedGraph
   val n1 = g.addNode
   val n2 = g.addNode

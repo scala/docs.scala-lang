@@ -88,14 +88,16 @@ previous-page: compound-types
 
 다음은 클래스 `ConcreteDirectedGraph`를 사용하는 예다.
 
-    object GraphTest extends App {
-      val g: Graph = new ConcreteDirectedGraph
-      val n1 = g.addNode
-      val n2 = g.addNode
-      val n3 = g.addNode
-      n1.connectWith(n2)
-      n2.connectWith(n3)
-      n1.connectWith(n3)
-    }
+```scala mdoc
+def graphTest: Unit = {
+  val g: Graph = new ConcreteDirectedGraph
+  val n1 = g.addNode
+  val n2 = g.addNode
+  val n3 = g.addNode
+  n1.connectWith(n2)
+  n2.connectWith(n3)
+  n1.connectWith(n3)
+}
+```
 
 윤창석, 이한욱 옮김
