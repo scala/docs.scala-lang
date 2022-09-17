@@ -51,6 +51,12 @@ Scaladoc uses the [Liquid](https://shopify.github.io/liquid/) templating engine
 and provides several custom filters and tags specific to Scala
 documentation.
 
+The following project related variables are available and can be accessed using
+double curly braces (e.g. `{{ projectTitle }}`):
+
+- **projectTitle** the project title defined with the `-project` flag.
+- **projectVersion** the project version defined with the `-project-version` flag.
+
 In Scaladoc, all templates can contain YAML front-matter. The front-matter
 is parsed and put into the `page` variable available in templates via Liquid.
 
