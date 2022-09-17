@@ -12,6 +12,9 @@ redirect_from: "/tutorials/tour/extractor-objects.html"
 
 An extractor object is an object with an `unapply` method. Whereas the `apply` method is like a constructor which takes arguments and creates an object, the `unapply` takes an object and tries to give back the arguments. This is most often used in pattern matching and partial functions.
 
+{% tabs extractor-objects_definition class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=extractor-objects_definition %}
 ```scala mdoc
 import scala.util.Random
 
@@ -31,28 +34,68 @@ customer1ID match {
   case _ => println("Could not extract a CustomerID")
 }
 ```
+{% endtab %}
+
+{% tab 'Scala 3' for=extractor-objects_definition %}
+```scala
+import scala.util.Random
+
+object CustomerID:
+
+  def apply(name: String) = s"$name--${Random.nextLong}"
+
+  def unapply(customerID: String): Option[String] =
+    val stringArray: Array[String] = customerID.split("--")
+    if stringArray.tail.nonEmpty then Some(stringArray.head) else None
+
+val customer1ID = CustomerID("Sukyoung")  // Sukyoung--23098234908
+customer1ID match
+  case CustomerID(name) => println(name)  // prints Sukyoung
+  case _ => println("Could not extract a CustomerID")
+```
+{% endtab %}
+
+{% endtabs %}
 
 The `apply` method creates a `CustomerID` string from a `name`. The `unapply` does the inverse to get the `name` back. When we call `CustomerID("Sukyoung")`, this is shorthand syntax for calling `CustomerID.apply("Sukyoung")`. When we call `case CustomerID(name) => println(name)`, we're calling the unapply method with `CustomerID.unapply(customer1ID)`.
 
 Since a value definition can use a pattern to introduce a new variable, an extractor can be used to initialize the variable, where the unapply method supplies the value.
 
+{% tabs extractor-objects_use-case-1 %}
+
+{% tab 'Scala 2 and 3' for=extractor-objects_use-case-1 %}
 ```scala mdoc
 val customer2ID = CustomerID("Nico")
 val CustomerID(name) = customer2ID
 println(name)  // prints Nico
 ```
+{% endtab %}
+
+{% endtabs %}
 
 This is equivalent to `val name = CustomerID.unapply(customer2ID).get`.
 
+{% tabs extractor-objects_use-case-2 %}
+
+{% tab 'Scala 2 and 3' for=extractor-objects_use-case-2 %}
 ```scala mdoc
 val CustomerID(name2) = "--asdfasdfasdf"
 ```
+{% endtab %}
+
+{% endtabs %}
 
 If there is no match, a `scala.MatchError` is thrown:
 
-```scala
+{% tabs extractor-objects_use-case-3 %}
+
+{% tab 'Scala 2 and 3' for=extractor-objects_use-case-3 %}
+```scala mdoc:crash
 val CustomerID(name3) = "-asdfasdfasdf"
 ```
+{% endtab %}
+
+{% endtabs %}
 
 The return type of an `unapply` should be chosen as follows:
 
