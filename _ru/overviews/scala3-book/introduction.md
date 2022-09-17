@@ -1,17 +1,18 @@
 ---
-title: Introduction
+title: Введение
 type: chapter
-description: This page begins the overview documentation of the Scala 3 language.
+description: На этой странице начинается обзорная документация по языку Scala 3.
 num: 1
 previous-page: 
 next-page: scala-features
-languages: [ru]
 ---
 
-Welcome to the Scala 3 Book.
-The goal of this book is to provide an informal introduction to the Scala language.
-It touches on all Scala topics, in a relatively light manner.
-If at any time while you’re reading this book and want more information on a specific feature, you’ll find links to our [_Reference_ documentation][reference], which covers many new features of the Scala language in more detail.
+Добро пожаловать в книгу Scala 3. 
+Цель этой книги — предоставить неформальное введение в язык Scala. 
+Она относительно легко затрагивает все темы Scala. 
+Если в какой-то момент во время чтения этой книги вы захотите получить дополнительную информацию о конкретной функции, 
+вы найдете ссылки на нашу [Справочную документацию][reference], 
+в которой более подробно рассматриваются многие новые функции языка Scala.
 
 <blockquote class="help-info">
 <i class="fa fa-info"></i>&nbsp;&nbsp;If you are interested in the archived Scala 2 edition of the book, you
