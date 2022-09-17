@@ -56,7 +56,7 @@ To use a generic class, put the type in the square brackets in place of `A`.
 
 {% tabs generic-classes-2 class=tabs-scala-version %}
 {% tab 'Scala 2' for=generic-classes-2 %}
-```scala mdoc
+```scala mdoc:nest
 val stack = new Stack[Int]
 stack.push(1)
 stack.push(2)
