@@ -56,7 +56,7 @@ To use a generic class, put the type in the square brackets in place of `A`.
 
 {% tabs generic-classes-2 class=tabs-scala-version %}
 {% tab 'Scala 2' for=generic-classes-2 %}
-```scala mdoc:nest
+```scala mdoc
 val stack = new Stack[Int]
 stack.push(1)
 stack.push(2)
@@ -79,7 +79,7 @@ The instance `stack` can only take Ints. However, if the type argument had subty
 
 {% tabs generic-classes-3 class=tabs-scala-version %}
 {% tab 'Scala 2' for=generic-classes-3 %}
-```scala mdoc
+```scala mdoc:nest
 class Fruit
 class Apple extends Fruit
 class Banana extends Fruit
