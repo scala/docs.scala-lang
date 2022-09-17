@@ -8,14 +8,12 @@ next-page: control-structures
 ---
 
 
-
 ## All values have a type
 
 In Scala, all values have a type, including numerical values and functions.
 The diagram below illustrates a subset of the type hierarchy.
 
 <a href="{{ site.baseurl }}/resources/images/scala3-book/hierarchy.svg"><img  style="width:100%" src="{{ site.baseurl }}/resources/images/scala3-book/hierarchy.svg" alt="Scala 3 Type Hierarchy"></a>
-
 
 ## Scala type hierarchy
 
@@ -42,12 +40,18 @@ If Scala is used in the context of a Java runtime environment, `AnyRef` correspo
 In statement-based languages, `void` is used for methods that don’t return anything.
 If you write methods in Scala that have no return value, such as the following method, `Unit` is used for the same purpose:
 
+{% tabs unit %}
+{% tab 'Scala 2 and 3' for=unit %}
 ```scala
 def printIt(a: Any): Unit = println(a)
 ```
+{% endtab %}
+{% endtabs %}
 
 Here’s an example that demonstrates that strings, integers, characters, boolean values, and functions are all instances of `Any` and can be treated just like every other object:
 
+{% tabs any %}
+{% tab 'Scala 2 and 3' for=any %}
 ```scala
 val list: List[Any] = List(
   "a string",
@@ -59,6 +63,8 @@ val list: List[Any] = List(
 
 list.foreach(element => println(element))
 ```
+{% endtab %}
+{% endtabs %}
 
 The code defines a value `list` of type `List[Any]`.
 The list is initialized with elements of various types, but each is an instance of `scala.Any`, so we can add them to the list.
@@ -78,6 +84,8 @@ true
 As shown above, Scala’s numeric types extend `AnyVal`, and they’re all full-blown objects.
 These examples show how to declare variables of these numeric types:
 
+{% tabs anyval %}
+{% tab 'Scala 2 and 3' for=anyval %}
 ```scala
 val b: Byte = 1
 val i: Int = 1
@@ -86,31 +94,45 @@ val s: Short = 1
 val d: Double = 2.0
 val f: Float = 3.0
 ```
+{% endtab %}
+{% endtabs %}
 
 In the first four examples, if you don’t explicitly specify a type, the number `1` will default to an `Int`, so if you want one of the other data types---`Byte`, `Long`, or `Short`---you need to explicitly declare those types, as shown.
 Numbers with a decimal (like 2.0) will default to a `Double`, so if you want a `Float` you need to declare a `Float`, as shown in the last example.
 
 Because `Int` and `Double` are the default numeric types, you typically create them without explicitly declaring the data type:
 
+{% tabs anynum %}
+{% tab 'Scala 2 and 3' for=anynum %}
 ```scala
 val i = 123   // defaults to Int
 val x = 1.0   // defaults to Double
 ```
+{% endtab %}
+{% endtabs %}
 
 In your code you can also append the characters `L`, `D`, and `F` (and their lowercase equivalents) to numbers to specify that they are `Long`, `Double`, or `Float` values:
 
+{% tabs type-post %}
+{% tab 'Scala 2 and 3' for=type-post %}
 ```scala
 val x = 1_000L   // val x: Long = 1000
 val y = 2.2D     // val y: Double = 2.2
 val z = 3.3F     // val z: Float = 3.3
 ```
+{% endtab %}
+{% endtabs %}
 
 Scala also has `String` and `Char` types, which you can generally declare with the implicit form:
 
+{% tabs type-string %}
+{% tab 'Scala 2 and 3' for=type-string %}
 ```scala
 val s = "Bill"
 val c = 'a'
 ```
+{% endtab %}
+{% endtabs %}
 
 As shown, enclose strings in double-quotes---or triple-quotes for multiline strings---and enclose a character in single-quotes.
 
@@ -128,28 +150,32 @@ Those data types and their ranges are:
 | Char          | 16-bit unsigned Unicode character (0 to 2^16-1, inclusive)<br/>0 to 65,535 |
 | String        | a sequence of `Char` |
 
-
-
 ## `BigInt` and `BigDecimal`
 
 When you need really large numbers, use the `BigInt` and `BigDecimal` types:
 
+{% tabs type-bigint %}
+{% tab 'Scala 2 and 3' for=type-bigint %}
 ```scala
 val a = BigInt(1_234_567_890_987_654_321L)
 val b = BigDecimal(123_456.789)
 ```
+{% endtab %}
+{% endtabs %}
 
 Where `Double` and `Float` are approximate decimal numbers, `BigDecimal` is used for precise arithmetic, such as when working with currency.
 
 A great thing about `BigInt` and `BigDecimal` is that they support all the operators you’re used to using with numeric types:
 
+{% tabs type-bigint2 %}
+{% tab 'Scala 2 and 3' for=type-bigint2 %}
 ```scala
 val b = BigInt(1234567890)   // scala.math.BigInt = 1234567890
 val c = b + b                // scala.math.BigInt = 2469135780
 val d = b * b                // scala.math.BigInt = 1524157875019052100
 ```
-
-
+{% endtab %}
+{% endtabs %}
 
 ## Two notes about strings
 
@@ -163,28 +189,39 @@ Scala strings are similar to Java strings, but they have two great additional fe
 String interpolation provides a very readable way to use variables inside strings.
 For instance, given these three variables:
 
+{% tabs string-inside1 %}
+{% tab 'Scala 2 and 3' for=string-inside1 %}
 ```scala
 val firstName = "John"
 val mi = 'C'
 val lastName = "Doe"
 ```
+{% endtab %}
+{% endtabs %}
 
 You can combine those variables in a string like this:
 
+{% tabs string-inside2 %}
+{% tab 'Scala 2 and 3' for=string-inside2 %}
 ```scala
 println(s"Name: $firstName $mi $lastName")   // "Name: John C Doe"
 ```
+{% endtab %}
+{% endtabs %}
 
 Just precede the string with the letter `s`, and then put a `$` symbol before your variable names inside the string.
 
 To enclose potentially larger expressions inside a string, put them in curly braces:
 
+{% tabs string-inside3 %}
+{% tab 'Scala 2 and 3' for=string-inside3 %}
 ```scala
 println(s"2 + 2 = ${2 + 2}")   // prints "2 + 2 = 4"
 val x = -1
 println(s"x.abs = ${x.abs}")   // prints "x.abs = 1"
 ```
-
+{% endtab %}
+{% endtabs %}
 
 #### Other interpolators
 
@@ -193,42 +230,55 @@ If you use an `f` instead of an `s`, you can use `printf`-style formatting synta
 Furthermore, a string interpolator is a just special method, and it is possible to define your own.
 For instance, some database libraries define the very powerful `sql` interpolator.
 
-
 ### Multiline strings
 
 Multiline strings are created by including the string inside three double-quotes:
 
+{% tabs string-mlines1 %}
+{% tab 'Scala 2 and 3' for=string-mlines1 %}
 ```scala
 val quote = """The essence of Scala:
                Fusion of functional and object-oriented
                programming in a typed setting."""
 ```
+{% endtab %}
+{% endtabs %}
 
 One drawback of this basic approach is that the lines after the first line are indented, and look like this:
 
+{% tabs string-mlines2 %}
+{% tab 'Scala 2 and 3' for=string-mlines2 %}
 ```scala
 "The essence of Scala:
                Fusion of functional and object-oriented
                programming in a typed setting."
 ```
+{% endtab %}
+{% endtabs %}
 
 When spacing is important, put a `|` symbol in front of all lines after the first line, and call the `stripMargin` method after the string:
 
+{% tabs string-mlines3 %}
+{% tab 'Scala 2 and 3' for=string-mlines3 %}
 ```scala
 val quote = """The essence of Scala:
                |Fusion of functional and object-oriented
                |programming in a typed setting.""".stripMargin
 ```
+{% endtab %}
+{% endtabs %}
 
 Now all of the lines are left-justified inside the string:
 
+{% tabs string-mlines4 %}
+{% tab 'Scala 2 and 3' for=string-mlines4 %}
 ```scala
 "The essence of Scala:
 Fusion of functional and object-oriented
 programming in a typed setting."
 ```
-
-
+{% endtab %}
+{% endtabs %}
 
 ## Type casting
 
@@ -237,6 +287,8 @@ Value types can be cast in the following way:
 
 For example:
 
+{% tabs cast1 %}
+{% tab 'Scala 2 and 3' for=cast1 %}
 ```scala
 val b: Byte = 127
 val i: Int = b  // 127
@@ -244,19 +296,23 @@ val i: Int = b  // 127
 val face: Char = '☺'
 val number: Int = face  // 9786
 ```
+{% endtab %}
+{% endtabs %}
 
 You can only cast to a type if there is no loss of information. Otherwise, you need to be explicit about the cast:
 
+{% tabs cast2 %}
+{% tab 'Scala 2 and 3' for=cast2 %}
 ```scala
 val x: Long = 987654321
 val y: Float = x.toFloat  // 9.8765434E8 (note that `.toFloat` is required because the cast results in precision loss)
 val z: Long = y  // Error
 ```
+{% endtab %}
+{% endtabs %}
 
 You can also cast a reference type to a subtype.
 This will be covered later in the tour.
-
-
 
 ## `Nothing` and `null`
 

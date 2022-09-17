@@ -2,7 +2,7 @@
 title: Building a Scala Project with IntelliJ and sbt
 layout: singlepage-overview
 partof: building-a-scala-project-with-intellij-and-sbt
-languages: [ja, uk]
+languages: [ja, ru, uk]
 disqus: true
 previous-page: getting-started/intellij-track/getting-started-with-scala-in-intellij
 next-page: testing-scala-in-intellij-with-scalatest
@@ -60,10 +60,9 @@ but here's a glance at what everything is for:
 1. Change the code in the class to the following:
 
 ```
-object Main extends App {
+@main def run() =
   val ages = Seq(42, 75, 29, 64)
   println(s"The oldest person is ${ages.max}")
-}
 ```
 
 Note: IntelliJ has its own implementation of the Scala compiler, and sometimes your
@@ -105,7 +104,7 @@ Continue to the next tutorial in the _getting started with IntelliJ_ series, and
 
 **or**
 
-* [The Scala Book](/overviews/scala-book/introduction.html), which provides a set of short lessons introducing Scala’s main features.
+* [The Scala Book](/scala3/book/introduction.html), which provides a set of short lessons introducing Scala’s main features.
 * [The Tour of Scala](/tour/tour-of-scala.html) for bite-sized introductions to Scala's features.
 - Continue learning Scala interactively online on
  [Scala Exercises](https://www.scala-exercises.org/scala_tutorial).

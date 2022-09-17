@@ -12,7 +12,6 @@ TODO: Is “Scala 3 Benefits” a better title?
 NOTE: Could mention “grammar” as a way of showing that Scala isn’t a large language; see this slide: https://www.slideshare.net/Odersky/preparing-for-scala-3#13
 {% endcomment %}
 
-
 There are many benefits to using Scala, and Scala 3 in particular.
 It’s hard to list every benefit of Scala, but a “Top Ten” list might look like this:
 
@@ -27,8 +26,6 @@ It’s hard to list every benefit of Scala, but a “Top Ten” list might look 
 9. The Scala ecosystem offers the most modern FP libraries in the world
 10. Strong type system
 
-
-
 ## 1) FP/OOP fusion
 
 More than any other language, Scala supports a fusion of the FP and OOP paradigms.
@@ -40,15 +37,21 @@ As Martin Odersky has stated, the essence of Scala is a fusion of functional and
 Possibly some of the best examples of modularity are the classes in the standard library.
 For instance, a `List` is defined as a class---technically it’s an abstract class---and a new instance is created like this:
 
+{% tabs list %}
+{% tab 'Scala 2 and 3' for=list %}
 ```scala
 val x = List(1, 2, 3)
 ```
+{% endtab %}
+{% endtabs %}
 
 However, what appears to the programmer to be a simple `List` is actually built from a combination of several specialized types, including traits named `Iterable`, `Seq`, and `LinearSeq`.
 Those types are similarly composed of other small, modular units of code.
 
 In addition to building a type like `List` from a series of modular traits, the `List` API also consists of dozens of other methods, many of which are higher-order functions:
 
+{% tabs list-methods %}
+{% tab 'Scala 2 and 3' for=list-methods %}
 ```scala
 val xs = List(1, 2, 3, 4, 5)
 
@@ -57,41 +60,55 @@ xs.filter(_ < 3)      // List(1, 2)
 xs.find(_ > 3)        // Some(4)
 xs.takeWhile(_ < 3)   // List(1, 2)
 ```
+{% endtab %}
+{% endtabs %}
 
 In those examples, the values in the list can’t be modified.
 The `List` class is immutable, so all of those methods return new values, as shown by the data in each comment.
-
-
 
 ## 2) A dynamic feel
 
 Scala’s _type inference_ often makes the language feel dynamically typed, even though it’s statically typed.
 This is true with variable declaration:
 
+{% tabs dynamic %}
+{% tab 'Scala 2 and 3' for=dynamic %}
 ```scala
 val a = 1
 val b = "Hello, world"
 val c = List(1,2,3,4,5)
 val stuff = ("fish", 42, 1_234.5)
 ```
+{% endtab %}
+{% endtabs %}
 
 It’s also true when passing anonymous functions to higher-order functions:
 
+{% tabs dynamic-hof %}
+{% tab 'Scala 2 and 3' for=dynamic-hof %}
 ```scala
 list.filter(_ < 4)
 list.map(_ * 2)
 list.filter(_ < 4)
     .map(_ * 2)
 ```
+{% endtab %}
+{% endtabs %}
 
 and when defining methods:
 
+{% tabs dynamic-method %}
+{% tab 'Scala 2 and 3' for=dynamic-method %}
 ```scala
 def add(a: Int, b: Int) = a + b
 ```
+{% endtab %}
+{% endtabs %}
 
 This is more true than ever in Scala 3, such as when using [union types][union-types]:
 
+{% tabs union %}
+{% tab 'Scala 3 Only' for=union %}
 ```scala
 // union type parameter
 def help(id: Username | Password) =
@@ -103,21 +120,27 @@ def help(id: Username | Password) =
 // union type value
 val b: Password | Username = if (true) name else password
 ```
-
-
+{% endtab %}
+{% endtabs %}
 
 ## 3) Concise syntax
 
 Scala is a low ceremony, “concise but still readable” language. For instance, variable declaration is concise:
 
+{% tabs concise %}
+{% tab 'Scala 2 and 3' for=concise %}
 ```scala
 val a = 1
 val b = "Hello, world"
 val c = List(1,2,3)
 ```
+{% endtab %}
+{% endtabs %}
 
 Creating types like traits, classes, and enumerations are concise:
 
+{% tabs enum %}
+{% tab 'Scala 3 Only' for=enum %}
 ```scala
 trait Tail:
   def wagTail(): Unit
@@ -134,17 +157,22 @@ case class Person(
   age: Int
 )
 ```
+{% endtab %}
+{% endtabs %}
 
 Higher-order functions are concise:
+
+{% tabs list-hof %}
+{% tab 'Scala 2 and 3' for=list-hof %}
 
 ```scala
 list.filter(_ < 4)
 list.map(_ * 2)
 ```
+{% endtab %}
+{% endtabs %}
 
 All of these expressions and many more are concise, and still very readable: what we call _expressive_.
-
-
 
 ## 4) Implicits, simplified
 
@@ -174,8 +202,6 @@ Benefits of these changes include:
 
 These capabilities are described in detail in other sections, so see the [Contextual Abstraction introduction][contextual], and the section on [`given` and `using` clauses][given] for more details.
 
-
-
 ## 5) Seamless Java integration
 
 Scala/Java interaction is seamless in many ways.
@@ -200,8 +226,6 @@ While almost every interaction is seamless, the [“Interacting with Java” cha
 
 See that chapter for more details on these features.
 
-
-
 ## 6) Client &amp; server
 
 Scala can be used on the server side with terrific frameworks:
@@ -214,8 +238,6 @@ The Scala.js ecosystem [has dozens of libraries](https://www.scala-js.org/librar
 
 In addition to those tools, the [Scala Native](https://github.com/scala-native/scala-native) project “is an optimizing ahead-of-time compiler and lightweight managed runtime designed specifically for Scala.” It lets you build “systems” style binary executable applications with plain Scala code, and also lets you use lower-level primitives.
 
-
-
 ## 7) Standard library methods
 
 You will rarely ever need to write a custom `for` loop again, because the dozens of pre-built functional methods in the Scala standard library will both save you time, and help make code more consistent across different applications.
@@ -225,6 +247,8 @@ While these all use the `List` class, the same methods work with other collectio
 
 Here are some examples:
 
+{% tabs list-more %}
+{% tab 'Scala 2 and 3' for=list-more %}
 ```scala
 List.range(1, 3)                          // List(1, 2)
 List.range(start = 1, end = 6, step = 2)  // List(1, 3, 5)
@@ -263,36 +287,50 @@ nums.sorted                               // List(1, 5, 7, 8, 10)
 nums.sortWith(_ < _)                      // List(1, 5, 7, 8, 10)
 nums.sortWith(_ > _)                      // List(10, 8, 7, 5, 1)
 ```
-
-
+{% endtab %}
+{% endtabs %}
 
 ## 8) Built-in best practices
 
 Scala idioms encourage best practices in many ways.
 For immutability, you’re encouraged to create immutable `val` declarations:
 
+{% tabs val %}
+{% tab 'Scala 2 and 3' for=val %}
 ```scala
 val a = 1                 // immutable variable
 ```
+{% endtab %}
+{% endtabs %}
 
 You’re also encouraged to use immutable collections classes like `List` and `Map`:
 
+{% tabs list-map %}
+{% tab 'Scala 2 and 3' for=list-map %}
 ```scala
 val b = List(1,2,3)       // List is immutable
 val c = Map(1 -> "one")   // Map is immutable
 ```
+{% endtab %}
+{% endtabs %}
 
 Case classes are primarily intended for use in [domain modeling]({% link _overviews/scala3-book/domain-modeling-intro.md %}), and their parameters are immutable:
 
+{% tabs case-class %}
+{% tab 'Scala 2 and 3' for=case-class %}
 ```scala
 case class Person(name: String)
 val p = Person("Michael Scott")
 p.name           // Michael Scott
 p.name = "Joe"   // compiler error (reassignment to val name)
 ```
+{% endtab %}
+{% endtabs %}
 
 As shown in the previous section, Scala collections classes support higher-order functions, and you can pass methods (not shown) and anonymous functions into them:
 
+{% tabs higher-order %}
+{% tab 'Scala 2 and 3' for=higher-order %}
 ```scala
 a.dropWhile(_ < 25)
 a.filter(_ < 25)
@@ -301,25 +339,52 @@ a.filter(_ < 30).map(_ * 10)
 nums.sortWith(_ < _)
 nums.sortWith(_ > _)
 ```
+{% endtab %}
+{% endtabs %}
 
 `match` expressions let you use pattern matching, and they truly are _expressions_ that return values:
 
+{% tabs match class=tabs-scala-version %}
+{% tab 'Scala 2' for=match %}
+```scala
+val numAsString = i match {
+  case 1 | 3 | 5 | 7 | 9 => "odd"
+  case 2 | 4 | 6 | 8 | 10 => "even"
+  case _ => "too big"
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=match %}
 ```scala
 val numAsString = i match
   case 1 | 3 | 5 | 7 | 9 => "odd"
   case 2 | 4 | 6 | 8 | 10 => "even"
   case _ => "too big"
 ```
+{% endtab %}
+{% endtabs %}
 
 Because they can return values, they’re often used as the body of a method:
 
+{% tabs match-body class=tabs-scala-version %}
+{% tab 'Scala 2' for=match-body %}
+```scala
+def isTruthy(a: Matchable) = a match {
+  case 0 | "" => false
+  case _ => true
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=match-body %}
 ```scala
 def isTruthy(a: Matchable) = a match
   case 0 | "" => false
   case _ => true
 ```
-
-
+{% endtab %}
+{% endtabs %}
 
 ## 9) Ecosystem libraries
 
@@ -327,8 +392,6 @@ Scala libraries for functional programming like [Cats](https://typelevel.org/cat
 All of the buzzwords like high-performance, type safe, concurrent, asynchronous, resource-safe, testable, functional, modular, binary-compatible, efficient, effects/effectful, and more, can be said about these libraries.
 
 We could list hundreds of libraries here, but fortunately they’re all listed in another location: For those details, see the [“Awesome Scala” list](https://github.com/lauris/awesome-scala).
-
-
 
 ## 10) Strong type system
 
@@ -380,7 +443,6 @@ A list of types from the Dotty documentation:
 - Bounds
 {% endcomment %}
 
-
 _Safety_ is related to several new and changed features:
 
 - Multiversal equality
@@ -390,6 +452,8 @@ _Safety_ is related to several new and changed features:
 
 Good examples of _ergonomics_ are enumerations and extension methods, which have been added to Scala 3 in a very readable manner:
 
+{% tabs extension %}
+{% tab 'Scala 3 Only' for=extension %}
 ```scala
 // enumeration
 enum Color:
@@ -401,6 +465,8 @@ extension (c: Circle)
   def diameter: Double = c.radius * 2
   def area: Double = math.Pi * c.radius * c.radius
 ```
+{% endtab %}
+{% endtabs %}
 
 _Performance_ relates to several areas.
 One of those is [opaque types][opaque-types].
@@ -415,8 +481,6 @@ Unfortunately all of these approaches had weaknesses, as described in the [_Opaq
 Conversely, the goal of opaque types, as described in that SIP, is that “operations on these wrapper types must not create any extra overhead at runtime while still providing a type safe use at compile time.”
 
 For more type system details, see the [Reference documentation][reference].
-
-
 
 ## Other great features
 

@@ -26,11 +26,9 @@ Scala には複数のライブラリとテスト方法がありますが、こ�
 1. クラスに `CubeCalculator` と名前をつけて、**Kind** を `object` に変更し、**OK** をクリックします。
 1. コードを次の通り置き換えます。
     ```
-    object CubeCalculator extends App {
-      def cube(x: Int) = {
+    object CubeCalculator:
+      def cube(x: Int) =
         x * x * x
-      }
-    }
     ```
 
 ## テストを作成
@@ -39,13 +37,12 @@ Scala には複数のライブラリとテスト方法がありますが、こ�
 1. クラスに `CubeCalculatorTest` と名前を付けて、**OK** をクリックします。
 1. コードを次の通り置き換えます。
     ```
-    import org.scalatest.FunSuite
+    import org.scalatest.funsuite.AnyFunSuite
     
-    class CubeCalculatorTest extends FunSuite {
+    class CubeCalculatorTest extends AnyFunSuite:
       test("CubeCalculator.cube") {
         assert(CubeCalculator.cube(3) === 27)
       }
-    }
     ```
 1. `CubeCalculatorTest` のソースコード内で右クリックし、**Run 'CubeCalculatorTest'** を選択します。
 
