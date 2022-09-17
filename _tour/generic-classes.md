@@ -14,6 +14,9 @@ Generic classes are classes which take a type as a parameter. They are particula
 
 ## Defining a generic class
 Generic classes take a type as a parameter within square brackets `[]`. One convention is to use the letter `A` as type parameter identifier, though any parameter name may be used.
+
+{% tabs generic-classes-1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=generic-classes-1 %}
 ```scala mdoc
 class Stack[A] {
   private var elements: List[A] = Nil
@@ -27,6 +30,22 @@ class Stack[A] {
   }
 }
 ```
+{% endtab %}
+{% tab 'Scala 3' for=generic-classes-1 %}
+```scala
+class Stack[A]:
+  private var elements: List[A] = Nil
+  def push(x: A): Unit =
+    elements = x :: elements
+  def peek: A = elements.head
+  def pop(): A =
+    val currentTop = peek
+    elements = elements.tail
+    currentTop
+```
+{% endtab %}
+{% endtabs %}
+
 This implementation of a `Stack` class takes any type `A` as a parameter. This means the underlying list, `var elements: List[A] = Nil`, can only store elements of type `A`. The procedure `def push` only accepts objects of type `A` (note: `elements = x :: elements` reassigns `elements` to a new list created by prepending `x` to the current `elements`).
 
 `Nil` here is an empty `List` and is not to be confused with `null`.
@@ -34,15 +53,33 @@ This implementation of a `Stack` class takes any type `A` as a parameter. This m
 ## Usage
 
 To use a generic class, put the type in the square brackets in place of `A`.
-```
+
+{% tabs generic-classes-2 class=tabs-scala-version %}
+{% tab 'Scala 2' for=generic-classes-2 %}
+```scala mdoc
 val stack = new Stack[Int]
 stack.push(1)
 stack.push(2)
 println(stack.pop())  // prints 2
 println(stack.pop())  // prints 1
 ```
-The instance `stack` can only take Ints. However, if the type argument had subtypes, those could be passed in:
+{% endtab %}
+{% tab 'Scala 3' for=generic-classes-2 %}
+```scala
+val stack = Stack[Int]
+stack.push(1)
+stack.push(2)
+println(stack.pop())  // prints 2
+println(stack.pop())  // prints 1
 ```
+{% endtab %}
+{% endtabs %}
+
+The instance `stack` can only take Ints. However, if the type argument had subtypes, those could be passed in:
+
+{% tabs generic-classes-3 class=tabs-scala-version %}
+{% tab 'Scala 2' for=generic-classes-3 %}
+```scala mdoc
 class Fruit
 class Apple extends Fruit
 class Banana extends Fruit
@@ -54,6 +91,23 @@ val banana = new Banana
 stack.push(apple)
 stack.push(banana)
 ```
+{% endtab %}
+{% tab 'Scala 3' for=generic-classes-3 %}
+```scala
+class Fruit
+class Apple extends Fruit
+class Banana extends Fruit
+
+val stack = Stack[Fruit]
+val apple = Apple()
+val banana = Banana()
+
+stack.push(apple)
+stack.push(banana)
+```
+{% endtab %}
+{% endtabs %}
+
 Class `Apple` and `Banana` both extend `Fruit` so we can push instances `apple` and `banana` onto the stack of `Fruit`.
 
 _Note: subtyping of generic types is *invariant*. This means that if we have a stack of characters of type `Stack[Char]` then it cannot be used as an integer stack of type `Stack[Int]`. This would be unsound because it would enable us to enter true integers into the character stack. To conclude, `Stack[A]` is only a subtype of `Stack[B]` if and only if `B = A`. Since this can be quite restrictive, Scala offers a [type parameter annotation mechanism](variances.html) to control the subtyping behavior of generic types._
