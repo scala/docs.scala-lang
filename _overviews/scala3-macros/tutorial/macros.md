@@ -113,7 +113,7 @@ def powerCode(
   x: Expr[Double],
   n: Expr[Int]
 )(using Quotes): Expr[Double] =
-  val value: Double = pow(x.valueOrError, n.valueOrError)
+  val value: Double = pow(x.valueOrAbort, n.valueOrAbort)
   Expr(value)
 ```
 Here, the `pow` operation is a simple Scala function that computes the value of `xⁿ`.
@@ -131,28 +131,30 @@ Other types can also work if a `ToExpr` is implemented for it, we will [see this
 
 ### Extracting Values from Expressions
 
-The second method we use in the implementation of `powerCode` is `Expr[T].valueOrError`, which has an effect opposite to `Expr.apply`.
+The second method we use in the implementation of `powerCode` is `Expr[T].valueOrAbort`, which has an effect opposite to `Expr.apply`.
 It attempts to extract a value of type `T` from an expression of type `Expr[T]`.
 This can only succeed, if the expression directly contains the code of a value, otherwise, it will throw an exception that stops the macro expansion and reports that the expression did not correspond to a value.
 
-Instead of `valueOrError`, we could also use the `value` operation, which will return an `Option`.
+Instead of `valueOrAbort`, we could also use the `value` operation, which will return an `Option`.
 This way we can report the error with a custom error message.
 
 ```scala
   ...
+  import quotes.reflect.*
   (x.value, n.value) match
     case (Some(base), Some(exponent)) =>
       pow(base, exponent)
     case (Some(_), _) =>
-      report.error("Expected a known value for the exponent, but was " + n.show, n)
+      report.errorAndAbort("Expected a known value for the exponent, but was " + n.show, n)
     case _ =>
-      report.error("Expected a known value for the base, but was " + x.show, x)
+      report.errorAndAbort("Expected a known value for the base, but was " + x.show, x)
 ```
 
 Alternatively, we can also use the `Expr.unapply` extractor
 
 ```scala
   ...
+  import quotes.reflect.*
   (x, n) match
     case (Expr(base), Expr(exponent)) =>
       pow(base, exponent)
@@ -196,7 +198,7 @@ inline def sumNow(inline nums: Int*): Int =
 def sumCode(nums: Expr[Seq[Int]])(using Quotes): Expr[Int] =
   nums match
     case  Varargs(numberExprs) => // numberExprs: Seq[Expr[Int]]
-      val numbers: Seq[Int] = numberExprs.map(_.valueOrError)
+      val numbers: Seq[Int] = numberExprs.map(_.valueOrAbort)
       Expr(numbers.sum)
     case _ => report.error(
       "Expected explicit argument" +
@@ -244,7 +246,7 @@ inline def test(inline ignore: Boolean, computation: => Unit): Boolean =
   ${ testCode('ignore, 'computation) }
 
 def testCode(ignore: Expr[Boolean], computation: Expr[Unit])(using Quotes) =
-  if ignore.valueOrError then Expr(false)
+  if ignore.valueOrAbort then Expr(false)
   else Expr.block(List(computation), Expr(true))
 ```
 
