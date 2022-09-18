@@ -14,7 +14,7 @@ scala3-sections:
     - title: "Scala 3 中的新东西"
       description: "Scala 3 中令人兴奋的新特性概览"
       icon: "fa fa-star"
-      link: /scala3/new-in-scala3.html
+      link: /zh-cn/scala3/new-in-scala3.html
     - title: "快速开始"
       description: "在你的电脑中安装 Scala 3，然后开始写些 Scala 代码！"
       icon: "fa fa-rocket"
