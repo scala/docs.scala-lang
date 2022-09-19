@@ -1,6 +1,6 @@
 ---
 layout: inner-page-documentation
-languages: [ja, zh-cn, ru, uk]
+language: zh-cn
 title: 学习 Scala
 namespace: root
 discourse: true
