@@ -111,7 +111,7 @@ println(point1)           // prints (1, 0)
 class Point(var x: Int = 0, var y: Int = 0)
 
 val origin = Point()  // x and y are both set to 0
-val point1 = Point(1) // y is set to 0
+val point1 = Point(1) // x is set to 1 and y is set to 0
 println(point1)       // prints (1, 0)
 ```
 {% endtab %}
