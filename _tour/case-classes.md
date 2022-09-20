@@ -34,7 +34,7 @@ When you create a case class with parameters, the parameters are public `val`s.
 
 {% tabs case-classe_Message_define %}
 
-{% tab 'Scala 2 and 3' for=case-Message_define %}
+{% tab 'Scala 2 and 3' for=case-classe_Message_define %}
 ```
 case class Message(sender: String, recipient: String, body: String)
 val message1 = Message("guillaume@quebec.ca", "jorge@catalonia.es", "Ça va ?")
