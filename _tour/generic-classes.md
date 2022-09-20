@@ -10,6 +10,7 @@ assumed-knowledge: classes unified-types
 
 redirect_from: "/tutorials/tour/generic-classes.html"
 ---
+
 Generic classes are classes which take a type as a parameter. They are particularly useful for collection classes.
 
 ## Defining a generic class
