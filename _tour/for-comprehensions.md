@@ -34,7 +34,6 @@ val twentySomethings =
 twentySomethings.foreach(println)  // prints Travis Dennis
 ```
 {% endtab %}
-
 {% tab 'Scala 3' for=for-comprehensions-01 %}
 ```scala
 case class User(name: String, age: Int)
@@ -54,7 +53,6 @@ twentySomethings.foreach(println)  // prints Travis Dennis
 {% endtab %}
 {% endtabs %}
 
-
 A `for` loop with a `yield` statement returns a result, the container type of which is determined by the first generator. `user <- userBase` is a `List`, and because we said `yield user.name` where `user.name` is a `String`, the overall result is a `List[String]`. And `if user.age >=20 && user.age < 30` is a guard that filters out users who are not in their twenties.
 
 Here is a more complicated example using two generators. It computes all pairs of numbers between `0` and `n-1` whose sum is equal to a given value `v`:
@@ -71,23 +69,19 @@ foo(10, 10).foreach {
   case (i, j) =>
     println(s"($i, $j) ")  // prints (1, 9) (2, 8) (3, 7) (4, 6) (5, 5) (6, 4) (7, 3) (8, 2) (9, 1)
 }
-
 ```
 
 {% endtab %}
-
 {% tab 'Scala 3' for=for-comprehensions-02 %}
 ```scala
 def foo(n: Int, v: Int) =
-   for  i <- 0 until n
-        j <- 0 until n if i + j == v
+   for i <- 0 until n
+       j <- 0 until n if i + j == v
    yield (i, j)
 
 foo(10, 10).foreach {
-  case (i, j) =>
-    println(s"($i, $j) ")  // prints (1, 9) (2, 8) (3, 7) (4, 6) (5, 5) (6, 4) (7, 3) (8, 2) (9, 1)
+  (i, j) => println(s"($i, $j) ")  // prints (1, 9) (2, 8) (3, 7) (4, 6) (5, 5) (6, 4) (7, 3) (8, 2) (9, 1)
 }
-
 ```
 {% endtab %}
 {% endtabs %}
@@ -116,15 +110,14 @@ foo(10, 10)
 {% tab 'Scala 3' for=for-comprehensions-03 %}
 ```scala
 def foo(n: Int, v: Int) =
-   for  i <- 0 until n
-        j <- 0 until n if i + j == v
+   for i <- 0 until n
+       j <- 0 until n if i + j == v
    do println(s"($i, $j)")
 
 foo(10, 10)
 ```
 {% endtab %}
 {% endtabs %}
-
 
 ## More resources
 
