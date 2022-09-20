@@ -32,7 +32,7 @@ Scalaはメソッドのパラメータとしてパラメータ無しの関数名
       def loop(body: => Unit): LoopUnlessCond =
         new LoopUnlessCond(body)
       protected class LoopUnlessCond(body: => Unit) {
-        def unless(cond: => Boolean) {
+        def unless(cond: => Boolean): Unit = {
           body
           if (!cond) unless(cond)
         }

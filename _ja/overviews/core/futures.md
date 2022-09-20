@@ -500,7 +500,7 @@ Future の結果に対してブロックする方法を以下に具体例で説�
     import scala.concurrent._
     import scala.concurrent.duration._
 
-    def main(args: Array[String]) {
+    def main(args: Array[String]): Unit = {
       val rateQuote = Future {
         connection.getCurrentValue(USD)
       }

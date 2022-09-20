@@ -21,19 +21,19 @@ def apply(f: Int => String, v: Int) = f(v)
 _Napomena: metode se automatski pretvaraju u funkcije ako to kontekst zahtijeva._
 
 Ovo je još jedan primjer:
- 
+
 ```scala mdoc
 class Decorator(left: String, right: String) {
   def layout[A](x: A) = left + x.toString() + right
 }
 
 object FunTest extends App {
-  override def apply(f: Int => String, v: Int) = f(v)
+  def apply(f: Int => String, v: Int) = f(v)
   val decorator = new Decorator("[", "]")
   println(apply(decorator.layout, 7))
 }
 ```
- 
+
 Izvršavanjem se dobije izlaz:
 
 ```

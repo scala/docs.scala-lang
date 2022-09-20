@@ -24,7 +24,7 @@ A seguir, considere a classe mixin que estende `AbsIterator` com um método `for
 
 ```scala mdoc
 trait RichIterator extends AbsIterator {
-  def foreach(f: T => Unit) { while (hasNext) f(next()) }
+  def foreach(f: T => Unit): Unit = { while (hasNext) f(next()) }
 }
 ```
 
@@ -43,7 +43,7 @@ Poderíamos combinar a funcionalidade de `StringIterator` e `RichIterator` em um
 
 ```scala mdoc
 object StringIteratorTest {
-  def main(args: Array[String]) {
+  def main(args: Array[String]): Unit = {
     class Iter extends StringIterator("Scala") with RichIterator
     val iter = new Iter
     iter foreach println

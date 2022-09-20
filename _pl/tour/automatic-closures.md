@@ -14,17 +14,15 @@ Scala pozwala na przekazywanie funkcji bezparametrycznych jako argumenty dla met
 Poniższy kod demonstruje działanie tego mechanizmu:
 
 ```scala mdoc
-object TargetTest1 extends App {
-  def whileLoop(cond: => Boolean)(body: => Unit): Unit =
-    if (cond) {
-      body
-      whileLoop(cond)(body)
-    }
-  var i = 10
-  whileLoop (i > 0) {
-    println(i)
-    i -= 1
+def whileLoop(cond: => Boolean)(body: => Unit): Unit =
+  if (cond) {
+    body
+    whileLoop(cond)(body)
   }
+var i = 10
+whileLoop (i > 0) {
+  println(i)
+  i -= 1
 }
 ```
 
@@ -34,22 +32,20 @@ Możemy połączyć ze sobą wykorzystanie [operatorów infiksowych/postfiksowyc
 
 Oto implementacja pętli w stylu wykonaj-dopóki:
 
-```scala mdoc
-object TargetTest2 extends App {
-  def loop(body: => Unit): LoopUnlessCond =
-    new LoopUnlessCond(body)
-  protected class LoopUnlessCond(body: => Unit) {
-    def unless(cond: => Boolean) {
-      body
-      if (!cond) unless(cond)
-    }
+```scala mdoc:reset
+def loop(body: => Unit): LoopUnlessCond =
+  new LoopUnlessCond(body)
+protected class LoopUnlessCond(body: => Unit) {
+  def unless(cond: => Boolean): Unit = {
+    body
+    if (!cond) unless(cond)
   }
-  var i = 10
-  loop {
-    println("i = " + i)
-    i -= 1
-  } unless (i == 0)
 }
+var i = 10
+loop {
+  println("i = " + i)
+  i -= 1
+} unless (i == 0)
 ```
 
 Funkcja `loop` przyjmuje ciało pętli oraz zwraca instancję klasy `LoopUnlessCond` (która enkapsuluje to ciało). Warto zwrócić uwagę, że ciało tej funkcji nie zostało jeszcze ewaluowane. Klasa `LoopUnlessCond` posiada metodę `unless`, którą możemy wykorzystać jako *operator infiksowy*. W ten sposób uzyskaliśmy całkiem naturalną składnię dla naszej nowej pętli: `loop { < stats > } unless ( < cond > )`.
@@ -68,4 +64,3 @@ i = 3
 i = 2
 i = 1
 ```
-

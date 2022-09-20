@@ -29,11 +29,11 @@ val d = new D
 d.message  // I'm an instance of class B
 d.loudMessage  // I'M AN INSTANCE OF CLASS B
 ```
-Klasa `D` je nadklasa od `B` i mixina `C`. 
+Klasa `D` je nadklasa od `B` i mixina `C`.
 Klase mogu imati samo jednu nadklasu alid mogu imati više mixina (koristeći ključne riječi `extends` i `with` respektivno). Mixini i nadklasa mogu imati isti nadtip.
 
 Pogledajmo sada zanimljiviji primjer počevši od apstraktne klase:
- 
+
 ```scala mdoc
 abstract class AbsIterator {
   type T
@@ -41,7 +41,7 @@ abstract class AbsIterator {
   def next(): T
 }
 ```
- 
+
 Klasa ima apstraktni tip `T` i standardne metode iteratora.
 Dalje, implementiraćemo konkretnu klasu (svi apstraktni članovi `T`, `hasNext`, i `next` imaju implementacije):
 
@@ -59,9 +59,9 @@ class StringIterator(s: String) extends AbsIterator {
 ```
 
 `StringIterator` prima `String` i može se koristiti za iteraciju nad `String`om (npr. da vidimo da li sadrži određeni karakter).
- 
+
     trait RichIterator extends AbsIterator {
-      def foreach(f: T => Unit) { while (hasNext) f(next()) }
+      def foreach(f: T => Unit): Unit = { while (hasNext) f(next()) }
     }
 
 Kreirajmo sada trejt koji također nasljeđuje `AbsIterator`.
@@ -74,7 +74,7 @@ trait RichIterator extends AbsIterator {
 
 Pošto je `RichIterator` trejt, on ne mora implementirati apstraktne članove `AbsIterator`a.
 
-Željeli bismo iskombinirati funkcionalnosti `StringIterator`a i `RichIterator`a u jednoj klasi.  
+Željeli bismo iskombinirati funkcionalnosti `StringIterator`a i `RichIterator`a u jednoj klasi.
 
 ```scala mdoc
 object StringIteratorTest extends App {
@@ -83,7 +83,7 @@ object StringIteratorTest extends App {
   iter foreach println
 }
 ```
- 
+
 Nova klasa `Iter` ima `StringIterator` kao nadklasu i `RichIterator` kao mixin.
 
 S jednostrukim nasljeđivanjem ne bismo mogli postići ovaj nivo fleksibilnosti.

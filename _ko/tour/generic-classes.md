@@ -12,13 +12,15 @@ previous-page: extractor-objects
 
 자바 5(다른 이름은 JDK 1.5와 같이, 스칼라는 타입으로 파라미터화된 클래스의 빌트인 지원을 제공한다. 이런 제네릭 클래스는 특히 컬렉션 클래스의 개발에 유용하다. 이에 관한 예제를 살펴보자.
 
-    class Stack[T] {
-      var elems: List[T] = Nil
-      def push(x: T): Unit =
-        elems = x :: elems
-      def top: T = elems.head
-      def pop() { elems = elems.tail }
-    }
+```scala mdoc
+class Stack[T] {
+  var elems: List[T] = Nil
+  def push(x: T): Unit =
+    elems = x :: elems
+  def top: T = elems.head
+  def pop(): Unit = { elems = elems.tail }
+}
+```
 
 클래스 `Stack`은 임의의 타입 `T`를 항목의 타입으로 하는 명령형(변경 가능한) 스택이다. 타입 파라미터는 올바른 항목(타입 `T` 인)만을 스택에 푸시하도록 강제한다. 마찬가지로 타입 파라미터를 사용해서 메소드 `top`이 항상 지정된 타입만을 반환하도록 할 수 있다.
 

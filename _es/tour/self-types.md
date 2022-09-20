@@ -91,7 +91,7 @@ Por favor nótese que en esta clase nos es posible instanciar `NodoImpl` porque 
 
 Aquí hay un ejemplo de uso de la clase `GrafoDirigidoConcreto`:
 
-    object GraphTest extends App {
+    def graphTest: Unit = {
       val g: Grafo = new GrafoDirigidoConcreto
       val n1 = g.agregarNodo
       val n2 = g.agregarNodo

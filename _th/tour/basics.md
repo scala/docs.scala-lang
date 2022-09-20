@@ -210,15 +210,15 @@ val yetAnotherPoint = Point(2, 2)
 
 ```scala mdoc
 if (point == anotherPoint) {
-  println(point + " and " + anotherPoint + " are the same.")
+  println(s"$point and $anotherPoint are the same.")
 } else {
-  println(point + " and " + anotherPoint + " are different.")
+  println(s"$point and $anotherPoint are different.")
 } // Point(1,2) and Point(1,2) are the same.
 
 if (point == yetAnotherPoint) {
-  println(point + " and " + yetAnotherPoint + " are the same.")
+  println(s"$point and $yetAnotherPoint are the same.")
 } else {
-  println(point + " and " + yetAnotherPoint + " are different.")
+  println(s"$point and $yetAnotherPoint are different.")
 } // Point(1,2) and Point(2,2) are different.
 ```
 
@@ -296,7 +296,7 @@ customGreeter.greet("Scala developer") // How are you, Scala developer?
 
 ## Main Method
 
-main method เป็น entry point หรือจุดเริ่มต้นของโปรแกรม ใน ​Java Virtual Machine 
+main method เป็น entry point หรือจุดเริ่มต้นของโปรแกรม ใน ​Java Virtual Machine
 ต้องการ main method ชื่อว่า `main` และสามารถรับ argument ที่เป็น array ของ string
 
 ใช้ object เราสามารถประกาศ main method ได้ดังนี้:

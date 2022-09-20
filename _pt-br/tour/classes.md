@@ -33,7 +33,7 @@ Classes são instânciadas com a primitiva `new`, por exemplo:
 
 ```scala mdoc
 object Classes {
-  def main(args: Array[String]) {
+  def main(args: Array[String]): Unit = {
     val pt = new Ponto(1, 2)
     println(pt)
     pt.move(10, 10)

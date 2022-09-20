@@ -12,44 +12,50 @@ previous-page: implicit-parameters
 
 En Scala es posible que las clases tengan como miembro otras clases. A diferencia de lenguajes similares a Java donde ese tipo de clases internas son miembros de las clases que las envuelven, en Scala esas clases internas están ligadas al objeto externo. Para ilustrar esta diferencia, vamos a mostrar rápidamente una implementación del tipo grafo:
 
-    class Graph {
-      class Node {
-        var connectedNodes: List[Node] = Nil
-        def connectTo(node: Node) {
-          if (!connectedNodes.exists(node.equals)) {
-            connectedNodes = node :: connectedNodes
-          }
-        }
-      }
-      var nodes: List[Node] = Nil
-      def newNode: Node = {
-        val res = new Node
-        nodes = res :: nodes
-        res
+```scala mdoc
+class Graph {
+  class Node {
+    var connectedNodes: List[Node] = Nil
+    def connectTo(node: Node): Unit = {
+      if (!connectedNodes.exists(node.equals)) {
+        connectedNodes = node :: connectedNodes
       }
     }
+  }
+  var nodes: List[Node] = Nil
+  def newNode: Node = {
+    val res = new Node
+    nodes = res :: nodes
+    res
+  }
+}
+```
 
 En nuestro programa, los grafos son representados mediante una lista de nodos. Estos nodos son objetos de la clase interna `Node`. Cada nodo tiene una lista de vecinos que se almacena en la lista `connectedNodes`. Ahora podemos crear un grafo con algunos nodos y conectarlos incrementalmente:
 
-    object GraphTest extends App {
-      val g = new Graph
-      val n1 = g.newNode
-      val n2 = g.newNode
-      val n3 = g.newNode
-      n1.connectTo(n2)
-      n3.connectTo(n1)
-    }
+```scala mdoc:nest
+def graphTest: Unit = {
+  val g = new Graph
+  val n1 = g.newNode
+  val n2 = g.newNode
+  val n3 = g.newNode
+  n1.connectTo(n2)
+  n3.connectTo(n1)
+}
+```
 
 Ahora vamos a completar el ejemplo con información relacionada al tipado para definir explicitamente de qué tipo son las entidades anteriormente definidas:
 
-    object GraphTest extends App {
-      val g: Graph = new Graph
-      val n1: g.Node = g.newNode
-      val n2: g.Node = g.newNode
-      val n3: g.Node = g.newNode
-      n1.connectTo(n2)
-      n3.connectTo(n1)
-    }
+```scala mdoc:nest
+def graphTest: Unit = {
+  val g: Graph = new Graph
+  val n1: g.Node = g.newNode
+  val n2: g.Node = g.newNode
+  val n3: g.Node = g.newNode
+  n1.connectTo(n2)
+  n3.connectTo(n1)
+}
+```
 
 El código anterior muestra que al tipo del nodo le es prefijado con la instancia superior (que en nuestro ejemplo es `g`). Si ahora tenemos dos grafos, el sistema de tipado de Scala no nos permite mezclar nodos definidos en un grafo con nodos definidos en otro, ya que los nodos del otro grafo tienen un tipo diferente.
 
@@ -70,7 +76,7 @@ Por favor note que en Java la última linea del ejemplo anterior hubiese sido co
     class Graph {
       class Node {
         var connectedNodes: List[Graph#Node] = Nil   // Graph#Node en lugar de Node
-        def connectTo(node: Graph#Node) {
+        def connectTo(node: Graph#Node): Unit = {
           if (!connectedNodes.exists(node.equals)) {
             connectedNodes = node :: connectedNodes
           }
