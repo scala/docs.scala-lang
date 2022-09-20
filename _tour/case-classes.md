@@ -72,7 +72,7 @@ You can create a (shallow) copy of an instance of a case class simply by using t
 
 {% tabs case-classe_Message_copy %}
 
-{% tab 'Scala 2 and 3' for=case-Message_copy %}
+{% tab 'Scala 2 and 3' for=case-classe_Message_copy %}
 ```scala mdoc:nest
 case class Message(sender: String, recipient: String, body: String)
 val message4 = Message("julien@bretagne.fr", "travis@washington.us", "Me zo o komz gant ma amezeg")
