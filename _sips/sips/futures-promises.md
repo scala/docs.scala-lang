@@ -461,7 +461,7 @@ Here is an example of how to block on the result of a future:
 
     import scala.concurrent._
 
-    def main(args: Array[String]): Unit = {
+    def main(args: Array[String]) {
       val rateQuote = Future {
         connection.getCurrentValue(USD)
       }
