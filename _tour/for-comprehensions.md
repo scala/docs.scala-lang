@@ -34,7 +34,6 @@ val twentySomethings =
 twentySomethings.foreach(println)  // prints Travis Dennis
 ```
 {% endtab %}
-
 {% tab 'Scala 3' for=for-comprehensions-01 %}
 ```scala
 case class User(name: String, age: Int)
@@ -73,7 +72,6 @@ foo(10, 10).foreach {
 ```
 
 {% endtab %}
-
 {% tab 'Scala 3' for=for-comprehensions-02 %}
 ```scala
 def foo(n: Int, v: Int) =
