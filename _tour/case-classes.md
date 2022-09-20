@@ -53,7 +53,7 @@ Instances of case classes are compared by structure and not by reference:
 
 {% tabs case-classe_Message_compare %}
 
-{% tab 'Scala 2 and 3' for=case-Message_compare %}
+{% tab 'Scala 2 and 3' for=case-classe_Message_compare %}
 ```scala mdoc
 case class Message(sender: String, recipient: String, body: String)
 
