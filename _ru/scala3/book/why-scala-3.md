@@ -1,8 +1,9 @@
 ---
 layout: multipage-overview
 title: Почему Scala 3?
+scala3: true
 partof: scala3-book
-overview-name: Scala 3 — Book
+overview-name: "Scala 3 — Book"
 type: chapter
 description: На этой странице описаны преимущества языка программирования Scala 3.
 language: ru

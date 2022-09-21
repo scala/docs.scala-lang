@@ -5,6 +5,7 @@ description: This page describes the benefits of the Scala 3 programming languag
 num: 3
 previous-page: scala-features
 next-page: taste-intro
+languages: [ru]
 ---
 
 {% comment %}

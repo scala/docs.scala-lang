@@ -5,6 +5,7 @@ description: This page discusses the main features of the Scala programming lang
 num: 2
 previous-page: introduction
 next-page: why-scala-3
+languages: [ru]
 ---
 
 

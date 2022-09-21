@@ -5,6 +5,7 @@ description: This chapter provides a high-level overview of the main features of
 num: 4
 previous-page: why-scala-3
 next-page: taste-hello-world
+languages: [ru]
 ---
 
 

@@ -1,8 +1,9 @@
 ---
 layout: multipage-overview
 title: Почувствуй Scala
+scala3: true
 partof: scala3-book
-overview-name: Scala 3 — Book
+overview-name: "Scala 3 — Book"
 type: chapter
 description: В этой главе представлен общий обзор основных возможностей языка программирования Scala 3.
 language: ru

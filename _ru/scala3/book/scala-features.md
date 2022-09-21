@@ -1,8 +1,9 @@
 ---
 layout: multipage-overview
 title: Возможности Scala
+scala3: true
 partof: scala3-book
-overview-name: Scala 3 — Book
+overview-name: "Scala 3 — Book"
 type: chapter
 description: На этой странице рассматриваются основные возможности языка программирования Scala.
 language: ru

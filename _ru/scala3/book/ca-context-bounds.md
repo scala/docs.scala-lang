@@ -1,20 +1,18 @@
 ---
-title: Context Bounds
-type: section
-description: This page demonstrates Context Bounds in Scala 3.
+layout: multipage-overview
+title: Контекстные границы
+scala3: true
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+type: chapter
+description: На этой странице демонстрируются контекстные границы в Scala 3.
+language: ru
 num: 61
 previous-page: types-type-classes
 next-page: ca-given-imports
-languages: [ru]
 ---
 
-
-{% comment %}
-- TODO: define "context parameter"
-- TODO: define "synthesized" and "synthesized arguments"
-{% endcomment %}
-
-In many situations the name of a _context parameter_ doesn’t have to be mentioned explicitly, since it’s only used by the compiler in synthesized arguments for other context parameters.
+Во многих ситуациях the name of a _context parameter_ doesn’t have to be mentioned explicitly, since it’s only used by the compiler in synthesized arguments for other context parameters.
 In that case you don’t have to define a parameter name, and can just provide the parameter type.
 
 
