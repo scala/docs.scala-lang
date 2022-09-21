@@ -18,11 +18,10 @@
 
           {% if pg.num and (page.partof == pg.partof) %}
             {% if page.language %} <!-- if page is a translation, get the translated title -->
-              {% assign prefix = page.language | prepend: '/' %}
-              {% assign localizedId = pg.id | prepend: prefix %}
+              {% assign localizedId = pg.id %}
               {% for lpg in site.[page.language] %}
                 {% if lpg.id == localizedId %}
-                  <li><a {% if page.title == lpg.title %}class="active"{% endif %} href="/{{ site.baseurl }}{{ page.language }}{{ pg.url }}">{{ lpg.title }}</a>
+                  <li><a {% if page.title == lpg.title %}class="active"{% endif %} href="{{ site.baseurl }}{{ pg.url }}">{{ lpg.title }}</a>
                   {{ toc }}</li>
                 {% endif %}
               {% endfor %}
