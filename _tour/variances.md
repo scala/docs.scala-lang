@@ -71,7 +71,7 @@ What about boxes? Is `Box[Cat]` a subtype of `Box[Animal]`, like `Cat` is a subt
 
 {% tabs invariance_4 class=tabs-scala-version %}
 {% tab 'Scala 2' for=invariance_4 %}
-```scala
+```scala mdoc:nest
 val myCatBox: Box[Cat] = new Box[Cat](Cat("Felix"))
 val myAnimalBox: Box[Animal] = myCatBox // this doesn't compile
 val myAnimal: Animal = myAnimalBox.content
