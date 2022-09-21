@@ -81,7 +81,7 @@ val myAnimal: Animal = myAnimalBox.content
 ```scala
 val myCatBox: Box[Cat] = Box[Cat](Cat("Felix"))
 val myAnimalBox: Box[Animal] = myCatBox // this doesn't compile
-val myAnimal_1: Animal = myAnimalBox.content
+val myAnimal: Animal = myAnimalBox.content
 ```
 {% endtab %}
 {% endtabs %}
