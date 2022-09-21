@@ -24,37 +24,34 @@ next-page: why-scala-3
 
 
 
-{% comment %}
-I think of this section as being like an “elevator pitch.”
-{% endcomment %}
+## Высокоуровневые функции
 
-## High-level features
+Глядя на Scala с пресловутого “вида с высоты 30 000 фунтов”, вы можете сделать о нем следующие утверждения:
 
-Looking at Scala from the proverbial “30,000 foot view,” you can make the following statements about it:
+- Это высокоуровневый язык программирования
+- Он имеет краткий, читаемый синтаксис
+- Он статически типизирован (но кажется динамичным)
+- Имеет выразительную систему типов
+- Это язык функционального программирования (ФП)
+- Это язык объектно-ориентированного программирования (ООП)
+- Он поддерживает слияние ФП и ООП
+- Контекстные абстракции обеспечивают понятный способ реализации _вывода терминов_ (_term inference_)
+- Он работает на JVM (и в браузере)
+- Беспрепятственно взаимодействует с Java кодом
+- Он используется для серверных приложений (включая микросервисы), приложений для работы с большими данными, а также может использоваться в браузере с помощью Scala.js
 
-- It’s a high-level programming language
-- It has a concise, readable syntax
-- It’s statically-typed (but feels dynamic)
-- It has an expressive type system
-- It’s a functional programming (FP) language
-- It’s an object-oriented programming (OOP) language
-- It supports the fusion of FP and OOP
-- Contextual abstractions provide a clear way to implement _term inference_
-- It runs on the JVM (and in the browser)
-- It interacts seamlessly with Java code
-- It’s used for server-side applications (including microservices), big data applications, and can also be used in the browser with Scala.js
-
-The following sections take a quick look at these features.
+Эти функции кратко рассматриваются в следующих разделах.
 
 
-### A high-level language
+### Высокоуровневый язык
 
-Scala is considered a high-level language in at least two ways.
-First, like Java and many other modern languages, you don’t deal with low-level concepts like pointers and memory management.
+Scala считается высокоуровневым языком как минимум по двум причинам.
+Во-первых, подобно Java и многим другим современным языкам, вы не имеете дело с низкоуровневыми понятиями, 
+такими как указатели и управление памятью.
 
-Second, with the use of lambdas and higher-order functions, you write your code at a very high level.
-As the functional programming saying goes, in Scala you write _what_ you want, not _how_ to achieve it.
-That is, we don’t write imperative code like this:
+Во-вторых, с использованием лямбда-выражений и функций высшего порядка вы пишете свой код на очень высоком уровне. 
+Как говорится в функциональном программировании, в Scala вы пишете то, _что_ хотите, а не то, _как_ этого добиться. 
+То есть мы не пишем императивный код вот так:
 
 {% tabs scala-features-1 class=tabs-scala-version %}
 {% tab 'Scala 2' for=scala-features-1 %}
@@ -89,8 +86,9 @@ val newNumbers = double(oldNumbers)
 {% endtab %}
 {% endtabs %}
 
-That code instructs the compiler what to do on a step-by-step basis.
-Instead, we write high-level, functional code using higher-order functions and lambdas like this to compute the same result:
+Этот код шаг за шагом указывает компилятору, что делать. 
+Вместо этого мы пишем высокоуровневый функциональный код, используя функции высшего порядка и лямбда-выражения, 
+подобные этому, для вычисления того же результата:
 
 {% tabs scala-features-2 %}
 {% tab 'Scala 2 and 3' for=scala-features-2 %}
@@ -101,13 +99,13 @@ val newNumbers = oldNumbers.map(_ * 2)
 {% endtabs %}
 
 
-As you can see, that code is much more concise, easier to read, and easier to maintain.
+Как видите, этот код намного лаконичнее, его легче читать и легче поддерживать.
 
 
-### Concise syntax
+### Лаконичный синтаксис
 
-Scala has a concise, readable syntax.
-For instance, variables are created concisely, and their types are clear:
+Scala имеет краткий, удобочитаемый синтаксис. 
+Например, переменные создаются лаконично, а их типы понятны:
 
 {% tabs scala-features-3 %}
 {% tab 'Scala 2 and 3' for=scala-features-3 %}
@@ -119,13 +117,13 @@ val p = Person("Martin", "Odersky")
 {% endtabs %}
 
 
-Higher-order functions and lambdas make for concise code that’s readable:
+Функции высшего порядка и лямбда-выражения делают код кратким и удобочитаемым:
 
 {% tabs scala-features-4 %}
 {% tab 'Scala 2 and 3' for=scala-features-4 %}
 ```scala
-nums.map(i => i * 2)   // long form
-nums.map(_ * 2)        // short form
+nums.map(i => i * 2)   // длинная форма
+nums.map(_ * 2)        // краткая форма
 
 nums.filter(i => i > 1)
 nums.filter(_ > 1)
@@ -133,7 +131,7 @@ nums.filter(_ > 1)
 {% endtab %}
 {% endtabs %}
 
-Traits, classes, and methods are defined with a clean, light syntax:
+Трэйты, классы и методы определяются с помощью простого и легкого синтаксиса:
 
 {% tabs scala-features-5 class=tabs-scala-version %}
 {% tab 'Scala 2' for=scala-features-5 %}
@@ -168,13 +166,14 @@ class Dog extends Animal, HasTail:
 {% endtabs %}
 
 
-Studies have shown that the time a developer spends _reading_ code to _writing_ code is at least a 10:1 ratio, so writing code that is concise _and_ readable is important.
+Исследования показали, что время, которое разработчик тратит на _чтение_ и _написание_ кода, составляет как минимум 10:1, 
+поэтому важно писать краткий и читабельный код.
 
 
-### A dynamic feel
+### Ощущение динамики
 
-Scala is a statically-typed language, but thanks to its type inference capabilities it feels dynamic.
-All of these expressions look like a dynamically-typed language like Python or Ruby, but they’re all Scala:
+Scala — это язык со статической типизацией, но благодаря своим возможностям вывода типов он кажется динамичным. 
+Все эти выражения выглядят как языки с динамической типизацией, такие как Python или Ruby, но это все Scala:
 
 {% tabs scala-features-6 class=tabs-scala-version %}
 {% tab 'Scala 2' for=scala-features-6 %}
@@ -204,26 +203,18 @@ val z = nums
 {% endtabs %}
 
 
-As Heather Miller states, Scala is considered to be a [strong, statically-typed language](https://heather.miller.am/blog/types-in-scala.html), and you get all the benefits of static types:
+Как утверждает Heather Miller, Scala считается [сильным языком со статической типизацией](https://heather.miller.am/blog/types-in-scala.html), 
+и вы получаете все преимущества статических типов:
 
-- Correctness: you catch most errors at compile-time
-- Great IDE support
-    - Reliable code completion
-    - Catching errors at compile-time means catching mistakes as you type
-    - Easy and reliable refactoring
-- You can refactor your code with confidence
-- Method type declarations tell readers what the method does, and help serve as documentation
-- Scalability and maintainability: types help ensure correctness across arbitrarily large applications and development teams
-- Strong typing in combination with excellent inference enables mechanisms like [contextual abstraction]({{ site.scala3ref }}/contextual) that allows you to omit boilerplate code. Often, this boilerplate code can be inferred by the compiler, based on type definitions and a given context.
-
-{% comment %}
-In that list:
-- 'Correctness' and 'Scalability' come from Heather Miller’s page
-- the IDE-related quotes in this section come from the Scala.js website:
-  - catch most errors in the IDE
-  - Easy and reliable refactoring
-  - Reliable code completion
-{% endcomment %}
+- Корректность: вы обнаруживаете большинство ошибок во время компиляции
+- Отличная поддержка IDE
+    - Надежное автодополнение кода
+    - Отлов ошибок во время компиляции означает отлов ошибок по мере написания
+    - Простой и надежный рефакторинг
+- Вы можете уверенно рефакторить свой код
+- Объявления типов методов сообщают читателям, что делает метод, и помогают служить документацией
+- Масштабируемость и удобство обслуживания: типы помогают обеспечить корректность в произвольно больших приложениях и командах разработчиков
+- Строгая типизация в сочетании с превосходным выводом типов позволяет использовать такие механизмы, как [контекстная абстракция]({{ site.scala3ref }}/contextual), которая позволяет вам опускать шаблонный код. Часто этот шаблонный код может быть выведен компилятором на основе определений типов и заданного контекста.
 
 
 ### Expressive type system
