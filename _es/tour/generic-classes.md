@@ -14,13 +14,15 @@ Tal como en Java 5, Scala provee soporte nativo para clases parametrizados con t
 
 A continuación se muestra un ejemplo:
 
-    class Stack[T] {
-      var elems: List[T] = Nil
-      def push(x: T): Unit =
-    	elems = x :: elems
-      def top: T = elems.head
-      def pop() { elems = elems.tail }
-    }
+```scala mdoc
+class Stack[T] {
+  var elems: List[T] = Nil
+  def push(x: T): Unit =
+  elems = x :: elems
+  def top: T = elems.head
+  def pop(): Unit = { elems = elems.tail }
+}
+```
 
 La clase `Stack` modela una pila mutable que contiene elementos de un tipo arbitrario `T` (se dice, "una pila de elementos `T`). Los parámetros de tipos nos aseguran que solo elementos legales (o sea, del tipo `T`) sean insertados en la pila (apilados). De forma similar, con los parámetros de tipo podemos expresar que el método `top` solo devolverá elementos de un tipo dado (en este caso `T`).
 

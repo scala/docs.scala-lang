@@ -19,7 +19,7 @@ previous-page: lower-type-bounds
 class Graph {
   class Node {
     var connectedNodes: List[Node] = Nil
-    def connectTo(node: Node) {
+    def connectTo(node: Node): Unit = {
       if (!connectedNodes.exists(node.equals)) {
         connectedNodes = node :: connectedNodes
       }
@@ -63,7 +63,7 @@ node1.connectTo(node3)      // illegal!
 class Graph {
   class Node {
     var connectedNodes: List[Graph#Node] = Nil
-    def connectTo(node: Graph#Node) {
+    def connectTo(node: Graph#Node): Unit = {
       if (!connectedNodes.exists(node.equals)) {
         connectedNodes = node :: connectedNodes
       }
@@ -77,4 +77,3 @@ class Graph {
   }
 }
 ```
- 

@@ -16,17 +16,15 @@ Scala permite funções sem parâmetros como parâmetros de métodos. Quando um 
 O código a seguir demonstra esse mecanismo:
 
 ```scala mdoc
-object TargetTest1 extends App {
-  def whileLoop(cond: => Boolean)(body: => Unit): Unit =
-    if (cond) {
-      body
-      whileLoop(cond)(body)
-    }
-  var i = 10
-  whileLoop (i > 0) {
-    println(i)
-    i -= 1
+def whileLoop(cond: => Boolean)(body: => Unit): Unit =
+  if (cond) {
+    body
+    whileLoop(cond)(body)
   }
+var i = 10
+whileLoop (i > 0) {
+  println(i)
+  i -= 1
 }
 ```
 
@@ -36,22 +34,20 @@ Podemos combinar o uso de [operadores infix/postfix](operators.html) com este me
 
 Aqui está a implementação de uma instrução que executa loop a menos que uma condição seja satisfeita:
 
-```scala mdoc
-object TargetTest2 extends App {
-  def loop(body: => Unit): LoopUnlessCond =
-    new LoopUnlessCond(body)
-  protected class LoopUnlessCond(body: => Unit) {
-    def unless(cond: => Boolean) {
-      body
-      if (!cond) unless(cond)
-    }
+```scala mdoc:reset
+def loop(body: => Unit): LoopUnlessCond =
+  new LoopUnlessCond(body)
+protected class LoopUnlessCond(body: => Unit) {
+  def unless(cond: => Boolean): Unit = {
+    body
+    if (!cond) unless(cond)
   }
-  var i = 10
-  loop {
-    println("i = " + i)
-    i -= 1
-  } unless (i == 0)
 }
+var i = 10
+loop {
+  println("i = " + i)
+  i -= 1
+} unless (i == 0)
 ```
 
 A função `loop` aceita apenas um corpo e retorna uma instância da classe` LoopUnlessCond` (que encapsula este objeto de corpo). Note que o corpo ainda não foi avaliado. A classe `LoopUnlessCond` tem um método `unless` que podemos usar como um *operador infix*. Dessa forma, obtemos uma sintaxe bastante natural para nosso novo loop: `loop { <stats> } unless ( <cond> )`.

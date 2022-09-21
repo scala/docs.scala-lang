@@ -64,7 +64,7 @@ true
 
 ```scala mdoc
 val x: Long = 987654321
-val y: Float = x  // 9.8765434E8 (この場合精度が落ちることに注意してください)
+val y: Float = x.toFloat  // 9.8765434E8 (この場合精度が落ちることに注意してください)
 
 val face: Char = '☺'
 val number: Int = face  // 9786
@@ -74,7 +74,7 @@ val number: Int = face  // 9786
 
 ```
 val x: Long = 987654321
-val y: Float = x  // 9.8765434E8
+val y: Float = x.toFloat  // 9.8765434E8
 val z: Long = y  // 一致しない
 ```
 

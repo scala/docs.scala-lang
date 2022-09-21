@@ -22,7 +22,7 @@ A diferencia de lenguajes que solo soportan _herencia simple_, Scala tiene una n
 A continuación, considere una clase mezcla la cual extiende `AbsIterator` con un método `foreach` el cual aplica una función dada a cada elemento retornado por el iterador. Para definir una clase que puede usarse como una clase mezcla usamos la palabra clave `trait`.
 
     trait RichIterator extends AbsIterator {
-      def foreach(f: T => Unit) { while (hasNext) f(next()) }
+      def foreach(f: T => Unit): Unit = { while (hasNext) f(next()) }
     }
 
 Aquí se muestra una clase iterador concreta, la cual retorna caracteres sucesivos de una cadena de caracteres dada:
@@ -37,7 +37,7 @@ Aquí se muestra una clase iterador concreta, la cual retorna caracteres sucesiv
 Nos gustaría combinar la funcionalidad de `StringIterator` y `RichIterator` en una sola clase. Solo con herencia simple e interfaces esto es imposible, ya que ambas clases contienen implementaciones para sus miembros. Scala nos ayuda con sus _compisiciones de clases mezcladas_. Permite a los programadores reutilizar el delta de la definición de una clase, esto es, todas las nuevas definiciones que no son heredadas. Este mecanismo hace posible combinar `StringIterator` con `RichIterator`, como es hecho en el siguiente programa, el cual imprime una columna de todos los caracteres de una cadena de caracteres dada.
 
     object StringIteratorTest {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         class Iter extends StringIterator("Scala") with RichIterator
         val iter = new Iter
         iter foreach println

@@ -88,7 +88,7 @@ previous-page: compound-types
 
 다음은 클래스 `ConcreteDirectedGraph`를 사용하는 예다.
 
-    object GraphTest extends App {
+    def graphTest: Unit = {
       val g: Graph = new ConcreteDirectedGraph
       val n1 = g.addNode
       val n2 = g.addNode

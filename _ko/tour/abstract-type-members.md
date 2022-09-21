@@ -36,16 +36,14 @@ previous-page: inner-classes
       type U = Int
     }
 
-    object AbstractTypeTest1 extends App {
-      def newIntSeqBuf(elem1: Int, elem2: Int): IntSeqBuffer =
-        new IntSeqBuffer {
-             type T = List[U]
-             val element = List(elem1, elem2)
-           }
-      val buf = newIntSeqBuf(7, 8)
-      println("length = " + buf.length)
-      println("content = " + buf.element)
-    }
+    def newIntSeqBuf(elem1: Int, elem2: Int): IntSeqBuffer =
+      new IntSeqBuffer {
+            type T = List[U]
+            val element = List(elem1, elem2)
+          }
+    val buf = newIntSeqBuf(7, 8)
+    println("length = " + buf.length)
+    println("content = " + buf.element)
 
 메소드 `newIntSeqBuf`의 반환 타입은 트레잇 `Buffer`의 특수화를 따르며, 타입 `U`가 `Int`와 같아진다. 메소드 `newIntSeqBuf` 내부의 익명 클래스 인스턴스화에서도 비슷한 타입 별칭이 있다. 여기선 `T` 타입이 `List[Int]`를 가리키는 `IntSeqBuf`의 새로운 인스턴스를 생성한다.
 
@@ -57,15 +55,13 @@ previous-page: inner-classes
     abstract class SeqBuffer[U, +T <: Seq[U]] extends Buffer[T] {
       def length = element.length
     }
-    object AbstractTypeTest2 extends App {
-      def newIntSeqBuf(e1: Int, e2: Int): SeqBuffer[Int, Seq[Int]] =
-        new SeqBuffer[Int, List[Int]] {
-          val element = List(e1, e2)
-        }
-      val buf = newIntSeqBuf(7, 8)
-      println("length = " + buf.length)
-      println("content = " + buf.element)
-    }
+    def newIntSeqBuf(e1: Int, e2: Int): SeqBuffer[Int, Seq[Int]] =
+      new SeqBuffer[Int, List[Int]] {
+        val element = List(e1, e2)
+      }
+    val buf = newIntSeqBuf(7, 8)
+    println("length = " + buf.length)
+    println("content = " + buf.element)
 
 여기선 [가변성 어노테이션](variances.html)을 사용해야만 한다는 점에 유의하자. 이를 사용하지 않으면 메소드 `newIntSeqBuf`에서 반환되는 객체의 특정 시퀀스 구현 타입을 감출 수 없게 된다. 뿐만 아니라 추상 타입을 타입 파라미터로 대체할 수 없는 경우도 있다.
 

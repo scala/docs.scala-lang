@@ -17,9 +17,9 @@ Poniższy przykład demonstruje zastosowanie parametrów generycznych:
 class Stack[T] {
   var elems: List[T] = Nil
   def push(x: T): Unit =
-    elems = x :: elems 
+    elems = x :: elems
   def top: T = elems.head
-  def pop() { elems = elems.tail }
+  def pop(): Unit = { elems = elems.tail }
 }
 ```
 

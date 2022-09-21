@@ -108,7 +108,7 @@ Observe que nesta classe, podemos instanciar `NodeImpl` porque agora sabemos que
 Aqui está um exemplo de uso da classe `ConcreteDirectedGraph`:
 
 ```scala mdoc
-object GraphTest extends App {
+def graphTest: Unit = {
   val g: Graph = new ConcreteDirectedGraph
   val n1 = g.addNode
   val n2 = g.addNode

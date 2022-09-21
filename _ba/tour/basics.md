@@ -46,7 +46,7 @@ val x = 1 + 1
 println(x) // 2
 ```
 
-Imenovani rezultati, kao `x` ovdje, nazivaju se vrijednostima. 
+Imenovani rezultati, kao `x` ovdje, nazivaju se vrijednostima.
 Referenciranje vrijednosti ne okida njeno ponovno izračunavanje.
 
 Vrijednosti se ne mogu mijenjati.
@@ -61,7 +61,7 @@ Tipovi vrijednosti mogu biti (automatski) zaključeni, ali možete i eksplicitno
 val x: Int = 1 + 1
 ```
 
-Primijetite da deklaracija tipa `Int` dolazi nakon identifikatora `x`. Također morate dodati i `:`.  
+Primijetite da deklaracija tipa `Int` dolazi nakon identifikatora `x`. Također morate dodati i `:`.
 
 ### Varijable
 
@@ -177,9 +177,9 @@ class Greeter(prefix: String, suffix: String) {
     println(prefix + name + suffix)
 }
 ```
-Povratni tip metode `greet` je `Unit`, koji kaže da metoda ne vraća ništa značajno. 
-Koristi se slično kao `void` u Javi ili C-u. 
-(Razlika je u tome što svaki Scalin izraz mora imati neku vrijednost, postoji singlton vrijednost tipa `Unit`, piše se `()`. 
+Povratni tip metode `greet` je `Unit`, koji kaže da metoda ne vraća ništa značajno.
+Koristi se slično kao `void` u Javi ili C-u.
+(Razlika je u tome što svaki Scalin izraz mora imati neku vrijednost, postoji singlton vrijednost tipa `Unit`, piše se `()`.
 Ne prenosi nikakvu korisnu informaciju.)
 
 Instancu klase možete kreirati pomoću ključne riječi `new`.
@@ -193,7 +193,7 @@ Detaljniji pregled klasa biće dat [kasnije](classes.html).
 
 ## Case klase
 
-Scala ima poseban tip klase koji se zove "case" klasa.  
+Scala ima poseban tip klase koji se zove "case" klasa.
 Po defaultu, case klase su nepromjenjive i porede se po vrijednosti. Možete ih definisati s `case class` ključnim riječima.
 
 ```scala mdoc
@@ -212,15 +212,15 @@ I porede se po vrijednosti.
 
 ```scala mdoc
 if (point == anotherPoint) {
-  println(point + " and " + anotherPoint + " are the same.")
+  println(s"$point and $anotherPoint are the same.")
 } else {
-  println(point + " and " + anotherPoint + " are different.")
+  println(s"$point and $anotherPoint are different.")
 } // Point(1,2) i Point(1,2) su iste.
 
 if (point == yetAnotherPoint) {
-  println(point + " and " + yetAnotherPoint + " are the same.")
+  println(s"$point and $yetAnotherPoint are the same.")
 } else {
-  println(point + " and " + yetAnotherPoint + " are different.")
+  println(s"$point and $yetAnotherPoint are different.")
 } // Point(1,2) su Point(2,2) različite.
 ```
 
@@ -299,7 +299,7 @@ Trejtove ćemo pokriti u dubinu [kasnije](traits.html).
 
 ## Glavna metoda
 
-Glavna metoda je ulazna tačka programa.  
+Glavna metoda je ulazna tačka programa.
 Java Virtuelna Mašina traži da se glavna metoda zove `main` i da prima jedan argument, niz stringova.
 
 Koristeći objekt, možete definisati glavnu metodu ovako:

@@ -23,7 +23,7 @@ einfach ist, eignet es sich sehr gut, Scalas Funktionsweise zu demonstrieren, oh
 über die Sprache wissen muss.
 
     object HalloWelt {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         println("Hallo, Welt!")
       }
     }
@@ -93,7 +93,7 @@ Klassen der Java-Pakete importieren:
     import java.text.DateFormat._
 
     object FrenchDate {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val now = new Date
         val df = getDateInstance(LONG, Locale.FRANCE)
         println(df format now)
@@ -183,7 +183,7 @@ einmal pro Sekunde aus.
         println("Die Zeit vergeht wie im Flug.")
       }
 
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         oncePerSecond(timeFlies)
       }
     }
@@ -209,7 +209,7 @@ Variante des obigen Timer-Programmes verwendet eine anonyme Funktion anstatt der
         }
       }
 
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         oncePerSecond(() => println("Die Zeit vergeht wie im Flug."))
       }
     }
@@ -256,7 +256,7 @@ Ein Problem der obigen Methoden `re` und `im` ist, dass man, um sie zu verwenden
 Klammerpaar hinter ihren Namen anhängen muss:
 
     object ComplexNumbers {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val c = new Complex(1.2, 3.4)
         println("imaginary part: " + c.im())
       }
@@ -433,7 +433,7 @@ noch aus. Zu diesem Zweck soll eine `main`-Methode dienen, die den Ausdruck `(x+
 Beispiel verwendet: zuerst wird der Wert in der Umgebung `{ x -> 5, y -> 7 }` berechnet und darauf
 die beiden partiellen Ableitungen gebildet:
 
-    def main(args: Array[String]) {
+    def main(args: Array[String]): Unit = {
       val exp: Tree = Sum(Sum(Var("x"),Var("x")),Sum(Const(7),Var("y")))
       val env: Environment = {
         case "x" => 5
@@ -597,7 +597,7 @@ Um diese Referenz-Klasse zu verwenden, muss der generische Typ bei der Erzeugung
 angegeben werden. Für einen Ganzzahl-Container soll folgendes Beispiel dienen:
 
     object IntegerReference {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val cell = new Reference[Int]
         cell.set(13)
         println("Reference contains the half of " + (cell.get * 2))

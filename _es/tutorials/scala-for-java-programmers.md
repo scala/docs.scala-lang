@@ -18,7 +18,7 @@ Este documento provee una rápida introducción al lenguaje Scala como también 
 Como primer ejemplo, usaremos el programa *Hola mundo* estándar. No es muy fascinante, pero de esta manera resulta fácil demostrar el uso de herramientas de Scala sin saber demasiado acerca del lenguaje. Veamos como luce:
 
     object HolaMundo {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         println("¡Hola, mundo!")
       }
     }
@@ -59,7 +59,7 @@ Las librerías de clases de Java definen clases de utilería poderosas, como `Da
     import java.text.DateFormat._
 
     object FrenchDate {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val ahora = new Date
         val df = getDateInstance(LONG, Locale.FRANCE)
         println(df format ahora)
@@ -116,7 +116,7 @@ En el siguiente programa, la función del temporizador se llama `unaVezPorSegund
       def tiempoVuela() {
         println("El tiempo vuela como una flecha...")
       }
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         unaVezPorSegundo(tiempoVuela)
       }
     }
@@ -134,7 +134,7 @@ El programa anterior es fácil de entender, pero puede ser refinado aún más. P
           Thread sleep 1000
         }
       }
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         unaVezPorSegundo(
             () => println("El tiempo vuela como una flecha...")
         )
@@ -167,7 +167,7 @@ El compilador no es siempre capaz de inferir los tipos como lo hace aquí, y des
 Un pequeño problema de los métodos `re` e `im` es que para poder llamarlos es necesario agregar un par de paréntesis vacíos después de sus nombres, como muestra el siguiente ejemplo:
 
     object NumerosComplejos {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val c = new Complejo(1.2, 3.4)
         println("Parte imaginaria: " + c.im())
       }
@@ -282,7 +282,7 @@ Esta función introduce dos nuevos conceptos relacionados al pattern matching. P
 
 No hemos explorado el completo poder del pattern matching aún, pero nos detendremos aquí para mantener este documento corto. Todavía nos queda pendiente ver cómo funcionan las dos funciones de arriba en un ejemplo real. Para ese propósito, escribamos una función main simple que realice algunas operaciones sobre la expresión `(x+x)+(7+y)`: primero computa su valor en el entorno `{ x -> 5, y -> 7 }` y después computa su derivada con respecto a `x` y después a `y`.
 
-    def main(args: Array[String]) {
+    def main(args: Array[String]): Unit = {
       val exp: Arbol = Sum(Sum(Var("x"),Var("x")),Sum(Const(7),Var("y")))
       val ent: Entonrno = { case "x" => 5 case "y" => 7 }
       println("Expresión: " + exp)
@@ -386,7 +386,7 @@ El ejemplo anterior introduce a las variables en Scala, que no deberían requeri
 Para utilizar esta clase `Referencia`, uno necesita especificar qué tipo utilizar por el parámetro `T`, es decir, el tipo del elemento contenido por la referencia. Por ejemplo, para crear y utilizar una referencia que contenga un entero, podríamos escribir lo siguiente:
 
     object ReferenciaEntero {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val ref = new Referencia[Int]
         ref.set(13)
         println("La referencia tiene la mitad de " + (ref.get * 2))

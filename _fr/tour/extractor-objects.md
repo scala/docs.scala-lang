@@ -12,13 +12,13 @@ previous-page: regular-expression-patterns
 ---
 
 Un objet extracteur est un objet avec une méthode `unapply`. Tandis que la méthode `apply` ressemble à un constructeur qui prend des arguments et crée un objet, `unapply` prend un object et essaye de retourner ses arguments. Il est utilisé le plus souvent en filtrage par motif (*pattern matching*) ou avec les fonctions partielles.
-  
+
 ```scala mdoc
 import scala.util.Random
 
 object CustomerID {
 
-  def apply(name: String) = s"$name--${Random.nextLong}"
+  def apply(name: String) = s"$name--${Random.nextLong()}"
 
   def unapply(customerID: String): Option[String] = {
     val stringArray: Array[String] = customerID.split("--")
@@ -35,7 +35,7 @@ customer1ID match {
 
 La méthode `apply` crée une chaîne de caractères `CustomerID` depuis `name`. La méthode `unapply` fait l'inverse pour retrouver le `name`. Lorsqu'on appelle `CustomerID("Sukyoung")`, c'est un raccourci pour `CustomerID.apply("Sukyoung")`. Lorsqu'on appelle `case CustomerID(name) => println(name)`, on appelle la méthode `unapply` avec `CustomerID.unapply(customer1ID)`.
 
-Sachant qu'une définition de valeur peut utiliser une décomposition pour introduire une nouvelle variable, un extracteur peut être utilisé pour initialiser la variable, avec la méthode `unapply` pour fournir la valeur. 
+Sachant qu'une définition de valeur peut utiliser une décomposition pour introduire une nouvelle variable, un extracteur peut être utilisé pour initialiser la variable, avec la méthode `unapply` pour fournir la valeur.
 
 ```scala mdoc
 val customer2ID = CustomerID("Nico")

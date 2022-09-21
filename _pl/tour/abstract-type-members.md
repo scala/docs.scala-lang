@@ -39,16 +39,14 @@ abstract class IntSeqBuffer extends SeqBuffer {
   type U = Int
 }
 
-object AbstractTypeTest1 extends App {
-  def newIntSeqBuf(elem1: Int, elem2: Int): IntSeqBuffer =
-    new IntSeqBuffer {
-         type T = List[U]
-         val element = List(elem1, elem2)
-       }
-  val buf = newIntSeqBuf(7, 8)
-  println("length = " + buf.length)
-  println("content = " + buf.element)
-}
+def newIntSeqBuf(elem1: Int, elem2: Int): IntSeqBuffer =
+  new IntSeqBuffer {
+    type T = List[U]
+    val element = List(elem1, elem2)
+  }
+val buf = newIntSeqBuf(7, 8)
+println("length = " + buf.length)
+println("content = " + buf.element)
 ```
 
 Typ zwracany przez metodę `newIntSeqBuf` nawiązuje do specjalizacji cechy `Buffer`, w której typ `U` jest równy `Int`. Podobnie w anonimowej klasie tworzonej w metodzie `newIntSeqBuf` określamy `T` jako `List[Int]`.
@@ -62,15 +60,14 @@ abstract class Buffer[+T] {
 abstract class SeqBuffer[U, +T <: Seq[U]] extends Buffer[T] {
   def length = element.length
 }
-object AbstractTypeTest2 extends App {
-  def newIntSeqBuf(e1: Int, e2: Int): SeqBuffer[Int, Seq[Int]] =
-    new SeqBuffer[Int, List[Int]] {
-      val element = List(e1, e2)
-    }
-  val buf = newIntSeqBuf(7, 8)
-  println("length = " + buf.length)
-  println("content = " + buf.element)
-}
+
+def newIntSeqBuf(e1: Int, e2: Int): SeqBuffer[Int, Seq[Int]] =
+  new SeqBuffer[Int, List[Int]] {
+    val element = List(e1, e2)
+  }
+val buf = newIntSeqBuf(7, 8)
+println("length = " + buf.length)
+println("content = " + buf.element)
 ```
 
 Należy też pamiętać o zastosowaniu [adnotacji wariancji](variances.html). Inaczej nie byłoby możliwe ukrycie konkretnego typu sekwencji obiektu zwracanego przez metodę `newIntSeqBuf`.

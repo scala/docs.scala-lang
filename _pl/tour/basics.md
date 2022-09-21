@@ -220,15 +220,15 @@ Są one porównywane przez wartości - _nie_ przez referencje.
 
 ```scala mdoc
 if (point == anotherPoint) {
-  println(point + " i " + anotherPoint + " są jednakowe.")
+  println(s"$point i $anotherPoint są jednakowe.")
 } else {
-  println(point + " i " + anotherPoint + " są inne.")
+  println(s"$point i $anotherPoint są inne.")
 } // Point(1,2) i Point(1,2) są jednakowe.
 
 if (point == yetAnotherPoint) {
-  println(point + " i " + yetAnotherPoint + " są jednakowe.")
+  println(s"$point i $yetAnotherPoint są jednakowe.")
 } else {
-  println(point + " i " + yetAnotherPoint + " są inne.")
+  println(s"$point i $yetAnotherPoint są inne.")
 } // Point(1,2) i Point(2,2) są inne.
 ```
 

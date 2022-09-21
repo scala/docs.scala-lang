@@ -20,7 +20,7 @@ previous-page: tour-of-scala
 
 Это простой способ поэкспериментировать со Scala кодом без всяких настроек.
 
-Большинство примеров кода в этой документации также интегрированы с Scastie, 
+Большинство примеров кода в этой документации также интегрированы с Scastie,
 поэтому вы можете поэкспериментировать с ними, просто нажав кнопку Run.
 
 ## Выражения
@@ -47,7 +47,7 @@ val x = 1 + 1
 println(x) // 2
 ```
 
-Названные результаты, такие как `x` в примере, называются значениями. 
+Названные результаты, такие как `x` в примере, называются значениями.
 Вызов значения не приводит к его повторному вычислению.
 
 Значения не изменяемы и не могут быть переназначены.
@@ -62,7 +62,7 @@ x = 3 // Не компилируется.
 val x: Int = 1 + 1
 ```
 
-Обратите внимание, что объявление типа `Int` происходит после идентификатора `x`, следующим за `:`.  
+Обратите внимание, что объявление типа `Int` происходит после идентификатора `x`, следующим за `:`.
 
 ### Переменные
 
@@ -209,15 +209,15 @@ val yetAnotherPoint = Point(2, 2)
 
 ```scala mdoc
 if (point == anotherPoint) {
-  println(point + " and " + anotherPoint + " are the same.")
+  println(s"$point and $anotherPoint are the same.")
 } else {
-  println(point + " and " + anotherPoint + " are different.")
+  println(s"$point and $anotherPoint are different.")
 } // Point(1,2) и Point(1,2) одни и те же.
 
 if (point == yetAnotherPoint) {
-  println(point + " and " + yetAnotherPoint + " are the same.")
+  println(s"$point and $yetAnotherPoint are the same.")
 } else {
-  println(point + " and " + yetAnotherPoint + " are different.")
+  println(s"$point and $yetAnotherPoint are different.")
 } // Point(1,2) и Point(2,2) разные.
 ```
 
@@ -295,7 +295,7 @@ customGreeter.greet("Scala developer") // How are you, Scala developer?
 
 ## Главный метод
 
-Главный метод является отправной точкой в программе. 
+Главный метод является отправной точкой в программе.
 Для Виртуальной Машины Java требуется, чтобы главный метод назывался `main` и принимал один аргумент, массив строк.
 
 Используя объект, можно задать главный метод следующим образом:

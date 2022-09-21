@@ -70,7 +70,7 @@ Dla przykładu:
 
 ```scala mdoc
 val x: Long = 987654321
-val y: Float = x  // 9.8765434E8 (w tym wypadku tracimy część precyzji)
+val y: Float = x.toFloat  // 9.8765434E8 (w tym wypadku tracimy część precyzji)
 
 val face: Char = '☺'
 val number: Int = face  // 9786
@@ -80,7 +80,7 @@ Rzutowanie jest jednokierunkowe, następujący kod nie zadziała:
 
 ```
 val x: Long = 987654321
-val y: Float = x  // 9.8765434E8
+val y: Float = x.toFloat  // 9.8765434E8
 val z: Long = y  // Błąd: Does not conform
 ```
 
@@ -91,11 +91,11 @@ Zostanie to dokładniej omówione w kolejnych rozdziałach.
 
 `Nothing` jest podtypem wszystkich typów, istnieje na samym dole hierarchii i jest nazywany typem dolnym (bottom type).
 Nie istnieje żadna wartość typu `Nothing`.
-Częstym przykładem użycia jest zasygnalizowanie stanów nieoznaczonych np. wyrzucony wyjątek, wyjście z programu, 
-nieskończona pętla (ściślej mówiąc - jest to typ wyrażenia które nie ewaluuje na żadną wartość lub metoda, która nie zwraca wyniku). 
+Częstym przykładem użycia jest zasygnalizowanie stanów nieoznaczonych np. wyrzucony wyjątek, wyjście z programu,
+nieskończona pętla (ściślej mówiąc - jest to typ wyrażenia które nie ewaluuje na żadną wartość lub metoda, która nie zwraca wyniku).
 
 `Null` jest podtypem wszystkich typów referencyjnych (wszystkich podtypów `AnyRef`).
 Ma pojedynczą wartosć identyfikowaną przez słowo kluczowe `null`.
-`Null` przydaje się głównie do współpracy z innymi językami platformy JVM i nie powinien być praktycznie nigdy używany 
+`Null` przydaje się głównie do współpracy z innymi językami platformy JVM i nie powinien być praktycznie nigdy używany
 w kodzie w jęzku Scala.
 W dalszej części przewodnika omówimy alternatywy dla `null`.
