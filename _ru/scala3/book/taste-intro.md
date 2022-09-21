@@ -9,7 +9,7 @@ description: В этой главе представлен общий обзор
 language: ru
 num: 4
 previous-page: why-scala-3
-next-page:
+next-page: taste-hello-world
 ---
 
 

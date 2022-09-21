@@ -1,11 +1,15 @@
 ---
-title: Hello, World!
-type: section
-description: This section demonstrates a Scala 3 'Hello, World!' example.
+layout: multipage-overview
+title: Пример 'Hello, World!'
+scala3: true
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+type: chapter
+description: В этом примере демонстрируется пример 'Hello, World!' на Scala 3.
+language: ru
 num: 5
 previous-page: taste-intro
-next-page: taste-repl
-languages: [ru]
+next-page:
 ---
 
 > **Hint**: in the following examples try picking your preferred Scala version.
