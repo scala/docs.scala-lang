@@ -34,10 +34,15 @@ The compiler can infer that the return type is an `Int`, so no explicit return t
 
 For recursive methods, the compiler is not able to infer a result type. Here is a program which will fail the compiler for this reason:
 
-{% tabs type-inference_3 %}
-{% tab 'Scala 2 and 3' for=type-inference_3 %}
+{% tabs type-inference_3 class=tabs-scala-version %}
+{% tab 'Scala 2' for=type-inference_3 %}
 ```scala mdoc:fail
 def fac(n: Int) = if (n == 0) 1 else n * fac(n - 1)
+```
+{% endtab %}
+{% tab 'Scala 3' for=type-inference_3 %}
+```scala
+def fac(n: Int) = if n == 0 then 1 else n * fac(n - 1)
 ```
 {% endtab %}
 {% endtabs %}
