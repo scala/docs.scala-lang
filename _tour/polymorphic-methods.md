@@ -16,6 +16,8 @@ Methods in Scala can be parameterized by type as well as value. The syntax is si
 
 Here is an example:
 
+{% tabs polymorphic-methods_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=polymorphic-methods_1 %}
 ```scala mdoc
 def listOfDuplicates[A](x: A, length: Int): List[A] = {
   if (length < 1)
@@ -26,6 +28,20 @@ def listOfDuplicates[A](x: A, length: Int): List[A] = {
 println(listOfDuplicates[Int](3, 4))  // List(3, 3, 3, 3)
 println(listOfDuplicates("La", 8))  // List(La, La, La, La, La, La, La, La)
 ```
+{% endtab %}
+{% tab 'Scala 3' for=polymorphic-methods_1 %}
+```scala
+def listOfDuplicates[A](x: A, length: Int): List[A] =
+  if length < 1 then
+    Nil
+  else
+    x :: listOfDuplicates(x, length - 1)
+
+println(listOfDuplicates[Int](3, 4))  // List(3, 3, 3, 3)
+println(listOfDuplicates("La", 8))  // List(La, La, La, La, La, La, La, La)
+```
+{% endtab %}
+{% endtabs %}
 
 The method `listOfDuplicates` takes a type parameter `A` and value parameters `x` and `length`. Value `x` is of type `A`. If `length < 1` we return an empty list. Otherwise we prepend `x` to the list of duplicates returned by the recursive call. (Note that `::` means prepend an element on the left to a list on the right.)
 
