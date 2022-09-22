@@ -2,7 +2,7 @@
 title: Extension Methods
 type: section
 description: This page demonstrates how Extension Methods work in Scala 3.
-num: 63
+num: 64
 previous-page: ca-given-imports
 next-page: ca-type-classes
 ---

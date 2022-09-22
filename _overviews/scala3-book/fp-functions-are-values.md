@@ -2,7 +2,7 @@
 title: Functions Are Values
 type: section
 description: This section looks at the use of functions as values in functional programming.
-num: 44
+num: 45
 previous-page: fp-pure-functions
 next-page: fp-functional-error-handling
 ---

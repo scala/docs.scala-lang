@@ -2,8 +2,8 @@
 title: Control Structures
 type: section
 description: This section demonstrates Scala 3 control structures.
-num: 8
-previous-page: taste-vars-data-types
+num: 9
+previous-page: taste-indentation-significant-syntax
 next-page: taste-modeling
 ---
 

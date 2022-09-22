@@ -2,7 +2,7 @@
 title: Control Structures
 type: chapter
 description: This page provides an introduction to Scala's control structures, including if/then/else, 'for' loops, 'for' expressions, 'match' expressions, try/catch/finally, and 'while' loops.
-num: 18
+num: 19
 previous-page: first-look-at-types
 next-page: domain-modeling-intro
 ---

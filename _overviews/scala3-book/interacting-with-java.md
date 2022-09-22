@@ -2,7 +2,7 @@
 title: Interacting with Java
 type: chapter
 description: This page demonstrates how Scala code can interact with Java, and how Java code can interact with Scala code.
-num: 72
+num: 73
 previous-page: tools-worksheets
 next-page: scala-for-java-devs
 ---

@@ -2,7 +2,7 @@
 title: Type Classes
 type: section
 description: This section introduces type classes in Scala 3.
-num: 60
+num: 61
 previous-page: ca-given-using-clauses
 next-page: ca-context-bounds
 ---
