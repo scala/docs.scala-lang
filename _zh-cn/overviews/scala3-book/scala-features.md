@@ -118,7 +118,7 @@ def double(ints: List[Int]): List[Int] = {
 }
 
 val newNumbers = double(oldNumbers)
-```{% tabs scala-features-1 class=tabs-scala-version %}
+{% tabs scala-features-1 class=tabs-scala-version %}
 {% tab 'Scala 2' for=scala-features-1 %}
 ```scala
 import scala.collection.mutable.ListBuffer
