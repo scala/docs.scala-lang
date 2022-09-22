@@ -217,136 +217,120 @@ val z = nums
 - Строгая типизация в сочетании с превосходным выводом типов позволяет использовать такие механизмы, как [контекстная абстракция]({{ site.scala3ref }}/contextual), которая позволяет вам опускать шаблонный код. Часто этот шаблонный код может быть выведен компилятором на основе определений типов и заданного контекста.
 
 
-### Expressive type system
+### Выразительная система типов
 
-{% comment %}
-- this text comes from the current [ScalaTour](https://docs.scala-lang.org/tour/tour-of-scala.html).
-- TODO: all of the URLs will have to be updated
+Система типов в Scala во время компиляции обеспечивает безопасное и согласованное использование абстракций. 
+В частности, система типов поддерживает:
 
-- i removed these items until we can replace them:
-* [Compound types](/tour/compound-types.html)
-* [conversions](/tour/implicit-conversions.html)
-* [Explicitly typed self references](/tour/self-types.html)
-{% endcomment %}
+- [Выводимые типы]({% link _overviews/scala3-book/types-inferred.md %})
+- [Generic классы]({% link _overviews/scala3-book/types-generics.md %})
+- [Аннотации вариантности]({% link _overviews/scala3-book/types-variance.md %})
+- [Верхняя](/tour/upper-type-bounds.html) и [нижняя](/tour/lower-type-bounds.html) границы типов
+- [Полиморфные методы](/tour/polymorphic-methods.html)
+- [Типы пересечения]({% link _overviews/scala3-book/types-intersection.md %})
+- [Типы объединения]({% link _overviews/scala3-book/types-union.md %})
+- [Лямбда-типы]({{ site.scala3ref }}/new-types/type-lambdas.html)
+- [Экземпляры `given` и предложения `using`]({% link _overviews/scala3-book/ca-given-using-clauses.md %})
+- [Методы расширения]({% link _overviews/scala3-book/ca-extension-methods.md %})
+- [Типовые классы]({% link _overviews/scala3-book/ca-type-classes.md %})
+- [Многостороннее равенство]({% link _overviews/scala3-book/ca-multiversal-equality.md %})
+- [Псевдонимы непрозрачного типа]({% link _overviews/scala3-book/types-opaque-types.md %})
+- [Открытые классы]({{ site.scala3ref }}/other-new-features/open-classes.html)
+- [Типы соответствия]({{ site.scala3ref }}/new-types/match-types.html)
+- [Зависимые типы функций]({{ site.scala3ref }}/new-types/dependent-function-types.html)
+- [Полиморфные функциональные типы]({{ site.scala3ref }}/new-types/polymorphic-function-types.html)
+- [Контекстные границы]({{ site.scala3ref }}/contextual/context-bounds.html)
+- [Контекстные функции]({{ site.scala3ref }}/contextual/context-functions.html)
+- [Внутренние классы](/tour/inner-classes.html) и [элементы абстрактного типа](/tour/abstract-type-members.html) как элементы объекта
 
-Scala’s type system enforces, at compile-time, that abstractions are used in a safe and coherent manner.
-In particular, the type system supports:
-
-- [Inferred types]({% link _overviews/scala3-book/types-inferred.md %})
-- [Generic classes]({% link _overviews/scala3-book/types-generics.md %})
-- [Variance annotations]({% link _overviews/scala3-book/types-variance.md %})
-- [Upper](/tour/upper-type-bounds.html) and [lower](/tour/lower-type-bounds.html) type bounds
-- [Polymorphic methods](/tour/polymorphic-methods.html)
-- [Intersection types]({% link _overviews/scala3-book/types-intersection.md %})
-- [Union types]({% link _overviews/scala3-book/types-union.md %})
-- [Type lambdas]({{ site.scala3ref }}/new-types/type-lambdas.html)
-- [`given` instances and `using` clauses]({% link _overviews/scala3-book/ca-given-using-clauses.md %})
-- [Extension methods]({% link _overviews/scala3-book/ca-extension-methods.md %})
-- [Type classes]({% link _overviews/scala3-book/ca-type-classes.md %})
-- [Multiversal equality]({% link _overviews/scala3-book/ca-multiversal-equality.md %})
-- [Opaque type aliases]({% link _overviews/scala3-book/types-opaque-types.md %})
-- [Open classes]({{ site.scala3ref }}/other-new-features/open-classes.html)
-- [Match types]({{ site.scala3ref }}/new-types/match-types.html)
-- [Dependent function types]({{ site.scala3ref }}/new-types/dependent-function-types.html)
-- [Polymorphic function types]({{ site.scala3ref }}/new-types/polymorphic-function-types.html)
-- [Context bounds]({{ site.scala3ref }}/contextual/context-bounds.html)
-- [Context functions]({{ site.scala3ref }}/contextual/context-functions.html)
-- [Inner classes](/tour/inner-classes.html) and [abstract type members](/tour/abstract-type-members.html) as object members
-
-In combination, these features provide a powerful basis for the safe reuse of programming abstractions and for the type-safe extension of software.
+В сочетании эти функции обеспечивают мощную основу для безопасного повторного использования программных абстракций 
+и для безопасного расширения программного обеспечения.
 
 
-### A functional programming language
+### Язык функционального программирования
 
-Scala is a functional programming (FP) language, meaning:
+Scala — это язык функционального программирования (ФП), что означает:
 
-- Functions are values, and can be passed around like any other value
-- Higher-order functions are directly supported
-- Lambdas are built in
-- Everything in Scala is an expression that returns a value
-- Syntactically it’s easy to use immutable variables, and their use is encouraged
-- It has a wealth of immutable collection classes in the standard library
-- Those collection classes come with dozens of functional methods: they don’t mutate the collection, but instead return an updated copy of the data
-
-
-### An object-oriented language
-
-Scala is an object-oriented programming (OOP) language.
-Every value is an instance of a class and every “operator” is a method.
-
-In Scala, all types inherit from a top-level class `Any`, whose immediate children are `AnyVal` (_value types_, such as `Int` and `Boolean`) and `AnyRef` (_reference types_, as in Java).
-This means that the Java distinction between primitive types and boxed types (e.g. `int` vs. `Integer`) isn’t present in Scala.
-Boxing and unboxing is completely transparent to the user.
-
-{% comment %}
-- AnyRef above is wrong in case of strict null checking, no? On the other hand, maybe too much information to state this here
-- probably not worth to mention (too advanced at this point) there is AnyKind
-- Add the “types hierarchy” image here?
-{% endcomment %}
+- Функции — это значения, и их можно передавать, как и любое другое значение
+- Напрямую поддерживаются функции высшего порядка
+- Встроенные лямбда
+- Все в Scala — это выражение, возвращающее значение
+- Синтаксически легко использовать неизменяемые переменные, и их использование приветствуется
+- В стандартной библиотеке языка содержится множество неизменяемых классов коллекций 
+- Эти классы коллекций поставляются с десятками функциональных методов: они не изменяют коллекцию, вместо этого возвращая обновленную копию данных
 
 
-### Supports FP/OOP fusion
+### Объектно-ориентированный язык
 
-{% comment %}
-NOTE: This text in the first line comes from this slide: https://twitter.com/alexelcu/status/996408359514525696
-{% endcomment %}
+Scala — это язык объектно-ориентированного программирования (ООП).
+Каждое значение — это экземпляр класса, а каждый “оператор” — это метод.
 
-The essence of Scala is the fusion of functional programming and object-oriented programming in a typed setting:
-
-- Functions for the logic
-- Objects for the modularity
-
-As [Martin Odersky has stated](https://jaxenter.com/current-state-scala-odersky-interview-129495.html), “Scala was designed to show that a fusion of functional and object-oriented programming is possible and practical.”
+В Scala все типы наследуются от класса верхнего уровня `Any`, чьими непосредственными дочерними элементами являются `AnyVal` (_типы значений_, такие как `Int` и `Boolean`) и `AnyRef` (_ссылочные типы_, как в Java).
+Это означает, что различие в Java между примитивными и упакованными типами (например, `int` против `Integer`) отсутствует в Scala. 
+Упаковка и распаковка полностью прозрачны для пользователя.
 
 
-### Term inference, made clearer
-
-Following Haskell, Scala was the second popular language to have some form of _implicits_.
-In Scala 3 these concepts have been completely re-thought and more clearly implemented.
-
-The core idea is _term inference_: Given a type, the compiler synthesizes a “canonical” term that has that type.
-In Scala, a context parameter directly leads to an inferred argument term that could also be written down explicitly.
-
-Use cases for this concept include implementing [type classes]({% link _overviews/scala3-book/ca-type-classes.md %}), establishing context, dependency injection, expressing capabilities, computing new types, and proving relationships between them.
-
-Scala 3 makes this process more clear than ever before.
-Read about contextual abstractions in the [Reference documentation]({{ site.scala3ref }}/contextual).
+### Поддерживает слияние ФП/ООП
 
 
-### Client &amp; server
+Суть Scala заключается в слиянии функционального программирования и объектно-ориентированного программирования в типизированной среде:
 
-Scala code runs on the Java Virtual Machine (JVM), so you get all of its benefits:
+- Функции для логики
+- Объекты для модульности
 
-- Security
-- Performance
-- Memory management
-- Portability and platform independence
-- The ability to use the wealth of existing Java and JVM libraries
-
-In addition to running on the JVM, Scala also runs in the browser with Scala.js (and open source third-party tools to integrate popular JavaScript libraries), and native executables can be built with Scala Native and GraalVM.
+[Как заявил Мартин Одерски](https://jaxenter.com/current-state-scala-odersky-interview-129495.html), “Scala был разработан, чтобы показать, что слияние функционального и объектно-ориентированного программирования возможно и практично”.
 
 
-### Seamless Java interaction
+### Вывод терминов стал более понятным
 
-You can use Java classes and libraries in your Scala applications, and you can use Scala code in your Java applications.
-In regards to the second point, large libraries like [Akka](https://akka.io) and the [Play Framework](https://www.playframework.com) are written in Scala, and can be used in Java applications.
+После Haskell Scala был вторым популярным языком, в котором была некоторая форма неявных (_implicits_) выражений.
+В Scala 3 эти концепции были полностью переосмыслены и реализованы более четко.
 
-In regards to the first point, Java classes and libraries are used in Scala applications every day.
-For instance, in Scala you can read files with a Java `BufferedReader` and `FileReader`:
+Основная идея заключается в _выводе терминов_: на основе заданного, компилятор синтезирует “канонический” термин, который имеет этот тип.
+В Scala параметр контекста напрямую ведет к выводимому термину аргумента, который также может быть записан явно.
+
+Примеры использования этой концепции включают реализацию [типовых классов]({% link _overviews/scala3-book/ca-type-classes.md %}), 
+установление контекста, внедрение зависимостей, выражение возможностей, вычисление новых типов и доказательство отношений между ними.
+
+Scala 3 делает этот процесс более понятным, чем когда-либо прежде.
+О контекстных абстракциях можно прочесть в [Справочной документации]({{ site.scala3ref }}/contextual).
+
+
+### Клиент &amp; сервер
+
+Код Scala работает на виртуальной машине Java (JVM), поэтому вы получаете все ее преимущества:
+
+- Безопасность
+- Производительность
+- Управление памятью
+- Портативность и независимость от платформы
+- Возможность использовать множество существующих Java и JVM библиотек
+
+Помимо работы на JVM, Scala также работает в браузере с помощью Scala.js (и сторонних инструментов с открытым исходным кодом для интеграции популярных библиотек JavaScript), а собственные исполняемые файлы могут быть созданы с помощью Scala Native и GraalVM.
+
+
+### Беспрепятственное взаимодействие с Java
+
+Вы можете использовать Java классы и библиотеки в своих приложениях Scala, а также код Scala в приложениях Java.
+Что касается второго пункта, большие библиотеки, такие как [Akka](https://akka.io) и [Play Framework](https://www.playframework.com) написаны на Scala и могут использоваться в приложениях Java.
+
+Что касается первого пункта, классы и библиотеки Java используются в приложениях Scala каждый день.
+Например, в Scala вы можете читать файлы с помощью `BufferedReader` и `FileReader` из Java:
 
 {% tabs scala-features-7 %}
 {% tab 'Scala 2 and 3' for=scala-features-7 %}
 ```scala
 import java.io.*
 val br = BufferedReader(FileReader(filename))
-// read the file with `br` ...
+// чтение файла в `br` ...
 ```
 {% endtab %}
 {% endtabs %}
 
-Using Java code in Scala is generally seamless.
+Использование Java-кода в Scala, как правило, не вызывает затруднений.
 
-Java collections can also be used in Scala, and if you want to use Scala’s rich collection class methods with them, you can convert them with just a few lines of code:
+В Scala также можно использовать коллекции Java, и если вы хотите использовать с ними богатый набор методов классов коллекций Scala, 
+то можете преобразовать их с помощью всего нескольких строк кода:
 
 {% tabs scala-features-8 %}
 {% tab 'Scala 2 and 3' for=scala-features-8 %}
@@ -358,200 +342,130 @@ val scalaList: Seq[Integer] = JavaClass.getJavaList().asScala.toSeq
 {% endtabs %}
 
 
-### Wealth of libraries
+### Богатство библиотек
 
-As you’ll see in the third section of this page, Scala libraries and frameworks like these have been written to power busy websites and work with huge datasets:
+Как будет видно в третьем разделе этой страницы, библиотеки и фреймворки Scala, подобные нижеследующим, 
+были написаны для поддержки загруженных веб-сайтов и работы с огромными наборами данных:
 
-1. The [Play Framework](https://www.playframework.com) is a lightweight, stateless, developer-friendly, web-friendly architecture for creating highly-scalable applications
-2. [Lagom](https://www.lagomframework.com) is a microservices framework that helps you decompose your legacy monolith and build, test, and deploy entire systems of reactive microservices
-3. [Apache Spark](https://spark.apache.org) is a unified analytics engine for big data processing, with built-in modules for streaming, SQL, machine learning and graph processing
+1. [Play Framework](https://www.playframework.com) — это легкая, без сохранения состояния, удобная для web, удобная для разработчиков архитектура для создания масштабируемых приложений
+2. [Lagom](https://www.lagomframework.com) — это инфраструктура микросервисов, которая помогает разделить устаревший монолит и создавать, тестировать и развертывать целые системы реактивных микросервисов
+3. [Apache Spark](https://spark.apache.org) — это унифицированный аналитический механизм для обработки больших данных со встроенными модулями для потоковой передачи, SQL, машинного обучения и обработки графиков
 
-The [Awesome Scala list](https://github.com/lauris/awesome-scala) shows dozens of additional open source tools that developers have created to build Scala applications.
+В [списке Awesome Scala](https://github.com/lauris/awesome-scala) представлены десятки дополнительных инструментов 
+с открытым исходным кодом, созданных разработчиками для создания приложений Scala.
 
-In addition to server-side programming, [Scala.js](https://www.scala-js.org) is a strongly-typed replacement for writing JavaScript, with open source third-party libraries that include tools to integrate with Facebook’s React library, jQuery, and more.
-
-
-
-{% comment %}
-The Lower-Level Features section is like the second part of an elevator pitch.
-Assuming you told someone about the previous high-level features and then they say, “Tell me more,” this is what you might tell them.
-{% endcomment %}
-
-## Lower-level language features
-
-Where the previous section covered high-level features of Scala, it’s interesting to note that at a high level you can make the same statements about both Scala 2 and Scala 3.
-A decade ago Scala started with a strong foundation of desirable features, and as you’ll see in this section, those benefits have been improved with Scala 3.
-
-At a “sea level” view of the details---i.e., the language features programmers use everyday---Scala 3 has significant advantages over Scala 2:
-
-- The ability to create algebraic data types (ADTs) more concisely with enums
-- An even more concise and readable syntax:
-    - The “quiet” control structure syntax is easier to read
-    - Optional braces
-        - Fewer symbols in the code creates less visual noise, making it easier to read
-    - The `new` keyword is generally no longer needed when creating class instances
-    - The formality of package objects have been dropped in favor of simpler “top level” definitions
-- A grammar that’s more clear:
-    - Multiple different uses of the `implicit` keyword have been removed; those uses are replaced by more obvious keywords like `given`, `using`, and `extension`, focusing on intent over mechanism (see the [Givens][givens] section for details)
-    - [Extension methods][extension] replace implicit classes with a clearer and simpler mechanism
-    - The addition of the `open` modifier for classes makes the developer intentionally declare that a class is open for modification, thereby limiting ad-hoc extensions to a code base
-    - [Multiversal equality][multiversal] rules out nonsensical comparisons with `==` and `!=` (i.e., attempting to compare a `Person` to a `Planet`)
-    - Macros are implemented much more easily
-    - Union and intersection offer a flexible way to model types
-    - Trait parameters replace and simplify early initializers
-    - [Opaque type aliases][opaque_types] replace most uses of value classes, while guaranteeing the absence of boxing
-    - Export clauses provide a simple and general way to express aggregation, which can replace the previous facade pattern of package objects inheriting from classes
-    - The procedure syntax has been dropped, and the varargs syntax has been changed, both to make the language more consistent
-    - The `@infix` annotation makes it obvious how you want a method to be applied
-    - The [`@targetName`]({{ site.scala3ref }}/other-new-features/targetName.html) method annotation defines an alternate name for the method, improving Java interoperability, and letting you provide aliases for symbolic operators
-
-It would take too much space to demonstrate all of those features here, but follow the links in the items above to see those features in action.
-All of these features are discussed in detail in the *New*, *Changed*, and *Dropped* features pages in the [Overview documentation][reference].
+В дополнение к программированию на стороне сервера, [Scala.js](https://www.scala-js.org) представляет собой 
+строго типизированную замену для написания JavaScript со сторонними библиотеками с открытым исходным кодом, 
+которые включают инструменты для интеграции с библиотекой Facebook React, jQuery и т.д.
 
 
+## Функции низкоуровневого языка
 
-{% comment %}
-CHECKLIST OF ALL ADDED, UPDATED, AND REMOVED FEATURES
-=====================================================
+Хотя в предыдущем разделе были рассмотрены высокоуровневые функции Scala, интересно отметить, 
+что на высоком уровне вы можете делать одни и те же утверждения как о Scala 2, так и о Scala 3. 
+Десять лет назад Scala начиналась с прочного фундамента желаемых функций, и вы увидите в этом разделе, 
+что в Scala 3 эти преимущества были улучшены.
 
-New Features
-------------
-- trait parameters
-- super traits
-- creator applications
-- export clauses
-- opaque type aliases
-- open classes
-- parameter untupling
-- kind polymorphism
-- tupled function
-- threadUnsafe annotation
-- new control syntax
-- optional braces (experimental)
-- explicit nulls
-- safe initialization
+С точки зрения деталей “на уровне моря” — то есть функций языка, которые программисты используют каждый день — 
+Scala 3 имеет значительные преимущества по сравнению со Scala 2:
 
-CHANGED FEATURES
-----------------
-- numeric literals
-- structural types
-- operators
-- wildcard types
-- type checking
-- type inference
-- implicit resolution
-- implicit conversions
-- overload resolution
-- match expressions
-- vararg patterns
-- pattern bindings
-- pattern matching
-- eta expansion
-- compiler plugins
-- lazy vals initialization
-- main functions
+- Возможность более лаконично создавать алгебраические типы данных (ADT) с перечислениями
+- Еще более лаконичный и читаемый синтаксис:
+    - Синтаксис “тихой” структуры управления легче читать
+    - Опциональные фигурные скобки
+        - Меньшее количество символов в коде создает меньше визуального шума, что упрощает его чтение
+    - Ключевое слово `new` обычно больше не требуется при создании экземпляров класса
+    - Формальность объектов пакета была заменена более простыми определениями “верхнего уровня”
+- Более понятная грамматика:
+    - Несколько различных вариантов использования ключевого слова `implicit` были удалены; это использование заменено более очевидными ключевыми словами, такими как `given`, `using`, и `extension`, фокусирующихся на намерении, а не механизме (подробности см. в разделе [Givens][givens])
+    - [Методы расширения][extension] заменяют неявные классы более понятным и простым механизмом
+    - Добавление модификатора `open` для классов заставляет разработчика намеренно объявить, что класс открыт для модификации, тем самым ограничивая специальные расширения кодовой базы
+    - [Многостороннее равенство][multiversal] исключает бессмысленные сравнения с `==` и `!=` (т.е. попытки сравнить `Person` с `Planet`)
+    - Гораздо проще реализуются макросы
+    - Объединение и пересечение предлагают гибкий способ моделирования типов
+    - Параметры трейтов заменяют и упрощают ранние инициализаторы
+    - [Псевдонимы непрозрачных типов][opaque_types] заменяют большинство случаев использования классов значений, гарантируя при этом отсутствие упаковки
+    - Export предложения обеспечивают простой и общий способ выражения агрегации, который может заменить предыдущий шаблон фасада объектов пакета, наследуемых от классов
+    - Синтаксис procedure был удален, а синтаксис varargs - изменен, чтобы сделать язык более согласованным
+    - `@infix` аннотация делает очевидным желаемое применение метода
+    - Аннотация метода [`@targetName`]({{ site.scala3ref }}/other-new-features/targetName.html) определяет альтернативное имя метода, улучшая совместимость с Java и позволяя указывать псевдонимы для символических операторов
 
-DROPPED FEATURES
-----------------
-- DelayedInit
-- macros
-- existential types
-- type projection
-- do/while syntax
-- procedure syntax
-- package objects
-- early initializers
-- class shadowing
-- limit 22
-- XML literals
-- symbol literals
-- auto-application
-- weak conformance
-- nonlocal returns
-- [this] qualifier
-    - private[this] and protected[this] access modifiers are deprecated
-      and will be phased out
-{% endcomment %}
+Демонстрация всех этих функций заняла бы слишком много места, но перейдите по ссылкам в пунктах выше, чтобы увидеть эти функции в действии. 
+Все эти функции подробно обсуждаются на страницах *New*, *Changed* и *Dropped* функций в [обзорной документации][reference].
+
+
+## Экосистема Scala
+
+
+У Scala динамичная экосистема с библиотеками и фреймворками под любые требования. 
+[Список “Awesome Scala”](https://github.com/lauris/awesome-scala) содержит список сотен проектов с открытым исходным кодом, 
+доступных разработчикам Scala, а [Scaladex](https://index.scala-lang.org) предоставляет доступный для поиска индекс библиотек Scala. 
+Некоторые из наиболее известных библиотек перечислены ниже.
 
 
 
+### Web разработка
 
-## Scala ecosystem
-
-{% comment %}
-TODO: I didn’t put much work into this section because I don’t know if you want
-      to add many tools because (a) that can be seen as an endorsement and
-      (b) it creates a section that can need more maintenance than average
-      since tool popularity can wax and wane. One way to avoid the first
-      point is to base the lists on Github stars and activity.
-{% endcomment %}
-
-Scala has a vibrant ecosystem, with libraries and frameworks for every need.
-The [“Awesome Scala” list](https://github.com/lauris/awesome-scala) provides a list of hundreds of open source projects that are available to Scala developers, and the [Scaladex](https://index.scala-lang.org) provides a searchable index of Scala libraries.
-Some of the more notable libraries are listed below.
+- [Play Framework](https://www.playframework.com) следует модели Ruby on Rails, чтобы стать легкой, не сохраняющей состояния, 
+  удобной для разработчиков и web архитектурой для высокомасштабируемых приложений
+- [Scalatra](https://scalatra.org) — небольшой высокопроизводительный асинхронный web framework, вдохновленный Sinatra
+- [Finatra](https://twitter.github.io/finatra) — это сервисы Scala, построенные на TwitterServer и Finagle
+- [Scala.js](https://www.scala-js.org) — это строго типизированная замена JavaScript, обеспечивающая более безопасный способ создания надежных интерфейсных web-приложений
+- [ScalaJs-React](https://github.com/japgolly/scalajs-react) поднимает библиотеку Facebook React на Scala.js и пытается сделать ее максимально безопасной для типов и удобной для Scala
+- [Lagom](https://www.lagomframework.com) — это инфраструктура микросервисов, которая помогает разделить устаревший монолит и создавать, тестировать и развертывать целые системы реактивных микросервисов
 
 
-
-### Web development
-
-- The [Play Framework](https://www.playframework.com) followed the Ruby on Rails model to become a lightweight, stateless, developer-friendly, web-friendly architecture for highly-scalable applications
-- [Scalatra](https://scalatra.org) is a tiny, high-performance, async web framework, inspired by Sinatra
-- [Finatra](https://twitter.github.io/finatra) is Scala services built on TwitterServer and Finagle
-- [Scala.js](https://www.scala-js.org) is a strongly-typed replacement for JavaScript that provides a safer way to build robust front-end web applications
-- [ScalaJs-React](https://github.com/japgolly/scalajs-react) lifts Facebook’s React library into Scala.js, and endeavours to make it as type-safe and Scala-friendly as possible
-- [Lagom](https://www.lagomframework.com) is a microservices framework that helps you decompose your legacy monolith and build, test, and deploy entire systems of Reactive microservices
-
-HTTP(S) libraries:
+HTTP(S) библиотеки:
 
 - [Akka-http](https://akka.io)
 - [Finch](https://github.com/finagle/finch)
 - [Http4s](https://github.com/http4s/http4s)
 - [Sttp](https://github.com/softwaremill/sttp)
 
-JSON libraries:
+JSON библиотеки:
 
 - [Argonaut](https://github.com/argonaut-io/argonaut)
 - [Circe](https://github.com/circe/circe)
 - [Json4s](https://github.com/json4s/json4s)
 - [Play-JSON](https://github.com/playframework/play-json)
 
-Serialization:
+Сериализация:
 
 - [ScalaPB](https://github.com/scalapb/ScalaPB)
 
-### Science and data analysis:
+### Наука и анализ данных:
 
 - [Algebird](https://github.com/twitter/algebird)
 - [Spire](https://github.com/typelevel/spire)
 - [Squants](https://github.com/typelevel/squants)
 
 
-### Big data
+### Большие данные
 
 - [Apache Spark](https://github.com/apache/spark)
 - [Apache Flink](https://github.com/apache/flink)
 
 
-### AI, machine learning
+### ИИ, машинное обучение
 
 - [BigDL](https://github.com/intel-analytics/BigDL) (Distributed Deep Learning Framework for Apache Spark) for Apache Spark
 - [TensorFlow Scala](https://github.com/eaplatanios/tensorflow_scala)
 
 
-### Functional Programming &amp; Functional Reactive Programming
+### Функциональное программирование &amp; Функциональное реактивное программирование
 
-FP:
+ФП:
 
 - [Cats](https://github.com/typelevel/cats)
 - [Zio](https://github.com/zio/zio)
 
-Functional reactive programming (FRP):
+Функциональное реактивное программирование (ФРП):
 
 - [fs2](https://github.com/typelevel/fs2)
 - [monix](https://github.com/monix/monix)
 
 
-### Build tools
+### Инструменты сборки
 
 - [sbt](https://www.scala-sbt.org)
 - [Gradle](https://gradle.org)
@@ -559,10 +473,10 @@ Functional reactive programming (FRP):
 
 
 
-## Summary
+## Подведем итоги
 
-As this page shows, Scala has many terrific programming language features at a high level, at an everyday programming level, and through its developer ecosystem.
-
+Как показано на этой странице, Scala обладает множеством замечательных функций высокоуровневого языка программирования, 
+на уровне повседневного программирования и в экосистеме разработчиков.
 
 
 [reference]: {{ site.scala3ref }}/overview.html
@@ -570,6 +484,4 @@ As this page shows, Scala has many terrific programming language features at a h
 [extension]: {% link _overviews/scala3-book/ca-extension-methods.md %}
 [givens]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
 [opaque_types]: {% link _overviews/scala3-book/types-opaque-types.md %}
-
-
 
