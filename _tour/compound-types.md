@@ -14,6 +14,8 @@ Sometimes it is necessary to express that the type of an object is a subtype of 
 
 Suppose we have two traits `Cloneable` and `Resetable`:
 
+{% tabs compound-types_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=compound-types_1 %}
 ```scala mdoc
 trait Cloneable extends java.lang.Cloneable {
   override def clone(): Cloneable = {
@@ -24,28 +26,66 @@ trait Resetable {
   def reset: Unit
 }
 ```
+{% endtab %}
+{% tab 'Scala 3' for=compound-types_1 %}
+```scala
+trait Cloneable extends java.lang.Cloneable:
+  override def clone(): Cloneable =
+    super.clone().asInstanceOf[Cloneable]
+trait Resetable:
+  def reset: Unit
+```
+{% endtab %}
+{% endtabs %}
 
 Now suppose we want to write a function `cloneAndReset` which takes an object, clones it and resets the original object:
 
-```
+{% tabs compound-types_2 class=tabs-scala-version %}
+{% tab 'Scala 2' for=compound-types_2 %}
+```scala mdoc::fail
 def cloneAndReset(obj: ?): Cloneable = {
   val cloned = obj.clone()
   obj.reset
   cloned
 }
 ```
+{% endtab %}
+{% tab 'Scala 3' for=compound-types_2 %}
+```scala
+def cloneAndReset(obj: ?): Cloneable =
+  val cloned = obj.clone()
+  obj.reset
+  cloned
+```
+{% endtab %}
+{% endtabs %}
 
-The question arises what the type of the parameter `obj` is. If it's `Cloneable` then the object can be `clone`d, but not `reset`; if it's `Resetable` we can `reset` it, but there is no `clone` operation. To avoid type casts in such a situation, we can specify the type of `obj` to be both `Cloneable` and `Resetable`. This compound type is written like this in Scala: `Cloneable with Resetable`.
+The question arises what the type of the parameter `obj` is. If it's `Cloneable` then the object can be `clone`d, but not `reset`; if it's `Resetable` we can `reset` it, but there is no `clone` operation. To avoid type casts in such a situation, we can specify the type of `obj` to be both `Cloneable` and `Resetable`.
+{% tabs compound-types_3 class=tabs-scala-version %}
+{% tab 'Scala 2' for=compound-types_3 %}
+This compound type is written like this in Scala: `Cloneable with Resetable`.
 
 Here's the updated function:
-
-```
+```scala mdoc
 def cloneAndReset(obj: Cloneable with Resetable): Cloneable = {
   //...
 }
 ```
-
 Compound types can consist of several object types and they may have a single refinement which can be used to narrow the signature of existing object members.
 The general form is: `A with B with C ... { refinement }`
+{% endtab %}
+{% tab 'Scala 3' for=compound-types_2 %}
+This compound type is written like this in Scala: `Cloneable & Resetable`.
+
+Here's the updated function:
+```scala
+def cloneAndReset(obj: Cloneable & Resetable): Cloneable = {
+  //...
+}
+```
+Compound types can consist of several object types and they may have a single refinement which can be used to narrow the signature of existing object members.
+The general form is: `A & B & C ... { refinement }`
+{% endtab %}
+{% endtabs %}
 
 An example for the use of refinements is given on the page about [class composition with mixins](mixin-class-composition.html).
