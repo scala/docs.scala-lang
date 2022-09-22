@@ -42,7 +42,7 @@ Now suppose we want to write a function `cloneAndReset` which takes an object, c
 
 {% tabs compound-types_2 class=tabs-scala-version %}
 {% tab 'Scala 2' for=compound-types_2 %}
-```scala mdoc::fail
+```scala mdoc:fail
 def cloneAndReset(obj: ?): Cloneable = {
   val cloned = obj.clone()
   obj.reset
