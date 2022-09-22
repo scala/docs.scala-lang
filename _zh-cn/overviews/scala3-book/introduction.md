@@ -5,6 +5,11 @@ description: This page begins the overview documentation of the Scala 3 language
 num: 1
 previous-page: 
 next-page: scala-features
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 欢迎阅读《Scala 3》一书。
