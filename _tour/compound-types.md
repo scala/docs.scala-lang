@@ -66,7 +66,7 @@ The question arises what the type of the parameter `obj` is. If it's `Cloneable`
 This compound type is written like this in Scala: `Cloneable with Resetable`.
 
 Here's the updated function:
-```scala mdoc
+```scala mdoc:fail
 def cloneAndReset(obj: Cloneable with Resetable): Cloneable = {
   //...
 }
