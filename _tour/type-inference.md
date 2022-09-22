@@ -82,7 +82,7 @@ Also, type inference can sometimes infer a too-specific type.  Suppose we write:
 
 {% tabs type-inference_6 %}
 {% tab 'Scala 2 and 3' for=type-inference_6 %}
-```scala mdoc
+```scala mdoc:crash
 var obj = null
 ```
 {% endtab %}
