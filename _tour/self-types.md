@@ -51,7 +51,7 @@ trait Tweeter:
 class VerifiedTweeter(val username_ : String) extends Tweeter, User:  // We mixin User because Tweeter required it
   def username = s"real $username_"
 
-val realBeyoncé = new VerifiedTweeter("Beyoncé")
+val realBeyoncé = VerifiedTweeter("Beyoncé")
 realBeyoncé.tweet("Just spilled my glass of lemonade")  // prints "real Beyoncé: Just spilled my glass of lemonade"
 ```
 Because we said `this: User =>` in `trait Tweeter`, now the variable `username` is in scope for the `tweet` method. This also means that since `VerifiedTweeter` extends `Tweeter`, it must also mix-in `User` (using `, User`).
