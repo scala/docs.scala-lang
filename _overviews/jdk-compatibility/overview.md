@@ -87,14 +87,22 @@ Support for JDK 18 was included in Scala 2.13.7 and 2.12.15.
 
 ## JDK 19 compatibility notes
 
-Early access builds of JDK 19, a non-LTS release, are already available.
+JDK 19, a non-LTS release, came out in September 2022.
 
-Initial support for JDK 19 was included in Scala 2.12.16, Scala 2.13.9,
-and Scala 3.2.0.
+Support for JDK 19 was included in Scala 2.13.9 and 2.12.16.
+
+<!--
+## JDK 20 compatibility notes
+
+Early access builds of JDK 20, a non-LTS release, are already available.
+
+Initial support for JDK 20 was included in Scala 2.12.???, Scala 2.13.???,
+and Scala 3.2.???.
+-->
 
 ## GraalVM Native Image compatibility notes
 
-There are several records of successfully using Scala with [GraalVM](https://www.graalvm.org) Native Image(i.e.: ahead of time compiler) to produce directly executable binaries.
+There are several records of successfully using Scala with [GraalVM](https://www.graalvm.org) Native Image (i.e., ahead of time compiler) to produce directly executable binaries.
 Beware that, even using solely the Scala standard library, Native Image compilation have some heavy requirements in terms of [reflective access](https://www.graalvm.org/reference-manual/native-image/metadata/), and it very likely require additional configuration steps to be performed.
 
 A few sbt plugins are offering support for GraalVM Native Image compilation:
