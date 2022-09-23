@@ -448,7 +448,7 @@ JSON библиотеки:
 
 ### ИИ, машинное обучение
 
-- [BigDL](https://github.com/intel-analytics/BigDL) (Distributed Deep Learning Framework for Apache Spark) for Apache Spark
+- [BigDL](https://github.com/intel-analytics/BigDL) (Распределенная среда глубокого обучения для Apache Spark)
 - [TensorFlow Scala](https://github.com/eaplatanios/tensorflow_scala)
 
 

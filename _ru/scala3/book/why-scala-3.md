@@ -15,27 +15,28 @@ next-page: taste-intro
 Использование Scala, и Scala 3 в частности, дает много преимуществ. 
 Трудно перечислить их все, но “топ десять” может выглядеть так:
 
-1. Scala embraces a fusion of functional programming (FP) and object-oriented programming (OOP)
-2. Scala is statically typed, but often feels like a dynamically typed language
-3. Scala’s syntax is concise, but still readable; it’s often referred to as _expressive_
-4. _Implicits_ in Scala 2 were a defining feature, and they have been improved and simplified in Scala 3
-5. Scala integrates seamlessly with Java, so you can create projects with mixed Scala and Java code, and Scala code easily uses the thousands of existing Java libraries
-6. Scala can be used on the server, and also in the browser with [Scala.js](https://www.scala-js.org)
-7. The Scala standard library has dozens of pre-built, functional methods to save you time, and greatly reduce the need to write custom `for` loops and algorithms
-8. “Best practices” are built into Scala, which favors immutability, anonymous functions, higher-order functions, pattern matching, classes that cannot be extended by default, and more
-9. The Scala ecosystem offers the most modern FP libraries in the world
-10. Strong type system
+1. Scala сочетает в себе функциональное программирование (ФП) и объектно-ориентированное программирование (ООП)
+2. Scala статически типизирован, но часто ощущается как язык с динамической типизацией
+3. Синтаксис Scala лаконичен, но все же удобочитаем; его часто называют _выразительным_
+4. _Implicits_ в Scala 2 были определяющей функцией, а в Scala 3 они были улучшены и упрощены
+5. Scala легко интегрируется с Java, поэтому вы можете создавать проекты со смешанным кодом Scala и Java, а код Scala легко использует тысячи существующих библиотек Java
+6. Scala можно использовать на сервере, а также в браузере со [Scala.js](https://www.scala-js.org)
+7. Стандартная библиотека Scala содержит десятки готовых функциональных методов, позволяющих сэкономить ваше время и значительно сократить потребность в написании пользовательских циклов `for` и алгоритмов
+8. “Best practices”, встроенные в Scala, поддерживают неизменность, анонимные функции, функции высшего порядка, сопоставление с образцом, классы, которые не могут быть расширены по умолчанию, и многое другое
+9. Экосистема Scala предлагает самые современные ФП библиотеки в мире
+10. Сильная система типов
 
-## 1) FP/OOP fusion
 
-More than any other language, Scala supports a fusion of the FP and OOP paradigms.
-As Martin Odersky has stated, the essence of Scala is a fusion of functional and object-oriented programming in a typed setting, with:
+## 1) Слияние ФП/ООП
 
-- Functions for the logic, and
-- Objects for the modularity
+Больше, чем любой другой язык, Scala поддерживает слияние парадигм ФП и ООП.
+Как заявил Мартин Одерски, сущность Scala — это слияние функционального и объектно-ориентированного программирования в типизированной среде с:
 
-Possibly some of the best examples of modularity are the classes in the standard library.
-For instance, a `List` is defined as a class---technically it’s an abstract class---and a new instance is created like this:
+- Функции для логики и
+- Объекты для модульности
+
+Возможно, одними из лучших примеров модульности являются классы стандартной библиотеки.
+Например, `List` определяется как класс---технически это абстрактный класс---и новый экземпляр создается следующим образом:
 
 {% tabs list %}
 {% tab 'Scala 2 and 3' for=list %}
@@ -45,10 +46,12 @@ val x = List(1, 2, 3)
 {% endtab %}
 {% endtabs %}
 
-However, what appears to the programmer to be a simple `List` is actually built from a combination of several specialized types, including traits named `Iterable`, `Seq`, and `LinearSeq`.
-Those types are similarly composed of other small, modular units of code.
+Однако то, что кажется программисту простым `List`, на самом деле построено из комбинации нескольких специализированных типов, 
+включая трейты с именами `Iterable`, `Seq` и `LinearSeq`. 
+Эти типы также состоят из других небольших модульных единиц кода.
 
-In addition to building a type like `List` from a series of modular traits, the `List` API also consists of dozens of other methods, many of which are higher-order functions:
+В дополнение к построению типа наподобие `List` из серии модульных трейтов, 
+`List` API также состоит из десятков других методов, многие из которых являются функциями высшего порядка:
 
 {% tabs list-methods %}
 {% tab 'Scala 2 and 3' for=list-methods %}
@@ -63,13 +66,13 @@ xs.takeWhile(_ < 3)   // List(1, 2)
 {% endtab %}
 {% endtabs %}
 
-In those examples, the values in the list can’t be modified.
-The `List` class is immutable, so all of those methods return new values, as shown by the data in each comment.
+В этих примерах значения в списке не могут быть изменены. 
+Класс `List` неизменяем, поэтому все эти методы возвращают новые значения, как показано в каждом комментарии.
 
-## 2) A dynamic feel
+## 2) Ощущение динамики
 
-Scala’s _type inference_ often makes the language feel dynamically typed, even though it’s statically typed.
-This is true with variable declaration:
+_Вывод типов_ (_type inference_) в Scala часто заставляет язык чувствовать себя динамически типизированным, даже если он статически типизирован. 
+Это верно для объявления переменной:
 
 {% tabs dynamic %}
 {% tab 'Scala 2 and 3' for=dynamic %}
@@ -82,7 +85,7 @@ val stuff = ("fish", 42, 1_234.5)
 {% endtab %}
 {% endtabs %}
 
-It’s also true when passing anonymous functions to higher-order functions:
+Это также верно при передаче анонимных функций функциям высшего порядка:
 
 {% tabs dynamic-hof %}
 {% tab 'Scala 2 and 3' for=dynamic-hof %}
@@ -95,7 +98,7 @@ list.filter(_ < 4)
 {% endtab %}
 {% endtabs %}
 
-and when defining methods:
+и при определении методов:
 
 {% tabs dynamic-method %}
 {% tab 'Scala 2 and 3' for=dynamic-method %}
@@ -105,27 +108,27 @@ def add(a: Int, b: Int) = a + b
 {% endtab %}
 {% endtabs %}
 
-This is more true than ever in Scala 3, such as when using [union types][union-types]:
+Это как никогда верно для Scala 3, например, при использовании [типов объединения][union-types]:
 
 {% tabs union %}
 {% tab 'Scala 3 Only' for=union %}
 ```scala
-// union type parameter
+// параметр типа объединения
 def help(id: Username | Password) =
   val user = id match
     case Username(name) => lookupName(name)
     case Password(hash) => lookupPassword(hash)
-  // more code here ...
+  // дальнейший код ...
 
-// union type value
+// значение типа объединения
 val b: Password | Username = if (true) name else password
 ```
 {% endtab %}
 {% endtabs %}
 
-## 3) Concise syntax
+## 3) Лаконичный синтаксис
 
-Scala is a low ceremony, “concise but still readable” language. For instance, variable declaration is concise:
+Scala — это неформальный, “краткий, но все же читабельный“ язык. Например, объявление переменной лаконично:
 
 {% tabs concise %}
 {% tab 'Scala 2 and 3' for=concise %}
@@ -137,7 +140,7 @@ val c = List(1,2,3)
 {% endtab %}
 {% endtabs %}
 
-Creating types like traits, classes, and enumerations are concise:
+Создание типов, таких как трейты, классы и перечисления, является кратким:
 
 {% tabs enum %}
 {% tab 'Scala 3 Only' for=enum %}
@@ -160,7 +163,7 @@ case class Person(
 {% endtab %}
 {% endtabs %}
 
-Higher-order functions are concise:
+Функции высшего порядка кратки:
 
 {% tabs list-hof %}
 {% tab 'Scala 2 and 3' for=list-hof %}
@@ -172,19 +175,21 @@ list.map(_ * 2)
 {% endtab %}
 {% endtabs %}
 
-All of these expressions and many more are concise, and still very readable: what we call _expressive_.
+Все эти и многие другие выражения кратки и при этом очень удобочитаемы: то, что мы называем _выразительным_ (_expressive_).
 
-## 4) Implicits, simplified
+## 4) Implicits, упрощение
 
-Implicits in Scala 2 were a major distinguishing design feature.
-They represented _the_ fundamental way to abstract over context, with a unified paradigm that served a great variety of use cases, among them:
+Implicits в Scala 2 были главной отличительной особенностью дизайна. 
+Они представляли собой фундаментальный способ абстрагирования от контекста с единой парадигмой, 
+которая обслуживала множество вариантов использования, среди которых:
 
-- Implementing [type classes]({% link _overviews/scala3-book/ca-type-classes.md %})
-- Establishing context
-- Dependency injection
-- Expressing capabilities
+- Реализация [типовых классов]({% link _overviews/scala3-book/ca-type-classes.md %})
+- Установление контекста
+- Внедрение зависимости
+- Выражение возможностей
 
-Since then, other languages have adopted similar concepts, all of which are variants of the core idea of _term inference_: Given a type, the compiler synthesizes a “canonical” term that has that type.
+С тех пор другие языки приняли аналогичные концепции, все из которых являются вариантами основной идеи вывода терминов: 
+при заданном типе компилятор синтезирует “канонический” термин, имеющий этот тип.
 
 While implicits were a defining feature in Scala 2, their design has been greatly improved in Scala 3:
 
