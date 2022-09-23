@@ -5,6 +5,11 @@ description: This page describes the benefits of the Scala 3 programming languag
 num: 3
 previous-page: scala-features
 next-page: taste-intro
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 {% comment %}

@@ -5,6 +5,11 @@ description: This chapter provides a high-level overview of the main features of
 num: 4
 previous-page: why-scala-3
 next-page: taste-hello-world
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
