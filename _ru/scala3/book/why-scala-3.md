@@ -181,76 +181,85 @@ list.map(_ * 2)
 
 Implicits в Scala 2 были главной отличительной особенностью дизайна. 
 Они представляли собой фундаментальный способ абстрагирования от контекста с единой парадигмой, 
-которая обслуживала множество вариантов использования, среди которых:
+обслуживающей множество вариантов использования, среди которых:
 
 - Реализация [типовых классов]({% link _overviews/scala3-book/ca-type-classes.md %})
 - Установление контекста
 - Внедрение зависимости
 - Выражение возможностей
 
-С тех пор другие языки приняли аналогичные концепции, все из которых являются вариантами основной идеи вывода терминов: 
-при заданном типе компилятор синтезирует “канонический” термин, имеющий этот тип.
+С тех пор другие языки внедрили аналогичные концепции, все из которых являются вариантами основной идеи _вывода терминов_: 
+при заданном типе компилятор синтезирует “канонический” термин этого типа.
 
-While implicits were a defining feature in Scala 2, their design has been greatly improved in Scala 3:
+Хотя implicits были определяющей функцией в Scala 2, их дизайн был значительно улучшен в Scala 3:
 
-- There’s a single way to define “given” values
-- There’s a single way to introduce implicit parameters and arguments
-- There’s a separate way to import givens that does not allow them to hide in a sea of normal imports
-- There’s a single way to define an implicit conversion, which is clearly marked as such, and does not require special syntax
+- Есть единственный способ определить значения “given”
+- Есть единственный способ ввести неявные параметры и аргументы
+- Есть отдельный способ импорта givens, который не позволяет им потеряться в море обычного импорта
+- Существует единственный способ определить неявное преобразование, которое четко обозначено как таковое и не требует специального синтаксиса
 
-Benefits of these changes include:
+К преимуществам этих изменений относятся:
 
-- The new design avoids feature interactions and makes the language more consistent
-- It makes implicits easier to learn and harder to abuse
-- It greatly improves the clarity of the 95% of Scala programs that use implicits
-- It has the potential to enable term inference in a principled way that’s also accessible and friendly
+- Новый дизайн позволяет избежать взаимодействия функциональностей и делает язык более согласованным
+- Это делает implicits более простыми для изучения и более сложными для злоупотребления
+- Это значительно улучшает ясность 95% программ Scala, использующих implicits
+- У него есть потенциал, чтобы сделать вывод терминов принципиальным способом, который также доступен и удобен
 
-These capabilities are described in detail in other sections, so see the [Contextual Abstraction introduction][contextual], and the section on [`given` and `using` clauses][given] for more details.
+Эти возможности подробно расписаны в соответствующих разделах, таких как [введение в контекстную абстракцию][contextual], а также раздел о [`given` и предложениях `using`][given] для получения более подробной информации.
 
-## 5) Seamless Java integration
+## 5) Полная интеграция с Java
 
-Scala/Java interaction is seamless in many ways.
-For instance:
+Взаимодействие между Scala и Java не вызывает затруднений во многих ситуациях. 
+Например:
 
-- You can use all of the thousands of Java libraries that are available in your Scala projects
-- A Scala `String` is essentially a Java `String`, with additional capabilities added to it
-- Scala seamlessly uses the date/time classes in the Java *java.time._* package
+- Вы можете использовать все тысячи библиотек Java, доступных в ваших проектах Scala
+- Scala `String` — это, по сути Java `String`, с дополнительными возможностями
+- Scala легко использует классы даты/времени из Java пакета *java.time._*
 
-You can also use Java collections classes in Scala, and to give them more functionality, Scala includes methods so you can transform them into Scala collections.
+Вы также можете использовать классы коллекций Java в Scala, а для придания им большей функциональности Scala включает методы, 
+позволяющие преобразовывать их в коллекции Scala.
 
-While almost every interaction is seamless, the [“Interacting with Java” chapter][java] demonstrates how to use some features together better, including how to use:
+Несмотря на то, что почти каждое взаимодействие является бесшовным, 
+в [главе “Взаимодействие с Java”][java] показано, как лучше использовать некоторые функции вместе, 
+в том числе как использовать:
 
-- Java collections in Scala
-- Java `Optional` in Scala
-- Java interfaces in Scala
-- Scala collections in Java
-- Scala `Option` in Java
-- Scala traits in Java
-- Scala methods that throw exceptions in Java code
-- Scala varargs parameters in Java
+- Коллекции Java в Scala
+- Java `Optional` в Scala
+- Интерфейсы Java в Scala
+- Коллекции Scala в Java
+- Scala `Option` в Java
+- Scala traits в Java
+- Методы Scala, вызывающие исключения в Java коде
+- Scala varargs параметры в Java
 
-See that chapter for more details on these features.
+Подробнее об этих функциях см. в этой главе.
 
-## 6) Client &amp; server
+## 6) Клиент &amp; сервер
 
-Scala can be used on the server side with terrific frameworks:
+Scala можно использовать на стороне сервера с потрясающими фреймворками:
 
-- The [Play Framework](https://www.playframework.com) lets you build highly scalable server-side applications and microservices
-- [Akka Actors](https://akka.io) let you use the actor model to greatly simplify distributed and concurrent software applications
+- [Play Framework](https://www.playframework.com) позволяет создавать масштабируемые серверные приложения и микросервисы
+- [Akka Actors](https://akka.io) позволяет использовать модель акторов для значительного упрощения распределенных и параллельных программных приложений
 
-Scala can also be used in the browser with the [Scala.js project](https://www.scala-js.org), which is a type-safe replacement for JavaScript.
-The Scala.js ecosystem [has dozens of libraries](https://www.scala-js.org/libraries) to let you use React, Angular, jQuery, and many other JavaScript and Scala libraries in the browser.
+Scala также можно использовать в браузере с [проектом Scala.js](https://www.scala-js.org), который является безопасной заменой JavaScript. 
+В экосистеме Scala.js есть [десятки библиотек](https://www.scala-js.org/libraries), позволяющих использовать React, Angular, jQuery 
+и многие другие библиотеки JavaScript и Scala в браузере.
 
-In addition to those tools, the [Scala Native](https://github.com/scala-native/scala-native) project “is an optimizing ahead-of-time compiler and lightweight managed runtime designed specifically for Scala.” It lets you build “systems” style binary executable applications with plain Scala code, and also lets you use lower-level primitives.
+В дополнение к этим инструментам проект [Scala Native](https://github.com/scala-native/scala-native)
+“представляет собой оптимизирующий опережающий компилятор и облегченную управляемую среду выполнения, разработанную специально для Scala”. 
+Он позволяет создавать бинарные исполняемые приложения в “системном” стиле с помощью простого кода Scala, а также позволяет использовать низкоуровневые примитивы.
 
-## 7) Standard library methods
+## 7) Стандартные библиотечные методы
 
-You will rarely ever need to write a custom `for` loop again, because the dozens of pre-built functional methods in the Scala standard library will both save you time, and help make code more consistent across different applications.
+Вам довольно редко понадобится писать пользовательский цикл `for`, 
+потому что десятки готовых функциональных методов в стандартной библиотеке Scala сэкономят ваше время 
+и помогут сделать код более согласованным в разных приложениях.
 
-The following examples show some of the built-in collections methods, and there are many in addition to these.
-While these all use the `List` class, the same methods work with other collections classes like `Seq`, `Vector`, `LazyList`, `Set`, `Map`, `Array`, and `ArrayBuffer`.
+В следующих примерах показаны некоторые из встроенных методов коллекций, а также многие другие. 
+Хотя все они используют класс `List`, одни и те же методы работают с другими классами коллекций, 
+такими как `Seq`, `Vector`, `LazyList`, `Set`, `Map`, `Array` и `ArrayBuffer`.
 
-Here are some examples:
+Вот некоторые примеры:
 
 {% tabs list-more %}
 {% tab 'Scala 2 and 3' for=list-more %}
@@ -295,31 +304,31 @@ nums.sortWith(_ > _)                      // List(10, 8, 7, 5, 1)
 {% endtab %}
 {% endtabs %}
 
-## 8) Built-in best practices
+## 8) Встроенные "best practices"
 
-Scala idioms encourage best practices in many ways.
-For immutability, you’re encouraged to create immutable `val` declarations:
+Идиомы Scala поощряют лучшие практики во многих ситуациях. 
+Для неизменяемости рекомендуется создавать неизменяемые val декларации:
 
 {% tabs val %}
 {% tab 'Scala 2 and 3' for=val %}
 ```scala
-val a = 1                 // immutable variable
+val a = 1                 // неизменяемая переменная
 ```
 {% endtab %}
 {% endtabs %}
 
-You’re also encouraged to use immutable collections classes like `List` and `Map`:
+Вам также рекомендуется использовать неизменяемые классы коллекций, такие как `List` и `Map`:
 
 {% tabs list-map %}
 {% tab 'Scala 2 and 3' for=list-map %}
 ```scala
-val b = List(1,2,3)       // List is immutable
-val c = Map(1 -> "one")   // Map is immutable
+val b = List(1,2,3)       // List неизменяем
+val c = Map(1 -> "one")   // Map неизменяема
 ```
 {% endtab %}
 {% endtabs %}
 
-Case classes are primarily intended for use in [domain modeling]({% link _overviews/scala3-book/domain-modeling-intro.md %}), and their parameters are immutable:
+Case классы в первую очередь предназначены для использования в [моделировании предметной области]({% link _overviews/scala3-book/domain-modeling-intro.md %}), и их параметры неизменяемы:
 
 {% tabs case-class %}
 {% tab 'Scala 2 and 3' for=case-class %}
@@ -327,12 +336,13 @@ Case classes are primarily intended for use in [domain modeling]({% link _overvi
 case class Person(name: String)
 val p = Person("Michael Scott")
 p.name           // Michael Scott
-p.name = "Joe"   // compiler error (reassignment to val name)
+p.name = "Joe"   // compiler error (переназначение val name)
 ```
 {% endtab %}
 {% endtabs %}
 
-As shown in the previous section, Scala collections classes support higher-order functions, and you can pass methods (not shown) and anonymous functions into them:
+Как показано в предыдущем разделе, классы коллекций Scala поддерживают функции высшего порядка, 
+и вы можете передавать в них методы (не показаны) и анонимные функции:
 
 {% tabs higher-order %}
 {% tab 'Scala 2 and 3' for=higher-order %}
@@ -347,7 +357,7 @@ nums.sortWith(_ > _)
 {% endtab %}
 {% endtabs %}
 
-`match` expressions let you use pattern matching, and they truly are _expressions_ that return values:
+Выражения `match` позволяют использовать сопоставление с образцом, и они действительно являются _выражениями_, которые возвращают значения:
 
 {% tabs match class=tabs-scala-version %}
 {% tab 'Scala 2' for=match %}
@@ -370,7 +380,7 @@ val numAsString = i match
 {% endtab %}
 {% endtabs %}
 
-Because they can return values, they’re often used as the body of a method:
+Поскольку они могут возвращать значения, их часто используют в качестве тела метода:
 
 {% tabs match-body class=tabs-scala-version %}
 {% tab 'Scala 2' for=match-body %}
@@ -391,80 +401,55 @@ def isTruthy(a: Matchable) = a match
 {% endtab %}
 {% endtabs %}
 
-## 9) Ecosystem libraries
+## 9) Библиотеки экосистемы 
 
-Scala libraries for functional programming like [Cats](https://typelevel.org/cats) and [Zio](https://zio.dev) are leading-edge libraries in the FP community.
-All of the buzzwords like high-performance, type safe, concurrent, asynchronous, resource-safe, testable, functional, modular, binary-compatible, efficient, effects/effectful, and more, can be said about these libraries.
+Библиотеки Scala для функционального программирования, такие как [Cats](https://typelevel.org/cats) и [Zio](https://zio.dev), 
+являются передовыми библиотеками в сообществе ФП. 
+Об этих библиотеках можно сказать все модные словечки, такие как высокопроизводительная, типобезопасная, параллельная, асинхронная, ресурсобезопасная, тестируемая, функциональная, модульная, бинарно-совместимая, эффективная, эффектная и т.д.
 
-We could list hundreds of libraries here, but fortunately they’re all listed in another location: For those details, see the [“Awesome Scala” list](https://github.com/lauris/awesome-scala).
+Мы могли бы перечислить здесь сотни библиотек, но, к счастью, все они перечислены в другом месте: подробности см. в списке [“Awesome Scala”](https://github.com/lauris/awesome-scala).
 
-## 10) Strong type system
+## 10) Сильная система типов
 
-Scala has a strong type system, and it’s been improved even more in Scala 3.
-Scala 3’s goals were defined early on, and those related to the type system include:
+В Scala есть сильная система типов, и она была еще больше улучшена в Scala 3. 
+Цели Scala 3 были определены на раннем этапе, и к ним относятся:
 
-- Simplification
-- Eliminate inconsistencies
-- Safety
-- Ergonomics
-- Performance
+- Упрощение
+- Устранение несоответствий
+- Безопасность
+- Эргономика
+- Производительность
 
-_Simplification_ comes about through dozens of changed and dropped features.
-For instance, the changes from the overloaded `implicit` keyword in Scala 2 to the terms `given` and `using` in Scala 3 make the language more clear, especially for beginning developers.
+_Упрощение_ достигается за счет десятков измененных и удаленных функций.
+Например, изменения перегруженного ключевого слова `implicit` в Scala 2 на термины `given` и `using` в Scala 3 делает язык более понятным, особенно для начинающих разработчиков.
 
-_Eliminating inconsistencies_ is related to the dozens of [dropped features][dropped], [changed features][changed], and [added features][added] in Scala 3.
-Some of the most important features in this category are:
+_Устранение несоответствий_ связано с десятками [удаленных функций][dropped], [измененных функций][changed], и [добавленных функций][added] в Scala 3.
+Некоторые из наиболее важных функций в этой категории:
 
-- Intersection types
-- Union types
-- Implicit function types
-- Dependent function types
-- Trait parameters
-- Generic tuples
+- Типы пересечения
+- Типы объединения
+- Неявные функциональные типы
+- Зависимые функциональные типы
+- Параметры трейтов
+- Generic кортежи
 
-{% comment %}
-A list of types from the Dotty documentation:
+_Безопасность_ связана с несколькими новыми и измененными функциями:
 
-- Inferred types
-- Generics
-- Intersection types
-- Union types
-- Structural types
-- Dependent function types
-- Type classes
-- Opaque types
-- Variance
-- Algebraic Data Types
-- Wildcard arguments in types: ? replacing _
-- Type lambdas
-- Match types
-- Existential types
-- Higher-kinded types
-- Singleton types
-- Refinement types
-- Kind polymorphism
-- Abstract type members and path-dependent types
-- Dependent function types
-- Bounds
-{% endcomment %}
+- Мультиверсальное равенство
+- Ограничение неявных преобразований
+- Null безопасность
+- Безопасная инициализация
 
-_Safety_ is related to several new and changed features:
-
-- Multiversal equality
-- Restricting implicit conversions
-- Null safety
-- Safe initialization
-
-Good examples of _ergonomics_ are enumerations and extension methods, which have been added to Scala 3 in a very readable manner:
+Хорошими примерами _эргономики_ являются перечисления и методы расширения, которые были добавлены в Scala 3 очень удобочитаемым образом:
 
 {% tabs extension %}
 {% tab 'Scala 3 Only' for=extension %}
 ```scala
-// enumeration
+// перечисления
 enum Color:
   case Red, Green, Blue
 
-// extension methods
+// методы расширения
 extension (c: Circle)
   def circumference: Double = c.radius * math.Pi * 2
   def diameter: Double = c.radius * 2
@@ -473,25 +458,26 @@ extension (c: Circle)
 {% endtab %}
 {% endtabs %}
 
-_Performance_ relates to several areas.
-One of those is [opaque types][opaque-types].
-In Scala 2 there were several attempts to create solutions to keep with the Domain-driven design (DDD) practice of giving values more meaningful types.
-These attempts included:
+_Производительность_ относится к нескольким областям. 
+Одним из них являются [непрозрачные типы][opaque-types]. 
+В Scala 2 было несколько попыток создать решения, соответствующие практике проектирования, управляемого предметной областью (DDD), 
+когда значениям присваивались более осмысленные типы. 
+Эти попытки включали:
 
-- Type aliases
-- Value classes
-- Case classes
+- Псевдонимы типов
+- Классы значений
+- Case классы 
 
-Unfortunately all of these approaches had weaknesses, as described in the [_Opaque Types_ SIP](https://docs.scala-lang.org/sips/opaque-types.html).
-Conversely, the goal of opaque types, as described in that SIP, is that “operations on these wrapper types must not create any extra overhead at runtime while still providing a type safe use at compile time.”
+К сожалению, у всех этих подходов были недостатки, как описано в [SIP непрозрачных типов](https://docs.scala-lang.org/sips/opaque-types.html). 
+И наоборот, цель непрозрачных типов, как описано в этом SIP, заключается в том, что “операции с этими типами-оболочками не должны создавать дополнительных накладных расходов во время выполнения, но при этом обеспечивать безопасное использование типов во время компиляции”.
 
-For more type system details, see the [Reference documentation][reference].
+Дополнительные сведения о системе типов см. в [справочной документации][reference].
 
-## Other great features
+## Другие замечательные функции
 
-Scala has many great features, and choosing a Top 10 list can be subjective.
-Several surveys have shown that different groups of developers love different features.
-Hopefully you’ll discover more great Scala features as you use the language.
+Scala обладает множеством замечательных функций, и выбор Топ-10 может быть субъективным. 
+Несколько опросов показали, что разные группы разработчиков любят разные функции. 
+Надеемся, вы откроете для себя больше замечательных возможностей Scala по мере использования языка.
 
 [java]: {% link _overviews/scala3-book/interacting-with-java.md %}
 [given]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
