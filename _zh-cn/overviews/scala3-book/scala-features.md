@@ -5,6 +5,11 @@ description: This page discusses the main features of the Scala 3 programming la
 num: 2
 previous-page: introduction
 next-page: why-scala-3
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
