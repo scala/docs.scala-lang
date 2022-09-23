@@ -150,11 +150,11 @@ IDE を使ってプロジェクトを開いてみましょう。最もポピュ�
 - _build.sbt_
 - _src/main/scala/Main.scala_
 
-次のステップでプロジェクトを実行すると、_src/main/scala/Main.scala_のコードを実行するために、_build.sbt_の設定が使われます。
+次のステップでプロジェクトを実行すると、 _src/main/scala/Main.scala_ のコードを実行するために、 _build.sbt_ の設定が使われます。
 
 ## Hello World の実行
 
-IDE の使用に慣れている場合は、IDE から_Main.scala_のコードを実行することができます。
+IDE の使用に慣れている場合は、IDE から _Main.scala_ のコードを実行することができます。
 
 または、以下の手順でターミナルからアプリケーションを実行できます:
 
