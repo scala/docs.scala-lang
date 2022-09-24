@@ -311,4 +311,4 @@ val res1: concurrent.Future[Int] = Future(Success(4))
 它还讨论了如何将 `for` 表达式转换为 `flatMap` 操作。
 
 
-[futures]: {% link _zh-cn/overviews/core/futures.md %}
+[futures]: {% link _overviews/core/futures.md %}

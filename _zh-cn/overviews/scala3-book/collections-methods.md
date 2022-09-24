@@ -401,6 +401,6 @@ res1: Int = 24
 [interacting]: {% link _zh-cn/overviews/scala3-book/interacting-with-java.md %}
 [lambdas]: {% link _zh-cn/overviews/scala3-book/fun-anonymous-functions.md %}
 [fp-intro]: {% link _zh-cn/overviews/scala3-book/fp-intro.md %}
-[mut-immut-colls]: {% link _zh-cn/overviews/collections-2.13/overview.md %}
-[architecture]: {% link _zh-cn/overviews/core/architecture-of-scala-213-collections.md %}
+[mut-immut-colls]: {% link _overviews/collections-2.13/overview.md %}
+[architecture]: {% link _overviews/core/architecture-of-scala-213-collections.md %}
 

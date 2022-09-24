@@ -268,7 +268,7 @@ val z: Long = y  // Error
 
 [reference]: {{ site.scala3ref }}/overview.html
 [matchable]: {{ site.scala3ref }}/other-new-features/matchable.html
-[interpolation]: {% link _zh-cn/overviews/core/string-interpolation.md %}
+[interpolation]: {% link _overviews/core/string-interpolation.md %}
 [fp]: {% link _zh-cn/overviews/scala3-book/fp-intro.md %}
 [option-api]: https://scala-lang.org/api/3.x/scala/Option.html
 [safe-null]: {{ site.scala3ref }}/experimental/explicit-nulls.html
