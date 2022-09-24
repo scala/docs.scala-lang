@@ -5,6 +5,11 @@ description: This page shows how to use anonymous functions in Scala, including 
 num: 34
 previous-page: fun-write-method-returns-function
 next-page: packaging-imports
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

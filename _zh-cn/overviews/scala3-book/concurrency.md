@@ -5,6 +5,11 @@ description: This page discusses how Scala concurrency works, with an emphasis o
 num: 68
 previous-page: ca-summary
 next-page: scala-tools
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -306,4 +311,4 @@ val res1: concurrent.Future[Int] = Future(Success(4))
 它还讨论了如何将 `for` 表达式转换为 `flatMap` 操作。
 
 
-[futures]: {% link _overviews/core/futures.md %}
+[futures]: {% link _zh-cn/overviews/core/futures.md %}

@@ -5,6 +5,11 @@ description: This section summarizes the previous functional programming section
 num: 46
 previous-page: fp-functional-error-handling
 next-page: types-introduction
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

@@ -5,6 +5,11 @@ description: This section summarizes the previous sections on Scala 3 methods.
 num: 26
 previous-page: methods-main-methods
 next-page: fun-intro
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

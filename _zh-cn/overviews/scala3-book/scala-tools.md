@@ -5,6 +5,11 @@ description: This chapter looks at two commonly-used Scala tools, sbt and ScalaT
 num: 69
 previous-page: concurrency
 next-page: tools-sbt
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

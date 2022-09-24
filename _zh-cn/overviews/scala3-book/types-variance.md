@@ -5,6 +5,11 @@ description: This section introduces and demonstrates variance in Scala 3.
 num: 53
 previous-page: types-adts-gadts
 next-page: types-opaque-types
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

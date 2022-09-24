@@ -5,6 +5,11 @@ description: This chapter provides an introduction to FP domain modeling with Sc
 num: 22
 previous-page: domain-modeling-oop
 next-page: methods-intro
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -473,5 +478,5 @@ Pizza(Small, Thin, Seq(Cheese))
 - 您可以使用“函数对象”方法并将方法存储在定义的数据类型上
 - 您可以使用扩展方法把函数装配到数据模型上
 
-[adts]: {% link _overviews/scala3-book/types-adts-gadts.md %}
-[modeling-tools]: {% link _overviews/scala3-book/domain-modeling-tools.md %}
+[adts]: {% link _zh-cn/overviews/scala3-book/types-adts-gadts.md %}
+[modeling-tools]: {% link _zh-cn/overviews/scala3-book/domain-modeling-tools.md %}

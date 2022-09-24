@@ -5,6 +5,11 @@ description: This page is for Java developers who are interested in learning abo
 num: 73
 previous-page: interacting-with-java
 next-page: scala-for-javascript-devs
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -1245,29 +1250,29 @@ Scala 中还有其他一些概念目前在 Java 11 中是没有的。
 - 宏和元编程
 
 
-[collections-classes]: {% link _overviews/scala3-book/collections-classes.md %}
-[collections-methods]: {% link _overviews/scala3-book/collections-methods.md %}
-[control]: {% link _overviews/scala3-book/control-structures.md %}
-[equality]: {% link _overviews/scala3-book/ca-multiversal-equality.md %}
-[error-handling]: {% link _overviews/scala3-book/fp-functional-error-handling.md %}
-[extension-methods]: {% link _overviews/scala3-book/ca-extension-methods.md %}
-[givens]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
-[hofs]: {% link _overviews/scala3-book/fun-hofs.md %}
-[imports]: {% link _overviews/scala3-book/packaging-imports.md %}
-[modeling-intro]: {% link _overviews/scala3-book/domain-modeling-intro.md %}
-[modeling-oop]: {% link _overviews/scala3-book/domain-modeling-oop.md %}
-[opaque]: {% link _overviews/scala3-book/types-opaque-types.md %}
-[tools]: {% link _overviews/scala3-book/scala-tools.md %}
-[toplevel]: {% link _overviews/scala3-book/taste-toplevel-definitions.md %}
-[type-classes]: {% link _overviews/scala3-book/ca-type-classes.md %}
+[collections-classes]: {% link _zh-cn/overviews/scala3-book/collections-classes.md %}
+[collections-methods]: {% link _zh-cn/overviews/scala3-book/collections-methods.md %}
+[control]: {% link _zh-cn/overviews/scala3-book/control-structures.md %}
+[equality]: {% link _zh-cn/overviews/scala3-book/ca-multiversal-equality.md %}
+[error-handling]: {% link _zh-cn/overviews/scala3-book/fp-functional-error-handling.md %}
+[extension-methods]: {% link _zh-cn/overviews/scala3-book/ca-extension-methods.md %}
+[givens]: {% link _zh-cn/overviews/scala3-book/ca-given-using-clauses.md %}
+[hofs]: {% link _zh-cn/overviews/scala3-book/fun-hofs.md %}
+[imports]: {% link _zh-cn/overviews/scala3-book/packaging-imports.md %}
+[modeling-intro]: {% link _zh-cn/overviews/scala3-book/domain-modeling-intro.md %}
+[modeling-oop]: {% link _zh-cn/overviews/scala3-book/domain-modeling-oop.md %}
+[opaque]: {% link _zh-cn/overviews/scala3-book/types-opaque-types.md %}
+[tools]: {% link _zh-cn/overviews/scala3-book/scala-tools.md %}
+[toplevel]: {% link _zh-cn/overviews/scala3-book/taste-toplevel-definitions.md %}
+[type-classes]: {% link _zh-cn/overviews/scala3-book/ca-type-classes.md %}
 
-[concurrency]: {% link _overviews/scala3-book/concurrency.md %}
-[contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}
-[control]: {% link _overviews/scala3-book/control-structures.md %}
-[fp-intro]: {% link _overviews/scala3-book/fp-intro.md %}
-[intersection-types]: {% link _overviews/scala3-book/types-intersection.md %}
-[modeling-fp]: {% link _overviews/scala3-book/domain-modeling-fp.md %}
-[multiversal]: {% link _overviews/scala3-book/ca-multiversal-equality.md %}
-[union-types]: {% link _overviews/scala3-book/types-union.md %}
+[concurrency]: {% link _zh-cn/overviews/scala3-book/concurrency.md %}
+[contextual]: {% link _zh-cn/overviews/scala3-book/ca-contextual-abstractions-intro.md %}
+[control]: {% link _zh-cn/overviews/scala3-book/control-structures.md %}
+[fp-intro]: {% link _zh-cn/overviews/scala3-book/fp-intro.md %}
+[intersection-types]: {% link _zh-cn/overviews/scala3-book/types-intersection.md %}
+[modeling-fp]: {% link _zh-cn/overviews/scala3-book/domain-modeling-fp.md %}
+[multiversal]: {% link _zh-cn/overviews/scala3-book/ca-multiversal-equality.md %}
+[union-types]: {% link _zh-cn/overviews/scala3-book/types-union.md %}
 
 </div>

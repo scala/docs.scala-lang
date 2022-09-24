@@ -5,6 +5,11 @@ description: This page demonstrates how to create and use higher-order functions
 num: 33
 previous-page: fun-write-map-function
 next-page: fun-summary
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

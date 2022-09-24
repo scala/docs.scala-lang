@@ -5,6 +5,11 @@ description: This section provides an introduction to the use of singleton objec
 num: 12
 previous-page: taste-functions
 next-page: taste-collections
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

@@ -5,6 +5,11 @@ description: This page discusses Eta Expansion, the Scala technology that automa
 num: 30
 previous-page: fun-function-variables
 next-page: fun-hofs
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -79,5 +84,5 @@ val methods = List(isEvenMethod)       // works
 有关其工作原理的更多详细信息，请参阅参考文档中的 [Eta 扩展页面][eta_expansion]。
 
 [eta_expansion]: {{ site.scala3ref }}/changed-features/eta-expansion.html
-[extension]: {% link _overviews/scala3-book/ca-extension-methods.md %}
-[toplevel]: {% link _overviews/scala3-book/taste-toplevel-definitions.md %}
+[extension]: {% link _zh-cn/overviews/scala3-book/ca-extension-methods.md %}
+[toplevel]: {% link _zh-cn/overviews/scala3-book/taste-toplevel-definitions.md %}

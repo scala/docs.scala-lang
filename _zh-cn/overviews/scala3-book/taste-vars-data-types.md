@@ -5,6 +5,11 @@ description: This section demonstrates val and var variables, and some common Sc
 num: 7
 previous-page: taste-repl
 next-page: taste-control-structures
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -195,4 +200,4 @@ val quote = """The essence of Scala:
 
 > 有关字符串插值器和多行字符串的更多详细信息，请参阅[“First Look at Types”章节][first-look]。
 
-[first-look]: {% link _overviews/scala3-book/first-look-at-types.md %}
+[first-look]: {% link _zh-cn/overviews/scala3-book/first-look-at-types.md %}

@@ -5,6 +5,11 @@ description: This section provides an introduction to Contextual Abstractions in
 num: 14
 previous-page: taste-collections
 next-page: taste-toplevel-definitions
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -50,5 +55,5 @@ _上下文抽象_ 用于避免重复代码。
 
 有关更多详细信息，请参阅本书的[上下文抽象章节][contextual]，以及[参考文档][reference]。
 
-[contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}
+[contextual]: {% link _zh-cn/overviews/scala3-book/ca-contextual-abstractions-intro.md %}
 [reference]: {{ site.scala3ref }}/overview.html

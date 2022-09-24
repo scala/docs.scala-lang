@@ -5,6 +5,11 @@ description: This chapter provides an introduction to the Scala 3 concept of Con
 num: 58
 previous-page: types-others
 next-page: ca-given-using-clauses
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -72,11 +77,11 @@ Scala 3 中的这些更改实现了术语推理与语言其余部分的更好分
 本章将在以下各节中介绍其中的许多新功能。
 
 
-[givens]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
-[given-imports]: {% link _overviews/scala3-book/ca-given-imports.md %}
-[implicit-conversions]: {% link _overviews/scala3-book/ca-implicit-conversions.md %}
-[extension-methods]: {% link _overviews/scala3-book/ca-extension-methods.md %}
-[context-bounds]: {% link _overviews/scala3-book/ca-context-bounds.md %}
-[type-classes]: {% link _overviews/scala3-book/ca-type-classes.md %}
-[equality]: {% link _overviews/scala3-book/ca-multiversal-equality.md %}
-[contextual-functions]: {% link _overviews/scala3-book/types-dependent-function.md %}
+[givens]: {% link _zh-cn/overviews/scala3-book/ca-given-using-clauses.md %}
+[given-imports]: {% link _zh-cn/overviews/scala3-book/ca-given-imports.md %}
+[implicit-conversions]: {% link _zh-cn/overviews/scala3-book/ca-implicit-conversions.md %}
+[extension-methods]: {% link _zh-cn/overviews/scala3-book/ca-extension-methods.md %}
+[context-bounds]: {% link _zh-cn/overviews/scala3-book/ca-context-bounds.md %}
+[type-classes]: {% link _zh-cn/overviews/scala3-book/ca-type-classes.md %}
+[equality]: {% link _zh-cn/overviews/scala3-book/ca-multiversal-equality.md %}
+[contextual-functions]: {% link _zh-cn/overviews/scala3-book/types-dependent-function.md %}

@@ -5,6 +5,11 @@ description: This section mentions other advanced types in Scala 3.
 num: 57
 previous-page: types-dependent-function
 next-page: ca-contextual-abstractions-intro
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

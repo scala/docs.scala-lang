@@ -5,6 +5,11 @@ description: This section introduces Scala 3 methods, including main methods, ex
 num: 24
 previous-page: methods-intro
 next-page: methods-main-methods
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -380,7 +385,7 @@ aCircle.area
 
 有关这些功能的更多详细信息，请参阅 [参考文档][reference]。
 
-[extension]: {% link _overviews/scala3-book/ca-extension-methods.md %}
+[extension]: {% link _zh-cn/overviews/scala3-book/ca-extension-methods.md %}
 [reference_extension_methods]: {{ site.scala3ref }}/contextual/extension-methods.html
 [reference]: {{ site.scala3ref }}/overview.html
 [reference_matchable]: {{ site.scala3ref }}/other-new-features/matchable.html

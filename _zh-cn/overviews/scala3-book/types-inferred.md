@@ -5,6 +5,11 @@ description: This section introduces and demonstrates inferred types in Scala 3
 num: 48
 previous-page: types-introduction
 next-page: types-generics
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

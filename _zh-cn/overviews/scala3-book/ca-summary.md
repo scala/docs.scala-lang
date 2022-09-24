@@ -5,6 +5,11 @@ description: This page provides a summary of the Contextual Abstractions lessons
 num: 67
 previous-page: ca-implicit-conversions
 next-page: concurrency
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

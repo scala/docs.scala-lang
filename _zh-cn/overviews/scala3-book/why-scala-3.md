@@ -5,6 +5,11 @@ description: This page describes the benefits of the Scala 3 programming languag
 num: 3
 previous-page: scala-features
 next-page: taste-intro
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 {% comment %}
@@ -142,7 +147,7 @@ list.map(_ * 2)
 Scala 2 中的隐式是一个主要明显的设计特征。
 它们代表了抽象上下文的基本方式，具有服务于各种用例的统一范式，其中包括：
 
-- 实现 [type classes]({% link _overviews/scala3-book/ca-type-classes.md %})
+- 实现 [type classes]({% link _zh-cn/overviews/scala3-book/ca-type-classes.md %})
 - 建立背景
 - 依赖注入
 - 表达能力
@@ -265,7 +270,7 @@ val b = List(1,2,3)       // List 是不可变的
 val c = Map(1 -> "one")   // Map 是不可变的
 ```
 
-样例类主要用于 [领域建模]({% link _overviews/scala3-book/domain-modeling-intro.md %})，它们的参数是不可变的：
+样例类主要用于 [领域建模]({% link _zh-cn/overviews/scala3-book/domain-modeling-intro.md %})，它们的参数是不可变的：
 
 ```scala
 case class Person(name: String)
@@ -399,13 +404,13 @@ _性能_ 涉及几个方面。
 Scala 有许多很棒的特性，选择十大列表可能是主观的。
 多项调查表明，不同的开发人员群体喜欢不同的特性。
 
-[java]: {% link _overviews/scala3-book/interacting-with-java.md %}
-[given]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
-[contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}
+[java]: {% link _zh-cn/overviews/scala3-book/interacting-with-java.md %}
+[given]: {% link _zh-cn/overviews/scala3-book/ca-given-using-clauses.md %}
+[contextual]: {% link _zh-cn/overviews/scala3-book/ca-contextual-abstractions-intro.md %}
 [reference]: {{ site.scala3ref }}
 [dropped]: {{ site.scala3ref }}/dropped-features
 [changed]: {{ site.scala3ref }}/changed-features
 [added]:{{ site.scala3ref }}/other-new-features
 
-[union-types]: {% link _overviews/scala3-book/types-union.md %}
-[opaque-types]: {% link _overviews/scala3-book/types-opaque-types.md %}
+[union-types]: {% link _zh-cn/overviews/scala3-book/types-union.md %}
+[opaque-types]: {% link _zh-cn/overviews/scala3-book/types-opaque-types.md %}

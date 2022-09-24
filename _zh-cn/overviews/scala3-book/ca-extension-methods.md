@@ -5,6 +5,11 @@ description: This page demonstrates how Extension Methods work in Scala 3.
 num: 63
 previous-page: ca-given-imports
 next-page: ca-type-classes
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

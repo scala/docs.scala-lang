@@ -5,6 +5,11 @@ description: This section looks at the use of functions as values in functional 
 num: 44
 previous-page: fp-pure-functions
 next-page: fp-functional-error-handling
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -95,5 +100,5 @@ nums.sortWith(_ > _)    // List(11, 7, 5, 3, 1)
 nums.takeWhile(_ < 6).sortWith(_ < _)   // List(1, 3, 5)
 ```
 
-[hofs]: {% link _overviews/scala3-book/fun-hofs.md %}
-[eta]: {% link _overviews/scala3-book/fun-eta-expansion.md %}
+[hofs]: {% link _zh-cn/overviews/scala3-book/fun-hofs.md %}
+[eta]: {% link _zh-cn/overviews/scala3-book/fun-eta-expansion.md %}

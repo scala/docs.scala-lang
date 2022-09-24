@@ -5,6 +5,11 @@ description: This page demonstrates the common methods on the Scala 3 collection
 num: 38
 previous-page: collections-classes
 next-page: collections-summary
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -393,9 +398,9 @@ res1: Int = 24
 > 通过这样做，您可以在 `for` 表达式中使用这些集合，还可以利用 Scala 的函数式集合方法。
 > 请参阅 [与 Java 交互][interacting] 部分了解更多详细信息。
 
-[interacting]: {% link _overviews/scala3-book/interacting-with-java.md %}
-[lambdas]: {% link _overviews/scala3-book/fun-anonymous-functions.md %}
-[fp-intro]: {% link _overviews/scala3-book/fp-intro.md %}
-[mut-immut-colls]: {% link _overviews/collections-2.13/overview.md %}
-[architecture]: {% link _overviews/core/architecture-of-scala-213-collections.md %}
+[interacting]: {% link _zh-cn/overviews/scala3-book/interacting-with-java.md %}
+[lambdas]: {% link _zh-cn/overviews/scala3-book/fun-anonymous-functions.md %}
+[fp-intro]: {% link _zh-cn/overviews/scala3-book/fp-intro.md %}
+[mut-immut-colls]: {% link _zh-cn/overviews/collections-2.13/overview.md %}
+[architecture]: {% link _zh-cn/overviews/core/architecture-of-scala-213-collections.md %}
 
