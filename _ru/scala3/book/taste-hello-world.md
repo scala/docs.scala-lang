@@ -12,15 +12,14 @@ previous-page: taste-intro
 next-page:
 ---
 
-> **Hint**: in the following examples try picking your preferred Scala version.
+> **Подсказка**: в следующих примерах попробуйте выбрать предпочтительную для вас версию Scala. 
 > <noscript><span style="font-weight: bold;">Info</span>: JavaScript is currently disabled, code tabs will still work, but preferences will not be remembered.</noscript>
 
-## Your First Scala Program
+## Ваша первая Scala-программа
 
 
-A Scala “Hello, World!” example goes as follows.
-First, put this code in a file named _hello.scala_:
-
+Пример “Hello, World!” на Scala выглядит следующим образом.
+Сначала поместите этот код в файл с именем _hello.scala_:
 
 <!-- Display Hello World for each Scala Version -->
 {% tabs hello-world-demo class=tabs-scala-version %}
@@ -33,9 +32,10 @@ object hello {
   }
 }
 ```
-> In this code, we defined a method named `main`, inside a Scala `object` named `hello`.
-> An `object` in Scala is similar to a `class`, but defines a singleton instance that you can pass around.
-> `main` takes an input parameter named `args` that must be typed as `Array[String]`, (ignore `args` for now).
+> В этом коде мы определили метод с именем `main` внутри Scala `object`-а с именем `hello`. 
+> `object` в Scala похож на `class`, но определяет экземпляр singleton, который можно передать. 
+> `main` принимает входной параметр с именем `args`, который должен иметь тип `Array[String]` 
+> (`args` пока можно игнорировать).
 
 {% endtab %}
 
@@ -43,22 +43,22 @@ object hello {
 ```scala
 @main def hello() = println("Hello, World!")
 ```
-> In this code, `hello` is a method.
-> It’s defined with `def`, and declared to be a “main” method with the `@main` annotation.
-> It prints the `"Hello, World!"` string to standard output (STDOUT) using the `println` method.
+> В этом коде `hello` - это метод. 
+> Он определяется с помощью `def` и объявляется в качестве основного метода с помощью аннотации `@main`. 
+> Он выводит строку "Hello, World!" на стандартный вывод (STDOUT) с помощью метода `println`.
 
 {% endtab %}
 
 {% endtabs %}
 <!-- End tabs -->
 
-Next, compile the code with `scalac`:
+Затем скомпилируйте код с помощью `scalac`:
 
 ```bash
 $ scalac hello.scala
 ```
 
-If you’re coming to Scala from Java, `scalac` is just like `javac`, so that command creates several files:
+Если вы переходите на Scala с Java: `scalac` похоже на `javac`, эта команда создает несколько файлов:
 
 <!-- Display Hello World compiled outputs for each Scala Version -->
 {% tabs hello-world-outputs class=tabs-scala-version %}
@@ -87,25 +87,26 @@ hello.tasty
 {% endtabs %}
 <!-- End tabs -->
 
-Like Java, the _.class_ files are bytecode files, and they’re ready to run in the JVM.
+Как и Java, файлы _.class_ представляют собой файлы байт-кода, и они готовы к запуску в JVM.
 
-Now you can run the `hello` method with the `scala` command:
+Теперь вы можете запустить метод `hello` командой `scala`:
 
 ```bash
 $ scala hello
 Hello, World!
 ```
 
-Assuming that worked, congratulations, you just compiled and ran your first Scala application.
+Если запуск прошел успешно, поздравляем, вы только что скомпилировали и запустили свое первое приложение Scala.
 
-> More information about sbt and other tools that make Scala development easier can be found in the [Scala Tools][scala_tools] chapter.
+> Дополнительную информацию о sbt и других инструментах, упрощающих разработку на Scala, можно найти в главе [Инструменты Scala][scala_tools].
 
-## Ask For User Input
+## Запрос пользовательского ввода
 
-In our next example let's ask for the user's name before we greet them!
+В нашем следующем примере давайте спросим имя пользователя, прежде чем приветствовать его!
 
-There are several ways to read input from a command-line, but a simple way is to use the
-`readLine` method in the _scala.io.StdIn_ object. To use it, you need to first import it, like this:
+Есть несколько способов прочитать ввод из командной строки, но самый простой способ — 
+использовать метод `readLine` из объекта _scala.io.StdIn_. 
+Чтобы использовать этот метод, вам нужно сначала его импортировать, например:
 
 {% tabs import-readline %}
 {% tab 'Scala 2 and 3' for=import-readline %}
@@ -115,7 +116,8 @@ import scala.io.StdIn.readLine
 {% endtab %}
 {% endtabs %}
 
-To demonstrate how this works, let’s create a little example. Put this source code in a file named _helloInteractive.scala_:
+Чтобы продемонстрировать, как это работает, давайте создадим небольшой пример. 
+Поместите этот исходный код в файл с именем _helloInteractive.scala_:
 
 <!-- Display interactive Hello World application for each Scala Version -->
 {% tabs hello-world-interactive class=tabs-scala-version %}
@@ -152,18 +154,20 @@ import scala.io.StdIn.readLine
 {% endtabs %}
 <!-- End tabs -->
 
-In this code we save the result of `readLine` to a variable called `name`, we then
-use the `+` operator on strings to join `"Hello, "` with `name` and `"!"`, making one single string value. 
+В этом коде мы сохраняем результат из `readLine` в переменную с именем `name`, 
+затем используем оператор над строками `+` для соединения `"Hello, "` с `name` и `"!"`, создавая одно единственное строковое значение.
 
-> You can learn more about using `val` by reading [Variables and Data Types](/scala3/book/taste-vars-data-types.html).
+> Вы можете узнать больше об использовании val, прочитав главу [Переменные и типы данных](/scala3/book/taste-vars-data-types.html).
 
-Then compile the code with `scalac`:
+Затем скомпилируйте код с помощью `scalac`:
 
 ```bash
 $ scalac helloInteractive.scala
 ```
-Then run it with `scala helloInteractive`, this time the program will pause after asking for your name,
-and wait until you type a name and press return on the keyboard, looking like this:
+
+Затем запустите его с помощью `scala helloInteractive`. На этот раз программа сделает паузу после запроса вашего имени 
+и подождет, пока вы не наберете имя и не нажмете клавишу возврата на клавиатуре.
+Выглядит это так:
 
 ```bash
 $ scala helloInteractive
@@ -171,7 +175,7 @@ Please enter your name:
 ▌
 ```
 
-When you enter your name at the prompt, the final interaction should look like this:
+Когда вы вводите свое имя в "приглашении", окончательное взаимодействие должно выглядеть так:
 
 ```bash
 $ scala helloInteractive
@@ -180,10 +184,10 @@ Alvin Alexander
 Hello, Alvin Alexander!
 ```
 
-### A Note about Imports
+### Примечание об импорте
 
-As you saw in this application, sometimes certain methods, or other kinds of definitions that we'll see later,
-are not available unless you use an `import` clause like so:
+Как вы ранее видели, иногда определенные методы или другие типы определений, которые мы увидим позже, недоступны, 
+если вы не используете подобное предложение `import`:
 
 {% tabs import-readline-2 %}
 {% tab 'Scala 2 and 3' for=import-readline-2 %}
@@ -193,9 +197,9 @@ import scala.io.StdIn.readLine
 {% endtab %}
 {% endtabs %}
 
-Imports help you write code in a few ways:
-  - you can put code in multiple files, to help avoid clutter, and to help navigate large projects.
-  - you can use a code library, perhaps written by someone else, that has useful functionality
-  - you can know where a certain definition comes from (especially if it was not written in the current file).
+Импорт помогает писать и распределять код несколькими способами:
+  - вы можете поместить код в несколько файлов, чтобы избежать беспорядка и облегчить навигацию в больших проектах.
+  - вы можете использовать библиотеку кода, возможно, написанную кем-то другим, которая имеет полезную функциональность.
+  - вы видите, откуда берется определенное определение (особенно если оно не было записано в текущем файле).
 
 [scala_tools]: {% link _overviews/scala3-book/scala-tools.md %}
