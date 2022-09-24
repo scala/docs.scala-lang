@@ -116,18 +116,6 @@ That is, we don’t write imperative code like this:
 {% tabs scala-features-1 class=tabs-scala-version %}
 {% tab 'Scala 2' for=scala-features-1 %}
 ```scala
-def double(ints: List[Int]): List[Int] = {
-  val buffer = new ListBuffer[Int]()
-  for (i <- ints) {
-      buffer += i * 2
-  }
-  buffer.toList
-}
-
-val newNumbers = double(oldNumbers)
-{% tabs scala-features-1 class=tabs-scala-version %}
-{% tab 'Scala 2' for=scala-features-1 %}
-```scala
 import scala.collection.mutable.ListBuffer
 
 def double(ints: List[Int]): List[Int] = {
