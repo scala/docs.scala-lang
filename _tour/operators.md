@@ -100,9 +100,6 @@ This helps to make the definition of `xor` more readable.
 
 ## Precedence
 When an expression uses multiple operators, the operators are evaluated based on the priority of the first character:
-
-{% tabs operators_6 %}
-{% tab 'Scala 2 and 3' for=operators_6 %}
 ```
 (characters not shown below)
 * / %
@@ -115,9 +112,6 @@ When an expression uses multiple operators, the operators are evaluated based on
 |
 (all letters, $, _)
 ```
-{% endtab %}
-{% endtabs %}
-
 This applies to functions you define. For example, the following expression:
 
 {% tabs operators_7 %}
