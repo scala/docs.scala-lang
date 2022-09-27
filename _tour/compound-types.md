@@ -92,4 +92,4 @@ And `&` is associative, so parentheses can be added around any part without chan
 {% endtab %}
 {% endtabs %}
 
-An example for the use of refinements is given on the page about [class composition with mixins](mixin-class-composition.html).
+<!-- An example for the use of refinements is given on the page about [class composition with mixins](mixin-class-composition.html). -->
