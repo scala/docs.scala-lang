@@ -85,7 +85,8 @@ def cloneAndReset(obj: Cloneable & Resetable): Cloneable = {
 }
 ```
 Compound types can consist of several object types and they may have a single refinement which can be used to narrow the signature of existing object members.
-The general form is: `A & B & C ... { refinement }`
+Note that you can have more than two types: `A & B & C & ...`. 
+And `&` is associative, so parentheses can be added around any part without changing the meaning.
 {% endtab %}
 {% endtabs %}
 
