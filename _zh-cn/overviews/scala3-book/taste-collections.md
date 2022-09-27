@@ -5,6 +5,11 @@ description: This page provides a high-level overview of the main features of th
 num: 13
 previous-page: taste-objects
 next-page: taste-contextual-abstractions
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -103,6 +108,6 @@ val (num, str, person) = t
 有些情况更适合使用元组， 那就是当你想要将异构类型的集合放在一个小的类似集合的结构中。
 有关更多元组详细信息，请参阅 [参考文档][reference]。
 
-[collections]: {% link _overviews/scala3-book/collections-intro.md %}
+[collections]: {% link _zh-cn/overviews/scala3-book/collections-intro.md %}
 [api]: https://scala-lang.org/api/3.x/
 [reference]: {{ site.scala3ref }}/overview.html

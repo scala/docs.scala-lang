@@ -5,6 +5,11 @@ description: This section demonstrates a Scala 3 'Hello, World!' example.
 num: 5
 previous-page: taste-intro
 next-page: taste-repl
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -50,4 +55,4 @@ Hello, world!
 
 > 在 [Scala 工具][scala_tools] 章节中可以找到 sbt 和其他使 Scala 开发更容易的工具相关的更多信息。
 
-[scala_tools]: {% link _overviews/scala3-book/scala-tools.md %}
+[scala_tools]: {% link _zh-cn/overviews/scala3-book/scala-tools.md %}

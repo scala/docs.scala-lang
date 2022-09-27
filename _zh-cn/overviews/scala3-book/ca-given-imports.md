@@ -5,6 +5,11 @@ description: This page demonstrates how 'given' import statements work in Scala 
 num: 62
 previous-page: ca-context-bounds
 next-page: ca-extension-methods
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -45,4 +50,4 @@ object B:
 “导入 given”语法的更多示例见 [package 和 import 章节][imports]。
 
 
-[imports]: {% link _overviews/scala3-book/packaging-imports.md %}
+[imports]: {% link _zh-cn/overviews/scala3-book/packaging-imports.md %}

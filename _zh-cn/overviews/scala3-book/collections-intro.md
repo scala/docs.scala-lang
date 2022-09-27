@@ -5,6 +5,11 @@ description: This page provides and introduction to the common collections class
 num: 36
 previous-page: packaging-imports
 next-page: collections-classes
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

@@ -2,6 +2,7 @@
 title: Scala for JavaScript Developers
 type: chapter
 description: This chapter provides an introduction to Scala 3 for JavaScript developers
+languages: [zh-cn]
 num: 74
 previous-page: scala-for-java-devs
 next-page: scala-for-python-devs

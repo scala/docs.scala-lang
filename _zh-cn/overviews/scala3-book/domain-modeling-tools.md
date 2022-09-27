@@ -5,6 +5,11 @@ description: This chapter provides an introduction to the available domain model
 num: 20
 previous-page: domain-modeling-intro
 next-page: domain-modeling-oop
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 Scala 3提供了许多不同的结构，因此我们可以对周围的世界进行建模：
@@ -693,8 +698,8 @@ def handleMessages(message: Message): Unit = message match
 ```
 
 [ref-enums]: {{ site.scala3ref }}/enums/enums.html
-[adts]: {% link _overviews/scala3-book/types-adts-gadts.md %}
-[fp-modeling]: {% link _overviews/scala3-book/domain-modeling-fp.md %}
+[adts]: {% link _zh-cn/overviews/scala3-book/types-adts-gadts.md %}
+[fp-modeling]: {% link _zh-cn/overviews/scala3-book/domain-modeling-fp.md %}
 [creator]: {{ site.scala3ref }}/other-new-features/creator-applications.html
 [unapply]: {{ site.scala3ref }}/changed-features/pattern-matching.html
 [trait-params]: {{ site.scala3ref }}/other-new-features/trait-parameters.html

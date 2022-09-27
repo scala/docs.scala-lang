@@ -5,6 +5,11 @@ description: This page provides a summary of the Collections chapter.
 num: 39
 previous-page: collections-methods
 next-page: fp-intro
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

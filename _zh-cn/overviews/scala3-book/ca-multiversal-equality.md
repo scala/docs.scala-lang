@@ -5,6 +5,11 @@ description: This page demonstrates how to implement Multiversal Equality in Sca
 num: 65
 previous-page: ca-type-classes
 next-page: ca-implicit-conversions
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

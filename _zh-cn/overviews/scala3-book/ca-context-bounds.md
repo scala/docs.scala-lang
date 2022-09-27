@@ -5,6 +5,11 @@ description: This page demonstrates Context Bounds in Scala 3.
 num: 61
 previous-page: types-type-classes
 next-page: ca-given-imports
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

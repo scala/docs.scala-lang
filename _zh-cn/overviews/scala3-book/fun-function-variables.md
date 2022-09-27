@@ -5,6 +5,11 @@ description: This page shows how to use anonymous functions in Scala, including 
 num: 29
 previous-page: fun-anonymous-functions
 next-page: fun-eta-expansion
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -109,4 +114,4 @@ functionMap: Map[String, Int => Int]
 
 并且由于 Scala 3 中改进的 [Eta Expansion][eta_expansion] 函数式，您可以以相同的方式处理 *方法*。
 
-[eta_expansion]: {% link _overviews/scala3-book/fun-eta-expansion.md %}
+[eta_expansion]: {% link _zh-cn/overviews/scala3-book/fun-eta-expansion.md %}

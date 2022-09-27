@@ -5,6 +5,11 @@ description: This page provides an introduction to Scala's control structures, i
 num: 18
 previous-page: first-look-at-types
 next-page: domain-modeling-intro
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

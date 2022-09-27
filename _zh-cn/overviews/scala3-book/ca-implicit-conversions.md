@@ -5,6 +5,11 @@ description: This page demonstrates how to implement Implicit Conversions in Sca
 num: 66
 previous-page: ca-multiversal-equality
 next-page: ca-summary
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 隐式转换由 `scala.Conversion` 类的 `given` 实例定义。

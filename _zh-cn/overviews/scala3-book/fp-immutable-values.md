@@ -5,6 +5,11 @@ description: This section looks at the use of immutable values in functional pro
 num: 42
 previous-page: fp-what-is-fp
 next-page: fp-pure-functions
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -66,4 +71,4 @@ val elton = reginald.copy(
 > 根据您的需要，您可以创建枚举、traits 或类，而不是 `case` 类。
 > 有关详细信息，请参阅[数据建模][modeling]一章。
 
-[modeling]: {% link _overviews/scala3-book/domain-modeling-intro.md %}
+[modeling]: {% link _zh-cn/overviews/scala3-book/domain-modeling-intro.md %}

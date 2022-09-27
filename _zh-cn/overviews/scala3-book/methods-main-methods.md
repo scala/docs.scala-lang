@@ -5,6 +5,11 @@ description: This page describes how 'main' methods and the '@main' annotation w
 num: 25
 previous-page: methods-most
 next-page: methods-summary
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

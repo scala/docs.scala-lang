@@ -5,6 +5,11 @@ description: This page provides an introduction to functions in Scala 3.
 num: 11
 previous-page: taste-methods
 next-page: taste-objects
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -59,4 +64,4 @@ val x = nums.filter(_ > 3)
 
 除了在整个标准库中使用的高阶函数外，您还可以[创建自己的][higher-order] 高阶函数。
 
-[higher-order]: {% link _overviews/scala3-book/fun-hofs.md %}
+[higher-order]: {% link _zh-cn/overviews/scala3-book/fun-hofs.md %}

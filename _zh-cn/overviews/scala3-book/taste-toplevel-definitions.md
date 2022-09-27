@@ -5,6 +5,11 @@ description: This page provides an introduction to top-level definitions in Scal
 num: 15
 previous-page: taste-contextual-abstractions
 next-page: taste-summary
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

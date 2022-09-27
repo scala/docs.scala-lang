@@ -5,6 +5,11 @@ description: This section introduces and demonstrates dependent function types i
 num: 56
 previous-page: types-structural
 next-page: types-others
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

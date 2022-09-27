@@ -5,6 +5,11 @@ description: This page demonstrates how to create and use higher-order functions
 num: 31
 previous-page: fun-eta-expansion
 next-page: fun-write-map-function
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -285,4 +290,4 @@ def executeAndPrint(f: (Int, Int) => Int, ...
 
 一旦你熟悉了这种语法，你就会用它来定义函数参数、匿名函数和函数变量，而且当你阅读 Scaladoc 中有关高阶函数的内容时，这些内容变得更容易了。
 
-[eta_expansion]: {% link _overviews/scala3-book/fun-eta-expansion.md %}
+[eta_expansion]: {% link _zh-cn/overviews/scala3-book/fun-eta-expansion.md %}

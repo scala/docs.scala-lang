@@ -5,6 +5,11 @@ description: This chapter looks at all topics related to functions in Scala 3.
 num: 27
 previous-page: methods-summary
 next-page: fun-anonymous-functions
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 上一章介绍了 Scala *方法*，本章深入研究 *函数*。

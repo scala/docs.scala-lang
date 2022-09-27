@@ -2,6 +2,7 @@
 title: Collections
 type: section
 description: This page provides a high-level overview of the main features of the Scala 3 programming language.
+languages: [zh-cn]
 num: 13
 previous-page: taste-objects
 next-page: taste-contextual-abstractions
@@ -102,7 +103,8 @@ You can also use this _extractor_ approach to assign the tuple fields to variabl
 val (num, str, person) = t
 
 // result:
-// val num: Int = 11
+// val languages: [zh-cn]
+num: Int = 11
 // val str: String = eleven
 // val person: Person = Person(Eleven)
 ```

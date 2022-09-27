@@ -5,6 +5,11 @@ description: This section looks at the use of pure functions in functional progr
 num: 43
 previous-page: fp-immutable-values
 next-page: fp-functions-are-values
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -103,4 +108,4 @@ def sum(xs: List[Int]): Int = xs match
 第二个要点是每个现实世界的应用程序都与外部世界交互。
 因此，考虑函数式程序的一种简化方法是，它们由一个纯函数核心组成，其他一些函数把这些纯函数包装起来与外部世界交互。
 
-[eta]: {% link _overviews/scala3-book/fun-eta-expansion.md %}
+[eta]: {% link _zh-cn/overviews/scala3-book/fun-eta-expansion.md %}

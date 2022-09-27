@@ -5,6 +5,11 @@ description: This chapter provides an introduction to domain modeling in Scala 3
 num: 19
 previous-page: control-structures
 next-page: domain-modeling-tools
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 本章介绍如何使用 Scala 3 对周围的世界进行建模：

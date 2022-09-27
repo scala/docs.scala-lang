@@ -5,6 +5,11 @@ description: This chapter provides an introduction to Scala 3 for JavaScript dev
 num: 74
 previous-page: scala-for-java-devs
 next-page: scala-for-python-devs
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -1313,18 +1318,18 @@ Scala 中还有其他一些概念目前在 JavaScript 中没有等效的概念�
 - 更多的 ...
 
 
-[collections-classes]: {% link _overviews/scala3-book/collections-classes.md %}
-[concurrency]: {% link _overviews/scala3-book/concurrency.md %}
-[contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}
-[control]: {% link _overviews/scala3-book/control-structures.md %}
-[extension-methods]: {% link _overviews/scala3-book/ca-extension-methods.md %}
-[fp-intro]: {% link _overviews/scala3-book/fp-intro.md %}
-[givens]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
-[hofs]: {% link _overviews/scala3-book/fun-hofs.md %}
-[intersection-types]: {% link _overviews/scala3-book/types-intersection.md %}
-[modeling-fp]: {% link _overviews/scala3-book/domain-modeling-fp.md %}
-[modeling-oop]: {% link _overviews/scala3-book/domain-modeling-oop.md %}
-[multiversal]: {% link _overviews/scala3-book/ca-multiversal-equality.md %}
-[union-types]: {% link _overviews/scala3-book/types-union.md %}
+[collections-classes]: {% link _zh-cn/overviews/scala3-book/collections-classes.md %}
+[concurrency]: {% link _zh-cn/overviews/scala3-book/concurrency.md %}
+[contextual]: {% link _zh-cn/overviews/scala3-book/ca-contextual-abstractions-intro.md %}
+[control]: {% link _zh-cn/overviews/scala3-book/control-structures.md %}
+[extension-methods]: {% link _zh-cn/overviews/scala3-book/ca-extension-methods.md %}
+[fp-intro]: {% link _zh-cn/overviews/scala3-book/fp-intro.md %}
+[givens]: {% link _zh-cn/overviews/scala3-book/ca-given-using-clauses.md %}
+[hofs]: {% link _zh-cn/overviews/scala3-book/fun-hofs.md %}
+[intersection-types]: {% link _zh-cn/overviews/scala3-book/types-intersection.md %}
+[modeling-fp]: {% link _zh-cn/overviews/scala3-book/domain-modeling-fp.md %}
+[modeling-oop]: {% link _zh-cn/overviews/scala3-book/domain-modeling-oop.md %}
+[multiversal]: {% link _zh-cn/overviews/scala3-book/ca-multiversal-equality.md %}
+[union-types]: {% link _zh-cn/overviews/scala3-book/types-union.md %}
 
 </div>

@@ -5,6 +5,11 @@ description: This section provides an introduction to the Scala REPL.
 num: 6
 previous-page: taste-hello-world
 next-page: taste-vars-data-types
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -56,4 +61,4 @@ val res2: Int = 4
 
 如果您更喜欢在文本编辑器中而不是在控制台提示符中编写代码，您可以使用 [worksheet]。
 
-[worksheet]: {% link _overviews/scala3-book/tools-worksheets.md %}
+[worksheet]: {% link _zh-cn/overviews/scala3-book/tools-worksheets.md %}
