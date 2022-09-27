@@ -2,6 +2,7 @@
 title: Variables and Data Types
 type: section
 description: This section demonstrates val and var variables, and some common Scala data types.
+languages: [zh-cn]
 num: 7
 previous-page: taste-repl
 next-page: taste-control-structures

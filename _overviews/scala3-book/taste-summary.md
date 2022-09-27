@@ -2,6 +2,7 @@
 title: Summary
 type: section
 description: This page provides a summary of the previous 'Taste of Scala' sections.
+languages: [zh-cn]
 num: 16
 previous-page: taste-toplevel-definitions
 next-page: first-look-at-types
