@@ -72,7 +72,8 @@ def cloneAndReset(obj: Cloneable with Resetable): Cloneable = {
 }
 ```
 Compound types can consist of several object types and they may have a single refinement which can be used to narrow the signature of existing object members.
-The general form is: `A with B with C ... { refinement }`
+Note that you can have more than two types: `A with B with C with ...`.
+This means the same as thing as `(...(A with B) with C`) with ... )`
 {% endtab %}
 {% tab 'Scala 3' for=compound-types_3 %}
 This compound type is written like this in Scala: `Cloneable & Resetable`.
