@@ -105,8 +105,8 @@ When an expression uses multiple operators, the operators are evaluated based on
 * / %
 + -
 :
-= !
 < >
+= !
 &
 ^
 |
