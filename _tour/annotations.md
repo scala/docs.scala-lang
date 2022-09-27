@@ -14,7 +14,7 @@ Annotations associate meta-information with definitions. For example, the annota
 
 {% tabs annotations_1 class=tabs-scala-version %}
 {% tab 'Scala 2' for=annotations_1 %}
-```scala mdoc
+```scala mdoc:fail
 object DeprecationDemo extends App {
   @deprecated("deprecation message", "release # which deprecates method")
   def hello = "hola"
