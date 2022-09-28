@@ -59,6 +59,9 @@ $ scalac Hello.scala
 
 如果你是从 Java 转到 Scala，`scalac` 就像 `javac`，所以该命令会创建几个文件：
 
+<!-- Display Hello World compiled outputs for each Scala Version -->
+{% tabs hello-world-outputs class=tabs-scala-version %}
+
 {% tab 'Scala 2' for=hello-world-outputs %}
 ```bash
 $ ls -1
