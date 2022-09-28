@@ -42,7 +42,7 @@ Notice how the `users` directory is within the `scala` directory and how there a
 
 {% tabs packages-and-imports_2 class=tabs-scala-version %}
 {% tab 'Scala 2' for=packages-and-imports_2 %}
-```scala mdoc
+```scala
 package users {
   package administrators {
     class NormalUser
@@ -70,7 +70,7 @@ The package name should be all lower case and if the code is being developed wit
 
 {% tabs packages-and-imports_3 %}
 {% tab 'Scala 2 and 3' for=packages-and-imports_3 %}
-```scala mdoc
+```scala
 package com.google.selfdrivingcar.camera
 
 class Lens
