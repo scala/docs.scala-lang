@@ -12,7 +12,7 @@ permalink: /overviews/collections-2.13/:title.html
 ---
 
 The collections framework is the heart of the Scala 2.13 standard
-library, also use in Scala 3.x.  It provides a common, uniform, and all-encompassing
+library, also used in Scala 3.x.  It provides a common, uniform, and all-encompassing
 framework for collection types.  This framework enables you to work
 with data in memory at a high level, with the basic building blocks of
 a program being whole collections, instead of individual elements.
