@@ -12,7 +12,7 @@ permalink: /overviews/collections-2.13/:title.html
 ---
 
 The collections framework is the heart of the Scala 2.13 standard
-library.  It provides a common, uniform, and all-encompassing
+library, also use in Scala 3.x.  It provides a common, uniform, and all-encompassing
 framework for collection types.  This framework enables you to work
 with data in memory at a high level, with the basic building blocks of
 a program being whole collections, instead of individual elements.
@@ -70,7 +70,13 @@ for arrays.
 **Example:** Here's one line of code that demonstrates many of the
 advantages of Scala's collections.
 
-    val (minors, adults) = people partition (_.age < 18)
+{% tabs introduction_1 %}
+{% tab 'Scala 2 and 3' for=introduction_1 %}
+```
+val (minors, adults) = people partition (_.age < 18)
+```
+{% endtab %}
+{% endtabs %}
 
 It's immediately clear what this operation does: It partitions a
 collection of `people` into `minors` and `adults` depending on
