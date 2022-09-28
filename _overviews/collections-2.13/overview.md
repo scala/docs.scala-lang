@@ -146,7 +146,7 @@ The same principle also applies for specific collection implementations, such as
 
 {% tabs overview_4 %}
 {% tab 'Scala 2 and 3' for=overview_4 %}
-```scala mdoc
+```scala
 List(1, 2, 3)
 HashMap("x" -> 24, "y" -> 25, "z" -> 26)
 ```
