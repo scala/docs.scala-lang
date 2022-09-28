@@ -130,7 +130,7 @@ The most important collection classes are shown in the figures above. There is q
 
 {% tabs overview_3 %}
 {% tab 'Scala 2 and 3' for=overview_3 %}
-```scala mdoc
+```scala
 Iterable("x", "y", "z")
 Map("x" -> 24, "y" -> 25, "z" -> 26)
 Set(Color.red, Color.green, Color.blue)
