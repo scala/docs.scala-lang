@@ -37,7 +37,7 @@ Collection classes that implement `Iterable` just need to define this method; al
 * **Element tests** `exists`, `forall`, `count` which test collection elements with a given predicate.
 * **Folds** `foldLeft`, `foldRight`, `reduceLeft`, `reduceRight` which apply a binary operation to successive elements.
 * **Specific folds** `sum`, `product`, `min`, `max`, which work on collections of specific types (numeric or comparable).
-* **String** operations `mkString`, `addString`, `className`, which give alternative ways of converting a collection to a string.
+* **String** operations `mkString`, `addString`, and the protected `className`, which give alternative ways of converting a collection to a string.
 * **View** operation: A view is a collection that's evaluated lazily. You'll learn more about views in [later]({% link _overviews/collections-2.13/views.md %}).
 
 Two more methods exist in `Iterable` that return iterators: `grouped` and `sliding`. These iterators, however, do not return single elements but whole subsequences of elements of the original collection. The maximal size of these subsequences is given as an argument to these methods. The `grouped` method returns its elements in "chunked" increments, where `sliding` yields a sliding "window" over the elements. The difference between the two should become clear by looking at the following REPL interaction:
