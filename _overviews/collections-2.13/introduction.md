@@ -81,7 +81,7 @@ val (minors, adults) = people partition (_.age < 18)
 It's immediately clear what this operation does: It partitions a
 collection of `people` into `minors` and `adults` depending on
 their age. Because the `partition` method is defined in the root
-collection type `TraversableLike`, this code works for any kind of
+collection type `IterableOps`, this code works for any kind of
 collection, including arrays. The resulting `minors` and `adults`
 collections will be of the same type as the `people` collection.
 
