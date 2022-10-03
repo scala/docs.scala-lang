@@ -16,6 +16,9 @@ The collection libraries have a uniform approach to equality and hashing. The id
 
 It does not matter for the equality check whether a collection is mutable or immutable. For a mutable collection one simply considers its current elements at the time the equality test is performed. This means that a mutable collection might be equal to different collections at different times, depending on what elements are added or removed. This is a potential trap when using a mutable collection as a key in a hashmap. Example:
 
+{% tabs equality_1 %}
+{% tab 'Scala 2 and 3' for=equality_1 %}
+
     scala> import collection.mutable.{HashMap, ArrayBuffer}
     import collection.mutable.{HashMap, ArrayBuffer}
     scala> val buf = ArrayBuffer(1, 2, 3)
@@ -30,5 +33,8 @@ It does not matter for the equality check whether a collection is mutable or imm
     scala> map(buf)
     java.util.NoSuchElementException: key not found:
     ArrayBuffer(2, 2, 3)
+
+{% endtab %}
+{% endtabs %}
 
 In this example, the selection in the last line will most likely fail because the hash-code of the array `buf` has changed in the second-to-last line. Therefore, the hash-code-based lookup will look at a different place than the one where `buf` was stored.
