@@ -14,6 +14,9 @@ permalink: /overviews/collections-2.13/:title.html
 
 You have syntax `List(1, 2, 3)` to create a list of three integers and `Map('A' -> 1, 'C' -> 2)` to create a map with two bindings. This is actually a universal feature of Scala collections. You can take any collection name and follow it by a list of elements in parentheses. The result will be a new collection with the given elements. Here are some more examples:
 
+{% tabs creating_1 %}
+{% tab 'Scala 2 and 3' for=creating_1 %}
+
     Iterable()                // An empty collection
     List()                    // The empty list
     List(1.0, 2.0)            // A list with elements 1.0, 2.0
@@ -23,11 +26,23 @@ You have syntax `List(1, 2, 3)` to create a list of three integers and `Map('A' 
     HashSet(dog, cat, bird)   // A hash set of the same animals
     Map('a' -> 7, 'b' -> 0)   // A map from characters to integers
 
+{% endtab %}
+{% endtabs %}
+
 "Under the covers" each of the above lines is a call to the `apply` method of some object. For instance, the third line above expands to
+
+{% tabs creating_2 %}
+{% tab 'Scala 2 and 3' for=creating_2 %}
 
     List.apply(1.0, 2.0)
 
+{% endtab %}
+{% endtabs %}
+
 So this is a call to the `apply` method of the companion object of the `List` class. That method takes an arbitrary number of arguments and constructs a list from them. Every collection class in the Scala library has a companion object with such an `apply` method. It does not matter whether the collection class represents a concrete implementation, like `List`, `LazyList` or `Vector`, or whether it is an abstract base class such as `Seq`, `Set` or `Iterable`. In the latter case, calling apply will produce some default implementation of the abstract base class. Examples:
+
+{% tabs creating_3 %}
+{% tab 'Scala 2 and 3' for=creating_3 %}
 
     scala> List(1, 2, 3)
     res17: List[Int] = List(1, 2, 3)
@@ -35,6 +50,9 @@ So this is a call to the `apply` method of the companion object of the `List` cl
     res18: Iterable[Int] = List(1, 2, 3)
     scala> mutable.Iterable(1, 2, 3)
     res19: scala.collection.mutable.Iterable[Int] = ArrayBuffer(1, 2, 3)
+
+{% endtab %}
+{% endtabs %}
 
 Besides `apply`, every collection companion object also defines a member `empty`, which returns an empty collection. So instead of `List()` you could write `List.empty`, instead of `Map()`, `Map.empty`, and so on.
 
