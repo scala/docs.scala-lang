@@ -103,8 +103,7 @@ You can also use this _extractor_ approach to assign the tuple fields to variabl
 val (num, str, person) = t
 
 // result:
-// val languages: [zh-cn]
-num: Int = 11
+// val num: Int = 11
 // val str: String = eleven
 // val person: Person = Person(Eleven)
 ```
