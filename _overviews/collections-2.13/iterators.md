@@ -257,7 +257,7 @@ The solution to this problem is to use a buffered iterator. Class [BufferedItera
 
 {% tabs iterators_9 class=tabs-scala-version %}
 {% tab 'Scala 2' for=iterators_9 %}
-```scala mdoc
+```scala
 def skipEmptyWords(it: BufferedIterator[String]) =
   while (it.head.isEmpty) { it.next() }
 ```
