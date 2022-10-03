@@ -20,16 +20,16 @@ As an example of a non-strict transformer consider the following implementation 
 
 {% tabs views_1 class=tabs-scala-version %}
 {% tab 'Scala 2' for=views_1 %}
-```scala
-def lazyMap[T, U](coll: Iterable[T], f: T => U) = new Iterable[U] {
-  def iterator = coll.iterator map f
+```scala mdoc
+def lazyMap[T, U](iter: Iterable[T], f: T => U) = new Iterable[U] {
+  def iterator = iter.iterator map f
 }
 ```
 {% endtab %}
 {% tab 'Scala 3' for=views_1 %}
 ```scala
-def lazyMap[T, U](coll: Iterable[T], f: T => U) = new Iterable[U]:
-  def iterator = coll.iterator map f
+def lazyMap[T, U](iter: Iterable[T], f: T => U) = new Iterable[U]:
+  def iterator = iter.iterator map f
 ```
 {% endtab %}
 {% endtabs %}
