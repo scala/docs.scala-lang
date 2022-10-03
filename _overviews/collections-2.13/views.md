@@ -18,9 +18,21 @@ There are two principal ways to implement transformers. One is _strict_, that is
 
 As an example of a non-strict transformer consider the following implementation of a lazy map operation:
 
-    def lazyMap[T, U](coll: Iterable[T], f: T => U) = new Iterable[U] {
-      def iterator = coll.iterator map f
-    }
+{% tabs views_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=views_1 %}
+```scala mdoc
+def lazyMap[T, U](coll: Iterable[T], f: T => U) = new Iterable[U] {
+  def iterator = coll.iterator map f
+}
+```
+{% endtab %}
+{% tab 'Scala 3' for=views_1 %}
+```scala
+def lazyMap[T, U](coll: Iterable[T], f: T => U) = new Iterable[U]:
+  def iterator = coll.iterator map f
+```
+{% endtab %}
+{% endtabs %}
 
 Note that `lazyMap` constructs a new `Iterable` without stepping through all elements of the given collection `coll`. The given function `f` is instead applied to the elements of the new collection's `iterator` as they are demanded.
 
@@ -30,6 +42,9 @@ To go from a collection to its view, you can use the `view` method on the collec
 
 Let's see an example. Say you have a vector of Ints over which you want to map two functions in succession:
 
+{% tabs views_2 %}
+{% tab 'Scala 2 and 3' for=views_2 %}
+
     scala> val v = Vector(1 to 10: _*)
     v: scala.collection.immutable.Vector[Int] =
        Vector(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
@@ -37,35 +52,68 @@ Let's see an example. Say you have a vector of Ints over which you want to map t
     res5: scala.collection.immutable.Vector[Int] =
        Vector(4, 6, 8, 10, 12, 14, 16, 18, 20, 22)
 
+{% endtab %}
+{% endtabs %}
+
 In the last statement, the expression `v map (_ + 1)` constructs a new vector which is then transformed into a third vector by the second call to `map (_ * 2)`. In many situations, constructing the intermediate result from the first call to map is a bit wasteful. In the example above, it would be faster to do a single map with the composition of the two functions `(_ + 1)` and `(_ * 2)`. If you have the two functions available in the same place you can do this by hand. But quite often, successive transformations of a data structure are done in different program modules. Fusing those transformations would then undermine modularity. A more general way to avoid the intermediate results is by turning the vector first into a view, then applying all transformations to the view, and finally forcing the view to a vector:
+
+{% tabs views_3 %}
+{% tab 'Scala 2 and 3' for=views_3 %}
 
     scala> (v.view map (_ + 1) map (_ * 2)).to(Vector)
     res12: scala.collection.immutable.Vector[Int] =
        Vector(4, 6, 8, 10, 12, 14, 16, 18, 20, 22)  
 
+{% endtab %}
+{% endtabs %}
+
 Let's do this sequence of operations again, one by one:
+
+{% tabs views_4 %}
+{% tab 'Scala 2 and 3' for=views_4 %}
 
     scala> val vv = v.view
     vv: scala.collection.IndexedSeqView[Int] = IndexedSeqView(<not computed>)
+
+{% endtab %}
+{% endtabs %}
 
 The application `v.view` gives you an `IndexedSeqView[Int]`, i.e. a lazily evaluated `IndexedSeq[Int]`. Like with `LazyList`,
 the `toString` operation of views does not force the view elements, that’s why the content of `vv` is shown as `IndexedSeqView(<not computed>)`.
 
 Applying the first `map` to the view gives:
 
+{% tabs views_5 %}
+{% tab 'Scala 2 and 3' for=views_5 %}
+
     scala> vv map (_ + 1)
     res13: scala.collection.IndexedSeqView[Int] = IndexedSeqView(<not computed>)
 
+{% endtab %}
+{% endtabs %}
+
 The result of the `map` is another `IndexedSeqView[Int]` value. This is in essence a wrapper that *records* the fact that a `map` with function `(_ + 1)` needs to be applied on the vector `v`. It does not apply that map until the view is forced, however. Let's now apply the second `map` to the last result.
+
+{% tabs views_6 %}
+{% tab 'Scala 2 and 3' for=views_6 %}
 
     scala> res13 map (_ * 2)
     res14: scala.collection.IndexedSeqView[Int] = IndexedSeqView(<not computed>)
 
+{% endtab %}
+{% endtabs %}
+
 Finally, forcing the last result gives:
+
+{% tabs views_7 %}
+{% tab 'Scala 2 and 3' for=views_7 %}
 
     scala> res14.to(Vector)
     res15: scala.collection.immutable.Vector[Int] =
        Vector(4, 6, 8, 10, 12, 14, 16, 18, 20, 22)
+
+{% endtab %}
+{% endtabs %}
 
 Both stored functions get applied as part of the execution of the `to` operation and a new vector is constructed. That way, no intermediate data structure is needed.
 
@@ -84,16 +132,34 @@ These operations are documented as “always forcing the collection elements”.
 
 The main reason for using views is performance. You have seen that by switching a collection to a view the construction of intermediate results can be avoided. These savings can be quite important. As another example, consider the problem of finding the first palindrome in a list of words. A palindrome is a word which reads backwards the same as forwards. Here are the necessary definitions:
 
+{% tabs views_8 %}
+{% tab 'Scala 2 and 3' for=views_8 %}
+
     def isPalindrome(x: String) = x == x.reverse
     def findPalindrome(s: Seq[String]) = s find isPalindrome
 
+{% endtab %}
+{% endtabs %}
+
 Now, assume you have a very long sequence words, and you want to find a palindrome in the first million words of that sequence. Can you re-use the definition of `findPalindrome`? Of course, you could write:
+
+{% tabs views_9 %}
+{% tab 'Scala 2 and 3' for=views_9 %}
 
     findPalindrome(words take 1000000)
 
+{% endtab %}
+{% endtabs %}
+
 This nicely separates the two aspects of taking the first million words of a sequence and finding a palindrome in it. But the downside is that it always constructs an intermediary sequence consisting of one million words, even if the first word of that sequence is already a palindrome. So potentially, 999'999 words are copied into the intermediary result without being inspected at all afterwards. Many programmers would give up here and write their own specialized version of finding palindromes in some given prefix of an argument sequence. But with views, you don't have to. Simply write:
 
+{% tabs views_10 %}
+{% tab 'Scala 2 and 3' for=views_10 %}
+
     findPalindrome(words.view take 1000000)
+
+{% endtab %}
+{% endtabs %}
 
 This has the same nice separation of concerns, but instead of a sequence of a million elements it will only construct a single lightweight view object. This way, you do not need to choose between performance and modularity.
 
@@ -101,16 +167,44 @@ After having seen all these nifty uses of views you might wonder why have strict
 
 Here's an example which bit a few users of versions of Scala before 2.8. In these versions the `Range` type was lazy, so it behaved in effect like a view. People were trying to create a number of actors like this:
 
+{% tabs views_11 class=tabs-scala-version %}
+{% tab 'Scala 2' for=views_11 %}
+
     val actors = for (i <- 1 to 10) yield actor { ... }
+
+{% endtab %}
+{% tab 'Scala 3' for=views_11 %}
+
+    val actors = for i <- 1 to 10 yield actor { ... }
+
+{% endtab %}
+{% endtabs %}
 
 They were surprised that none of the actors was executing afterwards, even though the actor method should create and start an actor from the code that's enclosed in the braces following it. To explain why nothing happened, remember that the for expression above is equivalent to an application of map:
 
+{% tabs views_12 %}
+{% tab 'Scala 2 and 3' for=views_12 %}
+
     val actors = (1 to 10) map (i => actor { ... })
+
+{% endtab %}
+{% endtabs %}
 
 Since previously the range produced by `(1 to 10)` behaved like a view, the result of the map was again a view. That is, no element was computed, and, consequently, no actor was created! Actors would have been created by forcing the range of the whole expression, but it's far from obvious that this is what was required to make the actors do their work.
 
 To avoid surprises like this, the current Scala collections library has more regular rules. All collections except lazy lists and views are strict. The only way to go from a strict to a lazy collection is via the `view` method. The only way to go back is via `to`. So the `actors` definition above would now behave as expected in that it would create and start 10 actors. To get back the surprising previous behavior, you'd have to add an explicit `view` method call:
 
+{% tabs views_13 class=tabs-scala-version %}
+{% tab 'Scala 2' for=views_13 %}
+
     val actors = for (i <- (1 to 10).view) yield actor { ... }
+
+{% endtab %}
+{% tab 'Scala 3' for=views_13 %}
+
+    val actors = for i <- (1 to 10).view yield actor { ... }
+
+{% endtab %}
+{% endtabs %}
 
 In summary, views are a powerful tool to reconcile concerns of efficiency with concerns of modularity. But in order not to be entangled in aspects of delayed evaluation, you should restrict views to purely functional code where collection transformations do not have side effects. What's best avoided is a mixture of views and operations that create new collections while also having side effects.
