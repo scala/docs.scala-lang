@@ -112,7 +112,7 @@ Some annotations like `@inline` affect the generated code (i.e. your jar file mi
 {% endtab %}
 {% tab 'Scala 3' for=annotations_4 %}
 
-Some annotations like `@main` affect the generated code (i.e. your jar file might have different bytes than if you hadn't used the annotation). Inlining means inserting the code in a method's body at the call site. A `@main` annotation on a method turns this method into an executable program.
+Some annotations like `@main` affect the generated code (i.e. your jar file might have different bytes than if you hadn't used the annotation). A `@main` annotation on a method generates an executable program that calls the method as an entry point.
 
 {% endtab %}
 {% endtabs %}
