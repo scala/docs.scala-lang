@@ -20,7 +20,7 @@ For example:
 
 {% tabs sets_1 %}
 {% tab 'Scala 2 and 3' for=sets_1 %}
-```
+```scala
 scala> val fruit = Set("apple", "orange", "peach", "banana")
 fruit: scala.collection.immutable.Set[java.lang.String] = Set(apple, orange, peach, banana)
 scala> fruit("peach")
@@ -91,7 +91,7 @@ The choice of the method names `+=` and `-=` means that very similar code can wo
 
 {% tabs sets_2 %}
 {% tab 'Scala 2 and 3' for=sets_2 %}
-```
+```scala
 scala> var s = Set(1, 2, 3)
 s: scala.collection.immutable.Set[Int] = Set(1, 2, 3)
 scala> s += 4
@@ -106,7 +106,7 @@ We used `+=` and `-=` on a `var` of type `immutable.Set`. A statement such as `s
 
 {% tabs sets_3 %}
 {% tab 'Scala 2 and 3' for=sets_3 %}
-```
+```scala
 scala> val s = collection.mutable.Set(1, 2, 3)
 s: scala.collection.mutable.Set[Int] = Set(1, 2, 3)
 scala> s += 4
@@ -137,7 +137,7 @@ To create an empty [TreeSet](https://www.scala-lang.org/api/current/scala/collec
 
 {% tabs sorted-sets_1 %}
 {% tab 'Scala 2 and 3' for=sorted-sets_1 %}
-```
+```scala
 scala> val myOrdering = Ordering.fromLessThan[String](_ > _)
 myOrdering: scala.math.Ordering[String] = ...
 ```
@@ -148,7 +148,7 @@ Then, to create an empty tree set with that ordering, use:
 
 {% tabs sorted-sets_2 %}
 {% tab 'Scala 2 and 3' for=sorted-sets_2 %}
-```
+```scala
 scala> TreeSet.empty(myOrdering)
 res1: scala.collection.immutable.TreeSet[String] = TreeSet()
 ```
@@ -159,7 +159,7 @@ Or you can leave out the ordering argument but give an element type for the empt
 
 {% tabs sorted-sets_3 %}
 {% tab 'Scala 2 and 3' for=sorted-sets_3 %}
-```
+```scala
 scala> TreeSet.empty[String]
 res2: scala.collection.immutable.TreeSet[String] = TreeSet()
 ```
@@ -170,7 +170,7 @@ If you create new sets from a tree-set (for instance by concatenation or filteri
 
 {% tabs sorted-sets_4 %}
 {% tab 'Scala 2 and 3' for=sorted-sets_4 %}
-```
+```scala
 scala> res2 + "one" + "two" + "three" + "four"
 res3: scala.collection.immutable.TreeSet[String] = TreeSet(four, one, three, two)
 ```
@@ -181,7 +181,7 @@ Sorted sets also support ranges of elements. For instance, the `range` method re
 
 {% tabs sorted-sets_5 %}
 {% tab 'Scala 2 and 3' for=sorted-sets_5 %}
-```
+```scala
 scala> res3.range("one", "two")
 res4: scala.collection.immutable.TreeSet[String] = TreeSet(one, three)
 scala> res3 rangeFrom "three"

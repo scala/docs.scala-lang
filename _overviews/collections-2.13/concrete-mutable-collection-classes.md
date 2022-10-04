@@ -20,15 +20,15 @@ An [ArrayBuffer](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/c
 
 {% tabs ArrayBuffer_1 %}
 {% tab 'Scala 2 and 3' for=ArrayBuffer_1 %}
-~~~
-    scala> val buf = scala.collection.mutable.ArrayBuffer.empty[Int]
-    buf: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer()
-    scala> buf += 1
-    res32: buf.type = ArrayBuffer(1)
-    scala> buf += 10
-    res33: buf.type = ArrayBuffer(1, 10)
-    scala> buf.toArray
-    res34: Array[Int] = Array(1, 10)
+~~~scala
+scala> val buf = scala.collection.mutable.ArrayBuffer.empty[Int]
+buf: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer()
+scala> buf += 1
+res32: buf.type = ArrayBuffer(1)
+scala> buf += 10
+res33: buf.type = ArrayBuffer(1, 10)
+scala> buf.toArray
+res34: Array[Int] = Array(1, 10)
 ~~~
 {% endtab %}
 {% endtabs %}
@@ -39,15 +39,15 @@ A [ListBuffer](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/col
 
 {% tabs ListBuffer_1 %}
 {% tab 'Scala 2 and 3' for=ListBuffer_1 %}
-~~~
-    scala> val buf = scala.collection.mutable.ListBuffer.empty[Int]
-    buf: scala.collection.mutable.ListBuffer[Int] = ListBuffer()
-    scala> buf += 1
-    res35: buf.type = ListBuffer(1)
-    scala> buf += 10
-    res36: buf.type = ListBuffer(1, 10)
-    scala> buf.to(List)
-    res37: List[Int] = List(1, 10)
+~~~scala
+scala> val buf = scala.collection.mutable.ListBuffer.empty[Int]
+buf: scala.collection.mutable.ListBuffer[Int] = ListBuffer()
+scala> buf += 1
+res35: buf.type = ListBuffer(1)
+scala> buf += 10
+res36: buf.type = ListBuffer(1, 10)
+scala> buf.to(List)
+res37: List[Int] = List(1, 10)
 ~~~
 {% endtab %}
 {% endtabs %}
@@ -58,27 +58,27 @@ Just like an array buffer is useful for building arrays, and a list buffer is us
 
 {% tabs StringBuilders_1 class=tabs-scala-version %}
 {% tab 'Scala 2' for=StringBuilders_1 %}
-~~~
-    scala> val buf = new StringBuilder
-    buf: StringBuilder =
-    scala> buf += 'a'
-    res38: buf.type = a
-    scala> buf ++= "bcdef"
-    res39: buf.type = abcdef
-    scala> buf.toString
-    res41: String = abcdef
+~~~scala
+scala> val buf = new StringBuilder
+buf: StringBuilder =
+scala> buf += 'a'
+res38: buf.type = a
+scala> buf ++= "bcdef"
+res39: buf.type = abcdef
+scala> buf.toString
+res41: String = abcdef
 ~~~
 {% endtab %}
 {% tab 'Scala 3' for=StringBuilders_1 %}
-~~~
-    scala> val buf = StringBuilder()
-    buf: StringBuilder =
-    scala> buf += 'a'
-    res38: buf.type = a
-    scala> buf ++= "bcdef"
-    res39: buf.type = abcdef
-    scala> buf.toString
-    res41: String = abcdef
+~~~scala
+scala> val buf = StringBuilder()
+buf: StringBuilder =
+scala> buf += 'a'
+res38: buf.type = a
+scala> buf ++= "bcdef"
+res39: buf.type = abcdef
+scala> buf.toString
+res41: String = abcdef
 ~~~
 {% endtab %}
 {% endtabs %}
@@ -98,35 +98,35 @@ Scala provides mutable queues in addition to immutable ones. You use a `mQueue` 
 
 {% tabs Queues_1 class=tabs-scala-version %}
 {% tab 'Scala 2' for=Queues_1 %}
-~~~
-    scala> val queue = new scala.collection.mutable.Queue[String]
-    queue: scala.collection.mutable.Queue[String] = Queue()
-    scala> queue += "a"
-    res10: queue.type = Queue(a)
-    scala> queue ++= List("b", "c")
-    res11: queue.type = Queue(a, b, c)
-    scala> queue
-    res12: scala.collection.mutable.Queue[String] = Queue(a, b, c)
-    scala> queue.dequeue
-    res13: String = a
-    scala> queue
-    res14: scala.collection.mutable.Queue[String] = Queue(b, c)
+~~~scala
+scala> val queue = new scala.collection.mutable.Queue[String]
+queue: scala.collection.mutable.Queue[String] = Queue()
+scala> queue += "a"
+res10: queue.type = Queue(a)
+scala> queue ++= List("b", "c")
+res11: queue.type = Queue(a, b, c)
+scala> queue
+res12: scala.collection.mutable.Queue[String] = Queue(a, b, c)
+scala> queue.dequeue
+res13: String = a
+scala> queue
+res14: scala.collection.mutable.Queue[String] = Queue(b, c)
 ~~~
 {% endtab %}
 {% tab 'Scala 3' for=Queues_1 %}
-~~~
-    scala> val queue = scala.collection.mutable.Queue[String]()
-    queue: scala.collection.mutable.Queue[String] = Queue()
-    scala> queue += "a"
-    res10: queue.type = Queue(a)
-    scala> queue ++= List("b", "c")
-    res11: queue.type = Queue(a, b, c)
-    scala> queue
-    res12: scala.collection.mutable.Queue[String] = Queue(a, b, c)
-    scala> queue.dequeue
-    res13: String = a
-    scala> queue
-    res14: scala.collection.mutable.Queue[String] = Queue(b, c)
+~~~scala
+scala> val queue = scala.collection.mutable.Queue[String]()
+queue: scala.collection.mutable.Queue[String] = Queue()
+scala> queue += "a"
+res10: queue.type = Queue(a)
+scala> queue ++= List("b", "c")
+res11: queue.type = Queue(a, b, c)
+scala> queue
+res12: scala.collection.mutable.Queue[String] = Queue(a, b, c)
+scala> queue.dequeue
+res13: String = a
+scala> queue
+res14: scala.collection.mutable.Queue[String] = Queue(b, c)
 ~~~
 {% endtab %}
 {% endtabs %}
@@ -138,47 +138,47 @@ It is supported by class [mutable.Stack](https://www.scala-lang.org/api/{{ site.
 
 {% tabs Stacks_1 class=tabs-scala-version %}
 {% tab 'Scala 2' for=Stacks_1 %}
-~~~
-    scala> val stack = new scala.collection.mutable.Stack[Int]           
-    stack: scala.collection.mutable.Stack[Int] = Stack()
-    scala> stack.push(1)
-    res0: stack.type = Stack(1)
-    scala> stack
-    res1: scala.collection.mutable.Stack[Int] = Stack(1)
-    scala> stack.push(2)
-    res0: stack.type = Stack(1, 2)
-    scala> stack
-    res3: scala.collection.mutable.Stack[Int] = Stack(1, 2)
-    scala> stack.top
-    res8: Int = 2
-    scala> stack
-    res9: scala.collection.mutable.Stack[Int] = Stack(1, 2)
-    scala> stack.pop    
-    res10: Int = 2
-    scala> stack    
-    res11: scala.collection.mutable.Stack[Int] = Stack(1)
+~~~scala
+scala> val stack = new scala.collection.mutable.Stack[Int]
+stack: scala.collection.mutable.Stack[Int] = Stack()
+scala> stack.push(1)
+res0: stack.type = Stack(1)
+scala> stack
+res1: scala.collection.mutable.Stack[Int] = Stack(1)
+scala> stack.push(2)
+res0: stack.type = Stack(1, 2)
+scala> stack
+res3: scala.collection.mutable.Stack[Int] = Stack(1, 2)
+scala> stack.top
+res8: Int = 2
+scala> stack
+res9: scala.collection.mutable.Stack[Int] = Stack(1, 2)
+scala> stack.pop
+res10: Int = 2
+scala> stack
+res11: scala.collection.mutable.Stack[Int] = Stack(1)
 ~~~
 {% endtab %}
 {% tab 'Scala 3' for=Stacks_1 %}
-~~~
-    scala> val stack = scala.collection.mutable.Stack[Int]()           
-    stack: scala.collection.mutable.Stack[Int] = Stack()
-    scala> stack.push(1)
-    res0: stack.type = Stack(1)
-    scala> stack
-    res1: scala.collection.mutable.Stack[Int] = Stack(1)
-    scala> stack.push(2)
-    res0: stack.type = Stack(1, 2)
-    scala> stack
-    res3: scala.collection.mutable.Stack[Int] = Stack(1, 2)
-    scala> stack.top
-    res8: Int = 2
-    scala> stack
-    res9: scala.collection.mutable.Stack[Int] = Stack(1, 2)
-    scala> stack.pop    
-    res10: Int = 2
-    scala> stack    
-    res11: scala.collection.mutable.Stack[Int] = Stack(1)
+~~~scala
+scala> val stack = scala.collection.mutable.Stack[Int]()
+stack: scala.collection.mutable.Stack[Int] = Stack()
+scala> stack.push(1)
+res0: stack.type = Stack(1)
+scala> stack
+res1: scala.collection.mutable.Stack[Int] = Stack(1)
+scala> stack.push(2)
+res0: stack.type = Stack(1, 2)
+scala> stack
+res3: scala.collection.mutable.Stack[Int] = Stack(1, 2)
+scala> stack.top
+res8: Int = 2
+scala> stack
+res9: scala.collection.mutable.Stack[Int] = Stack(1, 2)
+scala> stack.pop
+res10: Int = 2
+scala> stack
+res11: scala.collection.mutable.Stack[Int] = Stack(1)
 ~~~
 {% endtab %}
 {% endtabs %}
@@ -197,17 +197,17 @@ Hash sets and maps are used just like any other set or map. Here are some simple
 
 {% tabs Hash-Tables_1 %}
 {% tab 'Scala 2 and 3' for=Hash-Tables_1 %}
-~~~
-    scala> val map = scala.collection.mutable.HashMap.empty[Int,String]
-    map: scala.collection.mutable.HashMap[Int,String] = Map()
-    scala> map += (1 -> "make a web site")
-    res42: map.type = Map(1 -> make a web site)
-    scala> map += (3 -> "profit!")
-    res43: map.type = Map(1 -> make a web site, 3 -> profit!)
-    scala> map(1)
-    res44: String = make a web site
-    scala> map contains 2
-    res46: Boolean = false
+~~~scala
+scala> val map = scala.collection.mutable.HashMap.empty[Int,String]
+map: scala.collection.mutable.HashMap[Int,String] = Map()
+scala> map += (1 -> "make a web site")
+res42: map.type = Map(1 -> make a web site)
+scala> map += (3 -> "profit!")
+res43: map.type = Map(1 -> make a web site, 3 -> profit!)
+scala> map(1)
+res44: String = make a web site
+scala> map contains 2
+res46: Boolean = false
 ~~~
 {% endtab %}
 {% endtabs %}
@@ -239,15 +239,15 @@ A mutable bit of type [mutable.BitSet](https://www.scala-lang.org/api/{{ site.sc
 
 {% tabs BitSet_1 %}
 {% tab 'Scala 2 and 3' for=BitSet_1 %}
-~~~
-    scala> val bits = scala.collection.mutable.BitSet.empty
-    bits: scala.collection.mutable.BitSet = BitSet()
-    scala> bits += 1
-    res49: bits.type = BitSet(1)
-    scala> bits += 3
-    res50: bits.type = BitSet(1, 3)
-    scala> bits
-    res51: scala.collection.mutable.BitSet = BitSet(1, 3)
+~~~scala
+scala> val bits = scala.collection.mutable.BitSet.empty
+bits: scala.collection.mutable.BitSet = BitSet()
+scala> bits += 1
+res49: bits.type = BitSet(1)
+scala> bits += 3
+res50: bits.type = BitSet(1, 3)
+scala> bits
+res51: scala.collection.mutable.BitSet = BitSet(1, 3)
 ~~~
 {% endtab %}
 {% endtabs %}

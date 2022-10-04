@@ -26,9 +26,9 @@ Whereas lists are constructed with the `::` operator, lazy lists are constructed
 
 {% tabs LazyList_1 %}
 {% tab 'Scala 2 and 3' for=LazyList_1 %}
-~~~
-    scala> val lazyList = 1 #:: 2 #:: 3 #:: LazyList.empty
-    lazyList: scala.collection.immutable.LazyList[Int] = LazyList(<not computed>)
+~~~scala
+scala> val lazyList = 1 #:: 2 #:: 3 #:: LazyList.empty
+lazyList: scala.collection.immutable.LazyList[Int] = LazyList(<not computed>)
 ~~~
 {% endtab %}
 {% endtabs %}
@@ -40,9 +40,9 @@ Below is a more complex example. It computes a lazy list that contains a Fibonac
 
 {% tabs LazyList_2 %}
 {% tab 'Scala 2 and 3' for=LazyList_2 %}
-~~~
-    scala> def fibFrom(a: Int, b: Int): LazyList[Int] = a #:: fibFrom(b, a + b)
-    fibFrom: (a: Int,b: Int)LazyList[Int]
+~~~scala
+scala> def fibFrom(a: Int, b: Int): LazyList[Int] = a #:: fibFrom(b, a + b)
+fibFrom: (a: Int,b: Int)LazyList[Int]
 ~~~
 {% endtab %}
 {% endtabs %}
@@ -52,11 +52,11 @@ Here are the first few elements of the Fibonacci sequence starting with two ones
 
 {% tabs LazyList_3 %}
 {% tab 'Scala 2 and 3' for=LazyList_3 %}
-~~~
-    scala> val fibs = fibFrom(1, 1).take(7)
-    fibs: scala.collection.immutable.LazyList[Int] = LazyList(<not computed>)
-    scala> fibs.toList
-    res9: List[Int] = List(1, 1, 2, 3, 5, 8, 13)
+~~~scala
+scala> val fibs = fibFrom(1, 1).take(7)
+fibs: scala.collection.immutable.LazyList[Int] = LazyList(<not computed>)
+scala> fibs.toList
+res9: List[Int] = List(1, 1, 2, 3, 5, 8, 13)
 ~~~
 {% endtab %}
 {% endtabs %}
@@ -75,7 +75,7 @@ ArraySeqs are built and updated just like any other sequence.
 
 {% tabs ArraySeq_1 %}
 {% tab 'Scala 2 and 3' for=ArraySeq_1 %}
-~~~
+~~~scala
 scala> val arr = scala.collection.immutable.ArraySeq(1, 2, 3)
 arr: scala.collection.immutable.ArraySeq[Int] = ArraySeq(1, 2, 3)
 scala> val arr2 = arr :+ 4
@@ -91,7 +91,7 @@ operations create new ArraySeqs that differ from a given ArraySeq only in a sing
 
 {% tabs ArraySeq_2 %}
 {% tab 'Scala 2 and 3' for=ArraySeq_2 %}
-~~~
+~~~scala
 scala> arr.updated(2, 4)
 res26: scala.collection.immutable.ArraySeq[Int] = ArraySeq(1, 2, 4)
 scala> arr
@@ -118,15 +118,15 @@ Vectors are built and modified just like any other sequence.
 
 {% tabs Vector_1 %}
 {% tab 'Scala 2 and 3' for=Vector_1 %}
-~~~
-    scala> val vec = scala.collection.immutable.Vector.empty
-    vec: scala.collection.immutable.Vector[Nothing] = Vector()
-    scala> val vec2 = vec :+ 1 :+ 2
-    vec2: scala.collection.immutable.Vector[Int] = Vector(1, 2)
-    scala> val vec3 = 100 +: vec2
-    vec3: scala.collection.immutable.Vector[Int] = Vector(100, 1, 2)
-    scala> vec3(0)
-    res1: Int = 100
+~~~scala
+scala> val vec = scala.collection.immutable.Vector.empty
+vec: scala.collection.immutable.Vector[Nothing] = Vector()
+scala> val vec2 = vec :+ 1 :+ 2
+vec2: scala.collection.immutable.Vector[Int] = Vector(1, 2)
+scala> val vec3 = 100 +: vec2
+vec3: scala.collection.immutable.Vector[Int] = Vector(100, 1, 2)
+scala> vec3(0)
+res1: Int = 100
 ~~~
 {% endtab %}
 {% endtabs %}
@@ -141,9 +141,9 @@ Because vectors strike a good balance between fast random selections and fast ra
 
 {% tabs Vector_2 %}
 {% tab 'Scala 2 and 3' for=Vector_2 %}
-~~~
-    scala> collection.immutable.IndexedSeq(1, 2, 3)
-    res2: scala.collection.immutable.IndexedSeq[Int] = Vector(1, 2, 3)
+~~~scala
+scala> collection.immutable.IndexedSeq(1, 2, 3)
+res2: scala.collection.immutable.IndexedSeq[Int] = Vector(1, 2, 3)
 ~~~
 {% endtab %}
 {% endtabs %}
@@ -156,9 +156,9 @@ Here's how you can create an empty immutable queue:
 
 {% tabs Queue_1 %}
 {% tab 'Scala 2 and 3' for=Queue_1 %}
-~~~
-    scala> val empty = scala.collection.immutable.Queue[Int]()
-    empty: scala.collection.immutable.Queue[Int] = Queue()
+~~~scala
+scala> val empty = scala.collection.immutable.Queue[Int]()
+empty: scala.collection.immutable.Queue[Int] = Queue()
 ~~~
 {% endtab %}
 {% endtabs %}
@@ -167,9 +167,9 @@ You can append an element to an immutable queue with `enqueue`:
 
 {% tabs Queue_2 %}
 {% tab 'Scala 2 and 3' for=Queue_2 %}
-~~~
-    scala> val has1 = empty.enqueue(1)
-    has1: scala.collection.immutable.Queue[Int] = Queue(1)
+~~~scala
+scala> val has1 = empty.enqueue(1)
+has1: scala.collection.immutable.Queue[Int] = Queue(1)
 ~~~
 {% endtab %}
 {% endtabs %}
@@ -178,10 +178,10 @@ To append multiple elements to a queue, call `enqueueAll` with a collection as i
 
 {% tabs Queue_3 %}
 {% tab 'Scala 2 and 3' for=Queue_3 %}
-~~~
-    scala> val has123 = has1.enqueueAll(List(2, 3))
-    has123: scala.collection.immutable.Queue[Int]
-      = Queue(1, 2, 3)
+~~~scala
+scala> val has123 = has1.enqueueAll(List(2, 3))
+has123: scala.collection.immutable.Queue[Int]
+    = Queue(1, 2, 3)
 ~~~
 {% endtab %}
 {% endtabs %}
@@ -190,10 +190,10 @@ To remove an element from the head of the queue, you use `dequeue`:
 
 {% tabs Queue_4 %}
 {% tab 'Scala 2 and 3' for=Queue_4 %}
-~~~
-    scala> val (element, has23) = has123.dequeue
-    element: Int = 1
-    has23: scala.collection.immutable.Queue[Int] = Queue(2, 3)
+~~~scala
+scala> val (element, has23) = has123.dequeue
+element: Int = 1
+has23: scala.collection.immutable.Queue[Int] = Queue(2, 3)
 ~~~
 {% endtab %}
 {% endtabs %}
@@ -206,11 +206,11 @@ A [Range](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collecti
 
 {% tabs Range_1 %}
 {% tab 'Scala 2 and 3' for=Range_1 %}
-~~~
-    scala> 1 to 3
-    res2: scala.collection.immutable.Range.Inclusive = Range(1, 2, 3)
-    scala> 5 to 14 by 3
-    res3: scala.collection.immutable.Range = Range(5, 8, 11, 14)
+~~~scala
+scala> 1 to 3
+res2: scala.collection.immutable.Range.Inclusive = Range(1, 2, 3)
+scala> 5 to 14 by 3
+res3: scala.collection.immutable.Range = Range(5, 8, 11, 14)
 ~~~
 {% endtab %}
 {% endtabs %}
@@ -219,9 +219,9 @@ If you want to create a range that is exclusive of its upper limit, then use the
 
 {% tabs Range_2 %}
 {% tab 'Scala 2 and 3' for=Range_2 %}
-~~~
-    scala> 1 until 3
-    res2: scala.collection.immutable.Range = Range(1, 2)
+~~~scala
+scala> 1 until 3
+res2: scala.collection.immutable.Range = Range(1, 2)
 ~~~
 {% endtab %}
 {% endtabs %}
@@ -242,11 +242,11 @@ Scala provides implementations of immutable sets and maps that use a red-black t
 
 {% tabs Red-Black_1 %}
 {% tab 'Scala 2 and 3' for=Red-Black_1 %}
-~~~
-    scala> scala.collection.immutable.TreeSet.empty[Int]
-    res11: scala.collection.immutable.TreeSet[Int] = TreeSet()
-    scala> res11 + 1 + 3 + 3
-    res12: scala.collection.immutable.TreeSet[Int] = TreeSet(1, 3)
+~~~scala
+scala> scala.collection.immutable.TreeSet.empty[Int]
+res11: scala.collection.immutable.TreeSet[Int] = TreeSet()
+scala> res11 + 1 + 3 + 3
+res12: scala.collection.immutable.TreeSet[Int] = TreeSet(1, 3)
 ~~~
 {% endtab %}
 {% endtabs %}
@@ -263,15 +263,15 @@ Operations on bit sets are very fast. Testing for inclusion takes constant time.
 
 {% tabs BitSet_1 %}
 {% tab 'Scala 2 and 3' for=BitSet_1 %}
-~~~
-    scala> val bits = scala.collection.immutable.BitSet.empty
-    bits: scala.collection.immutable.BitSet = BitSet()
-    scala> val moreBits = bits + 3 + 4 + 4
-    moreBits: scala.collection.immutable.BitSet = BitSet(3, 4)
-    scala> moreBits(3)
-    res26: Boolean = true
-    scala> moreBits(0)
-    res27: Boolean = false
+~~~scala
+scala> val bits = scala.collection.immutable.BitSet.empty
+bits: scala.collection.immutable.BitSet = BitSet()
+scala> val moreBits = bits + 3 + 4 + 4
+moreBits: scala.collection.immutable.BitSet = BitSet(3, 4)
+scala> moreBits(3)
+res26: Boolean = true
+scala> moreBits(0)
+res27: Boolean = false
 ~~~
 {% endtab %}
 {% endtabs %}
@@ -284,7 +284,7 @@ insertion order.
 
 {% tabs VectorMap_1 %}
 {% tab 'Scala 2 and 3' for=VectorMap_1 %}
-~~~
+~~~scala
 scala> val vm = scala.collection.immutable.VectorMap.empty[Int, String]
 vm: scala.collection.immutable.VectorMap[Int,String] =
   VectorMap()
@@ -310,12 +310,12 @@ A [ListMap](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collec
 
 {% tabs ListMap_1 %}
 {% tab 'Scala 2 and 3' for=ListMap_1 %}
-~~~
-    scala> val map = scala.collection.immutable.ListMap(1->"one", 2->"two")
-    map: scala.collection.immutable.ListMap[Int,java.lang.String] =
-       Map(1 -> one, 2 -> two)
-    scala> map(2)
-    res30: String = "two"
+~~~scala
+scala> val map = scala.collection.immutable.ListMap(1->"one", 2->"two")
+map: scala.collection.immutable.ListMap[Int,java.lang.String] =
+    Map(1 -> one, 2 -> two)
+scala> map(2)
+res30: String = "two"
 ~~~
 {% endtab %}
 {% endtabs %}

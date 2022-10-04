@@ -110,8 +110,10 @@ Assume further that `f` has no side-effects, so invoking it again with the same 
 
 {% tabs cache-creation %}
 {% tab 'Scala 2 and 3' for=cache-creation %}
-    scala> val cache = collection.mutable.Map[String, String]()
-    cache: scala.collection.mutable.Map[String,String] = Map()
+```scala
+scala> val cache = collection.mutable.Map[String, String]()
+cache: scala.collection.mutable.Map[String,String] = Map()
+```
 {% endtab %}
 {% endtabs %}
 
@@ -119,13 +121,15 @@ You can now create a more efficient caching version of the `f` function:
 
 {% tabs cache-usage %}
 {% tab 'Scala 2 and 3' for=cache-usage %}
-    scala> def cachedF(s: String): String = cache.getOrElseUpdate(s, f(s))
-    cachedF: (s: String)String
-    scala> cachedF("abc")
-    taking my time.
-    res3: String = cba
-    scala> cachedF("abc")
-    res4: String = cba
+```scala
+scala> def cachedF(s: String): String = cache.getOrElseUpdate(s, f(s))
+cachedF: (s: String)String
+scala> cachedF("abc")
+taking my time.
+res3: String = cba
+scala> cachedF("abc")
+res4: String = cba
+```
 {% endtab %}
 {% endtabs %}
 
