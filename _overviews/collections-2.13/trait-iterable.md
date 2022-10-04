@@ -72,15 +72,15 @@ res7: List[Int] = List(3, 4, 5)
 |  **Abstract Method:**     |						     |
 |  `xs.iterator`	    |An `iterator` that yields every element in `xs`.|
 |  **Other Iterators:**     |						     |
-|  `xs foreach f`	    |Executes function `f` for every element of `xs`.|
-|  `xs grouped size`   	    |An iterator that yields fixed-sized "chunks" of this collection.|
-|  `xs sliding size`   	    |An iterator that yields a sliding fixed-sized window of elements in this collection.|
+|  `xs.foreach(f)`	    |Executes function `f` for every element of `xs`.|
+|  `xs.grouped(size)`   	    |An iterator that yields fixed-sized "chunks" of this collection.|
+|  `xs.sliding(size)`   	    |An iterator that yields a sliding fixed-sized window of elements in this collection.|
 |  **Addition:**     	    |						     |
-|  `xs concat ys`<br>(or `xs ++ ys`)	    |A collection consisting of the elements of both `xs` and `ys`. `ys` is a [IterableOnce](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IterableOnce.html) collection, i.e., either an [Iterable](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterable.html) or an [Iterator](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html).|
+|  `xs.concat(ys)`<br>(or `xs ++ ys`)	    |A collection consisting of the elements of both `xs` and `ys`. `ys` is a [IterableOnce](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IterableOnce.html) collection, i.e., either an [Iterable](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterable.html) or an [Iterator](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html).|
 |  **Maps:**     	    |						     |
-|  `xs map f`		    |The collection obtained from applying the function f to every element in `xs`.|
-|  `xs flatMap f`	    |The collection obtained from applying the collection-valued function `f` to every element in `xs` and concatenating the results.|
-|  `xs collect f`	    |The collection obtained from applying the partial function `f` to every element in `xs` for which it is defined and collecting the results.|
+|  `xs.map(f)`		    |The collection obtained from applying the function f to every element in `xs`.|
+|  `xs.flatMap(f)`	    |The collection obtained from applying the collection-valued function `f` to every element in `xs` and concatenating the results.|
+|  `xs.collect(f)`	    |The collection obtained from applying the partial function `f` to every element in `xs` for which it is defined and collecting the results.|
 |  **Conversions:**         |						     |
 |  `xs.to(SortedSet)`       | Generic conversion operation that takes a collection factory as parameter. |
 |  `xs.toList`	    	    |Converts the collection to a list.		     |
@@ -106,36 +106,36 @@ res7: List[Int] = List(3, 4, 5)
 |  `xs.headOption`	    |The first element of `xs` in an option value, or None if `xs` is empty.|
 |  `xs.last`	    	    |The last element of the collection (or, some element, if no order is defined).|
 |  `xs.lastOption`	    |The last element of `xs` in an option value, or None if `xs` is empty.|
-|  `xs find p`	    	    |An option containing the first element in `xs` that satisfies `p`, or `None` if no element qualifies.|
+|  `xs.find(p)`	    	    |An option containing the first element in `xs` that satisfies `p`, or `None` if no element qualifies.|
 |  **Subcollections:**      |						     |
 |  `xs.tail`	    	    |The rest of the collection except `xs.head`.    |
 |  `xs.init`	    	    |The rest of the collection except `xs.last`.    |
 |  `xs.slice(from, to)`    |A collection consisting of elements in some index range of `xs` (from `from` up to, and excluding `to`).|
-|  `xs take n`	    	    |A collection consisting of the first `n` elements of `xs` (or, some arbitrary `n` elements, if no order is defined).|
-|  `xs drop n`	    	    |The rest of the collection except `xs take n`.|
-|  `xs takeWhile p`	    |The longest prefix of elements in the collection that all satisfy `p`.|
-|  `xs dropWhile p`	    |The collection without the longest prefix of elements that all satisfy `p`.|
-|  `xs takeRight n`	    |A collection consisting of the last `n` elements of `xs` (or, some arbitrary `n` elements, if no order is defined).|
-|  `xs dropRight n`	    |The rest of the collection except `xs takeRight n`.|
-|  `xs filter p`	    |The collection consisting of those elements of xs that satisfy the predicate `p`.|
-|  `xs withFilter p`	    |A non-strict filter of this collection. Subsequent calls to `map`, `flatMap`, `foreach`, and `withFilter` will only apply to those elements of `xs` for which the condition `p` is true.|
-|  `xs filterNot p`	    |The collection consisting of those elements of `xs` that do not satisfy the predicate `p`.|
+|  `xs.take(n)`	    	    |A collection consisting of the first `n` elements of `xs` (or, some arbitrary `n` elements, if no order is defined).|
+|  `xs.drop(n)`	    	    |The rest of the collection except `xs.take(n)`.|
+|  `xs.takeWhile(p)`	    |The longest prefix of elements in the collection that all satisfy `p`.|
+|  `xs.dropWhile(p)`	    |The collection without the longest prefix of elements that all satisfy `p`.|
+|  `xs.takeRight(n)`	    |A collection consisting of the last `n` elements of `xs` (or, some arbitrary `n` elements, if no order is defined).|
+|  `xs.dropRight(n)`	    |The rest of the collection except `xs.takeRight(n)`.|
+|  `xs.filter(p)`	    |The collection consisting of those elements of xs that satisfy the predicate `p`.|
+|  `xs.withFilter(p)`	    |A non-strict filter of this collection. Subsequent calls to `map`, `flatMap`, `foreach`, and `withFilter` will only apply to those elements of `xs` for which the condition `p` is true.|
+|  `xs.filterNot(p)`	    |The collection consisting of those elements of `xs` that do not satisfy the predicate `p`.|
 |  **Subdivisions:**        |						     |
-|  `xs splitAt n`	    |Split `xs` at a position, giving the pair of collections `(xs take n, xs drop n)`.|
-|  `xs span p`	    	    |Split `xs` according to a predicate, giving the pair of collections `(xs takeWhile p, xs.dropWhile p)`.|
-|  `xs partition p`	    |Split `xs` into a pair of collections; one with elements that satisfy the predicate `p`, the other with elements that do not, giving the pair of collections `(xs filter p, xs.filterNot p)`|
-|  `xs groupBy f`	    |Partition `xs` into a map of collections according to a discriminator function `f`.|
+|  `xs.splitAt(n)`	    |Split `xs` at a position, giving the pair of collections `(xs take n, xs drop n)`.|
+|  `xs.span(p)`	    	    |Split `xs` according to a predicate, giving the pair of collections `(xs takeWhile p, xs.dropWhile p)`.|
+|  `xs.partition(p)`	    |Split `xs` into a pair of collections; one with elements that satisfy the predicate `p`, the other with elements that do not, giving the pair of collections `(xs filter p, xs.filterNot p)`|
+|  `xs.groupBy(f)`	    |Partition `xs` into a map of collections according to a discriminator function `f`.|
 |  `xs.groupMap(f)(g)`|Partition `xs` into a map of collections according to a discriminator function `f`, and applies the transformation function `g` to each element in a group.|
 |  `xs.groupMapReduce(f)(g)(h)`|Partition `xs` according to a discriminator function `f`, and then combine the results of applying the function `g` to each element in a group using the `h` function.|
 |  **Element Conditions:**  |						     |
-|  `xs forall p`	    |A boolean indicating whether the predicate `p` holds for all elements of `xs`.|
-|  `xs exists p`	    |A boolean indicating whether the predicate `p` holds for some element in `xs`.|
-|  `xs count p`	    	    |The number of elements in `xs` that satisfy the predicate `p`.|
+|  `xs.forall(p)`	    |A boolean indicating whether the predicate `p` holds for all elements of `xs`.|
+|  `xs.exists(p)`	    |A boolean indicating whether the predicate `p` holds for some element in `xs`.|
+|  `xs.count(p)`	    	    |The number of elements in `xs` that satisfy the predicate `p`.|
 |  **Folds:** 		    |						     |
 |  `xs.foldLeft(z)(op)`	    |Apply binary operation `op` between successive elements of `xs`, going left to right and starting with `z`.|
 |  `xs.foldRight(z)(op)`	    |Apply binary operation `op` between successive elements of `xs`, going right to left and ending with `z`.|
-|  `xs reduceLeft op`	    |Apply binary operation `op` between successive elements of non-empty collection `xs`, going left to right.|
-|  `xs reduceRight op`	    |Apply binary operation `op` between successive elements of non-empty collection `xs`, going right to left.|
+|  `xs.reduceLeft(op)`	    |Apply binary operation `op` between successive elements of non-empty collection `xs`, going left to right.|
+|  `xs.reduceRight(op)`	    |Apply binary operation `op` between successive elements of non-empty collection `xs`, going right to left.|
 |  **Specific Folds:**      |						     |
 |  `xs.sum`	    	    |The sum of the numeric element values of collection `xs`.|
 |  `xs.product`	    	    |The product of the numeric element values of collection `xs`.|
@@ -148,7 +148,7 @@ res7: List[Int] = List(3, 4, 5)
 |  `xs.mkString(start, sep, end)`|Converts the collection to a string that shows all elements of `xs` between separators `sep` enclosed in strings `start` and `end`. `start`, `sep`, `end` are all optional.|
 |  `xs.stringPrefix`	    |The collection name at the beginning of the string returned from `xs.toString`.|
 |  **Zippers:** 	    |						     |
-|  `xs zip ys`	    	    |A collection of pairs of corresponding elements from `xs` and `ys`.|
+|  `xs.zip(ys)`	    	    |A collection of pairs of corresponding elements from `xs` and `ys`.|
 |  `xs.zipAll(ys, x, y)`   |A collection of pairs of corresponding elements from `xs` and `ys`, where the shorter sequence is extended to match the longer one by appending elements `x` or `y`.|
 |  `xs.zipWithIndex`	    |An collection of pairs of elements from `xs` with their indices.|
 |  **Views:**               |						     |

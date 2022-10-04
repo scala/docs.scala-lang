@@ -13,6 +13,8 @@ permalink: /overviews/collections-2.13/:title.html
 
 Hence `Option` can be used everywhere an `IterableOnce` is expected, for example, when calling `flatMap` on a collection (or inside a for-comprehension)
 
+{% tabs options_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=options_1 %}
 ```scala mdoc
 for {
   a <- Set(1)
@@ -20,33 +22,59 @@ for {
 } yield (a + b)
 // : Set[Int] = Set(42)
 ``` 
+{% endtab %}
+{% tab 'Scala 3' for=options_1 %}
+```scala
+for
+  a <- Set(1)
+  b <- Option(41)
+yield (a + b)
+// : Set[Int] = Set(42)
+```
+{% endtab %}
+{% endtabs %}
 
 since the operation `flatMap` on the type `Set[Int]` takes a function returning an `IterableOnce`:
 
+{% tabs options_2 %}
+{% tab 'Scala 2 and 3' for=options_2 %}
 ```
 def flatMap[B](f: Int => IterableOnce[B]): Set[B]
 ```
+{% endtab %}
+{% endtabs %}
 
 Although `Option` does not extend `Iterable`, there exists an [implicit conversion](https://github.com/scala/scala/blob/6c68c2825e893bb71d6dc78465ac8c6f415cbd93/src/library/scala/Option.scala#L19) between `Option` and `Iterable`
 
-
+{% tabs options_3 %}
+{% tab 'Scala 2 and 3' for=options_3 %}
 ```
 implicit def option2Iterable[A](xo: Option[A]): Iterable[A]
 ```
+{% endtab %}
+{% endtabs %}
 
 so although `Option[A]` is not a full collection it can be _viewed_ as one. For example,
 
+{% tabs options_4 %}
+{% tab 'Scala 2 and 3' for=options_4 %}
 ```scala mdoc
 Some(42).drop(1)
 // : Iterable[Int] = List()
 ```
+{% endtab %}
+{% endtabs %}
 
 expands to
 
+{% tabs options_5 %}
+{% tab 'Scala 2 and 3' for=options_5 %}
 ```scala mdoc
 Option.option2Iterable(Some(42)).drop(1)
 // : Iterable[Int] = List()
 ```
+{% endtab %}
+{% endtabs %}
 
 because `drop` is not defined on `Option`. A downside of the above implicit conversion is that instead of getting back an `Option[A]` we are left with an `Iterable[A]`. For this reason, `Option`’s documentation carries the following note:
 
