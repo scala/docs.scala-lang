@@ -17,14 +17,16 @@ You have syntax `List(1, 2, 3)` to create a list of three integers and `Map('A' 
 {% tabs creating_1 %}
 {% tab 'Scala 2 and 3' for=creating_1 %}
 
-    Iterable()                // An empty collection
-    List()                    // The empty list
-    List(1.0, 2.0)            // A list with elements 1.0, 2.0
-    Vector(1.0, 2.0)          // A vector with elements 1.0, 2.0
-    Iterator(1, 2, 3)         // An iterator returning three integers.
-    Set(dog, cat, bird)       // A set of three animals
-    HashSet(dog, cat, bird)   // A hash set of the same animals
-    Map('a' -> 7, 'b' -> 0)   // A map from characters to integers
+```scala
+val a = Iterable()                // An empty collection
+val b = List()                    // The empty list
+val c = List(1.0, 2.0)            // A list with elements 1.0, 2.0
+val d = Vector(1.0, 2.0)          // A vector with elements 1.0, 2.0
+val e = Iterator(1, 2, 3)         // An iterator returning three integers.
+val f = Set(dog, cat, bird)       // A set of three animals
+val g = HashSet(dog, cat, bird)   // A hash set of the same animals
+val h = Map('a' -> 7, 'b' -> 0)   // A map from characters to integers
+```
 
 {% endtab %}
 {% endtabs %}
@@ -34,7 +36,9 @@ You have syntax `List(1, 2, 3)` to create a list of three integers and `Map('A' 
 {% tabs creating_2 %}
 {% tab 'Scala 2 and 3' for=creating_2 %}
 
-    List.apply(1.0, 2.0)
+```scala
+val c = List.apply(1.0, 2.0)
+```
 
 {% endtab %}
 {% endtabs %}
@@ -44,12 +48,16 @@ So this is a call to the `apply` method of the companion object of the `List` cl
 {% tabs creating_3 %}
 {% tab 'Scala 2 and 3' for=creating_3 %}
 
-    scala> List(1, 2, 3)
-    res17: List[Int] = List(1, 2, 3)
-    scala> Iterable(1, 2, 3)
-    res18: Iterable[Int] = List(1, 2, 3)
-    scala> mutable.Iterable(1, 2, 3)
-    res19: scala.collection.mutable.Iterable[Int] = ArrayBuffer(1, 2, 3)
+```scala
+scala> List(1, 2, 3)
+val res17: List[Int] = List(1, 2, 3)
+
+scala> Iterable(1, 2, 3)
+val res18: Iterable[Int] = List(1, 2, 3)
+
+scala> mutable.Iterable(1, 2, 3)
+val res19: scala.collection.mutable.Iterable[Int] = ArrayBuffer(1, 2, 3)
+```
 
 {% endtab %}
 {% endtabs %}

@@ -36,7 +36,9 @@ Iterators in Scala also provide analogues of most of the methods that you find i
 {% tabs iterators_2 %}
 {% tab 'Scala 2 and 3' for=iterators_2 %}
 
-    it foreach println
+```scala
+it.foreach(println)
+```
 
 {% endtab %}
 {% endtabs %}
@@ -63,19 +65,25 @@ The other operations that `Iterator` has in common with `Iterable` have the same
 {% tabs iterators_4 %}
 {% tab 'Scala 2 and 3' for=iterators_4 %}
 
-    scala> val it = Iterator("a", "number", "of", "words")
-    it: Iterator[java.lang.String] = <iterator>
-    scala> it.map(_.length)
-    res1: Iterator[Int] = <iterator>
-    scala> it.hasNext
-    res2: Boolean = true
-    scala> res1 foreach println
-    1
-    6
-    2
-    5
-    scala> it.hasNext
-    res4: Boolean = false
+```scala
+scala> val it = Iterator("a", "number", "of", "words")
+val it: Iterator[java.lang.String] = <iterator>
+
+scala> it.map(_.length)
+val res1: Iterator[Int] = <iterator>
+
+scala> it.hasNext
+val res2: Boolean = true
+
+scala> res1.foreach(println)
+1
+6
+2
+5
+
+scala> it.hasNext
+val res4: Boolean = false
+```
 
 {% endtab %}
 {% endtabs %}
@@ -88,12 +96,16 @@ Another example is the `dropWhile` method, which can be used to find the first e
 {% tabs iterators_5 %}
 {% tab 'Scala 2 and 3' for=iterators_5 %}
 
-    scala> val it = Iterator("a", "number", "of", "words")
-    it: Iterator[java.lang.String] = <iterator>
-    scala> it dropWhile (_.length < 2)
-    res4: Iterator[java.lang.String] = <iterator>
-    scala> res4.next()
-    res5: java.lang.String = number
+```scala
+scala> val it = Iterator("a", "number", "of", "words")
+val it: Iterator[java.lang.String] = <iterator>
+
+scala> it.dropWhile(_.length < 2)
+val res4: Iterator[java.lang.String] = <iterator>
+
+scala> res4.next()
+val res5: java.lang.String = number
+```
 
 {% endtab %}
 {% endtabs %}
@@ -107,15 +119,17 @@ The _two_ iterators that result will each return exactly the same elements as th
 {% tabs iterators_6 %}
 {% tab 'Scala 2 and 3' for=iterators_6 %}
 
-    scala> val (words, ns) = Iterator("a", "number", "of", "words").duplicate
-    words: Iterator[String] = <iterator>
-    ns: Iterator[String] = <iterator>
+```scala
+scala> val (words, ns) = Iterator("a", "number", "of", "words").duplicate
+val words: Iterator[String] = <iterator>
+val ns: Iterator[String] = <iterator>
 
-    scala> val shorts = words.filter(_.length < 3).toList
-    shorts: List[String] = List(a, of)
+scala> val shorts = words.filter(_.length < 3).toList
+val shorts: List[String] = List(a, of)
 
-    scala> val count = ns.map(_.length).sum
-    count: Int = 14
+scala> val count = ns.map(_.length).sum
+val count: Int = 14
+```
 
 {% endtab %}
 {% endtabs %}
@@ -134,31 +148,31 @@ All operations on iterators are summarized below.
 | WHAT IT IS  	  	        | WHAT IT DOES				     |
 | ------       	       	    | ------					     |
 |  **Abstract Methods:**    |						         |
-|  `it.next()`      	    | Returns next element on iterator and advances past it. |
-|  `it.hasNext`  	        | Returns `true` if `it` can return another element. |
+|  `it.next()`      	      | Returns next element on iterator and advances past it. |
+|  `it.hasNext`  	          | Returns `true` if `it` can return another element. |
 |  **Variations:**          |						         |
 |  `it.buffered`      	    | A buffered iterator returning all elements of `it`. |
-|  `it grouped size`      	| An iterator that yields the elements returned by `it` in fixed-sized sequence "chunks". |
-|  `it sliding size`      	| An iterator that yields the elements returned by `it` in sequences representing a sliding fixed-sized window. |
+|  `it.grouped(size)`      	| An iterator that yields the elements returned by `it` in fixed-sized sequence "chunks". |
+|  `it.sliding(size)`      	| An iterator that yields the elements returned by `it` in sequences representing a sliding fixed-sized window. |
 |  **Duplication:**         |						         |
 |  `it.duplicate`           | A pair of iterators that each independently return all elements of `it`. |
 |  **Additions:**           |						         |
-|  `it concat jt`<br>or `it ++ jt` | An iterator returning all elements returned by iterator `it`, followed by all elements returned by iterator `jt`. |
-|  `it.padTo(len, x)`      | The iterator that first returns all elements of `it` and then follows that by copies of `x` until length `len` elements are returned overall. |
+|  `it.concat(jt)`<br>or `it ++ jt` | An iterator returning all elements returned by iterator `it`, followed by all elements returned by iterator `jt`. |
+|  `it.padTo(len, x)`       | The iterator that first returns all elements of `it` and then follows that by copies of `x` until length `len` elements are returned overall. |
 |  **Maps:**                |						         |
-|  `it map f`               | The iterator obtained from applying the function `f` to every element returned from `it`. |
-|  `it flatMap f`           | The iterator obtained from applying the iterator-valued function `f` to every element in `it` and appending the results. |
-|  `it collect f`           | The iterator obtained from applying the partial function `f` to every element in `it` for which it is defined and collecting the results. |
+|  `it.map(f)`              | The iterator obtained from applying the function `f` to every element returned from `it`. |
+|  `it.flatMap(f)`          | The iterator obtained from applying the iterator-valued function `f` to every element in `it` and appending the results. |
+|  `it.collect(f)`          | The iterator obtained from applying the partial function `f` to every element in `it` for which it is defined and collecting the results. |
 |  **Conversions:**         |						         |
 |  `it.toArray`             | Collects the elements returned by `it` in an array. |
 |  `it.toList`              | Collects the elements returned by `it` in a list. |
 |  `it.toIterable`          | Collects the elements returned by `it` in an iterable. |
 |  `it.toSeq`               | Collects the elements returned by `it` in a sequence. |
 |  `it.toIndexedSeq`        | Collects the elements returned by `it` in an indexed sequence. |
-|  `it.toLazyList`            | Collects the elements returned by `it` in a lazy list. |
+|  `it.toLazyList`          | Collects the elements returned by `it` in a lazy list. |
 |  `it.toSet`               | Collects the elements returned by `it` in a set. |
 |  `it.toMap`               | Collects the key/value pairs returned by `it` in a map. |
-|  **Copying:**              |						         |
+|  **Copying:**             |						         |
 |  `it.copyToArray(arr, s, n)`| Copies at most `n` elements returned by `it` to array `arr` starting at index `s`. The last two arguments are optional. |
 |  **Size Info:**           |						         |
 |  `it.isEmpty`             | Test whether the iterator is empty (opposite of `hasNext`). |
@@ -167,44 +181,44 @@ All operations on iterators are summarized below.
 |  `it.length`              | Same as `it.size`. |
 |  `it.knownSize`	    	    |The number of elements, if this one is known without modifying the iterator’s state, otherwise `-1`.	     |
 |  **Element Retrieval Index Search:**|						         |
-|  `it find p`              | An option containing the first element returned by `it` that satisfies `p`, or `None` is no element qualifies. Note: The iterator advances to after the element, or, if none is found, to the end. |
-|  `it indexOf x`           | The index of the first element returned by `it` that equals `x`. Note: The iterator advances past the position of this element. |
-|  `it indexWhere p`        | The index of the first element returned by `it` that satisfies `p`. Note: The iterator advances past the position of this element. |
+|  `it.find(p)`             | An option containing the first element returned by `it` that satisfies `p`, or `None` is no element qualifies. Note: The iterator advances to after the element, or, if none is found, to the end. |
+|  `it.indexOf(x)`          | The index of the first element returned by `it` that equals `x`. Note: The iterator advances past the position of this element. |
+|  `it.indexWhere(p)`       | The index of the first element returned by `it` that satisfies `p`. Note: The iterator advances past the position of this element. |
 |  **Subiterators:**        |						         |
-|  `it take n`              | An iterator returning of the first `n` elements of `it`. Note: it will advance to the position after the `n`'th element, or to its end, if it contains less than `n` elements. |
-|  `it drop n`              | The iterator that starts with the `(n+1)`'th element of `it`. Note: `it` will advance to the same position. |
-|  `it.slice(m,n)`         | The iterator that returns a slice of the elements returned from it, starting with the `m`'th element and ending before the `n`'th element. |
-|  `it takeWhile p`         | An iterator returning elements from `it` as long as condition `p` is true. |
-|  `it dropWhile p`         | An iterator skipping elements from `it` as long as condition `p` is `true`, and returning the remainder. |
-|  `it filter p`            | An iterator returning all elements from `it` that satisfy the condition `p`. |
-|  `it withFilter p`        | Same as `it` filter `p`. Needed so that iterators can be used in for-expressions. |
-|  `it filterNot p`         | An iterator returning all elements from `it` that do not satisfy the condition `p`. |
+|  `it.take(n)`             | An iterator returning of the first `n` elements of `it`. Note: it will advance to the position after the `n`'th element, or to its end, if it contains less than `n` elements. |
+|  `it.drop(n)`             | The iterator that starts with the `(n+1)`'th element of `it`. Note: `it` will advance to the same position. |
+|  `it.slice(m,n)`          | The iterator that returns a slice of the elements returned from it, starting with the `m`'th element and ending before the `n`'th element. |
+|  `it.takeWhile(p)`        | An iterator returning elements from `it` as long as condition `p` is true. |
+|  `it.dropWhile(p)`        | An iterator skipping elements from `it` as long as condition `p` is `true`, and returning the remainder. |
+|  `it.filter(p)`           | An iterator returning all elements from `it` that satisfy the condition `p`. |
+|  `it.withFilter(p)`       | Same as `it` filter `p`. Needed so that iterators can be used in for-expressions. |
+|  `it.filterNot(p)`        | An iterator returning all elements from `it` that do not satisfy the condition `p`. |
 |  `it.distinct`            | An iterator returning the elements from `it` without duplicates. |
 |  **Subdivisions:**        |						         |
-|  `it partition p`         | Splits `it` into a pair of two iterators: one returning all elements from `it` that satisfy the predicate `p`, the other returning all elements from `it` that do not. |
-|  `it span p`              | Splits `it` into a pair of two iterators: one returning all elements of the prefix of `it` that satisfy the predicate `p`, the other returning all remaining elements of `it`. |
+|  `it.partition(p)`        | Splits `it` into a pair of two iterators: one returning all elements from `it` that satisfy the predicate `p`, the other returning all elements from `it` that do not. |
+|  `it.span(p)`             | Splits `it` into a pair of two iterators: one returning all elements of the prefix of `it` that satisfy the predicate `p`, the other returning all remaining elements of `it`. |
 |  **Element Conditions:**  |						         |
-|  `it forall p`            | A boolean indicating whether the predicate p holds for all elements returned by `it`. |
-|  `it exists p`            | A boolean indicating whether the predicate p holds for some element in `it`. |
-|  `it count p`             | The number of elements in `it` that satisfy the predicate `p`. |
+|  `it.forall(p)`           | A boolean indicating whether the predicate p holds for all elements returned by `it`. |
+|  `it.exists(p)`           | A boolean indicating whether the predicate p holds for some element in `it`. |
+|  `it.count(p)`            | The number of elements in `it` that satisfy the predicate `p`. |
 |  **Folds:**               |						         |
 |  `it.foldLeft(z)(op)`     | Apply binary operation `op` between successive elements returned by `it`, going left to right and starting with `z`. |
 |  `it.foldRight(z)(op)`    | Apply binary operation `op` between successive elements returned by `it`, going right to left and starting with `z`. |
-|  `it reduceLeft op`       | Apply binary operation `op` between successive elements returned by non-empty iterator `it`, going left to right. |
-|  `it reduceRight op`      | Apply binary operation `op` between successive elements returned by non-empty iterator `it`, going right to left. |
+|  `it.reduceLeft(op)`      | Apply binary operation `op` between successive elements returned by non-empty iterator `it`, going left to right. |
+|  `it.reduceRight(op)`     | Apply binary operation `op` between successive elements returned by non-empty iterator `it`, going right to left. |
 |  **Specific Folds:**      |						         |
 |  `it.sum`                 | The sum of the numeric element values returned by iterator `it`. |
 |  `it.product`             | The product of the numeric element values returned by iterator `it`. |
 |  `it.min`                 | The minimum of the ordered element values returned by iterator `it`. |
 |  `it.max`                 | The maximum of the ordered element values returned by iterator `it`. |
 |  **Zippers:**             |						         |
-|  `it zip jt`              | An iterator of pairs of corresponding elements returned from iterators `it` and `jt`. |
-|  `it.zipAll(jt, x, y)`   | An iterator of pairs of corresponding elements returned from iterators `it` and `jt`, where the shorter iterator is extended to match the longer one by appending elements `x` or `y`. |
+|  `it.zip(jt)`             | An iterator of pairs of corresponding elements returned from iterators `it` and `jt`. |
+|  `it.zipAll(jt, x, y)`    | An iterator of pairs of corresponding elements returned from iterators `it` and `jt`, where the shorter iterator is extended to match the longer one by appending elements `x` or `y`. |
 |  `it.zipWithIndex`        | An iterator of pairs of elements returned from `it` with their indices. |
 |  **Update:**              |						         |
-|  `it.patch(i, jt, r)`    | The iterator resulting from `it` by replacing `r` elements starting with `i` by the patch iterator `jt`. |
+|  `it.patch(i, jt, r)`     | The iterator resulting from `it` by replacing `r` elements starting with `i` by the patch iterator `jt`. |
 |  **Comparison:**          |						         |
-|  `it sameElements jt`     | A test whether iterators `it` and `jt` return the same elements in the same order. Note: Using the iterators after this operation is undefined and subject to change. |
+|  `it.sameElements(jt)`    | A test whether iterators `it` and `jt` return the same elements in the same order. Note: Using the iterators after this operation is undefined and subject to change. |
 |  **Strings:**             |						         |
 |  `it.addString(b, start, sep, end)`| Adds a string to `StringBuilder` `b` which shows all elements returned by `it` between separators `sep` enclosed in strings `start` and `end`. `start`, `sep`, `end` are all optional. |
 |  `it.mkString(start, sep, end)` | Converts the collection to a string which shows all elements returned by `it` between separators `sep` enclosed in strings `start` and `end`. `start`, `sep`, `end` are all optional. |
@@ -226,8 +240,10 @@ Laziness is still valuable, despite often not being visible, as it can prevent u
 {% tabs iterators_7 %}
 {% tab 'Scala 2 and 3' for=iterators_7 %}
 
-    def zipWithIndex[A](i: Iterator[A]): Iterator[(Int, A)] =
-      Iterator.from(0).zip(i)
+```scala
+def zipWithIndex[A](i: Iterator[A]): Iterator[(Int, A)] =
+  Iterator.from(0).zip(i)
+```
 
 {% endtab %}
 {% endtabs %}
@@ -246,7 +262,7 @@ def skipEmptyWordsNOT(it: Iterator[String]) =
 {% tab 'Scala 3' for=iterators_8 %}
 ```scala
 def skipEmptyWordsNOT(it: Iterator[String]) =
-  while it.next().isEmpty do {}
+  while it.next().isEmpty do ()
 ```
 {% endtab %}
 {% endtabs %}
@@ -275,18 +291,25 @@ Every iterator can be converted to a buffered iterator by calling its `buffered`
 {% tabs iterators_10 %}
 {% tab 'Scala 2 and 3' for=iterators_10 %}
 
-    scala> val it = Iterator(1, 2, 3, 4)
-    it: Iterator[Int] = <iterator>
-    scala> val bit = it.buffered
-    bit: scala.collection.BufferedIterator[Int] = <iterator>
-    scala> bit.head
-    res10: Int = 1
-    scala> bit.next()
-    res11: Int = 1
-    scala> bit.next()
-    res12: Int = 2
-    scala> bit.headOption
-    res13: Option[Int] = Some(3)
+```scala
+scala> val it = Iterator(1, 2, 3, 4)
+val it: Iterator[Int] = <iterator>
+
+scala> val bit = it.buffered
+val bit: scala.collection.BufferedIterator[Int] = <iterator>
+
+scala> bit.head
+val res10: Int = 1
+
+scala> bit.next()
+val res11: Int = 1
+
+scala> bit.next()
+val res12: Int = 2
+
+scala> bit.headOption
+val res13: Option[Int] = Some(3)
+```
 
 {% endtab %}
 {% endtabs %}
@@ -302,40 +325,44 @@ underlying iterator. But iterators can be efficiently joined by adding them toge
 {% tabs iterators_11 class=tabs-scala-version %}
 {% tab 'Scala 2' for=iterators_11 %}
 
-    scala> def collapse(it: Iterator[Int]) = if (!it.hasNext) Iterator.empty else {
-         | var head = it.next
-         | val rest = if (head == 0) it.dropWhile(_ == 0) else it
-         | Iterator.single(head) ++ rest
-         | }
-    collapse: (it: Iterator[Int])Iterator[Int]
+```scala
+scala> def collapse(it: Iterator[Int]) = if (!it.hasNext) Iterator.empty else {
+      |  var head = it.next
+      |  val rest = if (head == 0) it.dropWhile(_ == 0) else it
+      |  Iterator.single(head) ++ rest
+      |}
+def collapse(it: Iterator[Int]): Iterator[Int]
 
-    scala> def collapse(it: Iterator[Int]) = {
-         | val (zeros, rest) = it.span(_ == 0)
-         | zeros.take(1) ++ rest
-         | }
-    collapse: (it: Iterator[Int])Iterator[Int]
+scala> def collapse(it: Iterator[Int]) = {
+      |  val (zeros, rest) = it.span(_ == 0)
+      |  zeros.take(1) ++ rest
+      |}
+def collapse(it: Iterator[Int]): Iterator[Int]
 
-    scala> collapse(Iterator(0, 0, 0, 1, 2, 3, 4)).toList
-    res14: List[Int] = List(0, 1, 2, 3, 4)
+scala> collapse(Iterator(0, 0, 0, 1, 2, 3, 4)).toList
+val res14: List[Int] = List(0, 1, 2, 3, 4)
+```
 
 {% endtab %}
 {% tab 'Scala 3' for=iterators_11 %}
 
-    scala> def collapse(it: Iterator[Int]) = if !it.hasNext then Iterator.empty else {
-         |   var head = it.next
-         |   val rest = if head == 0 then it.dropWhile(_ == 0) else it
-         |   Iterator.single(head) ++ rest
-         | 
-    collapse: (it: Iterator[Int])Iterator[Int]
+```scala
+scala> def collapse(it: Iterator[Int]) = if !it.hasNext then Iterator.empty else
+      |  var head = it.next
+      |  val rest = if head == 0 then it.dropWhile(_ == 0) else it
+      |  Iterator.single(head) ++ rest
+      |
+def collapse(it: Iterator[Int]): Iterator[Int]
 
-    scala> def collapse(it: Iterator[Int]) =
-         |   val (zeros, rest) = it.span(_ == 0)
-         |   zeros.take(1) ++ rest
-         | 
-    collapse: (it: Iterator[Int])Iterator[Int]
+scala> def collapse(it: Iterator[Int]) =
+      |  val (zeros, rest) = it.span(_ == 0)
+      |  zeros.take(1) ++ rest
+      |
+def collapse(it: Iterator[Int]): Iterator[Int]
 
-    scala> collapse(Iterator(0, 0, 0, 1, 2, 3, 4)).toList
-    res14: List[Int] = List(0, 1, 2, 3, 4)
+scala> collapse(Iterator(0, 0, 0, 1, 2, 3, 4)).toList
+val res14: List[Int] = List(0, 1, 2, 3, 4)
+```
 
 {% endtab %}
 {% endtabs %}

@@ -16,7 +16,7 @@ A [Map](https://www.scala-lang.org/api/current/scala/collection/Map.html) is an 
 
 The fundamental operations on maps are similar to those on sets. They are summarized in the following table and fall into the following categories:
 
-* **Lookup** operations `apply`, `get`, `getOrElse`, `contains`, and `isDefinedAt`. These turn maps into partial functions from keys to values. The fundamental lookup method for a map is: `def get(key): Option[Value]`. The operation `m get key` tests whether the map contains an association for the given `key`. If so, it returns the associated value in a `Some`. If no key is defined in the map, `get` returns `None`. Maps also define an `apply` method that returns the value associated with a given key directly, without wrapping it in an `Option`. If the key is not defined in the map, an exception is raised.
+* **Lookup** operations `apply`, `get`, `getOrElse`, `contains`, and `isDefinedAt`. These turn maps into partial functions from keys to values. The fundamental lookup method for a map is: `def get(key): Option[Value]`. The operation `m.get(key)` tests whether the map contains an association for the given `key`. If so, it returns the associated value in a `Some`. If no key is defined in the map, `get` returns `None`. Maps also define an `apply` method that returns the value associated with a given key directly, without wrapping it in an `Option`. If the key is not defined in the map, an exception is raised.
 * **Additions and updates** `+`, `++`, `updated`, which let you add new bindings to a map or change existing bindings.
 * **Removals** `-`, `--`, which remove bindings from a map.
 * **Subcollection producers** `keys`, `keySet`, `keysIterator`, `values`, `valuesIterator`, which return a map's keys and values separately in various forms.
@@ -64,7 +64,7 @@ Mutable maps support in addition the operations summarized in the following tabl
 |  **Additions and Updates:** |                                               |
 |  `ms(k) = v`                |(Or, written out, `ms.update(k, v)`). Adds mapping from key `k` to value `v` to map ms as a side effect, overwriting any previous mapping of `k`.|
 |  `ms.addOne(k -> v)`<br>or `ms += (k -> v)`     |Adds mapping from key `k` to value `v` to map `ms` as a side effect and returns `ms` itself.|
-|  `ms addAll xvs`<br>or `ms ++= kvs`             |Adds all mappings in `kvs` to `ms` as a side effect and returns `ms` itself.|
+|  `ms.addAll(xvs)`<br>or `ms ++= kvs`             |Adds all mappings in `kvs` to `ms` as a side effect and returns `ms` itself.|
 |  `ms.put(k, v)`             |Adds mapping from key `k` to value `v` to `ms` and returns any value previously associated with `k` as an option.|
 |  `ms.getOrElseUpdate(k, d)` |If key `k` is defined in map `ms`, return its associated value. Otherwise, update `ms` with the mapping `k -> d` and return `d`.|
 |  **Removals:**              |                                                |
