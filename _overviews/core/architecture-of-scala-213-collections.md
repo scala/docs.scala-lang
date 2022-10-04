@@ -70,6 +70,8 @@ because we want them to return collection types that are unknown yet.
 For instance, consider the signature of the `map` operation on `List[A]`
 and `Vector[A]`:
 
+{% tabs factoring_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=factoring_1 %}
 ~~~ scala
 trait List[A] {
   def map[B](f: A => B): List[B]
@@ -79,6 +81,17 @@ trait Vector[A] {
   def map[B](f: A => B): Vector[B]
 }
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=factoring_1 %}
+~~~ scala
+trait List[A]:
+  def map[B](f: A => B): List[B]
+
+trait Vector[A]:
+  def map[B](f: A => B): Vector[B]
+~~~
+{% endtab %}
+{% endtabs %}
 
 To generalize the type signature of `map` we have to abstract over
 the resulting *collection type constructor*.
@@ -86,6 +99,8 @@ the resulting *collection type constructor*.
 A slightly different example is `filter`. Consider its type signature on
 `List[A]` and `Map[K, V]`:
 
+{% tabs factoring_2 class=tabs-scala-version %}
+{% tab 'Scala 2' for=factoring_2 %}
 ~~~ scala
 trait List[A] {
   def filter(p: A => Boolean): List[A]
@@ -95,6 +110,17 @@ trait Map[K, V] {
   def filter(p: ((K, V)) => Boolean): Map[K, V]
 }
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=factoring_2 %}
+~~~ scala
+trait List[A]:
+  def filter(p: A => Boolean): List[A]
+
+trait Map[K, V]:
+  def filter(p: ((K, V)) => Boolean): Map[K, V]
+~~~
+{% endtab %}
+{% endtabs %}
 
 To generalize the type signature of `filter` we have to abstract
 over the resulting *collection type*.
@@ -112,9 +138,13 @@ on the `Iterable[A]` collection type.
 
 Here is the header of trait `IterableOps`:
 
+{% tabs abstracting_1 %}
+{% tab 'Scala 2 and 3' for=abstracting_1 %}
 ~~~ scala
 trait IterableOps[+A, +CC[_], +C] { … }
 ~~~
+{% endtab %}
+{% endtabs %}
 
 The type parameter `A` stands for the element type of the iterable,
 the type parameter `CC` stands for the collection type constructor
@@ -123,21 +153,36 @@ and the type parameter `C` stands for the collection type.
 This allows us to define the signature of `filter` and `map` like
 so:
 
+{% tabs abstracting_2 class=tabs-scala-version %}
+{% tab 'Scala 2' for=abstracting_2 %}
 ~~~ scala
 trait IterableOps[+A, +CC[_], +C] {
   def filter(p: A => Boolean): C = …
   def map[B](f: A => B): CC[B] = …
 }
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=abstracting_2 %}
+~~~ scala
+trait IterableOps[+A, +CC[_], +C]:
+  def filter(p: A => Boolean): C = …
+  def map[B](f: A => B): CC[B] = …
+~~~
+{% endtab %}
+{% endtabs %}
 
 Leaf collection types appropriately instantiate the type
 parameters. For instance, in the case of `List[A]` we want `CC` to
 be `List` and `C` to be `List[A]`:
 
+{% tabs abstracting_3 %}
+{% tab 'Scala 2 and 3' for=abstracting_3 %}
 ~~~ scala
 trait List[+A] extends Iterable[A]
   with IterableOps[A, List, List[A]]
 ~~~
+{% endtab %}
+{% endtabs %}
 
 ## Four branches of templates traits ##
 
@@ -149,19 +194,33 @@ parameter whereas `Map[K, V]` takes two type parameters.
 To support collection types constructors with two types parameters
 we have another template trait named `MapOps`:
 
+{% tabs fourBranches_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=fourBranches_1 %}
 ~~~ scala
 trait MapOps[K, +V, +CC[_, _], +C] extends IterableOps[(K, V), Iterable, C] {
   def map[K2, V2](f: ((K, V)) => (K2, V2)): CC[K2, V2] = …
 }
-~~~ 
+~~~
+{% endtab %}
+{% tab 'Scala 3' for=fourBranches_1 %}
+~~~ scala
+trait MapOps[K, +V, +CC[_, _], +C] extends IterableOps[(K, V), Iterable, C]:
+  def map[K2, V2](f: ((K, V)) => (K2, V2)): CC[K2, V2] = …
+~~~
+{% endtab %}
+{% endtabs %}
 
 And then `Map[K, V]` can extend this trait and appropriately instantiate its
 type parameters:
 
+{% tabs fourBranches_2 %}
+{% tab 'Scala 2 and 3' for=fourBranches_2 %}
 ~~~ scala
 trait Map[K, V] extends Iterable[(K, V)]
   with MapOps[K, V, Map, Map[K, V]]
 ~~~
+{% endtab %}
+{% endtabs %}
 
 Note that the `MapOps` trait inherits from `IterableOps` so that operations
 defined in `IterableOps` are also available in `MapOps`. Also note that
@@ -169,6 +228,8 @@ the collection type constructor passed to the `IterableOps` trait is
 `Iterable`. This means that `Map[K, V]` inherits two overloads of the `map`
 operation:
 
+{% tabs fourBranches_3 %}
+{% tab 'Scala 2 and 3' for=fourBranches_3 %}
 ~~~ scala
 // from MapOps
 def map[K2, V2](f: ((K, V)) => (K2, V2)): Map[K2, V2]
@@ -176,6 +237,8 @@ def map[K2, V2](f: ((K, V)) => (K2, V2)): Map[K2, V2]
 // from IterableOps
 def map[B](f: ((K, V)) => B): Iterable[B]
 ~~~
+{% endtab %}
+{% endtabs %}
 
 At use-site, when you call the `map` operation, the compiler selects one of
 the two overloads. If the function passed as argument to `map` returns a pair,
@@ -196,9 +259,18 @@ operations defined in `IterableOps` don’t match the type signature of a
 more concrete collection type: `SortedSet[A]`. In that case the type
 signature of the `map` operation is the following:
 
+{% tabs fourBranches_4 class=tabs-scala-version %}
+{% tab 'Scala 2' for=fourBranches_4 %}
 ~~~ scala
 def map[B](f: A => B)(implicit ord: Ordering[B]): SortedSet[B]
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=fourBranches_4 %}
+~~~ scala
+def map[B](f: A => B)(using ord: Ordering[B]): SortedSet[B]
+~~~
+{% endtab %}
+{% endtabs %}
 
 The difference with the signature we have in `IterableOps` is that here
 we need an implicit `Ordering` instance for the type of elements.
@@ -206,20 +278,32 @@ we need an implicit `Ordering` instance for the type of elements.
 Like for `Map`, `SortedSet` needs a specialized template trait with
 overloads for transformation operations:
 
+{% tabs fourBranches_5 class=tabs-scala-version %}
+{% tab 'Scala 2' for=fourBranches_5 %}
 ~~~ scala
 trait SortedSetOps[A, +CC[_], +C] extends IterableOps[A, Set, C] {
-
   def map[B](f: A => B)(implicit ord: Ordering[B]): CC[B] = …
-
 }
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=fourBranches_5 %}
+~~~ scala
+trait SortedSetOps[A, +CC[_], +C] extends IterableOps[A, Set, C]:
+  def map[B](f: A => B)(using ord: Ordering[B]): CC[B] = …
+~~~
+{% endtab %}
+{% endtabs %}
 
 And then collection types that inherit the `SortedSetOps` trait appropriately
 instantiate its type parameters:
 
+{% tabs fourBranches_6 %}
+{% tab 'Scala 2 and 3' for=fourBranches_6 %}
 ~~~ scala
 trait SortedSet[A] extends SortedSetOps[A, SortedSet, SortedSet[A]]
 ~~~
+{% endtab %}
+{% endtabs %}
 
 Last, there is a fourth kind of collection that requires a specialized template
 trait: `SortedMap[K, V]`. This type of collection has two type parameters and
@@ -260,11 +344,21 @@ non-strict `View`. For the record, a `View` “describes” an operation applied
 to a collection but does not evaluate its result until the `View` is
 effectively traversed. Here is the (simplified) definition of `View`:
 
+{% tabs nonStrict_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=nonStrict_1 %}
 ~~~ scala
 trait View[+A] extends Iterable[A] with IterableOps[A, View, View[A]] {
   def iterator: Iterator[A]
 }
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=nonStrict_1 %}
+~~~ scala
+trait View[+A] extends Iterable[A], IterableOps[A, View, View[A]]:
+  def iterator: Iterator[A]
+~~~
+{% endtab %}
+{% endtabs %}
 
 A `View` is an `Iterable` that has only one abstract method returning
 an `Iterator` for traversing its elements. The `View` elements are
@@ -276,6 +370,8 @@ Now that we are more familiar with the hierarchy of the template traits, we can 
 a look at the actual implementation of some operations. Consider for instance the
 implementations of `filter` and `map`:
 
+{% tabs operations_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=operations_1 %}
 ~~~ scala
 trait IterableOps[+A, +CC[_], +C] {
 
@@ -289,6 +385,22 @@ trait IterableOps[+A, +CC[_], +C] {
   protected def from[E](it: IterableOnce[E]): CC[E]
 }
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=operations_1 %}
+~~~ scala
+trait IterableOps[+A, +CC[_], +C]:
+
+  def filter(pred: A => Boolean): C =
+    fromSpecific(View.Filter(this, pred))
+
+  def map[B](f: A => B): CC[B] = 
+    from(View.Map(this, f))
+
+  protected def fromSpecific(coll: IterableOnce[A]): C
+  protected def from[E](it: IterableOnce[E]): CC[E]
+~~~
+{% endtab %}
+{% endtabs %}
 
 Let’s detail the implementation of `filter`, step by step:
 
@@ -306,6 +418,8 @@ iterable whose element type `E` is arbitrary.
 Actually, the `from` operation is not defined directly in `IterableOps` but is accessed via
 an (abstract) `iterableFactory` member:
 
+{% tabs operations_2 class=tabs-scala-version %}
+{% tab 'Scala 2' for=operations_2 %}
 ~~~ scala
 trait IterableOps[+A, +CC[_], +C] {
 
@@ -313,24 +427,47 @@ trait IterableOps[+A, +CC[_], +C] {
   
   def map[B](f: A => B): CC[B] = 
     iterableFactory.from(new View.Map(this, f))  
-
 }
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=operations_2 %}
+~~~ scala
+trait IterableOps[+A, +CC[_], +C]:
+
+  def iterableFactory: IterableFactory[CC]
+  
+  def map[B](f: A => B): CC[B] = 
+    iterableFactory.from(View.Map(this, f))  
+~~~
+{% endtab %}
+{% endtabs %}
 
 This `iterableFactory` member is implemented by concrete collections and typically
 refer to their companion object, which provides factory methods to create concrete
 collection instances. Here is an excerpt of the definition of `IterableFactory`:
 
+{% tabs operations_3 class=tabs-scala-version %}
+{% tab 'Scala 2' for=operations_3 %}
 ~~~ scala
 trait IterableFactory[+CC[_]] {
   def from[A](source: IterableOnce[A]): CC[A]
 }
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=operations_3 %}
+~~~ scala
+trait IterableFactory[+CC[_]]:
+  def from[A](source: IterableOnce[A]): CC[A]
+~~~
+{% endtab %}
+{% endtabs %}
 
 Last but not least, as explained in the above sections, since we have four branches
 of template traits, we have four corresponding branches of factories. For instance,
 here are the relevant parts of code of the `map` operation implementation in `MapOps`:
 
+{% tabs operations_4 class=tabs-scala-version %}
+{% tab 'Scala 2' for=operations_4 %}
 ~~~ scala
 trait MapOps[K, +V, +CC[_, _], +C]
   extends IterableOps[(K, V), Iterable, C] {
@@ -347,6 +484,23 @@ trait MapFactory[+CC[_, _]] {
   def from[K, V](it: IterableOnce[(K, V)]): CC[K, V]
 }
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=operations_4 %}
+~~~ scala
+trait MapOps[K, +V, +CC[_, _], +C]
+  extends IterableOps[(K, V), Iterable, C]:
+
+  def map[K2, V2](f: ((K, V)) => (K2, V2)): CC[K2, V2] =
+    mapFactory.from(View.Map(this, f))
+
+  // Similar to iterableFactory, but for Map collection types
+  def mapFactory: MapFactory[CC]
+
+trait MapFactory[+CC[_, _]]:
+  def from[K, V](it: IterableOnce[(K, V)]): CC[K, V]
+~~~
+{% endtab %}
+{% endtabs %}
 
 ## When a strict evaluation is preferable (or unavoidable) ##
 
@@ -361,6 +515,8 @@ For those cases, we also provide ways to implement operations in a strict mode.
 The pattern is different: instead of being based on a `View`, it is based on a
 `Builder`. Here is an outline of the `Builder` trait:
 
+{% tabs builders_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=builders_1 %}
 ~~~ scala
 package scala.collection.mutable
 
@@ -369,6 +525,17 @@ trait Builder[-A, +C] {
   def result(): C
 }
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=builders_1 %}
+~~~ scala
+package scala.collection.mutable
+
+trait Builder[-A, +C]:
+  def addOne(elem: A): this.type
+  def result(): C
+~~~
+{% endtab %}
+{% endtabs %}
 
 Builders are generic in both the element type `A` and the type of collection they
 return, `C`.
@@ -381,6 +548,8 @@ to get a builder resulting in a collection of the same type but with a different
 type of elements. The following code shows the relevant parts of `IterableOps` and
 `IterableFactory` to build collections in both strict and non-strict modes:
 
+{% tabs builders_2 class=tabs-scala-version %}
+{% tab 'Scala 2' for=builders_2 %}
 ~~~ scala
 trait IterableOps[+A, +CC[_], +C] {
   def iterableFactory: IterableFactory[CC]
@@ -393,6 +562,20 @@ trait IterableFactory[+CC[_]] {
   def newBuilder[A]: Builder[A, CC[A]]
 }
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=builders_2 %}
+~~~ scala
+trait IterableOps[+A, +CC[_], +C]:
+  def iterableFactory: IterableFactory[CC]
+  protected def fromSpecific(coll: IterableOnce[A]): C
+  protected def newSpecificBuilder: Builder[A, C]
+
+trait IterableFactory[+CC[_]]:
+  def from[A](source: IterableOnce[A]): CC[A]
+  def newBuilder[A]: Builder[A, CC[A]]
+~~~
+{% endtab %}
+{% endtabs %}
 
 Note that, in general, an operation that doesn't *have to* be strict should
 be implemented in a non-strict mode, otherwise it would lead to surprising
