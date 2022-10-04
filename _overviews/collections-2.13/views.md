@@ -22,14 +22,14 @@ As an example of a non-strict transformer consider the following implementation 
 {% tab 'Scala 2' for=views_1 %}
 ```scala mdoc
 def lazyMap[T, U](iter: Iterable[T], f: T => U) = new Iterable[U] {
-  def iterator = iter.iterator map f
+  def iterator = iter.iterator.map(f)
 }
 ```
 {% endtab %}
 {% tab 'Scala 3' for=views_1 %}
 ```scala
 def lazyMap[T, U](iter: Iterable[T], f: T => U) = new Iterable[U]:
-  def iterator = iter.iterator map f
+  def iterator = iter.iterator.map(f)
 ```
 {% endtab %}
 {% endtabs %}
@@ -42,15 +42,31 @@ To go from a collection to its view, you can use the `view` method on the collec
 
 Let's see an example. Say you have a vector of Ints over which you want to map two functions in succession:
 
-{% tabs views_2 %}
-{% tab 'Scala 2 and 3' for=views_2 %}
+{% tabs views_2 class=tabs-scala-version %}
+{% tab 'Scala 2' for=views_2 %}
 
-    scala> val v = Vector(1 to 10: _*)
-    v: scala.collection.immutable.Vector[Int] =
-       Vector(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-    scala> v map (_ + 1) map (_ * 2)
-    res5: scala.collection.immutable.Vector[Int] =
-       Vector(4, 6, 8, 10, 12, 14, 16, 18, 20, 22)
+```scala
+scala> val v = Vector(1 to 10: _*)
+val v: scala.collection.immutable.Vector[Int] =
+  Vector(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+scala> v.map(_ + 1).map(_ * 2)
+val res5: scala.collection.immutable.Vector[Int] =
+  Vector(4, 6, 8, 10, 12, 14, 16, 18, 20, 22)
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=views_2 %}
+
+```scala
+scala> val v = Vector((1 to 10)*)
+val v: scala.collection.immutable.Vector[Int] =
+  Vector(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+scala> v.map(_ + 1).map(_ * 2)
+val res5: scala.collection.immutable.Vector[Int] =
+  Vector(4, 6, 8, 10, 12, 14, 16, 18, 20, 22)
+```
 
 {% endtab %}
 {% endtabs %}
@@ -60,9 +76,11 @@ In the last statement, the expression `v map (_ + 1)` constructs a new vector wh
 {% tabs views_3 %}
 {% tab 'Scala 2 and 3' for=views_3 %}
 
-    scala> (v.view map (_ + 1) map (_ * 2)).to(Vector)
-    res12: scala.collection.immutable.Vector[Int] =
-       Vector(4, 6, 8, 10, 12, 14, 16, 18, 20, 22)  
+```scala
+scala> val w = v.view.map(_ + 1).map(_ * 2).to(Vector)
+val w: scala.collection.immutable.Vector[Int] =
+  Vector(4, 6, 8, 10, 12, 14, 16, 18, 20, 22)
+```
 
 {% endtab %}
 {% endtabs %}
@@ -72,8 +90,10 @@ Let's do this sequence of operations again, one by one:
 {% tabs views_4 %}
 {% tab 'Scala 2 and 3' for=views_4 %}
 
-    scala> val vv = v.view
-    vv: scala.collection.IndexedSeqView[Int] = IndexedSeqView(<not computed>)
+```scala
+scala> val vv = v.view
+val vv: scala.collection.IndexedSeqView[Int] = IndexedSeqView(<not computed>)
+```
 
 {% endtab %}
 {% endtabs %}
@@ -86,9 +106,10 @@ Applying the first `map` to the view gives:
 {% tabs views_5 %}
 {% tab 'Scala 2 and 3' for=views_5 %}
 
-    scala> vv map (_ + 1)
-    res13: scala.collection.IndexedSeqView[Int] = IndexedSeqView(<not computed>)
-
+```scala
+scala> vv.map(_ + 1)
+val res13: scala.collection.IndexedSeqView[Int] = IndexedSeqView(<not computed>)
+```
 {% endtab %}
 {% endtabs %}
 
@@ -97,8 +118,10 @@ The result of the `map` is another `IndexedSeqView[Int]` value. This is in essen
 {% tabs views_6 %}
 {% tab 'Scala 2 and 3' for=views_6 %}
 
-    scala> res13 map (_ * 2)
-    res14: scala.collection.IndexedSeqView[Int] = IndexedSeqView(<not computed>)
+```scala
+scala> res13.map(_ * 2)
+val res14: scala.collection.IndexedSeqView[Int] = IndexedSeqView(<not computed>)
+```
 
 {% endtab %}
 {% endtabs %}
@@ -108,9 +131,11 @@ Finally, forcing the last result gives:
 {% tabs views_7 %}
 {% tab 'Scala 2 and 3' for=views_7 %}
 
-    scala> res14.to(Vector)
-    res15: scala.collection.immutable.Vector[Int] =
-       Vector(4, 6, 8, 10, 12, 14, 16, 18, 20, 22)
+```scala
+scala> res14.to(Vector)
+val res15: scala.collection.immutable.Vector[Int] =
+    Vector(4, 6, 8, 10, 12, 14, 16, 18, 20, 22)
+```
 
 {% endtab %}
 {% endtabs %}
@@ -135,8 +160,10 @@ The main reason for using views is performance. You have seen that by switching 
 {% tabs views_8 %}
 {% tab 'Scala 2 and 3' for=views_8 %}
 
-    def isPalindrome(x: String) = x == x.reverse
-    def findPalindrome(s: Seq[String]) = s find isPalindrome
+```scala
+def isPalindrome(x: String) = x == x.reverse
+def findPalindrome(s: Seq[String]) = s.find(isPalindrome)
+```
 
 {% endtab %}
 {% endtabs %}
@@ -145,9 +172,9 @@ Now, assume you have a very long sequence words, and you want to find a palindro
 
 {% tabs views_9 %}
 {% tab 'Scala 2 and 3' for=views_9 %}
-
-    findPalindrome(words take 1000000)
-
+```scala
+val palindromes = findPalindrome(words.take(1000000))
+```
 {% endtab %}
 {% endtabs %}
 
@@ -155,9 +182,9 @@ This nicely separates the two aspects of taking the first million words of a seq
 
 {% tabs views_10 %}
 {% tab 'Scala 2 and 3' for=views_10 %}
-
-    findPalindrome(words.view take 1000000)
-
+```scala
+val palindromes = findPalindrome(words.view.take(1000000))
+```
 {% endtab %}
 {% endtabs %}
 
@@ -169,14 +196,14 @@ Here's an example which bit a few users of versions of Scala before 2.8. In thes
 
 {% tabs views_11 class=tabs-scala-version %}
 {% tab 'Scala 2' for=views_11 %}
-
-    val actors = for (i <- 1 to 10) yield actor { ... }
-
+```scala
+val actors = for (i <- 1 to 10) yield actor { ... }
+```
 {% endtab %}
 {% tab 'Scala 3' for=views_11 %}
-
-    val actors = for i <- 1 to 10 yield actor { ... }
-
+```scala
+val actors = for i <- 1 to 10 yield actor { ... }
+```
 {% endtab %}
 {% endtabs %}
 
@@ -185,7 +212,9 @@ They were surprised that none of the actors was executing afterwards, even thoug
 {% tabs views_12 %}
 {% tab 'Scala 2 and 3' for=views_12 %}
 
-    val actors = (1 to 10) map (i => actor { ... })
+```scala
+val actors = (1 to 10).map(i => actor { ... })
+```
 
 {% endtab %}
 {% endtabs %}
@@ -197,12 +226,16 @@ To avoid surprises like this, the current Scala collections library has more reg
 {% tabs views_13 class=tabs-scala-version %}
 {% tab 'Scala 2' for=views_13 %}
 
-    val actors = for (i <- (1 to 10).view) yield actor { ... }
+```scala
+val actors = for (i <- (1 to 10).view) yield actor { ... }
+```
 
 {% endtab %}
 {% tab 'Scala 3' for=views_13 %}
 
-    val actors = for i <- (1 to 10).view yield actor { ... }
+```scala
+val actors = for i <- (1 to 10).view yield actor { ... }
+```
 
 {% endtab %}
 {% endtabs %}

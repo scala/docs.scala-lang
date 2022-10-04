@@ -16,15 +16,18 @@ permalink: /overviews/collections-2.13/:title.html
 
 {% tabs arrays_1 %}
 {% tab 'Scala 2 and 3' for=arrays_1 %}
-```
+```scala
 scala> val a1 = Array(1, 2, 3)
-a1: Array[Int] = Array(1, 2, 3)
-scala> val a2 = a1 map (_ * 3)
-a2: Array[Int] = Array(3, 6, 9)
-scala> val a3 = a2 filter (_ % 2 != 0)
-a3: Array[Int] = Array(3, 9)
+val a1: Array[Int] = Array(1, 2, 3)
+
+scala> val a2 = a1.map(_ * 3)
+val a2: Array[Int] = Array(3, 6, 9)
+
+scala> val a3 = a2.filter(_ % 2 != 0)
+val a3: Array[Int] = Array(3, 9)
+
 scala> a3.reverse
-res0: Array[Int] = Array(9, 3)
+val res0: Array[Int] = Array(9, 3)
 ```
 {% endtab %}
 {% endtabs %}
@@ -33,13 +36,15 @@ Given that Scala arrays are represented just like Java arrays, how can these add
 
 {% tabs arrays_2 %}
 {% tab 'Scala 2 and 3' for=arrays_2 %}
-```
+```scala
 scala> val seq: collection.Seq[Int] = a1
-seq: scala.collection.Seq[Int] = ArraySeq(1, 2, 3)
+val seq: scala.collection.Seq[Int] = ArraySeq(1, 2, 3)
+
 scala> val a4: Array[Int] = seq.toArray
-a4: Array[Int] = Array(1, 2, 3)
+val a4: Array[Int] = Array(1, 2, 3)
+
 scala> a1 eq a4
-res1: Boolean = false
+val res1: Boolean = false
 ```
 {% endtab %}
 {% endtabs %}
@@ -52,15 +57,18 @@ The difference between the two implicit conversions on arrays is shown in the ne
 
 {% tabs arrays_3 %}
 {% tab 'Scala 2 and 3' for=arrays_3 %}
-```
+```scala
 scala> val seq: collection.Seq[Int] = a1
-seq: scala.collection.Seq[Int] = ArraySeq(1, 2, 3)
+val seq: scala.collection.Seq[Int] = ArraySeq(1, 2, 3)
+
 scala> seq.reverse
-res2: scala.collection.Seq[Int] = ArraySeq(3, 2, 1)
+val res2: scala.collection.Seq[Int] = ArraySeq(3, 2, 1)
+
 scala> val ops: collection.ArrayOps[Int] = a1
-ops: scala.collection.ArrayOps[Int] = scala.collection.ArrayOps@2d7df55
+val ops: scala.collection.ArrayOps[Int] = scala.collection.ArrayOps@2d7df55
+
 scala> ops.reverse
-res3: Array[Int] = Array(3, 2, 1)
+val res3: Array[Int] = Array(3, 2, 1)
 ```
 {% endtab %}
 {% endtabs %}
@@ -71,9 +79,9 @@ The `ArrayOps` example above was quite artificial, intended only to show the dif
 
 {% tabs arrays_4 %}
 {% tab 'Scala 2 and 3' for=arrays_4 %}
-```
+```scala
 scala> a1.reverse
-res4: Array[Int] = Array(3, 2, 1)
+val res4: Array[Int] = Array(3, 2, 1)
 ```
 {% endtab %}
 {% endtabs %}
@@ -82,9 +90,9 @@ The `ArrayOps` object gets inserted automatically by the implicit conversion. So
 
 {% tabs arrays_5 %}
 {% tab 'Scala 2 and 3' for=arrays_5 %}
-```
+```scala
 scala> intArrayOps(a1).reverse
-res5: Array[Int] = Array(3, 2, 1)
+val res5: Array[Int] = Array(3, 2, 1)
 ```
 {% endtab %}
 {% endtabs %}
@@ -121,14 +129,14 @@ The `evenElems` method returns a new array that consist of all elements of the a
 
 {% tabs arrays_7 class=tabs-scala-version %}
 {% tab 'Scala 2' for=arrays_7 %}
-```
+```scala
 error: cannot find class manifest for element type T
   val arr = new Array[T]((arr.length + 1) / 2)
             ^
 ```
 {% endtab %}
 {% tab 'Scala 3' for=arrays_7 %}
-```
+```scala
 -- Error: ----------------------------------------------------------------------
 3 |  val arr = new Array[T]((xs.length + 1) / 2)
   |                                             ^
@@ -143,12 +151,12 @@ The Scala compiler will construct class manifests automatically if you instruct 
 
 {% tabs arrays_8 class=tabs-scala-version %}
 {% tab 'Scala 2' for=arrays_8 %}
-```
+```scala
 def evenElems[T](xs: Vector[T])(implicit m: ClassTag[T]): Array[T] = ...
 ```
 {% endtab %}
 {% tab 'Scala 3' for=arrays_8 %}
-```
+```scala
 def evenElems[T](xs: Vector[T])(using m: ClassTag[T]): Array[T] = ...
 ```
 {% endtab %}
@@ -188,11 +196,12 @@ Here is some REPL interaction that uses the `evenElems` method.
 
 {% tabs arrays_10 %}
 {% tab 'Scala 2 and 3' for=arrays_10 %}
-```
+```scala
 scala> evenElems(Vector(1, 2, 3, 4, 5))
-res6: Array[Int] = Array(1, 3, 5)
+val res6: Array[Int] = Array(1, 3, 5)
+
 scala> evenElems(Vector("this", "is", "a", "test", "run"))
-res7: Array[java.lang.String] = Array(this, a, run)
+val res7: Array[java.lang.String] = Array(this, a, run)
 ```
 {% endtab %}
 {% endtabs %}
@@ -201,7 +210,7 @@ In both cases, the Scala compiler automatically constructed a class manifest for
 
 {% tabs arrays_11 class=tabs-scala-version %}
 {% tab 'Scala 2' for=arrays_11 %}
-```
+```scala
 scala> def wrap[U](xs: Vector[U]) = evenElems(xs)
 <console>:6: error: No ClassTag available for U.
      def wrap[U](xs: Vector[U]) = evenElems(xs)
@@ -209,7 +218,7 @@ scala> def wrap[U](xs: Vector[U]) = evenElems(xs)
 ```
 {% endtab %}
 {% tab 'Scala 3' for=arrays_11 %}
-```
+```scala
 -- Error: ----------------------------------------------------------------------
 6 |def wrap[U](xs: Vector[U]) = evenElems(xs)
   |                                          ^
@@ -222,9 +231,9 @@ What happened here is that the `evenElems` demands a class manifest for the type
 
 {% tabs arrays_12 %}
 {% tab 'Scala 2 and 3' for=arrays_12 %}
-```
+```scala
 scala> def wrap[U: ClassTag](xs: Vector[U]) = evenElems(xs)
-wrap: [U](xs: Vector[U])(implicit evidence$1: scala.reflect.ClassTag[U])Array[U]
+def wrap[U](xs: Vector[U])(implicit evidence$1: scala.reflect.ClassTag[U]): Array[U]
 ```
 {% endtab %}
 {% endtabs %}

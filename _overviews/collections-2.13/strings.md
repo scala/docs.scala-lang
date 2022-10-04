@@ -17,18 +17,25 @@ Like arrays, strings are not directly sequences, but they can be converted to th
 {% tabs strings_1 %}
 {% tab 'Scala 2 and 3' for=strings_1 %}
 
-    scala> val str = "hello"
-    str: java.lang.String = hello
-    scala> str.reverse
-    res6: String = olleh
-    scala> str.map(_.toUpper)
-    res7: String = HELLO
-    scala> str drop 3
-    res8: String = lo
-    scala> str.slice(1, 4)
-    res9: String = ell
-    scala> val s: Seq[Char] = str
-    s: Seq[Char] = hello
+```scala
+scala> val str = "hello"
+val str: java.lang.String = hello
+
+scala> str.reverse
+val res6: String = olleh
+
+scala> str.map(_.toUpper)
+val res7: String = HELLO
+
+scala> str.drop(3)
+val res8: String = lo
+
+scala> str.slice(1, 4)
+val res9: String = ell
+
+scala> val s: Seq[Char] = str
+val s: Seq[Char] = hello
+```
 
 {% endtab %}
 {% endtabs %}

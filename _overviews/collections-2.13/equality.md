@@ -19,20 +19,27 @@ It does not matter for the equality check whether a collection is mutable or imm
 {% tabs equality_1 %}
 {% tab 'Scala 2 and 3' for=equality_1 %}
 
-    scala> import collection.mutable.{HashMap, ArrayBuffer}
-    import collection.mutable.{HashMap, ArrayBuffer}
-    scala> val buf = ArrayBuffer(1, 2, 3)
-    buf: scala.collection.mutable.ArrayBuffer[Int] =
-    ArrayBuffer(1, 2, 3)
-    scala> val map = HashMap(buf -> 3)
-    map: scala.collection.mutable.HashMap[scala.collection.
-    mutable.ArrayBuffer[Int],Int] = Map((ArrayBuffer(1, 2, 3),3))
-    scala> map(buf)
-    res13: Int = 3
-    scala> buf(0) += 1
-    scala> map(buf)
-    java.util.NoSuchElementException: key not found:
+```scala
+scala> import collection.mutable.{HashMap, ArrayBuffer}
+import collection.mutable.{HashMap, ArrayBuffer}
+
+scala> val buf = ArrayBuffer(1, 2, 3)
+val buf: scala.collection.mutable.ArrayBuffer[Int] =
+  ArrayBuffer(1, 2, 3)
+
+scala> val map = HashMap(buf -> 3)
+val map: scala.collection.mutable.HashMap[scala.collection.
+  mutable.ArrayBuffer[Int],Int] = Map((ArrayBuffer(1, 2, 3),3))
+
+scala> map(buf)
+val res13: Int = 3
+
+scala> buf(0) += 1
+
+scala> map(buf)
+  java.util.NoSuchElementException: key not found:
     ArrayBuffer(2, 2, 3)
+```
 
 {% endtab %}
 {% endtabs %}
