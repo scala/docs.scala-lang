@@ -14,7 +14,13 @@ permalink: /overviews/collections-2.13/:title.html
 
 At the top of the collection hierarchy is trait `Iterable`. All methods in this trait are defined in terms of an abstract method, `iterator`, which yields the collection's elements one by one.
 
-    def iterator: Iterator[A]
+{% tabs trait-iterable_1 %}
+{% tab 'Scala 2 and 3' for=trait-iterable_1 %}
+```scala
+def iterator: Iterator[A]
+```
+{% endtab %}
+{% endtabs %}
 
 Collection classes that implement `Iterable` just need to define this method; all other methods can be inherited from `Iterable`.
 
@@ -31,27 +37,33 @@ Collection classes that implement `Iterable` just need to define this method; al
 * **Element tests** `exists`, `forall`, `count` which test collection elements with a given predicate.
 * **Folds** `foldLeft`, `foldRight`, `reduceLeft`, `reduceRight` which apply a binary operation to successive elements.
 * **Specific folds** `sum`, `product`, `min`, `max`, which work on collections of specific types (numeric or comparable).
-* **String** operations `mkString`, `addString`, `className`, which give alternative ways of converting a collection to a string.
+* **String** operations `mkString`, `addString`, and the protected `className`, which give alternative ways of converting a collection to a string.
 * **View** operation: A view is a collection that's evaluated lazily. You'll learn more about views in [later]({% link _overviews/collections-2.13/views.md %}).
 
 Two more methods exist in `Iterable` that return iterators: `grouped` and `sliding`. These iterators, however, do not return single elements but whole subsequences of elements of the original collection. The maximal size of these subsequences is given as an argument to these methods. The `grouped` method returns its elements in "chunked" increments, where `sliding` yields a sliding "window" over the elements. The difference between the two should become clear by looking at the following REPL interaction:
 
-    scala> val xs = List(1, 2, 3, 4, 5)
-    xs: List[Int] = List(1, 2, 3, 4, 5)
-    scala> val git = xs grouped 3
-    git: Iterator[List[Int]] = non-empty iterator
-    scala> git.next()
-    res3: List[Int] = List(1, 2, 3)
-    scala> git.next()
-    res4: List[Int] = List(4, 5)
-    scala> val sit = xs sliding 3
-    sit: Iterator[List[Int]] = non-empty iterator
-    scala> sit.next()
-    res5: List[Int] = List(1, 2, 3)
-    scala> sit.next()
-    res6: List[Int] = List(2, 3, 4)
-    scala> sit.next()
-    res7: List[Int] = List(3, 4, 5)
+{% tabs trait-iterable_2 %}
+{% tab 'Scala 2 and 3' for=trait-iterable_2 %}
+```
+scala> val xs = List(1, 2, 3, 4, 5)
+xs: List[Int] = List(1, 2, 3, 4, 5)
+scala> val git = xs grouped 3
+git: Iterator[List[Int]] = non-empty iterator
+scala> git.next()
+res3: List[Int] = List(1, 2, 3)
+scala> git.next()
+res4: List[Int] = List(4, 5)
+scala> val sit = xs sliding 3
+sit: Iterator[List[Int]] = non-empty iterator
+scala> sit.next()
+res5: List[Int] = List(1, 2, 3)
+scala> sit.next()
+res6: List[Int] = List(2, 3, 4)
+scala> sit.next()
+res7: List[Int] = List(3, 4, 5)
+```
+{% endtab %}
+{% endtabs %}
 
 ### Operations in Class Iterable ###
 
