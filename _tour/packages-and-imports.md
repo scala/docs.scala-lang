@@ -125,12 +125,19 @@ def sqrtplus1(x: Int) =
 
 In the event there is a naming conflict and you need to import something from the root of the project, prefix the package name with `_root_`:
 
-{% tabs packages-and-imports_6 %}
-{% tab 'Scala 2 and 3' for=packages-and-imports_6 %}
-```
+{% tabs packages-and-imports_6 class=tabs-scala-version %}
+{% tab 'Scala 2' for=packages-and-imports_6 %}
+```scala
 package accounts
 
 import _root_.users._
+```
+{% endtab %}
+{% tab 'Scala 3' for=packages-and-imports_6 %}
+```scala
+package accounts
+
+import _root_.users.*
 ```
 {% endtab %}
 {% endtabs %}
