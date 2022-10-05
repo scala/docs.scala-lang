@@ -13,11 +13,8 @@ next-page: taste-methods
 NOTE: I kept the OOP section first, assuming that most readers will be coming from an OOP background.
 {% endcomment %}
 
-
 Scala supports both functional programming (FP) and object-oriented programming (OOP), as well as a fusion of the two paradigms.
 This section provides a quick overview of data modeling in OOP and FP.
-
-
 
 ## OOP Domain Modeling
 
@@ -38,6 +35,26 @@ Later, when you want to create concrete implementations of attributes and behavi
 
 As an example of how to use traits as interfaces, here are three traits that define well-organized and modular behaviors for animals like dogs and cats:
 
+{% tabs traits class=tabs-scala-version %}
+{% tab 'Scala 2' for=traits %}
+```scala
+trait Speaker {
+  def speak(): String  // has no body, so it’s abstract
+}
+
+trait TailWagger {
+  def startTail(): Unit = println("tail is wagging")
+  def stopTail(): Unit = println("tail is stopped")
+}
+
+trait Runner {
+  def startRunning(): Unit = println("I’m running")
+  def stopRunning(): Unit = println("Stopped running")
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=traits %}
 ```scala
 trait Speaker:
   def speak(): String  // has no body, so it’s abstract
@@ -50,27 +67,57 @@ trait Runner:
   def startRunning(): Unit = println("I’m running")
   def stopRunning(): Unit = println("Stopped running")
 ```
+{% endtab %}
+{% endtabs %}
 
 Given those traits, here’s a `Dog` class that extends all of those traits while providing a behavior for the abstract `speak` method:
 
+{% tabs traits-class class=tabs-scala-version %}
+{% tab 'Scala 2' for=traits-class %}
+```scala
+class Dog(name: String) extends Speaker, TailWagger, Runner {
+  def speak(): String = "Woof!"
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=traits-class %}
 ```scala
 class Dog(name: String) extends Speaker, TailWagger, Runner:
   def speak(): String = "Woof!"
 ```
+{% endtab %}
+{% endtabs %}
 
 Notice how the class extends the traits with the `extends` keyword.
 
 Similarly, here’s a `Cat` class that implements those same traits while also overriding two of the concrete methods it inherits:
 
+{% tabs traits-override class=tabs-scala-version %}
+{% tab 'Scala 2' for=traits-override %}
+```scala
+class Cat(name: String) extends Speaker, TailWagger, Runner {
+  def speak(): String = "Meow"
+  override def startRunning(): Unit = println("Yeah ... I don’t run")
+  override def stopRunning(): Unit = println("No need to stop")
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=traits-override %}
 ```scala
 class Cat(name: String) extends Speaker, TailWagger, Runner:
   def speak(): String = "Meow"
   override def startRunning(): Unit = println("Yeah ... I don’t run")
   override def stopRunning(): Unit = println("No need to stop")
 ```
+{% endtab %}
+{% endtabs %}
 
 These examples show how those classes are used:
 
+{% tabs traits-use class=tabs-scala-version %}
+{% tab 'Scala 2 and 3' for=traits-use %}
 ```scala
 val d = Dog("Rover")
 println(d.speak())      // prints "Woof!"
@@ -80,16 +127,32 @@ println(c.speak())      // "Meow"
 c.startRunning()        // "Yeah ... I don’t run"
 c.stopRunning()         // "No need to stop"
 ```
+{% endtab %}
+{% endtabs %}
 
 If that code makes sense---great, you’re comfortable with traits as interfaces.
 If not, don’t worry, they’re explained in more detail in the [Domain Modeling][data-1] chapter.
-
 
 ### Classes
 
 Scala _classes_ are used in OOP-style programming.
 Here’s an example of a class that models a “person.” In OOP fields are typically mutable, so `firstName` and `lastName` are both declared as `var` parameters:
 
+{% tabs class_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=class_1 %}
+```scala
+class Person(var firstName: String, var lastName: String) {
+  def printFullName() = println(s"$firstName $lastName")
+}
+
+val p = Person("John", "Stephens")
+println(p.firstName)   // "John"
+p.lastName = "Legend"
+p.printFullName()      // "John Legend"
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=class_1 %}
 ```scala
 class Person(var firstName: String, var lastName: String):
   def printFullName() = println(s"$firstName $lastName")
@@ -99,16 +162,21 @@ println(p.firstName)   // "John"
 p.lastName = "Legend"
 p.printFullName()      // "John Legend"
 ```
+{% endtab %}
+{% endtabs %}
 
 Notice that the class declaration creates a constructor:
 
+{% tabs class_2 class=tabs-scala-version %}
+{% tab 'Scala 2 and 3' for=class_2 %}
 ```scala
 // this code uses that constructor
 val p = Person("John", "Stephens")
 ```
+{% endtab %}
+{% endtabs %}
 
 Constructors and other class-related topics are covered in the [Domain Modeling][data-1] chapter.
-
 
 ## FP Domain Modeling
 
@@ -124,7 +192,6 @@ When writing code in an FP style, you’ll use these constructs:
 - Case classes
 - Traits
 
-
 ### Enums
 
 The `enum` construct is a great way to model algebraic data types (ADTs) in Scala 3.
@@ -136,6 +203,8 @@ For instance, a pizza has three main attributes:
 
 These are concisely modeled with enums:
 
+{% tabs enum_1 class=tabs-scala-version %}
+{% tab 'Scala 3 only' for=enum_1 %}
 ```scala
 enum CrustSize:
   case Small, Medium, Large
@@ -146,9 +215,13 @@ enum CrustType:
 enum Topping:
   case Cheese, Pepperoni, BlackOlives, GreenOlives, Onions
 ```
+{% endtab %}
+{% endtabs %}
 
 Once you have an enum you can use it in all of the ways you normally use a trait, class, or object:
 
+{% tabs enum_2 class=tabs-scala-version %}
+{% tab 'Scala 3 only' for=enum_2 %}
 ```scala
 import CrustSize.*
 val currentCrustSize = Small
@@ -162,17 +235,22 @@ currentCrustSize match
 // enums in an `if` statement
 if currentCrustSize == Small then println("Small crust size")
 ```
+{% endtab %}
+{% endtabs %}
 
 Here’s another example of how to create and use an ADT with Scala:
 
+{% tabs enum_3 class=tabs-scala-version %}
+{% tab 'Scala 3 only' for=enum_3 %}
 ```scala
 enum Nat:
   case Zero
   case Succ(pred: Nat)
 ```
+{% endtab %}
+{% endtabs %}
 
 Enums are covered in detail in the [Domain Modeling][data-1] section of this book, and in the [Reference documentation]({{ site.scala3ref }}/enums/enums.html).
-
 
 ### Case classes
 
@@ -187,7 +265,6 @@ When the compiler sees the `case` keyword in front of a `class` it has these eff
 - `equals` and `hashCode` methods are generated to implement structural equality.
 - A default `toString` method is generated, which is helpful for debugging.
 
-
 {% comment %}
 NOTE: Julien had a comment about how he decides when to use case classes vs classes. Add something here?
 {% endcomment %}
@@ -196,6 +273,8 @@ You _can_ manually add all of those methods to a class yourself, but since those
 
 This code demonstrates several `case` class features:
 
+{% tabs case-class class=tabs-scala-version %}
+{% tab 'Scala 2 and 3' for=case-class %}
 ```scala
 // define a case class
 case class Person(
@@ -218,9 +297,9 @@ p.name = "Joe"   // error: can’t reassign a val field
 val p2 = p.copy(name = "Elton John")
 p2               // : Person = Person(Elton John,Singer)
 ```
+{% endtab %}
+{% endtabs %}
 
 See the [Domain Modeling][data-1] sections for many more details on `case` classes.
-
-
 
 [data-1]: {% link _overviews/scala3-book/domain-modeling-tools.md %}
