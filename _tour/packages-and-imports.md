@@ -98,7 +98,7 @@ import users.*  // import everything from the users package except given
 import users.given // import all given from the users package
 import users.User  // import the class User
 import users.{User, UserPreferences}  // Only imports selected members
-import users.{UserPreferences => UPrefs}  // import and rename for convenience
+import users.UserPreferences as UPrefs  // import and rename for convenience
 ```
 {% endtab %}
 {% endtabs %}
