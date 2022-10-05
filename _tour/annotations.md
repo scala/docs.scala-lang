@@ -19,7 +19,7 @@ object DeprecationDemo extends App {
   @deprecated("deprecation message", "release # which deprecates method")
   def hello = "hola"
 
-  hello  
+  hello
 }
 ```
 {% endtab %}
@@ -123,64 +123,97 @@ When writing Scala code which interoperates with Java, there are a few differenc
 
 Java has user-defined metadata in the form of [annotations](https://docs.oracle.com/javase/tutorial/java/annotations/). A key feature of annotations is that they rely on specifying name-value pairs to initialize their elements. For instance, if we need an annotation to track the source of some class we might define it as
 
-```
+{% tabs annotations_5 %}
+{% tab 'Java' for=annotations_5 %}
+```java
 @interface Source {
-  public String URL();
+  public String url();
   public String mail();
 }
 ```
+{% endtab %}
+{% endtabs %}
 
 And then apply it as follows
 
-```
-@Source(URL = "https://coders.com/",
+{% tabs annotations_6 %}
+{% tab 'Java' for=annotations_6 %}
+```java
+@Source(url = "https://coders.com/",
         mail = "support@coders.com")
-public class MyClass extends TheirClass ...
+public class MyJavaClass extends TheirClass ...
 ```
+{% endtab %}
+{% endtabs %}
 
 An annotation application in Scala looks like a constructor invocation, for instantiating a Java annotation one has to use named arguments:
 
-```
-@Source(URL = "https://coders.com/",
+{% tabs annotations_7 %}
+{% tab 'Scala 2 and 3' for=annotations_7 %}
+```scala
+@Source(url = "https://coders.com/",
         mail = "support@coders.com")
 class MyScalaClass ...
 ```
+{% endtab %}
+{% endtabs %}
 
 This syntax is quite tedious if the annotation contains only one element (without default value) so, by convention, if the name is specified as `value` it can be applied in Java using a constructor-like syntax:
 
-```
+{% tabs annotations_8 %}
+{% tab 'Java' for=annotations_8 %}
+```java
 @interface SourceURL {
     public String value();
     public String mail() default "";
 }
 ```
+{% endtab %}
+{% endtabs %}
 
-And then apply it as follows
+And then apply it as follows:
 
-```
+{% tabs annotations_9 %}
+{% tab 'Java' for=annotations_9 %}
+```java
 @SourceURL("https://coders.com/")
-public class MyClass extends TheirClass ...
+public class MyJavaClass extends TheirClass ...
 ```
+{% endtab %}
+{% endtabs %}
 
-In this case, Scala provides the same possibility
+In this case, Scala provides the same possibility:
 
-```
+{% tabs annotations_10 %}
+{% tab 'Scala 2 and 3' for=annotations_10 %}
+```scala
 @SourceURL("https://coders.com/")
 class MyScalaClass ...
 ```
+{% endtab %}
+{% endtabs %}
 
-The `mail` element was specified with a default value so we need not explicitly provide a value for it. However, if we need to do it we can not mix-and-match the two styles in Java:
+The `mail` element was specified with a default value so we need not explicitly provide a value for it.
+However, if we need to provide one then in Java we must also explicitly name the `value` parameter:
 
-```
+{% tabs annotations_11 %}
+{% tab 'Java' for=annotations_11 %}
+```java
 @SourceURL(value = "https://coders.com/",
            mail = "support@coders.com")
-public class MyClass extends TheirClass ...
+public class MyJavaClass extends TheirClass ...
 ```
+{% endtab %}
+{% endtabs %}
 
-Scala provides more flexibility in this respect
+Scala provides more flexibility in this respect, so we can choose to only name the `mail` parameter:
 
-```
+{% tabs annotations_12 %}
+{% tab 'Scala 2 and 3' for=annotations_12 %}
+```scala
 @SourceURL("https://coders.com/",
            mail = "support@coders.com")
-    class MyScalaClass ...
+class MyScalaClass ...
 ```
+{% endtab %}
+{% endtabs %}
