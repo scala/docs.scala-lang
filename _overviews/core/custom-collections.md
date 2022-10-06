@@ -27,15 +27,21 @@ to choose `Seq` because our collection can contain duplicates and
 iteration order is determined by insertion order. However, some
 [properties of `Seq`](/overviews/collections/seqs.html) are not satisfied:
 
+{% tabs notCapped_1 %}
+{% tab 'Scala 2 and 3' for=notCapped_1 %}
 ~~~ scala
 (xs ++ ys).size == xs.size + ys.size
 ~~~
+{% endtab %}
+{% endtabs %}
 
 Consequently, the only sensible choice as a base collection type
 is `collection.immutable.Iterable`.
 
 ### First version of `Capped` class ###
 
+{% tabs capped1_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=capped1_1 %}
 ~~~ scala
 import scala.collection._
 
@@ -77,6 +83,49 @@ class Capped1[A] private (val capacity: Int, val length: Int, offset: Int, elems
 
 }
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=capped1_1 %}
+~~~scala
+import scala.collection.*
+
+class Capped1[A] private (val capacity: Int, val length: Int, offset: Int, elems: Array[Any])
+  extends immutable.Iterable[A]:
+
+  self =>
+
+  def this(capacity: Int) =
+    this(capacity, length = 0, offset = 0, elems = Array.ofDim(capacity))
+
+  def appended[B >: A](elem: B): Capped1[B] =
+    val newElems = Array.ofDim[Any](capacity)
+    Array.copy(elems, 0, newElems, 0, capacity)
+    val (newOffset, newLength) =
+      if length == capacity then
+        newElems(offset) = elem
+        ((offset + 1) % capacity, length)
+      else
+        newElems(length) = elem
+        (offset, length + 1)
+    Capped1[B](capacity, newLength, newOffset, newElems)
+
+  inline def :+ [B >: A](elem: B): Capped1[B] = appended(elem)
+
+  def apply(i: Int): A = elems((i + offset) % capacity).asInstanceOf[A]
+
+  def iterator: Iterator[A] = new AbstractIterator[A]:
+    private var current = 0
+    def hasNext = current < self.length
+    def next(): A =
+      val elem = self(current)
+      current += 1
+      elem
+
+  override def className = "Capped1"
+
+new Capped1(capacity = 4) // res0: Capped1[Nothing] = Capped1()
+~~~
+{% endtab %}
+{% endtabs %}
 
 The above listing presents the first version of our capped collection
 implementation. It will be refined later. The class `Capped1` has a
@@ -100,14 +149,16 @@ the `offset`.
 These two methods, `appended` and `apply`, implement the specific
 behavior of the `Capped1` collection type. In addition to them, we have
 to implement `iterator` to make the generic collection operations
-(such as `foldLeft`, `count`, etc.) work on `Capped` collections.
+(such as `foldLeft`, `count`, etc.) work on `Capped1` collections.
 Here we implement it by using indexed access.
 
 Last, we override `className` to return the name of the collection,
-“Capped1”. This name is used by the `toString` operation.
+`“Capped1”`. This name is used by the `toString` operation.
 
 Here are some interactions with the `Capped1` collection:
 
+{% tabs capped1_2 %}
+{% tab 'Scala 2 and 3' for=capped1_2 %}
 ~~~ scala
 scala> new Capped1(capacity = 4)
 res0: Capped1[Nothing] = Capped1()
@@ -127,6 +178,8 @@ res4: Capped1[Int] = Capped1(3, 4, 5, 6)
 scala> res4.take(3)
 res5: collection.immutable.Iterable[Int] = List(3, 4, 5)
 ~~~
+{% endtab %}
+{% endtabs %}
 
 You can see that if we try to grow the collection with more than four
 elements, the first elements are dropped (see `res4`). The operations
@@ -155,6 +208,8 @@ effect, as shown in the next section.
 
 ### Second version of `Capped` class ###
 
+{% tabs capped2_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=capped2_1 %}
 ~~~ scala
 import scala.collection._
 
@@ -191,6 +246,42 @@ class Capped2Factory(capacity: Int) extends IterableFactory[Capped2] {
     }
 }
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=capped2_1 %}
+~~~ scala
+class Capped2[A] private(val capacity: Int, val length: Int, offset: Int, elems: Array[Any])
+  extends immutable.Iterable[A],
+    IterableOps[A, Capped2, Capped2[A]]:
+  self =>
+
+  def this(capacity: Int) = // as before
+
+  def appended[B >: A](elem: B): Capped2[B] = // as before
+  inline def :+[B >: A](elem: B): Capped2[B] = // as before
+  def apply(i: Int): A = // as before
+
+  def iterator: Iterator[A] = // as before
+
+  override def className = "Capped2"
+  override val iterableFactory: IterableFactory[Capped2] = Capped2Factory(capacity)
+  override protected def fromSpecific(coll: IterableOnce[A]): Capped2[A] = iterableFactory.from(coll)
+  override protected def newSpecificBuilder: mutable.Builder[A, Capped2[A]] = iterableFactory.newBuilder
+  override def empty: Capped2[A] = iterableFactory.empty
+
+class Capped2Factory(capacity: Int) extends IterableFactory[Capped2]:
+
+  def from[A](source: IterableOnce[A]): Capped2[A] =
+    (newBuilder[A] ++= source).result()
+
+  def empty[A]: Capped2[A] = Capped2[A](capacity)
+
+  def newBuilder[A]: mutable.Builder[A, Capped2[A]] =
+    new mutable.ImmutableBuilder[A, Capped2[A]](empty):
+      def addOne(elem: A): this.type =
+        elems = elems :+ elem; this
+~~~
+{% endtab %}
+{% endtabs %}
 
 The Capped class needs to inherit not only from `Iterable`, but also
 from its implementation trait `IterableOps`. This is shown in the
@@ -229,6 +320,8 @@ With the refined implementation of the [`Capped2` class](#second-version-of-capp
 the transformation operations work now as expected, and the
 `Capped2Factory` class provides seamless conversions from other collections:
 
+{% tabs capped2_2 %}
+{% tab 'Scala 2 and 3' for=capped2_2 %}
 ~~~ scala
 scala> object Capped extends Capped2Factory(capacity = 4)
 defined object Capped
@@ -248,6 +341,8 @@ res3: Capped2[Int] = Capped2(1, 4, 9)
 scala> List(1, 2, 3, 4, 5).to(Capped)
 res4: Capped2[Int] = Capped2(2, 3, 4, 5)
 ~~~
+{% endtab %}
+{% endtabs %}
 
 This implementation now behaves correctly, but we can still improve
 a few things:
@@ -262,6 +357,8 @@ a few things:
 
 ### Final version of `Capped` class ###
 
+{% tabs capped_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=capped_1 %}
 ~~~ scala
 import scala.collection._
 
@@ -324,6 +421,68 @@ class CappedFactory(capacity: Int) extends IterableFactory[Capped] {
 
 }
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=capped_1 %}
+~~~ scala
+import scala.collection._
+
+final class Capped[A] private (val capacity: Int, val length: Int, offset: Int, elems: Array[Any])
+  extends immutable.Iterable[A],
+    IterableOps[A, Capped, Capped[A]],
+    IterableFactoryDefaults[A, Capped],
+    StrictOptimizedIterableOps[A, Capped, Capped[A]]:
+  self =>
+
+  def this(capacity: Int) =
+    this(capacity, length = 0, offset = 0, elems = Array.ofDim(capacity))
+
+  def appended[B >: A](elem: B): Capped[B] =
+    val newElems = Array.ofDim[Any](capacity)
+    Array.copy(elems, 0, newElems, 0, capacity)
+    val (newOffset, newLength) =
+      if length == capacity then
+        newElems(offset) = elem
+        ((offset + 1) % capacity, length)
+      else
+        newElems(length) = elem
+        (offset, length + 1)
+    Capped[B](capacity, newLength, newOffset, newElems)
+
+  inline def :+ [B >: A](elem: B): Capped[B] = appended(elem)
+
+  def apply(i: Int): A = elems((i + offset) % capacity).asInstanceOf[A]
+
+  def iterator: Iterator[A] = view.iterator
+
+  override def view: IndexedSeqView[A] = new IndexedSeqView[A]:
+    def length: Int = self.length
+    def apply(i: Int): A = self(i)
+
+  override def knownSize: Int = length
+
+  override def className = "Capped"
+
+  override val iterableFactory: IterableFactory[Capped] = new CappedFactory(capacity)
+
+end Capped
+
+class CappedFactory(capacity: Int) extends IterableFactory[Capped]:
+
+  def from[A](source: IterableOnce[A]): Capped[A] =
+    source match
+      case capped: Capped[?] if capped.capacity == capacity => capped.asInstanceOf[Capped[A]]
+      case _ => (newBuilder[A] ++= source).result()
+
+  def empty[A]: Capped[A] = Capped[A](capacity)
+
+  def newBuilder[A]: mutable.Builder[A, Capped[A]] =
+    new mutable.ImmutableBuilder[A, Capped[A]](empty):
+      def addOne(elem: A): this.type = { elems = elems :+ elem; this }
+
+end CappedFactory
+~~~
+{% endtab %}
+{% endtabs %}
 
 That is it. The final [`Capped` class](#final-version-of-capped-class):
 
@@ -347,16 +506,35 @@ methods (such as `iterator` in our case), if any.
 
 To start with the second example, we define the four RNA Bases:
 
-    abstract class Base
-    case object A extends Base
-    case object U extends Base
-    case object G extends Base
-    case object C extends Base
+{% tabs Base_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=Base_1 %}
+~~~ scala
+abstract class Base
+case object A extends Base
+case object U extends Base
+case object G extends Base
+case object C extends Base
 
-    object Base {
-      val fromInt: Int => Base = Array(A, U, G, C)
-      val toInt: Base => Int = Map(A -> 0, U -> 1, G -> 2, C -> 3)
-    }
+object Base {
+  val fromInt: Int => Base = Array(A, U, G, C)
+  val toInt: Base => Int = Map(A -> 0, U -> 1, G -> 2, C -> 3)
+}
+~~~
+{% endtab %}
+{% tab 'Scala 3' for=Base_1 %}
+~~~ scala
+abstract class Base
+case object A extends Base
+case object U extends Base
+case object G extends Base
+case object C extends Base
+
+object Base:
+  val fromInt: Int => Base = Array(A, U, G, C)
+  val toInt: Base => Int = Map(A -> 0, U -> 1, G -> 2, C -> 3)
+~~~
+{% endtab %}
+{% endtabs %}
 
 Say you want to create a new immutable sequence type for RNA strands, which are
 sequences of bases A (adenine), U (uracil), G (guanine), and C
@@ -383,51 +561,104 @@ representation.
 
 ### First version of RNA strands class ###
 
-    import collection.mutable
-    import collection.immutable.{ IndexedSeq, IndexedSeqOps }
+{% tabs RNA1_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=RNA1_1 %}
+~~~ scala
+import collection.mutable
+import collection.immutable.{ IndexedSeq, IndexedSeqOps }
 
-    final class RNA1 private (
-      val groups: Array[Int],
-      val length: Int
-    ) extends IndexedSeq[Base]
-      with IndexedSeqOps[Base, IndexedSeq, RNA1] {
+final class RNA1 private (
+  val groups: Array[Int],
+  val length: Int
+) extends IndexedSeq[Base]
+  with IndexedSeqOps[Base, IndexedSeq, RNA1] {
 
-      import RNA1._
+  import RNA1._
 
-      def apply(idx: Int): Base = {
-        if (idx < 0 || length <= idx)
-          throw new IndexOutOfBoundsException
-        Base.fromInt(groups(idx / N) >> (idx % N * S) & M)
-      }
+  def apply(idx: Int): Base = {
+    if (idx < 0 || length <= idx)
+      throw new IndexOutOfBoundsException
+    Base.fromInt(groups(idx / N) >> (idx % N * S) & M)
+  }
 
-      override protected def fromSpecific(coll: IterableOnce[Base]): RNA1 =
-        fromSeq(coll.iterator.toSeq)
-      override protected def newSpecificBuilder: mutable.Builder[Base, RNA1] =
-        iterableFactory.newBuilder[Base].mapResult(fromSeq)
-      override def empty: RNA1 = fromSeq(Seq.empty)
-      override def className = "RNA1"
-    }
+  override protected def fromSpecific(coll: IterableOnce[Base]): RNA1 =
+    fromSeq(coll.iterator.toSeq)
+  override protected def newSpecificBuilder: mutable.Builder[Base, RNA1] =
+    iterableFactory.newBuilder[Base].mapResult(fromSeq)
+  override def empty: RNA1 = fromSeq(Seq.empty)
+  override def className = "RNA1"
+}
 
-    object RNA1 {
+object RNA1 {
 
-      // Number of bits necessary to represent group
-      private val S = 2            
+  // Number of bits necessary to represent group
+  private val S = 2            
 
-      // Number of groups that fit in an Int
-      private val N = 32 / S       
+  // Number of groups that fit in an Int
+  private val N = 32 / S       
 
-      // Bitmask to isolate a group
-      private val M = (1 << S) - 1
+  // Bitmask to isolate a group
+  private val M = (1 << S) - 1
 
-      def fromSeq(buf: collection.Seq[Base]): RNA1 = {
-        val groups = new Array[Int]((buf.length + N - 1) / N)
-        for (i <- 0 until buf.length)
-          groups(i / N) |= Base.toInt(buf(i)) << (i % N * S)
-        new RNA1(groups, buf.length)
-      }
+  def fromSeq(buf: collection.Seq[Base]): RNA1 = {
+    val groups = new Array[Int]((buf.length + N - 1) / N)
+    for (i <- 0 until buf.length)
+      groups(i / N) |= Base.toInt(buf(i)) << (i % N * S)
+    new RNA1(groups, buf.length)
+  }
 
-      def apply(bases: Base*) = fromSeq(bases)
-    }
+  def apply(bases: Base*) = fromSeq(bases)
+}
+~~~
+{% endtab %}
+{% tab 'Scala 3' for=RNA1_1 %}
+~~~ scala
+import collection.mutable
+import collection.immutable.{ IndexedSeq, IndexedSeqOps }
+
+final class RNA1 private
+( val groups: Array[Int],
+  val length: Int
+) extends IndexedSeq[Base],
+  IndexedSeqOps[Base, IndexedSeq, RNA1]:
+
+  import RNA1._
+
+  def apply(idx: Int): Base =
+    if idx < 0 || length <= idx then
+      throw IndexOutOfBoundsException()
+    Base.fromInt(groups(idx / N) >> (idx % N * S) & M)
+
+  override protected def fromSpecific(coll: IterableOnce[Base]): RNA1 =
+    fromSeq(coll.iterator.toSeq)
+  override protected def newSpecificBuilder: mutable.Builder[Base, RNA1] =
+    iterableFactory.newBuilder[Base].mapResult(fromSeq)
+  override def empty: RNA1 = fromSeq(Seq.empty)
+  override def className = "RNA1"
+end RNA1
+
+object RNA1:
+
+  // Number of bits necessary to represent group
+  private val S = 2
+
+  // Number of groups that fit in an Int
+  private val N = 32 / S
+
+  // Bitmask to isolate a group
+  private val M = (1 << S) - 1
+
+  def fromSeq(buf: collection.Seq[Base]): RNA1 =
+    val groups = new Array[Int]((buf.length + N - 1) / N)
+    for i <- 0 until buf.length do
+      groups(i / N) |= Base.toInt(buf(i)) << (i % N * S)
+    new RNA1(groups, buf.length)
+
+  def apply(bases: Base*) = fromSeq(bases)
+end RNA1
+~~~
+{% endtab %}
+{% endtabs %}
 
 The [RNA strands class listing](#first-version-of-rna-strands-class) above
 presents the first version of this
@@ -484,6 +715,9 @@ in the `RNA1` object. It takes a variable number of `Base` arguments and
 simply forwards them as a sequence to `fromSeq`. Here are the two
 creation schemes in action:
 
+{% tabs RNA1_2 %}
+{% tab 'Scala 2 and 3' for=RNA1_2 %}
+
     scala> val xs = List(A, G, U, A)
     xs: List[Base] = List(A, G, U, A)
 
@@ -492,6 +726,9 @@ creation schemes in action:
 
     scala> val rna1 = RNA1(A, U, G, G, C)
     rna1: RNA1 = RNA1(A, U, G, G, C)
+
+{% endtab %}
+{% endtabs %}
 
 Also note that the type parameters of the `IndexedSeqOps` trait that
 we inherit from are: `Base`, `IndexedSeq` and `RNA1`. The first one
@@ -507,11 +744,17 @@ third one is `RNA1`. This means that operations like `map` or
 
 Here is an example showing the usage of `take` and `filter`:
 
+{% tabs RNA1_3 %}
+{% tab 'Scala 2 and 3' for=RNA1_3 %}
+
     scala> rna1.take(3)
     res5: RNA1 = RNA1(A, U, G)
 
     scala> rna1.filter(_ != U)
     res6: RNA1 = RNA1(A, G, G, C)
+
+{% endtab %}
+{% endtabs %}
 
 ### Dealing with map and friends ###
 
@@ -523,6 +766,9 @@ methods be adapted to RNA strands? The desired behavior would be to get
 back an RNA strand when mapping bases to bases or appending two RNA strands
 with `++`:
 
+{% tabs RNA1_4 %}
+{% tab 'Scala 2 and 3' for=RNA1_4 %}
+
     scala> val rna = RNA(A, U, G, G, C)
     rna: RNA = RNA(A, U, G, G, C)
 
@@ -532,11 +778,17 @@ with `++`:
     scala> rna ++ rna
     res8: RNA = RNA(A, U, G, G, C, A, U, G, G, C)
 
+{% endtab %}
+{% endtabs %}
+
 On the other hand, mapping bases to some other type over an RNA strand
 cannot yield another RNA strand because the new elements have the
 wrong type. It has to yield a sequence instead. In the same vein
 appending elements that are not of type `Base` to an RNA strand can
 yield a general sequence, but it cannot yield another RNA strand.
+
+{% tabs RNA1_5 %}
+{% tab 'Scala 2 and 3' for=RNA1_5 %}
 
     scala> rna map Base.toInt
     res2: IndexedSeq[Int] = Vector(0, 1, 2, 2, 3)
@@ -545,10 +797,16 @@ yield a general sequence, but it cannot yield another RNA strand.
     res3: IndexedSeq[java.lang.Object] =
       Vector(A, U, G, G, C, missing, data)
 
+{% endtab %}
+{% endtabs %}
+
 This is what you'd expect in the ideal case. But this is not what the
 [`RNA1` class](#first-version-of-rna-strands-class) provides. In fact, all
 examples will return instances of `Vector`, not just the last two. If you run
 the first three commands above with instances of this class you obtain:
+
+{% tabs RNA1_6 %}
+{% tab 'Scala 2 and 3' for=RNA1_6 %}
 
     scala> val rna1 = RNA1(A, U, G, G, C)
     rna1: RNA1 = RNA1(A, U, G, G, C)
@@ -558,6 +816,9 @@ the first three commands above with instances of this class you obtain:
 
     scala> rna1 ++ rna1
     res1: IndexedSeq[Base] = Vector(A, U, G, G, C, A, U, G, G, C)
+
+{% endtab %}
+{% endtabs %}
 
 So the result of `map` and `++` is never an RNA strand, even if the
 element type of the generated collection is `Base`. To see how to do
@@ -576,38 +837,84 @@ this is why we always get a `Vector` as a result.
 
 ### Second version of RNA strands class ###
 
-    import scala.collection.{ View, mutable }
-    import scala.collection.immutable.{ IndexedSeq, IndexedSeqOps }
+{% tabs RNA2_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=RNA2_1 %}
+~~~ scala
+import scala.collection.{ View, mutable }
+import scala.collection.immutable.{ IndexedSeq, IndexedSeqOps }
 
-    final class RNA2 private (val groups: Array[Int], val length: Int)
-      extends IndexedSeq[Base] with IndexedSeqOps[Base, IndexedSeq, RNA2] {
+final class RNA2 private (val groups: Array[Int], val length: Int)
+  extends IndexedSeq[Base] with IndexedSeqOps[Base, IndexedSeq, RNA2] {
 
-      import RNA2._
+  import RNA2._
 
-      def apply(idx: Int): Base = // as before
-      override protected def fromSpecific(coll: IterableOnce[Base]): RNA2 = // as before
-      override protected def newSpecificBuilder: mutable.Builder[Base, RNA2] = // as before
-      
-      // Overloading of `appended`, `prepended`, `appendedAll`,
-      // `prependedAll`, `map`, `flatMap` and `concat` to return an `RNA2`
-      // when possible
-      def concat(suffix: IterableOnce[Base]): RNA2 =
-        fromSpecific(iterator ++ suffix.iterator)
-      // symbolic alias for `concat`
-      @inline final def ++ (suffix: IterableOnce[Base]): RNA2 = concat(suffix)
-      def appended(base: Base): RNA2 =
-        fromSpecific(new View.Appended(this, base))
-      def appendedAll(suffix: IterableOnce[Base]): RNA2 =
-        concat(suffix)
-      def prepended(base: Base): RNA2 = 
-        fromSpecific(new View.Prepended(base, this))
-      def prependedAll(prefix: IterableOnce[Base]): RNA2 =
-        fromSpecific(prefix.iterator ++ iterator)
-      def map(f: Base => Base): RNA2 =
-        fromSpecific(new View.Map(this, f))
-      def flatMap(f: Base => IterableOnce[Base]): RNA2 =
-        fromSpecific(new View.FlatMap(this, f))
-    }
+  def apply(idx: Int): Base = // as before
+  override protected def fromSpecific(coll: IterableOnce[Base]): RNA2 = // as before
+  override protected def newSpecificBuilder: mutable.Builder[Base, RNA2] = // as before
+  override def empty: RNA2 = // as before
+  override def className = "RNA2"
+  
+  // Overloading of `appended`, `prepended`, `appendedAll`,
+  // `prependedAll`, `map`, `flatMap` and `concat` to return an `RNA2`
+  // when possible
+  def concat(suffix: IterableOnce[Base]): RNA2 =
+    fromSpecific(iterator ++ suffix.iterator)
+  // symbolic alias for `concat`
+  @inline final def ++ (suffix: IterableOnce[Base]): RNA2 = concat(suffix)
+  def appended(base: Base): RNA2 =
+    fromSpecific(new View.Appended(this, base))
+  def appendedAll(suffix: IterableOnce[Base]): RNA2 =
+    concat(suffix)
+  def prepended(base: Base): RNA2 = 
+    fromSpecific(new View.Prepended(base, this))
+  def prependedAll(prefix: IterableOnce[Base]): RNA2 =
+    fromSpecific(prefix.iterator ++ iterator)
+  def map(f: Base => Base): RNA2 =
+    fromSpecific(new View.Map(this, f))
+  def flatMap(f: Base => IterableOnce[Base]): RNA2 =
+    fromSpecific(new View.FlatMap(this, f))
+}
+~~~
+{% endtab %}
+{% tab 'Scala 3' for=RNA2_1 %}
+~~~ scala
+import scala.collection.{ View, mutable }
+import scala.collection.immutable.{ IndexedSeq, IndexedSeqOps }
+
+final class RNA2 private (val groups: Array[Int], val length: Int)
+  extends IndexedSeq[Base], IndexedSeqOps[Base, IndexedSeq, RNA2]:
+
+  import RNA2._
+
+  def apply(idx: Int): Base = // as before
+  override protected def fromSpecific(coll: IterableOnce[Base]): RNA2 = // as before
+  override protected def newSpecificBuilder: mutable.Builder[Base, RNA2] = // as before
+  override def empty: RNA2 = // as before
+  override def className = "RNA2"
+
+  // Overloading of `appended`, `prepended`, `appendedAll`,
+  // `prependedAll`, `map`, `flatMap` and `concat` to return an `RNA2`
+  // when possible
+  def concat(suffix: IterableOnce[Base]): RNA2 =
+    fromSpecific(iterator ++ suffix.iterator)
+  // symbolic alias for `concat`
+  inline final def ++ (suffix: IterableOnce[Base]): RNA2 = concat(suffix)
+  def appended(base: Base): RNA2 =
+    fromSpecific(View.Appended(this, base))
+  def appendedAll(suffix: IterableOnce[Base]): RNA2 =
+    concat(suffix)
+  def prepended(base: Base): RNA2 =
+    fromSpecific(View.Prepended(base, this))
+  def prependedAll(prefix: IterableOnce[Base]): RNA2 =
+    fromSpecific(prefix.iterator ++ iterator)
+  def map(f: Base => Base): RNA2 =
+    fromSpecific(View.Map(this, f))
+  def flatMap(f: Base => IterableOnce[Base]): RNA2 =
+    fromSpecific(View.FlatMap(this, f))
+end RNA2
+~~~
+{% endtab %}
+{% endtabs %}
 
 To address this shortcoming, you need to overload the methods that
 return an `IndexedSeq[B]` for the case where `B` is known to be `Base`,
@@ -622,6 +929,8 @@ collection is strict, we could take advantage of the better performance offered 
 in transformation operations.
 Also, if we try to convert an `Iterable[Base]` into an `RNA2` it fails:
 
+{% tabs RNA2_2 class=tabs-scala-version %}
+{% tab 'Scala 2' for=RNA2_2 %}
 ~~~
 scala> val bases: Iterable[Base] = List(A, U, C, C)
 bases: Iterable[Base] = List(A, U, C, C)
@@ -632,9 +941,28 @@ scala> bases.to(RNA2)
         found   : RNA2.type
         required: scala.collection.Factory[Base,?]
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=RNA2_2 %}
+~~~
+scala> val bases: Iterable[Base] = List(A, U, C, C)
+bases: Iterable[Base] = List(A, U, C, C)
+
+scala> bases.to(RNA2)
+-- [E007] Type Mismatch Error: -------------------------------------------------
+1 |bases.to(RNA2)
+  |         ^^^^
+  |         Found:    RNA2.type
+  |         Required: scala.collection.Factory[Base, Any]
+  |
+  | longer explanation available when compiling with `-explain`
+~~~
+{% endtab %}
+{% endtabs %}
 
 ### Final version of RNA strands class ###
 
+{% tabs RNA_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=RNA_1 %}
 ~~~ scala
 import scala.collection.{ AbstractIterator, SpecificIterableFactory, StrictOptimizedSeqOps, View, mutable }
 import scala.collection.immutable.{ IndexedSeq, IndexedSeqOps }
@@ -723,6 +1051,94 @@ object RNA extends SpecificIterableFactory[Base, RNA] {
   }
 }
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=RNA_1 %}
+~~~ scala
+import scala.collection.{ AbstractIterator, SpecificIterableFactory, StrictOptimizedSeqOps, View, mutable }
+import scala.collection.immutable.{ IndexedSeq, IndexedSeqOps }
+
+final class RNA private
+( val groups: Array[Int],
+  val length: Int
+) extends IndexedSeq[Base],
+  IndexedSeqOps[Base, IndexedSeq, RNA],
+  StrictOptimizedSeqOps[Base, IndexedSeq, RNA]:
+  rna =>
+
+  import RNA._
+
+  // Mandatory implementation of `apply` in `IndexedSeqOps`
+  def apply(idx: Int): Base =
+    if idx < 0 || length <= idx then
+      throw new IndexOutOfBoundsException
+    Base.fromInt(groups(idx / N) >> (idx % N * S) & M)
+
+  // Mandatory overrides of `fromSpecific`, `newSpecificBuilder`,
+  // and `empty`, from `IterableOps`
+  override protected def fromSpecific(coll: IterableOnce[Base]): RNA =
+    RNA.fromSpecific(coll)
+  override protected def newSpecificBuilder: mutable.Builder[Base, RNA] =
+    RNA.newBuilder
+  override def empty: RNA = RNA.empty
+
+  // Overloading of `appended`, `prepended`, `appendedAll`, `prependedAll`,
+  // `map`, `flatMap` and `concat` to return an `RNA` when possible
+  def concat(suffix: IterableOnce[Base]): RNA =
+    strictOptimizedConcat(suffix, newSpecificBuilder)
+  inline final def ++ (suffix: IterableOnce[Base]): RNA = concat(suffix)
+  def appended(base: Base): RNA =
+    (newSpecificBuilder ++= this += base).result()
+  def appendedAll(suffix: Iterable[Base]): RNA =
+    strictOptimizedConcat(suffix, newSpecificBuilder)
+  def prepended(base: Base): RNA =
+    (newSpecificBuilder += base ++= this).result()
+  def prependedAll(prefix: Iterable[Base]): RNA =
+    (newSpecificBuilder ++= prefix ++= this).result()
+  def map(f: Base => Base): RNA =
+    strictOptimizedMap(newSpecificBuilder, f)
+  def flatMap(f: Base => IterableOnce[Base]): RNA =
+    strictOptimizedFlatMap(newSpecificBuilder, f)
+
+  // Optional re-implementation of iterator,
+  // to make it more efficient.
+  override def iterator: Iterator[Base] = new AbstractIterator[Base]:
+    private var i = 0
+    private var b = 0
+    def hasNext: Boolean = i < rna.length
+    def next(): Base =
+      b = if i % N == 0 then groups(i / N) else b >>> S
+      i += 1
+      Base.fromInt(b & M)
+
+  override def className = "RNA"
+end RNA
+
+object RNA extends SpecificIterableFactory[Base, RNA]:
+
+  private val S = 2            // number of bits in group
+  private val M = (1 << S) - 1 // bitmask to isolate a group
+  private val N = 32 / S       // number of groups in an Int
+
+  def fromSeq(buf: collection.Seq[Base]): RNA =
+    val groups = new Array[Int]((buf.length + N - 1) / N)
+    for i <- 0 until buf.length do
+      groups(i / N) |= Base.toInt(buf(i)) << (i % N * S)
+    new RNA(groups, buf.length)
+
+  // Mandatory factory methods: `empty`, `newBuilder`
+  // and `fromSpecific`
+  def empty: RNA = fromSeq(Seq.empty)
+
+  def newBuilder: mutable.Builder[Base, RNA] =
+    mutable.ArrayBuffer.newBuilder[Base].mapResult(fromSeq)
+
+  def fromSpecific(it: IterableOnce[Base]): RNA = it match
+    case seq: collection.Seq[Base] => fromSeq(seq)
+    case _ => fromSeq(mutable.ArrayBuffer.from(it))
+end RNA
+~~~
+{% endtab %}
+{% endtabs %}
 
 The final [`RNA` class](#final-version-of-rna-strands-class):
 
@@ -793,17 +1209,31 @@ of a map that's implemented as a Patricia trie. We call the map a
 selects a submap of all keys starting with a given prefix. We'll first
 define a prefix map with the keys shown in the running example:
 
+{% tabs prefixMap_1 %}
+{% tab 'Scala 2 and 3' for=prefixMap_1 %}
+
     scala> val m = PrefixMap("abc" -> 0, "abd" -> 1, "al" -> 2,
       "all" -> 3, "xy" -> 4)
     m: PrefixMap[Int] = PrefixMap((abc,0), (abd,1), (al,2), (all,3), (xy,4))
 
+{% endtab %}
+{% endtabs %}
+
 Then calling `withPrefix` on `m` will yield another prefix map:
+
+{% tabs prefixMap_2 %}
+{% tab 'Scala 2 and 3' for=prefixMap_2 %}
 
     scala> m withPrefix "a"
     res14: PrefixMap[Int] = PrefixMap((bc,0), (bd,1), (l,2), (ll,3))
 
+{% endtab %}
+{% endtabs %}
+
 ### Patricia trie implementation ###
 
+{% tabs prefixMap_3 class=tabs-scala-version %}
+{% tab 'Scala 2' for=prefixMap_3 %}
 ~~~ scala
 import scala.collection._
 import scala.collection.mutable.{ GrowableBuilder, Builder }
@@ -892,6 +1322,91 @@ object PrefixMap {
 
 }
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=prefixMap_3 %}
+~~~ scala
+import scala.collection._
+import scala.collection.mutable.{ GrowableBuilder, Builder }
+
+class PrefixMap[A]
+  extends mutable.Map[String, A],
+    mutable.MapOps[String, A, mutable.Map, PrefixMap[A]],
+    StrictOptimizedIterableOps[(String, A), mutable.Iterable, PrefixMap[A]]:
+
+  private var suffixes: immutable.Map[Char, PrefixMap[A]] = immutable.Map.empty
+  private var value: Option[A] = None
+
+  def get(s: String): Option[A] =
+    if s.isEmpty then value
+    else suffixes get s(0) flatMap (_.get(s.substring(1).nn))
+
+  def withPrefix(s: String): PrefixMap[A] =
+    if s.isEmpty then this
+    else
+      val leading = s(0)
+      suffixes get leading match
+        case None =>
+          suffixes = suffixes + (leading -> empty)
+        case _ =>
+      suffixes(leading) withPrefix (s.substring(1).nn)
+
+  def iterator: Iterator[(String, A)] =
+    (for v <- value.iterator yield ("", v)) ++
+      (for (chr, m) <- suffixes.iterator
+           (s, v) <- m.iterator yield (chr +: s, v))
+
+  def addOne(kv: (String, A)): this.type =
+    withPrefix(kv._1).value = Some(kv._2)
+    this
+
+  def subtractOne(s: String): this.type  =
+    if s.isEmpty then { val prev = value; value = None; prev }
+    else suffixes get s(0) flatMap (_.remove(s.substring(1).nn))
+    this
+
+  // Overloading of transformation methods that should return a PrefixMap
+  def map[B](f: ((String, A)) => (String, B)): PrefixMap[B] =
+    strictOptimizedMap(PrefixMap.newBuilder, f)
+  def flatMap[B](f: ((String, A)) => IterableOnce[(String, B)]): PrefixMap[B] =
+    strictOptimizedFlatMap(PrefixMap.newBuilder, f)
+
+  // Override `concat` and `empty` methods to refine their return type
+  override def concat[B >: A](suffix: IterableOnce[(String, B)]): PrefixMap[B] =
+    strictOptimizedConcat(suffix, PrefixMap.newBuilder)
+  override def empty: PrefixMap[A] = PrefixMap()
+
+  // Members declared in scala.collection.mutable.Clearable
+  override def clear(): Unit = suffixes = immutable.Map.empty
+  // Members declared in scala.collection.IterableOps
+  override protected def fromSpecific(coll: IterableOnce[(String, A)]): PrefixMap[A] = PrefixMap.from(coll)
+  override protected def newSpecificBuilder: mutable.Builder[(String, A), PrefixMap[A]] = PrefixMap.newBuilder
+
+  override def className = "PrefixMap"
+end PrefixMap
+
+object PrefixMap:
+  def empty[A] = new PrefixMap[A]
+
+  def from[A](source: IterableOnce[(String, A)]): PrefixMap[A] =
+    source match
+      case pm: PrefixMap[A @unchecked] => pm
+      case _ => (newBuilder ++= source).result()
+
+  def apply[A](kvs: (String, A)*): PrefixMap[A] = from(kvs)
+
+  def newBuilder[A]: mutable.Builder[(String, A), PrefixMap[A]] =
+    mutable.GrowableBuilder[(String, A), PrefixMap[A]](empty)
+
+  import scala.language.implicitConversions
+
+  implicit def toFactory[A](self: this.type): Factory[(String, A), PrefixMap[A]] =
+    new Factory[(String, A), PrefixMap[A]]:
+      def fromSpecific(it: IterableOnce[(String, A)]): PrefixMap[A] = self.from(it)
+      def newBuilder: mutable.Builder[(String, A), PrefixMap[A]] = self.newBuilder
+end PrefixMap
+~~~
+{% endtab %}
+{% endtabs %}
 
 The previous listing shows the definition of `PrefixMap`. The map has
 keys of type `String` and the values are of parametric type `A`. It extends
@@ -984,11 +1499,17 @@ present for all other collections in Scala's collection framework, so
 it makes sense to define them here, too. With the two methods, you can
 write `PrefixMap` literals like you do for any other collection:
 
+{% tabs prefixMap_4 %}
+{% tab 'Scala 2 and 3' for=prefixMap_4 %}
+
     scala> PrefixMap("hello" -> 5, "hi" -> 2)
     res0: PrefixMap[Int] = PrefixMap(hello -> 5, hi -> 2)
 
     scala> res0 += "foo" -> 3
     res1: res0.type = PrefixMap(hello -> 5, hi -> 2, foo -> 3)
+
+{% endtab %}
+{% endtabs %}
 
 ## Summary ##
 
