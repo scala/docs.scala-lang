@@ -510,6 +510,8 @@ class IntersperseOperation[Repr, S <: IsSeq[Repr]](coll: Repr, val seq: S):
 given [Repr](using seq: IsSeq[Repr]): Conversion[Repr, IntersperseOperation[Repr, seq.type]] with
   def apply(coll: Repr) = new IntersperseOperation(coll, seq)
 ~~~
+{% endtab %}
+{% endtabs %}
 
 Note that we track the type of the receiver collection `Repr` in the `IntersperseOperation`
 class. Now, consider what happens when we write the following expression:
