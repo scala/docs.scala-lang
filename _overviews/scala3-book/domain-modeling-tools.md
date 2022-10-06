@@ -1100,7 +1100,8 @@ p match
 
 // that code prints: "name: Astrid, age: 33"
 ```
-{% endcomment %}
+{% endtab %}
+{% endtabs %}
 
 ## Case objects
 
