@@ -38,7 +38,7 @@ One convention is to name the package the same as the directory containing the S
           UserPreferences.scala
     - test
 ```
-Notice how the `users` directory is within the `scala` directory and how there are multiple Scala files within the package. Each Scala file in the package could have the same package declaration. The other way to declare packages is by using braces:
+Notice how the `users` directory is within the `scala` directory and how there are multiple Scala files within the package. Each Scala file in the package could have the same package declaration. The other way to declare packages is by nesting them inside each other:
 
 {% tabs packages-and-imports_2 class=tabs-scala-version %}
 {% tab 'Scala 2' for=packages-and-imports_2 %}
@@ -58,6 +58,7 @@ package users {
 package users:
   package administrators:
     class NormalUser
+
   package normalusers:
     class NormalUser
 ```
