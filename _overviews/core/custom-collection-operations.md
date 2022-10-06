@@ -139,7 +139,7 @@ both `Map` and `MapView` values.
 {% tab 'Scala 3' for=sumBy_4 %}
 
 In such a case, again, the most straightforward solution would be to take as parameter a `Seq` instead
-of an `Iterable` or an `IterableOnce`. Similarly to `IsIterable`, As for `Ierable`, `IsSeq` provides a
+of an `Iterable` or an `IterableOnce`. Similarly to `IsIterable`, `IsSeq` provides a
 conversion to `SeqOps[A, Iterable, C]` (for some types `A` and `C`).
 
 `IsSeq` also make your operation works on `SeqView` values, because `SeqView`
