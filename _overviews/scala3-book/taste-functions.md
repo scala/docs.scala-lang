@@ -9,7 +9,6 @@ next-page: taste-objects
 ---
 
 
-
 Scala has most features you’d expect in a functional programming language, including:
 
 - Lambdas (anonymous functions)
@@ -22,25 +21,33 @@ The `map` method of the `List` class is a typical example of a higher-order func
 
 These two examples are equivalent, and show how to multiply each number in a list by `2` by passing a lambda into the `map` method:
 
+
+{% tabs function_1 class=tabs-scala-version %}
+{% tab 'Scala 2 and 3' for=function_1 %}
 ```scala
 val a = List(1, 2, 3).map(i => i * 2)   // List(2,4,6)
 val b = List(1, 2, 3).map(_ * 2)        // List(2,4,6)
 ```
+{% endtab %}
+{% endtabs %}
 
 Those examples are also equivalent to the following code, which uses a `double` method instead of a lambda:
 
+
+{% tabs function_2 class=tabs-scala-version %}
+{% tab 'Scala 2 and 3' for=function_2 %}
 ```scala
 def double(i: Int): Int = i * 2
 
 val a = List(1, 2, 3).map(i => double(i))   // List(2,4,6)
 val b = List(1, 2, 3).map(double)           // List(2,4,6)
 ```
+{% endtab %}
+{% endtabs %}
 
 > If you haven’t seen the `map` method before, it applies a given function to every element in a list, yielding a new list that contains the resulting values.
 
 Passing lambdas to higher-order functions on collections classes (like `List`) is a part of the Scala experience, something you’ll do every day.
-
-
 
 ## Immutable collections
 
@@ -49,6 +56,9 @@ As a result, it’s also common to chain them together in a “fluent” style t
 
 For instance, this example shows how to filter a collection twice, and then multiply each element in the remaining collection:
 
+
+{% tabs function_3 class=tabs-scala-version %}
+{% tab 'Scala 2 and 3' for=function_3 %}
 ```scala
 // a sample list
 val nums = (1 to 10).toList   // List(1,2,3,4,5,6,7,8,9,10)
@@ -60,9 +70,9 @@ val x = nums.filter(_ > 3)
 
 // result: x == List(40, 50, 60)
 ```
+{% endtab %}
+{% endtabs %}
 
 In addition to higher-order functions being used throughout the standard library, you can also [create your own][higher-order].
-
-
 
 [higher-order]: {% link _overviews/scala3-book/fun-hofs.md %}
