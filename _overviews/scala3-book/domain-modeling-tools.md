@@ -1103,6 +1103,8 @@ p match
 {% endtab %}
 {% endtabs %}
 
+{% endcomment %}
+
 ## Case objects
 
 Case objects are to objects what case classes are to classes: they provide a number of automatically-generated methods to make them more powerful.
