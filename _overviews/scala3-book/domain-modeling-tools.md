@@ -148,7 +148,15 @@ Classes can also extend traits and abstract classes, which we cover in dedicated
 As a quick look at a few other features, class constructor parameters can also have default values:
 
 {% tabs default-values_1 class=tabs-scala-version %}
-{% tab 'Scala 2 and 3' for=default-values_1 %}
+{% tab 'Scala 2' for=default-values_1 %}
+```scala
+class Socket(val timeout: Int = 5_000, val linger: Int = 5_000) {
+  override def toString = s"timeout: $timeout, linger: $linger"
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=default-values_1 %}
 ```scala
 class Socket(val timeout: Int = 5_000, val linger: Int = 5_000):
   override def toString = s"timeout: $timeout, linger: $linger"
@@ -559,6 +567,9 @@ trait Employee:
   def firstName: String
   def lastName: String
 ```
+{% endtab %}
+{% endtabs %}
+
 However, traits can also contain concrete members.
 For instance, the following trait defines two abstract members---`numLegs` and `walk()`---and also has a concrete implementation of a `stop()` method:
 
