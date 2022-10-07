@@ -49,7 +49,7 @@ As shown, there’s no need to put those definitions inside a `package`, `class`
 If you’re familiar with Scala 2, this approach replaces _package objects_.
 But while being much easier to use, they work similarly: When you place a definition in a package named _foo_, you can then access that definition under all other packages under _foo_, such as within the _foo.bar_ package in this example:
 
-{% tabs toplevel_2 class=tabs-scala-version %}
+{% tabs toplevel_2 %}
 {% tab 'Scala 3 only' for=toplevel_2 %}
 ```scala
 package foo {
