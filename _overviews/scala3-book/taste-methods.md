@@ -14,7 +14,7 @@ next-page: taste-functions
 Scala classes, case classes, traits, enums, and objects can all contain methods.
 The syntax of a simple method looks like this:
 
-{% tabs method_1 class=tabs-scala-version %}
+{% tabs method_1 %}
 {% tab 'Scala 2 and 3' for=method_1 %}
 ```scala
 def methodName(param1: Type1, param2: Type2): ReturnType =
@@ -26,7 +26,7 @@ def methodName(param1: Type1, param2: Type2): ReturnType =
 
 Here are a few examples:
 
-{% tabs method_2 class=tabs-scala-version %}
+{% tabs method_2 %}
 {% tab 'Scala 2 and 3' for=method_2 %}
 ```scala
 def sum(a: Int, b: Int): Int = a + b
@@ -37,7 +37,7 @@ def concatenate(s1: String, s2: String): String = s1 + s2
 
 You don’t have to declare a method’s return type, so you can write those methods like this, if you prefer:
 
-{% tabs method_3 class=tabs-scala-version %}
+{% tabs method_3 %}
 {% tab 'Scala 2 and 3' for=method_3 %}
 ```scala
 def sum(a: Int, b: Int) = a + b
@@ -48,7 +48,7 @@ def concatenate(s1: String, s2: String) = s1 + s2
 
 This is how you call those methods:
 
-{% tabs method_4 class=tabs-scala-version %}
+{% tabs method_4 %}
 {% tab 'Scala 2 and 3' for=method_4 %}
 ```scala
 val x = sum(1, 2)
@@ -83,7 +83,7 @@ def getStackTraceAsString(t: Throwable): String =
 Method parameters can also have default values.
 In this example, the `timeout` parameter has a default value of `5000`:
 
-{% tabs method_6 class=tabs-scala-version %}
+{% tabs method_6 %}
 {% tab 'Scala 2 and 3' for=method_6 %}
 ```scala
 def makeConnection(url: String, timeout: Int = 5000): Unit =
@@ -94,7 +94,7 @@ def makeConnection(url: String, timeout: Int = 5000): Unit =
 
 Because a default `timeout` value is supplied in the method declaration, the method can be called in these two ways:
 
-{% tabs method_7 class=tabs-scala-version %}
+{% tabs method_7 %}
 {% tab 'Scala 2 and 3' for=method_7 %}
 ```scala
 makeConnection("https://localhost")         // url=http://localhost, timeout=5000
@@ -105,7 +105,7 @@ makeConnection("https://localhost", 2500)   // url=http://localhost, timeout=250
 
 Scala also supports the use of _named parameters_ when calling a method, so you can also call that method like this, if you prefer:
 
-{% tabs method_8 class=tabs-scala-version %}
+{% tabs method_8 %}
 {% tab 'Scala 2 and 3' for=method_8 %}
 ```scala
 makeConnection(
@@ -126,36 +126,6 @@ engage(true, true, true, false)
 ```
 {% endtab %}
 {% endtabs %}
-
-Without help from an IDE that code can be hard to read, but this code is much more obvious:
-
-{% tabs method_10 class=tabs-scala-version %}
-{% tab 'Scala 2 and 3' for=method_10 %}
-```scala
-engage(
-  speedIsSet = true,
-  directionIsSet = true,
-  picardSaidMakeItSo = true,
-  turnedOffParkingBrake = false
-)
-```
-{% endtab %}
-{% endtabs %}
-
-## Extension methods
-
-_Extension methods_ let you add new methods to closed classes.
-For instance, if you want to add two methods named `hello` and `aloha` to the `String` class, declare them as extension methods:
-
-{% tabs extension_1 class=tabs-scala-version %}
-{% tab 'Scala 3 Only' for=extension_1 %}
-```scala
-extension (s: String)
-  def hello: String = s"Hello, ${s.capitalize}!"
-  def aloha: String = s"Aloha, ${s.capitalize}!"
-
-"world".hello    // "Hello, World!"
-"friend".aloha   // "Aloha, Friend!"
 ```
 {% endtab %}
 {% endtabs %}
