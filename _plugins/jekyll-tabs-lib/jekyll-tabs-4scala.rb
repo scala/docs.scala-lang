@@ -3,6 +3,8 @@ require 'erb'
 module Jekyll
     module Tabs
 
+        ScalaVersions = Set.new ['Scala 2', 'Scala 3']
+
         def self.unquote(string)
             string.gsub(/^['"]|['"]$/, '')
         end
@@ -23,9 +25,15 @@ module Jekyll
                 if markup =~ SYNTAX
                     @name = Tabs::unquote($1)
                     @css_classes = ""
+                    @is_scala_tabs = false
                     if $2
+                        css_class = Tabs::unquote($2)
+                        css_class.strip!
+                        if css_class == "tabs-scala-version"
+                            @is_scala_tabs = true
+                        end
                         # append $2 to @css_classes
-                        @css_classes = "#{@css_classes} #{Tabs::unquote($2)}"
+                        @css_classes = " #{css_class}"
                     end
                 else
                     raise SyntaxError.new("Block #{block_name} requires 1 attribute")
@@ -41,7 +49,13 @@ module Jekyll
 
                 allTabs = environment["tabs-#{@name}"]
 
+                seenTabs = Set.new
+
                 allTabs.each do | tab |
+                    if seenTabs.include? tab.label
+                        raise SyntaxError.new("Duplicate tab label '#{tab.label}' in tabs '#{@name}'")
+                    end
+                    seenTabs.add tab.label
                     if tab.defaultTab
                         foundDefault = true
                     end
@@ -50,6 +64,17 @@ module Jekyll
                 if !foundDefault and allTabs.length > 0
                     # set last tab to default
                     allTabs[-1].defaultTab = true
+                end
+
+                if @is_scala_tabs
+                    allTabs.each do | tab |
+                        if !Tabs::ScalaVersions.include?(tab.label)
+                            joined_versions = Tabs::ScalaVersions.to_a.map{|item| "'#{item}'"}.join(", ")
+                            raise SyntaxError.new(
+                                "Scala version tab label '#{tab.label}' is not valid for tabs '#{@name}' with " +
+                                "class=tabs-scala-version. Valid tab labels are: #{joined_versions}")
+                        end
+                    end
                 end
 
                 currentDirectory = File.dirname(__FILE__)
