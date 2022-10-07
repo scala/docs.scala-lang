@@ -34,7 +34,7 @@ val b = List(1, 2, 3).map(_ * 2)        // List(2,4,6)
 Those examples are also equivalent to the following code, which uses a `double` method instead of a lambda:
 
 
-{% tabs function_2 class=tabs-scala-version %}
+{% tabs function_2 %}
 {% tab 'Scala 2 and 3' for=function_2 %}
 ```scala
 def double(i: Int): Int = i * 2
@@ -57,7 +57,7 @@ As a result, it’s also common to chain them together in a “fluent” style t
 For instance, this example shows how to filter a collection twice, and then multiply each element in the remaining collection:
 
 
-{% tabs function_3 class=tabs-scala-version %}
+{% tabs function_3 %}
 {% tab 'Scala 2 and 3' for=function_3 %}
 ```scala
 // a sample list
