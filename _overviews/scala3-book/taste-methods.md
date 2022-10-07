@@ -119,7 +119,7 @@ makeConnection(
 Named parameters are particularly useful when multiple method parameters have the same type.
 At a glance, with this method you may wonder which parameters are set to `true` or `false`:
 
-{% tabs method_9 class=tabs-scala-version %}
+{% tabs method_9 %}
 {% tab 'Scala 2 and 3' for=method_9 %}
 ```scala
 engage(true, true, true, false)
