@@ -151,7 +151,7 @@ trait TranslationService:
 
 To compose the two services, we can simply create a new trait extending them:
 
-{% tabs traits_5 class=tabs-scala-version %}
+{% tabs traits_5 %}
 {% tab 'Scala 2 and 3' for=traits_5 %}
 
 ```scala
@@ -210,7 +210,7 @@ class MyService(name: String) extends ComposedService, Showable:
 
 We can create an instance of `MyService` as follows:
 
-{% tabs class_2 class=tabs-scala-version %}
+{% tabs class_2 %}
 {% tab 'Scala 2 and 3' for=class_2 %}
 
 ```scala
@@ -222,7 +222,7 @@ val s1: MyService = MyService("Service 1")
 
 Through the means of subtyping, our instance `s1` can be used everywhere that any of the extended traits is expected:
 
-{% tabs class_3 class=tabs-scala-version %}
+{% tabs class_3 %}
 {% tab 'Scala 2 and 3' for=class_3 %}
 
 ```scala
@@ -238,7 +238,7 @@ val s4: Showable = s1
 
 As mentioned before, it is possible to extend another class:
 
-{% tabs class_4 class=tabs-scala-version %}
+{% tabs class_4 %}
 {% tab 'Scala 2 and 3' for=class_4 %}
 
 ```scala
@@ -254,7 +254,7 @@ However, since _traits_ are designed as the primary means of decomposition,
 a class that is defined in one file _cannot_ be extended in another file.
 In order to allow this, the base class needs to be marked as `open`:
 
-{% tabs class_5 class=tabs-scala-version %}
+{% tabs class_5 %}
 {% tab 'Scala 2 and 3' for=class_5 %}
 
 ```scala
@@ -307,7 +307,7 @@ class Counter:
 
 Every instance of the class `Counter` has its own private state that can only be observed through the method `count`, as the following interaction illustrates:
 
-{% tabs instance_7 class=tabs-scala-version %}
+{% tabs instance_7 %}
 {% tab 'Scala 2 and 3' for=instance_7 %}
 
 ```scala
