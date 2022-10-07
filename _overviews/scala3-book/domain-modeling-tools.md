@@ -27,7 +27,7 @@ This section briefly introduces each of these language features.
 As with other languages, a _class_ in Scala is a template for the creation of object instances.
 Here are some examples of classes:
 
-{% tabs class_1 class=tabs-scala-version %}
+{% tabs class_1 %}
 {% tab 'Scala 2 and 3' for=class_1 %}
 
 ```scala
