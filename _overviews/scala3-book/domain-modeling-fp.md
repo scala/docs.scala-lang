@@ -18,8 +18,6 @@ When modeling the world around us with FP, you typically use these Scala constru
 
 > If you’re not familiar with algebraic data types (ADTs) and their generalized version (GADTs), you may want to read the [Algebraic Data Types][adts] section before reading this section.
 
-
-
 ## Introduction
 
 In FP, the *data* and the *operations on that data* are two separate things; you aren’t forced to encapsulate them together like you do with OOP.
@@ -49,8 +47,6 @@ An FP design is implemented in a similar way:
 In this chapter we’ll model the data and operations for a “pizza” in a pizza store.
 You’ll see how to implement the “data” portion of the Scala/FP model, and then you’ll see several different ways you can organize the operations on that data.
 
-
-
 ## Modeling the Data
 
 In Scala, describing the data model of a programming problem is simple:
@@ -58,10 +54,12 @@ In Scala, describing the data model of a programming problem is simple:
 - If you want to model data with different alternatives, use the `enum` construct
 - If you only want to group things (or need more fine-grained control) use `case` classes
 
-
 ### Describing Alternatives
 
 Data that simply consists of different alternatives, like crust size, crust type, and toppings, is concisely modeled with the Scala 3 `enum` construct:
+
+{% tabs data_1 class=tabs-scala-version %}
+{% tab 'Scala 3 only' for=data_1 %}
 
 ```scala
 enum CrustSize:
@@ -73,12 +71,35 @@ enum CrustType:
 enum Topping:
   case Cheese, Pepperoni, BlackOlives, GreenOlives, Onions
 ```
+
+{% endtab %}
+{% endtabs %}
+
 > Data types that describe different alternatives (like `CrustSize`) are also sometimes referred to as _sum types_.
 
 ### Describing Compound Data
 
 A pizza can be thought of as a _compound_ container of the different attributes above.
 We can use a `case` class to describe that a `Pizza` consists of a `crustSize`, `crustType`, and potentially multiple `Topping`s:
+
+{% tabs data_2 class=tabs-scala-version %}
+{% tab 'Scala 2' for=data_2 %}
+
+```scala
+import CrustSize._
+import CrustType._
+import Topping._
+
+case class Pizza(
+  crustSize: CrustSize,
+  crustType: CrustType,
+  toppings: Seq[Topping]
+)
+```
+
+{% endtab %}
+
+{% tab 'Scala 3' for=data_2 %}
 
 ```scala
 import CrustSize.*
@@ -91,6 +112,10 @@ case class Pizza(
   toppings: Seq[Topping]
 )
 ```
+
+{% endtab %}
+{% endtabs %}
+
 > Data Types that aggregate multiple components (like `Pizza`) are also sometimes referred to as _product types_.
 
 And that’s it.
@@ -99,16 +124,24 @@ This solution is very concise because it doesn’t require the operations on a p
 The data model is easy to read, like declaring the design for a relational database.
 It is also very easy to create values of our data model and inspect them:
 
+{% tabs data_3 class=tabs-scala-version %}
+{% tab 'Scala 2 and 3' for=data_3 %}
+
 ```scala
 val myFavPizza = Pizza(Small, Regular, Seq(Cheese, Pepperoni))
 println(myFavPizza.crustType) // prints Regular
 ```
 
+{% endtab %}
+{% endtabs %}
 
 #### More of the data model
 
 We might go on in the same way to model the entire pizza-ordering system.
 Here are a few other `case` classes that are used to model such a system:
+
+{% tabs data_4 class=tabs-scala-version %}
+{% tab 'Scala 2 and 3' for=data_4 %}
 
 ```scala
 case class Address(
@@ -131,13 +164,13 @@ case class Order(
 )
 ```
 
+{% endtab %}
+{% endtabs %}
+
 #### “Skinny domain objects”
 
 In his book, *Functional and Reactive Domain Modeling*, Debasish Ghosh states that where OOP practitioners describe their classes as “rich domain models” that encapsulate data and behaviors, FP data models can be thought of as “skinny domain objects.”
 This is because---as this lesson shows---the data models are defined as `case` classes with attributes, but no behaviors, resulting in short and concise data structures.
-
-
-
 
 ## Modeling the Operations
 
@@ -145,6 +178,24 @@ This leads to an interesting question: Because FP separates the data from the op
 
 The answer is actually quite simple: you simply write functions (or methods) that operate on values of the data we just modeled.
 For instance, we can define a function that computes the price of a pizza.
+
+{% tabs data_5 class=tabs-scala-version %}
+{% tab 'Scala 2' for=data_5 %}
+
+```scala
+def pizzaPrice(p: Pizza): Double = p match {
+  case Pizza(crustSize, crustType, toppings) => {
+    val base  = 6.00
+    val crust = crustPrice(crustSize, crustType)
+    val tops  = toppings.map(toppingPrice).sum
+    base + crust + tops
+  }
+}
+```
+
+{% endtab %}
+
+{% tab 'Scala 3' for=data_5 %}
 
 ```scala
 def pizzaPrice(p: Pizza): Double = p match
@@ -154,15 +205,57 @@ def pizzaPrice(p: Pizza): Double = p match
     val tops  = toppings.map(toppingPrice).sum
     base + crust + tops
 ```
+
+{% endtab %}
+{% endtabs %}
+
 You can notice how the implementation of the function simply follows the shape of the data: since `Pizza` is a case class, we use pattern matching to extract the components and call helper functions to compute the individual prices.
+
+{% tabs data_6 class=tabs-scala-version %}
+{% tab 'Scala 2' for=data_6 %}
+
+```scala
+def toppingPrice(t: Topping): Double = t match {
+  case Cheese | Onions => 0.5
+  case Pepperoni | BlackOlives | GreenOlives => 0.75
+}
+```
+
+{% endtab %}
+
+{% tab 'Scala 3' for=data_6 %}
 
 ```scala
 def toppingPrice(t: Topping): Double = t match
   case Cheese | Onions => 0.5
   case Pepperoni | BlackOlives | GreenOlives => 0.75
 ```
+
+{% endtab %}
+{% endtabs %}
+
 Similarly, since `Topping` is an enumeration, we use pattern matching to distinguish between the different variants.
 Cheese and onions are priced at 50ct while the rest is priced at 75ct each.
+
+{% tabs data_7 class=tabs-scala-version %}
+{% tab 'Scala 2' for=data_7 %}
+
+```scala
+def crustPrice(s: CrustSize, t: CrustType): Double =
+  (s, t) match {
+    // if the crust size is small or medium,
+    // the type is not important
+    case (Small | Medium, _) => 0.25
+    case (Large, Thin) => 0.50
+    case (Large, Regular) => 0.75
+    case (Large, Thick) => 1.00
+  }
+```
+
+{% endtab %}
+
+{% tab 'Scala 3' for=data_7 %}
+
 ```scala
 def crustPrice(s: CrustSize, t: CrustType): Double =
   (s, t) match
@@ -173,6 +266,10 @@ def crustPrice(s: CrustSize, t: CrustType): Double =
     case (Large, Regular) => 0.75
     case (Large, Thick) => 1.00
 ```
+
+{% endtab %}
+{% endtabs %}
+
 To compute the price of the crust we simultaneously pattern match on both the size and the type of the crust.
 
 > An important point about all functions shown above is that they are *pure functions*: they do not mutate any data or have other side-effects (like throwing exceptions or writing to a file).
@@ -204,9 +301,8 @@ Mine (Alvin, now modified, from fp-pure-functions.md):
 - It doesn’t have any “back doors”: It doesn’t read data from the outside world (including the console, web services, databases, files, etc.), or write data to the outside world
 {% endcomment %}
 
-
-
 ## How to Organize Functionality
+
 When implementing the `pizzaPrice` function above, we did not say _where_ we would define it.
 In Scala 3, it would be perfectly valid to define it on the toplevel of your file.
 However, the language gives us many great tools to organize our logic in different namespaces and modules.
@@ -227,6 +323,9 @@ A first approach is to define the behavior---the functions---in a companion obje
 > As discussed in the Domain Modeling [Tools section][modeling-tools], a _companion object_ is an `object` that has the same name as a class, and is declared in the same file as the class.
 
 With this approach, in addition to the enumeration or case class you also define an equally named companion object that contains the behavior.
+
+{% tabs org_1 class=tabs-scala-version %}
+{% tab 'Scala 3 only' for=org_1 %}
 
 ```scala
 case class Pizza(
@@ -250,12 +349,22 @@ object Topping:
     case Cheese | Onions => 0.5
     case Pepperoni | BlackOlives | GreenOlives => 0.75
 ```
+
+{% endtab %}
+{% endtabs %}
+
 With this approach you can create a `Pizza` and compute its price like this:
+
+{% tabs org_2 class=tabs-scala-version %}
+{% tab 'Scala 2 and 3' for=org_2 %}
 
 ```scala
 val pizza1 = Pizza(Small, Thin, Seq(Cheese, Onions))
 Pizza.price(pizza1)
 ```
+
+{% endtab %}
+{% endtabs %}
 
 Grouping functionality this way has a few advantages:
 
@@ -269,7 +378,6 @@ However, there are also a few tradeoffs that should be considered:
   In particular, the companion object needs to be defined in the same file as your `case` class.
 - It might be unclear where to define functions like `crustPrice` that could equally well be placed in a companion object of `CrustSize` or `CrustType`.
 
-
 ## Modules
 
 A second way to organize behavior is to use a “modular” approach.
@@ -280,6 +388,26 @@ Let’s look at what this means.
 
 The first thing to think about are the `Pizza`s “behaviors”.
 When doing this, you sketch a `PizzaServiceInterface` trait like this:
+
+{% tabs module_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=module_1 %}
+
+```scala
+trait PizzaServiceInterface {
+
+  def price(p: Pizza): Double
+
+  def addTopping(p: Pizza, t: Topping): Pizza
+  def removeAllToppings(p: Pizza): Pizza
+
+  def updateCrustSize(p: Pizza, cs: CrustSize): Pizza
+  def updateCrustType(p: Pizza, ct: CrustType): Pizza
+}
+```
+
+{% endtab %}
+
+{% tab 'Scala 3' for=module_1 %}
 
 ```scala
 trait PizzaServiceInterface:
@@ -293,12 +421,18 @@ trait PizzaServiceInterface:
   def updateCrustType(p: Pizza, ct: CrustType): Pizza
 ```
 
+{% endtab %}
+{% endtabs %}
+
 As shown, each method takes a `Pizza` as an input parameter---along with other parameters---and then returns a `Pizza` instance as a result
 
 When you write a pure interface like this, you can think of it as a contract that states, “all non-abstract classes that extend this trait *must* provide an implementation of these services.”
 
 What you might also do at this point is imagine that you’re the consumer of this API.
 When you do that, it helps to sketch out some sample “consumer” code to make sure the API looks like what you want:
+
+{% tabs module_2 class=tabs-scala-version %}
+{% tab 'Scala 2 and 3' for=module_2 %}
 
 ```scala
 val p = Pizza(Small, Thin, Seq(Cheese))
@@ -310,6 +444,9 @@ val p3 = updateCrustType(p2, Thick)
 val p4 = updateCrustSize(p3, Large)
 ```
 
+{% endtab %}
+{% endtabs %}
+
 If that code seems okay, you’ll typically start sketching another API---such as an API for orders---but since we’re only looking at pizzas right now, we’ll stop thinking about interfaces and create a concrete implementation of this interface.
 
 > Notice that this is usually a two-step process.
@@ -317,10 +454,36 @@ If that code seems okay, you’ll typically start sketching another API---such a
 > In the second step you create a concrete *implementation* of that interface.
 > In some cases you’ll end up creating multiple concrete implementations of the base interface.
 
-
 ### Creating a concrete implementation
 
 Now that you know what the `PizzaServiceInterface` looks like, you can create a concrete implementation of it by writing the body for all of the methods you defined in the interface:
+
+{% tabs module_3 class=tabs-scala-version %}
+{% tab 'Scala 2' for=module_3 %}
+
+```scala
+object PizzaService extends PizzaServiceInterface {
+
+  def price(p: Pizza): Double =
+    ... // implementation from above
+
+  def addTopping(p: Pizza, t: Topping): Pizza =
+    p.copy(toppings = p.toppings :+ t)
+
+  def removeAllToppings(p: Pizza): Pizza =
+    p.copy(toppings = Seq.empty)
+
+  def updateCrustSize(p: Pizza, cs: CrustSize): Pizza =
+    p.copy(crustSize = cs)
+
+  def updateCrustType(p: Pizza, ct: CrustType): Pizza =
+    p.copy(crustType = ct)
+}
+```
+
+{% endtab %}
+
+{% tab 'Scala 3' for=module_3 %}
 
 ```scala
 object PizzaService extends PizzaServiceInterface:
@@ -343,9 +506,33 @@ object PizzaService extends PizzaServiceInterface:
 end PizzaService
 ```
 
+{% endtab %}
+{% endtabs %}
+
 While this two-step process of creating an interface followed by an implementation isn’t always necessary, explicitly thinking about the API and its use is a good approach.
 
 With everything in place you can use your `Pizza` class and `PizzaService`:
+
+{% tabs module_4 class=tabs-scala-version %}
+{% tab 'Scala 2' for=module_4 %}
+
+```scala
+import PizzaService._
+
+val p = Pizza(Small, Thin, Seq(Cheese))
+
+// use the PizzaService methods
+val p1 = addTopping(p, Pepperoni)
+val p2 = addTopping(p1, Onions)
+val p3 = updateCrustType(p2, Thick)
+val p4 = updateCrustSize(p3, Large)
+
+println(price(p4)) // prints 8.75
+```
+
+{% endtab %}
+
+{% tab 'Scala 3' for=module_4 %}
 
 ```scala
 import PizzaService.*
@@ -361,6 +548,9 @@ val p4 = updateCrustSize(p3, Large)
 println(price(p4)) // prints 8.75
 ```
 
+{% endtab %}
+{% endtabs %}
+
 ### Functional Objects
 
 In the book, *Programming in Scala*, the authors define the term, “Functional Objects” as “objects that do not have any mutable state”.
@@ -375,10 +565,41 @@ You can think of this approach as a “hybrid FP/OOP design” because you:
 
 > This really is a hybrid approach: like in an **OOP design**, the methods are encapsulated in the class with the data, but as typical for a **FP design**, methods are implemented as pure functions that don’t mutate the data
 
-
 #### Example
 
 Using this approach, you can directly implement the functionality on pizzas in the case class:
+
+{% tabs module_5 class=tabs-scala-version %}
+{% tab 'Scala 2' for=module_5 %}
+
+```scala
+case class Pizza(
+  crustSize: CrustSize,
+  crustType: CrustType,
+  toppings: Seq[Topping]
+) {
+
+  // the operations on the data model
+  def price: Double =
+    pizzaPrice(this) // implementation from above
+
+  def addTopping(t: Topping): Pizza =
+    this.copy(toppings = this.toppings :+ t)
+
+  def removeAllToppings: Pizza =
+    this.copy(toppings = Seq.empty)
+
+  def updateCrustSize(cs: CrustSize): Pizza =
+    this.copy(crustSize = cs)
+
+  def updateCrustType(ct: CrustType): Pizza =
+    this.copy(crustType = ct)
+}
+```
+
+{% endtab %}
+
+{% tab 'Scala 3' for=module_5 %}
 
 ```scala
 case class Pizza(
@@ -404,10 +625,16 @@ case class Pizza(
     this.copy(crustType = ct)
 ```
 
+{% endtab %}
+{% endtabs %}
+
 Notice that unlike the previous approaches, because these are methods on the `Pizza` class, they don’t take a `Pizza` reference as an input parameter.
 Instead, they have their own reference to the current pizza instance as `this`.
 
 Now you can use this new design like this:
+
+{% tabs module_6 class=tabs-scala-version %}
+{% tab 'Scala 2 and 3' for=module_6 %}
 
 ```scala
 Pizza(Small, Thin, Seq(Cheese))
@@ -416,7 +643,11 @@ Pizza(Small, Thin, Seq(Cheese))
   .price
 ```
 
+{% endtab %}
+{% endtabs %}
+
 ### Extension Methods
+
 Finally, we show an approach that lies between the first one (defining functions in the companion object) and the last one (defining functions as methods on the type itself).
 
 Extension methods let us create an API that is like the one of functional object, without having to define functions as methods on the type itself.
@@ -427,6 +658,9 @@ This can have multiple advantages:
 - Other than companion objects or direct methods on the types, extension methods can be defined _externally_ in another file.
 
 Let us revisit our example once more.
+
+{% tabs module_7 class=tabs-scala-version %}
+{% tab 'Scala 3 only' for=module_7 %}
 
 ```scala
 case class Pizza(
@@ -451,10 +685,17 @@ extension (p: Pizza)
   def updateCrustType(ct: CrustType): Pizza =
     p.copy(crustType = ct)
 ```
+
+{% endtab %}
+{% endtabs %}
+
 In the above code, we define the different methods on pizzas as _extension methods_.
 With `extension (p: Pizza)` we say that we want to make the methods available on instances of `Pizza` and refer to the instance we extend as `p` in the following.
 
 This way, we can obtain the same API as before
+
+{% tabs module_8 class=tabs-scala-version %}
+{% tab 'Scala 2 and 3' for=module_8 %}
 
 ```scala
 Pizza(Small, Thin, Seq(Cheese))
@@ -462,11 +703,14 @@ Pizza(Small, Thin, Seq(Cheese))
   .updateCrustType(Thick)
   .price
 ```
+
+{% endtab %}
+{% endtabs %}
+
 while being able to define extensions in any other module.
 Typically, if you are the designer of the data model, you will define your extension methods in the companion object.
 This way, they are already available to all users.
 Otherwise, extension methods need to be imported explicitly to be usable.
-
 
 ## Summary of this Approach
 
@@ -478,7 +722,6 @@ We have seen different ways to organize your functions:
 - You can use a modular programming style, separating interface and implementation
 - You can use a “functional objects” approach and store the methods on the defined data type
 - You can use extension methods to equip your data model with functionality
-
 
 [adts]: {% link _overviews/scala3-book/types-adts-gadts.md %}
 [modeling-tools]: {% link _overviews/scala3-book/domain-modeling-tools.md %}
