@@ -148,7 +148,7 @@ _Extension methods_ let you add new methods to closed classes.
 For instance, if you want to add two methods named `hello` and `aloha` to the `String` class, declare them as extension methods:
 
 {% tabs extension_1 class=tabs-scala-version %}
-{% tab 'Scala 3 only' for=extension_1 %}
+{% tab 'Scala 3 Only' for=extension_1 %}
 ```scala
 extension (s: String)
   def hello: String = s"Hello, ${s.capitalize}!"
