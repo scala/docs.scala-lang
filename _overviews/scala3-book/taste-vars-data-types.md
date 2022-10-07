@@ -37,7 +37,7 @@ When you create a new variable in Scala, you declare whether the variable is imm
 These examples show how to create `val` and `var` variables:
 
 {% tabs var-express-1 %}
-{% tab 'Scala 2 and 3' for=var-express-1 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 // immutable
@@ -53,7 +53,7 @@ In an application, a `val` can’t be reassigned.
 You’ll cause a compiler error if you try to reassign one:
 
 {% tabs var-express-2 %}
-{% tab 'Scala 2 and 3' for=var-express-2 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 val msg = "Hello, world"
@@ -65,7 +65,7 @@ msg = "Aloha"   // "reassignment to val" error; this won’t compile
 Conversely, a `var` can be reassigned:
 
 {% tabs var-express-3 %}
-{% tab 'Scala 2 and 3' for=var-express-3 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 var msg = "Hello, world"
@@ -79,7 +79,7 @@ msg = "Aloha"   // this compiles because a var can be reassigned
 When you create a variable you can explicitly declare its type, or let the compiler infer the type:
 
 {% tabs var-express-4 %}
-{% tab 'Scala 2 and 3' for=var-express-4 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 val x: Int = 1   // explicit
@@ -92,7 +92,7 @@ The second form is known as _type inference_, and it’s a great way to help kee
 The Scala compiler can usually infer the data type for you, as shown in the output of these REPL examples:
 
 {% tabs var-express-5 %}
-{% tab 'Scala 2 and 3' for=var-express-5 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 scala> val x = 1
@@ -110,7 +110,7 @@ val nums: List[Int] = List(1, 2, 3)
 You can always explicitly declare a variable’s type if you prefer, but in simple assignments like these it isn’t necessary:
 
 {% tabs var-express-6 %}
-{% tab 'Scala 2 and 3' for=var-express-6 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 val x: Int = 1
@@ -134,7 +134,7 @@ In Scala, everything is an object.
 These examples show how to declare variables of the numeric types:
 
 {% tabs var-express-7 %}
-{% tab 'Scala 2 and 3' for=var-express-7 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 val b: Byte = 1
@@ -150,7 +150,7 @@ val f: Float = 3.0
 Because `Int` and `Double` are the default numeric types, you typically create them without explicitly declaring the data type:
 
 {% tabs var-express-8 %}
-{% tab 'Scala 2 and 3' for=var-express-8 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 val i = 123   // defaults to Int
@@ -162,7 +162,7 @@ val j = 1.0   // defaults to Double
 In your code you can also append the characters `L`, `D`, and `F` (and their lowercase equivalents) to numbers to specify that they are `Long`, `Double`, or `Float` values:
 
 {% tabs var-express-9 %}
-{% tab 'Scala 2 and 3' for=var-express-9 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 val x = 1_000L   // val x: Long = 1000
@@ -175,7 +175,7 @@ val z = 3.3F     // val z: Float = 3.3
 When you need really large numbers, use the `BigInt` and `BigDecimal` types:
 
 {% tabs var-express-10 %}
-{% tab 'Scala 2 and 3' for=var-express-10 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 var a = BigInt(1_234_567_890_987_654_321L)
@@ -189,7 +189,7 @@ Where `Double` and `Float` are approximate decimal numbers, `BigDecimal` is used
 Scala also has `String` and `Char` data types:
 
 {% tabs var-express-11 %}
-{% tab 'Scala 2 and 3' for=var-express-11 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 val name = "Bill"   // String
@@ -211,7 +211,7 @@ String interpolation provides a very readable way to use variables inside string
 For instance, given these three variables:
 
 {% tabs var-express-12 %}
-{% tab 'Scala 2 and 3' for=var-express-12 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 val firstName = "John"
@@ -224,7 +224,7 @@ val lastName = "Doe"
 You can combine those variables in a string like this:
 
 {% tabs var-express-13 %}
-{% tab 'Scala 2 and 3' for=var-express-13 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 println(s"Name: $firstName $mi $lastName")   // "Name: John C Doe"
@@ -237,7 +237,7 @@ Just precede the string with the letter `s`, and then put a `$` symbol before yo
 To embed arbitrary expressions inside a string, enclose them in curly braces:
 
 {% tabs var-express-14 %}
-{% tab 'Scala 2 and 3' for=var-express-14 %}
+{% tab 'Scala 2 and 3' %}
 
 ``` scala
 println(s"2 + 2 = ${2 + 2}")   // prints "2 + 2 = 4"
@@ -258,7 +258,7 @@ For instance, some database libraries define the very powerful `sql` interpolato
 Multiline strings are created by including the string inside three double-quotes:
 
 {% tabs var-express-15 %}
-{% tab 'Scala 2 and 3' for=var-express-15 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 val quote = """The essence of Scala:

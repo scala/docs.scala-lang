@@ -111,7 +111,7 @@ can generate the same tabs in markdown with the `tabs` directive and class `tabs
 ~~~liquid
 {% tabs hello-world-demo class=tabs-scala-version %}
 
-{% tab 'Scala 2' for=hello-world-demo %}
+{% tab 'Scala 2' %}
 ```scala
 object hello extends App {
   println("Hello, World!")
@@ -119,7 +119,7 @@ object hello extends App {
 ```
 {% endtab %}
 
-{% tab 'Scala 3' for=hello-world-demo %}
+{% tab 'Scala 3' %}
 ```scala
 @main def hello() = println("Hello, World!")
 ```
@@ -134,17 +134,30 @@ It is crucial that you use the `tabs-scala-version` class to benefit from some c
 - the tab picked will be remembered across the site, and when the user returns to the page after some time.
 
 For code snippets that are valid in both Scala 2 and Scala 3, please use a single tab labelled
-“Scala 2 and 3” (please note that the `tabs-scala-version` class is also dropped):
+`'Scala 2 and 3'` (please note that the `tabs-scala-version` class is also dropped):
 
 <!-- {% raw  %} -->
 ~~~liquid
 {% tabs scala-2-and-3-demo %}
-{% tab 'Scala 2 and 3' for=scala-2-and-3-demo %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 List(1, 2, 3).map(x => x + 1).sum
 ```
 {% endtab %}
 {% endtabs %}
+~~~
+<!-- {% endraw  %} -->
+
+For examples that only apply to either one of Scala 2 or 3, use the tabs `'Scala 2 Only'` and `'Scala 3 Only'`.
+
+If you have a particularly long tab, for readability you can indicate which tab group it belongs to with
+a parameter `for=tab-group` as in this example:
+<!-- {% raw  %} -->
+~~~liquid
+{% tabs my-tab-group class=tabs-scala-version %}
+...
+{% tab 'Scala 3' for=my-tab-group %}
+...
 ~~~
 <!-- {% endraw  %} -->
 
