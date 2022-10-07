@@ -12,7 +12,7 @@ next-page: taste-summary
 In Scala 3, all kinds of definitions can be written at the “top level” of your source code files.
 For instance, you can create a file named _MyCoolApp.scala_ and put these contents into it:
 
-{% tabs toplevel_1 class=tabs-scala-version %}
+{% tabs toplevel_1 %}
 {% tab 'Scala 3 only' for=toplevel_1 %}
 ```scala
 import scala.collection.mutable.ArrayBuffer
