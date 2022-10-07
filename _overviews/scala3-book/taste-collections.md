@@ -17,7 +17,7 @@ Collections classes are available in both immutable and mutable forms.
 To give you a taste of how these work, here are some examples that use the `List` class, which is an immutable, linked-list class.
 These examples show different ways to create a populated `List`:
 
-{% tabs collection_1 class=tabs-scala-version %}
+{% tabs collection_1 %}
 {% tab 'Scala 2 and 3' for=collection_1 %}
 ```scala
 val a = List(1, 2, 3)           // a: List[Int] = List(1, 2, 3)
