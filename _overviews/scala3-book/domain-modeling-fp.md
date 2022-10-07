@@ -58,7 +58,7 @@ In Scala, describing the data model of a programming problem is simple:
 
 Data that simply consists of different alternatives, like crust size, crust type, and toppings, is concisely modeled with the Scala 3 `enum` construct:
 
-{% tabs data_1 class=tabs-scala-version %}
+{% tabs data_1 %}
 {% tab 'Scala 3 only' for=data_1 %}
 
 ```scala
@@ -124,7 +124,7 @@ This solution is very concise because it doesn’t require the operations on a p
 The data model is easy to read, like declaring the design for a relational database.
 It is also very easy to create values of our data model and inspect them:
 
-{% tabs data_3 class=tabs-scala-version %}
+{% tabs data_3 %}
 {% tab 'Scala 2 and 3' for=data_3 %}
 
 ```scala
@@ -140,7 +140,7 @@ println(myFavPizza.crustType) // prints Regular
 We might go on in the same way to model the entire pizza-ordering system.
 Here are a few other `case` classes that are used to model such a system:
 
-{% tabs data_4 class=tabs-scala-version %}
+{% tabs data_4 %}
 {% tab 'Scala 2 and 3' for=data_4 %}
 
 ```scala
@@ -324,7 +324,7 @@ A first approach is to define the behavior---the functions---in a companion obje
 
 With this approach, in addition to the enumeration or case class you also define an equally named companion object that contains the behavior.
 
-{% tabs org_1 class=tabs-scala-version %}
+{% tabs org_1 %}
 {% tab 'Scala 3 only' for=org_1 %}
 
 ```scala
@@ -355,7 +355,7 @@ object Topping:
 
 With this approach you can create a `Pizza` and compute its price like this:
 
-{% tabs org_2 class=tabs-scala-version %}
+{% tabs org_2 %}
 {% tab 'Scala 2 and 3' for=org_2 %}
 
 ```scala
@@ -431,7 +431,7 @@ When you write a pure interface like this, you can think of it as a contract tha
 What you might also do at this point is imagine that you’re the consumer of this API.
 When you do that, it helps to sketch out some sample “consumer” code to make sure the API looks like what you want:
 
-{% tabs module_2 class=tabs-scala-version %}
+{% tabs module_2 %}
 {% tab 'Scala 2 and 3' for=module_2 %}
 
 ```scala
@@ -633,7 +633,7 @@ Instead, they have their own reference to the current pizza instance as `this`.
 
 Now you can use this new design like this:
 
-{% tabs module_6 class=tabs-scala-version %}
+{% tabs module_6 %}
 {% tab 'Scala 2 and 3' for=module_6 %}
 
 ```scala
@@ -659,7 +659,7 @@ This can have multiple advantages:
 
 Let us revisit our example once more.
 
-{% tabs module_7 class=tabs-scala-version %}
+{% tabs module_7 %}
 {% tab 'Scala 3 only' for=module_7 %}
 
 ```scala
@@ -694,7 +694,7 @@ With `extension (p: Pizza)` we say that we want to make the methods available on
 
 This way, we can obtain the same API as before
 
-{% tabs module_8 class=tabs-scala-version %}
+{% tabs module_8 %}
 {% tab 'Scala 2 and 3' for=module_8 %}
 
 ```scala
