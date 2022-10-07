@@ -22,7 +22,7 @@ The `map` method of the `List` class is a typical example of a higher-order func
 These two examples are equivalent, and show how to multiply each number in a list by `2` by passing a lambda into the `map` method:
 
 
-{% tabs function_1 class=tabs-scala-version %}
+{% tabs function_1 %}
 {% tab 'Scala 2 and 3' for=function_1 %}
 ```scala
 val a = List(1, 2, 3).map(i => i * 2)   // List(2,4,6)
