@@ -121,12 +121,11 @@ At a glance, with this method you may wonder which parameters are set to `true` 
 
 {% tabs method_9 %}
 {% tab 'Scala 2 and 3' for=method_9 %}
+
 ```scala
 engage(true, true, true, false)
 ```
-{% endtab %}
-{% endtabs %}
-```
+
 {% endtab %}
 {% endtabs %}
 
@@ -139,6 +138,7 @@ The code doesn’t account for possible string-to-integer conversion errors, but
 
 {% tabs extension_2 class=tabs-scala-version %}
 {% tab 'Scala 3 Only' for=extension_2 %}
+
 ```scala
 extension (s: String)
   def makeInt(radix: Int): Int = Integer.parseInt(s, radix)
@@ -147,6 +147,7 @@ extension (s: String)
 "10".makeInt(2)     // Int = 2
 "100".makeInt(2)    // Int = 4
 ```
+
 {% endtab %}
 {% endtabs %}
 
