@@ -19,7 +19,7 @@ Those parameters are called _Context Parameters_ because they are inferred by th
 
 For instance, consider a program that sorts a list of addresses by two criteria: the city name and then street name.
 
-{% tabs contextual_1 class=tabs-scala-version %}
+{% tabs contextual_1 %}
 {% tab 'Scala 2 and 3' for=contextual_1 %}
 ```scala
 val addresses: List[Address] = ...
