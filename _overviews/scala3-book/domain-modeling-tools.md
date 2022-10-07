@@ -46,7 +46,7 @@ If you want them to be immutable---read only---create them as `val` fields inste
 
 Prior to Scala 3, you used the `new` keyword to create a new instance of a class:
 
-{% tabs class_2 class=tabs-scala-version %}
+{% tabs class_2 %}
 {% tab 'Scala 2 and 3' for=class_2 %}
 
 ```scala
@@ -59,7 +59,7 @@ val p = new Person("Robert Allen Zimmerman", "Harmonica Player")
 
 However, with [creator applications][creator] this isn’t required in Scala 3:
 
-{% tabs class_3 class=tabs-scala-version %}
+{% tabs class_3 %}
 {% tab 'Scala 2 and 3' for=class_3 %}
 
 ```scala
@@ -71,7 +71,7 @@ val p = Person("Robert Allen Zimmerman", "Harmonica Player")
 
 Once you have an instance of a class such as `p`, you can access its fields, which in this example are all constructor parameters:
 
-{% tabs class_4 class=tabs-scala-version %}
+{% tabs class_4 %}
 {% tab 'Scala 2 and 3' for=class_4 %}
 
 ```scala
@@ -84,7 +84,7 @@ p.vocation   // "Harmonica Player"
 
 As mentioned, all of these parameters were created as `var` fields, so you can also mutate them:
 
-{% tabs class_5 class=tabs-scala-version %}
+{% tabs class_5 %}
 {% tab 'Scala 2 and 3' for=class_5 %}
 
 ```scala
@@ -184,7 +184,7 @@ class Socket(val timeout: Int = 5_000, val linger: Int = 5_000):
 
 A great thing about this feature is that it lets consumers of your code create classes in a variety of different ways, as though the class had alternate constructors:
 
-{% tabs default-values_2 class=tabs-scala-version %}
+{% tabs default-values_2 %}
 {% tab 'Scala 2 and 3' for=default-values_2 %}
 
 ```scala
@@ -201,7 +201,7 @@ val s = Socket(linger = 10_000)   // timeout: 5000, linger: 10000
 When creating a new instance of a class, you can also use named parameters.
 This is particularly helpful when many of the parameters have the same type, as shown in this comparison:
 
-{% tabs default-values_3 class=tabs-scala-version %}
+{% tabs default-values_3 %}
 {% tab 'Scala 2 and 3' for=default-values_3 %}
 
 ```scala
@@ -325,7 +325,7 @@ The class has three constructors, given by the numbered comments in the code:
 
 Those constructors can be called like this:
 
-{% tabs structor_2 class=tabs-scala-version %}
+{% tabs structor_2 %}
 {% tab 'Scala 2 and 3' for=structor_2 %}
 
 ```scala
@@ -376,7 +376,7 @@ object StringUtils:
 
 We can use the object as follows:
 
-{% tabs object_2 class=tabs-scala-version %}
+{% tabs object_2 %}
 {% tab 'Scala 2 and 3' for=object_2 %}
 
 ```scala
@@ -414,7 +414,7 @@ isNullOrEmpty("John Casey")          // false
 
 or just _some_ members:
 
-{% tabs object_4 class=tabs-scala-version %}
+{% tabs object_4 %}
 {% tab 'Scala 2 and 3' for=object_4 %}
 
 ```scala
@@ -716,7 +716,7 @@ class IrishSetter(name: String) extends HasLegs, HasTail:
 Notice that the `IrishSetter` class implements the abstract members that are defined in `HasLegs` and `HasTail`.
 Now you can create new `IrishSetter` instances:
 
-{% tabs traits_5 class=tabs-scala-version %}
+{% tabs traits_5 %}
 {% tab 'Scala 2 and 3' for=traits_5 %}
 
 ```scala
@@ -835,7 +835,7 @@ Basic enumerations are used to define sets of constants, like the months in a ye
 
 As an example, these enumerations define sets of attributes related to pizzas:
 
-{% tabs enum_1 class=tabs-scala-version %}
+{% tabs enum_1 %}
 {% tab 'Scala 3 only' for=enum_1 %}
 
 ```scala
@@ -854,7 +854,7 @@ enum Topping:
 
 To use them in other code, first import them, and then use them:
 
-{% tabs enum_2 class=tabs-scala-version %}
+{% tabs enum_2 %}
 {% tab 'Scala 3 only' for=enum_2 %}
 
 ```scala
@@ -867,7 +867,7 @@ val currentCrustSize = Small
 
 Enum values can be compared using equals (`==`), and also enum_1ed on:
 
-{% tabs enum_3 class=tabs-scala-version %}
+{% tabs enum_3 %}
 {% tab 'Scala 3 only' for=enum_3 %}
 
 ```scala
@@ -889,7 +889,7 @@ currentCrustSize enum_1
 
 Enumerations can also be parameterized:
 
-{% tabs enum_4 class=tabs-scala-version %}
+{% tabs enum_4 %}
 {% tab 'Scala 3 only' for=enum_4 %}
 
 ```scala
@@ -904,7 +904,7 @@ enum Color(val rgb: Int):
 
 And they can also have members (like fields and methods):
 
-{% tabs enum_5 class=tabs-scala-version %}
+{% tabs enum_5 %}
 {% tab 'Scala 3 only' for=enum_5 %}
 
 ```scala
@@ -926,7 +926,7 @@ enum Planet(mass: Double, radius: Double):
 
 If you want to use Scala-defined enums as Java enums, you can do so by extending the class `java.lang.Enum` (which is imported by default) as follows:
 
-{% tabs enum_6 class=tabs-scala-version %}
+{% tabs enum_6 %}
 {% tab 'Scala 3 only' for=enum_6 %}
 
 ```scala
@@ -953,7 +953,7 @@ The section on [algebraic datatypes][adts] and the [reference documentation][ref
 Case classes are used to model immutable data structures.
 Take the following example:
 
-{% tabs case-classes_1 class=tabs-scala-version %}
+{% tabs case-classes_1 %}
 {% tab 'Scala 2 and 3' for=case-classes_1 %}
 
 ```scala:
@@ -966,7 +966,7 @@ case class Person(name: String, relation: String)
 Since we declare `Person` as a case class, the fields `name` and `relation` are public and immutable by default.
 We can create instances of case classes as follows:
 
-{% tabs case-classes_2 class=tabs-scala-version %}
+{% tabs case-classes_2 %}
 {% tab 'Scala 2 and 3' for=case-classes_2 %}
 
 ```scala
@@ -978,7 +978,7 @@ val christina = Person("Christina", "niece")
 
 Note that the fields can’t be mutated:
 
-{% tabs case-classes_3 class=tabs-scala-version %}
+{% tabs case-classes_3 %}
 {% tab 'Scala 2 and 3' for=case-classes_3 %}
 
 ```scala
@@ -1092,7 +1092,7 @@ trait Person:
 
 Then, create these case classes to extend that trait:
 
-{% tabs case-classes_6 class=tabs-scala-version %}
+{% tabs case-classes_6 %}
 {% tab 'Scala 2 and 3' for=case-classes_6 %}
 
 ```scala
@@ -1134,7 +1134,7 @@ def getPrintableString(p: Person): String = p match
 
 Notice these two patterns in the `case` statements:
 
-{% tabs case-classes_8 class=tabs-scala-version %}
+{% tabs case-classes_8 %}
 {% tab 'Scala 2 and 3' for=case-classes_8 %}
 
 ```scala
@@ -1153,7 +1153,7 @@ Technically, the specific type of pattern case-classes_1ing shown in these examp
 
 To show how that code works, create an instance of `Student` and `Teacher`:
 
-{% tabs case-classes_9 class=tabs-scala-version %}
+{% tabs case-classes_9 %}
 {% tab 'Scala 2 and 3' for=case-classes_9 %}
 
 ```scala
@@ -1166,7 +1166,7 @@ val t = Teacher("Bob Donnan", "Mathematics")
 
 Next, this is what the output looks like in the REPL when you call `getPrintableString` with those two instances:
 
-{% tabs case-classes_10 class=tabs-scala-version %}
+{% tabs case-classes_10 %}
 {% tab 'Scala 2 and 3' for=case-classes_10 %}
 
 ```scala
@@ -1253,7 +1253,7 @@ They’re particularly useful whenever you need a singleton object that needs a 
 Case objects are useful when you need to pass immutable messages around.
 For instance, if you’re working on a music player project, you’ll create a set of commands or messages like this:
 
-{% tabs case-objects_1 class=tabs-scala-version %}
+{% tabs case-objects_1 %}
 {% tab 'Scala 2 and 3' for=case-objects_1 %}
 
 ```scala
