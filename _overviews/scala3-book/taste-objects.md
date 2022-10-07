@@ -48,7 +48,7 @@ object StringUtils:
 
 Because `StringUtils` is a singleton, its methods can be called directly on the object:
 
-{% tabs object_2 class=tabs-scala-version %}
+{% tabs object_2 %}
 {% tab 'Scala 2 and 3' for=object_2 %}
 ```scala
 val x = StringUtils.isNullOrEmpty("")    // true
