@@ -59,7 +59,7 @@ In that syntax:
 Here are two examples of a one-line method named `add` that takes two `Int` input parameters.
 The first version explicitly shows the method’s `Int` return type, and the second does not:
 
-{% tabs method_2 class=tabs-scala-version %}
+{% tabs method_2 %}
 {% tab 'Scala 2 and 3' for=method_2 %}
 
 ```scala
@@ -77,7 +77,7 @@ Declaring the return type can make it easier to understand it when you look at i
 
 Invoking a method is straightforward:
 
-{% tabs method_3 class=tabs-scala-version %}
+{% tabs method_3 %}
 {% tab 'Scala 2 and 3' for=method_3 %}
 
 ```scala
@@ -90,7 +90,7 @@ val x = add(1, 2)   // 3
 The Scala collections classes have dozens of built-in methods.
 These examples show how to call them:
 
-{% tabs method_4 class=tabs-scala-version %}
+{% tabs method_4 %}
 {% tab 'Scala 2 and 3' for=method_4 %}
 
 ```scala
@@ -146,7 +146,7 @@ In that method:
 
 When you paste that code into the REPL, you’ll see that it works as desired:
 
-{% tabs method_6 class=tabs-scala-version %}
+{% tabs method_6 %}
 {% tab 'Scala 2 and 3' for=method_6 %}
 
 ```scala
@@ -162,7 +162,7 @@ Because almost everything in Scala is an _expression_---meaning that each line o
 
 This becomes more clear when you condense that method and write it on one line:
 
-{% tabs method_7 class=tabs-scala-version %}
+{% tabs method_7 %}
 {% tab 'Scala 2 and 3' for=method_7 %}
 
 ```scala
@@ -245,7 +245,7 @@ def makeConnection(timeout: Int = 5_000, protocol: String = "http") =
 
 Because the parameters have default values, the method can be called in these ways:
 
-{% tabs method_10 class=tabs-scala-version %}
+{% tabs method_10 %}
 {% tab 'Scala 2 and 3' for=method_10 %}
 
 ```scala
@@ -270,7 +270,7 @@ Notice that by using default parameter values, it appears to the consumer that t
 If you prefer, you can also use the names of the method parameters when calling a method.
 For instance, `makeConnection` can also be called in these ways:
 
-{% tabs method_11 class=tabs-scala-version %}
+{% tabs method_11 %}
 {% tab 'Scala 2 and 3' for=method_11 %}
 
 ```scala
@@ -286,7 +286,7 @@ makeConnection(protocol="https", timeout=10_000)
 In some frameworks named parameters are heavily used.
 They’re also very useful when multiple method parameters have the same type:
 
-{% tabs method_12 class=tabs-scala-version %}
+{% tabs method_12 %}
 {% tab 'Scala 2 and 3' for=method_12 %}
 
 ```scala
@@ -298,7 +298,7 @@ engage(true, true, true, false)
 
 Without help from an IDE that code can be hard to read, but this code is much more clear and obvious:
 
-{% tabs method_13 class=tabs-scala-version %}
+{% tabs method_13 %}
 {% tab 'Scala 2 and 3' for=method_13 %}
 
 ```scala
@@ -324,7 +324,7 @@ When you create arity-0 methods:
 
 For example, this method performs a side effect, so it’s declared with empty parentheses:
 
-{% tabs method_14 class=tabs-scala-version %}
+{% tabs method_14 %}
 {% tab 'Scala 2 and 3' for=method_14 %}
 
 ```scala
@@ -336,7 +336,7 @@ def speak() = println("hi")
 
 Doing this requires callers of the method to use open parentheses when calling the method:
 
-{% tabs method_15 class=tabs-scala-version %}
+{% tabs method_15 %}
 {% tab 'Scala 2 and 3' for=method_15 %}
 
 ```scala
@@ -387,7 +387,7 @@ def isTruthy(a: Any) =
 
 These examples show how that method works:
 
-{% tabs method_17 class=tabs-scala-version %}
+{% tabs method_17 %}
 {% tab 'Scala 2 and 3' for=method_17 %}
 
 ```scala
@@ -624,7 +624,7 @@ Their main purpose is to let you add new functionality to closed classes.
 As shown in that section, imagine that you have a `Circle` class, but you can’t change its source code.
 For instance, it may be defined like this in a third-party library:
 
-{% tabs method_23 class=tabs-scala-version %}
+{% tabs method_23 %}
 {% tab 'Scala 2 and 3' for=method_23 %}
 
 ```scala
@@ -636,7 +636,7 @@ case class Circle(x: Double, y: Double, radius: Double)
 
 When you want to add methods to this class, you can define them as extension methods, like this:
 
-{% tabs method_24 class=tabs-scala-version %}
+{% tabs method_24 %}
 {% tab 'Scala 3 only' for=method_24 %}
 
 ```scala
@@ -651,7 +651,7 @@ extension (c: Circle)
 
 Now when you have a `Circle` instance named `aCircle`, you can call those methods like this:
 
-{% tabs method_25 class=tabs-scala-version %}
+{% tabs method_25 %}
 {% tab 'Scala 2 and 3' for=method_25 %}
 
 ```scala
