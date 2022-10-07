@@ -168,7 +168,7 @@ Here, `makeInt` takes a parameter named `radix`.
 The code doesn’t account for possible string-to-integer conversion errors, but skipping that detail, the examples show how it works:
 
 {% tabs extension_2 class=tabs-scala-version %}
-{% tab 'Scala 3 only' for=extension_2 %}
+{% tab 'Scala 3 Only' for=extension_2 %}
 ```scala
 extension (s: String)
   def makeInt(radix: Int): Int = Integer.parseInt(s, radix)
