@@ -21,11 +21,13 @@ For instance, consider a program that sorts a list of addresses by two criteria:
 
 {% tabs contextual_1 %}
 {% tab 'Scala 2 and 3' for=contextual_1 %}
+
 ```scala
 val addresses: List[Address] = ...
 
 addresses.sortBy(address => (address.city, address.street))
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -43,11 +45,13 @@ It is convenient to omit it because we know `String`s are generally compared usi
 
 However, it is also possible to pass it explicitly:
 
-{% tabs contextual_2 class=tabs-scala-version %}
+{% tabs contextual_2 %}
 {% tab 'Scala 2 and 3' for=contextual_2 %}
+
 ```scala
 addresses.sortBy(address => (address.city, address.street))(using Ordering.Tuple2(Ordering.String, Ordering.String))
 ```
+
 {% endtab %}
 {% endtabs %}
 
