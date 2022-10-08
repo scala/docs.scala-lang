@@ -341,7 +341,7 @@ given[CC[_], A: Gen](using Factory[A, CC[A]]): Gen[CC[A]] with
       LazyList.unfold(()) { _ =>
         if Random.nextInt(100) < 10 then None
         else Some((summon[Gen[A]].get, ()))
-    }
+      }
     summon[Factory[A, CC[A]]].fromSpecific(lazyElements)
 ~~~
 {% endtab %}
