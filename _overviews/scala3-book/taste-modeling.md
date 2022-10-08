@@ -75,7 +75,7 @@ Given those traits, here’s a `Dog` class that extends all of those traits whil
 {% tabs traits-class class=tabs-scala-version %}
 {% tab 'Scala 2' for=traits-class %}
 ```scala
-class Dog(name: String) extends Speaker, TailWagger, Runner {
+class Dog(name: String) extends Speaker with TailWagger with Runner {
   def speak(): String = "Woof!"
 }
 ```
