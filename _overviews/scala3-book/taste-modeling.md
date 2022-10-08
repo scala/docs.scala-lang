@@ -145,7 +145,7 @@ class Person(var firstName: String, var lastName: String) {
   def printFullName() = println(s"$firstName $lastName")
 }
 
-val p = Person("John", "Stephens")
+val p = new Person("John", "Stephens")
 println(p.firstName)   // "John"
 p.lastName = "Legend"
 p.printFullName()      // "John Legend"
