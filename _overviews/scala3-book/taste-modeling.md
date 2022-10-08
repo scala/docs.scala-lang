@@ -96,7 +96,7 @@ Similarly, here’s a `Cat` class that implements those same traits while also o
 {% tabs traits-override class=tabs-scala-version %}
 {% tab 'Scala 2' for=traits-override %}
 ```scala
-class Cat(name: String) extends Speaker, TailWagger, Runner {
+class Cat(name: String) extends Speaker with TailWagger with Runner {
   def speak(): String = "Meow"
   override def startRunning(): Unit = println("Yeah ... I don’t run")
   override def stopRunning(): Unit = println("No need to stop")
