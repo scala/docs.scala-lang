@@ -115,6 +115,15 @@ and `Array`. Fortunately, the type `IsIterable[Repr]` has implicit instances for
 to `IterableOps[A, Iterable, C]` (for some element type `A` and some collection type `C`) and there are
 instances for actual collection types and also for `String` and `Array`.
 
+~~~ scala
+import scala.collection.generic.IsIterable
+
+extension [Repr](repr: Repr)(using iter: IsIterable[Repr])
+  def sumBy[B: Numeric](f: iter.A => B): B =
+    val coll = iter(repr)
+    ... // same as before
+~~~
+
 {% endtab %}
 {% endtabs %}
 
