@@ -29,6 +29,8 @@ as parameter, or an `Iterable[A]` if you need more than one traversal.
 For instance, say we want to implement a `sumBy` operation that sums the elements of a
 collection after they have been transformed by a function:
 
+{% tabs sumBy_1 %}
+{% tab 'Scala 2 and 3' for=sumBy_1 %}
 ~~~ scala
 case class User(name: String, age: Int)
 
@@ -36,10 +38,14 @@ val users = Seq(User("Alice", 22), User("Bob", 20))
 
 println(users.sumBy(_.age)) // “42”
 ~~~
+{% endtab %}
+{% endtabs %}
+
+{% tabs sumBy_2 class=tabs-scala-version %}
+{% tab 'Scala 2' for=sumBy_2 %}
 
 We can define the `sumBy` operation as an extension method, using an
 [implicit class](/overviews/core/implicit-classes.html), so that it can be called like a method:
-
 ~~~ scala
 import scala.collection.IterableOnce
 
@@ -54,14 +60,34 @@ implicit class SumByOperation[A](coll: IterableOnce[A]) {
   }
 }
 ~~~
-
 Unfortunately, this extension method does not work with values of type `String` and not
 even with `Array`. This is because these types are not part of the Scala collections
 hierarchy. They can be converted to proper collection types, though, but the extension method
 will not work directly on `String` and `Array` because that would require applying two implicit
 conversions in a row.
 
+{% endtab %}
+{% tab 'Scala 3' for=sumBy_2 %}
+
+We can define the `sumBy` operation as an extension method so that it can be called like a method:
+~~~ scala
+import scala.collection.IterableOnce
+
+extension [A](coll: IterableOnce[A])
+  def sumBy[B: Numeric](f: A => B): B =
+    val it = coll.iterator
+    var result = f(it.next())
+    while it.hasNext do
+      result = summon[Numeric[B]].plus(result, f(it.next()))
+    result
+~~~
+{% endtab %}
+{% endtabs %}
+
 ### Consuming any type that is *like* a collection
+
+{% tabs sumBy_3 class=tabs-scala-version %}
+{% tab 'Scala 2' for=sumBy_3 %}
 
 If we want the `sumBy` to work on any type that is *like* a collection, such as `String`
 and `Array`, we have to add another indirection level:
@@ -81,10 +107,33 @@ The type `IsIterable[Repr]` has implicit instances for all types `Repr` that can
 to `IterableOps[A, Iterable, C]` (for some element type `A` and some collection type `C`). There are
 instances for actual collection types and also for `String` and `Array`.
 
+{% endtab %}
+{% tab 'Scala 3' for=sumBy_3 %}
+
+We expect the `sumBy` to work on any type that is *like* a collection, such as `String`
+and `Array`. Fortunately, the type `IsIterable[Repr]` has implicit instances for all types `Repr` that can be converted
+to `IterableOps[A, Iterable, C]` (for some element type `A` and some collection type `C`) and there are
+instances for actual collection types and also for `String` and `Array`.
+
+~~~ scala
+import scala.collection.generic.IsIterable
+
+extension [Repr](repr: Repr)(using iter: IsIterable[Repr])
+  def sumBy[B: Numeric](f: iter.A => B): B =
+    val coll = iter(repr)
+    ... // same as before
+~~~
+
+{% endtab %}
+{% endtabs %}
+
 ### Consuming a more specific collection than `Iterable`
 
 In some cases we want (or need) the receiver of the operation to be more specific than `Iterable`.
 For instance, some operations make sense only on `Seq` but not on `Set`.
+
+{% tabs sumBy_4 class=tabs-scala-version %}
+{% tab 'Scala 2' for=sumBy_4 %}
 
 In such a case, again, the most straightforward solution would be to take as parameter a `Seq` instead
 of an `Iterable` or an `IterableOnce`, but this would work only with *actual* `Seq` values. If you want
@@ -94,6 +143,20 @@ to support `String` and `Array` values you have to use `IsSeq` instead. `IsSeq` 
 Using `IsSeq` is also required to make your operation work on `SeqView` values, because `SeqView`
 does not extend `Seq`. Similarly, there is an `IsMap` type that makes operations work with
 both `Map` and `MapView` values.
+
+{% endtab %}
+{% tab 'Scala 3' for=sumBy_4 %}
+
+In such a case, again, the most straightforward solution would be to take as parameter a `Seq` instead
+of an `Iterable` or an `IterableOnce`. Similarly to `IsIterable`, `IsSeq` provides a
+conversion to `SeqOps[A, Iterable, C]` (for some types `A` and `C`).
+
+`IsSeq` also make your operation works on `SeqView` values, because `SeqView`
+does not extend `Seq`. Similarly, there is an `IsMap` type that makes operations work with
+both `Map` and `MapView` values.
+
+{% endtab %}
+{% endtabs %}
 
 ## Producing any collection
 
@@ -105,6 +168,8 @@ Such a type class is typically used to create arbitrary test data.
 Our goal is to define a `collection` operation that generates arbitrary collections containing arbitrary
 values. Here is an example of use of `collection`:
 
+{% tabs Gen_1 %}
+{% tab 'Scala 2 and 3' for=Gen_1 %}
 ~~~
 scala> collection[List, Int].get
 res0: List[Int] = List(606179450, -1479909815, 2107368132, 332900044, 1833159330, -406467525, 646515139, -575698977, -784473478, -1663770602)
@@ -115,18 +180,33 @@ res1: LazyList[Boolean] = LazyList(_, ?)
 scala> collection[Set, Int].get
 res2: Set[Int] = HashSet(-1775377531, -1376640531, -1009522404, 526943297, 1431886606, -1486861391)
 ~~~
+{% endtab %}
+{% endtabs %}
 
 A very basic definition of `Gen[A]` could be the following:
 
+{% tabs Gen_2 class=tabs-scala-version %}
+{% tab 'Scala 2' for=Gen_2 %}
 ```scala mdoc
 trait Gen[A] {
   /** Get a generated value of type `A` */
   def get: A
 }
 ```
+{% endtab %}
+{% tab 'Scala 3' for=Gen_2 %}
+```scala
+trait Gen[A]:
+  /** Get a generated value of type `A` */
+  def get: A
+```
+{% endtab %}
+{% endtabs %}
 
 And the following instances can be defined:
 
+{% tabs Gen_3 class=tabs-scala-version %}
+{% tab 'Scala 2' for=Gen_3 %}
 ```scala mdoc
 import scala.util.Random
 
@@ -150,6 +230,29 @@ object Gen {
 
 }
 ```
+{% endtab %}
+{% tab 'Scala 3' for=Gen_3 %}
+```scala
+import scala.util.Random
+
+object Gen:
+
+  /** Generator of `Int` values */
+  given Gen[Int] with
+    def get: Int = Random.nextInt()
+
+  /** Generator of `Boolean` values */
+  given Gen[Boolean] with
+    def get: Boolean = Random.nextBoolean()
+
+  /** Given a generator of `A` values, provides a generator of `List[A]` values */
+  given[A: Gen]: Gen[List[A]] with
+    def get: List[A] =
+      if Random.nextInt(100) < 10 then Nil
+      else summon[Gen[A]].get :: get
+```
+{% endtab %}
+{% endtabs %}
 
 The last definition (`list`) generates a value of type `List[A]` given a generator
 of values of type `A`. We could implement a generator of `Vector[A]` or `Set[A]` as
@@ -160,6 +263,8 @@ can decide which collection type they want to produce.
 
 To achieve that we have to use `scala.collection.Factory`:
 
+{% tabs Gen_4 class=tabs-scala-version %}
+{% tab 'Scala 2' for=Gen_4 %}
 ~~~ scala
 trait Factory[-A, +C] {
 
@@ -177,6 +282,27 @@ trait Factory[-A, +C] {
   def newBuilder: Builder[A, C]
 }
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=Gen_4 %}
+~~~ scala
+trait Factory[-A, +C]:
+
+  /** @return A collection of type `C` containing the same elements
+    *         as the source collection `it`.
+    * @param it Source collection
+    */
+  def fromSpecific(it: IterableOnce[A]): C
+
+  /** Get a Builder for the collection. For non-strict collection
+    * types this will use an intermediate buffer.
+    * Building collections with `fromSpecific` is preferred
+    * because it can be lazy for lazy collections.
+    */
+  def newBuilder: Builder[A, C]
+end Factory
+~~~
+{% endtab %}
+{% endtabs %}
 
 The `Factory[A, C]` trait provides two ways of building a collection `C` from
 elements of type `A`:
@@ -193,6 +319,8 @@ In practice, it is recommended to [not eagerly evaluate the elements of the coll
 
 Finally, here is how we can implement a generator of arbitrary collection types:
 
+{% tabs Gen_5 class=tabs-scala-version %}
+{% tab 'Scala 2' for=Gen_5 %}
 ~~~ scala
 import scala.collection.Factory
 
@@ -211,6 +339,22 @@ implicit def collection[CC[_], A](implicit
     }
   }
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=Gen_5 %}
+~~~ scala
+import scala.collection.Factory
+
+given[CC[_], A: Gen](using Factory[A, CC[A]]): Gen[CC[A]] with
+  def get: CC[A] =
+    val lazyElements =
+      LazyList.unfold(()) { _ =>
+        if Random.nextInt(100) < 10 then None
+        else Some((summon[Gen[A]].get, ()))
+      }
+    summon[Factory[A, CC[A]]].fromSpecific(lazyElements)
+~~~
+{% endtab %}
+{% endtabs %}
 
 The implementation uses a lazy source collection of a random size (`lazyElements`).
 Then it calls the `fromSpecific` method of the `Factory` to build the collection
@@ -225,10 +369,14 @@ For instance, we want to implement an `intersperse` operation that can be applie
 any sequence and returns a sequence with a new element inserted between each element of the
 source sequence:
 
+{% tabs intersperse_1 %}
+{% tab 'Scala 2 and 3' for=intersperse_1 %}
 ~~~ scala
 List(1, 2, 3).intersperse(0) == List(1, 0, 2, 0, 3)
 "foo".intersperse(' ') == "f o o"
 ~~~
+{% endtab %}
+{% endtabs %}
 
 When we call it on a `List`, we want to get back another `List`, and when we call it on
 a `String` we want to get back another `String`, and so on.
@@ -236,12 +384,15 @@ a `String` we want to get back another `String`, and so on.
 Building on what we’ve learned from the previous sections, we can start defining an extension method
 using `IsSeq` and producing a collection by using an implicit `Factory`:
 
+{% tabs intersperse_2 class=tabs-scala-version %}
+{% tab 'Scala 2' for=intersperse_2 %}
 ~~~ scala
-import scala.collection.{ AbstractIterator, AbstractView, Factory, SeqOps }
+import scala.collection.{ AbstractIterator, AbstractView, Factory }
 import scala.collection.generic.IsSeq
 
-class IntersperseOperation[A](seqOps: SeqOps[A, Iterable, _]) {
-  def intersperse[B >: A, That](sep: B)(implicit factory: Factory[B, That]): That =
+class IntersperseOperation[Repr](coll: Repr, seq: IsSeq[Repr]) {
+  def intersperse[B >: seq.A, That](sep: B)(implicit factory: Factory[B, That]): That = {
+    val seqOps = seq(coll)
     factory.fromSpecific(new AbstractView[B] {
       def iterator = new AbstractIterator[B] {
         val it = seqOps.iterator
@@ -254,18 +405,45 @@ class IntersperseOperation[A](seqOps: SeqOps[A, Iterable, _]) {
         }
       }
     })
+  }
 }
 
-implicit def IntersperseOperation[Repr](coll: Repr)(implicit seq: IsSeq[Repr]): IntersperseOperation[seq.A] =
-  new IntersperseOperation(seq(coll))
+implicit def IntersperseOperation[Repr](coll: Repr)(implicit seq: IsSeq[Repr]): IntersperseOperation[Repr] =
+  new IntersperseOperation(coll, seq)
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=intersperse_2 %}
+~~~ scala
+import scala.collection.{ AbstractIterator, AbstractView, Factory }
+import scala.collection.generic.IsSeq
+
+extension [Repr](coll: Repr)(using seq: IsSeq[Repr])
+  def intersperse[B >: seq.A, That](sep: B)(using factory: Factory[B, That]): That =
+    val seqOps = seq(coll)
+    factory.fromSpecific(new AbstractView[B]:
+      def iterator = new AbstractIterator[B]:
+        val it = seqOps.iterator
+        var intersperseNext = false
+        def hasNext = intersperseNext || it.hasNext
+        def next() =
+          val elem = if intersperseNext then sep else it.next()
+          intersperseNext = !intersperseNext && it.hasNext
+          elem
+    )
+~~~
+{% endtab %}
+{% endtabs %}
 
 However, if we try it we get the following behaviour:
 
+{% tabs intersperse_3 %}
+{% tab 'Scala 2 and 3' for=intersperse_3 %}
 ~~~
 scala> List(1, 2, 3).intersperse(0)
 res0: Array[Int] = Array(1, 0, 2, 0, 3)
 ~~~
+{% endtab %}
+{% endtabs %}
 
 We get back an `Array` although the source collection was a `List`! Indeed, there is
 nothing that constrains the result type of `intersperse` to depend on the receiver type.
@@ -274,6 +452,8 @@ To produce a collection whose type depends on a source collection, we have to us
 `scala.collection.BuildFrom` (formerly known as `CanBuildFrom`) instead of `Factory`.
 `BuildFrom` is defined as follows:
 
+{% tabs intersperse_4 class=tabs-scala-version %}
+{% tab 'Scala 2' for=intersperse_4 %}
 ~~~ scala
 trait BuildFrom[-From, -A, +C] {
   /** @return a collection of type `C` containing the same elements
@@ -287,11 +467,29 @@ trait BuildFrom[-From, -A, +C] {
   def newBuilder(from: From): Builder[A, C]
 }
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=intersperse_4 %}
+~~~ scala
+trait BuildFrom[-From, -A, +C]:
+  /** @return a collection of type `C` containing the same elements
+    * (of type `A`) as the source collection `it`.
+    */
+  def fromSpecific(from: From)(it: IterableOnce[A]): C
+
+  /** @return a Builder for the collection type `C`, containing
+    * elements of type `A`.
+    */
+  def newBuilder(from: From): Builder[A, C]
+~~~
+{% endtab %}
+{% endtabs %}
 
 `BuildFrom` has similar operations to `Factory`, but they take an additional `from`
 parameter. Before explaining how implicit instances of `BuildFrom` are resolved, let’s first have
 a look at how you can use it. Here is the implementation of `intersperse` based on `BuildFrom`:
 
+{% tabs intersperse_5 class=tabs-scala-version %}
+{% tab 'Scala 2' for=intersperse_5 %}
 ~~~ scala
 import scala.collection.{ AbstractView, BuildFrom }
 import scala.collection.generic.IsSeq
@@ -308,13 +506,32 @@ class IntersperseOperation[Repr, S <: IsSeq[Repr]](coll: Repr, seq: S) {
 implicit def IntersperseOperation[Repr](coll: Repr)(implicit seq: IsSeq[Repr]): IntersperseOperation[Repr, seq.type] =
   new IntersperseOperation(coll, seq)
 ~~~
+{% endtab %}
+{% tab 'Scala 3' for=intersperse_5 %}
+~~~ scala
+import scala.collection.{ AbstractIterator, AbstractView, BuildFrom }
+import scala.collection.generic.IsSeq
+
+extension [Repr](coll: Repr)(using seq: IsSeq[Repr])
+  def intersperse[B >: seq.A, That](sep: B)(using bf: BuildFrom[Repr, B, That]): That =
+    val seqOps = seq(coll)
+    bf.fromSpecific(coll)(new AbstractView[B]:
+      // same as before
+    )
+~~~
+{% endtab %}
+{% endtabs %}
 
 Note that we track the type of the receiver collection `Repr` in the `IntersperseOperation`
 class. Now, consider what happens when we write the following expression:
 
+{% tabs intersperse_6 %}
+{% tab 'Scala 2 and 3' for=intersperse_6 %}
 ~~~ scala
 List(1, 2, 3).intersperse(0)
 ~~~
+{% endtab %}
+{% endtabs %}
 
 An implicit parameter of type `BuildFrom[Repr, B, That]` has to be resolved by the compiler.
 The type `Repr` is constrained by the receiver type (here, `List[Int]`) and the type `B` is
