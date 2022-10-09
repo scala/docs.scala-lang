@@ -378,11 +378,12 @@ using `IsSeq` and producing a collection by using an implicit `Factory`:
 {% tabs intersperse_2 class=tabs-scala-version %}
 {% tab 'Scala 2' for=intersperse_2 %}
 ~~~ scala
-import scala.collection.{ AbstractIterator, AbstractView, Factory, SeqOps }
+import scala.collection.{ AbstractIterator, AbstractView, Factory }
 import scala.collection.generic.IsSeq
 
-class IntersperseOperation[A](seqOps: SeqOps[A, Iterable, _]) {
-  def intersperse[B >: A, That](sep: B)(implicit factory: Factory[B, That]): That =
+class IntersperseOperation[Repr](coll: Repr, seq: IsSeq[Repr]) {
+  def intersperse[B >: seq.A, That](sep: B)(implicit factory: Factory[B, That]): That = {
+    val seqOps = seq(coll)
     factory.fromSpecific(new AbstractView[B] {
       def iterator = new AbstractIterator[B] {
         val it = seqOps.iterator
@@ -395,19 +396,21 @@ class IntersperseOperation[A](seqOps: SeqOps[A, Iterable, _]) {
         }
       }
     })
+  }
 }
 
-implicit def IntersperseOperation[Repr](coll: Repr)(implicit seq: IsSeq[Repr]): IntersperseOperation[seq.A] =
-  new IntersperseOperation(seq(coll))
+implicit def IntersperseOperation[Repr](coll: Repr)(implicit seq: IsSeq[Repr]): IntersperseOperation[Repr] =
+  new IntersperseOperation(coll, seq)
 ~~~
 {% endtab %}
 {% tab 'Scala 3' for=intersperse_2 %}
 ~~~ scala
-import scala.collection.{ AbstractIterator, AbstractView, Factory, SeqOps }
+import scala.collection.{ AbstractIterator, AbstractView, Factory }
 import scala.collection.generic.IsSeq
 
-extension[A](seqOps: SeqOps[A, Iterable, _])
-  def intersperse[B >: A, That](sep: B)(using factory: Factory[B, That]): That =
+extension [Repr](coll: Repr)(using seq: IsSeq[Repr])
+  def intersperse[B >: seq.A, That](sep: B)(using factory: Factory[B, That]): That =
+    val seqOps = seq(coll)
     factory.fromSpecific(new AbstractView[B]:
       def iterator = new AbstractIterator[B]:
         val it = seqOps.iterator
