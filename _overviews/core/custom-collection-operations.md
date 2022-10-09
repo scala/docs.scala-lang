@@ -500,15 +500,12 @@ implicit def IntersperseOperation[Repr](coll: Repr)(implicit seq: IsSeq[Repr]): 
 import scala.collection.{ AbstractIterator, AbstractView, BuildFrom }
 import scala.collection.generic.IsSeq
 
-class IntersperseOperation[Repr, S <: IsSeq[Repr]](coll: Repr, val seq: S):
+extension [Repr](coll: Repr)(using seq: IsSeq[Repr])
   def intersperse[B >: seq.A, That](sep: B)(using bf: BuildFrom[Repr, B, That]): That =
     val seqOps = seq(coll)
     bf.fromSpecific(coll)(new AbstractView[B]:
       // same as before
     )
-
-given [Repr](using seq: IsSeq[Repr]): Conversion[Repr, IntersperseOperation[Repr, seq.type]] with
-  def apply(coll: Repr) = new IntersperseOperation(coll, seq)
 ~~~
 {% endtab %}
 {% endtabs %}
