@@ -260,7 +260,7 @@ breakable {
   val div = x / y.toFloat
   println("%d/%d = %.1f".format(x, y, div))
 }</code></pre></td>
-      <td>for 内包表記: 命令型の記述<br /><a href="https://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax">sprintf-style</a></td>
+      <td>for 内包表記: 命令型の記述<br /><a href="https://java.sun.com/javase/6/docs/api/java/util/Formatter.html#syntax"><code>sprintf</code>-style</a></td>
     </tr>
     <tr>
       <td><pre class="highlight"><code>for (i &lt;- 1 to 5) {
