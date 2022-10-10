@@ -136,8 +136,8 @@ This next example shows how to add a `makeInt` method to the `String` class.
 Here, `makeInt` takes a parameter named `radix`.
 The code doesn’t account for possible string-to-integer conversion errors, but skipping that detail, the examples show how it works:
 
-{% tabs extension_2 class=tabs-scala-version %}
-{% tab 'Scala 3 Only' for=extension_2 %}
+{% tabs extension %}
+{% tab 'Scala 3 Only' %}
 
 ```scala
 extension (s: String)
