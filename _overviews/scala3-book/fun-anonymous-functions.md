@@ -74,7 +74,7 @@ All of these lines have the exact same meaning: Double each element in `ints` to
 
 If you’re familiar with Java, it may help to know that those `map` examples are the equivalent of this Java code:
 
-{% tabs fun-anonymous-5 %}
+{% tabs fun-anonymous-5-b %}
 {% tab 'Java' %}
 ```java
 List<Integer> ints = List.of(1, 2, 3);
