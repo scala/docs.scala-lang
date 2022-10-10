@@ -31,6 +31,8 @@ lazy val example = project
   )
 ```
 
+{% tabs scala-2-location %}
+{% tab 'Scala 2 Only' %}
 ```scala
 // example/src/main/scala/location/Location.scala
 package location
@@ -52,6 +54,8 @@ object Macros {
   }
 }
 ```
+{% endtab %}
+{% endtabs %}
 
 You should recognize some similarities with your library:
 one or more macro methods, in our case the `location` method, are implemented by consuming a macro `Context` and returning a `Tree` from this context.
@@ -116,13 +120,19 @@ All the code that cannot be compiled by the Scala 3 compiler goes to the `src/ma
 
 In our example, the `Location` class stays in the `src/main/scala` folder but the `Macros` object is moved to the `src/main/scala-2` folder:
 
+{% tabs shared-location %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 // example/src/main/scala/location/Location.scala
 package location
 
 case class Location(path: String, line: Int)
 ```
+{% endtab %}
+{% endtabs %}
 
+{% tabs scala-2-location_2 %}
+{% tab 'Scala 2 Only' %}
 ```scala
 // example/src/main/scala-2/location/Macros.scala
 package location
@@ -142,10 +152,14 @@ object Macros {
   }
 }
 ```
+{% endtab %}
+{% endtabs %}
 
 Now we can initialize each of our Scala 3 macro definitions in the `src/main/scala-3` folder.
 They must have the exact same signature than their Scala 2.13 counterparts.
 
+{% tabs scala-3-location_1 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 // example/src/main/scala-3/location/Macros.scala
 package location
@@ -153,6 +167,8 @@ package location
 object Macros:
   def location: Location = ???
 ```
+{% endtab %}
+{% endtabs %}
 
 ## 3. Implement the Scala 3 macro
 
@@ -161,6 +177,8 @@ One needs to learn about the new [Metaprogramming](compatibility-metaprogramming
 
 We eventually come up with this implementation:
 
+{% tabs scala-3-location_2 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 // example/src/main/scala-3/location/Macros.scala
 package location
@@ -177,6 +195,8 @@ object Macros:
     val line = Expr(pos.startLine + 1)
     '{new Location($file, $line)}
 ```
+{% endtab %}
+{% endtabs %}
 
 ## 4. Cross-validate the macro
 
@@ -184,6 +204,8 @@ Adding some tests is important to check that the macro method works the same in 
 
 In our example, we add a single test.
 
+{% tabs shared-test %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 // example/src/test/scala/location/MacrosSpec.scala
 package location
@@ -194,6 +216,8 @@ class MacrosSpec extends munit.FunSuite {
   }
 }
 ```
+{% endtab %}
+{% endtabs %}
 
 You should now be able to run the tests in both versions.
 
