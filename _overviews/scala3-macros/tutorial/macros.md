@@ -20,7 +20,7 @@ A Scala expression with type `T` is represented by an instance of the type `scal
 We will dig into the details of the type `Expr[T]`, as well as the different ways of analyzing and constructing instances, when talking about [Quoted Code][quotes] and [Reflection][tasty].
 For now, it suffices to know that macros are metaprograms that manipulate expressions of type `Expr[T]`.
 
-The following macro implementation prints the expression of the provided argument at compile-time:
+The following macro implementation prints the expression of the provided argument at compile-time in the standard output of the compiler process:
 ```scala
 import scala.quoted.* // imports Quotes, Expr
 
