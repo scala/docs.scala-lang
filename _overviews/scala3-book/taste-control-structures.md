@@ -21,10 +21,11 @@ These structures are demonstrated in the following examples.
 
 ## `if`/`else`
 
-Scala’s `if`/`else` control structure looks similar to other languages. In Scala 2, it was constructed differently, with parentheses required and curly brackets instead of the keyword `then`:
+Scala’s `if`/`else` control structure looks similar to other languages.
 
 {% tabs if-else class=tabs-scala-version %}
 {% tab 'Scala 2' for=if-else %}
+
 ```scala
 if (x < 0) {
   println("negative")
@@ -34,9 +35,11 @@ if (x < 0) {
   println("positive")
 }
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=if-else %}
+
 ```scala
 if x < 0 then
   println("negative")
@@ -45,6 +48,7 @@ else if x == 0 then
 else
   println("positive")
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -53,15 +57,19 @@ This means that it returns a value, so you can assign the result to a variable:
 
 {% tabs if-else-expression class=tabs-scala-version %}
 {% tab 'Scala 2' for=if-else-expression %}
+
 ```scala
 val x = if (a < b) { a } else { b }
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=if-else-expression %}
+
 ```scala
 val x = if a < b then a else b
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -77,21 +85,25 @@ This example shows how to print every element in a `List`:
 
 {% tabs for-loop class=tabs-scala-version %}
 {% tab 'Scala 2' for=for-loop %}
+
 ```scala
 val ints = List(1, 2, 3, 4, 5)
 
 for (i <- ints) println(i)
 ```
+
 > The old syntax in Scala 2 `for` structure.
 
 {% endtab %}
 
 {% tab 'Scala 3' for=for-loop %}
+
 ```scala
 val ints = List(1, 2, 3, 4, 5)
 
 for i <- ints do println(i)
 ```
+
 > The code `i <- ints` is referred to as a _generator_, and the code that follows the `do` keyword is the _body_ of the loop.
 
 {% endtab %}
@@ -107,13 +119,16 @@ This example prints all of the numbers in `ints` that are greater than `2`:
 
 {% tabs for-guards class=tabs-scala-version %}
 {% tab 'Scala 2' for=for-guards %}
+
 ```scala
 for ( i <- ints if i > 2)
   println(i)
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=for-guards %}
+
 ```scala
 for
   i <- ints
@@ -121,6 +136,7 @@ for
 do
   println(i)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -130,14 +146,17 @@ However, it also has two guards, so the only time the print statement is called 
 
 {% tabs for-guards-multi class=tabs-scala-version %}
 {% tab 'Scala 2' for=for-guards-multi %}
+
 ```scala
 for ( i <- 1 to 3 if i == 2;
       j <- 'a' to 'c' if j == 'b' )
   println(s"i = $i, j = $j")   // prints: "i = 2, j = b"
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=for-guards-multi %}
+
 ```scala
 for
   i <- 1 to 3
@@ -147,6 +166,7 @@ for
 do
   println(s"i = $i, j = $j")   // prints: "i = 2, j = b"
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -159,17 +179,21 @@ Using the same `ints` list as the previous example, this code creates a new list
 
 {% tabs for-expression_1 class=tabs-scala-version %}
 {% tab 'Scala 2' for=for-expression_1 %}
+
 ````
 scala> val doubles = for (i <- ints) yield i * 2
 val doubles: List[Int] = List(2, 4, 6, 8, 10)
 ````
+
 {% endtab %}
 
 {% tab 'Scala 3' for=for-expression_1 %}
+
 ````
 scala> val doubles = for i <- ints yield i * 2
 val doubles: List[Int] = List(2, 4, 6, 8, 10)
 ````
+
 {% endtab %}
 {% endtabs %}
 
@@ -177,20 +201,24 @@ Scala’s control structure syntax is flexible, and that `for` expression can be
 
 {% tabs for-expressioni_2 class=tabs-scala-version %}
 {% tab 'Scala 2' for=for-expressioni_2 %}
+
 ```scala
 val doubles = for (i <- ints) yield i * 2
 val doubles = for (i <- ints) yield (i * 2)
 val doubles = for { i <- ints } yield (i * 2)
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=for-expressioni_2 %}
+
 ```scala
 val doubles = for i <- ints yield i * 2     // style shown above
 val doubles = for (i <- ints) yield i * 2
 val doubles = for (i <- ints) yield (i * 2)
 val doubles = for { i <- ints } yield (i * 2)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -198,17 +226,21 @@ This example shows how to capitalize the first character in each string in the l
 
 {% tabs for-expressioni_3 class=tabs-scala-version %}
 {% tab 'Scala 2' for=for-expressioni_3 %}
+
 ```scala
 val names = List("chris", "ed", "maurice")
 val capNames = for ( name <- names ) yield name.capitalize
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=for-expressioni_3 %}
+
 ```scala
 val names = List("chris", "ed", "maurice")
 val capNames = for name <- names yield name.capitalize
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -216,6 +248,7 @@ Finally, this `for` expression iterates over a list of strings, and returns the 
 
 {% tabs for-expressioni_4 class=tabs-scala-version %}
 {% tab 'Scala 2' for=for-expressioni_4 %}
+
 ```scala
 val fruits = List("apple", "banana", "lime", "orange")
 
@@ -224,9 +257,11 @@ val fruitLengths = for ( f <- fruits if f.length > 4 )
 
 // fruitLengths: List[Int] = List(5, 6, 6)
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=for-expressioni_4 %}
+
 ```scala
 val fruits = List("apple", "banana", "lime", "orange")
 
@@ -240,6 +275,7 @@ yield
 
 // fruitLengths: List[Int] = List(5, 6, 6)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -251,6 +287,7 @@ Scala has a `match` expression, which in its most basic use is like a Java `swit
 
 {% tabs match class=tabs-scala-version %}
 {% tab 'Scala 2' for=match %}
+
 ```scala
 val i = 1
 
@@ -261,9 +298,11 @@ i match {
   case _ => println("other")
 }
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=match %}
+
 ```scala
 val i = 1
 
@@ -273,6 +312,7 @@ i match
   case 2 => println("two")
   case _ => println("other")
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -280,6 +320,7 @@ However, `match` really is an expression, meaning that it returns a result based
 
 {% tabs match-expression_1 class=tabs-scala-version %}
 {% tab 'Scala 2' for=match-expression_1 %}
+
 ```scala
 val result = i match {
   case 1 => "one"
@@ -287,15 +328,18 @@ val result = i match {
   case _ => "other"
 }
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=match-expression_1 %}
+
 ```scala
 val result = i match
   case 1 => "one"
   case 2 => "two"
   case _ => "other"
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -303,6 +347,7 @@ val result = i match
 
 {% tabs match-expression_2 class=tabs-scala-version %}
 {% tab 'Scala 2' for=match-expression_2 %}
+
 ```scala
 val p = Person("Fred")
 
@@ -317,9 +362,11 @@ p match {
   case _ => println("Watch the Flintstones!")
 }
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=match-expression_2 %}
+
 ```scala
 val p = Person("Fred")
 
@@ -333,6 +380,7 @@ p match
 
   case _ => println("Watch the Flintstones!")
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -341,6 +389,7 @@ This example shows (a) how to use a `match` expression as the body of a method, 
 
 {% tabs match-expression_3 class=tabs-scala-version %}
 {% tab 'Scala 3 only' for=match-expression_3 %}
+
 ```scala
 // getClassAsString is a method that takes a single argument of any type.
 def getClassAsString(x: Matchable): String = x match
@@ -355,6 +404,7 @@ getClassAsString(1)               // Int
 getClassAsString("hello")         // 'hello' is a String
 getClassAsString(List(1, 2, 3))   // List
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -373,6 +423,7 @@ It’s similar to Java, but its syntax is consistent with `match` expressions:
 
 {% tabs try class=tabs-scala-version %}
 {% tab 'Scala 2' for=try %}
+
 ```scala
 try {
   writeTextToFile(text)
@@ -383,9 +434,11 @@ try {
   println("Clean up your resources here.")
 }
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=try %}
+
 ```scala
 try
   writeTextToFile(text)
@@ -395,6 +448,7 @@ catch
 finally
   println("Clean up your resources here.")
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -405,15 +459,19 @@ It’s one-line syntax looks like this:
 
 {% tabs while_1 class=tabs-scala-version %}
 {% tab 'Scala 2' for=while_1 %}
+
 ```scala
 while ( x >= 0 ) { x = f(x) }
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=while_1 %}
+
 ```scala
 while x >= 0 do x = f(x)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -423,6 +481,7 @@ The `while` loop multiline syntax looks like this:
 
 {% tabs while_2 class=tabs-scala-version %}
 {% tab 'Scala 2' for=while_2 %}
+
 ```scala
 var x = 1
 
@@ -431,9 +490,11 @@ while (x < 3) {
   x += 1
 }
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=while_2 %}
+
 ```scala
 var x = 1
 
@@ -443,6 +504,7 @@ do
   println(x)
   x += 1
 ```
+
 {% endtab %}
 {% endtabs %}
 
