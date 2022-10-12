@@ -387,8 +387,8 @@ p match
 In fact, a `match` expression can be used to test a variable against many different types of patterns.
 This example shows (a) how to use a `match` expression as the body of a method, and (b) how to match all the different types shown:
 
-{% tabs match-expression_3 class=tabs-scala-version %}
-{% tab 'Scala 3 only' for=match-expression_3 %}
+{% tabs match-expression_3 %}
+{% tab 'Scala 3 Only' for=match-expression_3 %}
 
 ```scala
 // getClassAsString is a method that takes a single argument of any type.
