@@ -587,7 +587,7 @@ object StringUtils {
 
 {% endtab %}
 
-{% tab 'Scala 3' for=method_1 %}
+{% tab 'Scala 3' for=method_22 %}
 
 ```scala
 object StringUtils:
