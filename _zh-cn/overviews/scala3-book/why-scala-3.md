@@ -43,7 +43,7 @@ Scala 比任何其他语言都更支持 FP 和 OOP 范式的融合。
 例如，`List` 被定义为一个类---从技术上讲，它是一个抽象类---并且像这样创建了一个新实例：
 
 {% tabs list %}
-{% tab 'Scala 2 and 3' for=list %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val x = List(1, 2, 3)
 ```
@@ -55,8 +55,8 @@ val x = List(1, 2, 3)
 
 除了从一系列模块化 traits 构建/cases像 `List` 这样的类型之外，`List` API还包含数十种其他方法，其中许多是高阶函数：
 
-{% tabs list %}
-{% tab 'Scala 2 and 3' for=list-methods %}
+{% tabs list-methods %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val xs = List(1, 2, 3, 4, 5)
 
@@ -76,8 +76,8 @@ xs.takeWhile(_ < 3)   // List(1, 2)
 Scala的 _类型推断_ 经常使语言感觉是动态类型的，即使它是静态类型的。
 对于变量声明，情况确实如此：
 
-{% tabs list %}
-{% tab 'Scala 2 and 3' for=dynamic %}
+{% tabs dynamic %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val a = 1
 val b = "Hello, world"
@@ -89,8 +89,8 @@ val stuff = ("fish", 42, 1_234.5)
 
 当把匿名函数传递给高阶函数时，情况也是如此：
 
-{% tabs list %}
-{% tab 'Scala 2 and 3' for=dynamic-hof %}
+{% tabs dynamic-hof %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 list.filter(_ < 4)
 list.map(_ * 2)
@@ -102,8 +102,8 @@ list.filter(_ < 4)
 
 还有定义方法的时候：
 
-{% tabs list %}
-{% tab 'Scala 2 and 3' for=list-method %}
+{% tabs list-method %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 def add(a: Int, b: Int) = a + b
 ```
@@ -113,7 +113,7 @@ def add(a: Int, b: Int) = a + b
 这在Scala 3中比以往任何时候都更加真实，例如在使用[union types][union-types] 时：
 
 {% tabs union %}
-{% tab 'Scala 3 Only' for=union %}
+{% tab 'Scala 3 Only' %}
 ```scala
 // union type parameter
 def help(id: Username | Password) =
@@ -132,8 +132,8 @@ val b: Password | Username = if (true) name else password
 
 Scala是一种 low ceremony，“简洁但仍然可读”的语言。例如，变量声明是简洁的：
 
-{% tabs list %}
-{% tab 'Scala 2 and 3' for=concise %}
+{% tabs concise %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val a = 1
 val b = "Hello, world"
@@ -145,7 +145,7 @@ val c = List(1,2,3)
 创建类型如traits, 类和枚举都很简洁：
 
 {% tabs enum %}
-{% tab 'Scala 3 Only' for=enum %}
+{% tab 'Scala 3 Only' %}
 ```scala
 trait Tail:
   def wagTail(): Unit
@@ -168,7 +168,7 @@ case class Person(
 简洁的高阶函数：
 
 {% tabs list-hof %}
-{% tab 'Scala 2 and 3' for=list-hof %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 list.filter(_ < 4)
 list.map(_ * 2)
@@ -251,8 +251,8 @@ Scala.js 生态系统 [有几十个库](https://www.scala-js.org/libraries) 让�
 
 这里有些例子：
 
-{% tabs list %}
-{% tab 'Scala 2 and 3' for=list-more %}
+{% tabs list-more %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 List.range(1, 3)                          // List(1, 2)
 List.range(start = 1, end = 6, step = 2)  // List(1, 3, 5)
@@ -299,8 +299,8 @@ nums.sortWith(_ > _)                      // List(10, 8, 7, 5, 1)
 Scala 习语以多种方式鼓励最佳实践。
 对于不可变性，我们鼓励您创建不可变的 `val` 声明：
 
-{% tabs list %}
-{% tab 'Scala 2 and 3' for=val %}
+{% tabs val %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val a = 1 // 不可变变量
 ```
@@ -309,8 +309,8 @@ val a = 1 // 不可变变量
 
 还鼓励您使用不可变集合类，例如 `List` 和 `Map`：
 
-{% tabs list %}
-{% tab 'Scala 2 and 3' for=list-map %}
+{% tabs list-map  %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val b = List(1,2,3)       // List 是不可变的
 val c = Map(1 -> "one")   // Map 是不可变的
@@ -320,8 +320,8 @@ val c = Map(1 -> "one")   // Map 是不可变的
 
 样例类主要用于 [领域建模]({% link _zh-cn/overviews/scala3-book/domain-modeling-intro.md %})，它们的参数是不可变的：
 
-{% tabs list %}
-{% tab 'Scala 2 and 3' for=case-class %}
+{% tabs case-class %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 case class Person(name: String)
 val p = Person("Michael Scott")
@@ -333,8 +333,8 @@ p.name = "Joe"  // 编译器错误（重新分配给 val 名称）
 
 如上一节所示，Scala 集合类支持高阶函数，您可以将方法（未显示）和匿名函数传递给它们：
 
-{% tabs list %}
-{% tab 'Scala 2 and 3' for=higher-order %}
+{% tabs higher-order %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 a.dropWhile(_ < 25)
 a.filter(_ < 25)
@@ -349,7 +349,7 @@ nums.sortWith(_ > _)
 `match` 表达式让您可以使用模式匹配，它们确实是返回值的 _表达式_：
 
 {% tabs match class=tabs-scala-version %}
-{% tab 'Scala 2' for=match %}
+{% tab 'Scala 2' %}
 ```scala
 val numAsString = i match {
   case 1 | 3 | 5 | 7 | 9 => "odd"
@@ -359,7 +359,7 @@ val numAsString = i match {
 ```
 {% endtab %}
 
-{% tab 'Scala 3' for=match %}
+{% tab 'Scala 3' %}
 ```scala
 val numAsString = i match
   case 1 | 3 | 5 | 7 | 9 => "odd"
@@ -372,7 +372,7 @@ val numAsString = i match
 因为它们可以返回值，所以它们经常被用作方法的主体：
 
 {% tabs match-body class=tabs-scala-version %}
-{% tab 'Scala 2' for=match-body %}
+{% tab 'Scala 2' %}
 ```scala
 def isTruthy(a: Matchable) = a match {
   case 0 | "" => false
@@ -381,7 +381,7 @@ def isTruthy(a: Matchable) = a match {
 ```
 {% endtab %}
 
-{% tab 'Scala 3' for=match-body %}
+{% tab 'Scala 3' %}
 ```scala
 def isTruthy(a: Matchable) = a match
   case 0 | "" => false
@@ -457,7 +457,7 @@ _安全_ 与几个新的和改变的特性有关：
 _人体工程学_ 的好例子是枚举和扩展方法，它们以非常易读的方式添加到 Scala 3 中：
 
 {% tabs extension %}
-{% tab 'Scala 3 Only' for=extension %}
+{% tab 'Scala 3 Only' %}
 ```scala
 // 枚举
 enum Color:

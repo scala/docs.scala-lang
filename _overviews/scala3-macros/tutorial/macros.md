@@ -14,13 +14,16 @@ Macros enable us to do exactly this: treat **programs as data** and manipulate t
 
 ## Macros Treat Programs as Values
 With a macro, we can treat programs as values, which allows us to analyze and generate them at compile time.
+
 A Scala expression with type `T` is represented by an instance of the type `scala.quoted.Expr[T]`.
 
 We will dig into the details of the type `Expr[T]`, as well as the different ways of analyzing and constructing instances, when talking about [Quoted Code][quotes] and [Reflection][tasty].
 For now, it suffices to know that macros are metaprograms that manipulate expressions of type `Expr[T]`.
 
-The following macro implementation simply prints the expression of the provided argument:
+The following macro implementation prints the expression of the provided argument at compile-time in the standard output of the compiler process:
 ```scala
+import scala.quoted.* // imports Quotes, Expr
+
 def inspectCode(x: Expr[Any])(using Quotes): Expr[Any] =
   println(x.show)
   x
@@ -113,7 +116,7 @@ def powerCode(
   x: Expr[Double],
   n: Expr[Int]
 )(using Quotes): Expr[Double] =
-  val value: Double = pow(x.valueOrError, n.valueOrError)
+  val value: Double = pow(x.valueOrAbort, n.valueOrAbort)
   Expr(value)
 ```
 Here, the `pow` operation is a simple Scala function that computes the value of `xⁿ`.
@@ -131,22 +134,36 @@ Other types can also work if a `ToExpr` is implemented for it, we will [see this
 
 ### Extracting Values from Expressions
 
-The second method we use in the implementation of `powerCode` is `Expr[T].valueOrError`, which has an effect opposite to `Expr.apply`.
+The second method we use in the implementation of `powerCode` is `Expr[T].valueOrAbort`, which has an effect opposite to `Expr.apply`.
 It attempts to extract a value of type `T` from an expression of type `Expr[T]`.
 This can only succeed, if the expression directly contains the code of a value, otherwise, it will throw an exception that stops the macro expansion and reports that the expression did not correspond to a value.
 
-Instead of `valueOrError`, we could also use the `value` operation, which will return an `Option`.
+Instead of `valueOrAbort`, we could also use the `value` operation, which will return an `Option`.
 This way we can report the error with a custom error message.
 
+#### Reporting Custom Error Messages
+
+The contextual `Quotes` parameter provides a `report` object that we can use to report a custom error message.
+Within a macro implementation method, you can access the contextual `Quotes` parameter with the `quotes` method
+(imported with `import scala.quoted.*`), then import the `report` object by `import quotes.reflect.report`.
+
+#### Providing the Custom Error
+
+We will provide the custom error message by calling `errorAndAbort` on the `report` object as follows:
 ```scala
-  ...
+def powerCode(
+  x: Expr[Double],
+  n: Expr[Int]
+)(using Quotes): Expr[Double] =
+  import quotes.reflect.report
   (x.value, n.value) match
     case (Some(base), Some(exponent)) =>
-      pow(base, exponent)
+      val value: Double = pow(base, exponent)
+      Expr(value)
     case (Some(_), _) =>
-      report.error("Expected a known value for the exponent, but was " + n.show, n)
+      report.errorAndAbort("Expected a known value for the exponent, but was " + n.show, n)
     case _ =>
-      report.error("Expected a known value for the base, but was " + x.show, x)
+      report.errorAndAbort("Expected a known value for the base, but was " + x.show, x)
 ```
 
 Alternatively, we can also use the `Expr.unapply` extractor
@@ -155,11 +172,12 @@ Alternatively, we can also use the `Expr.unapply` extractor
   ...
   (x, n) match
     case (Expr(base), Expr(exponent)) =>
-      pow(base, exponent)
+      val value: Double = pow(base, exponent)
+      Expr(value)
     case (Expr(_), _) => ...
     case _ => ...
 ```
-The operations `value`, `valueOrError`, and `Expr.unapply` will work for all _primitive types_, _tuples_ of any arity, `Option`, `Seq`, `Set`, `Map`, `Either` and `StringContext`.
+The operations `value`, `valueOrAbort`, and `Expr.unapply` will work for all _primitive types_, _tuples_ of any arity, `Option`, `Seq`, `Set`, `Map`, `Either` and `StringContext`.
 Other types can also work if an `FromExpr` is implemented for it, we will [see this later][quotes].
 
 
@@ -167,15 +185,17 @@ Other types can also work if an `FromExpr` is implemented for it, we will [see t
 
 In the implementation of `inspectCode`, we have already seen how to convert expressions to the string representation of their _source code_ using the `.show` method.
 This can be useful to perform debugging on macro implementations:
+
+<!-- The below code example does not use multi-line string because it causes syntax highlighting to break -->
 ```scala
 def debugPowerCode(
   x: Expr[Double],
   n: Expr[Int]
 )(using Quotes): Expr[Double] =
   println(
-    s"""powerCode
-       |  x := ${x.show}
-       |  n := ${n.show}""".stripMargin)
+    s"powerCode \n" +
+    s"  x := ${x.show}\n" +
+    s"  n := ${n.show}")
   val code = powerCode(x, n)
   println(s"  code := ${code.show}")
   code
@@ -188,23 +208,24 @@ Varargs in Scala are represented with `Seq`, hence when we write a macro with a 
 It is possible to recover each individual argument (of type `Expr[T]`) using the `scala.quoted.Varargs` extractor.
 
 ```scala
-import scala.quoted.Varargs
+import scala.quoted.* // imports `Varargs`, `Quotes`, etc.
 
 inline def sumNow(inline nums: Int*): Int =
   ${ sumCode('nums)  }
 
 def sumCode(nums: Expr[Seq[Int]])(using Quotes): Expr[Int] =
+  import quotes.reflect.report
   nums match
     case  Varargs(numberExprs) => // numberExprs: Seq[Expr[Int]]
-      val numbers: Seq[Int] = numberExprs.map(_.valueOrError)
+      val numbers: Seq[Int] = numberExprs.map(_.valueOrAbort)
       Expr(numbers.sum)
-    case _ => report.error(
-      "Expected explicit argument" +
-      "Notation `args: _*` is not supported.", numbersExpr)
+    case _ => report.errorAndAbort(
+      "Expected explicit varargs sequence. " +
+      "Notation `args*` is not supported.", nums)
 ```
 
 The extractor will match a call to `sumNow(1, 2, 3)` and extract a `Seq[Expr[Int]]` containing the code of each parameter.
-But, if we try to match the argument of the call `sumNow(nums: _*)`, the extractor will not match.
+But, if we try to match the argument of the call `sumNow(nums*)`, the extractor will not match.
 
 `Varargs` can also be used as a constructor. `Varargs(Expr(1), Expr(2), Expr(3))` will return an `Expr[Seq[Int]]`.
 We will see how this can be useful later.
@@ -244,7 +265,7 @@ inline def test(inline ignore: Boolean, computation: => Unit): Boolean =
   ${ testCode('ignore, 'computation) }
 
 def testCode(ignore: Expr[Boolean], computation: Expr[Unit])(using Quotes) =
-  if ignore.valueOrError then Expr(false)
+  if ignore.valueOrAbort then Expr(false)
   else Expr.block(List(computation), Expr(true))
 ```
 
