@@ -119,7 +119,7 @@ Welcome to Scala 3.2.0 (17.0.3, Java OpenJDK 64-Bit Server VM).
 Type in expressions for evaluation. Or try :help.
 
 scala> util.Properties.versionNumberString
-val res0: String = 2.13.9
+val res0: String = 2.13.10
 ```
 
 Note that Scala 3 offers
