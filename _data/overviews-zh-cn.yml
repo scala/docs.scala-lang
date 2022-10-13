@@ -263,11 +263,6 @@
 - category: 遗留问题
   description: "涵盖一些与最近的 Scala 版本（2.12+）不再相关的特性的参考"
   overviews:
-    - title: Scala Actors迁移参考
-      by: Vojin Jovanovic and Philipp Haller
-      icon: truck
-      url: "core/actors-migration-guide.html"
-      description: "为简化 Scala Actors 到 Akka 的迁移我们提供了 Actor 迁移包（Actor Migration Kit，简称 AMK）。迁移包中包含了 Scala Actors 的一个扩展，可以通过项目类路径中包含 scala-actors-migration.jar 来引入该扩展。另外，Akka 2.1 还包含一些新特性，比如 ActorDSL 单例，可使用 Scala Actors 编写的代码更易转换成 Akka 的。本篇目的是指导用户迁移过程并阐释如何使用 Actor 迁移包。"
     - title: Scala Actors API
       by: Philipp Haller and Stephen Tu
       icon: users
