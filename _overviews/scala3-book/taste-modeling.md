@@ -322,7 +322,7 @@ You _can_ manually add all of those methods to a class yourself, but since those
 
 This code demonstrates several `case` class features:
 
-{% tabs case-class class=tabs-scala-version %}
+{% tabs case-class %}
 {% tab 'Scala 2 and 3' for=case-class %}
 
 ```scala
