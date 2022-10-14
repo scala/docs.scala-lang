@@ -637,7 +637,7 @@ case class Circle(x: Double, y: Double, radius: Double)
 When you want to add methods to this class, you can define them as extension methods, like this:
 
 {% tabs method_24 %}
-{% tab 'Scala 3 only' for=method_24 %}
+{% tab 'Scala 3 Only' for=method_24 %}
 
 ```scala
 extension (c: Circle)
@@ -652,7 +652,7 @@ extension (c: Circle)
 Now when you have a `Circle` instance named `aCircle`, you can call those methods like this:
 
 {% tabs method_25 %}
-{% tab 'Scala 2 and 3' for=method_25 %}
+{% tab 'Scala 3 Only' for=method_25 %}
 
 ```scala
 aCircle.circumference
