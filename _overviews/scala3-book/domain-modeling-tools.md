@@ -325,8 +325,18 @@ The class has three constructors, given by the numbered comments in the code:
 
 Those constructors can be called like this:
 
-{% tabs structor_2 %}
-{% tab 'Scala 2 and 3' for=structor_2 %}
+{% tabs structor_2 class=tabs-scala-version %}
+{% tab 'Scala 2' for=structor_2 %}
+
+```scala
+val s1 = new Student("Mary", "123")
+val s2 = new Student("Mary", "123", LocalDate.now)
+val s3 = new Student("Mary", "123", 456)
+```
+
+{% endtab %}
+
+{% tab 'Scala 3' for=structor_2 %}
 
 ```scala
 val s1 = Student("Mary", "123")
@@ -836,7 +846,7 @@ Basic enumerations are used to define sets of constants, like the months in a ye
 As an example, these enumerations define sets of attributes related to pizzas:
 
 {% tabs enum_1 %}
-{% tab 'Scala 3 only' for=enum_1 %}
+{% tab 'Scala 3 Only' for=enum_1 %}
 
 ```scala
 enum CrustSize:
@@ -855,7 +865,7 @@ enum Topping:
 To use them in other code, first import them, and then use them:
 
 {% tabs enum_2 %}
-{% tab 'Scala 3 only' for=enum_2 %}
+{% tab 'Scala 3 Only' for=enum_2 %}
 
 ```scala
 import CrustSize.*
@@ -868,7 +878,7 @@ val currentCrustSize = Small
 Enum values can be compared using equals (`==`), and also enum_1ed on:
 
 {% tabs enum_3 %}
-{% tab 'Scala 3 only' for=enum_3 %}
+{% tab 'Scala 3 Only' for=enum_3 %}
 
 ```scala
 // if/then
@@ -890,7 +900,7 @@ currentCrustSize enum_1
 Enumerations can also be parameterized:
 
 {% tabs enum_4 %}
-{% tab 'Scala 3 only' for=enum_4 %}
+{% tab 'Scala 3 Only' for=enum_4 %}
 
 ```scala
 enum Color(val rgb: Int):
@@ -905,7 +915,7 @@ enum Color(val rgb: Int):
 And they can also have members (like fields and methods):
 
 {% tabs enum_5 %}
-{% tab 'Scala 3 only' for=enum_5 %}
+{% tab 'Scala 3 Only' for=enum_5 %}
 
 ```scala
 enum Planet(mass: Double, radius: Double):
@@ -927,7 +937,7 @@ enum Planet(mass: Double, radius: Double):
 If you want to use Scala-defined enums as Java enums, you can do so by extending the class `java.lang.Enum` (which is imported by default) as follows:
 
 {% tabs enum_6 %}
-{% tab 'Scala 3 only' for=enum_6 %}
+{% tab 'Scala 3 Only' for=enum_6 %}
 
 ```scala
 enum Color extends Enum[Color] { case Red, Green, Blue }
