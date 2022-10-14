@@ -119,7 +119,7 @@ trait MultiplyService {
 }
 
 // implement those traits as a concrete object
-object MathService extends AddService, MultiplyService
+object MathService extends AddService with MultiplyService
 
 // use the object
 import MathService._
