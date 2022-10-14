@@ -151,8 +151,16 @@ trait TranslationService:
 
 To compose the two services, we can simply create a new trait extending them:
 
-{% tabs traits_5 %}
-{% tab 'Scala 2 and 3' for=traits_5 %}
+{% tabs traits_5 class=tabs-scala-version %}
+{% tab 'Scala 2' for=traits_5 %}
+
+```scala
+trait ComposedService extends GreetingService with TranslationService
+```
+
+{% endtab %}
+
+{% tab 'Scala 3' for=traits_5 %}
 
 ```scala
 trait ComposedService extends GreetingService, TranslationService
@@ -189,7 +197,7 @@ Like traits, classes can extend multiple traits (but only one super class):
 {% tab 'Scala 2' for=class_1 %}
 
 ```scala
-class MyService(name: String) extends ComposedService, Showable {
+class MyService(name: String) extends ComposedService with Showable {
   def show = s"$name says $sayHello"
 }
 ```
