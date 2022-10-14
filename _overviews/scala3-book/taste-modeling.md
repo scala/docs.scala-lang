@@ -37,6 +37,7 @@ As an example of how to use traits as interfaces, here are three traits that def
 
 {% tabs traits class=tabs-scala-version %}
 {% tab 'Scala 2' for=traits %}
+
 ```scala
 trait Speaker {
   def speak(): String  // has no body, so it’s abstract
@@ -52,9 +53,11 @@ trait Runner {
   def stopRunning(): Unit = println("Stopped running")
 }
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=traits %}
+
 ```scala
 trait Speaker:
   def speak(): String  // has no body, so it’s abstract
@@ -67,6 +70,7 @@ trait Runner:
   def startRunning(): Unit = println("I’m running")
   def stopRunning(): Unit = println("Stopped running")
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -74,18 +78,22 @@ Given those traits, here’s a `Dog` class that extends all of those traits whil
 
 {% tabs traits-class class=tabs-scala-version %}
 {% tab 'Scala 2' for=traits-class %}
+
 ```scala
 class Dog(name: String) extends Speaker with TailWagger with Runner {
   def speak(): String = "Woof!"
 }
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=traits-class %}
+
 ```scala
 class Dog(name: String) extends Speaker, TailWagger, Runner:
   def speak(): String = "Woof!"
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -95,6 +103,7 @@ Similarly, here’s a `Cat` class that implements those same traits while also o
 
 {% tabs traits-override class=tabs-scala-version %}
 {% tab 'Scala 2' for=traits-override %}
+
 ```scala
 class Cat(name: String) extends Speaker with TailWagger with Runner {
   def speak(): String = "Meow"
@@ -102,22 +111,40 @@ class Cat(name: String) extends Speaker with TailWagger with Runner {
   override def stopRunning(): Unit = println("No need to stop")
 }
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=traits-override %}
+
 ```scala
 class Cat(name: String) extends Speaker, TailWagger, Runner:
   def speak(): String = "Meow"
   override def startRunning(): Unit = println("Yeah ... I don’t run")
   override def stopRunning(): Unit = println("No need to stop")
 ```
+
 {% endtab %}
 {% endtabs %}
 
 These examples show how those classes are used:
 
 {% tabs traits-use class=tabs-scala-version %}
-{% tab 'Scala 2 and 3' for=traits-use %}
+{% tab 'Scala 2' for=traits-use %}
+
+```scala
+val d = new Dog("Rover")
+println(d.speak())      // prints "Woof!"
+
+val c = new Cat("Morris")
+println(c.speak())      // "Meow"
+c.startRunning()        // "Yeah ... I don’t run"
+c.stopRunning()         // "No need to stop"
+```
+
+{% endtab %}
+
+{% tab 'Scala 3' for=traits-use %}
+
 ```scala
 val d = Dog("Rover")
 println(d.speak())      // prints "Woof!"
@@ -127,6 +154,7 @@ println(c.speak())      // "Meow"
 c.startRunning()        // "Yeah ... I don’t run"
 c.stopRunning()         // "No need to stop"
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -140,6 +168,7 @@ Here’s an example of a class that models a “person.” In OOP fields are typ
 
 {% tabs class_1 class=tabs-scala-version %}
 {% tab 'Scala 2' for=class_1 %}
+
 ```scala
 class Person(var firstName: String, var lastName: String) {
   def printFullName() = println(s"$firstName $lastName")
@@ -150,9 +179,11 @@ println(p.firstName)   // "John"
 p.lastName = "Legend"
 p.printFullName()      // "John Legend"
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=class_1 %}
+
 ```scala
 class Person(var firstName: String, var lastName: String):
   def printFullName() = println(s"$firstName $lastName")
@@ -162,17 +193,29 @@ println(p.firstName)   // "John"
 p.lastName = "Legend"
 p.printFullName()      // "John Legend"
 ```
+
 {% endtab %}
 {% endtabs %}
 
 Notice that the class declaration creates a constructor:
 
 {% tabs class_2 class=tabs-scala-version %}
-{% tab 'Scala 2 and 3' for=class_2 %}
+{% tab 'Scala 2' for=class_2 %}
+
+```scala
+// this code uses that constructor
+val p = new Person("John", "Stephens")
+```
+
+{% endtab %}
+
+{% tab 'Scala 3' for=class_2 %}
+
 ```scala
 // this code uses that constructor
 val p = Person("John", "Stephens")
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -203,8 +246,9 @@ For instance, a pizza has three main attributes:
 
 These are concisely modeled with enums:
 
-{% tabs enum_1 class=tabs-scala-version %}
-{% tab 'Scala 3 only' for=enum_1 %}
+{% tabs enum_1 %}
+{% tab 'Scala 3 Only' for=enum_1 %}
+
 ```scala
 enum CrustSize:
   case Small, Medium, Large
@@ -215,13 +259,15 @@ enum CrustType:
 enum Topping:
   case Cheese, Pepperoni, BlackOlives, GreenOlives, Onions
 ```
+
 {% endtab %}
 {% endtabs %}
 
 Once you have an enum you can use it in all of the ways you normally use a trait, class, or object:
 
-{% tabs enum_2 class=tabs-scala-version %}
-{% tab 'Scala 3 only' for=enum_2 %}
+{% tabs enum_2 %}
+{% tab 'Scala 3 Only' for=enum_2 %}
+
 ```scala
 import CrustSize.*
 val currentCrustSize = Small
@@ -235,18 +281,21 @@ currentCrustSize match
 // enums in an `if` statement
 if currentCrustSize == Small then println("Small crust size")
 ```
+
 {% endtab %}
 {% endtabs %}
 
 Here’s another example of how to create and use an ADT with Scala:
 
-{% tabs enum_3 class=tabs-scala-version %}
-{% tab 'Scala 3 only' for=enum_3 %}
+{% tabs enum_3 %}
+{% tab 'Scala 3 Only' for=enum_3 %}
+
 ```scala
 enum Nat:
   case Zero
   case Succ(pred: Nat)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -275,6 +324,7 @@ This code demonstrates several `case` class features:
 
 {% tabs case-class class=tabs-scala-version %}
 {% tab 'Scala 2 and 3' for=case-class %}
+
 ```scala
 // define a case class
 case class Person(
@@ -297,6 +347,7 @@ p.name = "Joe"   // error: can’t reassign a val field
 val p2 = p.copy(name = "Elton John")
 p2               // : Person = Person(Elton John,Singer)
 ```
+
 {% endtab %}
 {% endtabs %}
 
