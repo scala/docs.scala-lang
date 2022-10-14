@@ -59,7 +59,7 @@ In Scala, describing the data model of a programming problem is simple:
 Data that simply consists of different alternatives, like crust size, crust type, and toppings, is concisely modeled with the Scala 3 `enum` construct:
 
 {% tabs data_1 %}
-{% tab 'Scala 3 only' for=data_1 %}
+{% tab 'Scala 3 Only' for=data_1 %}
 
 ```scala
 enum CrustSize:
@@ -82,24 +82,8 @@ enum Topping:
 A pizza can be thought of as a _compound_ container of the different attributes above.
 We can use a `case` class to describe that a `Pizza` consists of a `crustSize`, `crustType`, and potentially multiple `Topping`s:
 
-{% tabs data_2 class=tabs-scala-version %}
-{% tab 'Scala 2' for=data_2 %}
-
-```scala
-import CrustSize._
-import CrustType._
-import Topping._
-
-case class Pizza(
-  crustSize: CrustSize,
-  crustType: CrustType,
-  toppings: Seq[Topping]
-)
-```
-
-{% endtab %}
-
-{% tab 'Scala 3' for=data_2 %}
+{% tabs data_2 %}
+{% tab 'Scala 3 Only' for=data_2 %}
 
 ```scala
 import CrustSize.*
@@ -325,7 +309,7 @@ A first approach is to define the behavior---the functions---in a companion obje
 With this approach, in addition to the enumeration or case class you also define an equally named companion object that contains the behavior.
 
 {% tabs org_1 %}
-{% tab 'Scala 3 only' for=org_1 %}
+{% tab 'Scala 3 Only' for=org_1 %}
 
 ```scala
 case class Pizza(
@@ -660,7 +644,7 @@ This can have multiple advantages:
 Let us revisit our example once more.
 
 {% tabs module_7 %}
-{% tab 'Scala 3 only' for=module_7 %}
+{% tab 'Scala 3 Only' for=module_7 %}
 
 ```scala
 case class Pizza(
