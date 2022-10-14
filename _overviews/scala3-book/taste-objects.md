@@ -70,7 +70,7 @@ This example demonstrates how the `area` method in the companion class can acces
 import scala.math._
 
 class Circle(radius: Double) {
-  import Circle.__
+  import Circle._
   def area: Double = calculateArea(radius)
 }
 
