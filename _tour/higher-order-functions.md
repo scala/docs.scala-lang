@@ -16,12 +16,12 @@ The terminology can get a bit confusing at this point, and we use the phrase
 "higher order function" for both methods and functions that take functions as parameters
 or that return a function.
 
-In a pure Object Oriented world a good practice is to avoid exposing methods parameterized with functions that might leak object's internal state. Leaking internal state might break the invariants of the object itself thus violating encapsulation. 
+In a pure Object Oriented world a good practice is to avoid exposing methods parameterized with functions that might leak object's internal state. Leaking internal state might break the invariants of the object itself thus violating encapsulation.
 
 One of the most common examples is the higher-order
 function `map` which is available for collections in Scala.
 
-{% tabs map_example_1 class=tabs-scala-version %}
+{% tabs map_example_1 %}
 
 {% tab 'Scala 2 and 3' for=map_example_1 %}
 ```scala mdoc:nest
@@ -39,7 +39,7 @@ list of salaries.
 To shrink the code, we could make the function anonymous and pass it directly as
 an argument to map:
 
-{% tabs map_example_2 class=tabs-scala-version %}
+{% tabs map_example_2 %}
 
 {% tab 'Scala 2 and 3' for=map_example_2 %}
 ```scala mdoc:nest
@@ -53,7 +53,7 @@ val newSalaries = salaries.map(x => x * 2) // List(40000, 140000, 80000)
 Notice how `x` is not declared as an Int in the above example. That's because the
 compiler can infer the type based on the type of function map expects (see [Currying](/tour/multiple-parameter-lists.html)). An even more idiomatic way to write the same piece of code would be:
 
-{% tabs map_example_3 class=tabs-scala-version %}
+{% tabs map_example_3 %}
 
 {% tab 'Scala 2 and 3' for=map_example_3 %}
 ```scala mdoc:nest
