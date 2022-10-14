@@ -60,7 +60,7 @@ val p = new Person("Robert Allen Zimmerman", "Harmonica Player")
 However, with [creator applications][creator] this isn’t required in Scala 3:
 
 {% tabs class_3 %}
-{% tab 'Scala 2 and 3' for=class_3 %}
+{% tab 'Scala 3 Only' for=class_3 %}
 
 ```scala
 val p = Person("Robert Allen Zimmerman", "Harmonica Player")
