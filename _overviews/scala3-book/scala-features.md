@@ -2,11 +2,10 @@
 title: Scala Features
 type: chapter
 description: This page discusses the main features of the Scala programming language.
-languages: [zh-cn]
+languages: [ru, zh-cn]
 num: 2
 previous-page: introduction
 next-page: why-scala-3
-languages: [ru]
 ---
 
 

@@ -2,11 +2,10 @@
 title: Hello, World!
 type: section
 description: This section demonstrates a Scala 3 'Hello, World!' example.
-languages: [zh-cn]
+languages: [ru, zh-cn]
 num: 5
 previous-page: taste-intro
 next-page: taste-repl
-languages: [ru]
 ---
 
 > **Hint**: in the following examples try picking your preferred Scala version.
