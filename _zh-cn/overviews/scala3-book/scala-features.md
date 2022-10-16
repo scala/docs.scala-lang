@@ -4,14 +4,14 @@ type: chapter
 description: This page discusses the main features of the Scala 3 programming language.
 num: 2
 previous-page: introduction
-next-page: 
+next-page: why-scala-3
 
-scala3: true
 partof: scala3-book
 overview-name: "Scala 3 — Book"
 layout: multipage-overview
 permalink: "/zh-cn/scala3/book/:title.html"
 ---
+
 
 {% comment %}
 The name _Scala_ comes from the word _scalable_, and true to that name, the Scala language is used to power busy websites and analyze huge data sets.
@@ -113,17 +113,38 @@ That is, we don’t write imperative code like this:
 正如函数式编程的说法，在 Scala 中，您编写您想要 _“什么”_，而不是 _“如何”_ 去实现它。
 也就是说，我们不会像这样编写命令式代码：
 
+{% tabs scala-features-1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=scala-features-1 %}
 ```scala
+import scala.collection.mutable.ListBuffer
+
 def double(ints: List[Int]): List[Int] = {
   val buffer = new ListBuffer[Int]()
   for (i <- ints) {
-      buffer += i * 2
+    buffer += i * 2
   }
   buffer.toList
 }
 
+val oldNumbers = List(1, 2, 3)
 val newNumbers = double(oldNumbers)
 ```
+{% endtab %}
+{% tab 'Scala 3' for=scala-features-1 %}
+```scala
+import scala.collection.mutable.ListBuffer
+
+def double(ints: List[Int]): List[Int] =
+  val buffer = new ListBuffer[Int]()
+  for i <- ints do
+    buffer += i * 2
+  buffer.toList
+
+val oldNumbers = List(1, 2, 3)
+val newNumbers = double(oldNumbers)
+```
+{% endtab %}
+{% endtabs %}
 
 {% comment %}
 That code instructs the compiler what to do on a step-by-step basis.
@@ -133,9 +154,13 @@ Instead, we write high-level, functional code using higher-order functions and l
 这段代码指示编译器逐步执行特定操作。
 相反，我们使用像这样的高阶函数与 lambda 来编写高层次的函数式代码以计算出相同的结果：
 
+{% tabs scala-features-2 %}
+{% tab 'Scala 2 and 3' for=scala-features-2 %}
 ```scala
 val newNumbers = oldNumbers.map(_ * 2)
 ```
+{% endtab %}
+{% endtabs %}
 
 {% comment %}
 As you can see, that code is much more concise, easier to read, and easier to maintain.
@@ -158,10 +183,15 @@ For instance, variables are created concisely, and their types are clear:
 
 Scala 具有简明易读的语法。例如，变量的创建十分简洁，其类型也很明确。
 
+{% tabs scala-features-3 %}
+{% tab 'Scala 2 and 3' for=scala-features-3 %}
 ```scala
 val nums = List(1,2,3)
 val p = Person("Martin", "Odersky")
 ```
+{% endtab %}
+{% endtabs %}
+
 
 {% comment %}
 Higher-order functions and lambdas make for concise code that’s readable:
@@ -169,6 +199,8 @@ Higher-order functions and lambdas make for concise code that’s readable:
 
 高阶函数与 lambda 使代码简明易读：
 
+{% tabs scala-features-4 %}
+{% tab 'Scala 2 and 3' for=scala-features-4 %}
 ```scala
 nums.map(i => i * 2)   // long form
 nums.map(_ * 2)        // short form
@@ -176,6 +208,8 @@ nums.map(_ * 2)        // short form
 nums.filter(i => i > 1)
 nums.filter(_ > 1)
 ```
+{% endtab %}
+{% endtabs %}
 
 {% comment %}
 Traits, classes, and methods are defined with a clean, light syntax:
@@ -183,6 +217,24 @@ Traits, classes, and methods are defined with a clean, light syntax:
 
 特质（Traits）、类（Class）和方法（Method）都是用简洁、轻巧的语法定义的。
 
+{% tabs scala-features-5 class=tabs-scala-version %}
+{% tab 'Scala 2' for=scala-features-5 %}
+```scala mdoc
+trait Animal {
+  def speak(): Unit
+}
+
+trait HasTail {
+  def wagTail(): Unit
+}
+
+class Dog extends Animal with HasTail {
+  def speak(): Unit = println("Woof")
+  def wagTail(): Unit = println("⎞⎜⎛  ⎞⎜⎛")
+}
+```
+{% endtab %}
+{% tab 'Scala 3' for=scala-features-5 %}
 ```scala
 trait Animal:
   def speak(): Unit
@@ -191,9 +243,12 @@ trait HasTail:
   def wagTail(): Unit
 
 class Dog extends Animal, HasTail:
-  def speak() = println("Woof")
-  def wagTail() = println("⎞⎜⎛  ⎞⎜⎛")
+  def speak(): Unit = println("Woof")
+  def wagTail(): Unit = println("⎞⎜⎛  ⎞⎜⎛")
 ```
+{% endtab %}
+{% endtabs %}
+
 
 {% comment %}
 Studies have shown that the time a developer spends _reading_ code to _writing_ code is at least a 10:1 ratio, so writing code that is concise _and_ readable is important.
@@ -216,15 +271,32 @@ All of these expressions look like a dynamically-typed language like Python or R
 
 Scala 是一种静态类型的语言，但由于其类型推断能力，它使人感觉是动态的。所有这些表达式看起来都像 Python 或 Ruby 这样的动态类型语言代码，但其实它们都是 Scala 代码：
 
+{% tabs scala-features-6 class=tabs-scala-version %}
+{% tab 'Scala 2' for=scala-features-6 %}
 ```scala
 val s = "Hello"
 val p = Person("Al", "Pacino")
-val sum = ints.reduceLeft(_ + _)
-val y = for i <- nums yield i * 2
-val z = nums.filter(_ > 100)
-            .filter(_ < 10_000)
-            .map(_ * 2)
+val sum = nums.reduceLeft(_ + _)
+val y = for (i <- nums) yield i * 2
+val z = nums
+  .filter(_ > 100)
+  .filter(_ < 10_000)
+  .map(_ * 2)
 ```
+{% endtab %}
+{% tab 'Scala 3' for=scala-features-6 %}
+```scala
+val s = "Hello"
+val p = Person("Al", "Pacino")
+val sum = nums.reduceLeft(_ + _)
+val y = for i <- nums yield i * 2
+val z = nums
+  .filter(_ > 100)
+  .filter(_ < 10_000)
+  .map(_ * 2)
+```
+{% endtab %}
+{% endtabs %}
 
 {% comment %}
 As Heather Miller states, Scala is considered to be a [strong, statically-typed language](https://heather.miller.am/blog/types-in-scala.html), and you get all the benefits of static types:
@@ -313,19 +385,19 @@ Scala 的类型系统在编译时强制要求以安全与连贯的方式使用�
 - [Inner classes](/tour/inner-classes.html) and [abstract type members](/tour/abstract-type-members.html) as object members
 {% endcomment %}
 
-- [推断类型]({% link _overviews/scala3-book/types-inferred.md %})
-- [泛型类]({% link _overviews/scala3-book/types-generics.md %})
-- [型变]({% link _overviews/scala3-book/types-variance.md %})
+- [推断类型]({% link _zh-cn/overviews/scala3-book/types-inferred.md %})
+- [泛型类]({% link _zh-cn/overviews/scala3-book/types-generics.md %})
+- [型变]({% link _zh-cn/overviews/scala3-book/types-variance.md %})
 - [类型上界](/tour/upper-type-bounds.html) 与 [类型下界](/tour/lower-type-bounds.html)
 - [多态方法](/tour/polymorphic-methods.html)
-- [交叉类型]({% link _overviews/scala3-book/types-intersection.md %})
-- [联合类型]({% link _overviews/scala3-book/types-union.md %})
+- [交叉类型]({% link _zh-cn/overviews/scala3-book/types-intersection.md %})
+- [联合类型]({% link _zh-cn/overviews/scala3-book/types-union.md %})
 - [类型 Lambda]({{ site.scala3ref }}/new-types/type-lambdas.html)
-- [`given` 实例与 `using` 子句]({% link _overviews/scala3-book/ca-given-using-clauses.md %})
-- [扩展方法]({% link _overviews/scala3-book/ca-extension-methods.md %})
-- [类型类]({% link _overviews/scala3-book/ca-type-classes.md %})
-- [多元相等]({% link _overviews/scala3-book/ca-multiversal-equality.md %})
-- [不透明类型别名]({% link _overviews/scala3-book/types-opaque-types.md %})
+- [`given` 实例与 `using` 子句]({% link _zh-cn/overviews/scala3-book/ca-given-using-clauses.md %})
+- [扩展方法]({% link _zh-cn/overviews/scala3-book/ca-extension-methods.md %})
+- [类型类]({% link _zh-cn/overviews/scala3-book/ca-type-classes.md %})
+- [多元相等]({% link _zh-cn/overviews/scala3-book/ca-multiversal-equality.md %})
+- [不透明类型别名]({% link _zh-cn/overviews/scala3-book/types-opaque-types.md %})
 - [开放类]({{ site.scala3ref }}/other-new-features/open-classes.html)
 - [匹配类型]({{ site.scala3ref }}/new-types/match-types.html)
 - [依赖函数类型]({{ site.scala3ref }}/new-types/dependent-function-types.html)
@@ -520,11 +592,15 @@ For instance, in Scala you can read files with a Java `BufferedReader` and `File
 对于第一点来说，Scala 应用程序中每天都会用到 Java 类和库。
 例如，在 Scala 中，您可以使用 Java 的 `BufferedReader` 和 `FileReader` 来读取文件：
 
+{% tabs scala-features-7 %}
+{% tab 'Scala 2 and 3' for=scala-features-7 %}
 ```scala
 import java.io.*
 val br = BufferedReader(FileReader(filename))
 // read the file with `br` ...
 ```
+{% endtab %}
+{% endtabs %}
 
 {% comment %}
 Using Java code in Scala is generally seamless.
@@ -536,11 +612,14 @@ Java collections can also be used in Scala, and if you want to use Scala’s ric
 
 Java 集合也可以在 Scala 中使用， 如果您想将 Scala 丰富的集合类方法与其一起使用，只需几行代码即可转换它们：
 
-
+{% tabs scala-features-8 %}
+{% tab 'Scala 2 and 3' for=scala-features-8 %}
 ```scala
 import scala.jdk.CollectionConverters.*
 val scalaList: Seq[Integer] = JavaClass.getJavaList().asScala.toSeq
 ```
+{% endtab %}
+{% endtabs %}
 
 {% comment %}
 
@@ -882,10 +961,7 @@ As this page shows, Scala has many terrific programming language features at a h
 
 
 [reference]: {{ site.scala3ref }}/overview.html
-[multiversal]: {% link _overviews/scala3-book/ca-multiversal-equality.md %}
-[extension]: {% link _overviews/scala3-book/ca-extension-methods.md %}
-[givens]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
-[opaque_types]: {% link _overviews/scala3-book/types-opaque-types.md %}
-
-
-
+[multiversal]: {% link _zh-cn/overviews/scala3-book/ca-multiversal-equality.md %}
+[extension]: {% link _zh-cn/overviews/scala3-book/ca-extension-methods.md %}
+[givens]: {% link _zh-cn/overviews/scala3-book/ca-given-using-clauses.md %}
+[opaque_types]: {% link _zh-cn/overviews/scala3-book/types-opaque-types.md %}

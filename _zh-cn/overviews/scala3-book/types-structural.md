@@ -5,6 +5,11 @@ description: This section introduces and demonstrates structural types in Scala 
 num: 55
 previous-page: types-opaque-types
 next-page: types-dependent-function
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

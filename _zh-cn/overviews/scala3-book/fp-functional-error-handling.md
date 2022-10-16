@@ -5,6 +5,11 @@ description: This section provides an introduction to functional error handling 
 num: 45
 previous-page: fp-functions-are-values
 next-page: fp-summary
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

@@ -5,6 +5,11 @@ description: This page demonstrates how to create and use type classes in Scala 
 num: 64
 previous-page: ca-extension-methods
 next-page: ca-multiversal-equality
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -105,4 +110,4 @@ trait HasLegs[A]:
 有关如何在 Scala 3 中使用类型类的真实示例，请参阅[多元相等性部分][multiversal]中的 `CanEqual` 讨论。
 
 
-[multiversal]: {% link _overviews/scala3-book/ca-multiversal-equality.md %}
+[multiversal]: {% link _zh-cn/overviews/scala3-book/ca-multiversal-equality.md %}

@@ -5,6 +5,11 @@ description: This page shows how to use anonymous functions in Scala, including 
 num: 28
 previous-page: fun-intro
 next-page: fun-function-variables
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

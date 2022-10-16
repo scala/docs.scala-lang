@@ -5,6 +5,11 @@ description: This page demonstrates how Scala code can interact with Java, and h
 num: 72
 previous-page: tools-worksheets
 next-page: scala-for-java-devs
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 ## 介绍

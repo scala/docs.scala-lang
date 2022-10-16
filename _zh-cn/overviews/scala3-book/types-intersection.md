@@ -5,6 +5,11 @@ description: This section introduces and demonstrates intersection types in Scal
 num: 50
 previous-page: types-generics
 next-page: types-union
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

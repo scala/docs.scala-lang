@@ -5,6 +5,11 @@ description: This section looks at a commonly-used build tool, sbt, and a testin
 num: 70
 previous-page: scala-tools
 next-page: tools-worksheets
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

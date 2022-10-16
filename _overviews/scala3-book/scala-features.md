@@ -2,6 +2,7 @@
 title: Scala Features
 type: chapter
 description: This page discusses the main features of the Scala programming language.
+languages: [zh-cn]
 num: 2
 previous-page: introduction
 next-page: why-scala-3
@@ -538,7 +539,7 @@ Serialization:
 
 ### AI, machine learning
 
-- [BigDL](https://github.com/intel-analytics/BigDL) (Distributed Deep Learning Framework for Apache Spark) for Apache Spark
+- [BigDL](https://github.com/intel-analytics/BigDL) (Distributed Deep Learning Framework for Apache Spark)
 - [TensorFlow Scala](https://github.com/eaplatanios/tensorflow_scala)
 
 

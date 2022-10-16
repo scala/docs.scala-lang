@@ -5,6 +5,11 @@ description: This page demonstrates how to create and use higher-order functions
 num: 32
 previous-page: fun-hofs
 next-page: fun-write-method-returns-function
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

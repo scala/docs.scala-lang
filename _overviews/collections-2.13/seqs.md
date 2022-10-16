@@ -16,7 +16,7 @@ The [Seq](https://www.scala-lang.org/api/current/scala/collection/Seq.html) trai
 
 The operations on sequences, summarized in the table below, fall into the following categories:
 
-* **Indexing and length** operations `apply`, `isDefinedAt`, `length`, `indices`, and `lengthCompare`. For a `Seq`, the `apply` operation means indexing; hence a sequence of type `Seq[T]` is a partial function that takes an `Int` argument (an index) and which yields a sequence element of type `T`. In other words `Seq[T]` extends `PartialFunction[Int, T]`. The elements of a sequence are indexed from zero up to the `length` of the sequence minus one. The `length` method on sequences is an alias of the `size` method of general collections. The `lengthCompare` method allows you to compare the lengths of a sequences with an Int even if the sequences has infinite length.
+* **Indexing and length** operations `apply`, `isDefinedAt`, `length`, `indices`, and `lengthCompare`. For a `Seq`, the `apply` operation means indexing; hence a sequence of type `Seq[T]` is a partial function that takes an `Int` argument (an index) and which yields a sequence element of type `T`. In other words `Seq[T]` extends `PartialFunction[Int, T]`. The elements of a sequence are indexed from zero up to the `length` of the sequence minus one. The `length` method on sequences is an alias of the `size` method of general collections. The `lengthCompare` method allows you to compare the lengths of a sequences with an Int or with an `Iterable` even if the sequences has infinite length.
 * **Index search operations** `indexOf`, `lastIndexOf`, `indexOfSlice`, `lastIndexOfSlice`, `indexWhere`, `lastIndexWhere`, `segmentLength`, which return the index of an element equal to a given value or matching some predicate.
 * **Addition operations** `prepended`, `prependedAll`, `appended`, `appendedAll`, `padTo`, which return new sequences obtained by adding elements at the front or the end of a sequence.
 * **Update operations** `updated`, `patch`, which return a new sequence obtained by replacing some elements of the original sequence.
@@ -32,17 +32,17 @@ If a sequence is mutable, it offers in addition a side-effecting `update` method
 | WHAT IT IS  	  	    | WHAT IT DOES				     |
 | ------       	       	    | ------					     |
 |  **Indexing and Length:** |						     |
-|  `xs(i)`    	  	    |(or, written out, `xs apply i`). The element of `xs` at index `i`.|
-|  `xs isDefinedAt i`	    |Tests whether `i` is contained in `xs.indices`.|
+|  `xs(i)`    	  	    |(or, written out, `xs.apply(i)`). The element of `xs` at index `i`.|
+|  `xs.isDefinedAt(i)`	    |Tests whether `i` is contained in `xs.indices`.|
 |  `xs.length`	    	    |The length of the sequence (same as `size`).|
-|  `xs lengthCompare n`    |Returns `-1` if `xs` is shorter than `n`, `+1` if it is longer, and `0` if it is of length `n`. Works even if the sequence is infinite, for example `LazyList.from(1) lengthCompare 42` returns a positive value.|
+|  `xs.lengthCompare(n)`    |Returns `-1` if `xs` is shorter than `n`, `+1` if it is longer, and `0` if it is of length `n`. Works even if the sequence is infinite, for example `LazyList.from(1).lengthCompare(42)` returns a positive value.|
 |  `xs.indices`	     	    |The index range of `xs`, extending from `0` to `xs.length - 1`.|
 |  **Index Search:**        |						     |
-|  `xs indexOf x`   	    |The index of the first element in `xs` equal to `x` (several variants exist).|
-|  `xs lastIndexOf x`       |The index of the last element in `xs` equal to `x` (several variants exist).|
-|  `xs indexOfSlice ys`     |The first index of `xs` such that successive elements starting from that index form the sequence `ys`.|
-|  `xs lastIndexOfSlice ys` |The last index of `xs` such that successive elements starting from that index form the sequence `ys`.|
-|  `xs indexWhere p`   	    |The index of the first element in xs that satisfies `p` (several variants exist).|
+|  `xs.indexOf(x)`   	    |The index of the first element in `xs` equal to `x` (several variants exist).|
+|  `xs.lastIndexOf(x)`       |The index of the last element in `xs` equal to `x` (several variants exist).|
+|  `xs.indexOfSlice(ys)`     |The first index of `xs` such that successive elements starting from that index form the sequence `ys`.|
+|  `xs.lastIndexOfSlice(ys)` |The last index of `xs` such that successive elements starting from that index form the sequence `ys`.|
+|  `xs.indexWhere(p)`   	    |The index of the first element in xs that satisfies `p` (several variants exist).|
 |  `xs.segmentLength(p, i)`|The length of the longest uninterrupted segment of elements in `xs`, starting with `xs(i)`, that all satisfy the predicate `p`.|
 |  **Additions:** 	    |						     |
 |  `xs.prepended(x)`<br>or `x +: xs` 	    	    |A new sequence that consists of `x` prepended to `xs`.|
@@ -56,24 +56,24 @@ If a sequence is mutable, it offers in addition a side-effecting `update` method
 |  `xs(i) = x`	    	    |(or, written out, `xs.update(i, x)`, only available for `mutable.Seq`s). Changes the element of `xs` at index `i` to `x`.|
 |  **Sorting:** 	    |						     |
 |  `xs.sorted`	            |A new sequence obtained by sorting the elements of `xs` using the standard ordering of the element type of `xs`.|
-|  `xs sortWith lt`	    |A new sequence obtained by sorting the elements of `xs` using `lt` as comparison operation.|
-|  `xs sortBy f`	    |A new sequence obtained by sorting the elements of `xs`. Comparison between two elements proceeds by mapping the function `f` over both and comparing the results.|
+|  `xs.sortWith(lt)`	    |A new sequence obtained by sorting the elements of `xs` using `lt` as comparison operation.|
+|  `xs.sortBy(f)`	    |A new sequence obtained by sorting the elements of `xs`. Comparison between two elements proceeds by mapping the function `f` over both and comparing the results.|
 |  **Reversals:** 	    |						     |
 |  `xs.reverse`	            |A sequence with the elements of `xs` in reverse order.|
 |  `xs.reverseIterator`	    |An iterator yielding all the elements of `xs` in reverse order.|
 |  **Comparisons:** 	    |						     |
-|  `xs sameElements ys`	    |A test whether `xs` and `ys` contain the same elements in the same order|
-|  `xs startsWith ys`	    |Tests whether `xs` starts with sequence `ys` (several variants exist).|
-|  `xs endsWith ys`	    |Tests whether `xs` ends with sequence `ys` (several variants exist).|
-|  `xs contains x`	    |Tests whether `xs` has an element equal to `x`.|
-|  `xs search x`        |Tests whether a sorted sequence `xs` has an element equal to `x`, possibly in a more efficient way than `xs contains x`.|
-|  `xs containsSlice ys`    |Tests whether `xs` has a contiguous subsequence equal to `ys`.|
-|  `(xs corresponds ys)(p)` |Tests whether corresponding elements of `xs` and `ys` satisfy the binary predicate `p`.|
+|  `xs.sameElements(ys)`	    |A test whether `xs` and `ys` contain the same elements in the same order|
+|  `xs.startsWith(ys)`	    |Tests whether `xs` starts with sequence `ys` (several variants exist).|
+|  `xs.endsWith(ys)`	    |Tests whether `xs` ends with sequence `ys` (several variants exist).|
+|  `xs.contains(x)`	    |Tests whether `xs` has an element equal to `x`.|
+|  `xs.search(x)`        |Tests whether a sorted sequence `xs` has an element equal to `x`, possibly in a more efficient way than `xs.contains(x)`.|
+|  `xs.containsSlice(ys)`    |Tests whether `xs` has a contiguous subsequence equal to `ys`.|
+|  `xs.corresponds(ys)(p)` |Tests whether corresponding elements of `xs` and `ys` satisfy the binary predicate `p`.|
 |  **Multiset Operations:** |						     |
-|  `xs intersect ys`	    |The multi-set intersection of sequences `xs` and `ys` that preserves the order of elements in `xs`.|
-|  `xs diff ys`	    	    |The multi-set difference of sequences `xs` and `ys` that preserves the order of elements in `xs`.|
+|  `xs.intersect(ys)`	    |The multi-set intersection of sequences `xs` and `ys` that preserves the order of elements in `xs`.|
+|  `xs.diff(ys)`	    	    |The multi-set difference of sequences `xs` and `ys` that preserves the order of elements in `xs`.|
 |  `xs.distinct`	    |A subsequence of `xs` that contains no duplicated element.|
-|  `xs distinctBy f`	    |A subsequence of `xs` that contains no duplicated element after applying the transforming function `f`. For instance, `List("foo", "bar", "quux").distinctBy(_.length) == List("foo", "quux")`|
+|  `xs.distinctBy(f)`	    |A subsequence of `xs` that contains no duplicated element after applying the transforming function `f`. For instance, `List("foo", "bar", "quux").distinctBy(_.length) == List("foo", "quux")`|
 
 Trait [Seq](https://www.scala-lang.org/api/current/scala/collection/Seq.html) has two subtraits [LinearSeq](https://www.scala-lang.org/api/current/scala/collection/LinearSeq.html), and [IndexedSeq](https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html). These do not add any new operations to the immutable branch, but each offers different performance characteristics: A linear sequence has efficient `head` and `tail` operations, whereas an indexed sequence has efficient `apply`, `length`, and (if mutable) `update` operations. Frequently used linear sequences are `scala.collection.immutable.List` and `scala.collection.immutable.LazyList`. Frequently used indexed sequences are `scala.Array` and `scala.collection.mutable.ArrayBuffer`. The `Vector` class provides an interesting compromise between indexed and linear access. It has both effectively constant time indexing overhead and constant time linear access overhead. Because of this, vectors are a good foundation for mixed access patterns where both indexed and linear accesses are used. You'll learn more on vectors [later]({% link _overviews/collections-2.13/concrete-immutable-collection-classes.md %}).
 
@@ -102,20 +102,20 @@ Two often used implementations of buffers are `ListBuffer` and `ArrayBuffer`.  A
 | WHAT IT IS               | WHAT IT DOES|
 | ------                   | ------                                                           |
 |  **Additions:**          |                                                                  |
-|  `buf append x`<br>or `buf += x`              |Appends element `x` to buffer, and returns `buf` itself as result.|
-|  `buf appendAll xs`<br>or`buf ++= xs`         |Appends all elements in `xs` to buffer.|
-|  `buf prepend x`<br>or `x +=: buf`            |Prepends element `x` to buffer.|
-|  `buf prependAll xs`<br>or `xs ++=: buf`      |Prepends all elements in `xs` to buffer.|
+|  `buf.append(x)`<br>or `buf += x`              |Appends element `x` to buffer, and returns `buf` itself as result.|
+|  `buf.appendAll(xs)`<br>or`buf ++= xs`         |Appends all elements in `xs` to buffer.|
+|  `buf.prepend(x)`<br>or `x +=: buf`            |Prepends element `x` to buffer.|
+|  `buf.prependAll(xs)`<br>or `xs ++=: buf`      |Prepends all elements in `xs` to buffer.|
 |  `buf.insert(i, x)`      |Inserts element `x` at index `i` in buffer.|
 |  `buf.insertAll(i, xs)`  |Inserts all elements in `xs` at index `i` in buffer.|
 |  `buf.padToInPlace(n, x)`                     |Appends element `x` to buffer until it has `n` elements in total.|
 |  **Removals:**           |                                                                  |
-|  `buf subtractOne x`<br>or `buf -= x`         |Removes element `x` from buffer.|
-|  `buf subtractAll xs`<br>or `buf --= xs`      |Removes elements in `xs` from buffer.|
-|  `buf remove i`          |Removes element at index `i` from buffer.|
+|  `buf.subtractOne(x)`<br>or `buf -= x`         |Removes element `x` from buffer.|
+|  `buf.subtractAll(xs)`<br>or `buf --= xs`      |Removes elements in `xs` from buffer.|
+|  `buf.remove(i)`          |Removes element at index `i` from buffer.|
 |  `buf.remove(i, n)`      |Removes `n` elements starting at index `i` from buffer.|
-|  `buf trimStart n`       |Removes first `n` elements from buffer.|
-|  `buf trimEnd n`         |Removes last `n` elements from buffer.|
+|  `buf.trimStart(n)`       |Removes first `n` elements from buffer.|
+|  `buf.trimEnd(n)`         |Removes last `n` elements from buffer.|
 |  `buf.clear()`           |Removes all elements from buffer.|
 |  **Replacement:**        | |
 |  `buf.patchInPlace(i, xs, n)`   |Replaces (at most) `n` elements of buffer by elements in `xs`, starting from index `i` in buffer.|

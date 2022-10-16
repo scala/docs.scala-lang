@@ -5,6 +5,11 @@ description: This section provides an answer to the question, what is functional
 num: 41
 previous-page: fp-intro
 next-page: fp-immutable-values
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

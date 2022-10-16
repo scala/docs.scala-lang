@@ -21,6 +21,8 @@ This is only possible in Scala 3, since the Scala 3 compiler can read both the S
 
 Let's start by considering the following code skeleton:
 
+{% tabs scala-3-location_1 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 // example/src/main/scala/location/Location.scala
 package location
@@ -31,6 +33,8 @@ object Macros:
   def location: Location = macro ???
   inline def location: Location = ${ ??? }
 ```
+{% endtab %}
+{% endtabs %}
 
 As you can see the `location` macro is defined twice:
 - `def location: Location = macro ???` is a Scala 2.13 macro definition
@@ -46,6 +50,8 @@ The explanation is that it recognizes the first definition is for Scala 2.13 onl
 
 You can put the Scala 3 macro implementation alongside the definition.
 
+{% tabs scala-3-location_2 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 package location
 
@@ -63,12 +69,17 @@ object Macros:
     val line = Expr(Position.ofMacroExpansion.startLine + 1)
     '{new Location($file, $line)}
 ```
+{% endtab %}
+{% endtabs %}
 
 ## 2. Implement the Scala 2 macro
 
 The Scala 3 compiler can compile a Scala 2 macro implementation if it contains no quasiquote or reification.
 
 For instance this piece of code does compile with Scala 3, and so you can put it alongside the Scala 3 implementation.
+
+{% tabs scala-2-and-3-location %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 import scala.reflect.macros.blackbox.Context
 
@@ -79,6 +90,8 @@ def locationImpl(c: Context): c.Tree =  {
   New(c.mirror.staticClass(classOf[Location].getName()), path, line)
 }
 ```
+{% endtab %}
+{% endtabs %}
 
 However, in many cases you will have to move the Scala 2.13 macro implementation in a Scala 2.13 submodule.
 
@@ -102,6 +115,8 @@ Here `example`, our main library compiled in Scala 3, depends on `example-compat
 
 In such a case we can put the Scala 2 macro implementation in `example-compat` and use quasiquotes.
 
+{% tabs scala-2-location %}
+{% tab 'Scala 2 Only' %}
 ```scala
 package location
 
@@ -120,6 +135,8 @@ object Scala2MacrosCompat {
   }
 }
 ```
+{% endtab %}
+{% endtabs %}
 
 Note that we had to move the `Location` class downstream.
 
@@ -149,6 +166,9 @@ lazy val `example-test` = project.in(file("example-test"))
 > `-Ytasty-reader` is needed in Scala 2.13 to consume Scala 3 artifacts
 
 For instance the test can be:
+
+{% tabs scala-2-and-3-test %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 // example-test/src/test/scala/location/MacrosSpec.scala
 package location
@@ -159,6 +179,8 @@ class MacrosSpec extends munit.FunSuite {
   }
 }
 ```
+{% endtab %}
+{% endtabs %}
 
 You should now be able to run the tests in both versions.
 

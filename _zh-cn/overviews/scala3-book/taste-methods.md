@@ -5,6 +5,11 @@ description: This section provides an introduction to defining and using methods
 num: 10
 previous-page: taste-modeling
 next-page: taste-functions
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -126,4 +131,4 @@ extension (s: String)
 Scala方法可以更强大：它们可以采用类型参数和上下文参数。
 它们在[领域建模][data-1]一节中有详细介绍。
 
-[data-1]: {% link _overviews/scala3-book/domain-modeling-tools.md %}
+[data-1]: {% link _zh-cn/overviews/scala3-book/domain-modeling-tools.md %}

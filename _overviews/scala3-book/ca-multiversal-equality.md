@@ -2,6 +2,7 @@
 title: Multiversal Equality
 type: section
 description: This page demonstrates how to implement Multiversal Equality in Scala 3.
+languages: [zh-cn]
 num: 65
 previous-page: ca-type-classes
 next-page: ca-implicit-conversions

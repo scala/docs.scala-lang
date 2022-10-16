@@ -5,6 +5,11 @@ description: This section introduces and demonstrates opaque types in Scala 3.
 num: 54
 previous-page: types-variance
 next-page: types-structural
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -151,4 +156,4 @@ val d: Double = l2 // ERROR: Found Logarithm required Double
 不透明类型提供了对实现细节的合理抽象，而不会增加性能开销。
 如上图所示，不透明类型使用起来很方便，并且与 [扩展方法][extension] 功能很好地集成在一起。
 
-[extension]: {% link _overviews/scala3-book/ca-extension-methods.md %}
+[extension]: {% link _zh-cn/overviews/scala3-book/ca-extension-methods.md %}

@@ -5,6 +5,11 @@ description: This section introduces and demonstrates generics in Scala 3.
 num: 49
 previous-page: types-inferred
 next-page: types-intersection
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -43,4 +48,4 @@ println(stack.pop())  // prints 1
 
 > 有关如何用泛型类型表达可变的详细信息，请参阅[型变（Variance）部分][variance]。
 
-[variance]: {% link _overviews/scala3-book/types-variance.md %}
+[variance]: {% link _zh-cn/overviews/scala3-book/types-variance.md %}

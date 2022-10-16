@@ -5,6 +5,11 @@ description: This section looks at worksheets, an alternative to Scala projects.
 num: 71
 previous-page: tools-sbt
 next-page: interacting-with-java
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -55,5 +60,5 @@ next-page: interacting-with-java
 从上到下进行评估。
 
 
-[REPL session]: {% link _overviews/scala3-book/taste-repl.md %}
-[program entry point]: {% link _overviews/scala3-book/methods-main-methods.md %}
+[REPL session]: {% link _zh-cn/overviews/scala3-book/taste-repl.md %}
+[program entry point]: {% link _zh-cn/overviews/scala3-book/methods-main-methods.md %}

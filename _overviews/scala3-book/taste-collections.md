@@ -2,22 +2,23 @@
 title: Collections
 type: section
 description: This page provides a high-level overview of the main features of the Scala 3 programming language.
+languages: [zh-cn]
 num: 13
 previous-page: taste-objects
 next-page: taste-contextual-abstractions
 ---
 
 
-
 The Scala library has a rich set of collection classes, and those classes have a rich set of methods.
 Collections classes are available in both immutable and mutable forms.
-
-
 
 ## Creating lists
 
 To give you a taste of how these work, here are some examples that use the `List` class, which is an immutable, linked-list class.
 These examples show different ways to create a populated `List`:
+
+{% tabs collection_1 %}
+{% tab 'Scala 2 and 3' for=collection_1 %}
 
 ```scala
 val a = List(1, 2, 3)           // a: List[Int] = List(1, 2, 3)
@@ -30,13 +31,17 @@ val f = List.range(1, 5)        // f: List[Int] = List(1, 2, 3, 4)
 val g = List.range(1, 10, 3)    // g: List[Int] = List(1, 4, 7)
 ```
 
-
+{% endtab %}
+{% endtabs %}
 
 ## `List` methods
 
 Once you have a populated list, the following examples show some of the methods you can call on it.
 Notice that these are all functional methods, meaning that they don’t mutate the collection they’re called on, but instead return a new collection with the updated elements.
 The result that’s returned by each expression is shown in the comment on each line:
+
+{% tabs collection_2 %}
+{% tab 'Scala 2 and 3' for=collection_2 %}
 
 ```scala
 // a sample list
@@ -60,7 +65,13 @@ nums.map(_.toUpperCase)               // List("ONE", "TWO")
 nums.flatMap(_.toUpperCase)           // List('O', 'N', 'E', 'T', 'W', 'O')
 ```
 
+{% endtab %}
+{% endtabs %}
+
 These examples show how the “foldLeft” and “reduceLeft” methods are used to sum the values in a sequence of integers:
+
+{% tabs collection_3 %}
+{% tab 'Scala 2 and 3' for=collection_3 %}
 
 ```scala
 val firstTen = (1 to 10).toList            // List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
@@ -69,26 +80,42 @@ firstTen.reduceLeft(_ + _)                 // 55
 firstTen.foldLeft(100)(_ + _)              // 155 (100 is a “seed” value)
 ```
 
+{% endtab %}
+{% endtabs %}
+
 There are many more methods available to Scala collections classes, and they’re demonstrated in the [Collections chapter][collections], and in the [API Documentation][api].
-
-
 
 ## Tuples
 
 The Scala _tuple_ is a type that lets you easily put a collection of different types in the same container.
 For example, given this `Person` case class:
 
+{% tabs collection_4 %}
+{% tab 'Scala 2 and 3' for=collection_4 %}
+
 ```scala
 case class Person(name: String)
 ```
 
+{% endtab %}
+{% endtabs %}
+
 This is how you create a tuple that contains an `Int`, a `String`, and a custom `Person` value:
+
+{% tabs collection_5 %}
+{% tab 'Scala 2 and 3' for=collection_5 %}
 
 ```scala
 val t = (11, "eleven", Person("Eleven"))
 ```
 
+{% endtab %}
+{% endtabs %}
+
 Once you have a tuple, you can access its values by binding them to variables, or access them by number:
+
+{% tabs collection_6 %}
+{% tab 'Scala 2 and 3' for=collection_6 %}
 
 ```scala
 t(0)   // 11
@@ -96,7 +123,13 @@ t(1)   // "eleven"
 t(2)   // Person("Eleven")
 ```
 
+{% endtab %}
+{% endtabs %}
+
 You can also use this _extractor_ approach to assign the tuple fields to variable names:
+
+{% tabs collection_7 %}
+{% tab 'Scala 2 and 3' for=collection_7 %}
 
 ```scala
 val (num, str, person) = t
@@ -107,11 +140,11 @@ val (num, str, person) = t
 // val person: Person = Person(Eleven)
 ```
 
+{% endtab %}
+{% endtabs %}
+
 Tuples are nice for those times when you want to put a collection of heterogeneous types in a little collection-like structure.
 See the [Reference documentation][reference] for more tuple details.
-
-
-
 
 [collections]: {% link _overviews/scala3-book/collections-intro.md %}
 [api]: https://scala-lang.org/api/3.x/

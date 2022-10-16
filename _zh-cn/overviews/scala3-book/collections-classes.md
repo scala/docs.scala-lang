@@ -5,6 +5,11 @@ description: This page introduces the common Scala 3 collections types and some 
 num: 37
 previous-page: collections-intro
 next-page: collections-methods
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

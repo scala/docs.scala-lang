@@ -5,6 +5,11 @@ description: This page provides a summary of the previous 'Taste of Scala' secti
 num: 16
 previous-page: taste-toplevel-definitions
 next-page: first-look-at-types
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -26,4 +31,4 @@ Scala还有更多功能在这次旋风之旅中没有涵盖。
 有关更多详细信息，请参阅本书的其余部分和[参考文档][reference]。
 
 [reference]: {{ site.scala3ref }}/overview.html
-[contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}
+[contextual]: {% link _zh-cn/overviews/scala3-book/ca-contextual-abstractions-intro.md %}

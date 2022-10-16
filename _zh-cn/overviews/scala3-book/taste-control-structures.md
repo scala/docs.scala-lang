@@ -5,6 +5,11 @@ description: This section demonstrates Scala 3 control structures.
 num: 8
 previous-page: taste-vars-data-types
 next-page: taste-modeling
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -266,4 +271,4 @@ do
 由于传名参数、中缀表示法、流畅接口、可选括号、扩展方法和高阶函数等功能，您还可以创建自己的代码，就像控制结构一样工作。
 您将在 [控制结构][control] 部分了解更多信息。
 
-[control]: {% link _overviews/scala3-book/control-structures.md %}
+[control]: {% link _zh-cn/overviews/scala3-book/control-structures.md %}

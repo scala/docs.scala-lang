@@ -5,6 +5,11 @@ description: This page describes the benefits of the Scala 3 programming languag
 num: 3
 previous-page: scala-features
 next-page: taste-intro
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 {% comment %}
@@ -37,15 +42,21 @@ Scala 比任何其他语言都更支持 FP 和 OOP 范式的融合。
 模块化的一些最佳示例可能是标准库中的类。
 例如，`List` 被定义为一个类---从技术上讲，它是一个抽象类---并且像这样创建了一个新实例：
 
+{% tabs list %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val x = List(1, 2, 3)
 ```
+{% endtab %}
+{% endtabs %}
 
 但是，在程序员看来是一个简单的 `List` 实际上是由几种特殊类型的组合构建的，包括名为`Iterable`, `Seq`, 和 `LinearSeq` 的 traits。
 这些类型同样由其他小型的模块化代码单元组成。
 
 除了从一系列模块化 traits 构建/cases像 `List` 这样的类型之外，`List` API还包含数十种其他方法，其中许多是高阶函数：
 
+{% tabs list-methods %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val xs = List(1, 2, 3, 4, 5)
 
@@ -54,6 +65,8 @@ xs.filter(_ < 3)      // List(1, 2)
 xs.find(_ > 3)        // Some(4)
 xs.takeWhile(_ < 3)   // List(1, 2)
 ```
+{% endtab %}
+{% endtabs %}
 
 在这些示例中，无法修改列表中的值。
 `List` 类是不可变的，因此所有这些方法都返回新值，如每个注释中的数据所示。
@@ -63,30 +76,44 @@ xs.takeWhile(_ < 3)   // List(1, 2)
 Scala的 _类型推断_ 经常使语言感觉是动态类型的，即使它是静态类型的。
 对于变量声明，情况确实如此：
 
+{% tabs dynamic %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val a = 1
 val b = "Hello, world"
 val c = List(1,2,3,4,5)
 val stuff = ("fish", 42, 1_234.5)
 ```
+{% endtab %}
+{% endtabs %}
 
 当把匿名函数传递给高阶函数时，情况也是如此：
 
+{% tabs dynamic-hof %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 list.filter(_ < 4)
 list.map(_ * 2)
 list.filter(_ < 4)
     .map(_ * 2)
 ```
+{% endtab %}
+{% endtabs %}
 
 还有定义方法的时候：
 
+{% tabs list-method %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 def add(a: Int, b: Int) = a + b
 ```
+{% endtab %}
+{% endtabs %}
 
 这在Scala 3中比以往任何时候都更加真实，例如在使用[union types][union-types] 时：
 
+{% tabs union %}
+{% tab 'Scala 3 Only' %}
 ```scala
 // union type parameter
 def help(id: Username | Password) =
@@ -98,19 +125,27 @@ def help(id: Username | Password) =
 // union type value
 val b: Password | Username = if (true) name else password
 ```
+{% endtab %}
+{% endtabs %}
 
 ## 3) 简洁的语法
 
 Scala是一种 low ceremony，“简洁但仍然可读”的语言。例如，变量声明是简洁的：
 
+{% tabs concise %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val a = 1
 val b = "Hello, world"
 val c = List(1,2,3)
 ```
+{% endtab %}
+{% endtabs %}
 
 创建类型如traits, 类和枚举都很简洁：
 
+{% tabs enum %}
+{% tab 'Scala 3 Only' %}
 ```scala
 trait Tail:
   def wagTail(): Unit
@@ -127,13 +162,19 @@ case class Person(
   age: Int
 )
 ```
+{% endtab %}
+{% endtabs %}
 
 简洁的高阶函数：
 
+{% tabs list-hof %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 list.filter(_ < 4)
 list.map(_ * 2)
 ```
+{% endtab %}
+{% endtabs %}
 
 所有这些表达方式以及更多表达方式都很简洁，并且仍然非常易读：我们称之为 _富有表现力_。
 
@@ -142,7 +183,7 @@ list.map(_ * 2)
 Scala 2 中的隐式是一个主要明显的设计特征。
 它们代表了抽象上下文的基本方式，具有服务于各种用例的统一范式，其中包括：
 
-- 实现 [type classes]({% link _overviews/scala3-book/ca-type-classes.md %})
+- 实现 [type classes]({% link _zh-cn/overviews/scala3-book/ca-type-classes.md %})
 - 建立背景
 - 依赖注入
 - 表达能力
@@ -210,6 +251,8 @@ Scala.js 生态系统 [有几十个库](https://www.scala-js.org/libraries) 让�
 
 这里有些例子：
 
+{% tabs list-more %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 List.range(1, 3)                          // List(1, 2)
 List.range(start = 1, end = 6, step = 2)  // List(1, 3, 5)
@@ -248,34 +291,50 @@ nums.sorted                               // List(1, 5, 7, 8, 10)
 nums.sortWith(_ < _)                      // List(1, 5, 7, 8, 10)
 nums.sortWith(_ > _)                      // List(10, 8, 7, 5, 1)
 ```
+{% endtab %}
+{% endtabs %}
 
 ## 8) 内置最佳实践
 
 Scala 习语以多种方式鼓励最佳实践。
 对于不可变性，我们鼓励您创建不可变的 `val` 声明：
 
+{% tabs val %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val a = 1 // 不可变变量
 ```
+{% endtab %}
+{% endtabs %}
 
 还鼓励您使用不可变集合类，例如 `List` 和 `Map`：
 
+{% tabs list-map  %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val b = List(1,2,3)       // List 是不可变的
 val c = Map(1 -> "one")   // Map 是不可变的
 ```
+{% endtab %}
+{% endtabs %}
 
-样例类主要用于 [领域建模]({% link _overviews/scala3-book/domain-modeling-intro.md %})，它们的参数是不可变的：
+样例类主要用于 [领域建模]({% link _zh-cn/overviews/scala3-book/domain-modeling-intro.md %})，它们的参数是不可变的：
 
+{% tabs case-class %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 case class Person(name: String)
 val p = Person("Michael Scott")
 p.name           // Michael Scott
 p.name = "Joe"  // 编译器错误（重新分配给 val 名称）
 ```
+{% endtab %}
+{% endtabs %}
 
 如上一节所示，Scala 集合类支持高阶函数，您可以将方法（未显示）和匿名函数传递给它们：
 
+{% tabs higher-order %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 a.dropWhile(_ < 25)
 a.filter(_ < 25)
@@ -284,23 +343,52 @@ a.filter(_ < 30).map(_ * 10)
 nums.sortWith(_ < _)
 nums.sortWith(_ > _)
 ```
+{% endtab %}
+{% endtabs %}
 
 `match` 表达式让您可以使用模式匹配，它们确实是返回值的 _表达式_：
 
+{% tabs match class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+val numAsString = i match {
+  case 1 | 3 | 5 | 7 | 9 => "odd"
+  case 2 | 4 | 6 | 8 | 10 => "even"
+  case _ => "too big"
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 val numAsString = i match
   case 1 | 3 | 5 | 7 | 9 => "odd"
   case 2 | 4 | 6 | 8 | 10 => "even"
   case _ => "too big"
 ```
+{% endtab %}
+{% endtabs %}
 
 因为它们可以返回值，所以它们经常被用作方法的主体：
 
+{% tabs match-body class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+def isTruthy(a: Matchable) = a match {
+  case 0 | "" => false
+  case _ => true
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 def isTruthy(a: Matchable) = a match
   case 0 | "" => false
   case _ => true
 ```
+{% endtab %}
+{% endtabs %}
 
 ## 9) 生态系统库
 
@@ -368,6 +456,8 @@ _安全_ 与几个新的和改变的特性有关：
 
 _人体工程学_ 的好例子是枚举和扩展方法，它们以非常易读的方式添加到 Scala 3 中：
 
+{% tabs extension %}
+{% tab 'Scala 3 Only' %}
 ```scala
 // 枚举
 enum Color:
@@ -379,6 +469,8 @@ extension (c: Circle)
   def diameter: Double = c.radius * 2
   def area: Double = math.Pi * c.radius * c.radius
 ```
+{% endtab %}
+{% endtabs %}
 
 _性能_ 涉及几个方面。
 其中之一是 [不透明类型][opaque-types]。
@@ -399,13 +491,13 @@ _性能_ 涉及几个方面。
 Scala 有许多很棒的特性，选择十大列表可能是主观的。
 多项调查表明，不同的开发人员群体喜欢不同的特性。
 
-[java]: {% link _overviews/scala3-book/interacting-with-java.md %}
-[given]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
-[contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}
+[java]: {% link _zh-cn/overviews/scala3-book/interacting-with-java.md %}
+[given]: {% link _zh-cn/overviews/scala3-book/ca-given-using-clauses.md %}
+[contextual]: {% link _zh-cn/overviews/scala3-book/ca-contextual-abstractions-intro.md %}
 [reference]: {{ site.scala3ref }}
 [dropped]: {{ site.scala3ref }}/dropped-features
 [changed]: {{ site.scala3ref }}/changed-features
 [added]:{{ site.scala3ref }}/other-new-features
 
-[union-types]: {% link _overviews/scala3-book/types-union.md %}
-[opaque-types]: {% link _overviews/scala3-book/types-opaque-types.md %}
+[union-types]: {% link _zh-cn/overviews/scala3-book/types-union.md %}
+[opaque-types]: {% link _zh-cn/overviews/scala3-book/types-opaque-types.md %}

@@ -5,6 +5,11 @@ description: This page is for Python developers who are interested in learning a
 num: 75
 previous-page: scala-for-javascript-devs
 next-page:
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 {% include_relative scala4x.css %}
@@ -1337,18 +1342,18 @@ pip install -r requirements.txt
 在 Scala 中，这些手动过程都不是必需的。
 
 
-[collections-classes]: {% link _overviews/scala3-book/collections-classes.md %}
-[concurrency]: {% link _overviews/scala3-book/concurrency.md %}
-[contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}
-[control-structures]: {% link _overviews/scala3-book/control-structures.md %}
-[extension-methods]: {% link _overviews/scala3-book/ca-extension-methods.md %}
-[fp-intro]: {% link _overviews/scala3-book/fp-intro.md %}
-[hofs]: {% link _overviews/scala3-book/fun-hofs.md %}
-[intersection-types]: {% link _overviews/scala3-book/types-intersection.md %}
-[main-method]: {% link _overviews/scala3-book/methods-main-methods.md %}
-[modeling-intro]: {% link _overviews/scala3-book/domain-modeling-intro.md %}
-[multiversal]: {% link _overviews/scala3-book/ca-multiversal-equality.md %}
-[toplevel]: {% link _overviews/scala3-book/taste-toplevel-definitions.md %}
-[type-classes]: {% link _overviews/scala3-book/types-type-classes.md %}
-[union-types]: {% link _overviews/scala3-book/types-union.md %}
+[collections-classes]: {% link _zh-cn/overviews/scala3-book/collections-classes.md %}
+[concurrency]: {% link _zh-cn/overviews/scala3-book/concurrency.md %}
+[contextual]: {% link _zh-cn/overviews/scala3-book/ca-contextual-abstractions-intro.md %}
+[control-structures]: {% link _zh-cn/overviews/scala3-book/control-structures.md %}
+[extension-methods]: {% link _zh-cn/overviews/scala3-book/ca-extension-methods.md %}
+[fp-intro]: {% link _zh-cn/overviews/scala3-book/fp-intro.md %}
+[hofs]: {% link _zh-cn/overviews/scala3-book/fun-hofs.md %}
+[intersection-types]: {% link _zh-cn/overviews/scala3-book/types-intersection.md %}
+[main-method]: {% link _zh-cn/overviews/scala3-book/methods-main-methods.md %}
+[modeling-intro]: {% link _zh-cn/overviews/scala3-book/domain-modeling-intro.md %}
+[multiversal]: {% link _zh-cn/overviews/scala3-book/ca-multiversal-equality.md %}
+[toplevel]: {% link _zh-cn/overviews/scala3-book/taste-toplevel-definitions.md %}
+[type-classes]: {% link _zh-cn/overviews/scala3-book/types-type-classes.md %}
+[union-types]: {% link _zh-cn/overviews/scala3-book/types-union.md %}
 </div>

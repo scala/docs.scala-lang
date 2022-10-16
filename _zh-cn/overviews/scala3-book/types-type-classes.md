@@ -5,6 +5,11 @@ description: This section introduces type classes in Scala 3.
 num: 60
 previous-page: ca-given-using-clauses
 next-page: ca-context-bounds
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 A _type class_ is an abstract, parameterized type that lets you add new behavior to any closed data type without using sub-typing.
@@ -48,5 +53,5 @@ Since type classes are a very important way to structure software, Scala 3 offer
 We discuss these additional features (which fall into the category of *Contextual Abstractions*) in a [later chapter][typeclasses-chapter] of this book.
 
 [typeclasses-paper]: https://infoscience.epfl.ch/record/150280/files/TypeClasses.pdf
-[typeclasses-chapter]: {% link _overviews/scala3-book/ca-type-classes.md %}
+[typeclasses-chapter]: {% link _zh-cn/overviews/scala3-book/ca-type-classes.md %}
 [comparator]: https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html

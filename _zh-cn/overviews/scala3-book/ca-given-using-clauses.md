@@ -5,6 +5,11 @@ description: This page demonstrates how to use 'given' instances and 'using' cla
 num: 59
 previous-page: ca-contextual-abstractions-intro
 next-page: types-type-classes
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 Scala 3 offers two important feature for contextual abstraction:

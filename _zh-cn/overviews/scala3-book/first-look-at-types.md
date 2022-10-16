@@ -5,6 +5,11 @@ description: This page provides a brief introduction to Scala's built-in data ty
 num: 17
 previous-page: taste-summary
 next-page: control-structures
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -264,6 +269,6 @@ val z: Long = y  // Error
 [reference]: {{ site.scala3ref }}/overview.html
 [matchable]: {{ site.scala3ref }}/other-new-features/matchable.html
 [interpolation]: {% link _overviews/core/string-interpolation.md %}
-[fp]: {% link _overviews/scala3-book/fp-intro.md %}
+[fp]: {% link _zh-cn/overviews/scala3-book/fp-intro.md %}
 [option-api]: https://scala-lang.org/api/3.x/scala/Option.html
 [safe-null]: {{ site.scala3ref }}/experimental/explicit-nulls.html

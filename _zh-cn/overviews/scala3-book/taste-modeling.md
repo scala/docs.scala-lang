@@ -5,6 +5,11 @@ description: This section provides an introduction to data modeling in Scala 3.
 num: 9
 previous-page: taste-control-structures
 next-page: taste-methods
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -212,4 +217,4 @@ p2               // : Person = Person(Elton John,Singer)
 
 有关 `case` 类的更多详细信息，请参阅 [领域建模][data-1] 部分。
 
-[data-1]: {% link _overviews/scala3-book/domain-modeling-tools.md %}
+[data-1]: {% link _zh-cn/overviews/scala3-book/domain-modeling-tools.md %}

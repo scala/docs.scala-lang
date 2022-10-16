@@ -2,6 +2,7 @@
 title: Contextual Abstractions
 type: chapter
 description: This chapter provides an introduction to the Scala 3 concept of Contextual Abstractions.
+languages: [zh-cn]
 num: 58
 previous-page: types-others
 next-page: ca-given-using-clauses

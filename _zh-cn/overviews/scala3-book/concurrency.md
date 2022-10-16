@@ -5,6 +5,11 @@ description: This page discusses how Scala concurrency works, with an emphasis o
 num: 68
 previous-page: ca-summary
 next-page: scala-tools
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

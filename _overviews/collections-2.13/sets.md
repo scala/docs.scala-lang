@@ -18,14 +18,18 @@ permalink: /overviews/collections-2.13/:title.html
 
 For example:
 
-
-    scala> val fruit = Set("apple", "orange", "peach", "banana")
-    fruit: scala.collection.immutable.Set[java.lang.String] = Set(apple, orange, peach, banana)
-    scala> fruit("peach")
-    res0: Boolean = true
-    scala> fruit("potato")
-    res1: Boolean = false
-
+{% tabs sets_1 %}
+{% tab 'Scala 2 and 3' for=sets_1 %}
+```scala
+scala> val fruit = Set("apple", "orange", "peach", "banana")
+fruit: scala.collection.immutable.Set[java.lang.String] = Set(apple, orange, peach, banana)
+scala> fruit("peach")
+res0: Boolean = true
+scala> fruit("potato")
+res1: Boolean = false
+```
+{% endtab %}
+{% endtabs %}
 
 * **Additions** `incl` and `concat` (or `+` and `++`, respectively), which add one or more elements to a set, yielding a new set.
 * **Removals** `excl` and `removedAll` (or `-` and `--`, respectively), which remove one or more elements from a set, yielding a new set.
@@ -85,22 +89,33 @@ The operation `s += elem` adds `elem` to the set `s` as a side effect, and retur
 
 The choice of the method names `+=` and `-=` means that very similar code can work with either mutable or immutable sets. Consider first the following REPL dialogue which uses an immutable set `s`:
 
-    scala> var s = Set(1, 2, 3)
-    s: scala.collection.immutable.Set[Int] = Set(1, 2, 3)
-    scala> s += 4
-    scala> s -= 2
-    scala> s
-    res2: scala.collection.immutable.Set[Int] = Set(1, 3, 4)
+{% tabs sets_2 %}
+{% tab 'Scala 2 and 3' for=sets_2 %}
+```scala
+scala> var s = Set(1, 2, 3)
+s: scala.collection.immutable.Set[Int] = Set(1, 2, 3)
+scala> s += 4
+scala> s -= 2
+scala> s
+res2: scala.collection.immutable.Set[Int] = Set(1, 3, 4)
+```
+{% endtab %}
+{% endtabs %}
 
 We used `+=` and `-=` on a `var` of type `immutable.Set`. A statement such as `s += 4` is an abbreviation for `s = s + 4`. So this invokes the addition method `+` on the set `s` and then assigns the result back to the `s` variable. Consider now an analogous interaction with a mutable set.
 
-
-    scala> val s = collection.mutable.Set(1, 2, 3)
-    s: scala.collection.mutable.Set[Int] = Set(1, 2, 3)
-    scala> s += 4
-    res3: s.type = Set(1, 4, 2, 3)
-    scala> s -= 2
-    res4: s.type = Set(1, 4, 3)
+{% tabs sets_3 %}
+{% tab 'Scala 2 and 3' for=sets_3 %}
+```scala
+scala> val s = collection.mutable.Set(1, 2, 3)
+s: scala.collection.mutable.Set[Int] = Set(1, 2, 3)
+scala> s += 4
+res3: s.type = Set(1, 4, 2, 3)
+scala> s -= 2
+res4: s.type = Set(1, 4, 3)
+```
+{% endtab %}
+{% endtabs %}
 
 The end effect is very similar to the previous interaction; we start with a `Set(1, 2, 3)` and end up with a `Set(1, 3, 4)`. However, even though the statements look the same as before, they do something different. `s += 4` now invokes the `+=` method on the mutable set value `s`, changing the set in place. Likewise, `s -= 2` now invokes the `-=` method on the same set.
 
@@ -120,34 +135,63 @@ A [SortedSet](https://www.scala-lang.org/api/current/scala/collection/SortedSet.
 
 To create an empty [TreeSet](https://www.scala-lang.org/api/current/scala/collection/immutable/TreeSet.html), you could first specify the desired ordering:
 
-    scala> val myOrdering = Ordering.fromLessThan[String](_ > _)
-    myOrdering: scala.math.Ordering[String] = ...
+{% tabs sorted-sets_1 %}
+{% tab 'Scala 2 and 3' for=sorted-sets_1 %}
+```scala
+scala> val myOrdering = Ordering.fromLessThan[String](_ > _)
+myOrdering: scala.math.Ordering[String] = ...
+```
+{% endtab %}
+{% endtabs %}
 
 Then, to create an empty tree set with that ordering, use:
 
-    scala> TreeSet.empty(myOrdering)
-    res1: scala.collection.immutable.TreeSet[String] = TreeSet()
+{% tabs sorted-sets_2 %}
+{% tab 'Scala 2 and 3' for=sorted-sets_2 %}
+```scala
+scala> TreeSet.empty(myOrdering)
+res1: scala.collection.immutable.TreeSet[String] = TreeSet()
+```
+{% endtab %}
+{% endtabs %}
 
-Or you can leave out the ordering argument but give an element type or the empty set. In that case, the default ordering on the element type will be used.
+Or you can leave out the ordering argument but give an element type for the empty set. In that case, the default ordering on the element type will be used.
 
-    scala> TreeSet.empty[String]
-    res2: scala.collection.immutable.TreeSet[String] = TreeSet()
+{% tabs sorted-sets_3 %}
+{% tab 'Scala 2 and 3' for=sorted-sets_3 %}
+```scala
+scala> TreeSet.empty[String]
+res2: scala.collection.immutable.TreeSet[String] = TreeSet()
+```
+{% endtab %}
+{% endtabs %}
 
 If you create new sets from a tree-set (for instance by concatenation or filtering) they will keep the same ordering as the original set. For instance,
 
-    scala> res2 + "one" + "two" + "three" + "four"
-    res3: scala.collection.immutable.TreeSet[String] = TreeSet(four, one, three, two)
+{% tabs sorted-sets_4 %}
+{% tab 'Scala 2 and 3' for=sorted-sets_4 %}
+```scala
+scala> res2 + "one" + "two" + "three" + "four"
+res3: scala.collection.immutable.TreeSet[String] = TreeSet(four, one, three, two)
+```
+{% endtab %}
+{% endtabs %}
 
 Sorted sets also support ranges of elements. For instance, the `range` method returns all elements from a starting element up to, but excluding, an end element. Or, the `from` method returns all elements greater or equal than a starting element in the set's ordering. The result of calls to both methods is again a sorted set. Examples:
 
-    scala> res3.range("one", "two")
-    res4: scala.collection.immutable.TreeSet[String] = TreeSet(one, three)
-    scala> res3 rangeFrom "three"
-    res5: scala.collection.immutable.TreeSet[String] = TreeSet(three, two)
-
+{% tabs sorted-sets_5 %}
+{% tab 'Scala 2 and 3' for=sorted-sets_5 %}
+```scala
+scala> res3.range("one", "two")
+res4: scala.collection.immutable.TreeSet[String] = TreeSet(one, three)
+scala> res3 rangeFrom "three"
+res5: scala.collection.immutable.TreeSet[String] = TreeSet(three, two)
+```
+{% endtab %}
+{% endtabs %}
 
 ### Bitsets ###
 
-Bitsets are sets of non-negative integer elements that are implemented in one or more words of packed bits. The internal representation of a [BitSet](https://www.scala-lang.org/api/current/scala/collection/BitSet.html) uses an array of `Long`s. The first `Long` covers elements from 0 to 63, the second from 64 to 127, and so on (Immutable bitsets of elements in the range of 0 to 127 optimize the array away and store the bits directly in a one or two `Long` fields.) For every  `Long`, each of its 64 bits is set to 1 if the corresponding element is contained in the set, and is unset otherwise. It follows that the size of a bitset depends on the largest integer that's stored in it. If `N` is that largest integer, then the size of the set is `N/64` `Long` words, or `N/8` bytes, plus a small number of extra bytes for status information.
+Bitsets are sets of non-negative integer elements that are implemented in one or more words of packed bits. The internal representation of a [BitSet](https://www.scala-lang.org/api/current/scala/collection/BitSet.html) uses an array of `Long`s. The first `Long` covers elements from 0 to 63, the second from 64 to 127, and so on (Immutable bitsets of elements in the range of 0 to 127 optimize the array away and store the bits directly in a one or two `Long` fields). For every  `Long`, each of its 64 bits is set to 1 if the corresponding element is contained in the set, and is unset otherwise. It follows that the size of a bitset depends on the largest integer that's stored in it. If `N` is that largest integer, then the size of the set is `N/64` `Long` words, or `N/8` bytes, plus a small number of extra bytes for status information.
 
 Bitsets are hence more compact than other sets if they contain many small elements. Another advantage of bitsets is that operations such as membership test with `contains`, or element addition and removal with `+=` and `-=` are all extremely efficient.

@@ -5,6 +5,11 @@ description: This chapter provides an introduction to functional programming in 
 num: 40
 previous-page: collections-summary
 next-page: fp-what-is-fp
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

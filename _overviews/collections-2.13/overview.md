@@ -13,7 +13,7 @@ permalink: /overviews/collections-2.13/:title.html
 ---
 
 Scala collections systematically distinguish between mutable and
-immutable collections. A _mutable_ collection can be updated or
+immutable collections. A _mutable_ collection can be updated, reduced or
 extended in place. This means you can change, add, or remove elements
 of a collection as a side effect. _Immutable_ collections, by
 contrast, never change. You have still operations that simulate
@@ -43,7 +43,7 @@ A collection in package `scala.collection` can be either mutable or
 immutable. For instance, [collection.IndexedSeq\[T\]](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IndexedSeq.html)
 is a superclass of both [collection.immutable.IndexedSeq\[T\]](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/IndexedSeq.html)
 and
-[collection.mutable.IndexedSeq\[T\]](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/IndexedSeq.html)
+[collection.mutable.IndexedSeq\[T\]](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/IndexedSeq.html).
 Generally, the root collections in
 package `scala.collection` support transformation operations
 affecting the whole collection, the immutable
@@ -73,7 +73,13 @@ A useful convention if you want to use both mutable and immutable
 versions of collections is to import just the package
 `collection.mutable`.
 
-    import scala.collection.mutable
+{% tabs overview_1 %}
+{% tab 'Scala 2 and 3' for=overview_1 %}
+```scala mdoc
+import scala.collection.mutable
+```
+{% endtab %}
+{% endtabs %}
 
 Then a word like `Set` without a prefix still refers to an immutable collection,
 whereas `mutable.Set` refers to the mutable counterpart.
@@ -86,10 +92,16 @@ aliases in the `scala` package, so you can use them by their simple
 names without needing an import. An example is the `List` type, which
 can be accessed alternatively as
 
-    scala.collection.immutable.List   // that's where it is defined
-    scala.List                        // via the alias in the scala package
-    List                              // because scala._
-                                      // is always automatically imported
+{% tabs overview_2 %}
+{% tab 'Scala 2 and 3' for=overview_2 %}
+```scala mdoc
+scala.collection.immutable.List   // that's where it is defined
+scala.List                        // via the alias in the scala package
+List                              // because scala._
+                                  // is always automatically imported
+```
+{% endtab %}
+{% endtabs %}
 
 Other types aliased are
 [Iterable](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterable.html), [Seq](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Seq.html), [IndexedSeq](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/IndexedSeq.html), [Iterator](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html), [LazyList](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/LazyList.html), [Vector](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Vector.html), [StringBuilder](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/StringBuilder.html), and [Range](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/immutable/Range.html).
@@ -116,27 +128,45 @@ Legend:
 
 The most important collection classes are shown in the figures above. There is quite a bit of commonality shared by all these classes. For instance, every kind of collection can be created by the same uniform syntax, writing the collection class name followed by its elements:
 
-    Iterable("x", "y", "z")
-    Map("x" -> 24, "y" -> 25, "z" -> 26)
-    Set(Color.red, Color.green, Color.blue)
-    SortedSet("hello", "world")
-    Buffer(x, y, z)
-    IndexedSeq(1.0, 2.0)
-    LinearSeq(a, b, c)
+{% tabs overview_3 %}
+{% tab 'Scala 2 and 3' for=overview_3 %}
+```scala
+Iterable("x", "y", "z")
+Map("x" -> 24, "y" -> 25, "z" -> 26)
+Set(Color.red, Color.green, Color.blue)
+SortedSet("hello", "world")
+Buffer(x, y, z)
+IndexedSeq(1.0, 2.0)
+LinearSeq(a, b, c)
+```
+{% endtab %}
+{% endtabs %}
 
 The same principle also applies for specific collection implementations, such as:
 
-    List(1, 2, 3)
-    HashMap("x" -> 24, "y" -> 25, "z" -> 26)
+{% tabs overview_4 %}
+{% tab 'Scala 2 and 3' for=overview_4 %}
+```scala
+List(1, 2, 3)
+HashMap("x" -> 24, "y" -> 25, "z" -> 26)
+```
+{% endtab %}
+{% endtabs %}
 
 All these collections get displayed with `toString` in the same way they are written above.
 
 All collections support the API provided by `Iterable`, but specialize types wherever this makes sense. For instance the `map` method in class `Iterable` returns another `Iterable` as its result. But this result type is overridden in subclasses. For instance, calling `map` on a `List` yields again a `List`, calling it on a `Set` yields again a `Set` and so on.
 
-    scala> List(1, 2, 3) map (_ + 1)
-    res0: List[Int] = List(2, 3, 4)
-    scala> Set(1, 2, 3) map (_ * 2)
-    res0: Set[Int] = Set(2, 4, 6)
+{% tabs overview_5 %}
+{% tab 'Scala 2 and 3' for=overview_5 %}
+```
+scala> List(1, 2, 3) map (_ + 1)
+res0: List[Int] = List(2, 3, 4)
+scala> Set(1, 2, 3) map (_ * 2)
+res0: Set[Int] = Set(2, 4, 6)
+```
+{% endtab %}
+{% endtabs %}
 
 This behavior which is implemented everywhere in the collections libraries is called the _uniform return type principle_.
 

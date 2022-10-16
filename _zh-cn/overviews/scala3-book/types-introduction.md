@@ -5,6 +5,11 @@ description: This chapter provides an introduction to Scala 3 types and the type
 num: 47
 previous-page: fp-summary
 next-page: types-inferred
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -44,4 +49,4 @@ def dogCatOrWhatever(): Dog | Plant | Car | Sun = ???
 
 鉴于此简要介绍，以下部分将概述 Scala 类型系统的特性。
 
-[union-types]: {% link _overviews/scala3-book/types-union.md %}
+[union-types]: {% link _zh-cn/overviews/scala3-book/types-union.md %}

@@ -5,6 +5,11 @@ description: This chapter provides an introduction to OOP domain modeling with S
 num: 21
 previous-page: domain-modeling-tools
 next-page: domain-modeling-fp
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 

@@ -5,6 +5,11 @@ description: A discussion of using packages and imports to organize your code, b
 num: 35
 previous-page: fun-summary
 next-page: collections-intro
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
@@ -375,4 +380,4 @@ def genericMonthConverter[A](a: A)(using monthConverter: MonthConverter[A]): Str
 
 如前所述， `import given` 语法的主要设计优势之一是明确范围内的给定来自何处，并且在这些 `import` 语句中，很清楚地表明给定是来自 `MonthConversions` 对象。
 
-[contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}
+[contextual]: {% link _zh-cn/overviews/scala3-book/ca-contextual-abstractions-intro.md %}

@@ -5,6 +5,11 @@ description: This section introduces methods in Scala 3.
 num: 23
 previous-page: domain-modeling-fp
 next-page: methods-most
+
+partof: scala3-book
+overview-name: "Scala 3 — Book"
+layout: multipage-overview
+permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
