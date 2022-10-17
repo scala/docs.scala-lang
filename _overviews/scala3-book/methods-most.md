@@ -409,7 +409,7 @@ Here’s another version of `isTruthy`, written with a `match` expression :
 {% tab 'Scala 2' for=method_18 %}
 
 ```scala
-def isTruthy(a: Matchable) = a match {
+def isTruthy(a: Any) = a match {
   case 0 | "" | false => false
   case _ => true
 }
