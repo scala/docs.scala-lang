@@ -189,7 +189,7 @@ As an example of a real-world multiline method, this `getStackTraceAsString` met
 
 ```scala
 def getStackTraceAsString(t: Throwable): String = {
-  val sw = StringWriter()
+  val sw = new StringWriter()
   t.printStackTrace(new PrintWriter(sw))
   sw.toString
 }
