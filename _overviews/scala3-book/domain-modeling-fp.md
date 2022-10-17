@@ -51,15 +51,48 @@ You’ll see how to implement the “data” portion of the Scala/FP model, and 
 
 In Scala, describing the data model of a programming problem is simple:
 
-- If you want to model data with different alternatives, use the `enum` construct
+- If you want to model data with different alternatives, use the `enum` construct, (or `case object` in Scala 2).
 - If you only want to group things (or need more fine-grained control) use `case` classes
 
 ### Describing Alternatives
 
-Data that simply consists of different alternatives, like crust size, crust type, and toppings, is concisely modeled with the Scala 3 `enum` construct:
+Data that simply consists of different alternatives, like crust size, crust type, and toppings, is precisely modelled
+in Scala by an enumeration.
 
-{% tabs data_1 %}
-{% tab 'Scala 3 Only' for=data_1 %}
+{% tabs data_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=data_1 %}
+
+In Scala 2 enumerations are expressed with a combination of a `sealed class` and several `case object` that extend the class:
+
+```scala
+sealed abstract class CrustSize
+object CrustSize {
+  case object Small extends CrustSize
+  case object Medium extends CrustSize
+  case object Large extends CrustSize
+}
+
+sealed abstract class CrustType
+object CrustType {
+  case object Thin extends CrustType
+  case object Thick extends CrustType
+  case object Regular extends CrustType
+}
+
+sealed abstract class Topping
+object Topping {
+  case object Cheese extends Topping
+  case object Pepperoni extends Topping
+  case object BlackOlives extends Topping
+  case object GreenOlives extends Topping
+  case object Onions extends Topping
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=data_1 %}
+
+In Scala 3 enumerations are concisely expressed with the `enum` construct:
 
 ```scala
 enum CrustSize:
@@ -80,10 +113,25 @@ enum Topping:
 ### Describing Compound Data
 
 A pizza can be thought of as a _compound_ container of the different attributes above.
-We can use a `case` class to describe that a `Pizza` consists of a `crustSize`, `crustType`, and potentially multiple `Topping`s:
+We can use a `case` class to describe that a `Pizza` consists of a `crustSize`, `crustType`, and potentially multiple `toppings`:
 
-{% tabs data_2 %}
-{% tab 'Scala 3 Only' for=data_2 %}
+{% tabs data_2 class=tabs-scala-version %}
+{% tab 'Scala 2' for=data_2 %}
+
+```scala
+import CrustSize._
+import CrustType._
+import Topping._
+
+case class Pizza(
+  crustSize: CrustSize,
+  crustType: CrustType,
+  toppings: Seq[Topping]
+)
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=data_2 %}
 
 ```scala
 import CrustSize.*
@@ -288,8 +336,7 @@ Mine (Alvin, now modified, from fp-pure-functions.md):
 ## How to Organize Functionality
 
 When implementing the `pizzaPrice` function above, we did not say _where_ we would define it.
-In Scala 3, it would be perfectly valid to define it on the toplevel of your file.
-However, the language gives us many great tools to organize our logic in different namespaces and modules.
+Scala gives you many great tools to organize your logic in different namespaces and modules.
 
 There are several different ways to implement and organize behaviors:
 
@@ -308,8 +355,39 @@ A first approach is to define the behavior---the functions---in a companion obje
 
 With this approach, in addition to the enumeration or case class you also define an equally named companion object that contains the behavior.
 
-{% tabs org_1 %}
-{% tab 'Scala 3 Only' for=org_1 %}
+{% tabs org_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=org_1 %}
+
+```scala
+case class Pizza(
+  crustSize: CrustSize,
+  crustType: CrustType,
+  toppings: Seq[Topping]
+)
+
+// the companion object of case class Pizza
+object Pizza {
+  // the implementation of `pizzaPrice` from above
+  def price(p: Pizza): Double = ...
+}
+
+sealed abstract class Topping
+
+// the companion object of enumeration Topping
+object Topping {
+  case object Cheese extends Topping
+  case object Pepperoni extends Topping
+  case object BlackOlives extends Topping
+  case object GreenOlives extends Topping
+  case object Onions extends Topping
+
+  // the implementation of `toppingPrice` above
+  def price(t: Topping): Double = ...
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=org_1 %}
 
 ```scala
 case class Pizza(
@@ -329,9 +407,7 @@ enum Topping:
 // the companion object of enumeration Topping
 object Topping:
   // the implementation of `toppingPrice` above
-  def price(t: Topping): Double = t match
-    case Cheese | Onions => 0.5
-    case Pepperoni | BlackOlives | GreenOlives => 0.75
+  def price(t: Topping): Double = ...
 ```
 
 {% endtab %}
@@ -643,8 +719,39 @@ This can have multiple advantages:
 
 Let us revisit our example once more.
 
-{% tabs module_7 %}
-{% tab 'Scala 3 Only' for=module_7 %}
+{% tabs module_7 class=tabs-scala-version %}
+{% tab 'Scala 2' for=module_7 %}
+
+```scala
+case class Pizza(
+  crustSize: CrustSize,
+  crustType: CrustType,
+  toppings: Seq[Topping]
+)
+
+implicit class PizzaOps(p: Pizza) {
+  def price: Double =
+    pizzaPrice(p) // implementation from above
+
+  def addTopping(t: Topping): Pizza =
+    p.copy(toppings = p.toppings :+ t)
+
+  def removeAllToppings: Pizza =
+    p.copy(toppings = Seq.empty)
+
+  def updateCrustSize(cs: CrustSize): Pizza =
+    p.copy(crustSize = cs)
+
+  def updateCrustType(ct: CrustType): Pizza =
+    p.copy(crustType = ct)
+}
+```
+In the above code, we define the different methods on pizzas as methods in an _implicit class_.
+With `implicit class PizzaOps(p: Pizza)` then wherever `PizzaOps` is imported its methods will be available on
+instances of `Pizza`. The reciever in this case is `p`.
+
+{% endtab %}
+{% tab 'Scala 3' for=module_7 %}
 
 ```scala
 case class Pizza(
@@ -669,14 +776,14 @@ extension (p: Pizza)
   def updateCrustType(ct: CrustType): Pizza =
     p.copy(crustType = ct)
 ```
+In the above code, we define the different methods on pizzas as _extension methods_.
+With `extension (p: Pizza)` we say that we want to make the methods available on instances of `Pizza`. The reciever
+in this case is `p`.
 
 {% endtab %}
 {% endtabs %}
 
-In the above code, we define the different methods on pizzas as _extension methods_.
-With `extension (p: Pizza)` we say that we want to make the methods available on instances of `Pizza` and refer to the instance we extend as `p` in the following.
-
-This way, we can obtain the same API as before
+Using our extension methods, we can obtain the same API as before:
 
 {% tabs module_8 %}
 {% tab 'Scala 2 and 3' for=module_8 %}
