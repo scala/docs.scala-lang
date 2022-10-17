@@ -28,7 +28,7 @@ Perhaps different from other languages with support for OOP, such as Java, the p
 They can serve to describe abstract interfaces like:
 
 {% tabs traits_1 class=tabs-scala-version %}
-{% tab 'Scala 2' for=traits_1 %}
+{% tab 'Scala 2' %}
 
 ```scala
 trait Showable {
@@ -38,7 +38,7 @@ trait Showable {
 
 {% endtab %}
 
-{% tab 'Scala 3' for=traits_1 %}
+{% tab 'Scala 3' %}
 
 ```scala
 trait Showable:
@@ -50,7 +50,7 @@ trait Showable:
 and can also contain concrete implementations:
 
 {% tabs traits_2 class=tabs-scala-version %}
-{% tab 'Scala 2' for=traits_2 %}
+{% tab 'Scala 2' %}
 
 ```scala
 trait Showable {
@@ -61,7 +61,7 @@ trait Showable {
 
 {% endtab %}
 
-{% tab 'Scala 3' for=traits_2 %}
+{% tab 'Scala 3' %}
 
 ```scala
 trait Showable:
@@ -81,7 +81,7 @@ You can see that we define the method `showHtml` _in terms_ of the abstract meth
 We can already see this with our example of `Showable`: defining a class `Document` that extends `Showable`, we still have to define `show`, but are provided with `showHtml`:
 
 {% tabs traits_3 class=tabs-scala-version %}
-{% tab 'Scala 2' for=traits_3 %}
+{% tab 'Scala 2' %}
 
 ```scala
 class Document(text: String) extends Showable {
@@ -91,7 +91,7 @@ class Document(text: String) extends Showable {
 
 {% endtab %}
 
-{% tab 'Scala 3' for=traits_3 %}
+{% tab 'Scala 3' %}
 
 ```scala
 class Document(text: String) extends Showable:
@@ -110,6 +110,7 @@ A trait can contain:
 - abstract value definitions (`val x: T`)
 - abstract type members (`type T`), potentially with bounds (`type T <: S`)
 - abstract givens (`given t: T`)
+<span class="tag tag-inline">Scala 3 only</span>
 
 Each of the above features can be used to specify some form of requirement on the implementor of the trait.
 
@@ -120,7 +121,7 @@ Not only can traits contain abstract and concrete definitions, Scala also provid
 Let us assume the following two (potentially independently defined) traits:
 
 {% tabs traits_4 class=tabs-scala-version %}
-{% tab 'Scala 2' for=traits_4 %}
+{% tab 'Scala 2' %}
 
 ```scala
 trait GreetingService {
@@ -135,7 +136,7 @@ trait TranslationService {
 
 {% endtab %}
 
-{% tab 'Scala 3' for=traits_4 %}
+{% tab 'Scala 3' %}
 
 ```scala
 trait GreetingService:
@@ -152,7 +153,7 @@ trait TranslationService:
 To compose the two services, we can simply create a new trait extending them:
 
 {% tabs traits_5 class=tabs-scala-version %}
-{% tab 'Scala 2' for=traits_5 %}
+{% tab 'Scala 2' %}
 
 ```scala
 trait ComposedService extends GreetingService with TranslationService
@@ -160,7 +161,7 @@ trait ComposedService extends GreetingService with TranslationService
 
 {% endtab %}
 
-{% tab 'Scala 3' for=traits_5 %}
+{% tab 'Scala 3' %}
 
 ```scala
 trait ComposedService extends GreetingService, TranslationService
@@ -182,10 +183,20 @@ When designing software in Scala, it’s often helpful to only consider using cl
 NOTE: I think “leaves” may technically be the correct word to use, but I prefer “leafs.”
 {% endcomment %}
 
+{% tabs table-traits-cls-summary class=tabs-scala-version %}
+{% tab 'Scala 2' %}
 | Traits          | `T1`, `T2`, `T3`
-| Composed traits | `S extends T1, T2`, `S extends T2, T3`
-| Classes         | `C extends S, T3`
+| Composed traits | `S1 extends T1 with T2`, `S2 extends T2 with T3`
+| Classes         | `C extends S1 with T3`
+| Instances       | `new C()`
+{% endtab %}
+{% tab 'Scala 3' %}
+| Traits          | `T1`, `T2`, `T3`
+| Composed traits | `S1 extends T1, T2`, `S2 extends T2, T3`
+| Classes         | `C extends S1, T3`
 | Instances       | `C()`
+{% endtab %}
+{% endtabs %}
 
 This is even more the case in Scala 3, where traits now can also take parameters, further eliminating the need for classes.
 
@@ -194,7 +205,7 @@ This is even more the case in Scala 3, where traits now can also take parameters
 Like traits, classes can extend multiple traits (but only one super class):
 
 {% tabs class_1 class=tabs-scala-version %}
-{% tab 'Scala 2' for=class_1 %}
+{% tab 'Scala 2' %}
 
 ```scala
 class MyService(name: String) extends ComposedService with Showable {
@@ -204,7 +215,7 @@ class MyService(name: String) extends ComposedService with Showable {
 
 {% endtab %}
 
-{% tab 'Scala 3' for=class_1 %}
+{% tab 'Scala 3' %}
 
 ```scala
 class MyService(name: String) extends ComposedService, Showable:
@@ -218,8 +229,15 @@ class MyService(name: String) extends ComposedService, Showable:
 
 We can create an instance of `MyService` as follows:
 
-{% tabs class_2 %}
-{% tab 'Scala 2 and 3' for=class_2 %}
+{% tabs class_2 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+val s1: MyService = new MyService("Service 1")
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 val s1: MyService = MyService("Service 1")
@@ -231,7 +249,7 @@ val s1: MyService = MyService("Service 1")
 Through the means of subtyping, our instance `s1` can be used everywhere that any of the extended traits is expected:
 
 {% tabs class_3 %}
-{% tab 'Scala 2 and 3' for=class_3 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 val s2: GreetingService = s1
@@ -247,7 +265,7 @@ val s4: Showable = s1
 As mentioned before, it is possible to extend another class:
 
 {% tabs class_4 %}
-{% tab 'Scala 2 and 3' for=class_4 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 class Person(name: String)
@@ -259,11 +277,15 @@ class SoftwareDeveloper(name: String, favoriteLang: String)
 {% endtabs %}
 
 However, since _traits_ are designed as the primary means of decomposition,
-a class that is defined in one file _cannot_ be extended in another file.
-In order to allow this, the base class needs to be marked as `open`:
+it is not recommended to extend a class that is defined in one file from another file.
+
+<h5>Open Classes <span class="tag tag-inline">Scala 3 only</span></h5>
+
+In Scala 3 extending non-abstract classes in other files is restricted. In order to allow this, the base class needs to
+be marked as `open`:
 
 {% tabs class_5 %}
-{% tab 'Scala 2 and 3' for=class_5 %}
+{% tab 'Scala 3 Only' %}
 
 ```scala
 open class Person(name: String)
@@ -285,7 +307,7 @@ I only mention this because I think that book and phrase is pretty well known in
 Like in other languages with support for OOP, traits and classes in Scala can define mutable fields:
 
 {% tabs instance_6 class=tabs-scala-version %}
-{% tab 'Scala 2' for=instance_6 %}
+{% tab 'Scala 2' %}
 
 ```scala
 class Counter {
@@ -299,7 +321,7 @@ class Counter {
 
 {% endtab %}
 
-{% tab 'Scala 3' for=instance_6 %}
+{% tab 'Scala 3' %}
 
 ```scala
 class Counter:
@@ -315,8 +337,19 @@ class Counter:
 
 Every instance of the class `Counter` has its own private state that can only be observed through the method `count`, as the following interaction illustrates:
 
-{% tabs instance_7 %}
-{% tab 'Scala 2 and 3' for=instance_7 %}
+{% tabs instance_7 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+val c1 = new Counter()
+c1.count // 0
+c1.tick()
+c1.tick()
+c1.count // 2
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 val c1 = Counter()
@@ -347,7 +380,7 @@ Our goal is to define a software component with a _family of types_ that can be 
 Concretely, the following code defines the component `SubjectObserver` as a trait with two abstract type members, `S` (for subjects) and `O` (for observers):
 
 {% tabs example_1 class=tabs-scala-version %}
-{% tab 'Scala 2' for=example_1 %}
+{% tab 'Scala 2' %}
 
 ```scala
 trait SubjectObserver {
@@ -373,7 +406,7 @@ trait SubjectObserver {
 
 {% endtab %}
 
-{% tab 'Scala 3' for=example_1 %}
+{% tab 'Scala 3' %}
 
 ```scala
 trait SubjectObserver:
@@ -428,7 +461,7 @@ If `S` was a _concrete_ type, the self-type annotation could be replaced by `tra
 We can now implement the above component and define the abstract type members to be concrete types:
 
 {% tabs example_2 class=tabs-scala-version %}
-{% tab 'Scala 2' for=example_2 %}
+{% tab 'Scala 2' %}
 
 ```scala
 object SensorReader extends SubjectObserver {
@@ -443,7 +476,7 @@ object SensorReader extends SubjectObserver {
       publish()
     }
   }
-    
+
   class Display extends Observer {
     def notify(sub: Sensor) =
       println(s"${sub.label} has value ${sub.value}")
@@ -453,7 +486,7 @@ object SensorReader extends SubjectObserver {
 
 {% endtab %}
 
-{% tab 'Scala 3' for=example_2 %}
+{% tab 'Scala 3' %}
 
 ```scala
 object SensorReader extends SubjectObserver:
@@ -495,16 +528,16 @@ It is important to point out that the implementation of `notify` can only safely
 Finally, the following code illustrates how to use our `SensorReader` component:
 
 {% tabs example_3 class=tabs-scala-version %}
-{% tab 'Scala 2' for=example_3 %}
+{% tab 'Scala 2' %}
 
 ```scala
 import SensorReader._
 
 // setting up a network
-val s1 = Sensor("sensor1")
-val s2 = Sensor("sensor2")
-val d1 = Display()
-val d2 = Display()
+val s1 = new Sensor("sensor1")
+val s2 = new Sensor("sensor2")
+val d1 = new Display()
+val d2 = new Display()
 s1.subscribe(d1)
 s1.subscribe(d2)
 s2.subscribe(d1)
@@ -522,7 +555,7 @@ s2.changeValue(3)
 
 {% endtab %}
 
-{% tab 'Scala 3' for=example_3 %}
+{% tab 'Scala 3' %}
 
 ```scala
 import SensorReader.*

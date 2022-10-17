@@ -62,6 +62,10 @@
     font-weight: $font-bold;
     padding: 1px 5px;
   }
+
+  .tag-inline {
+    float: none;
+  }
 }
 
 a.new-version-notice {
