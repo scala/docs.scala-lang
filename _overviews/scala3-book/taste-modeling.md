@@ -229,25 +229,59 @@ I didn’t include that because I didn’t know if enums are intended
 to replace the Scala2 “sealed trait + case class” pattern. How to resolve?
 {% endcomment %}
 
-When writing code in an FP style, you’ll use these constructs:
+When writing code in an FP style, you’ll use these concepts:
 
-- Enums to define ADTs
-- Case classes
-- Traits
+- Algebraic Data Types to define the data
+- Traits for functionality on the data.
 
-### Enums
+### Enumerations and Sum Types
 
-The `enum` construct is a great way to model algebraic data types (ADTs) in Scala 3.
+Sum types are one way to model algebraic data types (ADTs) in Scala.
+
+They are used when data can be represented with different choices.
+
 For instance, a pizza has three main attributes:
 
 - Crust size
 - Crust type
 - Toppings
 
-These are concisely modeled with enums:
+These are concisely modeled with enumerations, which are sum types that only contain singleton values:
 
-{% tabs enum_1 %}
-{% tab 'Scala 3 Only' for=enum_1 %}
+{% tabs enum_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=enum_1 %}
+
+In Scala 2 `sealed` classes and `case object` are combined to define an enumeration:
+
+```scala
+sealed abstract class CrustSize
+object CrustSize {
+  case object Small extends CrustSize
+  case object Medium extends CrustSize
+  case object Large extends CrustSize
+}
+
+sealed abstract class CrustType
+object CrustType {
+  case object Thin extends CrustType
+  case object Thick extends CrustType
+  case object Regular extends CrustType
+}
+
+sealed abstract class Topping
+object Topping {
+  case object Cheese extends Topping
+  case object Pepperoni extends Topping
+  case object BlackOlives extends Topping
+  case object GreenOlives extends Topping
+  case object Onions extends Topping
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=enum_1 %}
+
+Scala 3 offers the `enum` construct for defining enumerations:
 
 ```scala
 enum CrustSize:
@@ -263,10 +297,28 @@ enum Topping:
 {% endtab %}
 {% endtabs %}
 
-Once you have an enum you can use it in all of the ways you normally use a trait, class, or object:
+Once you have an enumeration you can import its members as ordinary values:
 
-{% tabs enum_2 %}
-{% tab 'Scala 3 Only' for=enum_2 %}
+{% tabs enum_2 class=tabs-scala-version %}
+{% tab 'Scala 2' for=enum_2 %}
+
+```scala
+import CrustSize._
+val currentCrustSize = Small
+
+// enums in a `match` expression
+currentCrustSize match {
+  case Small => println("Small crust size")
+  case Medium => println("Medium crust size")
+  case Large => println("Large crust size")
+}
+
+// enums in an `if` statement
+if (currentCrustSize == Small) println("Small crust size")
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=enum_2 %}
 
 ```scala
 import CrustSize.*
@@ -285,10 +337,23 @@ if currentCrustSize == Small then println("Small crust size")
 {% endtab %}
 {% endtabs %}
 
-Here’s another example of how to create and use an ADT with Scala:
+Here’s another example of how to create a sum type with Scala, this would not be called an enumeration because the `Succ` case has parameters:
 
-{% tabs enum_3 %}
-{% tab 'Scala 3 Only' for=enum_3 %}
+{% tabs enum_3 class=tabs-scala-version %}
+{% tab 'Scala 2' for=enum_3 %}
+
+```scala
+sealed abstract class Nat
+object Nat {
+  case object Zero extends Nat
+  case class Succ(pred: Nat) extends Nat
+}
+```
+
+Sum Types are covered in detail in the [Domain Modeling]({% link _overviews/scala3-book/domain-modeling-tools.md %}) section of this book.
+
+{% endtab %}
+{% tab 'Scala 3' for=enum_3 %}
 
 ```scala
 enum Nat:
@@ -296,14 +361,15 @@ enum Nat:
   case Succ(pred: Nat)
 ```
 
+Enums are covered in detail in the [Domain Modeling]({% link _overviews/scala3-book/domain-modeling-tools.md %}) section of this book, and in the [Reference documentation]({{ site.scala3ref }}/enums/enums.html).
+
 {% endtab %}
 {% endtabs %}
 
-Enums are covered in detail in the [Domain Modeling][data-1] section of this book, and in the [Reference documentation]({{ site.scala3ref }}/enums/enums.html).
+### Product Types
 
-### Case classes
+A product type is an algebraic data type (ADT) that only has one shape, for example a singleton object, represented in Scala by a `case` object; or an immutable structure with accessible fields, represented by a `case` class.
 
-The Scala `case` class lets you model concepts with immutable data structures.
 A `case` class has all of the functionality of a `class`, and also has additional features baked in that make them useful for functional programming.
 When the compiler sees the `case` keyword in front of a `class` it has these effects and benefits:
 
