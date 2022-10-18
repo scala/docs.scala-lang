@@ -12,19 +12,27 @@ next-page: types-inferred
 Scala is a unique language in that it’s statically typed, but often _feels_ flexible and dynamic.
 For instance, thanks to type inference you can write code like this without explicitly specifying the variable types:
 
+{% tabs hi %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val a = 1
 val b = 2.0
 val c = "Hi!"
 ```
+{% endtab %}
+{% endtabs %}
 
 That makes the code feel dynamically typed.
 And thanks to new features, like [union types][union-types] in Scala 3, you can also write code like the following that expresses very concisely which values are expected as arguments and which types are returned:
 
+{% tabs union-example %}
+{% tab 'Scala 3 Only' %}
 ```scala
 def isTruthy(a: Boolean | Int | String): Boolean = ???
 def dogCatOrWhatever(): Dog | Plant | Car | Sun = ???
 ```
+{% endtab %}
+{% endtabs %}
 
 As the example suggests, when using union types, the types don’t have to share a common hierarchy, and you can still accept them as arguments or return them from a method.
 
