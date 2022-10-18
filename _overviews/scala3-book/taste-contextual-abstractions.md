@@ -45,12 +45,21 @@ It is convenient to omit it because we know `String`s are generally compared usi
 
 However, it is also possible to pass it explicitly:
 
-{% tabs contextual_2 %}
-{% tab 'Scala 3 Only' for=contextual_2 %}
+{% tabs contextual_2 class=tabs-scala-version %}
+{% tab 'Scala 2' for=contextual_2 %}
+
+```scala
+addresses.sortBy(address => (address.city, address.street))(Ordering.Tuple2(Ordering.String, Ordering.String))
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=contextual_2 %}
 
 ```scala
 addresses.sortBy(address => (address.city, address.street))(using Ordering.Tuple2(Ordering.String, Ordering.String))
 ```
+
+in Scala 3 `using` in an argument list to `sortBy` signals passing the context parameter explicitly, avoiding ambiguity.
 
 {% endtab %}
 {% endtabs %}
