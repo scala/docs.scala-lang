@@ -92,7 +92,7 @@ val ints = List(1, 2, 3, 4, 5)
 for (i <- ints) println(i)
 ```
 
-> The old syntax in Scala 2 `for` structure.
+> The code `i <- ints` is referred to as a _generator_, and the code that follows the closing parentheses of the generator is the _body_ of the loop.
 
 {% endtab %}
 
@@ -109,8 +109,6 @@ for i <- ints do println(i)
 {% endtab %}
 {% endtabs %}
 
-Again, note the usage of parentheses and the new `for`-`do` in Scala 3.
-
 ### Guards
 
 You can also use one or more `if` expressions inside a `for` loop.
@@ -121,7 +119,7 @@ This example prints all of the numbers in `ints` that are greater than `2`:
 {% tab 'Scala 2' for=for-guards %}
 
 ```scala
-for ( i <- ints if i > 2)
+for (i <- ints if i > 2)
   println(i)
 ```
 
@@ -148,9 +146,14 @@ However, it also has two guards, so the only time the print statement is called 
 {% tab 'Scala 2' for=for-guards-multi %}
 
 ```scala
-for ( i <- 1 to 3 if i == 2;
-      j <- 'a' to 'c' if j == 'b' )
+for {
+  i <- 1 to 3
+  j <- 'a' to 'c'
+  if i == 2
+  if j == 'b'
+} {
   println(s"i = $i, j = $j")   // prints: "i = 2, j = b"
+}
 ```
 
 {% endtab %}
@@ -229,7 +232,7 @@ This example shows how to capitalize the first character in each string in the l
 
 ```scala
 val names = List("chris", "ed", "maurice")
-val capNames = for ( name <- names ) yield name.capitalize
+val capNames = for (name <- names) yield name.capitalize
 ```
 
 {% endtab %}
@@ -252,8 +255,8 @@ Finally, this `for` expression iterates over a list of strings, and returns the 
 ```scala
 val fruits = List("apple", "banana", "lime", "orange")
 
-val fruitLengths = for ( f <- fruits if f.length > 4 )
-  yield f.length
+val fruitLengths =
+  for (f <- fruits if f.length > 4) yield f.length
 
 // fruitLengths: List[Int] = List(5, 6, 6)
 ```
@@ -387,8 +390,30 @@ p match
 In fact, a `match` expression can be used to test a variable against many different types of patterns.
 This example shows (a) how to use a `match` expression as the body of a method, and (b) how to match all the different types shown:
 
-{% tabs match-expression_3 %}
-{% tab 'Scala 3 Only' for=match-expression_3 %}
+{% tabs match-expression_3 class=tabs-scala-version %}
+{% tab 'Scala 2' for=match-expression_3 %}
+
+```scala
+// getClassAsString is a method that takes a single argument of any type.
+def getClassAsString(x: Any): String = x match {
+  case s: String => s"'$s' is a String"
+  case i: Int => "Int"
+  case d: Double => "Double"
+  case l: List[_] => "List"
+  case _ => "Unknown"
+}
+
+// examples
+getClassAsString(1)               // Int
+getClassAsString("hello")         // 'hello' is a String
+getClassAsString(List(1, 2, 3))   // List
+```
+
+Because the method `getClassAsString` takes a parameter value of type `Any`, it can be decomposed by any kind of
+pattern.
+
+{% endtab %}
+{% tab 'Scala 3' for=match-expression_3 %}
 
 ```scala
 // getClassAsString is a method that takes a single argument of any type.
@@ -396,7 +421,7 @@ def getClassAsString(x: Matchable): String = x match
   case s: String => s"'$s' is a String"
   case i: Int => "Int"
   case d: Double => "Double"
-  case l: List[_] => "List"
+  case l: List[?] => "List"
   case _ => "Unknown"
 
 // examples
@@ -405,12 +430,12 @@ getClassAsString("hello")         // 'hello' is a String
 getClassAsString(List(1, 2, 3))   // List
 ```
 
-{% endtab %}
-{% endtabs %}
-
 The method `getClassAsString` takes as a parameter a value of type [Matchable]({{ site.scala3ref }}/other-new-features/matchable.html), which can be
 any type supporting pattern matching (some types don’t support pattern matching because this could
 break encapsulation).
+
+{% endtab %}
+{% endtabs %}
 
 There’s _much_ more to pattern matching in Scala.
 Patterns can be nested, results of patterns can be bound, and pattern matching can even be user-defined.
@@ -461,7 +486,7 @@ It’s one-line syntax looks like this:
 {% tab 'Scala 2' for=while_1 %}
 
 ```scala
-while ( x >= 0 ) { x = f(x) }
+while (x >= 0) { x = f(x) }
 ```
 
 {% endtab %}
@@ -471,11 +496,10 @@ while ( x >= 0 ) { x = f(x) }
 ```scala
 while x >= 0 do x = f(x)
 ```
+Scala 3 still supports the Scala 2 syntax for the sake of compatibility.
 
 {% endtab %}
 {% endtabs %}
-
-Scala 3 still supports the Scala 2 syntax for the sake of compatibility.
 
 The `while` loop multiline syntax looks like this:
 
