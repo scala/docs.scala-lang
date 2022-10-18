@@ -9,7 +9,7 @@ next-page: domain-modeling-oop
 ---
 
 
-Scala 3 provides many different constructs so we can model the world around us:
+Scala provides many different constructs so we can model the world around us:
 
 - Classes
 - Objects
@@ -17,6 +17,7 @@ Scala 3 provides many different constructs so we can model the world around us:
 - Traits
 - Abstract classes
 - Enums
+<span class="tag tag-inline">Scala 3 only</span>
 - Case classes
 - Case objects
 
@@ -28,7 +29,7 @@ As with other languages, a _class_ in Scala is a template for the creation of ob
 Here are some examples of classes:
 
 {% tabs class_1 %}
-{% tab 'Scala 2 and 3' for=class_1 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 class Person(var name: String, var vocation: String)
@@ -47,7 +48,7 @@ If you want them to be immutable---read only---create them as `val` fields inste
 Prior to Scala 3, you used the `new` keyword to create a new instance of a class:
 
 {% tabs class_2 %}
-{% tab 'Scala 2 and 3' for=class_2 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 val p = new Person("Robert Allen Zimmerman", "Harmonica Player")
@@ -57,10 +58,11 @@ val p = new Person("Robert Allen Zimmerman", "Harmonica Player")
 {% endtab %}
 {% endtabs %}
 
-However, with [creator applications][creator] this isn’t required in Scala 3:
+However, with [universal apply methods][creator] this isn’t required in Scala 3:
+<span class="tag tag-inline">Scala 3 only</span>
 
 {% tabs class_3 %}
-{% tab 'Scala 3 Only' for=class_3 %}
+{% tab 'Scala 3 Only' %}
 
 ```scala
 val p = Person("Robert Allen Zimmerman", "Harmonica Player")
@@ -72,7 +74,7 @@ val p = Person("Robert Allen Zimmerman", "Harmonica Player")
 Once you have an instance of a class such as `p`, you can access its fields, which in this example are all constructor parameters:
 
 {% tabs class_4 %}
-{% tab 'Scala 2 and 3' for=class_4 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 p.name       // "Robert Allen Zimmerman"
@@ -85,7 +87,7 @@ p.vocation   // "Harmonica Player"
 As mentioned, all of these parameters were created as `var` fields, so you can also mutate them:
 
 {% tabs class_5 %}
-{% tab 'Scala 2 and 3' for=class_5 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 p.name = "Bob Dylan"
@@ -102,7 +104,7 @@ They are defined in the body of the class.
 The body is initialized as part of the default constructor:
 
 {% tabs method class=tabs-scala-version %}
-{% tab 'Scala 2' for=method %}
+{% tab 'Scala 2' %}
 
 ```scala
 class Person(var firstName: String, var lastName: String) {
@@ -122,7 +124,7 @@ class Person(var firstName: String, var lastName: String) {
 
 {% endtab %}
 
-{% tab 'Scala 3' for=method %}
+{% tab 'Scala 3' %}
 
 ```scala
 class Person(var firstName: String, var lastName: String):
@@ -144,7 +146,21 @@ class Person(var firstName: String, var lastName: String):
 
 The following REPL session shows how to create a new `Person` instance with this class:
 
+{% tabs demo-person class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+````scala
+scala> val john = new Person("John", "Doe")
+initialization begins
+John Doe
+initialization ends
+val john: Person = Person@55d8f6bb
+
+scala> john.printFullName
+John Doe
 ````
+{% endtab %}
+{% tab 'Scala 3' %}
+````scala
 scala> val john = Person("John", "Doe")
 initialization begins
 John Doe
@@ -154,6 +170,8 @@ val john: Person = Person@55d8f6bb
 scala> john.printFullName
 John Doe
 ````
+{% endtab %}
+{% endtabs %}
 
 Classes can also extend traits and abstract classes, which we cover in dedicated sections below.
 
@@ -162,7 +180,7 @@ Classes can also extend traits and abstract classes, which we cover in dedicated
 As a quick look at a few other features, class constructor parameters can also have default values:
 
 {% tabs default-values_1 class=tabs-scala-version %}
-{% tab 'Scala 2' for=default-values_1 %}
+{% tab 'Scala 2' %}
 
 ```scala
 class Socket(val timeout: Int = 5_000, val linger: Int = 5_000) {
@@ -172,7 +190,7 @@ class Socket(val timeout: Int = 5_000, val linger: Int = 5_000) {
 
 {% endtab %}
 
-{% tab 'Scala 3' for=default-values_1 %}
+{% tab 'Scala 3' %}
 
 ```scala
 class Socket(val timeout: Int = 5_000, val linger: Int = 5_000):
@@ -184,8 +202,19 @@ class Socket(val timeout: Int = 5_000, val linger: Int = 5_000):
 
 A great thing about this feature is that it lets consumers of your code create classes in a variety of different ways, as though the class had alternate constructors:
 
-{% tabs default-values_2 %}
-{% tab 'Scala 2 and 3' for=default-values_2 %}
+{% tabs default-values_2 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+val s = new Socket()                  // timeout: 5000, linger: 5000
+val s = new Socket(2_500)             // timeout: 2500, linger: 5000
+val s = new Socket(10_000, 10_000)    // timeout: 10000, linger: 10000
+val s = new Socket(timeout = 10_000)  // timeout: 10000, linger: 5000
+val s = new Socket(linger = 10_000)   // timeout: 5000, linger: 10000
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 val s = Socket()                  // timeout: 5000, linger: 5000
@@ -201,8 +230,22 @@ val s = Socket(linger = 10_000)   // timeout: 5000, linger: 10000
 When creating a new instance of a class, you can also use named parameters.
 This is particularly helpful when many of the parameters have the same type, as shown in this comparison:
 
-{% tabs default-values_3 %}
-{% tab 'Scala 2 and 3' for=default-values_3 %}
+{% tabs default-values_3 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+// option 1
+val s = new Socket(10_000, 10_000)
+
+// option 2
+val s = new Socket(
+  timeout = 10_000,
+  linger = 10_000
+)
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 // option 1
@@ -231,7 +274,7 @@ While analyzing the requirements you’ve seen that you need to be able to const
 One way to handle this situation in an OOP style is with this code:
 
 {% tabs structor_1 class=tabs-scala-version %}
-{% tab 'Scala 2' for=structor_1 %}
+{% tab 'Scala 2' %}
 
 ```scala
 import java.time._
@@ -254,7 +297,7 @@ class Student(
     this(name, govtId)
     _applicationDate = Some(applicationDate)
   }
-  
+
   // [3] a constructor for when the student is approved
   // and now has a student id
   def this(
@@ -270,7 +313,7 @@ class Student(
 
 {% endtab %}
 
-{% tab 'Scala 3' for=structor_1 %}
+{% tab 'Scala 3' %}
 
 ```scala
 import java.time.*
@@ -326,7 +369,7 @@ The class has three constructors, given by the numbered comments in the code:
 Those constructors can be called like this:
 
 {% tabs structor_2 class=tabs-scala-version %}
-{% tab 'Scala 2' for=structor_2 %}
+{% tab 'Scala 2' %}
 
 ```scala
 val s1 = new Student("Mary", "123")
@@ -336,7 +379,7 @@ val s3 = new Student("Mary", "123", 456)
 
 {% endtab %}
 
-{% tab 'Scala 3' for=structor_2 %}
+{% tab 'Scala 3' %}
 
 ```scala
 val s1 = Student("Mary", "123")
@@ -360,7 +403,7 @@ Declaring an `object` is similar to declaring a `class`.
 Here’s an example of a “string utilities” object that contains a set of methods for working with strings:
 
 {% tabs object_1 class=tabs-scala-version %}
-{% tab 'Scala 2' for=object_1 %}
+{% tab 'Scala 2' %}
 
 ```scala
 object StringUtils {
@@ -372,7 +415,7 @@ object StringUtils {
 
 {% endtab %}
 
-{% tab 'Scala 3' for=object_1 %}
+{% tab 'Scala 3' %}
 
 ```scala
 object StringUtils:
@@ -387,7 +430,7 @@ object StringUtils:
 We can use the object as follows:
 
 {% tabs object_2 %}
-{% tab 'Scala 2 and 3' for=object_2 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 StringUtils.truncate("Chuck Bartowski", 5)  // "Chuck"
@@ -399,7 +442,7 @@ StringUtils.truncate("Chuck Bartowski", 5)  // "Chuck"
 Importing in Scala is very flexible, and allows us to import _all_ members of an object:
 
 {% tabs object_3 class=tabs-scala-version %}
-{% tab 'Scala 2' for=object_3 %}
+{% tab 'Scala 2' %}
 
 ```scala
 import StringUtils._
@@ -410,7 +453,7 @@ isNullOrEmpty("John Casey")          // false
 
 {% endtab %}
 
-{% tab 'Scala 3' for=object_3 %}
+{% tab 'Scala 3' %}
 
 ```scala
 import StringUtils.*
@@ -425,7 +468,7 @@ isNullOrEmpty("John Casey")          // false
 or just _some_ members:
 
 {% tabs object_4 %}
-{% tab 'Scala 2 and 3' for=object_4 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 import StringUtils.{truncate, containsWhitespace}
@@ -440,7 +483,7 @@ isNullOrEmpty("Morgan Grimes")          // Not found: isNullOrEmpty (error)
 Objects can also contain fields, which are also accessed like static members:
 
 {% tabs object_5 class=tabs-scala-version %}
-{% tab 'Scala 2' for=object_5 %}
+{% tab 'Scala 2' %}
 
 ```scala
 object MathConstants {
@@ -453,7 +496,7 @@ println(MathConstants.PI)   // 3.14159
 
 {% endtab %}
 
-{% tab 'Scala 3' for=object_5 %}
+{% tab 'Scala 3' %}
 
 ```scala
 object MathConstants:
@@ -476,12 +519,12 @@ Companion objects are used for methods and values that are not specific to insta
 For instance, in the following example the class `Circle` has a member named `area` which is specific to each instance, and its companion object has a method named `calculateArea` that’s (a) not specific to an instance, and (b) is available to every instance:
 
 {% tabs companion class=tabs-scala-version %}
-{% tab 'Scala 2' for=companion %}
+{% tab 'Scala 2' %}
 
 ```scala
 import scala.math._
 
-case class Circle(radius: Double) {
+class Circle(val radius: Double) {
   def area: Double = Circle.calculateArea(radius)
 }
 
@@ -489,18 +532,18 @@ object Circle {
   private def calculateArea(radius: Double): Double = Pi * pow(radius, 2.0)
 }
 
-val circle1 = Circle(5.0)
+val circle1 = new Circle(5.0)
 circle1.area
 ```
 
 {% endtab %}
 
-{% tab 'Scala 3' for=companion %}
+{% tab 'Scala 3' %}
 
 ```scala
 import scala.math.*
 
-case class Circle(radius: Double):
+class Circle(val radius: Double):
   def area: Double = Circle.calculateArea(radius)
 
 object Circle:
@@ -530,7 +573,7 @@ Companion objects can be used for several purposes:
 Here’s a quick look at how `apply` methods can be used as factory methods to create new objects:
 
 {% tabs companion-use class=tabs-scala-version %}
-{% tab 'Scala 2' for=companion-use %}
+{% tab 'Scala 2' %}
 
 ```scala
 class Person {
@@ -546,7 +589,7 @@ object Person {
     p.name = name
     p
   }
-  
+
   // a two-arg factory method
   def apply(name: String, age: Int): Person = {
     var p = new Person
@@ -563,9 +606,11 @@ val fred = Person("Fred", 29)
 //val fred: Person = Fred is 29 years old
 ```
 
+The `unapply` method isn’t covered here, but it’s covered in the [Language Specification](https://scala-lang.org/files/archive/spec/2.13/08-pattern-matching.html#extractor-patterns).
+
 {% endtab %}
 
-{% tab 'Scala 3' for=companion-use %}
+{% tab 'Scala 3' %}
 
 ```scala
 class Person:
@@ -597,10 +642,10 @@ val fred = Person("Fred", 29)
 //val fred: Person = Fred is 29 years old
 ```
 
+The `unapply` method isn’t covered here, but it’s covered in the [Reference documentation]({{ site.scala3ref }}/changed-features/pattern-matching.html).
+
 {% endtab %}
 {% endtabs %}
-
-The `unapply` method isn’t covered here, but it’s covered in the [Reference documentation][unapply].
 
 ## Traits
 
@@ -612,7 +657,7 @@ If you’re familiar with Java, a Scala trait is similar to an interface in Java
 In a basic use, a trait can be used as an interface, defining only abstract members that will be implemented by other classes:
 
 {% tabs traits_1 class=tabs-scala-version %}
-{% tab 'Scala 2' for=traits_1 %}
+{% tab 'Scala 2' %}
 
 ```scala
 trait Employee {
@@ -624,7 +669,7 @@ trait Employee {
 
 {% endtab %}
 
-{% tab 'Scala 3' for=traits_1 %}
+{% tab 'Scala 3' %}
 
 ```scala
 trait Employee:
@@ -640,7 +685,7 @@ However, traits can also contain concrete members.
 For instance, the following trait defines two abstract members---`numLegs` and `walk()`---and also has a concrete implementation of a `stop()` method:
 
 {% tabs traits_2 class=tabs-scala-version %}
-{% tab 'Scala 2' for=traits_2 %}
+{% tab 'Scala 2' %}
 
 ```scala
 trait HasLegs {
@@ -652,7 +697,7 @@ trait HasLegs {
 
 {% endtab %}
 
-{% tab 'Scala 3' for=traits_2 %}
+{% tab 'Scala 3' %}
 
 ```scala
 trait HasLegs:
@@ -667,7 +712,7 @@ trait HasLegs:
 Here’s another trait with an abstract member and two concrete implementations:
 
 {% tabs traits_3 class=tabs-scala-version %}
-{% tab 'Scala 2' for=traits_3 %}
+{% tab 'Scala 2' %}
 
 ```scala
 trait HasTail {
@@ -679,7 +724,7 @@ trait HasTail {
 
 {% endtab %}
 
-{% tab 'Scala 3' for=traits_3 %}
+{% tab 'Scala 3' %}
 
 ```scala
 trait HasTail:
@@ -697,10 +742,10 @@ Traits let you build small modules like this.
 Later in your code, classes can mix multiple traits to build larger components:
 
 {% tabs traits_4 class=tabs-scala-version %}
-{% tab 'Scala 2' for=traits_4 %}
+{% tab 'Scala 2' %}
 
 ```scala
-class IrishSetter(name: String) extends HasLegs, HasTail {
+class IrishSetter(name: String) extends HasLegs with HasTail {
   val numLegs = 4
   val tailColor = "Red"
   def walk() = println("I’m walking")
@@ -710,7 +755,7 @@ class IrishSetter(name: String) extends HasLegs, HasTail {
 
 {% endtab %}
 
-{% tab 'Scala 3' for=traits_4 %}
+{% tab 'Scala 3' %}
 
 ```scala
 class IrishSetter(name: String) extends HasLegs, HasTail:
@@ -726,8 +771,15 @@ class IrishSetter(name: String) extends HasLegs, HasTail:
 Notice that the `IrishSetter` class implements the abstract members that are defined in `HasLegs` and `HasTail`.
 Now you can create new `IrishSetter` instances:
 
-{% tabs traits_5 %}
-{% tab 'Scala 2 and 3' for=traits_5 %}
+{% tabs traits_5 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+val d = new IrishSetter("Big Red")   // "Big Red is a Dog"
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 val d = IrishSetter("Big Red")   // "Big Red is a Dog"
@@ -762,7 +814,7 @@ In most situations you’ll use traits, but historically there have been two sit
 Prior to Scala 3, when a base class needed to take constructor arguments, you’d declare it as an `abstract class`:
 
 {% tabs abstract_1 class=tabs-scala-version %}
-{% tab 'Scala 2' for=abstract_1 %}
+{% tab 'Scala 2' %}
 
 ```scala
 abstract class Pet(name: String) {
@@ -775,12 +827,12 @@ class Dog(name: String, var age: Int) extends Pet(name) {
   val greeting = "Woof"
 }
 
-val d = Dog("Fido", 1)
+val d = new Dog("Fido", 1)
 ```
 
 {% endtab %}
 
-{% tab 'Scala 3' for=abstract_1 %}
+{% tab 'Scala 3' %}
 
 ```scala
 abstract class Pet(name: String):
@@ -797,28 +849,13 @@ val d = Dog("Fido", 1)
 {% endtab %}
 {% endtabs %}
 
+<h4>Trait Parameters <span class="tag tag-inline">Scala 3 only</span></h4>
+
 However, with Scala 3, traits can now have [parameters][trait-params], so you can now use traits in the same situation:
 
-{% tabs abstract_2 class=tabs-scala-version %}
-{% tab 'Scala 2' for=abstract_2 %}
+{% tabs abstract_2 %}
 
-```scala
-trait Pet(name: String) {
-  def greeting: String
-  def age: Int
-  override def toString = s"My name is $name, I say $greeting, and I’m $age"
-}
-
-class Dog(name: String, var age: Int) extends Pet(name) {
-  val greeting = "Woof"
-}
-
-val d = Dog("ssssssss
-```
-
-{% endtab %}
-
-{% tab 'Scala 3' for=abstract_2 %}
+{% tab 'Scala 3 Only' %}
 
 ```scala
 trait Pet(name: String):
@@ -838,7 +875,7 @@ val d = Dog("Fido", 1)
 Traits are more flexible to compose---you can mix in multiple traits, but only extend one class---and should be preferred to classes and abstract classes most of the time.
 The rule of thumb is to use classes whenever you want to create instances of a particular type, and traits when you want to decompose and reuse behaviour.
 
-## Enums
+<h2>Enums <span class="tag tag-inline">Scala 3 only</span></h2>
 
 An enumeration can be used to define a type that consists of a finite set of named values (in the section on [FP modeling][fp-modeling], we will see that enums are much more flexible than this).
 Basic enumerations are used to define sets of constants, like the months in a year, the days in a week, directions like north/south/east/west, and more.
@@ -846,7 +883,7 @@ Basic enumerations are used to define sets of constants, like the months in a ye
 As an example, these enumerations define sets of attributes related to pizzas:
 
 {% tabs enum_1 %}
-{% tab 'Scala 3 Only' for=enum_1 %}
+{% tab 'Scala 3 Only' %}
 
 ```scala
 enum CrustSize:
@@ -865,7 +902,7 @@ enum Topping:
 To use them in other code, first import them, and then use them:
 
 {% tabs enum_2 %}
-{% tab 'Scala 3 Only' for=enum_2 %}
+{% tab 'Scala 3 Only' %}
 
 ```scala
 import CrustSize.*
@@ -875,18 +912,18 @@ val currentCrustSize = Small
 {% endtab %}
 {% endtabs %}
 
-Enum values can be compared using equals (`==`), and also enum_1ed on:
+Enum values can be compared using equals (`==`), and also matched on:
 
 {% tabs enum_3 %}
-{% tab 'Scala 3 Only' for=enum_3 %}
+{% tab 'Scala 3 Only' %}
 
 ```scala
 // if/then
-if (currentCrustSize == Large)
+if currentCrustSize == Large then
   println("You get a prize!")
 
-// enum_1
-currentCrustSize enum_1
+// match
+currentCrustSize match
   case Small => println("small")
   case Medium => println("medium")
   case Large => println("large")
@@ -900,7 +937,7 @@ currentCrustSize enum_1
 Enumerations can also be parameterized:
 
 {% tabs enum_4 %}
-{% tab 'Scala 3 Only' for=enum_4 %}
+{% tab 'Scala 3 Only' %}
 
 ```scala
 enum Color(val rgb: Int):
@@ -915,7 +952,7 @@ enum Color(val rgb: Int):
 And they can also have members (like fields and methods):
 
 {% tabs enum_5 %}
-{% tab 'Scala 3 Only' for=enum_5 %}
+{% tab 'Scala 3 Only' %}
 
 ```scala
 enum Planet(mass: Double, radius: Double):
@@ -937,7 +974,7 @@ enum Planet(mass: Double, radius: Double):
 If you want to use Scala-defined enums as Java enums, you can do so by extending the class `java.lang.Enum` (which is imported by default) as follows:
 
 {% tabs enum_6 %}
-{% tab 'Scala 3 Only' for=enum_6 %}
+{% tab 'Scala 3 Only' %}
 
 ```scala
 enum Color extends Enum[Color] { case Red, Green, Blue }
@@ -964,7 +1001,7 @@ Case classes are used to model immutable data structures.
 Take the following example:
 
 {% tabs case-classes_1 %}
-{% tab 'Scala 2 and 3' for=case-classes_1 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala:
 case class Person(name: String, relation: String)
@@ -977,7 +1014,7 @@ Since we declare `Person` as a case class, the fields `name` and `relation` are 
 We can create instances of case classes as follows:
 
 {% tabs case-classes_2 %}
-{% tab 'Scala 2 and 3' for=case-classes_2 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 val christina = Person("Christina", "niece")
@@ -989,7 +1026,7 @@ val christina = Person("Christina", "niece")
 Note that the fields can’t be mutated:
 
 {% tabs case-classes_3 %}
-{% tab 'Scala 2 and 3' for=case-classes_3 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 christina.name = "Fred"   // error: reassignment to val
@@ -1000,7 +1037,7 @@ christina.name = "Fred"   // error: reassignment to val
 
 Since the fields of a case class are assumed to be immutable, the Scala compiler can generate many helpful methods for you:
 
-- An `unapply` method is generated, which allows you to perform pattern case-classes_1ing on a case class (that is, `case Person(n, r) => ...`).
+- An `unapply` method is generated, which allows you to perform pattern matching on a case class (that is, `case Person(n, r) => ...`).
 - A `copy` method is generated in the class, which is very useful to create modified copies of an instance.
 - `equals` and `hashCode` methods using structural equality are generated, allowing you to use instances of case classes in `Map`s.
 - A default `toString` method is generated, which is helpful for debugging.
@@ -1008,7 +1045,7 @@ Since the fields of a case class are assumed to be immutable, the Scala compiler
 These additional features are demonstrated in the below example:
 
 {% tabs case-classes_4 class=tabs-scala-version %}
-{% tab 'Scala 2' for=case-classes_4 %}
+{% tab 'Scala 2' %}
 
 ```scala
 // Case classes can be used as patterns
@@ -1034,11 +1071,11 @@ val cubs2016 = cubs1908.copy(lastWorldSeriesWin = 2016)
 
 {% endtab %}
 
-{% tab 'Scala 3' for=case-classes_4 %}
+{% tab 'Scala 3' %}
 
 ```scala
 // Case classes can be used as patterns
-christina match:
+christina match
   case Person(n, r) => println("name is " + n)
 
 // `equals` and `hashCode` methods generated for you
@@ -1068,7 +1105,7 @@ As mentioned, case classes support functional programming (FP):
   Since instances of case classes can’t be changed, they can easily be shared without fearing mutation or race conditions.
 - Instead of mutating an instance, you can use the `copy` method as a template to create a new (potentially changed) instance.
   This process can be referred to as “update as you copy.”
-- Having an `unapply` method auto-generated for you also lets case classes be used in advanced ways with pattern case-classes_1ing.
+- Having an `unapply` method auto-generated for you also lets case classes be used in advanced ways with pattern matching.
 
 {% comment %}
 NOTE: We can use this following text, if desired. If it’s used, it needs to be updated a little bit.
@@ -1080,7 +1117,7 @@ A great thing about a case class is that it automatically generates an `unapply`
 To demonstrate this, imagine that you have this trait:
 
 {% tabs case-classes_5 class=tabs-scala-version %}
-{% tab 'Scala 2' for=case-classes_5 %}
+{% tab 'Scala 2' %}
 
 ```scala
 trait Person {
@@ -1090,7 +1127,7 @@ trait Person {
 
 {% endtab %}
 
-{% tab 'Scala 3' for=case-classes_5 %}
+{% tab 'Scala 3' %}
 
 ```scala
 trait Person:
@@ -1103,7 +1140,7 @@ trait Person:
 Then, create these case classes to extend that trait:
 
 {% tabs case-classes_6 %}
-{% tab 'Scala 2 and 3' for=case-classes_6 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 case class Student(name: String, year: Int) extends Person
@@ -1113,10 +1150,10 @@ case class Teacher(name: String, specialty: String) extends Person
 {% endtab %}
 {% endtabs %}
 
-Because those are defined as case classes---and they have built-in `unapply` methods---you can write a case-classes_1 expression like this:
+Because those are defined as case classes---and they have built-in `unapply` methods---you can write a match expression like this:
 
 {% tabs case-classes_7 class=tabs-scala-version %}
-{% tab 'Scala 2' for=case-classes_7 %}
+{% tab 'Scala 2' %}
 
 ```scala
 def getPrintableString(p: Person): String = p match {
@@ -1129,7 +1166,7 @@ def getPrintableString(p: Person): String = p match {
 
 {% endtab %}
 
-{% tab 'Scala 3' for=case-classes_7 %}
+{% tab 'Scala 3' %}
 
 ```scala
 def getPrintableString(p: Person): String = p match
@@ -1145,7 +1182,7 @@ def getPrintableString(p: Person): String = p match
 Notice these two patterns in the `case` statements:
 
 {% tabs case-classes_8 %}
-{% tab 'Scala 2 and 3' for=case-classes_8 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 case Student(name, year) =>
@@ -1156,7 +1193,7 @@ case Teacher(name, whatTheyTeach) =>
 {% endtabs %}
 
 Those patterns work because `Student` and `Teacher` are defined as case classes that have `unapply` methods whose type signature conforms to a certain standard.
-Technically, the specific type of pattern case-classes_1ing shown in these examples is known as a _constructor pattern_.
+Technically, the specific type of pattern matching shown in these examples is known as a _constructor pattern_.
 
 > The Scala standard is that an `unapply` method returns the case class constructor fields in a tuple that’s wrapped in an `Option`.
 > The “tuple” part of the solution was shown in the previous lesson.
@@ -1164,7 +1201,7 @@ Technically, the specific type of pattern case-classes_1ing shown in these examp
 To show how that code works, create an instance of `Student` and `Teacher`:
 
 {% tabs case-classes_9 %}
-{% tab 'Scala 2 and 3' for=case-classes_9 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 val s = Student("Al", 1)
@@ -1177,7 +1214,7 @@ val t = Teacher("Bob Donnan", "Mathematics")
 Next, this is what the output looks like in the REPL when you call `getPrintableString` with those two instances:
 
 {% tabs case-classes_10 %}
-{% tab 'Scala 2 and 3' for=case-classes_10 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 scala> getPrintableString(s)
@@ -1192,13 +1229,13 @@ res1: String = Bob Donnan teaches Mathematics.
 
 > All of this content on `unapply` methods and extractors is a little advanced for an introductory book like this, but because case classes are an important FP topic, it seems better to cover them, rather than skipping over them.
 
-#### Add pattern case-classes_1ing to any type with unapply
+#### Add pattern matching to any type with unapply
 
-A great Scala feature is that you can add pattern case-classes_1ing to any type by writing your own `unapply` method.
+A great Scala feature is that you can add pattern matching to any type by writing your own `unapply` method.
 As an example, this class defines an `unapply` method in its companion object:
 
 {% tabs case-classes_11 class=tabs-scala-version %}
-{% tab 'Scala 2' for=case-classes_11 %}
+{% tab 'Scala 2' %}
 
 ```scala
 class Person(var name: String, var age: Int)
@@ -1209,7 +1246,7 @@ object Person {
 
 {% endtab %}
 
-{% tab 'Scala 3' for=case-classes_11 %}
+{% tab 'Scala 3' %}
 
 ```scala
 class Person(var name: String, var age: Int)
@@ -1220,10 +1257,10 @@ object Person:
 {% endtab %}
 {% endtabs %}
 
-Because it defines an `unapply` method, and because that method returns a tuple, you can now use `Person` with a `case-classes_1` expression:
+Because it defines an `unapply` method, and because that method returns a tuple, you can now use `Person` with a `match` expression:
 
 {% tabs case-classes_12 class=tabs-scala-version %}
-{% tab 'Scala 2' for=case-classes_12 %}
+{% tab 'Scala 2' %}
 
 ```scala
 val p = Person("Astrid", 33)
@@ -1238,7 +1275,7 @@ p match {
 
 {% endtab %}
 
-{% tab 'Scala 3' for=case-classes_12 %}
+{% tab 'Scala 3' %}
 
 ```scala
 val p = Person("Astrid", 33)
@@ -1264,7 +1301,7 @@ Case objects are useful when you need to pass immutable messages around.
 For instance, if you’re working on a music player project, you’ll create a set of commands or messages like this:
 
 {% tabs case-objects_1 %}
-{% tab 'Scala 2 and 3' for=case-objects_1 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 sealed trait Message
@@ -1277,10 +1314,10 @@ case object StopPlaying extends Message
 {% endtab %}
 {% endtabs %}
 
-Then in other parts of your code, you can write methods like this, which use pattern case-objects_1ing to handle the incoming message (assuming the methods `playSong`, `changeVolume`, and `stopPlayingSong` are defined somewhere else):
+Then in other parts of your code, you can write methods like this, which use pattern matching to handle the incoming message (assuming the methods `playSong`, `changeVolume`, and `stopPlayingSong` are defined somewhere else):
 
 {% tabs case-objects_2 class=tabs-scala-version %}
-{% tab 'Scala 2' for=case-objects_2 %}
+{% tab 'Scala 2' %}
 
 ```scala
 def handleMessages(message: Message): Unit = message match {
@@ -1293,7 +1330,7 @@ def handleMessages(message: Message): Unit = message match {
 
 {% endtab %}
 
-{% tab 'Scala 3' for=case-objects_2 %}
+{% tab 'Scala 3' %}
 
 ```scala
 def handleMessages(message: Message): Unit = message match
