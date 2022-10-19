@@ -1,5 +1,5 @@
 ---
-title: main Methods
+title: Main Methods in Scala 3
 type: section
 description: This page describes how 'main' methods and the '@main' annotation work in Scala 3.
 languages: [zh-cn]
@@ -121,34 +121,30 @@ final class happyBirthday {
 {% endtab %}
 {% endtabs %}
 
-## Scala 3 compared to Scala 2
+## Backwards Compatibility with Scala 2
 
-{% tabs method_4 class=tabs-scala-version %}
-{% tab 'Scala 2' for=method_4 %}
+`@main` methods are the recommended way to generate programs that can be invoked from the command line in Scala 3.
+They replace the previous approach in Scala 2, which was to create an `object` that extends the `App` class:
+
+The previous functionality of `App`, which relied on the “magic” `DelayedInit` trait, is no longer available.
+`App` still exists in limited form for now, but it doesn’t support command line arguments and will be deprecated in the future.
+
+If programs need to cross-build between Scala 2 and Scala 3, it’s recommended to use an `object` with an explicit `main` method and a single `Array[String]` argument instead:
+
+{% tabs method_4 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
-// scala 2
-object happyBirthday extends App {
-  // needs by-hand parsing of the command line arguments ...
+object happyBirthday {
+  private def happyBirthday(age: Int, name: String, others: String*) = {
+    ... // same as before
+  }
+  def main(args: Array[String]): Unit =
+    happyBirthday(args(0).toInt, args(1), args.drop(2).toIndexedSeq:_*)
 }
 ```
 
-{% endtab %}
-
-{% tab 'Scala 3' for=method_4 %}
-
-```scala
-object happyBirthday:
-  def main(args: Array[String]) = println("Hello, world")
-```
-
-> `@main` methods are the recommended way to generate programs that can be invoked from the command line in Scala 3.
-> They replace the previous approach in Scala 2, which was to create an `object` that extends the `App` class:
-
-> The previous functionality of `App`, which relied on the “magic” `DelayedInit` trait, is no longer available.
-> `App` still exists in limited form for now, but it doesn’t support command line arguments and will be deprecated in the future.
-
-> If programs need to cross-build between Scala 2 and Scala 3, it’s recommended to use an explicit `main` method with an `Array[String]` argument instead:
+> note that here we use `:_*` to pass a vararg argument, which remains in Scala 3 for backwards compatibility.
 
 {% endtab %}
 {% endtabs %}
@@ -158,6 +154,6 @@ If you place that code in a file named *happyBirthday.scala*, you can then compi
 ```bash
 $ scalac happyBirthday.scala
 
-$ scala happyBirthday
-Hello, world
+$ scala happyBirthday 23 Lisa Peter
+Happy 23rd Birthday, Lisa and Peter!
 ```
