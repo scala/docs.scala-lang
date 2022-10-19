@@ -427,7 +427,7 @@ $(document).ready(function() {
     const DocsPreferences = Storage('org.scala-lang.docs.preferences');
     const Scala3 = 'scala-3';
     const scalaVersion = DocsPreferences.getPreference('scalaVersion', Scala3);
-    
+
     function activateTab(tabs, scalaVersion) {
       // click the code tab corresponding to the preferred Scala version.
       tabs.find('input[data-target=' + scalaVersion + ']').prop("checked", true);
@@ -537,7 +537,7 @@ $('#filter-glossary-terms').focus();
       // Loop through the comment list
       $(".glossary .toc-context > ul li").each(function(){
             // If the name of the glossary term does not contain the text phrase fade it out
-          if (jQuery(this).find("h4").text().search(new RegExp(filter, "i")) < 0) {
+          if (jQuery(this).find("h3").text().search(new RegExp(filter, "i")) < 0) {
               $(this).fadeOut();
 
           // Show the list item if the phrase matches and increase the count by 1
