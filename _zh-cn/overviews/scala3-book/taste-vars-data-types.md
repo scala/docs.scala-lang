@@ -13,7 +13,6 @@ permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
-
 本节介绍 Scala 变量和数据类型。
 
 ## 两种类型的变量
@@ -41,6 +40,9 @@ permalink: "/zh-cn/scala3/book/:title.html"
 
 这些示例展示了如何创建 `val` 和 `var` 变量：
 
+{% tabs var-express-1 %}
+{% tab 'Scala 2 and 3' %}
+
 ```scala
 // immutable
 val a = 0
@@ -49,32 +51,56 @@ val a = 0
 var b = 1
 ```
 
+{% endtab %}
+{% endtabs %}
+
 在应用程序中，不能重新给一个 `val` 变量赋值。
 如果您尝试重新赋值一个 `val` 变量，将导致编译器错误：
+
+{% tabs var-express-2 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 val msg = "Hello, world"
 msg = "Aloha"   // "reassignment to val" error; this won’t compile
 ```
 
-相反，可以重新分配一个 `var` 变量：
+{% endtab %}
+{% endtabs %}
+
+相反，可以给 `var` 变量重新赋值：
+
+{% tabs var-express-3 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 var msg = "Hello, world"
 msg = "Aloha" // 因为可以重新分配 var，所以可以编译
 ```
 
+{% endtab %}
+{% endtabs %}
+
 ## 声明变量类型
 
 创建变量时，您可以显式声明其类型，或让编译器推断类型：
+
+{% tabs var-express-4 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 val x: Int = 1   // 显式
 val x = 1        // 隐式的；编译器推断类型
 ```
 
+{% endtab %}
+{% endtabs %}
+
 第二种形式称为 _类型推断_，它是帮助保持此类代码简洁的好方法。
 Scala 编译器通常可以为您推断数据类型，如以下 REPL 示例的输出所示：
+
+{% tabs var-express-5 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 scala> val x = 1
@@ -87,13 +113,22 @@ scala> val nums = List(1, 2, 3)
 val nums: List[Int] = List(1, 2, 3)
 ```
 
+{% endtab %}
+{% endtabs %}
+
 如果您愿意，您始终可以显式声明变量的类型，但在像这样的简单赋值中，不须要这样：
+
+{% tabs var-express-6 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 val x: Int = 1
 val s: String = "a string"
 val p: Person = Person("Richard")
 ```
+
+{% endtab %}
+{% endtabs %}
 
 请注意，使用这种方法会感觉代码太啰嗦。
 
@@ -108,6 +143,9 @@ Scala 带有你所期望的标准数值数据类型，它们都是类的成熟�
 
 这些示例展示了如何声明数值类型的变量：
 
+{% tabs var-express-7 %}
+{% tab 'Scala 2 and 3' %}
+
 ```scala
 val b: Byte = 1
 val i: Int = 1
@@ -117,14 +155,26 @@ val d: Double = 2.0
 val f: Float = 3.0
 ```
 
+{% endtab %}
+{% endtabs %}
+
 因为 `Int` 和 `Double` 是默认的数字类型，所以您通常创建它们而不显式声明数据类型：
+
+{% tabs var-express-8 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 val i = 123   // 默认为 Int
 val j = 1.0   // 默认为 Double
 ```
 
+{% endtab %}
+{% endtabs %}
+
 在您的代码中，您还可以将字符 `L`、`D` 和 `F`（或者它们对应的小写字母）加到数字后面以指定它们是 `Long`、`Double` 或 `Float` 值：
+
+{% tabs var-express-9 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 val x = 1_000L   // val x: Long = 1000
@@ -132,21 +182,36 @@ val y = 2.2D     // val y: Double = 2.2
 val z = 3.3F     // val z: Float = 3.3
 ```
 
+{% endtab %}
+{% endtabs %}
+
 当您需要非常大的数字时，请使用 `BigInt` 和 `BigDecimal` 类型：
+
+{% tabs var-express-10 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 var a = BigInt(1_234_567_890_987_654_321L)
 var b = BigDecimal(123_456.789)
 ```
 
+{% endtab %}
+{% endtabs %}
+
 其中 `Double` 和 `Float` 是近似十进制数，`BigDecimal` 用于精确算术。
 
 Scala 还有 `String` 和 `Char` 数据类型：
+
+{% tabs var-express-11 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 val name = "Bill"   // String
 val c = 'a'         // Char
 ```
+
+{% endtab %}
+{% endtabs %}
 
 ### 字符串
 
@@ -160,21 +225,36 @@ Scala 字符串类似于 Java 字符串，但它们有两个很棒的附加特�
 字符串插值提供了一种非常易读的方式在字符串中使用变量。
 例如，给定这三个变量：
 
+{% tabs var-express-12 %}
+{% tab 'Scala 2 and 3' %}
+
 ```scala
 val firstName = "John"
 val mi = 'C'
 val lastName = "Doe"
 ```
 
+{% endtab %}
+{% endtabs %}
+
 您可以将这些变量组合在一个字符串中，如下所示：
+
+{% tabs var-express-13 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 println(s"Name: $firstName $mi $lastName")   // "Name: John C Doe"
 ```
 
+{% endtab %}
+{% endtabs %}
+
 只需在字符串前面加上字母 `s`，然后在字符串中的变量名之前放置一个 `$` 符号。
 
 要将任意表达式嵌入字符串中，请将它们括在花括号中：
+
+{% tabs var-express-14 %}
+{% tab 'Scala 2 and 3' %}
 
 ``` scala
 println(s"2 + 2 = ${2 + 2}") // 打印 "2 + 2 = 4"
@@ -182,6 +262,9 @@ println(s"2 + 2 = ${2 + 2}") // 打印 "2 + 2 = 4"
 val x = -1
 println(s"x.abs = ${x.abs}") // 打印 "x.abs = 1"
 ```
+
+{% endtab %}
+{% endtabs %}
 
 放在字符串前面的 `s` 只是一种可能的插值器。
 如果使用 `f` 而不是 `s`，则可以在字符串中使用 `printf` 样式的格式化语法。
@@ -192,12 +275,18 @@ println(s"x.abs = ${x.abs}") // 打印 "x.abs = 1"
 
 多行字符串是通过将字符串包含在三个双引号内来创建的：
 
+{% tabs var-express-15 %}
+{% tab 'Scala 2 and 3' %}
+
 ```scala
 val quote = """The essence of Scala:
                Fusion of functional and object-oriented
                programming in a typed setting."""
 ```
 
-> 有关字符串插值器和多行字符串的更多详细信息，请参阅[“First Look at Types”章节][first-look]。
+{% endtab %}
+{% endtabs %}
+
+> 有关字符串插值器和多行字符串的更多详细信息，请参阅[“类型初探”章节][first-look]。
 
 [first-look]: {% link _zh-cn/overviews/scala3-book/first-look-at-types.md %}
