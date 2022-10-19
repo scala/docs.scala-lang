@@ -19,7 +19,7 @@ Scala methods have many features, including these:
 - Multiple parameter groups
 - Context-provided parameters
 - By-name parameters
-- ...
+- and more...
 
 Some of these features are demonstrated in this section, but when you’re defining a “simple” method that doesn’t use those features, the syntax looks like this:
 
@@ -429,6 +429,7 @@ def isTruthy(a: Matchable) = a match
 
 > For more details on the `Matchable` trait, see the [Reference documentation][reference_matchable].
 
+[reference_matchable]: {{ site.scala3ref }}/other-new-features/matchable.html
 {% endtab %}
 {% endtabs %}
 
@@ -619,10 +620,9 @@ end StringUtils
 
 ## Extension methods
 
-Extension methods are discussed in the [Extension methods section][extension] of the Contextual Abstraction chapter.
-Their main purpose is to let you add new functionality to closed classes.
-As shown in that section, imagine that you have a `Circle` class, but you can’t change its source code.
-For instance, it may be defined like this in a third-party library:
+There are many situations where you would like to add functionality to closed classes.
+For example, imagine that you have a `Circle` class, but you can’t change its source code.
+It could be defined like this in a third-party library:
 
 {% tabs method_23 %}
 {% tab 'Scala 2 and 3' for=method_23 %}
@@ -636,8 +636,20 @@ case class Circle(x: Double, y: Double, radius: Double)
 
 When you want to add methods to this class, you can define them as extension methods, like this:
 
-{% tabs method_24 %}
-{% tab 'Scala 3 Only' for=method_24 %}
+{% tabs method_24 class=tabs-scala-version %}
+{% tab 'Scala 2' for=method_24 %}
+
+```scala
+implicit class CircleOps(c: Circle) {
+  def circumference: Double = c.radius * math.Pi * 2
+  def diameter: Double = c.radius * 2
+  def area: Double = math.Pi * c.radius * c.radius
+}
+```
+In Scala 2 use an `implicit class`, find out more details [here](/overviews/core/implicit-classes.html).
+
+{% endtab %}
+{% tab 'Scala 3' for=method_24 %}
 
 ```scala
 extension (c: Circle)
@@ -645,14 +657,17 @@ extension (c: Circle)
   def diameter: Double = c.radius * 2
   def area: Double = math.Pi * c.radius * c.radius
 ```
+In Scala 3 use the new `extension` construct. For more details see chapters in [this book][extension], or the [Scala 3 reference][reference-ext].
 
+[reference-ext]: {{ site.scala3ref }}/contextual/extension-methods.html
+[extension]: {% link _overviews/scala3-book/ca-extension-methods.md %}
 {% endtab %}
 {% endtabs %}
 
 Now when you have a `Circle` instance named `aCircle`, you can call those methods like this:
 
 {% tabs method_25 %}
-{% tab 'Scala 3 Only' for=method_25 %}
+{% tab 'Scala 2 and 3' for=method_25 %}
 
 ```scala
 aCircle.circumference
@@ -662,8 +677,6 @@ aCircle.area
 
 {% endtab %}
 {% endtabs %}
-
-See the [Extension methods section][reference_extension_methods] of this book, and the [“Extension methods” Reference page][reference] for more details.
 
 ## Even more
 
@@ -678,9 +691,11 @@ There’s even more to know about methods, including how to:
 - Write methods that have multiple parameter groups (partially-applied functions)
 - Create methods that have generic type parameters
 
-See the [Reference documentation][reference] for more details on these features.
+{% comment %}
+Jamie: there really needs better linking here - previously it was to the Scala 3 Reference, which doesnt cover any
+of this
+{% endcomment %}
+See the other chapters in this book for more details on these features.
 
-[extension]: {% link _overviews/scala3-book/ca-extension-methods.md %}
 [reference_extension_methods]: {{ site.scala3ref }}/contextual/extension-methods.html
-[reference]: {{ site.scala3ref }}/overview.html
 [reference_matchable]: {{ site.scala3ref }}/other-new-features/matchable.html
