@@ -11,9 +11,15 @@ next-page: methods-summary
 
 Scala 3 offers a new way to define programs that can be invoked from the command line: Adding a `@main` annotation to a method turns it into entry point of an executable program:
 
+{% tabs method_1 %}
+{% tab 'Scala 3 Only' for=method_1 %}
+
 ```scala
 @main def hello() = println("Hello, world")
 ```
+
+{% endtab %}
+{% endtabs %}
 
 Just save that line of code in a file named something like *Hello.scala*---the filename doesn’t have to match the method name---and run it with `scala`:
 
@@ -36,6 +42,9 @@ Learn more about the `@main` annotation by reading the following sections, or by
 With this approach your `@main` method can handle command line arguments, and those arguments can have different types.
 For example, given this `@main` method that takes an `Int`, a `String`, and a varargs `String*` parameter:
 
+{% tabs method_2 %}
+{% tab 'Scala 3 Only' for=method_2 %}
+
 ```scala
 @main def happyBirthday(age: Int, name: String, others: String*) =
   val suffix = (age % 100) match
@@ -50,6 +59,9 @@ For example, given this `@main` method that takes an `Int`, a `String`, and a va
   for other <- others do sb.append(" and ").append(other)
   println(sb.toString)
 ```
+
+{% endtab %}
+{% endtabs %}
 
 When you compile that code, it creates a main program named `happyBirthday` that’s called like this:
 
@@ -73,8 +85,6 @@ $ scala happyBirthday sixty Fred
 Illegal command line: java.lang.NumberFormatException: For input string: "sixty"
 ```
 
-
-
 ## The details
 
 The Scala compiler generates a program from an `@main` method `f` as follows:
@@ -84,6 +94,9 @@ The Scala compiler generates a program from an `@main` method `f` as follows:
 - The generated `main` method calls method `f` with arguments converted using methods in the `scala.util.CommandLineParser` object.
 
 For instance, the `happyBirthday` method above generates additional code equivalent to the following class:
+
+{% tabs method_3 %}
+{% tab 'Scala 3 Only' for=method_3 %}
 
 ```scala
 final class happyBirthday {
@@ -104,12 +117,13 @@ final class happyBirthday {
 > This feature is not available for user programs in Scala.
 > Regular “static” members are generated in Scala using objects instead.
 
-
+{% endtab %}
+{% endtabs %}
 
 ## Scala 3 compared to Scala 2
 
-`@main` methods are the recommended way to generate programs that can be invoked from the command line in Scala 3.
-They replace the previous approach in Scala 2, which was to create an `object` that extends the `App` class:
+{% tabs method_4 class=tabs-scala-version %}
+{% tab 'Scala 2' for=method_4 %}
 
 ```scala
 // scala 2
@@ -118,15 +132,25 @@ object happyBirthday extends App {
 }
 ```
 
-The previous functionality of `App`, which relied on the “magic” `DelayedInit` trait, is no longer available.
-`App` still exists in limited form for now, but it doesn’t support command line arguments and will be deprecated in the future.
+{% endtab %}
 
-If programs need to cross-build between Scala 2 and Scala 3, it’s recommended to use an explicit `main` method with an `Array[String]` argument instead:
+{% tab 'Scala 3' for=method_4 %}
 
 ```scala
 object happyBirthday:
   def main(args: Array[String]) = println("Hello, world")
 ```
+
+> `@main` methods are the recommended way to generate programs that can be invoked from the command line in Scala 3.
+> They replace the previous approach in Scala 2, which was to create an `object` that extends the `App` class:
+
+> The previous functionality of `App`, which relied on the “magic” `DelayedInit` trait, is no longer available.
+> `App` still exists in limited form for now, but it doesn’t support command line arguments and will be deprecated in the future.
+
+> If programs need to cross-build between Scala 2 and Scala 3, it’s recommended to use an explicit `main` method with an `Array[String]` argument instead:
+
+{% endtab %}
+{% endtabs %}
 
 If you place that code in a file named *happyBirthday.scala*, you can then compile it with `scalac` and run it with `scala`, as shown previously:
 
