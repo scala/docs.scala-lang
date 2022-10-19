@@ -8,6 +8,7 @@ previous-page: methods-most
 next-page: methods-summary
 ---
 
+<h5>Writing one line programs <span class="tag tag-inline">Scala 3 Only</span></h5>
 
 Scala 3 offers a new way to define programs that can be invoked from the command line: Adding a `@main` annotation to a method turns it into entry point of an executable program:
 
@@ -15,17 +16,17 @@ Scala 3 offers a new way to define programs that can be invoked from the command
 {% tab 'Scala 3 Only' for=method_1 %}
 
 ```scala
-@main def hello() = println("Hello, world")
+@main def hello() = println("Hello, World")
 ```
 
 {% endtab %}
 {% endtabs %}
 
-Just save that line of code in a file named something like *Hello.scala*---the filename doesn’t have to match the method name---and run it with `scala`:
+To run this program, save the line of code in a file named as e.g. *Hello.scala*---the filename doesn’t have to match the method name---and run it with `scala`:
 
 ```bash
 $ scala Hello.scala
-Hello, world
+Hello, World
 ```
 
 A `@main` annotated method can be written either at the top-level (as shown), or inside a statically accessible object.
@@ -71,7 +72,7 @@ Happy 23rd Birthday, Lisa and Peter!
 ```
 
 As shown, the `@main` method can have an arbitrary number of parameters.
-For each parameter type there must be an instance of the *scala.util.FromString* type class that converts an argument `String` to the required parameter type.
+For each parameter type there must be a [given instance](./ca-given-using-clauses.html) of the `scala.util.CommandLineParser.FromString` type class that converts an argument `String` to the required parameter type.
 Also as shown, a main method’s parameter list can end in a repeated parameter like `String*` that takes all remaining arguments given on the command line.
 
 The program implemented from an `@main` method checks that there are enough arguments on the command line to fill in all parameters, and that the argument strings can be converted to the required types.
@@ -91,7 +92,7 @@ The Scala compiler generates a program from an `@main` method `f` as follows:
 
 - It creates a class named `f` in the package where the `@main` method was found.
 - The class has a static method `main` with the usual signature of a Java `main` method: it takes an `Array[String]` as argument and returns `Unit`.
-- The generated `main` method calls method `f` with arguments converted using methods in the `scala.util.CommandLineParser` object.
+- The generated `main` method calls method `f` with arguments converted using methods in the `scala.util.CommandLineParser.FromString` object.
 
 For instance, the `happyBirthday` method above generates additional code equivalent to the following class:
 
@@ -106,7 +107,7 @@ final class happyBirthday {
       happyBirthday(
           CLP.parseArgument[Int](args, 0),
           CLP.parseArgument[String](args, 1),
-          CLP.parseRemainingArguments[String](args, 2))
+          CLP.parseRemainingArguments[String](args, 2)*)
     catch {
       case error: CLP.ParseError => CLP.showError(error)
     }
