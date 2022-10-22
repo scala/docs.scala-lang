@@ -222,7 +222,7 @@ Now you use the name `JavaList` to refer to that class, and use `List` to refer 
 You can also rename multiple members at one time using this syntax:
 
 {% tabs package_9 class=tabs-scala-version %}
-{% tab 'Scala 2 and 3' for=package_9 %}
+{% tab 'Scala 2' for=package_9 %}
 
 ```scala
 import java.util.{Date => JDate, HashMap => JHashMap, _}
@@ -231,7 +231,6 @@ import java.util.{Date => JDate, HashMap => JHashMap, _}
 {% endtab %}
 
 {% tab 'Scala 3' for=package_9 %}
-
 
 ```scala
 import java.util.{Date as JDate, HashMap as JHashMap, *}
@@ -283,7 +282,7 @@ new ArrayList        // works
 To hide multiple members during the import process, list them before using the final wildcard import:
 
 {% tabs package_12 class=tabs-scala-version %}
-{% tab 'Scala 2 and 3' for=package_12 %}
+{% tab 'Scala 2' for=package_12 %}
 
 ```scala
 scala> import java.util.{List => _, Map => _, Set => _, _}
