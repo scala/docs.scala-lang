@@ -26,7 +26,7 @@ These features are demonstrated in the following examples.
 Packages are created by declaring one or more package names at the top of a Scala file.
 For example, when your domain name is _acme.com_ and you’re working in the _model_ package of an application named _myapp_, your package declaration looks like this:
 
-{% tabs for=package_1 %}
+{% tabs package_1 %}
 {% tab 'Scala 2 and 3' for=package_1 %}
 
 ```scala
@@ -51,7 +51,7 @@ at the beginning of the file.
 Alternatively, it is possible to write package clauses that apply only to the definitions
 they contain: 
 
-{% tabs for=package_2 class=tabs-scala-version %}
+{% tabs package_2 class=tabs-scala-version %}
 {% tab 'Scala 2' for=package_2 %}
 
 ```scala
@@ -100,7 +100,7 @@ Import statements fall into two main categories:
 If you’re used to a language like Java, the first class of import statements is similar to what Java uses, with a slightly different syntax that allows for more flexibility.
 These examples demonstrate some of that flexibility:
 
-{% tabs for=package_3 class=tabs-scala-version %}
+{% tabs package_3 class=tabs-scala-version %}
 {% tab 'Scala 2' for=package_3 %}
 
 ```scala
@@ -138,7 +138,7 @@ A note before moving on:
 
 In Scala you can import one member from a package like this:
 
-{% tabs for=package_4 %}
+{% tabs package_4 %}
 {% tab 'Scala 2 and 3' for=package_4 %}
 
 ```scala
@@ -150,7 +150,7 @@ import scala.concurrent.Future
 
 and multiple members like this:
 
-{% tabs for=package_5 %}
+{% tabs package_5 %}
 {% tab 'Scala 2 and 3' for=package_5 %}
 
 ```scala
@@ -164,7 +164,7 @@ import scala.concurrent.blocking
 
 When importing multiple members, you can import them more concisely like this:
 
-{% tabs for=package_6 %}
+{% tabs package_6 %}
 {% tab 'Scala 2 and 3' for=package_6 %}
 
 ```scala
@@ -176,7 +176,7 @@ import scala.concurrent.{Future, Promise, blocking}
 
 When you want to import everything from the *scala.concurrent* package, use this syntax:
 
-{% tabs for=package_7 class=tabs-scala-version %}
+{% tabs package_7 class=tabs-scala-version %}
 {% tab 'Scala 2' for=package_7 %}
 
 ```scala
@@ -199,7 +199,7 @@ import scala.concurrent.*
 Sometimes it can help to rename entities when you import them to avoid name collisions.
 For instance, if you want to use the Scala `List` class and also the *java.util.List* class at the same time, you can rename the *java.util.List* class when you import it:
 
-{% tabs for=package_8 class=tabs-scala-version %}
+{% tabs package_8 class=tabs-scala-version %}
 {% tab 'Scala 2' for=package_8 %}
 
 ```scala
@@ -221,7 +221,7 @@ Now you use the name `JavaList` to refer to that class, and use `List` to refer 
 
 You can also rename multiple members at one time using this syntax:
 
-{% tabs for=package_9 class=tabs-scala-version %}
+{% tabs package_9 class=tabs-scala-version %}
 {% tab 'Scala 2 and 3' for=package_9 %}
 
 ```scala
@@ -247,7 +247,7 @@ That line of code says, “Rename the `Date` and `HashMap` classes as shown, and
 You can also *hide* members during the import process.
 This `import` statement hides the *java.util.Random* class, while importing everything else in the *java.util* package:
 
-{% tabs for=package_10 class=tabs-scala-version %}
+{% tabs package_10 class=tabs-scala-version %}
 {% tab 'Scala 2' for=package_10 %}
 
 ```scala
@@ -267,7 +267,7 @@ import java.util.{Random as _, *}
 
 If you try to access the `Random` class it won’t work, but you can access all other members from that package:
 
-{% tabs for=package_11 %}
+{% tabs package_11 %}
 {% tab 'Scala 2 and 3' for=package_11 %}
 
 ```scala
@@ -282,7 +282,7 @@ new ArrayList        // works
 
 To hide multiple members during the import process, list them before using the final wildcard import:
 
-{% tabs for=package_12 class=tabs-scala-version %}
+{% tabs package_12 class=tabs-scala-version %}
 {% tab 'Scala 2 and 3' for=package_12 %}
 
 ```scala
@@ -304,7 +304,7 @@ Once again those classes are hidden, but you can use all other classes in *java.
 
 Because those Java classes are hidden, you can also use the Scala `List`, `Set`, and `Map` classes without having a naming collision:
 
-{% tabs for=package_13 %}
+{% tabs package_13 %}
 {% tab 'Scala 2 and 3' for=package_13 %}
 
 ```scala
@@ -326,7 +326,7 @@ val c: Map[Int, Int] = Map(1 -> 1, 2 -> 2)
 In Scala, `import` statements can be anywhere.
 They can be used at the top of a source code file:
 
-{% tabs for=package_14 class=tabs-scala-version %}
+{% tabs package_14 class=tabs-scala-version %}
 {% tab 'Scala 2' for=package_14 %}
 
 ```scala
@@ -363,7 +363,7 @@ class ClassA:
 
 You can also use `import` statements closer to the point where they are needed, if you prefer:
 
-{% tabs for=package_15 class=tabs-scala-version %}
+{% tabs package_15 class=tabs-scala-version %}
 {% tab 'Scala 2' for=package_15 %}
 
 ```scala
@@ -411,7 +411,7 @@ When you want to import members in a way similar to the Java “static import”
 
 Use this syntax to import all static members of the Java `Math` class:
 
-{% tabs for=package_16 class=tabs-scala-version %}
+{% tabs package_16 class=tabs-scala-version %}
 {% tab 'Scala 2' for=package_16 %}
 
 ```scala
@@ -432,7 +432,7 @@ import java.lang.Math.*
 
 Now you can access static `Math` class methods like `sin` and `cos` without having to precede them with the class name:
 
-{% tabs for=package_17 class=tabs-scala-version %}
+{% tabs package_17 class=tabs-scala-version %}
 {% tab 'Scala 2' for=package_17 %}
 
 ```scala
@@ -472,7 +472,7 @@ The members of the Scala object `Predef` are also imported by default.
 
 In the rare event there’s a naming conflict and you need to import something from the root of the project, prefix the package name with `_root_`:
 
-{% tabs for=package_18 class=tabs-scala-version %}
+{% tabs package_18 class=tabs-scala-version %}
 {% tab 'Scala 2' for=package_18 %}
 
 ```scala
@@ -499,7 +499,7 @@ import _root_.accounts.*
 As you’ll see in the [Contextual Abstractions][contextual] chapter, a special form of the `import` statement is used to import `given` instances.
 The basic form is shown in this example:
 
-{% tabs for=package_19 %}
+{% tabs package_19 %}
 {% tab 'Scala 3 Only' for=package_19 %}
 
 ```scala
@@ -520,7 +520,7 @@ In this code, the `import A.*` clause of object `B` imports all members of `A` *
 Conversely, the second import, `import A.given`, imports *only* that `given` instance.
 The two `import` clauses can also be merged into one:
 
-{% tabs for=package_20 %}
+{% tabs package_20 %}
 {% tab 'Scala 3 Only' for=package_20 %}
 
 ```scala
@@ -547,7 +547,7 @@ These rules have two main benefits:
 Since givens can be anonymous, it’s not always practical to import them by their name, and wildcard imports are typically used instead.
 *By-type imports* provide a more specific alternative to wildcard imports, which makes it more clear what is imported:
 
-{% tabs for=package_21 %}
+{% tabs package_21 %}
 {% tab 'Scala 3 Only' for=package_21 %}
 
 ```scala
@@ -560,7 +560,7 @@ import A.{given TC}
 This imports any `given` in `A` that has a type which conforms to `TC`.
 Importing givens of several types `T1,...,Tn` is expressed by multiple `given` selectors:
 
-{% tabs for=package_22 %}
+{% tabs package_22 %}
 {% tab 'Scala 3 Only' for=package_22 %}
 
 ```scala
@@ -573,7 +573,7 @@ import A.{given T1, ..., given Tn}
 Importing all `given` instances of a parameterized type is expressed by wildcard arguments.
 For example, when you have this `object`:
 
-{% tabs for=package_23 %}
+{% tabs package_23 %}
 {% tab 'Scala 3 Only' for=package_23 %}
 
 ```scala
@@ -589,7 +589,7 @@ object Instances:
 
 This import statement imports the `intOrd`, `listOrd`, and `ec` instances, but leaves out the `im` instance because it doesn’t fit any of the specified bounds:
 
-{% tabs for=package_24 %}
+{% tabs package_24 %}
 {% tab 'Scala 3 Only' for=package_24 %}
 
 ```scala
@@ -603,7 +603,7 @@ By-type imports can be mixed with by-name imports.
 If both are present in an import clause, by-type imports come last.
 For instance, this import clause imports `im`, `intOrd`, and `listOrd`, but leaves out `ec`:
 
-{% tabs for=package_25 %}
+{% tabs package_25 %}
 {% tab 'Scala 3 Only' for=package_25 %}
 
 ```scala
@@ -617,7 +617,7 @@ import Instances.{im, given Ordering[?]}
 
 As a concrete example, imagine that you have this `MonthConversions` object that contains two `given` definitions:
 
-{% tabs for=package_26 %}
+{% tabs package_26 %}
 {% tab 'Scala 3 Only' for=package_26 %}
 
 ```scala
@@ -645,7 +645,7 @@ object MonthConversions:
 
 To import those givens into the current scope, use these two `import` statements:
 
-{% tabs for=package_27 %}
+{% tabs package_27 %}
 {% tab 'Scala 3 Only' for=package_27 %}
 
 ```scala
@@ -658,7 +658,7 @@ import MonthConversions.{given MonthConverter[?]}
 
 Now you can create a method that uses those `given` instances:
 
-{% tabs for=package_28 %}
+{% tabs package_28 %}
 {% tab 'Scala 3 Only' for=package_28 %}
 
 ```scala
@@ -671,7 +671,7 @@ def genericMonthConverter[A](a: A)(using monthConverter: MonthConverter[A]): Str
 
 Then you can use that method in your application:
 
-{% tabs for=package_29 %}
+{% tabs package_29 %}
 {% tab 'Scala 3 Only' for=package_29 %}
 
 ```scala
