@@ -49,7 +49,7 @@ The syntax shown above applies to the entire source file: all the definitions in
 at the beginning of the file.
 
 Alternatively, it is possible to write package clauses that apply only to the definitions
-they contain: 
+they contain:
 
 {% tabs package_2 class=tabs-scala-version %}
 {% tab 'Scala 2' for=package_2 %}
@@ -60,7 +60,7 @@ package users {
   package administrators {  // the full name of this package is users.administrators
     class AdminUser        // the full name of this class is users.administrators.AdminUser
   }
-  
+
   package normalusers {     // the full name of this package is users.normalusers
     class NormalUser     // the full name of this class is users.normalusers.NormalUser
   }
@@ -106,8 +106,8 @@ These examples demonstrate some of that flexibility:
 ```scala
 import users._                            // import everything from the `users` package
 import users.User                         // import only the `User` class
+import users.{UserPreferences => UPrefs}  // rename a member as you import it
 import users.{User, UserPreferences}      // import only two selected members
-import users.{UserPreferences as UPrefs}  // rename a member as you import it
 ```
 
 {% endtab %}
@@ -117,8 +117,8 @@ import users.{UserPreferences as UPrefs}  // rename a member as you import it
 ```scala
 import users.*                            // import everything from the `users` package
 import users.User                         // import only the `User` class
+import users.UserPreferences as UPrefs  // rename a member as you import it
 import users.{User, UserPreferences}      // import only two selected members
-import users.{UserPreferences as UPrefs}  // rename a member as you import it
 ```
 
 {% endtab %}
@@ -211,7 +211,7 @@ import java.util.{List => JavaList}
 {% tab 'Scala 3' for=package_8 %}
 
 ```scala
-import java.util.{List as JavaList}
+import java.util.List as JavaList
 ```
 
 {% endtab %}
@@ -504,7 +504,7 @@ The basic form is shown in this example:
 ```scala
 object A:
   class TC
-  given tc as TC
+  given tc: TC
   def f(using TC) = ???
 
 object B:
@@ -550,7 +550,7 @@ Since givens can be anonymous, it’s not always practical to import them by the
 {% tab 'Scala 3 Only' for=package_21 %}
 
 ```scala
-import A.{given TC}
+import A.given TC
 ```
 
 {% endtab %}
@@ -577,10 +577,10 @@ For example, when you have this `object`:
 
 ```scala
 object Instances:
-  given intOrd as Ordering[Int]
-  given listOrd[T: Ordering] as Ordering[List[T]]
-  given ec as ExecutionContext = ...
-  given im as Monoid[Int]
+  given intOrd: Ordering[Int]
+  given listOrd[T: Ordering]: Ordering[List[T]]
+  given ec: ExecutionContext = ...
+  given im: Monoid[Int]
 ```
 
 {% endtab %}
@@ -625,14 +625,14 @@ object MonthConversions:
     def convert(a: A): String
 
   given intMonthConverter: MonthConverter[Int] with
-    def convert(i: Int): String = 
+    def convert(i: Int): String =
       i match
         case 1 =>  "January"
         case 2 =>  "February"
         // more cases here ...
 
   given stringMonthConverter: MonthConverter[String] with
-    def convert(s: String): String = 
+    def convert(s: String): String =
       s match
         case "jan" => "January"
         case "feb" => "February"
@@ -649,7 +649,7 @@ To import those givens into the current scope, use these two `import` statements
 
 ```scala
 import MonthConversions.*
-import MonthConversions.{given MonthConverter[?]}
+import MonthConversions.given MonthConverter[?]
 ```
 
 {% endtab %}
