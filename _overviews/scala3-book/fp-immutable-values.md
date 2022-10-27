@@ -23,11 +23,17 @@ This is where higher-order functions like `map` and `filter` come in.
 For example, imagine that you have a list of names---a `List[String]`---that are all in lowercase, and you want to find all the names that begin with the letter `"j"`, and then you want to capitalize those names.
 In FP you write this code:
 
+{% tabs fp-list %}
+
+{% tab 'Scala 2 and 3' %}
 ```scala
 val a = List("jane", "jon", "mary", "joe")
 val b = a.filter(_.startsWith("j"))
          .map(_.capitalize)
 ```
+{% endtab %}
+
+{% endtabs %}
 
 As shown, you don’t mutate the original list `a`.
 Instead, you apply filtering and transformation functions to `a` to create a new collection, and assign that result to the new immutable variable `b`.
@@ -35,32 +41,57 @@ Instead, you apply filtering and transformation functions to `a` to create a new
 Similarly, in FP you don’t create classes with mutable `var` constructor parameters.
 That is, you don’t write this:
 
+{% tabs fp--class-variables %}
+
+{% tab 'Scala 2 and 3' %}
 ```scala
 // don’t do this in FP
 class Person(var firstName: String, var lastName: String)
              ---                    ---
 ```
+{% endtab %}
+
+{% endtabs %}
 
 Instead, you typically create `case` classes, whose constructor parameters are `val` by default:
 
+{% tabs fp-immutable-case-class %}
+
+{% tab 'Scala 2 and 3' %}
 ```scala
 case class Person(firstName: String, lastName: String)
 ```
+{% endtab %}
+
+{% endtabs %}
 
 Now you create a `Person` instance as a `val` field:
 
+{% tabs fp-case-class-creation %}
+
+{% tab 'Scala 2 and 3' %}
 ```scala
 val reginald = Person("Reginald", "Dwight")
 ```
+{% endtab %}
+
+{% endtabs %}
 
 Then, when you need to make a change to the data, you use the `copy` method that comes with a `case` class to “update the data as you make a copy,” like this:
 
+
+{% tabs fp-case-class-copy %}
+
+{% tab 'Scala 2 and 3' %}
 ```scala
 val elton = reginald.copy(
   firstName = "Elton",   // update the first name
   lastName = "John"      // update the last name
 )
 ```
+{% endtab %}
+
+{% endtabs %}
 
 There are other techniques for working with immutable collections and variables, but hopefully these examples give you a taste of the techniques.
 
