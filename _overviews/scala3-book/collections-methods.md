@@ -415,9 +415,18 @@ val xs: List[String] = List(brandy, chris, david)
 
 Pattern matching like this is useful in many situations, such as writing a `sum` method using recursion:
 
-{% tabs tail-match-sum-example %}
+{% tabs tail-match-sum-example class=tabs-scala-version %}
 
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2' %}
+```scala
+def sum(list: List[Int]): Int = list match {
+  case Nil => 0
+  case x :: xs => x + sum(xs)
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 def sum(list: List[Int]): Int = list match
   case Nil => 0
@@ -534,9 +543,19 @@ It takes a function (or anonymous function) and applies that function to success
 The best way to explain `reduce` is to create a little helper method you can pass into it.
 For example, this is an `add` method that adds two integers together, and also provides us some nice debug output:
 
-{% tabs reduce-example %}
+{% tabs reduce-example class=tabs-scala-version %}
 
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2' %}
+```scala
+def add(x: Int, y: Int): Int = {
+  val theSum = x + y
+  println(s"received $x and $y, their sum is $theSum")
+  theSum
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 def add(x: Int, y: Int): Int =
   val theSum = x + y
