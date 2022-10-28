@@ -51,7 +51,7 @@ availability of learning materials.
 
 That said, these gaps are getting narrower and narrower every month.
 Plenty of books are available, a rich library ecosystem already
-exists, and there are more and more jobs.  You should strongly
+exists, and there are more and more jobs using Scala 3.  You should strongly
 consider learning Scala 3. Although it's still fairly new (May 2021),
 it's the future, and it's the best version to choose if you want to
 fall in love with the language and everything it has to offer.
