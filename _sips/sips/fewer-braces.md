@@ -1,9 +1,8 @@
 ---
 layout: sip
 permalink: /sips/:title.html
-stage: implementation
-status: vote-requested
-recommendation: accept
+stage: completed
+status: accepted
 title: SIP-44 - Fewer Braces
 ---
 

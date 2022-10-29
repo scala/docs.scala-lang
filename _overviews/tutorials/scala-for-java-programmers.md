@@ -741,7 +741,7 @@ a brief specification: the value of a `Sum` is the addition of the
 evaluations of its two inner expressions; the value of a `Var` is obtained
 by lookup of its inner name in the environment; and the value of a
 `Const` is its inner value itself. This specification translates exactly into
-Scala as followa, using a pattern match on a tree value `t`:
+Scala as follows, using a pattern match on a tree value `t`:
 
 {% tabs patt-match-demo class=tabs-scala-version %}
 
