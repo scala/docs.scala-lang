@@ -41,7 +41,7 @@ reasons for wanting to learn Scala.
 
 ### Should I learn Scala 2, or Scala 3?
 
-Don't sweat the decision too much.  You can't go too far wrong either
+Don't sweat the decision too much.  You can't go far wrong either
 way. It isn't that hard to switch later, in either direction.
 
 Scala 2 remains a common and reasonable choice. Most Scala jobs are
@@ -49,12 +49,12 @@ still Scala 2 jobs. Scala 2 also has a somewhat bigger library
 ecosystem, somewhat better tooling support, and somewhat wider
 availability of learning materials.
 
-That said, these gaps are getting narrower and narrower every month.
+That said, these gaps are getting narrower every month.
 Plenty of books are available, a rich library ecosystem already
 exists, and there are more and more jobs using Scala 3.  You should strongly
 consider learning Scala 3. Yes, it's still fairly new,
-released in 2021. But it's the future, and it's the best version to choose if you want to
-fall in love with the language and everything it has to offer.
+released in 2021. But it's the future, and it's the best version for
+falling in love with the language and everything it has to offer.
 
 ### Where are Scala jobs advertised?
 
