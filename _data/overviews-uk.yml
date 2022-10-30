@@ -299,11 +299,6 @@
 - category: Спадщина (legacy)
   description: "Посібники, що охоплюють функції, які більше не стосуються останніх версій Scala (2.12+)."
   overviews:
-    - title: Посібник для міграції фреймворку Scala Actors
-      by: Vojin Jovanovic та Philipp Haller
-      icon: truck
-      url: "core/actors-migration-guide.html"
-      description: "Щоб полегшити перехід від Scala Actors до Akka, ми надали набір Actor Migration Kit (AMK). AMK складається з розширення для Scala Actors, яке вмикається шляхом включення scala-actors-migration.jar до шляху до класу проєкт. Крім того, Akka 2.1 включає такі функції, як одинак ActorDSL, які дозволяють спростити перетворення коду за допомогою Scala Actors в Akka. Метою цього документа є керівництво користувачами через процес міграції та пояснення використання AMK."
     - title: API фреймворку Scala Actors
       by: Philipp Haller та Stephen Tu
       icon: users

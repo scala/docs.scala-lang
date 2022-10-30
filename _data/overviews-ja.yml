@@ -258,11 +258,6 @@
 - category: レガシー
   description: "最近の Scala バージョン（2.12以上）には関係なくなった機能をカバーするガイド。"
   overviews:
-    - title: Scala アクター移行ガイド
-      by: Vojin Jovanovic and Philipp Haller
-      icon: truck
-      url: "core/actors-migration-guide.html"
-      description: "Scala アクターから Akka への移行を容易にするため、Actor Migration Kit（AMK）を用意した。AMK は、Scala アクターの拡張から構成され、プロジェクトのクラスパスに scala-actors-migration.jar を含めることで有効になる。加えて、Akka 2.1 はアクター DSL シングルトンのような機能を導入し、Scala アクターを使ったコードを Akka へ容易に変換することを可能にしている。このドキュメントの目的はユーザーに移行プロセスを案内し、AMK の使い方を説明することだ。"
     - title: Scala アクター API
       by: Philipp Haller and Stephen Tu
       icon: users
