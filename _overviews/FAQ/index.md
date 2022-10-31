@@ -52,8 +52,8 @@ availability of learning materials.
 That said, these gaps are getting narrower every month.
 Plenty of books are available, a rich library ecosystem already
 exists, and there are more and more jobs using Scala 3.  You should strongly
-consider learning Scala 3. Yes, it's still fairly new,
-released in 2021. But it's the future, and it's the best version for
+consider learning Scala 3. It's still fairly new, released in 2021.
+But it's the future, and it's the best version for
 falling in love with the language and everything it has to offer.
 
 ### Where are Scala jobs advertised?
