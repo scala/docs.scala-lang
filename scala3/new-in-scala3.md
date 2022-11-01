@@ -80,7 +80,7 @@ At the same time, the following novel features enable well-structured _object-or
 - **Plan for extension**. Extending classes that are not intended for extension is a long-standing problem in object-oriented design. To address this issue, [open classes][oo-open] require library designers to _explicitly_ mark classes as open.
 - **Hide implementation details**. Utility traits that implement behavior sometimes should not be part of inferred types. In Scala 3, those traits can be marked as [transparent][oo-transparent] hiding the inheritance from the user (in inferred types).
 - **Composition over inheritance**. This phrase is often cited, but tedious to implement. Not so with Scala 3's [export clauses][oo-export]: symmetric to imports, export clauses allow the user to define aliases for selected members of an object.
-- **No more NPEs**. Scala 3 is safer than ever: [explicit null][oo-explicit-null] moves `null` out of the type hierarchy, helping you to catch errors statically; additional checks for [safe initialization][oo-safe-init] detect access to uninitialized objects.
+- **No more NPEs (experimental)**. Scala 3 is safer than ever: [explicit null][oo-explicit-null] moves `null` out of the type hierarchy, helping you to catch errors statically; additional checks for [safe initialization][oo-safe-init] detect access to uninitialized objects.
 
 
 ### Batteries Included: Metaprogramming
