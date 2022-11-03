@@ -14,7 +14,7 @@ The following agenda was distributed to attendees:
 | [SIP-34: Right-Associative By-Name Operators](https://docs.scala-lang.org/sips/right-associative-by-name-operators.html) | Adriaan Moors | Accepted |
 | [SIP-35: Opaque types](https://docs.scala-lang.org/sips/opaque-types.html) | Sébastien Doeraene | Pending |
 | [SIP-33: Match infix and prefix types to meet expression rules](https://docs.scala-lang.org/sips/priority-based-infix-type-precedence.html)| Josh Suereth | Pending |
-|[SIP-28 and SIP-29: Inline meta](https://docs.scala-lang.org/sips/inline-meta.html)|Josh Suereth and Iulian Dragos| Pending |
+|[SIP-28 and SIP-29: Inline meta](https://github.com/scala/improvement-proposals/pull/28)|Josh Suereth and Iulian Dragos| Pending |
 
 Jorge Vicente Cantero was the Process Lead and Darja Jovanovic as secretary.
 
@@ -75,7 +75,7 @@ The feedback will be given to the author.
 
 
 
-### [SIP-28 and SIP-29: Inline and meta](https://docs.scala-lang.org/sips/inline-meta.html)
+### [SIP-28 and SIP-29: Inline and meta](https://github.com/scala/improvement-proposals/pull/28)
 [YouTube time: 10'05'' until the end](https://youtu.be/aIc-o1pcRhw?t=605)
 
 **Jorge** introduces **Olaf** as a new Team Lead of SIP-28 and SIP-29.

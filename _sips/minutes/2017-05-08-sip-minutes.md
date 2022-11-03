@@ -11,7 +11,7 @@ The following agenda was distributed to attendees:
 
 |Topic|Reviewers| Accepted/Rejected |
 | --- | --- | --- |
-| [SIP-NN - comonadic-comprehensions](https://docs.scala-lang.org/sips/comonadic-comprehensions.html) | Shimi Bandiel | Rejected |
+| [SIP-NN - comonadic-comprehensions](https://github.com/scala/improvement-proposals/pull/32) | Shimi Bandiel | Rejected |
 | [SIP-33 - Match infix & prefix types to meet expression rules](https://docs.scala-lang.org/sips/priority-based-infix-type-precedence.html)| Oron Port | Pending |
 |[Scala Library Changes](https://github.com/scala/scala-dev/issues/323)|Adriaan Moors| Scala-dev proposal |
 
@@ -41,7 +41,7 @@ Minutes were taken by Darja Jovanovic.
 
 **Jorge** going over the agenda, points out that the second item will be skipped because they are waiting for the prototype from the author of the proposal.
 
-### [SIP-NN - comonadic-comprehensions](https://docs.scala-lang.org/sips/comonadic-comprehensions.html)
+### [SIP-NN - comonadic-comprehensions](https://github.com/scala/improvement-proposals/pull/32)
 [YouTube time: 1:39](https://youtu.be/6rKa4OV7GfM?t=99)
 
 Proposal aims to introduce new syntax from comprehension for monads to comonads.
