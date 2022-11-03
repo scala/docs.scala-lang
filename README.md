@@ -19,9 +19,13 @@ For more details, read on.
 
 To build and view site with Docker:
 
-    docker-compose up
+    env UID="$(id -u)" GID="$(id -g)" docker-compose up
 
 It will incrementally build and serve site at `http://localhost:4000`.
+
+In case the Dockerfile changed, re-build it with:
+
+    env UID="$(id -u)" GID="$(id -g)" docker-compose up --build
 
 For more details on the Docker option, see [this issue](https://github.com/scala/docs.scala-lang/issues/1286).
 
