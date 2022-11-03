@@ -14,7 +14,7 @@ The following agenda was distributed to attendees:
 | [SIP-NN: Right-Associative By-Name Operators](https://docs.scala-lang.org/sips/right-associative-by-name-operators.html) | Adriaan Moors | Pending |
 | [SIP-ZZ: Opaque types](https://docs.scala-lang.org/sips/opaque-types.html) | Sébastien Doeraene | Pending |
 | [SIP-33: Match infix and prefix types to meet expression rules](https://docs.scala-lang.org/sips/priority-based-infix-type-precedence.html)| Josh Suereth | Pending |
-|[SIP-28 and SIP-29: Inline meta](https://docs.scala-lang.org/sips/inline-meta.html)|Josh Suereth and Iulian Dragos| Pending |
+|[SIP-28 and SIP-29: Inline meta](https://github.com/scala/improvement-proposals/pull/28)|Josh Suereth and Iulian Dragos| Pending |
 
 Jorge Vicente Cantero was the Process Lead and Darja Jovanovic as secretary.
 
@@ -87,7 +87,7 @@ Syntax "new" "type"
 
 Still waiting on the implementation updates, therefore this item will be discussed in the next SIP Meeting.
 
-### [SIP-28 and SIP-29: Inline and meta](https://docs.scala-lang.org/sips/inline-meta.html)
+### [SIP-28 and SIP-29: Inline and meta](https://github.com/scala/improvement-proposals/pull/28)
 [YouTube time: 51'40'' until the end](https://youtu.be/yzTpVbTUj18?t=3100)
 
 **Eugene** gives a brief history of this SIP development, shares the good news and suggests how to proceed.

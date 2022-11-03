@@ -14,8 +14,8 @@ The following agenda was distributed to attendees:
 | [Discussion of the new SIP process](https://docs.scala-lang.org/sips/sip-submission.html) | Jorge Vicente Cantero |
 | [SIP 25 - Trait parameters](https://docs.scala-lang.org/sips/trait-parameters.html) | Adriaan Moors |
 | [SIP 26 - Unsigned Integer Data Types](https://github.com/scala/slip/pull/30) | Martin Odersky |
-| [SIP 22 - Async](https://docs.scala-lang.org/sips/async.html) | Eugene Burmako |
-| [SIP 20 - Improved lazy val initialization](https://docs.scala-lang.org/sips/improved-lazy-val-initialization.html) | Sébastien Doeraene |
+| [SIP 22 - Async](https://github.com/scala/improvement-proposals/pull/21) | Eugene Burmako |
+| [SIP 20 - Improved lazy val initialization](https://github.com/scala/improvement-proposals/pull/19) | Sébastien Doeraene |
 | [Trailing commas SIP](https://github.com/scala/docs.scala-lang/pull/533) | Eugene Burmako |
 
 Quick iteration through all the SLIPs:

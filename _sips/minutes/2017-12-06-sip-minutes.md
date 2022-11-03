@@ -14,7 +14,7 @@ The following agenda was distributed to attendees:
 |Discussion and voting on Miles Sabin (Typelevel representative) joining the Committee |  | Accepted
 |[SIP 23: Literal-based singleton types](https://docs.scala-lang.org/sips/42.type.html) | Adriaan Moors | Accepted
 |[SIP-33: Priority-based infix type precedence rules](https://docs.scala-lang.org/sips/priority-based-infix-type-precedence.html) | Josh Suereth | Accepted |
-|[SIP-NN: Adding prefix types](https://docs.scala-lang.org/sips/adding-prefix-types.html) | Josh Suereth | Pending |
+|[SIP-NN: Adding prefix types](https://github.com/scala/improvement-proposals/pull/35) | Josh Suereth | Pending |
 |[SIP-35: Opaque types](https://docs.scala-lang.org/sips/opaque-types.html) | Sébastien Doeraene | Not discussed |
 |Discussion about the future of Scala 2.13 and 2.14 |  | Not discussed |
 
@@ -73,7 +73,7 @@ Brief explanation about the "The presence of an upper bound of Singleton on a fo
 
 a) [SIP-33: Priority-based infix type precedence rules](https://docs.scala-lang.org/sips/priority-based-infix-type-precedence.html)
 
-b) [SIP-NN: Adding prefix types](https://docs.scala-lang.org/sips/adding-prefix-types.html)
+b) [SIP-NN: Adding prefix types](https://github.com/scala/improvement-proposals/pull/35)
 
 **Seth** asks about the implementation status in Dotty and if there are any crucial differences in Scala 2 and Dotty?
 **Martin** and **Sebastien** agree there are none in regards to this SIP.
@@ -82,7 +82,7 @@ The members are all in favour for this change and proceed to voting.
 **Conclusion** : The SIP-33 is accepted by unanimity.
 
 
-### [SIP-NN: Adding prefix types](https://docs.scala-lang.org/sips/adding-prefix-types.html)
+### [SIP-NN: Adding prefix types](https://github.com/scala/improvement-proposals/pull/35)
 [YouTube time: 25'00 until the end](https://youtu.be/Mhwf15gjL9s?t=1503)
 
 **Jorge** introduces the SIP's development, based on the idea
