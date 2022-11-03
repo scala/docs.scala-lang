@@ -409,10 +409,21 @@ While every address on Earth has a `street1` value, the `street2` value is optio
 As a result, the `street2` field can be assigned a `null` value:
 
 
-{% tabs fp-case-class-nulls-example %}
+{% tabs fp-case-class-nulls-example class=tabs-scala-version %}
 
+{% tab 'Scala 2' %}
+```scala
+val santa = new Address(
+  "1 Main Street",
+  null,               // <-- D’oh! A null value!
+  "North Pole",
+  "Alaska",
+  "99705"
+)
+```
+{% endtab %}
 
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 3' %}
 ```scala
 val santa = Address(
   "1 Main Street",
@@ -448,9 +459,21 @@ class Address(
 
 Now developers can write more accurate code like this:
 
-{% tabs fp-case-class-with-options-example-none %}
+{% tabs fp-case-class-with-options-example-none class=tabs-scala-version %}
 
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2' %}
+```scala
+val santa = new Address(
+  "1 Main Street",
+  None,           // 'street2' has no value
+  "North Pole",
+  "Alaska",
+  "99705"
+)
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 val santa = Address(
   "1 Main Street",
@@ -466,9 +489,21 @@ val santa = Address(
 
 or this:
 
-{% tabs fp-case-class-with-options-example-some %}
+{% tabs fp-case-class-with-options-example-some class=tabs-scala-version %}
 
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2' %}
+```scala
+val santa = new Address(
+  "123 Main Street",
+  Some("Apt. 2B"),
+  "Talkeetna",
+  "Alaska",
+  "99676"
+)
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 val santa = Address(
   "123 Main Street",
