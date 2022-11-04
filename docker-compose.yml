@@ -1,9 +1,11 @@
-version: "2"
+version: '2'
+
 services:
-  scala-lang:
+  jekyll:
+    user: "${UID}:${GID}"
     build: .
-    command: bundle exec jekyll serve --incremental --host=0.0.0.0
+    command: sh -c "chown $UID / && bundle exec jekyll serve --incremental --host=0.0.0.0 "
     ports:
-      - 4000:4000
+      - '4000:4000'
     volumes:
       - .:/srv/jekyll
