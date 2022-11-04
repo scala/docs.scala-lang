@@ -9,4 +9,5 @@ next-page: docstrings
 
 ![scaladoc logo]({{ site.baseurl }}/resources/images/scala3/scaladoc/logo.svg)
 
-scaladoc is a tool to generate the API documentation of your Scala 3 projects. It provides similar features to `javadoc` as well as `jekyll` or `docusaurus`.
+Scaladoc — это инструмент для создания API документации ваших проектов Scala 3. 
+Он предоставляет функциональность, аналогичную `javadoc`, а также `jekyll` или `docusaurus`.

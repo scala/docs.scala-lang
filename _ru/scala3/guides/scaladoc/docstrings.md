@@ -8,16 +8,14 @@ previous-page: index
 next-page: linking
 ---
 
-This chapter describes how to correctly write docstrings and how to use all the available features of scaladoc.
-Since many things are the same as in the old scaladoc, some parts are reused from this [article](https://docs.scala-lang.org/overviews/scaladoc/for-library-authors.html)
+В этой главе описывается, как правильно писать строки документации и как использовать все доступные функции scaladoc.
+Так как многое осталось таким же, как и в старом scaladoc, некоторые детали взяты из этой 
+[статьи](https://docs.scala-lang.org/overviews/scaladoc/for-library-authors.html).
 
+Scaladoc расширяет возможности Markdown дополнительными функциями, такими как ссылки на определения API. 
+Это можно использовать в статической документации и постах в блогах для создания смешанного контента.
 
-Scaladoc extends Markdown with additional features, such as linking
-to API definitions. This can be used from within static documentation and blog
-posts to provide blend-in content.
-
-
-## Where to put docstrings
+## Куда поместить строки документации
 
 Scaladoc comments go before the items they pertain to in a special comment block that starts with a /** and ends with a */, like this:
 
