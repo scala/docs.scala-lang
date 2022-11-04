@@ -1,6 +1,6 @@
 ---
 layout: multipage-overview
-title: Статичная документация
+title: Статическая документация
 partof: scala3-scaladoc
 language: ru
 num: 4
@@ -8,17 +8,17 @@ previous-page: linking
 next-page: blog
 ---
 
-Scaladoc can generate static sites, known from [Jekyll](http://jekyllrb.com/) or [Docusaurus](https://docusaurus.io/).
-Having a combined tool allows providing interaction between static documentation and API, thus allowing the two to blend naturally.
+Scaladoc умеет генерировать статические сайты, известные по [Jekyll](http://jekyllrb.com/) или [Docusaurus](https://docusaurus.io/). 
+Наличие комбинированного инструмента позволяет обеспечить взаимодействие между статической документацией 
+и API, что позволяет им естественным образом сочетаться.
 
-Creating a site is just as simple as in Jekyll. The site root contains the
-the layout of the site and all files placed there will be either considered static,
-or processed for template expansion.
+Создать сайт так же просто, как и в Jekyll. Корень сайта содержит макет сайта, 
+и все файлы, размещенные там, будут либо считаться статическими, либо обрабатываться для расширения шаблона.
 
-The files that are considered for template expansion must end in `*.{html,md}`
-and will from here on be referred to as "template files" or "templates".
+Файлы, которые рассматриваются для расширения шаблона, должны заканчиваться на `*.{html,md}` 
+и в дальнейшем будут называться "файлами шаблонов" или "шаблонами".
 
-A simple "hello world" site could look something like this:
+Простой сайт "Hello World" может выглядеть примерно так:
 
 ```
 .
@@ -28,34 +28,35 @@ A simple "hello world" site could look something like this:
         └── getting-started.html
 ```
 
-This will give you a site with the following files in generated documentation:
+Что даст сайт со следующими файлами в сгенерированной документации:
 
 ```
 index.html
 getting-started.html
 ```
 
-Scaladoc can transform both files and directories (to organize your documentation into a tree-like structure). By default, directories have a title based on the file name and have empty content. It is possible to provide index pages for each section by creating `index.html` or `index.md` (not both) in the dedicated directory.
+Scaladoc может преобразовывать как файлы, так и каталоги (чтобы организовать документацию в древовидную структуру). 
+По умолчанию каталоги имеют заголовок, основанный на имени файла, с пустым содержимым. 
+Можно предоставить индексные страницы для каждого раздела, создав `index.html` или `index.md` (но не одновременно) в выделенном каталоге.
 
-Keep in mind that viewing your site locally with all the features it offers, like search or snippets, require a
-local server. For example if your output directory was `output` you could use a python server to view everything
-by doing the following and opening `localhost:8080`:
+Имейте в виду, что для локального просмотра вашего сайта со всеми его функциями, такими как поиск или фрагменты, 
+требуется локальный сервер. Например, если ваш выходной каталог - `output`, 
+вы можете использовать python сервер для просмотра всего, выполнив следующие действия и открыв `localhost:8080`:
 
 ```sh
 cd output
 python3 -m http.server 8080
 ```
 
-## Properties
+## Характеристики
 
-Scaladoc uses the [Liquid](https://shopify.github.io/liquid/) templating engine
-and provides several custom filters and tags specific to Scala
-documentation.
+Scaladoc использует механизм шаблонов [Liquid](https://shopify.github.io/liquid/) 
+и предоставляет несколько настраиваемых фильтров и тегов, характерных для документации Scala.
 
-In Scaladoc, all templates can contain YAML front-matter. The front-matter
-is parsed and put into the `page` variable available in templates via Liquid.
+В Scaladoc все шаблоны могут содержать вступительную часть YAML. 
+Передняя часть анализируется и помещается в переменную `page`, доступную в шаблонах через Liquid.
 
-Example front-matter
+Пример вступительной статьи:
 
 ```
 ---
@@ -63,21 +64,23 @@ title: My custom title
 ---
 ```
 
-Scaladoc uses some predefined properties to controls some aspects of page.
+Scaladoc использует некоторые предопределенные свойства для управления аспектами страницы.
 
-Predefined properties:
+Предустановленные свойства:
 
-- **title** provide page title that will be used in navigation and HTML metadata.
-- **extraCss** additional `.css` files that will be included in this page. Paths should be relative to the documentation root. **This setting is not exported to the template engine.**
-- **extraJs** additional `.js` files that will be included in this page. Paths should be relative to the documentation root. **This setting is not exported to the template engine.**
-- **hasFrame** when set to `false` page will not include default layout (navigation, breadcrumbs, etc.) but only token HTML wrapper to provide metadata and resources (js and css files). **This setting is not exported to the template engine.**
-- **layout** - predefined layout to use, see below. **This setting is not exported to the template engine.**
+- **title** - обеспечивает заголовок страницы, который будет использоваться в навигации и метаданных HTML.
+- **extraCss** - дополнительные файлы `.css`, которые будут включены в эту страницу. 
+  Пути должны указываться относительно корня документации. **Этот параметр не экспортируется в механизм шаблонов.**
+- **extraJs** - дополнительные файлы `.js`, которые будут включены в эту страницу. 
+  Пути должны указываться относительно корня документации. **Этот параметр не экспортируется в механизм шаблонов.**
+- **hasFrame** - если установлено значение `false`, страница не будет включать макет по умолчанию (навигацию, breadcrumbs и т.д.), 
+  а только токен-оболочку HTML для предоставления метаданных и ресурсов (файлы js и css). **Этот параметр не экспортируется в механизм шаблонов.**
+- **layout** - предопределенный макет для использования, см. ниже. **Этот параметр не экспортируется в механизм шаблонов.**
 
+## Использование существующих шаблонов и макетов
 
-## Using existing Templates and Layouts
-
-To perform template expansion, Dottydoc looks at the `layout` field in the front-matter.
-Here's a simple example of the templating system in action, `index.html`:
+Чтобы выполнить расширение шаблона, Dottydoc просматривает поле `layout` во вступительной части. 
+Вот простой пример системы шаблонов в действии `index.html`:
 
 ```html
 ---
@@ -87,7 +90,7 @@ layout: main
 <h1>Hello world!</h1>
 ```
 
-With a simple main template like this:
+С таким простым основным шаблоном, как этот:
 
 {% raw %}
 ```html
@@ -101,11 +104,10 @@ With a simple main template like this:
 </html>
 ```
 
-Would result in `{{ content }}` being replaced by `<h1>Hello world!</h1>` from
-the `index.html` file.
+`{{ content }}` будет заменен на `<h1>Hello world!</h1>` в файле `index.html`.
 {% endraw %}
 
-Layouts must be placed in a `_layouts` directory in the site root:
+Макеты должны быть размещены в каталоге `_layouts` в корне сайта:
 
 ```
 ├── _layouts
@@ -115,9 +117,9 @@ Layouts must be placed in a `_layouts` directory in the site root:
     └── index.html
 ```
 
-## Assets
+## Ресурсы
 
-In order to render assets along with static site, they need to be placed in the `_assets` directory in the site root:
+Чтобы рендерить ассеты вместе со статическим сайтом, их нужно поместить в директорию `_assets` в корне сайта:
 ```
 ├── _assets
 │   └── images
@@ -125,15 +127,17 @@ In order to render assets along with static site, they need to be placed in the 
 └── _docs
     └── getting-started.md
 ```
-To reference the asset on a page, one needs to create a link relative to the `_assets` directory
+Чтобы сослаться на ресурс на странице, необходимо создать ссылку относительно каталога `_assets`.
 
 ```
 Take a look at the following image: [My image](images/myimage.png)
 ```
 
-## Sidebar
+## Боковая панель
 
-By default, Scaladoc reflects the directory structure from `_docs` directory in the rendered site. There is also the ability to override it by providing a `sidebar.yml` file in the site root directory. The YAML configuration file describes the structure of the rendered static site and the table of content:
+По умолчанию Scaladoc отображает структуру каталогов из каталога `_docs` на визуализируемом сайте. 
+Существует также возможность переопределить его, предоставив файл `sidebar.yml` в корневом каталоге сайта. 
+Конфигурационный файл YAML описывает структуру отображаемого статического сайта и оглавление:
 
 ```yaml
 index: index.html
@@ -149,50 +153,53 @@ subsection:
           page: usage/sbt-projects.html
           hidden: false
 ```
-The root element needs to be a `subsection`.
-Nesting subsections will result in a tree-like structure of navigation.
+Корневой элемент должен быть `subsection`. 
+Вложенные подразделы приведут к древовидной структуре навигации.
 
-`subsection` properties are:
- - `title` - Optional string - A default title of the subsection. 
-  Front-matter titles have higher priorities.
- - `index` - Optional string - A path to index page of a subsection. The path is relative to the `_docs` directory.
- - `directory` - Optional string - A name of the directory that will contain the subsection in the generated site.
-  By default, the directory name is the subsection name converted to kebab case.
- - `subsection` - Array of `subsection` or `page`.
+Свойства  `subsection`:
+ - `title` - Необязательная строка - заголовок подраздела по умолчанию. 
+   Вступительные заголовки имеют более высокий приоритет.
+ - `index` - Необязательная строка - Путь к индексной странице подраздела. Путь указан относительно каталога `_docs`.
+ - `directory` - Необязательная строка - Имя каталога, в котором будет находиться подраздел сгенерированного сайта. 
+   По умолчанию именем каталога является имя подраздела, преобразованное в kebab case.
+ - `subsection` - Массив `subsection` или `page`.
 
- Either `index` or `subsection` must be defined. The subsection defined with `index` and without `subsection` will contain pages and directories loaded recursively from the directory of the index page.
+Либо `index`, либо `subsection` должны быть определены. Подраздел, определенный с `index` и без `subsection`, 
+будет содержать страницы и каталоги, загружаемые рекурсивно из каталога индексной страницы.
 
-`page` properties are:
- - `title` - Optional string - A default title of the page. 
-  Front-matter titles have higher priorities.
- - `page` - String - A path to the page, relative to the `_docs` directory.
- - `hidden` - Optional boolean - A flag that indicates whether the page should be visible in the navigation sidebar. By default, it is set to `false`.
+Свойства `page`:
+ - `title` - Необязательная строка - заголовок страницы по умолчанию. Вступительные заголовки имеют более высокий приоритет.
+ - `page` - Строка - Путь к странице относительно каталога `_docs`.
+ - `hidden` - Необязательное логическое значение. Флаг, указывающий, должна ли страница отображаться на боковой панели навигации. 
+   По умолчанию установлено значение `false`.
 
-**Note**: All the paths in the YAML configuration file are relative to `<static-root>/_docs`.
+**Заметка**: Все пути в файле конфигурации YAML относятся к `<static-root>/_docs`.
 
-## Hierarchy of title
+## Иерархия title
 
-If the title is specified multiple times, the priority is as follows (from highest to lowest priority):
+Если заголовок указан несколько раз, приоритет будет следующим (от высшего к низшему приоритету):
 
-#### Page
+#### Страница
 
-1. `title` from the `front-matter` of the markdown/html file
-2. `title` property from the `sidebar.yml` property
-3. filename
+1. `title` из `front-matter` файла markdown/html
+2. `title` свойство из `sidebar.yml`
+3. имя файла
 
-#### Subsection
+#### Подраздел
 
-1. `title` from the `front-matter` of the markdown/html index file
-2. `title` property from the `sidebar.yml` property
-3. filename
+1. `title` из `front-matter` индексного файла markdown/html
+2. `title` свойство из `sidebar.yml`
+3. имя файла
 
-Note that if you skip the `index` file in your tree structure or you don't specify the `title` in the frontmatter, there will be given a generic name `index`. The same applies when using `sidebar.yml` but not specifying `title` nor `index`, just a subsection. Again, a generic `index` name will appear.
+Обратите внимание, что если пропустить `index` файл в древовидной структуре или не указать `title` во вступительной части, 
+ему будет присвоено общее имя `index`. То же самое относится к использованию `sidebar.yml`, 
+но не указанию ни `title`, ни `index`, а только подраздела. Снова появится общее имя `index`.
 
-## Blog
-Blog feature is described in [a separate document]({% link _overviews/scala3-scaladoc/blog.md %})
+## Блог
+Функция блога описана в [отдельном документе](/ru/scala3/guides/scaladoc/blog.html).
 
-## Advanced configuration
-### Full structure of site root
+## Расширенная конфигурация
+### Полная структура корня сайта
 ```
 .
 └── <site-root>/
@@ -211,13 +218,15 @@ Blog feature is described in [a separate document]({% link _overviews/scala3-sca
         │   └── ...
         └── ...
 ```
-It results in a static site containing documents as well as a blog. It also contains custom layouts and assets. The structure of the rendered documentation can be based on the file system but it can also be overridden by YAML configuration.
+В результате получается статический сайт, содержащий документы, а также блог. 
+Он также содержит пользовательские макеты и ассеты. 
+Структура визуализируемой документации может быть основана на файловой системе, но также может быть переопределена конфигурацией YAML.
 
-### Mapping directory structure
+### Структура каталогов сопоставления
 
-Using the YAML configuration file, we can define how the source directory structure should be transformed into an outputs directory structure.
+Используя файл конфигурации YAML, можно определить, как структура исходного каталога должна быть преобразована в структуру выходного каталога.
 
-Take a look at the following subsection definition:
+Взглянем на следующее определение подраздела:
 ```yaml
 - title: Some other subsection
   index: abc/index.html
@@ -226,7 +235,9 @@ Take a look at the following subsection definition:
     - page: abc2/page1.md
     - page: foo/page2.md
 ```
-This subsection shows the ability of YAML configuration to map the directory structure.
-Even though the index page and all defined children are in different directories, they will be rendered in `custom-directory`.
-The source page `abc/index.html` will generate a page `custom-directory/index.html`, the source page `abc2/page1.md` will generate a page `custom-directory/page1.html`, 
-and the source page `foo/page2.md` will generate a page `custom-directory/page2.html`.
+В этом подразделе показана возможность конфигурации YAML отображать структуру каталогов. 
+Несмотря на то, что индексная страница и все определенные дочерние элементы находятся в разных каталогах, 
+они будут рендериться в `custom-directory`. 
+Исходная страница `abc/index.html` будет генерировать страницу `custom-directory/index.html`, 
+исходная страница `abc2/page1.md` - `custom-directory/page1.html`, 
+а исходная страница `foo/page2.md` - `custom-directory/page2.html`.

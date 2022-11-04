@@ -1,6 +1,6 @@
 ---
 layout: multipage-overview
-title: Построение блога
+title: Встроенный блог
 partof: scala3-scaladoc
 language: ru
 num: 5
@@ -8,15 +8,16 @@ previous-page: static-site
 next-page: site-versioning
 ---
 
-Scaladoc allows you to include a simple blog in your documentation. For now, it
-provides only basic features. In the future, we plan to include more advanced
-features like tagging or author pages.
+Scaladoc позволяет включить в документацию простой блог. 
+На данный момент предоставляются только основные функции. 
+В будущем мы планируем включить более продвинутые функции, такие как теги или авторские страницы.
 
-Blog is treated a little differently than regular static sites. This article will help you set up your own blog.
+К блогу относятся немного иначе, чем к обычным статическим сайтам. 
+Эта статья поможет вам создать свой собственный блог.
 
-## Proper directory setup
+## Правильная настройка каталога
 
-All your blogposts must be put under `_blog/_posts` directory.
+Сообщения в блоге должны быть помещены в каталог `_blog/_posts`.
 
 
 ```
@@ -26,11 +27,9 @@ All your blogposts must be put under `_blog/_posts` directory.
 │   └── index.html
 ```
 
-Scaladoc loads blog if the `_blog` directory exists.
+Scaladoc загружает блог, если существует каталог `_blog`.
 
-## Naming convention
+## Соглашение об именовании
 
-All the blogpost filenames should start with date in numeric format matching `YYYY-MM-DD`.
-Example name is `2015-10-23-dotty-compiler-bootstraps.md`.
-
-
+Все имена файлов сообщений блога должны начинаться с даты в числовом формате, соответствующем `YYYY-MM-DD`. 
+Пример имени - `2022-06-17-dotty-compiler-bootstraps.md`.
