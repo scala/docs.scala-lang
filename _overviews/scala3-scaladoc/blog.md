@@ -2,6 +2,7 @@
 layout: multipage-overview
 title: Built-in blog
 partof: scala3-scaladoc
+languages: ["ru"]
 num: 5
 previous-page: static-site
 next-page: site-versioning

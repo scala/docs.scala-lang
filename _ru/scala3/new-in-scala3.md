@@ -1,6 +1,7 @@
 ---
 layout: singlepage-overview
 title: Новое в Scala 3
+partof: scala3-scaladoc
 scala3: true
 language: ru
 ---

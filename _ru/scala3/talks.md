@@ -1,72 +1,73 @@
 ---
 layout: singlepage-overview
-title: Беседы
-partof: scala3-talks
+title: Обсуждения
+partof: scala3-scaladoc
 scala3: true
 language: ru
 versionSpecific: true
 ---
 
-Let’s Talk About Scala 3 Series
+Давайте поговорим о Scala 3 Series
 -------------------------------
 
-[Let’s Talk About Scala 3](https://www.youtube.com/playlist?list=PLTx-VKTe8yLxYQfX_eGHCxaTuWvvG28Ml) is a series
-of short (around 15 min) talks about Scala 3. It covers a variety of themes like how to get started, how to take
-advantage of the new language features, or how to migrate from Scala 2. 
+[Давайте поговорим о Scala 3](https://www.youtube.com/playlist?list=PLTx-VKTe8yLxYQfX_eGHCxaTuWvvG28Ml) — это серия 
+коротких (около 15 минут) докладов о Scala 3. Они охватывают различные темы, например, как начать работу, 
+как воспользоваться преимуществами новых языковых функций или как перейти со Scala 2.
 
-Talks on Scala 3
+Обсуждения Scala 3
 ----------------
-- (ScalaDays 2019, Lausanne) [A Tour of Scala 3](https://www.youtube.com/watch?v=_Rnrx2lo9cw) by [Martin Odersky](http://twitter.com/odersky)
+- (ScalaDays 2019, Lausanne) [Тур по Scala 3](https://www.youtube.com/watch?v=_Rnrx2lo9cw) от [Martin Odersky](http://twitter.com/odersky)
 
-- (ScalaDays 2016, Berlin) [Scala's Road Ahead](https://www.youtube.com/watch?v=GHzWqJKFCk4) by [Martin Odersky](http://twitter.com/odersky) [\[slides\]](http://www.slideshare.net/Odersky/scala-days-nyc-2016)
+- (ScalaDays 2016, Berlin) [Развитие Scala](https://www.youtube.com/watch?v=GHzWqJKFCk4) от [Martin Odersky](http://twitter.com/odersky) [\[слайды\]](http://www.slideshare.net/Odersky/scala-days-nyc-2016)
 
-- (JVMLS 2015) [Compilers are Databases](https://www.youtube.com/watch?v=WxyyJyB_Ssc) by [Martin Odersky](http://twitter.com/odersky) [\[slides\]](http://www.slideshare.net/Odersky/compilers-are-databases)
+- (JVMLS 2015) [Компиляторы — это базы данных](https://www.youtube.com/watch?v=WxyyJyB_Ssc) от [Martin Odersky](http://twitter.com/odersky) [\[слайды\]](http://www.slideshare.net/Odersky/compilers-are-databases)
 
-- (Scala World 2015) [Dotty: Exploring the future of Scala](https://www.youtube.com/watch?v=aftdOFuVU1o) by [Dmitry Petrashko](http://twitter.com/darkdimius) [\[slides\]](https://d-d.me/scalaworld2015/#/).
-  Dmitry covers many of the new features that Dotty brings on the table such as Intersection and Union types, improved lazy val initialization and more.
-  Dmitry also covers dotty internals and in particular the high-level of contextual abstractions of Dotty. You will get to
-  become familiar with many core concepts such as `Denotations`, their evolution through (compilation) time, their
-  transformations and more.
+- (Scala World 2015) [Dotty: изучение будущего Scala](https://www.youtube.com/watch?v=aftdOFuVU1o) от [Dmitry Petrashko](http://twitter.com/darkdimius) [\[слайды\]](https://d-d.me/scalaworld2015/#/).
+  Дмитрий рассказывает о многих новых функциях, которые предлагает Dotty, таких как типы пересечения и объединения, 
+  улучшенная инициализация lazy val и многое другое. Дмитрий также рассказывает о внутреннем устройстве Dotty 
+  и, в частности, о высоком уровне контекстных абстракций Dotty. 
+  Вы познакомитесь со многими основными понятиями, такими как `Denotations`, их эволюция во времени (компиляции), 
+  их преобразования и многое другое.
 
-Deep Dive with Scala 3
+Глубокое погружение в Scala 3
 ----------------------
-- (ScalaDays 2019, Lausanne) [Metaprogramming in Dotty](https://www.youtube.com/watch?v=ZfDS_gJyPTc) by [Nicolas Stucki](https://github.com/nicolasstucki).
+- (ScalaDays 2019, Lausanne) [Метапрограммирование в Dotty](https://www.youtube.com/watch?v=ZfDS_gJyPTc) от [Nicolas Stucki](https://github.com/nicolasstucki).
 
-- (ScalaDays 2019, Lausanne) [Future-proofing Scala: the TASTY intermediate representation](https://www.youtube.com/watch?v=zQFjC3zLYwo) by [Guillaume Martres](http://guillaume.martres.me/).
+- (ScalaDays 2019, Lausanne) [Scala, ориентированная на будущее: промежуточное представление TASTY](https://www.youtube.com/watch?v=zQFjC3zLYwo) от [Guillaume Martres](http://guillaume.martres.me/).
 
-- (Mar 21, 2017) [Dotty Internals 1: Trees & Symbols](https://www.youtube.com/watch?v=yYd-zuDd3S8) by [Dmitry Petrashko](http://twitter.com/darkdimius) [\[meeting notes\]](https://dotty.epfl.ch/docs/internals/dotty-internals-1-notes.html).
-  This is a recorded meeting between EPFL and Waterloo, where we introduce first notions inside Dotty: Trees and Symbols.
+- (Mar 21, 2017) [Dotty Internals 1: Trees & Symbols](https://www.youtube.com/watch?v=yYd-zuDd3S8) от [Dmitry Petrashko](http://twitter.com/darkdimius) [\[заметки\]](https://dotty.epfl.ch/docs/internals/dotty-internals-1-notes.html).
+  Это записанная встреча между EPFL и Waterloo, на которой мы представляем первые понятия внутри Dotty: деревья и символы.
 
-- (Mar 21, 2017) [Dotty Internals 2: Types](https://www.youtube.com/watch?v=3gmLIYlGbKc) by [Martin Odersky](http://twitter.com/odersky) and [Dmitry Petrashko](http://twitter.com/darkdimius).
-  This is a recorded meeting between EPFL and Waterloo, where we introduce how types are represented inside Dotty.
+- (Mar 21, 2017) [Dotty Internals 2: Types](https://www.youtube.com/watch?v=3gmLIYlGbKc) от [Martin Odersky](http://twitter.com/odersky) и [Dmitry Petrashko](http://twitter.com/darkdimius).
+  Это записанная встреча между EPFL и Waterloo, на которой мы рассказываем, как типы представлены внутри Dotty.
 
-- (Jun 15, 2017) [Dotty Internals 3: Denotations](https://youtu.be/9iPA7zMRGKY) by [Martin Odersky](http://twitter.com/odersky) and [Dmitry Petrashko](http://twitter.com/darkdimius).
-  This is a recorded meeting between EPFL and Waterloo, where we introduce denotations in Dotty.
+- (Jun 15, 2017) [Dotty Internals 3: Denotations](https://youtu.be/9iPA7zMRGKY) от [Martin Odersky](http://twitter.com/odersky) и [Dmitry Petrashko](http://twitter.com/darkdimius).
+  Это записанная встреча между EPFL и Waterloo, где мы вводим обозначения в Dotty.
 
-- (JVM Language Summit) [How do we make the Dotty compiler fast](https://www.youtube.com/watch?v=9xYoSwnSPz0) by [Dmitry Petrashko](http://twitter.com/darkdimius).
-  [Dmitry Petrashko](http://twitter.com/darkdimius) gives a high-level introduction on what was done to make Dotty .
+- (JVM Language Summit) [How do we make the Dotty compiler fast](https://www.youtube.com/watch?v=9xYoSwnSPz0) от [Dmitry Petrashko](http://twitter.com/darkdimius).
+  [Dmitry Petrashko](http://twitter.com/darkdimius) в общих чертах рассказывает о том, что было сделано для создания Dotty.
 
+- (Typelevel Summit Oslo, May 2016) [Dotty and types: the story so far](https://www.youtube.com/watch?v=YIQjfCKDR5A) от
+  Guillaume Martres [\[слайды\]](http://guillaume.martres.me/talks/typelevel-summit-oslo/).
+  Guillaume сосредоточился на некоторых практических улучшениях системы типов, реализованных в Dotty, 
+  таких как новый алгоритм вывода параметров типа, 
+  который может принимать решения о безопасности типов в бОльшем количестве ситуаций, чем scalac.
 
-- (Typelevel Summit Oslo, May 2016) [Dotty and types: the story so far](https://www.youtube.com/watch?v=YIQjfCKDR5A) by
-  Guillaume Martres [\[slides\]](http://guillaume.martres.me/talks/typelevel-summit-oslo/).
-  Guillaume focused on some practical improvements to the type system that Dotty makes, like the new type parameter
-  inference algorithm that is able to reason about the type safety of more situations than scalac.
+- (flatMap(Oslo) 2016) [AutoSpecialization in Dotty](https://vimeo.com/165928176) от [Dmitry Petrashko](http://twitter.com/darkdimius) [\[слайды\]](https://d-d.me/talks/flatmap2016/#/).
+  Dotty Linker анализирует вашу программу и ее зависимости, чтобы применить новую схему специализации.
+  Он основан на нашем опыте Specialization, Miniboxing и проекта Valhalla и значительно уменьшает размер создаваемого байт-кода. 
+  И, что лучше всего, он всегда включен, выполняется за кулисами без аннотаций и приводит к ускорению более чем в 20 раз. 
+  Кроме того, он "просто работает" с коллекциями Scala.
 
-- (flatMap(Oslo) 2016) [AutoSpecialization in Dotty](https://vimeo.com/165928176) by [Dmitry Petrashko](http://twitter.com/darkdimius) [\[slides\]](https://d-d.me/talks/flatmap2016/#/).
-  The Dotty Linker analyses your program and its dependencies to
-  apply a new specialization scheme. It builds on our experience from Specialization, Miniboxing and the Valhalla Project,
-  and drastically reduces the size of the emitted bytecode. And, best of all, it's always enabled, happens behind the
-  scenes without annotations,  and results in speedups in excess of 20x. Additionally, it "just works" on Scala collections.
+- (ScalaSphere 2016) [Hacking on Dotty: A live demo](https://www.youtube.com/watch?v=0OOYGeZLHs4) от Guillaume Martres [\[слайды\]](http://guillaume.martres.me/talks/dotty-live-demo/).
+  Guillaume взламывает Dotty: живая демонстрация, во время которой он создает простую фазу компиляции 
+  для трассировки вызовов методов во время выполнения.
 
-- (ScalaSphere 2016) [Hacking on Dotty: A live demo](https://www.youtube.com/watch?v=0OOYGeZLHs4) by Guillaume Martres [\[slides\]](http://guillaume.martres.me/talks/dotty-live-demo/).
-  Guillaume hacks on Dotty: a live demo during which he
-  creates a simple compiler phase to trace method calls at run-time.
+- (Scala By the Bay 2016) [Dotty: what is it and how it works](https://www.youtube.com/watch?v=wCFbYu7xEJA) от Guillaume
+  Martres [\[слайды\]](http://guillaume.martres.me/talks/dotty-tutorial/#/). 
+  Guillaume предоставляет высокоуровневое представление о конвейере компиляции Dotty.
 
-- (Scala By the Bay 2016) [Dotty: what is it and how it works](https://www.youtube.com/watch?v=wCFbYu7xEJA) by Guillaume
-  Martres [\[slides\]](http://guillaume.martres.me/talks/dotty-tutorial/#/). Guillaume provides a high-level view of the
-  compilation-pipeline of Dotty.
-
-- (ScalaDays 2015, Amsterdam) [Making your Scala applications smaller and faster with the Dotty linker](https://www.youtube.com/watch?v=xCeI1ArdXM4) by Dmitry Petrashko [\[slides\]](https://d-d.me/scaladays2015/#/).
-  Dmitry introduces the call-graph analysis algorithm
-  that Dotty implements and the performance benefits we can get in terms of number of methods, bytecode size, JVM code size
-  and the number of objects allocated in the end.
+- (ScalaDays 2015, Amsterdam) [Making your Scala applications smaller and faster with the Dotty linker](https://www.youtube.com/watch?v=xCeI1ArdXM4) от Dmitry Petrashko [\[слайды\]](https://d-d.me/scaladays2015/#/).
+  Дмитрий представляет алгоритм анализа графа вызовов, который реализует Dotty, и преимущества производительности, 
+  которые мы можем получить с точки зрения количества методов, размера байт-кода, размера кода JVM 
+  и количества объектов, выделенных в конце.

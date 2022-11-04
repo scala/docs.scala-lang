@@ -1,7 +1,7 @@
 ---
 layout: singlepage-overview
-overview-name: "Scala 3 Documentation"
 title: Вклад в документацию
+partof: scala3-scaladoc
 scala3: true
 language: ru
 ---
