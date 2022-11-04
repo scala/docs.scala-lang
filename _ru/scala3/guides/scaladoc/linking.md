@@ -30,29 +30,20 @@ next-page: static-site
 Идентификатор может заканчиваться на `$`, что заставляет его ссылаться на значение (объект, значение, given); 
 идентификатор также может заканчиваться на `!`, что заставляет его ссылаться на тип (класс, псевдоним типа, член типа).
 
-Ссылки разрешаются относительно текущего местоположения в источнике. То есть при документировании класса ссылки относятся к сущности, включающей класс (пакет, класс, объект); то же самое относится к документированию определений.
+Ссылки рассчитываются относительно текущего местоположения в источнике. 
+То есть при документировании класса ссылки относятся к сущности, включающей класс (пакет, класс, объект); 
+то же самое относится к документированию определений.
 
-Специальные символы в ссылках могут быть экранированы обратной косой чертой, что вместо этого делает их частью идентификаторов. Например, [[scala.collection.immutable\.List]] ссылается на класс immutable.List, указанный в package scala.collection.
+Специальные символы в ссылках могут быть экранированы обратной косой чертой, что вместо этого делает их частью идентификаторов. 
+Например, `` [[scala.collection.immutable\.List]] `` ссылается на класс `` `immutable.List` ``, указанный в package `scala.collection`.
 
+#### Новый синтаксис
 
+Определение ссылок Scaladoc было расширено, чтобы сделать их более удобными для записи и чтения в исходном коде. 
+Также целью было сблизить связь и синтаксис Scala. Новые функции:
 
-
-The links are resolved relative to the current location in source. That is, when
-documenting a class, the links are relative to the entity enclosing the class (a
-package, a class, an object); the same applies to documenting definitions.
-
-Special characters in links can be backslash-escaped, which makes them part of
-identifiers instead. For example, `` [[scala.collection.immutable\.List]] ``
-references the class named `` `immutable.List` `` in package `scala.collection`.
-
-#### New syntax
-
-We have extended Scaladoc definition links to make them a bit more pleasant to
-write and read in source. The aim was also to bring the link and Scala syntax
-closer together. The new features are:
-
-1. `package` can be used as a prefix to reference the enclosing package
-    Example:
+1. `package` может использоваться в качестве префикса для ссылки на прилагаемый пакет.
+    Пример:
     ```
     package utils
     class C {
@@ -63,10 +54,9 @@ closer together. The new features are:
       def bar = "bar".
     }
     ```
-    The `package` keyword helps make links to the enclosing package shorter
-    and a bit more resistant to name refactorings.
-1. `this` can be used as a prefix to reference the enclosing classlike
-    Example:
+    Ключевое слово `package` помогает сделать ссылки на прилагаемый пакет короче 
+    и немного более устойчивым к рефакторингу имен.
+1. `this` может использоваться в качестве префикса для ссылки на прилагаемый классоподобный пример:
     ```
     class C {
       def foo = "foo"
@@ -74,32 +64,31 @@ closer together. The new features are:
       def bar = "bar"
     }
     ```
-    Using a Scala keyword here helps make the links more familiar, as well as
-    helps the links survive class name changes.
-1. Backticks can be used to escape identifiers
-    Example:
+    Использование здесь ключевого слова помогает сделать ссылки более привычными, 
+    а также помогает ссылкам "пережить" изменения имени класса.
+1. Обратные кавычки могут использоваться для экранирования идентификаторов.
+    Пример:
     ```
     def `([.abusive.])` = ???
     /** TODO: Figure out what [[`([.abusive.])`]] is. */
     def foo = `([.abusive.])`
     ```
-    Previously (versions 2.x), Scaladoc required backslash-escaping to reference such identifiers. Now (3.x versions),
-    Scaladoc allows using the familiar Scala backtick quotation.
+    Ранее (в версиях 2.x) для ссылки на такие идентификаторы в Scaladoc требовалось экранирование обратной косой чертой. 
+    Теперь (в версиях 3.x) Scaladoc позволяет использовать знакомую обратную кавычку Scala.
 
-#### Why keep the Wiki syntax for links?
+#### Зачем сохранять синтаксис Wiki для ссылок?
 
-There are a few reasons why we've kept the Wiki syntax for documentation links
-instead of reusing the Markdown syntax. Those are:
+Есть несколько причин, по которым синтаксис Wiki сохранен для ссылок на документацию 
+вместо повторного использования синтаксиса Markdown. Это:
 
-1. Nameless links in Markdown are ugly: `[](definition)` vs `[[definition]]`
-    By far, most links in documentation are nameless. It should be obvious how to
-    write them.
-2. Local member lookup collides with URL fragments: `[](#field)` vs `[[#field]]`
-3. Overload resolution collides with MD syntax: `[](meth(Int))` vs `[[meth(Int)]]`
-4. Now that we have a parser for the link syntax, we can allow spaces inside (in
-    Scaladoc one needed to slash-escape those), but that doesn't get recognized
-    as a link in Markdown: `[](meth(Int, Float))` vs `[[meth(Int, Float)]]`
+1. Безымянные ссылки в Markdown уродливы: `[](definition)` против `[[definition]]` 
+    Безусловно, большинство ссылок в документации безымянные. Должно быть очевидно, как их писать. 
+2. Поиск локального члена конфликтует с фрагментами URL: `[](#field)` против `[[#field]]`
+3. Разрешение перегрузки противоречит синтаксису MD: `[](meth(Int))` против `[[meth(Int)]]`
+4. Теперь, когда есть парсер для синтаксиса ссылок, можно разрешить пробелы внутри 
+    (в Scaladoc нужно было экранировать их косой чертой), но это не распознается как ссылка в Markdown: 
+    `[](meth(Int, Float))` против `[[meth(Int, Float)]]`
 
-None of these make it completely impossible to use the standard Markdown link
-syntax, but they make it much more awkward and ugly than it needs to be. On top
-of that, Markdown link syntax doesn't even save any characters.
+Ни одна из этих причин не делает полностью невозможным использование стандартного синтаксиса ссылок Markdown, 
+но они делают его гораздо более неуклюжим и уродливым, чем нужно. 
+Кроме того, синтаксис ссылок Markdown даже не сохраняет никаких символов.
