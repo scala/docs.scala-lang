@@ -1,9 +1,9 @@
 ---
 layout: singlepage-overview
-title: Talks
-scala3: true
+title: Беседы
 partof: scala3-talks
-languages: ["uk","ru"]
+scala3: true
+language: ru
 versionSpecific: true
 ---
 

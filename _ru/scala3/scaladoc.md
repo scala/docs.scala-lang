@@ -1,8 +1,9 @@
 ---
 layout: singlepage-overview
-title: New features for Scaladoc
+title: Новые возможности Scaladoc
 partof: scala3-scaladoc
-languages: ["uk","ru"]
+scala3: true
+language: ru
 ---
 
 The new Scala version 3 comes with a completely new implementation of the documentation generator _Scaladoc_, rewritten from scratch. 

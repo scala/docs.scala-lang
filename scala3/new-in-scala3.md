@@ -1,7 +1,7 @@
 ---
 layout: singlepage-overview
 title: New in Scala 3
-languages: ["ja","zh-cn","uk"]
+languages: ["ja","zh-cn","uk","ru"]
 ---
 The exciting new version of Scala 3 brings many improvements and
 new features. Here we provide you with a quick overview of the most important
