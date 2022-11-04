@@ -1,8 +1,8 @@
 ---
 layout: multipage-overview
-title: Linking documentation
+title: Ссылки в документации
 partof: scala3-scaladoc
-languages: ["ru"]
+language: ru
 num: 3
 previous-page: docstrings
 next-page: static-site

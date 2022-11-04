@@ -1,8 +1,8 @@
 ---
 layout: multipage-overview
-title: Site versioning
+title: Версионирование сайта
 partof: scala3-scaladoc
-languages: ["ru"]
+language: ru
 num: 6
 previous-page: blog
 next-page: search-engine

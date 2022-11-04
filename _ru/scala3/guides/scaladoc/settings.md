@@ -1,8 +1,8 @@
 ---
 layout: multipage-overview
-title: Settings
+title: Настройки
 partof: scala3-scaladoc
-languages: ["ru"]
+language: ru
 num: 9
 previous-page: snippet-compiler
 ---

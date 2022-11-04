@@ -1,8 +1,8 @@
 ---
 layout: multipage-overview
-title: Type-based search
+title: Поиск по типу
 partof: scala3-scaladoc
-languages: ["ru"]
+language: ru
 num: 7
 previous-page: site-versioning
 next-page: snippet-compiler

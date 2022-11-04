@@ -2,7 +2,7 @@
 layout: multipage-overview
 title: Scaladoc
 partof: scala3-scaladoc
-languages: ["ru"]
+language: ru
 num: 1
 next-page: docstrings
 ---

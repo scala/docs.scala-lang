@@ -6,81 +6,98 @@ scala3: true
 language: ru
 ---
 
-The new Scala version 3 comes with a completely new implementation of the documentation generator _Scaladoc_, rewritten from scratch. 
-In this article you can find highlights of new features that are or will be introduced to Scaladoc.
-For general reference, visit [Scaladoc manual]({% link _overviews/scala3-scaladoc/index.md %}).
+Новая версия Scala 3 поставляется с совершенно новой реализацией генератора документации _Scaladoc_, переписанной с нуля. 
+В этой статье вы можете найти основные сведения о новых функциях, которые уже есть или будут представлены в Scaladoc. 
+Для общей справки см. руководство по [Scoladoc]({% link _overviews/scala3-scaladoc/index.md %}).
 
-## New features
+## Новые особенности
 
-### Markdown syntax
+### Markdown синтаксис
 
-The biggest change introduced in the new version of Scaladoc is the change of the default language for docstrings. So far Scaladoc only supported Wikidoc syntax.
-The new Scaladoc can still parse legacy `Wikidoc` syntax, however Markdown has been chosen as a primary language for formatting comments.
-To switch back to `Wikidoc` one can pass a global flag before running the `doc` task or one can define it for specific comments via the `@syntax wiki` directive.
+Самым большим изменением, представленным в новой версии Scaladoc, является изменение языка по умолчанию для строк документации. 
+До сих пор Scaladoc поддерживал только синтаксис Wikidoc. 
+Новый Scaladoc по-прежнему может анализировать устаревший синтаксис `Wikidoc`, 
+однако Markdown был выбран в качестве основного языка для форматирования комментариев. 
+Чтобы переключиться обратно на `Wikidoc`, можно передать глобальный параметр перед запуском задачи `doc` 
+или определить его для конкретных комментариев с помощью директивы @syntax wiki`.
 
-For more information on how to use the full power of docstings, check out [Scaladoc docstrings][scaladoc-docstrings]
+Для получения дополнительной информации о том, как использовать все возможности документации, 
+ознакомьтесь с [документацией Scaladoc][scaladoc-docstrings].
 
+### Статический сайт
 
-### Static site
+Scoladoc также предоставляет простой способ создания **статических сайтов** как для документации, 
+так и для сообщений в блогах, подобно тому, как это делает Jekyll. 
+Благодаря этой функциональности вы можете очень удобно хранить свою документацию вместе со сгенерированным Scaladoc API.
 
-Scaladoc also provides an easy way for creating **static sites** for both documentation and blog posts in the similar way as Jekyll does.
-Thanks to this feature, you can store your documentation along-side with the generated Scaladoc API in a very convenient way.
-
-For more information on how to configure the generation of static sites check out [Static documentation][static-documentation] chapter
+Для получения дополнительной информации о том, как настроить создание статических сайтов, 
+ознакомьтесь с главой [Статическая документация][static-documentation].
 
 ![](../../resources/images/scala3/scaladoc/static-site.png)
 
-### Blog posts
+### Посты в блоге
 
-Blog posts are a specific type of static sites. In the Scaladoc manual you can find additional information about how to work with [blog posts][built-in-blog].
+Посты в блогах — это особый тип статических сайтов. В руководстве по работе со Scaladoc 
+вы можете найти дополнительную информацию о том, как работать с [сообщениями в блогах][built-in-blog].
 
 ![](../../resources/images/scala3/scaladoc/blog-post.png)
 
-### Social links
+### Ссылки на соцсети
 
-Furthermore, Scaladoc provides an easy way to configure your [social media links][social-links] e.g. Twitter or Discord.
+Кроме того, Scaladoc предоставляет простой способ настроить [ссылки на социальные сети][social-links], например Twitter или Discord.
 
 ![](../../resources/images/scala3/scaladoc/social-links.png){: style="width: 180px"}
 
-## Experimental features
+## Экспериментальные функции
 
-The following features are currently (May 2021) not stable to be released with scaladoc, however we are happy to hear your feedback. Each feature has its own thread at scala-lang contributors site, where you can share your opinions.
+Следующие функции в настоящее время (май 2021 г.) не являются стабильными для выпуска в scaladoc, 
+однако мы рады услышать ваши отзывы. 
+У каждой функции есть отдельная ветка на сайте авторов scala-lang, где вы можете поделиться своим мнением.
 
-### Snippet compiling
+### Компиляция фрагментов
 
-One of the experimental features of Scaladoc is a compiler for snippets. This tool will allow you to compile snippets that you attach to your docstring
-to check that they actually behave as intended, e.g., to properly compile. This feature is very similar to the `tut` or `mdoc` tools, 
-but will be shipped with Scaladoc out of the box for easy setup and integration into your project. Making snippets interactive---e.g., letting users edit and compile them in the browser---is under consideration, though this feature is not in scope at this time.
+Одной из экспериментальных возможностей Scaladoc является компилятор фрагментов кода. 
+Этот инструмент позволит вам компилировать фрагменты, которые вы прикрепляете к своей строке документации, 
+чтобы проверить, действительно ли они ведут себя так, как предполагалось, например, правильно ли компилируются. 
+Эта функция очень похожа на инструменты `tut` или `mdoc`, но будет поставляться вместе со Scaladoc, 
+что упрощает настройку и интеграцию в ваш проект. 
+Создание интерактивных фрагментов — например, предоставление пользователям возможности редактировать 
+и компилировать их в браузере — находится на рассмотрении. Но в настоящее время эта функция пока не рассматривается.
 
-Showcase:
-* Hiding code ![]({{ site.baseurl }}/resources/images/scala3/scaladoc/hiding-code.gif)
-* Assert compilation errors ![]({{ site.baseurl }}/resources/images/scala3/scaladoc/assert-compilation-errors.gif)
-* Snippet includes ![]({{ site.baseurl }}/resources/images/scala3/scaladoc/snippet-includes.png)
+Демонстрация:
+* Скрытие кода ![]({{ site.baseurl }}/resources/images/scala3/scaladoc/hiding-code.gif)
+* Проверка ошибок компиляции ![]({{ site.baseurl }}/resources/images/scala3/scaladoc/assert-compilation-errors.gif)
+* Включение фрагментов ![]({{ site.baseurl }}/resources/images/scala3/scaladoc/snippet-includes.png)
 
-For more information see [Guides](/scala3/guides/scaladoc/snippet-compiler.html), or follow this [Scala Contributors thread](https://contributors.scala-lang.org/t/snippet-validation-in-scaladoc-for-scala-3/4976)
+Для получения дополнительной информации см. [Руководства](/scala3/guides/scaladoc/snippet-compiler.html) 
+или следите за этой веткой [Scala Contributors](https://contributors.scala-lang.org/t/snippet-validation-in-scaladoc-for-scala-3/4976).
 
-### Type-based search
+### Поиск по типу
 
-Searching for functions by their symbolic names can be time-consuming.
-That is why the new scaladoc allows you to search for methods and fields by their types.
+Поиск функций по их символическим именам может занять много времени. 
+Вот почему новый scaladoc позволяет искать методы и поля по их типам.
 
+Итак, для объявления:
 
-So, for a declaration:
 ```
 extension [T](arr: IArray[T]) def span(p: T => Boolean): (IArray[T], IArray[T]) = ...
 ```
-Instead of searching for `span` we can also search for `IArray[A] => (A => Boolean) => (IArray[A], IArray[A])`.
 
-To use this feature simply type the signature of the function you are looking for in the scaladoc searchbar. This is how it works:
+Вместо поиска по `span` мы также можем искать по `IArray[A] => (A => Boolean) => (IArray[A], IArray[A])`.
+
+Чтобы использовать эту функциональность, просто введите сигнатуру функции, которую ищете, в строке поиска scaladoc. 
+Вот как это работает:
 
 ![](../../resources/images/scala3/scaladoc/inkuire-1.0.0-M2_js_flatMap.gif)
 
-This feature is provided by the [Inkuire](https://github.com/VirtusLab/Inkuire) search engine, which works for Scala 3 and Kotlin. To be up-to-date with the development of this feature, follow the [Inkuire repository](https://github.com/VirtusLab/Inkuire).
+Эта функция предоставляется поисковой системой [Inkuire](https://github.com/VirtusLab/Inkuire), которая работает для Scala 3 и Kotlin. 
+Чтобы быть в курсе развития этой функции, следите за репозиторием [Inkuire](https://github.com/VirtusLab/Inkuire).
 
-For more information see [Guides](/scala3/guides/scaladoc/search-engine.html)
+Для получения дополнительной информации см. [соответствующую главу](/scala3/guides/scaladoc/search-engine.html)
 
-Note that this feature is still in development, so it can be subject to considerable change.
-If you encounter a bug or have an idea for improvement, don't hesitate to create an issue on [Inkuire](https://github.com/VirtusLab/Inkuire/issues/new) or [dotty](https://github.com/lampepfl/dotty/issues/new).
+Обратите внимание, что эта функция все еще находится в разработке, поэтому в нее могут быть внесены значительные изменения. 
+Если вы столкнулись с ошибкой или у вас есть идея для улучшения, не стесняйтесь создавать issue на
+[Inkuire](https://github.com/VirtusLab/Inkuire/issues/new) или [dotty](https://github.com/lampepfl/dotty/issues/new).
 
 [scaladoc-docstrings]: {% link _overviews/scala3-scaladoc/docstrings.md %}
 [static-documentation]: {% link _overviews/scala3-scaladoc/static-site.md %}

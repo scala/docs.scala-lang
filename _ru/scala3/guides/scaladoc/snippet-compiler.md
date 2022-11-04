@@ -1,8 +1,8 @@
 ---
 layout: multipage-overview
-title: Snippet checking
+title: Проверка фрагмента
 partof: scala3-scaladoc
-languages: ["ru"]
+language: ru
 num: 8
 previous-page: search-engine
 next-page: settings

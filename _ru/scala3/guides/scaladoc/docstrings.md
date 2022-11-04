@@ -1,8 +1,8 @@
 ---
 layout: multipage-overview
-title: Docstrings - specific Tags and Features
+title: Docstrings - специфичные теги и особенности
 partof: scala3-scaladoc
-languages: ["ru"]
+language: ru
 num: 2
 previous-page: index
 next-page: linking

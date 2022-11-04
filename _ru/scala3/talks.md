@@ -7,7 +7,7 @@ language: ru
 versionSpecific: true
 ---
 
-Давайте поговорим о Scala 3 Series
+Серия "Давайте поговорим о Scala 3"
 -------------------------------
 
 [Давайте поговорим о Scala 3](https://www.youtube.com/playlist?list=PLTx-VKTe8yLxYQfX_eGHCxaTuWvvG28Ml) — это серия 
@@ -51,7 +51,7 @@ versionSpecific: true
   Guillaume Martres [\[слайды\]](http://guillaume.martres.me/talks/typelevel-summit-oslo/).
   Guillaume сосредоточился на некоторых практических улучшениях системы типов, реализованных в Dotty, 
   таких как новый алгоритм вывода параметров типа, 
-  который может принимать решения о безопасности типов в бОльшем количестве ситуаций, чем scalac.
+  который может принимать решения о безопасности типов в большем количестве ситуаций, чем scalac.
 
 - (flatMap(Oslo) 2016) [AutoSpecialization in Dotty](https://vimeo.com/165928176) от [Dmitry Petrashko](http://twitter.com/darkdimius) [\[слайды\]](https://d-d.me/talks/flatmap2016/#/).
   Dotty Linker анализирует вашу программу и ее зависимости, чтобы применить новую схему специализации.
