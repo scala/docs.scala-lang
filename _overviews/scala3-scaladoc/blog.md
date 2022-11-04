@@ -7,7 +7,7 @@ num: 5
 previous-page: static-site
 next-page: site-versioning
 ---
-scala3/guides/scaladoc/blog.html
+
 Scaladoc allows you to include a simple blog in your documentation. For now, it
 provides only basic features. In the future, we plan to include more advanced
 features like tagging or author pages.
