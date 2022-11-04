@@ -53,19 +53,18 @@ Example source links is:
 
 Accepted formats:
 
-\<sub-path>=\<source-link>
-\<source-link>
+`<sub-path>=<source-link>`
 
-where \<source-link> is one of following:
+where `<source-link>` is one of following:
  - `github://<organization>/<repository>[/revision][#subpath]`
      will match https://github.com/$organization/$repository/\[blob|edit]/$revision\[/$subpath]/$filePath\[$lineNumber]
      when revision is not provided then requires revision to be specified as argument for scaladoc
  - `gitlab://<organization>/<repository>`
      will match https://gitlab.com/$organization/$repository/-/\[blob|edit]/$revision\[/$subpath]/$filePath\[$lineNumber]
      when revision is not provided then requires revision to be specified as argument for scaladoc
- - \<scaladoc-template>
+ - `<scaladoc-template>`
 
-\<scaladoc-template> is a format for `doc-source-url` parameter from old scaladoc.
+`<scaladoc-template>` is a format for `doc-source-url` parameter from old scaladoc.
 NOTE: We only supports `€{FILE_PATH_EXT}`, `€{TPL_NAME}`, `€{FILE_EXT}`,
  `€{FILE_PATH}`, and `€{FILE_LINE}` patterns.
 
@@ -82,7 +81,7 @@ Mapping between regexes matching classpath entries and external documentation.
 Example external mapping is:
 `-external-mappings:.*scala.*::scaladoc3::https://scala-lang.org/api/3.x/,.*java.*::javadoc::https://docs.oracle.com/javase/8/docs/api/`
 
-A mapping is of the form '\<regex>::\[scaladoc3|scaladoc|javadoc]::\<path>'. You can supply several mappings, separated by commas, as shown in the example.
+A mapping is of the form `<regex>::[scaladoc3|scaladoc|javadoc]::<path>`. You can supply several mappings, separated by commas, as shown in the example.
 
 ##### -social-links
 
@@ -90,7 +89,7 @@ Links to social sites. For example:
 
 `-social-links:github::https://github.com/lampepfl/dotty,discord::https://discord.com/invite/scala,twitter::https://twitter.com/scala_lang`
 
-Valid values are of the form: `\[github|twitter|gitter|discord]::link`. Scaladoc also supports `custom::link::white_icon_name::black_icon_name`. In this case icons must be present in `images/` directory.
+Valid values are of the form: `[github|twitter|gitter|discord]::link`. Scaladoc also supports `custom::link::white_icon_name::black_icon_name`. In this case icons must be present in `images/` directory.
 
 ##### -skip-by-id
 
@@ -157,9 +156,9 @@ where `path` is a prefix of the path to source files where snippets are located 
 If the path is not present, the argument will be used as the default for all unmatched paths.
 
 Available flags:
-compile - Enables snippet checking.
-nocompile - Disables snippet checking.
-fail - Enables snippet checking, asserts that snippet doesn't compile.
+- compile - Enables snippet checking.
+- nocompile - Disables snippet checking.
+- fail - Enables snippet checking, asserts that snippet doesn't compile.
 
 The fail flag comes in handy for snippets that present that some action would eventually fail during compilation, e. g. [Opaques page]({{ site.scala3ref }}/other-new-features/opaques.html)
 
@@ -169,9 +168,9 @@ Example usage:
 
 Which means:
 
-all snippets in files under directory `my/path/nc` should not be compiled at all
-all snippets in files under directory `my/path/f` should fail during compilation
-all other snippets should compile successfully
+- all snippets in files under directory `my/path/nc` should not be compiled at all
+- all snippets in files under directory `my/path/f` should fail during compilation
+- all other snippets should compile successfully
 
 ##### -Ysnippet-compiler-debug
 

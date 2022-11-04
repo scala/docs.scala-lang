@@ -7,135 +7,147 @@ num: 9
 previous-page: snippet-compiler
 ---
 
-This chapter lists the configuration options that can be used when calling scaladoc. Some of the information shown here can be found by calling scaladoc with the `-help` flag.
+В этой главе перечислены параметры конфигурации, которые можно использовать при вызове scaladoc. 
+Некоторую информацию, показанную здесь, можно получить, вызвав scaladoc с флагом `-help`.
 
-## Parity with scaladoc for Scala 2
+## Изменения scaladoc по сравнению со Scala 2
 
-Scaladoc has been rewritten from scratch and some of the features turned out to be useless in the new context.
-If you want to know what is current state of compatibility with scaladoc old flags, you can visit this issue for tracking [progress](https://github.com/lampepfl/dotty/issues/11907).
+Scaladoc был переписан с нуля, и некоторые функции оказались бесполезными в новом контексте. 
+Текущее состояние совместимости со старыми флагами scaladoc можно увидеть [здесь](https://github.com/lampepfl/dotty/issues/11907).
 
-## Providing settings
+## Указание настроек
 
-Supply scaladoc settings as command-line arguments, e.g., `scaladoc -d output -project my-project target/scala-3.0.0-RC2/classes`. If called from sbt, update the value of `Compile / doc / scalacOptions` and `Compile / doc / target` respectively, e. g.
+Настройки scaladoc можно указывать в качестве аргументов командной строки, 
+например, `scaladoc -d output -project my-project target/scala-3.0.0-RC2/classes`. 
+При вызове из sbt, обновите значение `Compile / doc / scalacOptions` и `Compile / doc / target` соответственно, например
 
 ```
 Compile / doc / target := file("output"),
 Compile / doc / scalacOptions ++= Seq("-project", "my-project"),
 ```
 
-## Overview of all available settings
+## Обзор всех доступных настроек
 
 ##### -project
-The name of the project. To provide compatibility with Scala2 aliases with `-doc-title`
+Название проекта. Чтобы обеспечить совместимость с псевдонимами Scala2 с `-doc-title`
 
 ##### -project-version
-The current version of your project that appears in a top left corner. To provide compatibility with Scala2 aliases with `-doc-version`
+Текущая версия проекта, которая отображается в верхнем левом углу. 
+Чтобы обеспечить совместимость с псевдонимами Scala2 с `-doc-version`
 
 ##### -project-logo
-The logo of your project that appears in a top left corner. To provide compatibility with Scala2 aliases with `-doc-logo`
+Логотип проекта, который появляется в верхнем левом углу. 
+Чтобы обеспечить совместимость с псевдонимами Scala2 с `-doc-logo`
 
 ##### -project-footer
-The string message that appears in a footer section. To provide compatibility with Scala2 aliases with `-doc-footer`
+Строковое сообщение, которое отображается в разделе нижнего колонтитула. 
+Чтобы обеспечить совместимость с псевдонимами Scala2 с `-doc-footer`
 
 ##### -comment-syntax
-The styling language used for parsing comments.
-Currently we support two syntaxes: `markdown` or `wiki`
-If setting is not present, scaladoc defaults `markdown`
+Язык стилей, используемый для разбора комментариев. 
+В настоящее время поддерживается два синтаксиса: `markdown` или `wiki`. 
+Если настройка отсутствует, по умолчанию - `markdown`.
 
 ##### -revision
-Revision (branch or ref) used to build project. Useful with sourcelinks to prevent them from pointing always to the newest main that is subject to changes.
+Редакция (ветвь или ссылка), используемая для создания проекта. 
+Полезно с исходными ссылками, чтобы они не всегда указывали на последний `main`, который может быть изменен.
 
 ##### -source-links
-Source links provide a mapping between file in documentation and code repository.
+Ссылки на источники обеспечивают сопоставление между файлом в документации и репозиторием кода.
 
-Example source links is:
+Примеры исходных ссылок:
 `-source-links:docs=github://lampepfl/dotty/master#docs`
 
-Accepted formats:
+Принимаемые форматы:
 
-\<sub-path>=\<source-link>
-\<source-link>
+`<sub-path>=<source-link>`
 
-where \<source-link> is one of following:
+где `<source-link>` является одним из следующих:
  - `github://<organization>/<repository>[/revision][#subpath]`
-     will match https://github.com/$organization/$repository/\[blob|edit]/$revision\[/$subpath]/$filePath\[$lineNumber]
-     when revision is not provided then requires revision to be specified as argument for scaladoc
+     будет соответствовать https://github.com/$organization/$repository/[blob|edit]/$revision[/$subpath]/$filePath[$lineNumber], 
+     если редакция не указана, тогда требуется указать редакцию в качестве аргумента для Scaladoc
  - `gitlab://<organization>/<repository>`
-     will match https://gitlab.com/$organization/$repository/-/\[blob|edit]/$revision\[/$subpath]/$filePath\[$lineNumber]
-     when revision is not provided then requires revision to be specified as argument for scaladoc
- - \<scaladoc-template>
+     будет соответствовать https://gitlab.com/$organization/$repository/-/[blob|edit]/$revision[/$subpath]/$filePath[$lineNumber], 
+     если редакция не указана, тогда требуется, чтобы редакция была указана как аргумент в Scaladoc
+ - `<scaladoc-template>`
 
-\<scaladoc-template> is a format for `doc-source-url` parameter from old scaladoc.
-NOTE: We only supports `€{FILE_PATH_EXT}`, `€{TPL_NAME}`, `€{FILE_EXT}`,
- `€{FILE_PATH}`, and `€{FILE_LINE}` patterns.
+`<scaladoc-template>` — это формат параметра `doc-source-url` из старого scaladoc. 
+ПРИМЕЧАНИЕ. Поддерживаются только шаблоны `€{FILE_PATH_EXT}`, `€{TPL_NAME}`, `€{FILE_EXT}`, `€{FILE_PATH}` и `€{FILE_LINE}`.
 
-
-Template can defined only by subset of sources defined by path prefix represented by `<sub-path>`.
-In such case paths used in templates will be relativized against `<sub-path>`
-
+Шаблон может быть определен только подмножеством источников, определенных префиксом пути, представленным `<sub-path>`. 
+В этом случае пути, используемые в шаблонах, будут относительными относительно `<sub-path>`.
 
 
 ##### -external-mappings
 
-Mapping between regexes matching classpath entries and external documentation.
+Сопоставление регулярных выражений, соответствующих записям пути к классам, и внешней документации.
 
-Example external mapping is:
+Пример внешнего сопоставления:
 `-external-mappings:.*scala.*::scaladoc3::https://scala-lang.org/api/3.x/,.*java.*::javadoc::https://docs.oracle.com/javase/8/docs/api/`
 
-A mapping is of the form '\<regex>::\[scaladoc3|scaladoc|javadoc]::\<path>'. You can supply several mappings, separated by commas, as shown in the example.
+Отображение имеет вид `<regex>::[scaladoc3|scaladoc|javadoc]::<path>`. 
+Можно указать несколько сопоставлений, разделенных запятыми, как показано в примере.
 
 ##### -social-links
 
-Links to social sites. For example:
+Ссылки на социальные сети. Например:
 
 `-social-links:github::https://github.com/lampepfl/dotty,discord::https://discord.com/invite/scala,twitter::https://twitter.com/scala_lang`
 
-Valid values are of the form: `\[github|twitter|gitter|discord]::link`. Scaladoc also supports `custom::link::white_icon_name::black_icon_name`. In this case icons must be present in `images/` directory.
+Допустимые значения имеют вид: `[github|twitter|gitter|discord]::link`. 
+Scaladoc также поддерживает `custom::link::white_icon_name::black_icon_name`. 
+В этом случае иконки должны находиться в каталоге `images/`.
 
 ##### -skip-by-id
 
-Identifiers of packages or top-level classes to skip when generating documentation.
+Идентификаторы пакетов или классов верхнего уровня, которые следует пропускать при создании документации.
 
 ##### -skip-by-regex
 
-Regexes that match fully qualified names of packages or top-level classes to skip when generating documentation.
+Регулярные выражения, соответствующие полным именам пакетов или классов верхнего уровня, 
+которые следует пропускать при создании документации.
 
 ##### -doc-root-content
 
-The file from which the root package documentation should be imported.
+Файл, из которого следует импортировать документацию корневого пакета.
 
 ##### -author
 
-Adding authors in docstring with `@author Name Surname` by default won't be included in generated html documentation.
-If you would like to label classes with authors explicitly, run scaladoc with this flag.
+Добавление авторов в строку документации `@author Name Surname` по умолчанию не будет включено в сгенерированную html-документацию. 
+Если необходимо явно пометить классы авторами, scaladoc запускается с данным флагом.
 
 ##### -groups
 
-Group similar functions together (based on the @group annotation)
+Группировка похожих функций вместе (на основе аннотации `@group`)
 
 ##### -private
 
-Show all types and members. Unless specified, show only public and protected types and members.
+Показать все типы и члены. Если параметр не указан, показывать только `public` и `protected` типы и члены.
 
 ##### -doc-canonical-base-url
 
-A base URL to use as prefix and add `canonical` URLs to all pages. The canonical URL may be used by search engines to choose the URL that you want people to see in search results. If unset no canonical URLs are generated.
+Базовый URL-адрес для использования в качестве префикса и добавления `canonical` URL-адресов на все страницы. 
+Канонический URL-адрес может использоваться поисковыми системами для выбора URL-адреса, 
+который вы хотите, чтобы люди видели в результатах поиска. 
+Если не установлено, канонические URL-адреса не генерируются.
 
 ##### -siteroot
 
-A directory containing static files from which to generate documentation. Default directory is `./docs`
+Каталог, содержащий статические файлы, из которых создается документация. Каталог по умолчанию - `./docs`
 
 ##### -no-link-warnings
 
-Suppress warnings for ambiguous or incorrect links in members’ lookup. Doesn't affect warnings for incorrect links of assets etc.
+Подавить предупреждения для двусмысленных или невалидных ссылок. 
+Не влияет на предупреждения о некорректных ссылках ресурсов и т. д.
 
 ##### -versions-dictionary-url
 
-A URL pointing to a JSON document containing a dictionary: `version label -> documentation location`.
-The JSON file has single property `versions` that holds the dictionary associating the labels of specific versions of the documentation to the URLs pointing to their index.html
-Useful for libraries that maintain different versions of their documentation.
+URL-адрес, указывающий на документ JSON, содержащий словарь: `version label -> documentation location`. 
+Файл JSON имеет единственное свойство `versions`, которое содержит словарь, 
+связывающий метки определенных версий документации с URL-адресами, указывающими на их `index.html`. 
+Полезно для библиотек, которые поддерживают разные версии документации.
 
-Example JSON file:
+Пример JSON-файла:
 ```
 {
   "versions": {
@@ -147,37 +159,39 @@ Example JSON file:
 
 ##### -snippet-compiler
 
-Snippet compiler arguments provide a way to configure snippet type checking.
+Аргументы компилятора фрагментов, позволяющие настроить проверку типа сниппета.
 
-This setting accepts a list of arguments in the format:
-args := arg{,args}
-arg := [path=]flag
-where `path` is a prefix of the path to source files where snippets are located and `flag` is the mode in which snippets will be type checked.
+Этот параметр принимает список аргументов в формате: 
+`args := arg{,args} arg := [path=]flag`
+, где `path` - префикс пути к исходным файлам, в которых находятся сниппеты, 
+и `flag` - режим проверки типов.
 
-If the path is not present, the argument will be used as the default for all unmatched paths.
+Если `path` отсутствует, аргумент будет использоваться по умолчанию для всех несопоставленных путей.
 
-Available flags:
-compile - Enables snippet checking.
-nocompile - Disables snippet checking.
-fail - Enables snippet checking, asserts that snippet doesn't compile.
+Доступные флаги:
+- `compile` — включает проверку фрагментов.
+- `nocompile` — отключает проверку сниппетов.
+- `fail` — включает проверку фрагмента, утверждает, что сниппет не компилируется.
 
-The fail flag comes in handy for snippets that present that some action would eventually fail during compilation, e. g. [Opaques page]({{ site.scala3ref }}/other-new-features/opaques.html)
+Флаг `fail` удобен для фрагментов, которые показывают, 
+что какое-то действие в конечном итоге завершится ошибкой во время компиляции.
 
-Example usage:
+Пример использования:
 
 `-snippet-compiler:my/path/nc=nocompile,my/path/f=fail,compile`
 
-Which means:
+Что значит:
 
-all snippets in files under directory `my/path/nc` should not be compiled at all
-all snippets in files under directory `my/path/f` should fail during compilation
-all other snippets should compile successfully
+- все фрагменты в файлах в каталоге `my/path/nc` вообще не должны рассматриваться снипеттом
+- все фрагменты в файлах в каталоге `my/path/f` не должны компилироваться во время компиляции
+- все остальные фрагменты должны компилироваться успешно
 
 ##### -Ysnippet-compiler-debug
 
-Setting this option makes snippet compiler print the snippet as it is compiled (after wrapping).
+Установка этого параметра заставляет компилятор фрагментов печатать сниппет по мере его компиляции (после упаковки).
 
 ##### -Ydocument-synthetic-types
 
-Include pages providing documentation for the intrinsic types (e. g. Any, Nothing) to the docs. The setting is useful only for stdlib because scaladoc for Scala 3 relies on TASTy files, but we cannot provide them for intrinsic types since they are embedded in the compiler.
-All other users should not concern with this setting.
+Включение в документацию страниц с документацией по встроенным типам (например, `Any`, `Nothing`). 
+Этот параметр полезен только для stdlib, поскольку scaladoc для Scala 3 использует файлы TASTy. 
+Все остальные пользователи не должны касаться этой настройки.
