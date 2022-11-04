@@ -18,7 +18,7 @@ redirect_from: /sips/pending/priority-based-infix-type-precedence.html
 | Feb 10th 2017 | Updates from feedback                    |
 | Aug 8th 2017  | Numbered SIP, improve view, fixed example, and added related issues |
 | Oct 20th 2017 | Added implementation link                |
-| Oct 25th 2017 | Moved prefix types to [another SIP](https://docs.scala-lang.org/sips/adding-prefix-types.html), changed title and PR |
+| Oct 25th 2017 | Moved prefix types to [another SIP](https://github.com/scala/improvement-proposals/pull/35), changed title and PR |
 | Nov 29th 2017 | Updated SIP according to feedback in the PR |
 
 
