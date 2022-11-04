@@ -168,7 +168,7 @@ __underline__
 [[https://external.link External Link]], e.g. [[https://scala-lang.org Scala Language Site]]
 ```
 
-Для получения дополнительной информации о вики-ссылках см. [эту главу](#linking-to-api).
+Для получения дополнительной информации о вики-ссылках см. [эту главу](#связывание-с-api).
 
 Другие примечания по форматированию
 
@@ -219,4 +219,4 @@ __underline__
 
 Scaladoc позволяет ссылаться на документацию по API с помощью ссылок в стиле Wiki. 
 Связать с `scala.collection.immutable.List` так же просто, как указать `[[scala.collection.immutable.List]]`. 
-Для получения дополнительной информации о точном синтаксисе см. [ссылки в документации](/ru/scala3/guides/scaladoc/linking.html#definition-links).
+Для получения дополнительной информации о точном синтаксисе см. [ссылки в документации](/ru/scala3/guides/scaladoc/linking.html#определение-ссылок).
