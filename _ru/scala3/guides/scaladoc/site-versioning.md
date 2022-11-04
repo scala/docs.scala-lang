@@ -8,13 +8,19 @@ previous-page: blog
 next-page: search-engine
 ---
 
-Scaladoc provides a convenient way to switch between different versions of the documentation. The feature is useful if we want to expose older docs for users that didn't migrate to the new version of our library.
+Scaladoc предоставляет удобный способ переключения между различными версиями документации. 
+Эта функция полезна, когда желательно оставить старые версии документации пользователям, 
+которые ещё не перешли на новую версию библиотеки.
 
-### How to setup it
+### Как это настроить
 
-The feature was designed for easy scalability with no need to regenerate all scaladocs after adding a new version. To do so a new setting is introduced:  `-versions-dictionary-url`. Its argument must be a URL to a JSON document holding information about the locations of specific versions. The JSON file has single property `versions` that holds the dictionary associating the labels of specific versions of the documentation to the URLs pointing to their index.html
+Эта функция была разработана для легкой масштабируемости без необходимости повторного создания всех scaladocs 
+после добавления новой версии. Для этого вводится новая настройка: `-versions-dictionary-url`. 
+Его аргумент должен быть URL-адресом документа JSON, содержащего информацию о расположении конкретных версий. 
+Файл JSON должен содержать свойство `versions` со словарём, 
+связывающий метки определенных версий документации с URL-адресами, указывающими на их `index.html`.
 
-Example JSON file:
+Пример JSON-файла:
 ```
 {
   "versions": {
@@ -24,17 +30,22 @@ Example JSON file:
 }
 ```
 
-This enforce us to provide the setting while generating docs for each of the versions, however it gives us more flexibility later. If you want to add a version of the API docs next to the previous 5 versions that you have already published, then you only need to upload the new docs to a web server and add a new entry to the JSON file. All versions of the site will now become aware of the new site version.
+Такие документы необходимо указывать для каждой из версий, однако позже это дает больше гибкости. 
+Если необходимо добавить версию документов API рядом с предыдущими 5 версиями, которые уже опубликованы, 
+нужно только загрузить новые документы на веб-сервер и добавить новую запись в файл JSON. 
+Все версии сайта теперь узнают о новой версии.
 
-The important thing to note is that there is only one JSON file to avoid redundancy and each scaladoc must set up its URL location beforehand, for example, in sbt:
+Важно отметить, что существует только один файл JSON, чтобы избежать избыточности, 
+и каждый scaladoc должен заранее настроить свой URL-адрес, например, в sbt:
 
 ```
 doc / scalacOptions ++= Seq("-versions-dictionary-url", "https://dotty.epfl.ch/versions.json")
 ```
 
 
-### How does it look from user perspective
+### Как это выглядит с точки зрения пользователя
 
-Providing a JSON file via `-versions-dictionary-url` enables scaladoc to link between versions. It is also convenient to be able to change the revision label in the drop-down menu. Everything will change automatically.
+Предоставление файла JSON через `-versions-dictionary-url` позволяет scaladoc связывать версии. 
+Также удобно иметь возможность изменить метку ревизии в выпадающем меню. Все изменится автоматически.
 
 ![]({{ site.baseurl }}/resources/images/scala3/scaladoc/nightly.gif)
