@@ -188,9 +188,9 @@ Concise is nice! Get to the point quickly, people have limited time to spend on 
 Omit unnecessary words. Prefer returns X rather than this method returns X, and does X,Y & Z rather than this method does X, Y and Z.
 DRY - don’t repeat yourself. Resist duplicating the method description in the @return tag and other forms of repetitive commenting.
 
-More details on writing Scaladoc
+### More details on writing Scaladoc
 
-Further information on the formatting and style recommendations can be found in Scala-lang scaladoc style guide.
+Further information on the formatting and style recommendations can be found in [Scala-lang scaladoc style guide](https://docs.scala-lang.org/style/scaladoc.html).
 
 ## Linking to API
 

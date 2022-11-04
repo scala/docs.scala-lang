@@ -17,28 +17,29 @@ Scaladoc расширяет возможности Markdown дополнител
 
 ## Куда поместить строки документации
 
-Scaladoc comments go before the items they pertain to in a special comment block that starts with a /** and ends with a */, like this:
+Комментарии Scaladoc идут перед элементами, к которым они относятся, в специальном блоке комментариев, 
+который начинается с `/**` и заканчивается `*/`, например:
 
 ```scala
-/** Start the comment here
-  * and use the left star followed by a
-  * white space on every line.
+/** Комментарий начинается здесь.
+  * Левая "звезда", за которой следует пробел в каждой строке,
+  * позволяет продолжить комментарий.
   *
-  * Even on empty paragraph-break lines.
+  * Даже на пустых строках разрыва абзаца.
   *
-  * Note that the * on each line is aligned
-  * with the second * in /** so that the
-  * left margin is on the same column on the
-  * first line and on subsequent ones.
+  * Обратите внимание, что '*' в каждой строке выровнена
+  * со вторым '*' в '/**' так, чтобы
+  * левое поле находилось в том же столбце, где
+  * первая строка и последующие.
   *
-  * Close the comment with *\/
+  * Комментарий закрывается с помощью '*' и обратного слэша.
   *
-  * If you use Scaladoc tags (@param, @group, etc.),
-  * remember to put them at separate lines with nothing preceding.
+  * Если используются теги Scaladoc (@param, @group и т.д.),
+  * не забудьте поместить их в отдельные строки без предшествующих им строк.
   *
-  * For example:
+  * Например:
   *
-  * Calculate the square of the given number
+  * Рассчитать квадрат заданного числа
   *
   * @param d the Double to square
   * @return the result of squaring d
@@ -46,99 +47,115 @@ Scaladoc comments go before the items they pertain to in a special comment block
  def square(d: Double): Double = d * d
 ```
 
-In the example above, this Scaladoc comment is associated with the method square since it is right before it in the source code.
+В приведенном выше примере этот комментарий Scaladoc связан с методом square, 
+поскольку он находится прямо перед ним в исходном коде.
 
-Scaladoc comments can go before fields, methods, classes, traits, objects.
-For now, scaladoc doesn't support straightforward solution to document packages. There is a dedicated github
-[issue](https://github.com/lampepfl/dotty/issues/11284), where you can check the current status of the problem.
+Комментарии Scaladoc могут идти перед полями, методами, классами, трейтами, объектами. 
+На данный момент scaladoc не поддерживает прямое решение для документирования пакетов. 
+На гитхабе есть специальный [issue](https://github.com/lampepfl/dotty/issues/11284), где вы можете проверить текущий статус проблемы.
 
-For class primary constructors which in Scala coincide with the definition of the class itself, a @constructor tag is used to target a comment to be put on the primary constructor documentation rather than the class overview.
+Для первичных конструкторов класса, которые в Scala совпадают с определением самого класса, 
+тег @constructor используется для указания комментария, помещаемого в документацию первичных конструкторов, а не в обзор класса.
 
-## Tags
+## Теги
 
-Scaladoc uses `@<tagname>` tags to provide specific detail fields in the comments. These include:
+Scaladoc использует теги `@<tagname>`для предоставления определенных подробностей полей в комментариях. 
+Теги включают:
 
-### Class specific tags
+### Теги, специфичные для класса
 
-- `@constructor` placed in the class comment will describe the primary constructor.
+- `@constructor` помещенный в комментарий класса, будет описывать первичный конструктор.
 
-### Method specific tags
+### Теги, специфичные для метода
 
-- `@return` detail the return value from a method (one per method).
+- `@return` для детализации возвращаемого значения из метода (по одному на метод).
 
-### Method, Constructor and/or Class tags
+### Теги метода, конструктора и/или класса
 
-- `@throws` what exceptions (if any) the method or constructor may throw.
-- `@param` detail a value parameter for a method or constructor, provide one per parameter to the method/constructor.
-- `@tparam` detail a type parameter for a method, constructor or class. Provide one per type parameter.
+- `@throws` какие исключения (если есть) может генерировать метод или конструктор.
+- `@param` детализация параметра метода или конструктора, предоставляется по одному `@param` для каждого параметра метода/конструктора.
+- `@tparam` детализация параметра типа для метода, конструктора или класса. Указывается по одному для каждого параметра типа.
 
-### Usage tags
+### Теги использования
 
-- `@see` reference other sources of information like external document links or related entities in the documentation.
-- `@note` add a note for pre or post conditions, or any other notable restrictions or expectations.
-- `@example` for providing example code or related example documentation.
+- `@see` ссылки на другие источники информации, такие как ссылки на внешние документы или связанные объекты в документации.
+- `@note` добавление примечания о предварительных или последующих условиях или любых других заметных ограничениях или ожиданиях.
+- `@example` предоставление примера кода или соответствующей документации.
 
 
-### Member grouping tags
+### Теги группировки
 
-These tags are well-suited to larger types or packages, with many members. They allow you to organize the Scaladoc page into distinct sections, with each one shown separately, in the order that you choose.
+Эти теги хорошо подходят для больших типов или пакетов со многими элементами. 
+Они позволяют организовать страницу Scaladoc в отдельные разделы, каждый из которых отображается отдельно в выбранном порядке.
 
-These tags are not enabled by default! You must pass the -groups flag to Scaladoc in order to turn them on. Typically the sbt for this will look something like:
+Эти теги не включены по умолчанию! Необходимо передать флаг `-groups` в Scaladoc, чтобы включить их. 
+В sbt это обычно выглядит примерно так:
 
 ```scala
 Compile / doc / scalacOptions ++= Seq(
   "-groups"
 )
 ```
-Each section should have a single-word identifier that is used in all of these tags, shown as `group` below. By default, that identifier is shown as the title of that documentation section, but you can use @groupname to provide a longer title.
 
-Typically, you should put @groupprio (and optionally @groupname and @groupdesc) in the Scaladoc for the package/trait/class/object itself, describing what all the groups are, and their order. Then put @group in the Scaladoc for each member, saying which group it is in.
+Каждый раздел должен иметь идентификатор из одного слова, который используется во всех этих тегах, как показано ниже в `group`. 
+По умолчанию этот идентификатор отображается как заголовок раздела документации, 
+но можно использовать `@groupname`, чтобы указать более длинный заголовок.
 
-Members that do not have a `@group` tag will be listed as “Ungrouped” in the resulting documentation.
+Как правило, необходимо поместить `@groupprio` (и, возможно, `@groupname` и `@groupdesc`) в Scaladoc для самого пакета/трейта/класса/объекта, 
+описывая все группы и их порядок. Затем поместить `@group` в Scaladoc для каждого члена, указав, в какой группе он находится.
 
-- `@group <group>` - mark the entity as a member of the `<group>` group.
-- `@groupname <group> <name>` - provide an optional name for the group. `<name>` is displayed as the group header before the group description.
-- `@groupdesc <group> <description>` - add optional descriptive text to display under the group name. Supports multiline formatted text.
-- `@groupprio <group> <priority>` - control the order of the group on the page. Defaults to 0. Ungrouped elements have an implicit priority of 1000. Use a value between 0 and 999 to set a relative position to other groups. Low values will appear before high values.
+Члены, у которых нет тега `@group`, будут перечислены в результирующей документации как “Ungrouped”.
 
-### Other tags
+- `@group <group>` - пометить сущность как члена `<group>` группы
+- `@groupname <group> <name>` - указание необязательного имени для группы. `<name>` отображается как заголовок группы перед её описанием.
+- `@groupdesc <group> <description>` - добавление необязательного описания для отображения под именем группы. Поддерживает многострочный форматированный текст.
+- `@groupprio <group> <priority>` - управление порядком группы на странице. По умолчанию 0. Несгруппированные элементы имеют неявный приоритет 1000. 
+  Используются значения от 0 до 999, чтобы задать положение относительно других групп. Малые значения появятся перед большими значениями.
 
-- `@author` provide author information for the following entity
-- `@version` the version of the system or API that this entity is a part of.
-- `@since` like `@version` but defines the system or API that this entity was first defined in.
-- `@deprecated` marks the entity as deprecated, providing both the replacement implementation that should be used and the version/date at which this entity was deprecated.
-- `@syntax <name>` let you change the parser for docstring. The default syntax is markdown, however you can change it using this directive. Currently available syntaxes are `markdown` or `wiki`, e. g. `@syntax wiki`
+### Другие теги
 
-### Macros
+- `@author` предоставление информации об авторе для следующего объекта.
+- `@version` версия системы или API, частью которой является этот объект.
+- `@since` похож на `@version`, но определяет систему или API, в котором эта сущность была впервые определена.
+- `@deprecated` помечает объект как устаревший, предоставляя как замену реализации, которую следует использовать, 
+  так и версию/дату, когда этот объект устарел.
+- `@syntax <name>` позволяет изменить парсер для docstring. Синтаксис по умолчанию — markdown, 
+  однако можно изменить его с помощью этой директивы. В настоящее время доступны синтаксисы `markdown` или `wiki`. 
+  Пример использования: `@syntax wiki`.
 
-- `@define <name> <definition>` allows use of $name in other Scaladoc comments within the same source file which will be expanded to the contents of `<definition>`.
+### Макросы
 
-If a comment is not provided for an entity at the current inheritance level, but is supplied for the overridden entity at a higher level in the inheritance hierarchy, the comment from the super-class will be used.
+- `@define <name> <definition>`  позволяет использовать $name в других комментариях Scaladoc в том же исходном файле, который будет заменен на `<definition>`.
 
-Likewise if `@param`, `@tparam`, `@return` and other entity tags are omitted but available from a superclass, those comments will be used.
+Если комментарий не предоставляется для объекта на текущем уровне наследования, 
+но предоставляется для переопределенного объекта на более высоком уровне иерархии наследования, 
+будет использоваться комментарий из суперкласса.
 
-### Explicit
+Аналогично, если `@param`, `@tparam`, `@return` и другие теги сущностей опущены, но доступны из суперкласса, будут использоваться из суперкласса.
 
-For explicit comment inheritance, use the @inheritdoc tag.
+### Явный
 
-### Markup
+Для явного наследования комментариев используется тег `@inheritdoc`.
 
-Scaladoc provides two syntax parsers: `markdown` (default) or `wikidoc`.
-It is still possible to embed HTML tags in Scaladoc (like with Javadoc), but not necessary most of the time as markup may be used instead.
+### Разметка
+
+Scaladoc предоставляет два анализатора синтаксиса: `markdown` (по умолчанию) или `wikidoc`. 
+В Scaladoc по-прежнему можно встраивать теги HTML (как и в Javadoc), но в большинстве случаев это не обязательно, 
+поскольку вместо этого может использоваться разметка.
 
 #### Markdown
 
-Markdown uses [commonmark flavour](https://spec.commonmark.org/current/) with two custom extensions:
-- `wikidoc` links for referencing convenience
-- `wikidoc` codeblocks with curly braces syntax
-
+Markdown использует [вариант commonmark](https://spec.commonmark.org/current/) с двумя пользовательскими расширениями:
+- `wikidoc` ссылки для удобства
+- `wikidoc`кодовые блоки с синтаксисом фигурных скобок
 
 #### Wikidoc
 
-Wikidoc is syntax used for scala2 scaladoc. It is supported because of many existing source code, however it is **not** recommended to use it in new projects.
-Wikisyntax can be toggled on with flag `-comment-syntax wiki` globally, or with `@syntax wiki` directive in docstring.
+Wikidoc — это синтаксис, используемый для scala2 scaladoc.
+Он поддерживается из-за многих существующих исходников, однако **не** рекомендуется его использование в новых проектах. 
+Синтаксис вики можно включить с помощью глобального флага `-comment-syntax wiki` или с помощью `@syntax wiki` директивы в строке документации.
 
-Some of the standard markup available:
+Некоторые из стандартных доступных разметок:
 
 ```
 `monospace`
@@ -151,47 +168,55 @@ __underline__
 [[https://external.link External Link]], e.g. [[https://scala-lang.org Scala Language Site]]
 ```
 
-For more info about wiki links look at this [chapter](#linking-to-api)
+Для получения дополнительной информации о вики-ссылках см. [эту главу](#linking-to-api).
 
-Other formatting notes
+Другие примечания по форматированию
 
-- Paragraphs are started with one (or more) blank lines. `*` in the margin for the comment is valid (and should be included) but the line should be blank otherwise.
-- Headings are defined with surrounding `=` characters, with more `=` denoting subheadings. E.g. `=Heading=`, `==Sub-Heading==`, etc.
-- List blocks are a sequence of list items with the same style and level, with no interruptions from other block styles. Unordered lists can be bulleted using `-`, numbered lists can be denoted using `1.`, `i.`, `I.`, or `a.` for the various numbering styles. In both cases, you must have extra space in front, and more space makes a sub-level.
+- Абзацы начинаются с одной (или нескольких) пустых строк. `*` на полях для комментария допустимо (и должно быть включено), 
+  в противном случае строка должна оставаться пустой.
+- Заголовки определяются окружающими символами `=` с большим количеством `=` для обозначения подзаголовков. 
+  Например `=Heading=`, `==Sub-Heading==` и т.д.
+- Блоки списка представляют собой последовательность элементов списка с одинаковым стилем и уровнем, 
+  без прерываний от других стилей блоков. Неупорядоченные списки можно маркировать с помощью `-`, 
+  нумерованные списки можно обозначать с помощью `1.`, `i.`, `I.` или `a.` для различных стилей нумерации. 
+  В обоих случаях должно быть дополнительное пространство впереди, а большее пространство создает подуровень.
 
-The markup for list blocks looks like:
+Разметка для блоков списка выглядит так:
 
 ```
-/** Here is an unordered list:
+/** Вот неупорядоченный список:
   *
-  *   - First item
-  *   - Second item
-  *     - Sub-item to the second
-  *     - Another sub-item
-  *   - Third item
+  *   - Первый элемент
+  *   - Второй элемент
+  *     - Подпункт ко второму
+  *     - Еще один подпункт
+  *   - Третий пункт
   *
-  * Here is an ordered list:
+  * Вот упорядоченный список:
   *
-  *   1. First numbered item
-  *   1. Second numbered item
-  *     i. Sub-item to the second
-  *     i. Another sub-item
-  *   1. Third item
+  *   1. Первый пронумерованный элемент
+  *   1. Второй номер позиции
+  *     i. Подпункт ко второму
+  *     i. Еще один подпункт
+  *   1. Третий пункт
   */
 ```
 
-### General Notes for Writing Scaladoc Comments
+### Общие примечания по написанию комментариев к Scaladoc
 
-Concise is nice! Get to the point quickly, people have limited time to spend on your documentation, use it wisely.
-Omit unnecessary words. Prefer returns X rather than this method returns X, and does X,Y & Z rather than this method does X, Y and Z.
-DRY - don’t repeat yourself. Resist duplicating the method description in the @return tag and other forms of repetitive commenting.
+Краткость - это хорошо! Быстро переходите к сути, у людей ограничено время, которое они могут потратить на вашу документацию, 
+используйте его с умом. Опустите ненужные слова. "Prefer возвращает X", а не "этот метод возвращает X", 
+и "X, Y и Z", а не "этот метод возвращает X, Y и Z". 
+Принцип DRY (_Don’t repeat yourself_) - не повторяйтесь. 
+Не дублируйте описание метода в теге `@return` и других формах повторяющихся комментариев.
 
-More details on writing Scaladoc
+### Подробнее о написании Scaladoc
 
-Further information on the formatting and style recommendations can be found in Scala-lang scaladoc style guide.
+Дополнительную информацию о рекомендациях по форматированию и стилю можно найти 
+в [руководстве по стилю Scala-lang scaladoc](https://docs.scala-lang.org/style/scaladoc.html).
 
-## Linking to API
+## Связывание с API
 
-Scaladoc allows linking to API documentation with Wiki-style links. Linking to
-`scala.collection.immutable.List` is as simple as
-`[[scala.collection.immutable.List]]`. For more information on the exact syntax, see [doc comment documentation]({% link _overviews/scala3-scaladoc/linking.md %}#definition-links).
+Scaladoc позволяет ссылаться на документацию по API с помощью ссылок в стиле Wiki. 
+Связать с `scala.collection.immutable.List` так же просто, как указать `[[scala.collection.immutable.List]]`. 
+Для получения дополнительной информации о точном синтаксисе см. [ссылки в документации](/ru/scala3/guides/scaladoc/linking.html#definition-links).

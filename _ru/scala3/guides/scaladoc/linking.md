@@ -8,29 +8,34 @@ previous-page: docstrings
 next-page: static-site
 ---
 
-Scaladoc's main feature is creating API documentation from code comments.
+Основная функция Scaladoc — создание API документации из комментариев к коду.
 
-By default, the code comments are understood as Markdown, though we also support
-Scaladoc's old [Wiki syntax](https://docs.scala-lang.org/style/scaladoc.html).
+По умолчанию комментарии к коду понимаются как Markdown, хотя мы также поддерживаем старый Scaladoc синтаксис 
+[Wiki](https://docs.scala-lang.org/style/scaladoc.html).
 
-## Syntax
+## Синтаксис
 
-### Definition links
+### Определение ссылок
 
-Our definition link syntax is quite close to Scaladoc's syntax, though we have made some
-quality-of-life improvements.
+Наш синтаксис определения ссылки очень близок к синтаксису Scaladoc, хотя мы внесли некоторые улучшения.
 
-#### Basic syntax
+#### Основной синтаксис
 
-A definition link looks as follows: `[[scala.collection.immutable.List]]`.
+Определение ссылки выглядит следующим образом: `[[scala.collection.immutable.List]]`.
 
-Which is to say, a definition link is a sequence of identifiers separated by
-`.`. The identifiers can be separated with `#` as well for Scaladoc compatibility.
+Другими словами, определение ссылки представляет собой последовательность идентификаторов, разделенных знаком `.`. 
+Идентификаторы также могут быть разделены с помощью `#`.
 
-By default, an identifier `id` references the first (in source order) entity
-named `id`. An identifier can end with `$`, which forces it to refer to a value
-(an object, a value, a given); an identifier can also end with `!`, which forces
-it to refer to a type (a class, a type alias, a type member).
+По умолчанию идентификатор `id` ссылается на первую (в исходном порядке) сущность с именем `id`. 
+Идентификатор может заканчиваться на `$`, что заставляет его ссылаться на значение (объект, значение, given); 
+идентификатор также может заканчиваться на `!`, что заставляет его ссылаться на тип (класс, псевдоним типа, член типа).
+
+Ссылки разрешаются относительно текущего местоположения в источнике. То есть при документировании класса ссылки относятся к сущности, включающей класс (пакет, класс, объект); то же самое относится к документированию определений.
+
+Специальные символы в ссылках могут быть экранированы обратной косой чертой, что вместо этого делает их частью идентификаторов. Например, [[scala.collection.immutable\.List]] ссылается на класс immutable.List, указанный в package scala.collection.
+
+
+
 
 The links are resolved relative to the current location in source. That is, when
 documenting a class, the links are relative to the entity enclosing the class (a
