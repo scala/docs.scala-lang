@@ -8,32 +8,47 @@ previous-page: search-engine
 next-page: settings
 ---
 
-The main functionality of documentation is to help people understand and use the project properly. Sometimes a part of a project needs few words to show its usage, but every developer knows that there are moments where description is not enough and nothing is better than a good ol’ example. 
+Основная функциональность документации — помочь пользователям понять и правильно использовать проект. 
+Иногда часть проекта нуждается в нескольких словах, чтобы показать ее использование, 
+но бывают моменты, когда описания недостаточно, и нет ничего лучше, чем подробный пример.
 
-A convenient way of providing examples in documentation is to create code snippets presenting usage of given functionality. The problem with code snippets is that simultaneously with project development, they need to be updated. Sometimes changes in one part of a project may break examples in other parts. The number of snippets and the amount of time passed since they’ve been written makes it impossible to remember every place where you need to fix them. After some time you realize that your documentation is a complete mess and you need to go through all examples and rewrite them. 
+Удобный способ предоставления примеров в документации — создание фрагментов кода, 
+представляющих использование заданной функциональности. Проблема фрагментов кода в том, 
+что одновременно с разработкой проекта их нужно обновлять. 
+Иногда изменения в одной части проекта могут нарушить работу примеров в других частях. 
+Количество фрагментов и количество времени, прошедшего с момента их написания, не позволяет запомнить каждое место, 
+где нужно их исправить. Через какое-то время наступает понимание, что документация — полный бардак 
+и нужно пройтись по всем примерам и переписать их.
 
-Many Scala 2 projects use typechecked markdown documentation with [tut](https://tpolecat.github.io/tut/) or [mdoc](https://scalameta.org/mdoc/). Almost everyone at least heard about these tools. As they turned out to be very useful and the Scala community successfully adopted them, we’re planning to incorporate the features of tut and mdoc into the compiler so that it’s included out of the box with Scaladoc.
+Многие проекты Scala 2 используют markdown документацию с проверкой типов с помощью [tut](https://tpolecat.github.io/tut/) 
+или [mdoc](https://scalameta.org/mdoc/). Почти все хотя бы слышали об этих инструментах. 
+Поскольку они оказались очень полезными и сообщество Scala их успешно приняло, 
+планируется включить функции tut и mdoc в компилятор, чтобы он был готов к включению в Scaladoc.
 
 ![]({{ site.baseurl }}/resources/images/scala3/scaladoc/snippet-compiler3.png)
 
-## Getting started
+## Начало работы
 
-By default, snippet validation is turned off for all snippets. It can be turned on by adding the following argument to Scaladoc:
+По умолчанию проверка фрагментов отключена. 
+Её можно включить, добавив в Scaladoc следующий аргумент:
 
 `-snippet-compiler:compile`
 
-For example, in sbt the configuration looks like this:
+Например, в sbt конфигурация выглядит так:
 
 ```scala
 Compile / doc / scalacOptions ++= Seq("-snippet-compiler:compile")
 ```
 
-This option turns on the snippet compiler for all `scala` snippets in the project documentation, and recognizes all snippets inside ```scala blocks. Currently, snippet validation works in both docstrings written in Markdown, and in static sites.
+Эта опция включает компилятор фрагментов для всех scala фрагментов в проектной документации и распознает все фрагменты внутри ``` блоков scala. 
+В настоящее время проверка фрагментов работает как в строках документации, написанных в Markdown, так и на статических сайтах.
 ![]({{ site.baseurl }}/resources/images/scala3/scaladoc/snippet-compiler4.png)
 
-If you are starting a new project, this configuration should be enough for you. However, in case you’re migrating an existing project, you might want to disable compilation for some snippets that can't currently be updated.
+Для нового проекта этой конфигурации должно хватить. 
+Однако, если вы переносите существующий проект, можно отключить компиляцию для некоторых фрагментов, 
+которые в настоящее время не могут быть обновлены.
 
-To do this, add a `nocompile` flag directly to the `scala` snippet:
+Для этого добавьте `nocompile` флаг прямо в scala фрагмент:
 
 ````
 ```scala sc:nocompile
@@ -42,7 +57,8 @@ List(1).map( _  + 1)(<implicits>)
 ```
 ````
 
-However, sometimes compilation failure is an intended behavior, e.g., to intentionally demonstrate an error. For this case, we expose a flag `fail` that introduces one of our features: [Assert compilation errors](#assert-compilation-errors).
+Однако иногда сбой компиляции является преднамеренным поведением, например, для демонстрации ошибки. 
+В этом случае выставляется флаг `fail`, который представляет одну из функций: [Assert compilation errors](#assert-compilation-errors).
 
 ````
 ```scala sc:fail
@@ -50,21 +66,24 @@ List(1,2,3).toMap
 ```
 ````
 
-For a more thorough explanation and more sophisticated configurations, such as path-based flag settings, see the [Advanced configuration](#advanced-configuration) section.
+Более подробное объяснение и более сложные настройки, такие как настройки флагов на основе пути, 
+см. в разделе ["Расширенная конфигурация"](#расширенная-конфигурация).
 
-## Features overview
+## Обзор функций
 
 ### Assert compilation errors
 
-Scala is a statically typed programming language. Sometimes, documentation should mention cases where code should not compile,or authors want to provide ways to recover from certain compilation errors.
+Scala — это язык программирования со статической типизацией. 
+Иногда в документации должны упоминаться случаи, когда код не должен компилироваться, 
+или авторы хотят предоставить способы восстановления после определенных ошибок компиляции.
 
-For example, this code:
+Например, этот код:
 
 ```scala
 List(1,2,3).toMap
 ```
 
-results in this output:
+приводит к результату:
 
 ```nohighlight
 
@@ -77,24 +96,28 @@ where:    K is a type variable with constraint
 .
 ```
 
-Examples that present code that fails at compile-time can be very important. For example, you can show how a library is secured against incorrect code. Another use case is to present common mistakes, and how to solve them. Taking these use cases into account, we decided to provide functionality to check if the marked code snippets don’t compile.
+Примеры, представляющие код, который дает сбой во время компиляции, могут быть очень важными. 
+Например, можно показать, как библиотека защищена от неправильного кода. 
+Другой вариант использования — представить распространенные ошибки и способы их решения. 
+Принимая во внимание эти варианты использования, предоставляется функция проверки того, компилируются ли отмеченные фрагменты кода.
 
-For snippets that intentionally fail to compile, such as the following one, add the `fail` flag to the code snippet:
+Для фрагментов кода, которые намеренно не компилируются, например следующего, добавьте флаг `fail` во фрагмент кода:
+
 ````
 ```scala sc:fail
 List(1,2,3).toMap
 ```
 ````
-Snippet validation passes and shows expected compilation errors in documentation.
+Проверка фрагмента проходит успешно и показывает ожидаемые ошибки компиляции в документации.
 ![]({{ site.baseurl }}/resources/images/scala3/scaladoc/assert-compilation-errors.gif)
 
-For a snippet that compiles without error:
+Для фрагмента, который компилируется без ошибок:
 ````
 ```scala sc:fail
 List((1,2), (2,3)).toMap
 ```
 ````
-the resulting output looks like this:
+результирующий вывод выглядит следующим образом:
 ```nohighlight
 
 In static site (./docs/docs/index.md):
@@ -102,19 +125,22 @@ Error: Snippet should not compile but compiled succesfully
 ```
 
 
-### Context
+### Контекст
 
-Our goal is to make snippets behave as much as possible as if they were defined within a given scope (e.g., in a certain package, or inside a class). We believe this brings a natural feel to snippets. To achieve this, we implemented a wrapping mechanism that provides a context for each snippet. This preprocessing is done automatically for all snippets in docstrings.
+В Scaladoc внедрён механизм переноса, предоставляющий контекст для каждого фрагмента. 
+Эта предварительная обработка выполняется автоматически для всех фрагментов в строках документации.
 
-For example, let’s assume that we want to document the method `slice` in a `collection.List`. We want to explain how it works by comparing it to a combination of `drop` and `take` method so using snippet like:
+Например, предположим, что необходимо задокументировать метод `slice` в файле `collection.List` для того, 
+чтобы объяснить, как он работает, сравнив его с комбинацией методов `drop` и `take`, используя такой фрагмент кода:
 ```scala
 slice(2, 5) == drop(2).take(3)
 ```
-Showing this example is one of the first things that comes to mind, but as you probably guessed, this won’t compile without a **context** feature.
+Показ этого примера — одна из первых вещей, которые приходят на ум, но он не скомпилируется без функции контекста.
 
-Besides our main goal, it reduces the boilerplate of a snippet, because you don’t need to import members of the same package and instantiate documented class.
+Помимо основной цели, это уменьшает шаблон фрагмента, потому что не нужно импортировать элементы одного и того же пакета 
+и создавать экземпляры документированного класса.
 
-For people that are curious on how our context mechanism works, the snippet after preprocessing looks like this:
+Фрагмент кода после предварительной обработки выглядит так:
 ```scala
 package scala.collection
 trait Snippet[A] { self: List[A] =>
@@ -122,11 +148,16 @@ trait Snippet[A] { self: List[A] =>
 }
 ```
 
-### Hiding code
+### Скрытие кода
 
-Despite having the context feature described above, sometimes an author needs to provide more elements to a scope. However, on one hand, a big block of imports and initializations of necessary classes can result in loss of readablity. But on the other hand, we’ve read a lot of opinions that people would like to be able to see the whole code. For this second case we’ve introduced special syntax for snippets that hides certain fragments of code---`import` statements, for example---but also allows that code to be expanded in the documentation with a single click.
+Несмотря на наличие контекстной функции, описанной выше, иногда автору необходимо предоставить больше элементов 
+для области действия. Однако, с одной стороны, большой блок импортов и инициализаций необходимых классов 
+может привести к потере читабельности. Но с другой стороны, хотелось бы иметь возможность видеть весь код. 
+Для второго случая введен специальный синтаксис для фрагментов, 
+который скрывает определенные фрагменты `import` кода — операторы, например, — но также позволяет 
+расширить этот код в документации одним щелчком мыши.
 
-Example:
+Пример:
 
 ```scala
 //{
@@ -137,63 +168,78 @@ val intList: List[Int] = List(1, 2, 3)
 
 ![]({{ site.baseurl }}/resources/images/scala3/scaladoc/hiding-code.gif)
 
-### Snippet includes
+### Включенные фрагменты
 
-While writing code snippets, we often need a mechanism to reuse code from one snippet in another. For instance, take a look at the following piece of documentation:
+При написании фрагментов кода часто требуется механизм повторного использования кода из одного фрагмента в другом. 
+Например, взгляните на следующий фрагмент документации:
 ![]({{ site.baseurl }}/resources/images/scala3/scaladoc/documentation-snippet.png)
 
-To successfully compile the last snippet, we need to have previously declared definitions in scope. For this scenario---and probably many more---we added a new feature: snippet includes. This allows you to reuse code from one snippet in another, resulting in less redundancy and better maintainability.
+Чтобы успешно скомпилировать последний фрагмент, нужно иметь ранее объявленные определения в области видимости. 
+Для этого сценария — и, возможно, для многих других — добавлена новая функция: включение фрагмента. 
+Она позволяет повторно использовать код из одного фрагмента в другом, что снижает избыточность и повышает удобство сопровождения.
 
-To configure this, just add a `sc-name` argument to the snippet that you want to include in a later code block:
+Чтобы настроить это, добавьте аргумент `sc-name` к фрагменту, который необходимо включить в более поздний блок кода:
 ```` ```scala sc-name:<snippet-name> ````
 
-where `snippet-name` should be unique in file scope, and cannot contain whitespaces and commas.
+, где `snippet-name` должен быть уникальным в пределах файла и не может содержать пробелы и запятые.
 
-Then, in a later code block in your documentation, use a `sc-compile-with` argument in the `scala` snippet that should “include” the previous code block:
+Затем в более позднем блоке кода в документации используйте аргумент `sc-compile-with` в scala фрагменте, 
+который должен “включать” предыдущий блок кода:
 ```` ```scala sc-compile-with:<snippet-name>(,<snippet-name>)+ ````
 
-where `snippet-name` is the name of snippet that should be included.
+, где `snippet-name` - имя фрагмента, который должен быть включен.
 
-After configuring this feature in our example, the code looks like this:
+После настройки этой функции в примере код выглядит так:
 ![]({{ site.baseurl }}/resources/images/scala3/scaladoc/documentation-snippet2.png)
 
-and the output looks like this:
+и вывод выглядит так:
 ![]({{ site.baseurl }}/resources/images/scala3/scaladoc/snippet-includes.png)
 
-You can specify more than one include. Note that the order in which they are specified defines the order of inclusion. 
+Можно указать более одного включения. Обратите внимание, что порядок, в котором они указаны, определяет порядок включения.
 
-**Warning**: you can only include snippets that are defined above the target snippet.
+**Замечание**: можно включать только фрагменты, определенные над целевым фрагментом.
 
-## Advanced configuration
+## Расширенная конфигурация
 
-Often turning on snippet validation for _all_ snippets is not the proper level of control, as the use cases can be more sophisticated. We prepared our tool for such situations, i.e., to allow users to adjust it to their needs.
+Часто включение проверки фрагментов для _всех_ фрагментов не является желаемым уровнем контроля, 
+поскольку варианты использования могут быть более сложными. Для таких ситуаций подготовлен инструмент, 
+чтобы пользователи могли настроить его под свои нужды.
 
-### Available flags
+### Доступные флаги
 
-To provide more control, the snippet compiler exposes three flags that let you change its behavior:
-- `compile` - turns on snippet checking
-- `nocompile` - turns off snippet checking
-- `fail` - turns on snippet checking with compilation error assertion
+Чтобы обеспечить больший контроль, компилятор фрагмента предоставляет три флага, которые позволяют изменить его поведение:
+- `compile` - включает проверку фрагментов
+- `nocompile` - отключает проверку фрагментов
+- `fail` - включает проверку фрагментов с подтверждением ошибки компиляции
 
-### Path-based settings
+### Настройки на основе пути
 
-For more flexibility, instead of setting one flag to control all snippets in a project, it can be set for a certain path only, by adding `<path>=` prefix before flag. For example:
+Для большей гибкости вместо установки одного флага для управления всеми фрагментами кода в проекте 
+его можно установить только для определенного пути, добавив префикс `<path>=` перед флагом. Например:
 
-`-snippet-compiler:docs=compile` - sets the `compile` flag for snippets in the `docs` file. If `docs` is a directory, the flag is set for all files inside `docs`
+`-snippet-compiler:docs=compile` - устанавливает флаг `compile` для фрагментов в `docs`.
 
-Additionally, the `-snippet-compiler` option can be controlled by more than one setting, with settings delimited by commas. For example:
+Если `docs` - это каталог, флаг устанавливается для всех файлов внутри `docs`.
+
+Кроме того, `-snippet-compiler` может управляться более чем одним параметром, при этом параметры разделяются запятыми. 
+Например:
 ```
 -snippet-compiler:docs=compile,library/src=compile,library/src/scala/quoted=nocompile,library/src/scala/compiletime=fail
 ```
-Flags are chosen by the longest prefix match, so we can define a general setting and then change that default behavior for more specific paths.
+Флаги выбираются по самому длинному совпадению префикса, поэтому можно определить общую настройку, 
+а затем изменить это поведение по умолчанию для более конкретных путей.
 ```
 -snippet-compiler:compile,library/src/scala/quoted=nocompile,library/src/scala/compiletime=fail 
 ```
-A flag without a path prefix---such as the `compile` flag in this example---is treated as the default.
+Флаг без префикса пути, такой как флаг `compile` в этом примере, считается значением по умолчанию.
 
-### Override directly in the snippet
+### Переопределение прямо во фрагменте
 
-CLI arguments are a good mechanism for setting flags for certain files. However, this approach can’t be used to configure the snippet compiler for specific snippets. For example, an author wants to write one snippet that should fail, and other snippets that should compile. Again we took this under consideration, and added a feature to override settings directly inside snippets. These arguments are located in the snippet info part:
+Аргументы CLI — хороший механизм для установки флагов для определенных файлов. 
+Однако этот подход нельзя использовать для настройки определенных фрагментов. 
+Допустим, необходимо написать один фрагмент кода, который должен потерпеть неудачу, 
+и другие фрагменты, которые должны скомпилироваться. 
+Эти аргументы находятся в информационной части блока кода:
 
 ````
 ```scala <snippet-compiler-args>
@@ -201,17 +247,15 @@ CLI arguments are a good mechanism for setting flags for certain files. However,
 ```
 ````
 
-For instance, to configure snippet checking for a specific snippet, add the following argument to its snippet info part, where `flag` is one of the available flags listed above (e.g., `compile`, `nocompile`, or `fail`):
+Например, чтобы настроить проверку для определенного фрагмента, добавьте следующий аргумент в его информационную часть фрагмента, 
+где `flag` - один из доступных флагов, перечисленных выше (например, `compile`, `nocompile` или `fail`):
 
 `sc:<flag>`
 
-As a specific example, this code shows how to use the `fail` flag in an individual snippet:
+В качестве конкретного примера этот код показывает, как использовать флаг `fail` в отдельном фрагменте:
 
 ````
 ```scala sc:fail
 val itShouldFail: Int = List(1.1, 2, 3).head
 ```
 ````
-
-
-
