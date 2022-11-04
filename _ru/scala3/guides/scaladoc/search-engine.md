@@ -8,25 +8,26 @@ previous-page: site-versioning
 next-page: snippet-compiler
 ---
 
-Searching for functions by their symbolic names can be time-consuming.
-That is why the new scaladoc allows searching for methods and fields by their types.
+Поиск функций по их символическим именам может занять много времени. 
+Именно поэтому новый scaladoc позволяет искать методы и поля по их типам.
 
-
-Consider the following extension method definition:
+Рассмотрим следующее определение метода расширения:
 ```
 extension [T](arr: IArray[T]) def span(p: T => Boolean): (IArray[T], IArray[T]) = ...
 ```
-Instead of searching for `span` we can also search for `IArray[A] => (A => Boolean) => (IArray[A], IArray[A])`.
+Вместо поиска `span` также можно искать по `IArray[A] => (A => Boolean) => (IArray[A], IArray[A])`.
 
-To use this feature, type the signature of the member you are looking for in the scaladoc searchbar. This is how it works:
+Чтобы использовать эту функцию, введите сигнатуру искомого элемента в строке поиска scaladoc. 
+Вот как это работает:
 
 ![]({{ site.baseurl }}/resources/images/scala3/scaladoc/inkuire-1.0.0-M2_js_flatMap.gif)
 
-This feature is provided by the [Inkuire](https://github.com/VirtusLab/Inkuire) search engine, which works for Scala 3 and Kotlin. To be up-to-date with the development of this feature, follow the [Inkuire repository](https://github.com/VirtusLab/Inkuire).
+Эта функция предоставляется поисковой системой [Inkuire](https://github.com/VirtusLab/Inkuire), которая работает для Scala 3 и Kotlin. 
+Чтобы быть в курсе развития этой функции, следите за репозиторием [Inkuire](https://github.com/VirtusLab/Inkuire).
 
-## Examples of queries
+## Примеры запросов
 
-Some examples of queries with intended results:
+Некоторые примеры запросов с предполагаемыми результатами:
 - `List[Int] => (Int => Long) => List[Long]` -> `map`
 - `Seq[A] => (A => B) => Seq[B]` -> `map`
 - `(A, B) => A` -> `_1`
@@ -36,22 +37,29 @@ Some examples of queries with intended results:
 - `(Int & Float) => (String | Double)` -> `toDouble`, `toString`
 - `F[A] => Int` -> `length`
 
-## Query syntax
+## Синтаксис запроса
 
-In order for a scaladoc searchbar query to be searched using Inkuire instead of the default search engine, the query has to contain the `=>` character sequence. 
+Для того чтобы запрос панели поиска scaladoc выполнялся с использованием Inkuire вместо поисковой системы по умолчанию, 
+запрос должен содержать последовательность символов `=>`.
 
-Accepted input is similar to a curried function signature in Scala 3. With some differences:
-- AndTypes, OrTypes and Functions have to be enclosed in parentheses e.g. `(Int & Any) => String`
-- fields and parameterless methods can be found by preceding their type with `=>`, e.g., `=> Int`
-- A wildcard `_` can be used to indicate that we want to match any type in a given place e.g. `Long => Double => _`
-- Types in the form of single letter e.g. `A` or a letter with a digit `X1` are automatically assumed to be type variables
-- Other type variables can be declared just like in polymorphic functions e.g. `[AVariable, AlsoAVariable] => AVariable => AlsoAVariable => AVariable` 
+Принятый ввод аналогичен сигнатуре каррированной функции в Scala 3. С некоторыми отличиями:
+- AndTypes, OrTypes и Functions должны быть заключены в круглые скобки, например, `(Int & Any) => String`
+- поля и методы без параметров можно найти, указав перед их типом `=>`, например, `=> Int`
+- Можно использовать подстановочный знак `_`, чтобы указать, что необходимо сопоставить любой тип в данном месте, 
+  например, `Long => Double => _`
+- Типы в виде одной буквы, например `A`, или буквы с цифрой `X1`, автоматически считаются переменными типа.
+- Другие переменные типа могут быть объявлены так же, как и в полиморфных функциях, 
+  например `[AVariable, AlsoAVariable] => AVariable => AlsoAVariable => AVariable`
 
-### Working with type aliases and method receivers
+### Работа с псевдонимами типов и приемниками методов
 
-When it comes to how the code is mapped to InkuireDb entries, there are some transformations to make the engine more opinionated (though open to suggestions and changes). Firstly, the receiver (non-module owner) of a function can be treated as a first argument. Automatic currying is also applied, so that the results don't depend on argument lists. When finding matches, `val`s and `def`s are not distinguished.
+Когда дело доходит до того, как код сопоставляется с записями InkuireDb, есть некоторые преобразования, 
+чтобы сделать движок более самостоятельным (хотя и открытым для предложений и изменений). 
+Во-первых, получатель (не владелец модуля) функции может рассматриваться как первый аргумент. 
+Также применяется автоматическое каррирование, чтобы результаты не зависели от списков аргументов. 
+При поиске совпадений `val` и `def` не различаются.
 
-So the following declarations should be found by query `Num => Int => Int => Int`:
+Итак, по запросу `Num => Int => Int => Int` должны быть найдены следующие объявления:
 ```
 class Num():
   def a(i: Int, j: Int): Int
@@ -69,19 +77,26 @@ extension (i: Num) def j(j: Int)(k: Int): Int
 ...
 ```
 
-When it comes to type aliases, they are desugared on both the declaration and the query signature. This means that for declarations:
+Когда дело доходит до псевдонимов типов, они дешугаризуются как в объявлении, так и в подписи запроса. 
+Это означает, что для объявлений:
 ```
 type Name = String
 
 def fromName(name: Name): String
 def fromString(str: String): Name
 ```
-both methods, `fromName` and `fromString`, should be found for queries `Name => Name`, `String => String`, `Name => String` and `String => Name`.
+оба метода `fromName` и `fromString`, должны быть найдены по запросам `Name => Name`, `String => String`, `Name => String` и `String => Name`.
 
-## How it works
+## Как это работает
 
-Inkuire works as a JavaScript worker in the browser thanks to the power of [ScalaJS](https://www.scala-js.org/).
+Inkuire работает как рабочий JavaScript в браузере благодаря мощи [ScalaJS](https://www.scala-js.org/).
 
-To enable Inkuire when running scaladoc, add the flag `-Ygenerate-inkuire`. By adding this flag two files are generated:
-- `inkuire-db.json` - this is the file containing all the searchable declarations from the currently documented project in a format readable to the Inkuire search engine.
-- `inkuire-config.json` - this file contains the locations of the database files that should be searchable from the documentation of the current project. By default, it will be generated with the location of the local db file as well as the default implied locations of database files in [External mappings](/scala3/guides/scaladoc/settings.html#-external-mappings).
+Чтобы включить Inkuire при запуске scaladoc, добавьте флаг `-Ygenerate-inkuire`. 
+При добавлении этого флага создаются два файла:
+- `inkuire-db.json` - это файл, содержащий все доступные для поиска объявления из текущего документированного проекта в формате, 
+  читаемом поисковой системой Inkuire.
+- `inkuire-config.json` - этот файл содержит расположение файлов базы данных, 
+  которые должны быть доступны для поиска в документации текущего проекта. 
+  По умолчанию он будет сгенерирован с расположением локального файла базы данных, 
+  а также с подразумеваемыми по умолчанию расположениями файлов базы данных во внешних сопоставлениях 
+  [`-external-mappings`](/ru/scala3/guides/scaladoc/settings.html#-external-mappings).
