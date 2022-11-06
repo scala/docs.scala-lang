@@ -263,13 +263,6 @@
 - category: 遗留问题
   description: "涵盖一些与最近的 Scala 版本（2.12+）不再相关的特性的参考"
   overviews:
-    - title: Scala Actors API
-      by: Philipp Haller and Stephen Tu
-      icon: users
-      url: "core/actors.html"
-      description: "本篇描述了 Scala 2.8/2.9 下 scala.actors 包的 API。其组织方式遵循逻辑上属于一块的组类型，特质层是考虑到组成其各自的部分，主要关注点在这些特质所定义的各种方法的运行时表现，由此也增补了已有的基于 Scaladoc 的API文档。"
-      label-color: "#899295"
-      label-text: 弃用
     - title: Scala 2.8 到 2.12 的容器
       by: Martin Odersky
       icon: sitemap

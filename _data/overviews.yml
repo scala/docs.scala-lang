@@ -309,13 +309,6 @@
 - category: Legacy
   description: "Guides covering features no longer relevant to recent Scala versions (2.12+)."
   overviews:
-    - title: The Scala Actors API
-      by: Philipp Haller and Stephen Tu
-      icon: users
-      url: "core/actors.html"
-      description: "This guide describes the API of the scala.actors package of Scala 2.8/2.9. The organization follows groups of types that logically belong together. The trait hierarchy is taken into account to structure the individual sections. The focus is on the run-time behavior of the various methods that these traits define, thereby complementing the existing Scaladoc-based API documentation."
-      label-color: "#899295"
-      label-text: deprecated
     - title: Scala 2.8 to 2.12’s Collections
       by: Martin Odersky
       icon: sitemap
