@@ -299,13 +299,6 @@
 - category: Спадщина (legacy)
   description: "Посібники, що охоплюють функції, які більше не стосуються останніх версій Scala (2.12+)."
   overviews:
-    - title: API фреймворку Scala Actors
-      by: Philipp Haller та Stephen Tu
-      icon: users
-      url: "core/actors.html"
-      description: "У цьому посібнику описано API пакету scala.actors Scala 2.8/2.9. Організація слідує за групами типів, які логічно належать один до одного. Для структурування окремих розділів враховується ієрархія ознак. Основна увага приділяється поведінці під час виконання різних методів, що визначаються цими ознаками, тим самим доповнюючи документацію API, що існує на основі Scaladoc."
-      label-color: "#899295"
-      label-text: застаріле
     - title: Колекції Scala з 2.8 до 2.12
       by: Martin Odersky
       icon: sitemap

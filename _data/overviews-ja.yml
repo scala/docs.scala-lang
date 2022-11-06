@@ -258,13 +258,6 @@
 - category: レガシー
   description: "最近の Scala バージョン（2.12以上）には関係なくなった機能をカバーするガイド。"
   overviews:
-    - title: Scala アクター API
-      by: Philipp Haller and Stephen Tu
-      icon: users
-      url: "core/actors.html"
-      description: "このガイドは Scala 2.8/2.9 の scala.actors パッケージの API を説明する。組織は論理的に同類の型のグループに従う。トレイト階層は個々のセクションを構造化することを考慮している。既存の Scaladoc ベースの API ドキュメントを補間するため、これらトレイトが定義する様々なメソッドの実行時の挙動にフォーカスする。"
-      label-color: "#899295"
-      label-text: deprecated
     - title: Scala 2.8 から 2.12 までのコレクション
       by: Martin Odersky
       icon: sitemap
