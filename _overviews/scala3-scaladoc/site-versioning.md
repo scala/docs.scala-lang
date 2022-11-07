@@ -2,6 +2,7 @@
 layout: multipage-overview
 title: Site versioning
 partof: scala3-scaladoc
+languages: ["ru"]
 num: 6
 previous-page: blog
 next-page: search-engine

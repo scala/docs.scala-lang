@@ -2,6 +2,7 @@
 layout: multipage-overview
 title: Snippet checking
 partof: scala3-scaladoc
+languages: ["ru"]
 num: 8
 previous-page: search-engine
 next-page: settings

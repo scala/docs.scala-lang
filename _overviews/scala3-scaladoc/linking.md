@@ -2,6 +2,7 @@
 layout: multipage-overview
 title: Linking documentation
 partof: scala3-scaladoc
+languages: ["ru"]
 num: 3
 previous-page: docstrings
 next-page: static-site

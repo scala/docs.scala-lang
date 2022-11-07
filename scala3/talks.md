@@ -3,7 +3,7 @@ layout: singlepage-overview
 title: Talks
 scala3: true
 partof: scala3-talks
-languages: ["uk"]
+languages: ["uk","ru"]
 versionSpecific: true
 ---
 
