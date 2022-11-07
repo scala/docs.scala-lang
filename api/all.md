@@ -6,8 +6,8 @@ includeTOC: true
 
 ## Latest releases
 
-* Scala 3.2.0
-  * [Library API](https://www.scala-lang.org/api/3.2.0/)
+* Scala 3.2.1
+  * [Library API](https://www.scala-lang.org/api/3.2.1/)
 * Scala 2.13.10
   * [Library API](https://www.scala-lang.org/api/2.13.10/)
   * [Compiler API](https://www.scala-lang.org/api/2.13.10/scala-compiler/scala/)
@@ -60,6 +60,8 @@ https://scala-ci.typesafe.com/artifactory/scala-integration/org/scala-lang/
 
 ## Previous releases
 
+* Scala 3.2.0
+  * [Library API](https://www.scala-lang.org/api/3.2.0/)
 * Scala 3.1.3
   * [Library API](https://www.scala-lang.org/api/3.1.3/)
 * Scala 3.1.2
