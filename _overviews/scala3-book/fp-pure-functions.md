@@ -87,17 +87,39 @@ These topics are beyond the scope of this document, so to keep things simple it 
 To write pure functions in Scala, just write them using Scala’s method syntax (though you can also use Scala’s function syntax, as well).
 For instance, here’s a pure function that doubles the input value it’s given:
 
+
+{% tabs fp-pure-function %}
+
+{% tab 'Scala 2 and 3' %}
 ```scala
 def double(i: Int): Int = i * 2
 ```
+{% endtab %}
+
+{% endtabs %}
 
 If you’re comfortable with recursion, here’s a pure function that calculates the sum of a list of integers:
 
+{% tabs fp-pure-recursive-function class=tabs-scala-version %}
+
+{% tab 'Scala 2' %}
+```scala
+def sum(xs: List[Int]): Int = xs match {
+  case Nil => 0
+  case head :: tail => head + sum(tail)
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 def sum(xs: List[Int]): Int = xs match
   case Nil => 0
   case head :: tail => head + sum(tail)
 ```
+{% endtab %}
+
+{% endtabs %}
 
 If you understand that code, you’ll see that it meets the pure function definition.
 
