@@ -169,7 +169,7 @@ abstract class Serializer[-A] {
 }
 
 val animalSerializer: Serializer[Animal] = new Serializer[Animal] {
-  def serialize(animal: Animal): String = s"""{ "name": "${animal.name}" }""" 
+  def serialize(animal: Animal): String = s"""{ "name": "${animal.name}" }"""
 }
 val catSerializer: Serializer[Cat] = animalSerializer
 catSerializer.serialize(Cat("Felix"))
@@ -191,7 +191,29 @@ catSerializer.serialize(Cat("Felix"))
 
 We say that `Serializer` is *contravariant* in `A`, and this is indicated by the `-` before the `A`. A more general serializer is a subtype of a more specific serializer.
 
-More formally, that gives us the reverse relationship: given some `class Contra[-T]`, then if `A` is a subtype of `B`, `Contra[B]` is a subtype of `Contra[A]`. 
+More formally, that gives us the reverse relationship: given some `class Contra[-T]`, then if `A` is a subtype of `B`, `Contra[B]` is a subtype of `Contra[A]`.
+
+### Immutability and Variance
+Immutability constitutes an important part of the design decision behind using variance. For example, Scala's collections systematically distinguish between [mutable and immutable collections](https://docs.scala-lang.org/overviews/collections-2.13/overview.html). The main issue is that a covariant mutable collection can break type safety. This is why `List` is a covariant collection, while `scala.collection.mutable.ListBuffer` is an invariant collection. `List` is a collection in package `scala.collection.immutable`, therefore it is guaranteed to be immutable for everyone. Whereas, `ListBuffer` is mutable, that is, you can change, add, or remove elements of a `ListBuffer`.
+
+To illustrate the problem of covariance and mutability, suppose that `ListBuffer` was covariant, then the following problematic example would compile (in reality it fails to compile):
+
+{% tabs immutability_and_variance_2 %}
+{% tab 'Scala 2 and 3' %}
+```scala mdoc:fail
+import scala.collection.mutable.ListBuffer
+
+val bufInt: ListBuffer[Int] = ListBuffer[Int](1,2,3)
+val bufAny: ListBuffer[Any] = bufInt
+bufAny(0) = "Hello"
+val firstElem: Int = bufInt(0)
+```
+{% endtab %}
+{% endtabs %}
+
+If the above code was possible then evaluating `firstElem` would fail with `ClassCastException`, because `bufInt(0)` now contains a `String`, not an `Int`.
+
+The invariance of `ListBuffer` means that `ListBuffer[Int]` is not a subtype of `ListBuffer[Any]`, despite the fact that `Int` is a subtype of `Any`, and so `bufInt` cannot be assigned as the value of `bufAny`.
 
 ### Comparison With Other Languages
 
