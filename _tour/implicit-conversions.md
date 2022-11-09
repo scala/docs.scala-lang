@@ -12,12 +12,12 @@ redirect_from: "/tutorials/tour/implicit-conversions.html"
 
 Implicit conversions are a powerful Scala feature that enable two common use cases:
 - allow users to supply an argument of one type, as if it were another type, to avoid boilerplate.
-- to provide additional members to closed classes (replaced by [extension methods][exts] in Scala 3).
+- in Scala 2, to provide additional members to closed classes (replaced by [extension methods][exts] in Scala 3).
 
 ### Detailed Explanation
 {% tabs implicit-conversion-defn class=tabs-scala-version %}
 {% tab 'Scala 2' %}
-In Scala 2, an implicit conversion from type `S` to type `T` is defined by an [implicit value]({% link _tour/implicit-parameters.md %}) which has function type `S => T`, or by an implicit method convertible to a value of that type.
+In Scala 2, an implicit conversion from type `S` to type `T` is defined by either an [implicit class]({% link _overviews/core/implicit-classes.md %}) `T` that has a single parameter of type `S`, an [implicit value]({% link _tour/implicit-parameters.md %}) which has function type `S => T`, or by an implicit method convertible to a value of that type.
 {% endtab %}
 {% tab 'Scala 3' %}
 In Scala 3, an implicit conversion from type `S` to type `T` is defined by a [given instance]({% link _tour/implicit-parameters.md %}) which has type `scala.Conversion[S, T]`. For compatibility with Scala 2, they can also be defined by an implicit method (read more in the Scala 2 tab).
