@@ -2,7 +2,7 @@
 title: Domain Modeling
 type: section
 description: This section provides an introduction to data modeling in Scala 3.
-languages: [zh-cn]
+languages: [ru, zh-cn]
 num: 9
 previous-page: taste-control-structures
 next-page: taste-methods
