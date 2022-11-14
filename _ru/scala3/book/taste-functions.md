@@ -4,7 +4,7 @@ title: Функции первого класса
 scala3: true
 partof: scala3-book
 overview-name: "Scala 3 — Book"
-type: chapter
+type: section
 description: На этой странице представлено введение в функции в Scala 3.
 language: ru
 num: 11

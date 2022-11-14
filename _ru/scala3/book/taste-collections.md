@@ -4,7 +4,7 @@ title: Коллекции
 scala3: true
 partof: scala3-book
 overview-name: "Scala 3 — Book"
-type: chapter
+type: section
 description: На этой странице представлен обзор основных коллекций в Scala 3.
 language: ru
 num: 13

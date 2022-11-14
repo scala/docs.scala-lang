@@ -4,7 +4,7 @@ title: Структуры управления
 scala3: true
 partof: scala3-book
 overview-name: "Scala 3 — Book"
-type: chapter
+type: section
 description: Этот раздел демонстрирует структуры управления в Scala 3.
 language: ru
 num: 8

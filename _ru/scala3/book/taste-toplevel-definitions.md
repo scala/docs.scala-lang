@@ -4,7 +4,7 @@ title: Верхнеуровневые определения
 scala3: true
 partof: scala3-book
 overview-name: "Scala 3 — Book"
-type: chapter
+type: section
 description: На этой странице представлено введение в определения верхнего уровня в Scala 3.
 language: ru
 num: 15

@@ -4,7 +4,7 @@ title: Контекстные абстракции
 scala3: true
 partof: scala3-book
 overview-name: "Scala 3 — Book"
-type: chapter
+type: section
 description: В этом разделе представлено введение в контекстные абстракции в Scala 3.
 language: ru
 num: 14

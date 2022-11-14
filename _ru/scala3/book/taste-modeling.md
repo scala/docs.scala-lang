@@ -4,7 +4,7 @@ title: Моделирование данных
 scala3: true
 partof: scala3-book
 overview-name: "Scala 3 — Book"
-type: chapter
+type: section
 description: В этом разделе представлено введение в моделирование данных в Scala 3.
 language: ru
 num: 9

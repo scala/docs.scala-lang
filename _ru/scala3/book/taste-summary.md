@@ -4,7 +4,7 @@ title: Обзор
 scala3: true
 partof: scala3-book
 overview-name: "Scala 3 — Book"
-type: chapter
+type: section
 description: На этой странице представлен краткий обзор предыдущих разделов 'Taste of Scala'.
 language: ru
 num: 16

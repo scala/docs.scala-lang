@@ -4,7 +4,7 @@ title: Методы
 scala3: true
 partof: scala3-book
 overview-name: "Scala 3 — Book"
-type: chapter
+type: section
 description: В этом разделе представлено введение в определение и использование методов в Scala 3.
 language: ru
 num: 10

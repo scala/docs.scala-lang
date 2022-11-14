@@ -4,7 +4,7 @@ title: Переменные и типы данных
 scala3: true
 partof: scala3-book
 overview-name: "Scala 3 — Book"
-type: chapter
+type: section
 description: В этом разделе демонстрируются переменные val и var, а также некоторые распространенные типы данных Scala.
 language: ru
 num: 7
