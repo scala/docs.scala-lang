@@ -192,6 +192,14 @@ defaults:
       permalink: "/scala3/guides/scaladoc/:title.html"
   -
     scope:
+      path: "_overviews/toolkit"
+    values:
+      partof: toolkit
+      overview-name: "The Scala Toolkit"
+      layout: multipage-overview
+      permalink: "/toolkit/:title.html"
+  -
+    scope:
       path: "scala3"
     values:
       scala3: true
@@ -201,6 +209,6 @@ highlighter: rouge
 permalink: /:categories/:title.html:output_ext
 baseurl:
 scala3ref: "https://docs.scala-lang.org/scala3/reference"
-exclude: ["vendor"]
+exclude: ["vendor", ".metals"]
 plugins:
   - jekyll-redirect-from
