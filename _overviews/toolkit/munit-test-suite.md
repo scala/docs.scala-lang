@@ -22,7 +22,7 @@ The naming convention of the file depends on the tool that we use.
 {% tab 'Scala CLI' %}
 In Scala CLI, the test file can live in the same folder as the actual code, but the name of the file must end with `.test.scala`.
 
-For instance we can have:
+For instance, you can create a `WebService.test.scala` file, just next to a `Webservice.scala` file:
 ```
 example/
 ├── WebService.scala
@@ -60,22 +60,8 @@ example
 {% endtab %}
 {% endtabs %}
 
-After creating the test file, we write a test suite:
+After creating the test file, you can define a test suite:
 
-{% tabs munit-unit-test-3 %}
-{% tab 'Scala CLI' %}
-```scala
-//> using toolkit
-
-class MyTests extends munit.FunSuite:
-  test("sum of two integers") {
-    val obtained = 2 + 2
-    val expected = 4
-    assertEquals(obtained, expected)
-  }
-```
-{% endtab %}
-{% tab 'sbt and Mill' %}
 ```scala
 class MyTests extends munit.FunSuite:
   test("sum of two integers") {
@@ -84,25 +70,30 @@ class MyTests extends munit.FunSuite:
     assertEquals(obtained, expected)
   }
 ```
-{% endtab %}
-{% endtabs %}
 
 In MUnit, a test suite is a `class` that extends `munit.FunSuite`.
+
+<blockquote class="help-info">
+<i class="fa fa-info"></i>&nbsp;&nbsp;
+If your test suite is an object or if it is a class with a non-empty constructor, MUnit will complain with an org.junit.runners.model.InvalidTestClassError exception.
+</blockquote>
+
 It must contain one or more tests, defined by calling the `test` method in the body of the test suite.
 The `test` method takes a first argument which is the name of the test and a second argument wich is the body of the test.
 
-We use assertion methods, such as `assertEquals`, in the body of the test to check the correctness of the program.
 
-In our previous example the test would pass if the values of `obtained` and `expected` are the same.
+You can use assertion methods, such as `assertEquals`, in the body of the test to check the correctness of the program.
+
+In the previous example the test would pass if the values of `obtained` and `expected` are the same.
 Let's check this by running the test.
 
 ## Running the tests
 
-We can run all the tests of our program in a single command.
+You can run all the tests of your program in a single command.
 
 {% tabs munit-unit-test-4 %}
 {% tab 'Scala CLI' %}
-Using Scala CLI, we run the `test` command and pass it the folder containing our source files. It can be the `example` folder or the `.` folder.
+Using Scala CLI, you can run the `test` command and pass it the folder containing all your source files, or just `.` if you run Scala CLI in that folder.
 ```
 scala-cli test example
 # Compiling project (test, Scala 3.2.1, JVM)
@@ -112,7 +103,7 @@ scala-cli test example
 ```
 {% endtab %}
 {% tab 'sbt' %}
-In the sbt shell, we run the `test` task of the `example` project:
+In the sbt shell, you can run the `test` task of the `example` project:
 ```
 sbt:example> example/test
 # MyTests:
@@ -122,7 +113,7 @@ sbt:example> example/test
 ```
 {% endtab %}
 {% tab 'Mill' %}
-Using Mill, we run the `test` task in the `test` module of the `example` module:
+Using Mill, you can run the `test` task in the `test` module of the `example` module:
 ```
 ./mill example.test.test
 # [71/71] example.test.test 
@@ -134,7 +125,7 @@ Using Mill, we run the `test` task in the `test` module of the `example` module:
 
 The `+` symbol before the name of the test indicates that the test passed successfully.
 
-We can add a failing test to see the difference:
+You can add a failing test to see the difference:
 ```scala
 test("failing test") {
   val obtained = 2 + 3
@@ -143,7 +134,8 @@ test("failing test") {
 }
 ```
 
-Running the test suite should now return the following output:
+This test should fail, as `2 + 3` should not return `4`.
+Indeed, after running the test you should see the following output:
 
 ```
 # MyTests:
@@ -162,5 +154,5 @@ Running the test suite should now return the following output:
 ```
 
 The line starting with `==> X MyTests.failing test` indicates that the test named `failing test` failed.
-The following lines gives us indications of where and why it failed.
+The following lines give you indications of where and why it failed.
 It failed on line 13 because the value of `obtained` is `5` while the value of `expected` is `4`.
