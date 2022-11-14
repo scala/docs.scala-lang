@@ -4,7 +4,7 @@ title: REPL
 scala3: true
 partof: scala3-book
 overview-name: "Scala 3 — Book"
-type: chapter
+type: section
 description: В этом разделе представлено введение в Scala REPL.
 language: ru
 num: 6
