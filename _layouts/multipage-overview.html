@@ -17,6 +17,12 @@ includeCollectionTOC: true
 						{% endif %}
 						{% include version-specific-notice.html language=versionSpecificLang %}
 					{% endif %}
+					<noscript>
+						<blockquote>
+							<span style="font-weight: bold;">Info:</span> JavaScript is currently disabled, code tabs will still work,
+							but preferences will not be remembered.
+						</blockquote>
+					</noscript>
 					{{content}}
 				</div>
 
