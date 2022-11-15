@@ -78,9 +78,19 @@ module Jekyll
                         "tab labels: #{joinScalaVersions()}")
                 end
 
+                def errorDuplicateTab(tab)
+                    SyntaxError.new("Duplicate tab label '#{tab.label}' in tabs '#{@name}'")
+                end
+
+                def errorScalaVersionDefault(tab)
+                    SyntaxError.new(
+                        "Scala version tab label '#{tab.label}' should not be default for tabs '#{@name}' " +
+                        "with class=tabs-scala-version")
+                end
+
                 allTabs.each do | tab |
                     if seenTabs.include? tab.label
-                        raise SyntaxError.new("Duplicate tab label '#{tab.label}' in tabs '#{@name}'")
+                        raise errorDuplicateTab(tab)
                     end
                     seenTabs.push tab.label
                     if tab.defaultTab
@@ -89,8 +99,12 @@ module Jekyll
 
                     isScalaTab = Tabs::ScalaVersions.include? tab.label
 
-                    if @is_scala_tabs and !isScalaTab
-                        raise errorNonScalaVersion(tab)
+                    if @is_scala_tabs
+                        if !isScalaTab
+                            raise errorNonScalaVersion(tab)
+                        elsif tab.defaultTab
+                            raise errorScalaVersionDefault(tab)
+                        end
                     elsif !@is_scala_tabs and isScalaTab
                         raise errorScalaVersionWithoutClass(tab)
                     end
@@ -101,8 +115,13 @@ module Jekyll
                 end
 
                 if !foundDefault and allTabs.length > 0
-                    # set first tab to default
-                    allTabs[0].defaultTab = true
+                    if @is_scala_tabs
+                        # set last tab to default ('Scala 3')
+                        allTabs[-1].defaultTab = true
+                    else
+                        # set first tab to default
+                        allTabs[0].defaultTab = true
+                    end
                 end
 
                 currentDirectory = File.dirname(__FILE__)
