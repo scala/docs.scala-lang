@@ -9,7 +9,6 @@ next-page: taste-repl
 ---
 
 > **Hint**: in the following examples try picking your preferred Scala version.
-> <noscript><span style="font-weight: bold;">Info</span>: JavaScript is currently disabled, code tabs will still work, but preferences will not be remembered.</noscript>
 
 ## Your First Scala Program
 
@@ -149,7 +148,7 @@ import scala.io.StdIn.readLine
 <!-- End tabs -->
 
 In this code we save the result of `readLine` to a variable called `name`, we then
-use the `+` operator on strings to join `"Hello, "` with `name` and `"!"`, making one single string value. 
+use the `+` operator on strings to join `"Hello, "` with `name` and `"!"`, making one single string value.
 
 > You can learn more about using `val` by reading [Variables and Data Types](/scala3/book/taste-vars-data-types.html).
 
