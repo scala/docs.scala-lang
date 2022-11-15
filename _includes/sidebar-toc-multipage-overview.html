@@ -21,8 +21,11 @@
               {% assign localizedId = pg.id %}
               {% for lpg in site.[page.language] %}
                 {% if lpg.id == localizedId %}
-                  <li><a {% if page.title == lpg.title %}class="active"{% endif %} href="{{ site.baseurl }}{{ pg.url }}">{{ lpg.title }}</a>
-                  {{ toc }}</li>
+                  {% if pg.type %} <!-- if a type is set in a document, we add it as a class. Used in Scala book to diff between chapter and section -->
+                  <li class="type-{{ pg.type }}"><a {% if page.title == lpg.title %}class="active"{% endif %} href="{{ site.baseurl }}{{ pg.url }}">{{ lpg.title }}</a>{{ toc }}</li>
+                  {% else %}
+                  <li><a {% if page.title == lpg.title %}class="active"{% endif %} href="{{ site.baseurl }}{{ pg.url }}">{{ lpg.title }}</a>{{ toc }}</li>
+                  {% endif %}
                 {% endif %}
               {% endfor %}
             {% else %} <!-- this must be English, so get the other documents' titles -->

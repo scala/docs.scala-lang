@@ -2,7 +2,7 @@
 title: The REPL
 type: section
 description: This section provides an introduction to the Scala REPL.
-languages: [zh-cn]
+languages: [ru, zh-cn]
 num: 6
 previous-page: taste-hello-world
 next-page: taste-vars-data-types

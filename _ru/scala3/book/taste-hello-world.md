@@ -4,12 +4,12 @@ title: Пример 'Hello, World!'
 scala3: true
 partof: scala3-book
 overview-name: "Scala 3 — Book"
-type: chapter
+type: section
 description: В этом примере демонстрируется пример 'Hello, World!' на Scala 3.
 language: ru
 num: 5
 previous-page: taste-intro
-next-page:
+next-page: taste-repl
 ---
 
 > **Подсказка**: в следующих примерах попробуйте выбрать предпочтительную для вас версию Scala. 
