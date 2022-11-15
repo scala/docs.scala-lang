@@ -83,7 +83,7 @@ val x: Int = 1 + 1
 {% endtab %}
 {% endtabs %}
 
-Notice how the type declaration `Int` comes after the identifier `x`. You also need a `:`.  
+Notice how the type declaration `Int` comes after the identifier `x`. You also need a `:`.
 
 ### Variables
 
@@ -236,7 +236,7 @@ println(getSquareString(2.5)) // 6.25
 def getSquareString(input: Double): String =
   val square = input * input
   square.toString
-  
+
 println(getSquareString(2.5)) // 6.25
 ```
 {% endtab %}

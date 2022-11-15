@@ -4,7 +4,6 @@ title: Getting Started
 partof: getting-started
 languages: [fr, ja, ru, uk]
 includeTOC: true
-
 newcomer_resources:
   - title: Are You Coming From Java?
     description: What you should know to get to speed with Scala after your initial setup.

@@ -2,7 +2,7 @@
 layout: singlepage-overview
 overview-name: "Scala 3 Documentation"
 title: Contributing to the Docs
-languages: ["ru"]
+languages: ["ja", "ru"]
 ---
 ## Overview
 There are several ongoing efforts to produce high quality documentation for

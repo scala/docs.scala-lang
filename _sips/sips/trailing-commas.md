@@ -1,5 +1,5 @@
 ---
-layout: inner-page-no-masthead
+layout: sip
 title: SIP-27 - Trailing Commas
 stage: completed
 status: shipped

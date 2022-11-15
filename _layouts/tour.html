@@ -9,6 +9,9 @@ includeCollectionTOC: true
 		<div class="content-primary documentation">
 			<div class="inner-box">
                 <div class="toc-context">
+                    {% if page.new-version %}
+                    {% include outdated-notice.html new-version=page.new-version %}
+                    {% endif %}
                     {{content}}
                 </div>
 
