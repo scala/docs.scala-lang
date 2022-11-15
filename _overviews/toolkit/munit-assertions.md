@@ -1,7 +1,7 @@
 ---
 title: How to write assertions?
 type: section
-description: Comparing what we obtain with what we expect
+description: Comparing what you obtain with what you expect
 num: 4
 previous-page: munit-test-suite
 next-page: munit-exceptions
@@ -9,10 +9,10 @@ next-page: munit-exceptions
 
 {% include markdown.html path="_markdown/install-munit.md" %}
 
-Assertions describe what to check in our tests. If any assertion in a unit test
+Assertions describe what to check in your tests. If any assertion in a unit test
 fails, then the test fails.
 
-Assuming we have defined a
+Assuming you have defined a
 [test suite]({% link _overviews/toolkit/munit-test-suite.md %}) `MyTests`, this
 tutorial shows various ways to write assertions within test specifications.
 
@@ -36,15 +36,15 @@ class MyTests extends munit.FunSuite:
 {% endtab %}
 {% endtabs %}
 
-## Comparing What We Get With What We Expect
+## Comparing What You Get With What You Expect
 
 The most common form of assertions consists of comparing a result obtained from
-the tested program with an expected value that we know is correct. We achieve
-this with the method `assertEquals`, which we inherit from the test suite base
+the tested program with an expected value that you know is correct. You achieve
+this with the method `assertEquals`, which you inherit from the test suite base
 class, `munit.FunSuite`.
 
-For instance, assuming our program provides a method `double`, which takes an
-integer value as parameter and returns that value multiplied by two, we can
+For instance, assuming your program provides a method `double`, which takes an
+integer value as parameter and returns that value multiplied by two, you can
 write the following assertion:
 
 {% tabs assertions-1 %}
@@ -57,7 +57,7 @@ assertEquals(double(21), 42)
 
 Note the order of the arguments: the first one is the result of the program, and
 the second one is the expected correct result. To understand why this is important,
-let us look at the test report we get in case the tested program is incorrect:
+let us look at the test report you get in case the tested program is incorrect:
 
 ```text
 # MyTests:
@@ -76,8 +76,8 @@ let us look at the test report we get in case the tested program is incorrect:
 The test report shows the difference between the obtained result (`23`) and the
 expected result (`42`).
 
-If, by mistake, we swap the order of the arguments of the call to `assertEquals`,
-we get a wrong test report:
+If, by mistake, you swap the order of the arguments of the call to `assertEquals`,
+you get a wrong test report:
 
 ```text
 # MyTests:
@@ -93,15 +93,15 @@ we get a wrong test report:
 # +23
 ```
 
-As we can see, the test report is confusing because it says that the expected
+As you can see, the test report is confusing because it says that the expected
 result is `23`, whereas it is actually `42`.
 
 ## Checking a Boolean Condition
 
-We can check that a boolean condition holds by using the method `assert`, which
+You can check that a boolean condition holds by using the method `assert`, which
 is also inherited from the base class `munit.FunSuite`.
 
-For instance, we can check that all the values returned by `double` are even values
+For instance, you can check that all the values returned by `double` are even values
 as follows:
 
 {% tabs assertions-2 %}
@@ -131,13 +131,13 @@ In case of failure, the test report looks like the following:
 
 ## `assert` vs `assertEquals`
 
-We may be tempted to write `assert(a == b)` instead of `assertEquals(a, b)`.
+You may be tempted to write `assert(a == b)` instead of `assertEquals(a, b)`.
 What is the difference between both?
 
 The difference lies in the way failures are reported. With `assertEquals`,
 MUnit shows a “diff” describing the difference between the expression that
 was obtained and the expression that was expected. On the other hand, with
-`assert`, MUnit only tells us that “an assertion failed”.
+`assert`, MUnit only tells you that “an assertion failed”.
 
 Below is a concrete example, for the sake of comparison. First, with `assertEquals`:
 
@@ -208,11 +208,11 @@ The test report is the following:
 #  )
 ```
 
-We see that the test reports points out that the field `email` we obtain is
-different from our expectation.
+You see that the test reports points out that the field `email` you obtain is
+different from your expectation.
 
 ## Next Steps
 
-This tutorial only covered the two main types of assertions that we can use with
+This tutorial only covered the two main types of assertions that you can use with
 MUnit. You can learn other ways to describe what to check by reading the
 [documentation of MUnit](https://scalameta.org/munit/docs/assertions.html).
