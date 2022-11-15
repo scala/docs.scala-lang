@@ -67,8 +67,8 @@ module Jekyll
                 end
 
                 if !foundDefault and allTabs.length > 0
-                    # set last tab to default
-                    allTabs[-1].defaultTab = true
+                    # set first tab to default
+                    allTabs[0].defaultTab = true
                 end
 
                 if @is_scala_tabs
