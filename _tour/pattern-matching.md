@@ -92,7 +92,7 @@ case class VoiceRecording(contactName: String, link: String) extends Notificatio
 {% endtab %}
 {% endtabs %}
 
-`Notification` is a sealed trait which has three concrete Notification types implemented with case classes `Email`, `SMS`, and `VoiceRecording`. Now we can do pattern matching on these case classes:
+`Notification` is a sealed trait which has three specific Notification types implemented with case classes `Email`, `SMS`, and `VoiceRecording`. Now we can do pattern matching on these case classes:
 
 {% tabs pattern-matching-4 class=tabs-scala-version %}
 {% tab 'Scala 2' for=pattern-matching-4 %}
