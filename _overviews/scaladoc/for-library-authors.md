@@ -7,6 +7,8 @@ overview-name: Scaladoc
 num: 3
 
 permalink: /overviews/scaladoc/:title.html
+redirect_from:
+  - /overviews/scaladoc/basics.html
 ---
 
 Scaladoc is a documentation system that lives in the comments of Scala source code
@@ -106,13 +108,13 @@ scalacOptions in (Compile, doc) ++= Seq(
 ```
 
 Each section should have a single-word identifier that is used in all of
-these tags, shown as `<group>` below. By default, that identifier is 
-shown as the title of that documentation section, but you can use 
+these tags, shown as `<group>` below. By default, that identifier is
+shown as the title of that documentation section, but you can use
 `@groupname` to provide a longer title.
 
 Typically, you should put `@groupprio` (and optionally `@groupname` and
 `@groupdesc`) in the Scaladoc for the package/trait/class/object itself,
-describing what all the groups are, and their order. Then put `@group` 
+describing what all the groups are, and their order. Then put `@group`
 in the Scaladoc for each member, saying which group it is in.
 
 Members that do not have a `@group` tag will be listed as "Ungrouped" in
@@ -207,12 +209,12 @@ Some types of markup available:
   with no interruptions from other block styles. Unordered lists can be bulleted
   using `-`; numbered lists can be denoted using `1.`, `i.`, `I.`, or `a.` for the
   various numbering styles. In both cases, you must have extra space in front, and
-  more space makes a sub-level. 
-  
+  more space makes a sub-level.
+
 The markup for list blocks looks like:
 
     /** Here is an unordered list:
-      * 
+      *
       *   - First item
       *   - Second item
       *     - Sub-item to the second

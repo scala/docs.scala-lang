@@ -2,6 +2,8 @@
 layout: singlepage-overview
 title: Scala API Docs
 includeTOC: true
+redirect_from:
+  - /reference.html
 ---
 
 ## Latest releases

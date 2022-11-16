@@ -1,5 +1,5 @@
 ---
-layout: inner-page-no-masthead
+layout: singlepage-overview
 language: zh-cn
 title: 致谢名单
 ---
