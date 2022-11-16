@@ -14,15 +14,10 @@ next-page: munit-assertions
 In Scala we define groups of tests that we call test suites.
 Each test suite is intended to validate a particular component of the software.
 Typically we define one test suite for each source file, or each class, that we want to test.
-For instance, if we have a file `WebService.scala` in our main application, we create a file `WebServiceTests.scala` to test it.
-
-The naming convention of the file depends on the tool that we use.
 
 {% tabs munit-unit-test-2 %}
 {% tab 'Scala CLI' %}
-In Scala CLI, the test file can live in the same folder as the actual code, but the name of the file must end with `.test.scala`.
-
-For instance, you can create a `WebService.test.scala` file, just next to a `Webservice.scala` file:
+In Scala CLI, the test file can live in the same folder as the actual code, but the name of the file must end with `.test.scala`. For instance:
 ```
 example/
 ├── WebService.scala
@@ -75,16 +70,16 @@ In MUnit, a test suite is a `class` that extends `munit.FunSuite`.
 
 <blockquote class="help-info">
 <i class="fa fa-info"></i>&nbsp;&nbsp;
-If your test suite is an object or if it is a class with a non-empty constructor, MUnit will complain with an org.junit.runners.model.InvalidTestClassError exception.
+A MUnit test suite must be a class with an empty constructor. It cannot be an object.
+Otherwise MUnit complains with an InvalidTestClassError exception.
 </blockquote>
 
 It must contain one or more tests, defined by calling the `test` method in the body of the test suite.
 The `test` method takes a first argument which is the name of the test and a second argument wich is the body of the test.
 
-
 You can use assertion methods, such as `assertEquals`, in the body of the test to check the correctness of the program.
 
-In the previous example the test would pass if the values of `obtained` and `expected` are the same.
+In the previous example the test passes if the values of `obtained` and `expected` are the same.
 Let's check this by running the test.
 
 ## Running the tests
@@ -153,6 +148,5 @@ Indeed, after running the test you should see the following output:
 #     at munit.Assertions.failComparison(Assertions.scala:274)
 ```
 
-The line starting with `==> X MyTests.failing test` indicates that the test named `failing test` failed.
-The following lines give you indications of where and why it failed.
-It failed on line 13 because the value of `obtained` is `5` while the value of `expected` is `4`.
+The line starting with `==> X` indicates that the test named `failing test` failed.
+The following lines contain indications of where and why it failed.
