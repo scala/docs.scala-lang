@@ -1,5 +1,5 @@
 ---
-layout: documentation
+layout: landing-page-deprecated
 title: ドキュメント
 language: ja
 partof: documentation
