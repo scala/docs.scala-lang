@@ -12,6 +12,12 @@ includeCollectionTOC: true
                     {% if page.new-version %}
                     {% include outdated-notice.html new-version=page.new-version %}
                     {% endif %}
+                    <noscript>
+                        <blockquote>
+                            <span style="font-weight: bold;">Info:</span> JavaScript is currently disabled, code tabs will still work,
+                            but preferences will not be remembered.
+                        </blockquote>
+                    </noscript>
                     {{content}}
                 </div>
 
