@@ -312,16 +312,36 @@ setting in a multi-project build.
 
 For example, if you add this to your `build.sbt`:
 
-    scalaVersion := "2.13.7"
+    scalaVersion := "2.13.10"
 
 that's a "bare" setting, and you might expect it to apply build-wide.
 But it doesn't. _It only applies to the root project._
 
 In many cases one should instead write:
 
-    ThisBuild / scalaVersion := "2.13.7"
+    ThisBuild / scalaVersion := "2.13.10"
 
-Other possibilities include:
+Conversely, you should not write:
+
+    ThisBuild / name := "sample"
+
+which will result in a warning:
+
+    [warn] there's a key that's not used by any other settings/tasks:
+    [warn]
+    [warn] * ThisBuild / name
+    [warn]   +- sample-project/build.sbt:11
+
+For your quick single-project build with bare settings, the minimal settings are:
+
+    scalaVersion := "2.13.10"
+    organization := "sampler"
+    version := "0.1"
+    name := "sample"          // must not be scoped to ThisBuild
+
+    scalacOptions ++= Seq("-Werror", "-Xlint")  // append to options
+
+Other possible solutions to provide a setting everywhere include:
 
 * the common settings pattern, where you put shared settings
   in a `val`, typically named `commonSettings`, and then
