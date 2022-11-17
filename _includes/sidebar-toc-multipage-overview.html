@@ -40,6 +40,7 @@
         {% endfor %}
       </ul>
 
+      {% assign orphanTranslation = page.orphanTranslation | default: false %}
       {% if page.languages %}
         <ul id="available-languages" style="display: none;">
           <li><a href="{{ site.baseurl }}{{ page.url }}">English</a></li>
@@ -50,7 +51,7 @@
             <li><a href="{{ site.baseurl }}/{{ l }}/{{ rootTutorialURL }}" class="lang">{{ lang.name }}</a></li>
           {% endfor %}
         </ul>
-      {% elsif page.language and page.orphanTranslation == false %}
+      {% elsif page.language and orphanTranslation == false %}
         <!-- i.e. some pages like '/zh-cn/thanks.html' have no english version -->
         {% assign engPath = page.id | remove_first: "/" | remove_first: page.language | append: '.html' %}
         {% assign engPg = site.overviews | where: 'partof', page.partof | first %}
