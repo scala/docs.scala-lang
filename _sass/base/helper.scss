@@ -20,8 +20,12 @@
     background: #fff;
     -webkit-box-shadow: 0 0 18px 20px #fff;
     -moz-box-shadow: 0 0 18px 20px #fff;
-    box-shadow: 0 7px 15px 5px #fff;
+    box-shadow: 0 0 18px 20px #fff;
     z-index: 5;
+}
+
+.inline-sticky-top.inline-sticky-top-higher {
+    z-index: 7;
 }
 
 .wrap-inline {

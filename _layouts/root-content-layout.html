@@ -1,8 +1,6 @@
 {% include headertop.html %}
 {% include headerbottom.html %}
 
-
-
 <div class="navigation-fade-screen"></div>
 
 {% include navbar-inner.html %}
@@ -12,12 +10,6 @@
   <section class="title-page">
     <div class="wrap">
       <div class="content-title-documentation">
-        {% if page.new-version %}
-          <div class="wip-notice">
-            <h4>Outdated Notice</h4>
-            <p><a class="new-version-notice" href="{{ page.new-version }}"><i class="fa fa-info"></i><span>&nbsp;&nbsp;This page has a new version.</span></a></p>
-          </div>
-        {% endif %}
         <div class="titles">
           {% if page.overview-name %}
             <div class="supertitle">{{ page.overview-name }}</div>

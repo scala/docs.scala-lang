@@ -1,5 +1,5 @@
 ---
-layout: inner-page-parent
+layout: root-index-layout
 title: Tutorials
 
 tutorials:

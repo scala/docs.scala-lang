@@ -293,4 +293,3 @@ This is a tradeoff between conciseness and consistency. In the interest of minim
  - Latest discussion on contributors (there were several before when we discussed indentation in general): https://contributors.scala-lang.org/t/make-fewerbraces-available-outside-snapshot-releases/5024/166
 
 ## FAQ
-

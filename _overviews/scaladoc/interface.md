@@ -7,6 +7,8 @@ overview-name: Scaladoc
 num: 2
 
 permalink: /overviews/scaladoc/:title.html
+redirect_from:
+  - /overviews/scaladoc/usage.html
 ---
 
 Many Scala developers, including those with a great deal of experience, are

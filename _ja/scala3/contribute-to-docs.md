@@ -1,5 +1,5 @@
 ---
-layout: inner-page-documentation
+layout: singlepage-overview
 overview-name: "Scala 3 Documentation"
 title: Contributing to the Docs
 language: ja

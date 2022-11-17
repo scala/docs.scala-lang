@@ -1,5 +1,5 @@
 ---
-layout: inner-page-parent
+layout: root-index-layout
 title: Scala 3 のガイド
 language: ja
 scala3: true
@@ -36,5 +36,3 @@ guides:
     </div>
   </div>
 </section>
-
-

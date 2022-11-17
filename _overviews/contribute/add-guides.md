@@ -273,7 +273,7 @@ Once the tutorial is written, to aid user navigation their link must be added to
 the metadata of `/tutorials.md`. e.g. it could look like
 
     ---
-    layout: inner-page-parent
+    layout: root-index-layout
     title: Tutorials
 
     tutorials:
