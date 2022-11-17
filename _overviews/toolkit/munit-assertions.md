@@ -10,7 +10,10 @@ next-page: munit-exceptions
 {% include markdown.html path="_markdown/install-munit.md" %}
 
 Assertions describe what to check in your tests. If any assertion in a unit test
-fails, then the test fails.
+fails, then the test fails. This tutorial shows the main assertion operations
+supported by [MUnit](https://index.scala-lang.org/scalameta/munit):
+- `assertEquals` to check that what you obtain is equal to what you expect,
+- `assert` to check a boolean condition on the result of a method.
 
 Assuming you have defined a
 [test suite]({% link _overviews/toolkit/munit-test-suite.md %}) `MyTests`, this
@@ -214,5 +217,6 @@ different from your expectation.
 ## Next Steps
 
 This tutorial only covered the two main types of assertions that you can use with
-MUnit. You can learn other ways to describe what to check by reading the
-[documentation of MUnit](https://scalameta.org/munit/docs/assertions.html).
+MUnit. You can discover other assertion operations in the
+[documentation of MUnit](https://scalameta.org/munit/docs/assertions.html):
+`assertNotEquals`, `assertNoDiff`, `fail`, and `compileErrors`.
