@@ -109,7 +109,7 @@ We have seen that we can explicitly pass arguments as contextual parameters by m
 However, if there is _a single canonical value_ for a particular type, there is another preferred way to make it available to the Scala compiler: by marking it as `given`.
 
 {% tabs given1 %}
-{% tab 'Scala 3 Only' for=given1 %}
+{% tab 'Scala 3 Only' %}
 
 ```scala
 val config = Config(8080, "docs.scala-lang.org")
