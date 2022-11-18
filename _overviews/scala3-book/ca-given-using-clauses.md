@@ -130,7 +130,7 @@ In the above example we specify that whenever a contextual parameter of type `Co
 Having defined a given for `Config`, we can simply call `renderWebsite`:
 
 {% tabs given2 %}
-{% tab 'Scala 3 Only' for=given2 %}
+{% tab 'Scala 3 Only' %}
 
 ```scala
 renderWebsite("/home")
