@@ -58,6 +58,30 @@
 - category: 言語
   description: "Scala 言語の機能をカバーするガイドと概要"
   overviews:
+    - title: "Scala 2 から Scala 3 への移行"
+      icon: suitcase
+      root: "scala3/guides/"
+      url: "migration/compatibility-intro.html"
+      description: "Scala 3 との互換性と移行について知っておくべきことすべて"
+    - title: "Scala 3 マクロ"
+      by: Nicolas Stucki
+      icon: magic
+      root: "scala3/guides/"
+      url: "macros"
+      description: "Scala 3 のマクロの書き方に関係する全ての機能をカバーする詳しいチュートリアル"
+      label-text: new in Scala 3
+    - title: 値クラスと汎用トレイト
+      by: Mark Harrah
+      description: "値クラスは Scala で実行時のオブジェクトアロケーションを避ける新しい仕組みだ。これは新しい AnyVal サブクラスを定義することで達成できる。"
+      icon: gem
+      url: "core/value-classes.html"
+    - title: TASTyの概要
+      by: Alvin Alexander
+      icon: birthday-cake
+      root: "scala3/guides/"
+      url: "tasty-overview.html"
+      description: "Scala のエンドユーザー向けの TASTy のフォーマットの概要"
+      label-text: new in Scala 3
     - title: 文字列補間
       icon: dollar-sign
       url: "core/string-interpolation.html"
@@ -70,11 +94,6 @@
       by: Josh Suereth
       description: "Scala 2.10 は暗黙クラス（implicit class）と呼ばれる新しい機能を導入した。暗黙クラスは implicit キーワードでマークされたクラスだ。このキーワードはそのクラスがスコープ内にあるとき、そのプライマリコンストラクターが暗黙変換に利用可能にする。"
       url: "core/implicit-classes.html"
-    - title: 値クラスと汎用トレイト
-      by: Mark Harrah
-      description: "値クラスは Scala で実行時のオブジェクトアロケーションを避ける新しい仕組みだ。これは新しい AnyVal サブクラスを定義することで達成できる。"
-      icon: gem
-      url: "core/value-classes.html"
 
 - category: ライブラリの作成
   description: "Scala エコシステム向けのオープンソースライブラリの貢献方法のガイド"
