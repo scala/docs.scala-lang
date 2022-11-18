@@ -70,7 +70,7 @@ So the program is equivalent to the one above.
 In fact, since we do not need to refer to `c` in our implementation of `renderWebsite` anymore, we can even omit its name in the signature:
 
 {% tabs using2 %}
-{% tab 'Scala 3 Only' for=using2 %}
+{% tab 'Scala 3 Only' %}
 
 ```scala
 //        no need to come up with a parameter name
