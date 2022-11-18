@@ -9,7 +9,7 @@ description: На этой странице представлено кратк�
 language: ru
 num: 17
 previous-page: taste-summary
-next-page:
+next-page: control-structures
 ---
 
 
