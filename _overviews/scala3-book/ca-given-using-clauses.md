@@ -90,7 +90,7 @@ But how can we specify which configuration to use for our call to `renderWebsite
 Like we specified our parameter section with `using`, we can also explicitly provide contextual arguments with `using:`
 
 {% tabs using3 %}
-{% tab 'Scala 3 Only' for=using2 %}
+{% tab 'Scala 3 Only' %}
 
 ```scala
 renderWebsite("/home")(using config)
