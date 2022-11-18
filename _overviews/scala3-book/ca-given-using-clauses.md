@@ -22,7 +22,7 @@ One common way to achieve this is by passing the configuration as additional arg
 In the following example, we define a case class `Config` to model some website configuration and pass it around in the different methods.
 
 {% tabs nonusing %}
-{% tab 'Scala 2 and 3' for=nonusing %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 case class Config(port: Int, baseUrl: String)
