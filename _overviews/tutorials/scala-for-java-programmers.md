@@ -1254,4 +1254,4 @@ contains more explanations and examples, and consult the *Scala
 
 [scala-book]: {% link _overviews/scala3-book/introduction.md %}
 [maven-setup]: {% link _overviews/tutorials/scala-with-maven.md %}
-[sbt-setup]: {% link _getting-started/sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.md %}#adding-a-dependency
+[sbt-setup]: {% link _overviews/getting-started/sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.md %}#adding-a-dependency

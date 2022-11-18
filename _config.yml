@@ -41,9 +41,6 @@ collections:
     permalink: /:collection/:path.html
   books:
     output: false
-  getting-started:
-    output: true
-    permalink: /:collection/:path.html
   ja: # Japanese translations
     output: true
     permalink: /:collection/:path.html
@@ -94,6 +91,11 @@ defaults:
       type: "tour"
     values:
       overview-name: "Tour of Scala"
+  -
+    scope:
+      path: "_overviews/getting-started"
+    values:
+      permalink: "/:path.html"
   -
     scope:
       path: "_overviews/macros"
