@@ -9,6 +9,8 @@ next-page: types-type-classes
 ---
 
 
+<h5>Use contextual abstraction <span class="tag tag-inline">Scala 3 Only</span></h5>
+
 Scala 3 offers two important feature for contextual abstraction:
 
 - **Using Clauses** allow you to specify parameters that, at the call site, can be omitted by the programmer and should be automatically provided by the context.
