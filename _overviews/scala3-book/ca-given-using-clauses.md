@@ -47,7 +47,7 @@ Passing `c` to each and every method call (like `renderWidget`) becomes very ted
 In Scala 3, we can mark some parameters of our methods as _contextual_.
 
 {% tabs using1 %}
-{% tab 'Scala 3 Only' for=using1 %}
+{% tab 'Scala 3 Only'  %}
 
 ```scala
 def renderWebsite(path: String)(using c: Config): String =
