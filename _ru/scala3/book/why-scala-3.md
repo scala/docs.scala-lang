@@ -39,7 +39,7 @@ next-page: taste-intro
 Например, `List` определяется как класс---технически это абстрактный класс---и новый экземпляр создается следующим образом:
 
 {% tabs list %}
-{% tab 'Scala 2 and 3' for=list %}
+{% tab 'Scala 2 и 3' for=list %}
 ```scala
 val x = List(1, 2, 3)
 ```
@@ -54,7 +54,7 @@ val x = List(1, 2, 3)
 `List` API также состоит из десятков других методов, многие из которых являются функциями высшего порядка:
 
 {% tabs list-methods %}
-{% tab 'Scala 2 and 3' for=list-methods %}
+{% tab 'Scala 2 и 3' for=list-methods %}
 ```scala
 val xs = List(1, 2, 3, 4, 5)
 
@@ -75,7 +75,7 @@ _Вывод типов_ (_type inference_) в Scala часто заставля�
 Это верно для объявления переменной:
 
 {% tabs dynamic %}
-{% tab 'Scala 2 and 3' for=dynamic %}
+{% tab 'Scala 2 и 3' for=dynamic %}
 ```scala
 val a = 1
 val b = "Hello, world"
@@ -88,7 +88,7 @@ val stuff = ("fish", 42, 1_234.5)
 Это также верно при передаче анонимных функций функциям высшего порядка:
 
 {% tabs dynamic-hof %}
-{% tab 'Scala 2 and 3' for=dynamic-hof %}
+{% tab 'Scala 2 и 3' for=dynamic-hof %}
 ```scala
 list.filter(_ < 4)
 list.map(_ * 2)
@@ -101,7 +101,7 @@ list.filter(_ < 4)
 и при определении методов:
 
 {% tabs dynamic-method %}
-{% tab 'Scala 2 and 3' for=dynamic-method %}
+{% tab 'Scala 2 и 3' for=dynamic-method %}
 ```scala
 def add(a: Int, b: Int) = a + b
 ```
@@ -111,7 +111,7 @@ def add(a: Int, b: Int) = a + b
 Это как никогда верно для Scala 3, например, при использовании [типов объединения][union-types]:
 
 {% tabs union %}
-{% tab 'Scala 3 Only' for=union %}
+{% tab 'Только в Scala 3' for=union %}
 ```scala
 // параметр типа объединения
 def help(id: Username | Password) =
@@ -131,7 +131,7 @@ val b: Password | Username = if (true) name else password
 Scala — это неформальный, “краткий, но все же читабельный“ язык. Например, объявление переменной лаконично:
 
 {% tabs concise %}
-{% tab 'Scala 2 and 3' for=concise %}
+{% tab 'Scala 2 и 3' for=concise %}
 ```scala
 val a = 1
 val b = "Hello, world"
@@ -143,7 +143,7 @@ val c = List(1,2,3)
 Создание типов, таких как трейты, классы и перечисления, является кратким:
 
 {% tabs enum %}
-{% tab 'Scala 3 Only' for=enum %}
+{% tab 'Только в Scala 3' for=enum %}
 ```scala
 trait Tail:
   def wagTail(): Unit
@@ -166,7 +166,7 @@ case class Person(
 Функции высшего порядка кратки:
 
 {% tabs list-hof %}
-{% tab 'Scala 2 and 3' for=list-hof %}
+{% tab 'Scala 2 и 3' for=list-hof %}
 
 ```scala
 list.filter(_ < 4)
@@ -262,7 +262,7 @@ Scala также можно использовать в браузере с [п�
 Вот некоторые примеры:
 
 {% tabs list-more %}
-{% tab 'Scala 2 and 3' for=list-more %}
+{% tab 'Scala 2 и 3' for=list-more %}
 ```scala
 List.range(1, 3)                          // List(1, 2)
 List.range(start = 1, end = 6, step = 2)  // List(1, 3, 5)
@@ -310,7 +310,7 @@ nums.sortWith(_ > _)                      // List(10, 8, 7, 5, 1)
 Для неизменяемости рекомендуется создавать неизменяемые val переменные:
 
 {% tabs val %}
-{% tab 'Scala 2 and 3' for=val %}
+{% tab 'Scala 2 и 3' for=val %}
 ```scala
 val a = 1                 // неизменяемая переменная
 ```
@@ -320,7 +320,7 @@ val a = 1                 // неизменяемая переменная
 Вам также рекомендуется использовать неизменяемые классы коллекций, такие как `List` и `Map`:
 
 {% tabs list-map %}
-{% tab 'Scala 2 and 3' for=list-map %}
+{% tab 'Scala 2 и 3' for=list-map %}
 ```scala
 val b = List(1,2,3)       // List неизменяем
 val c = Map(1 -> "one")   // Map неизменяема
@@ -331,7 +331,7 @@ val c = Map(1 -> "one")   // Map неизменяема
 Case классы в первую очередь предназначены для использования в [моделировании предметной области]({% link _overviews/scala3-book/domain-modeling-intro.md %}), и их параметры также неизменяемы:
 
 {% tabs case-class %}
-{% tab 'Scala 2 and 3' for=case-class %}
+{% tab 'Scala 2 и 3' for=case-class %}
 ```scala
 case class Person(name: String)
 val p = Person("Michael Scott")
@@ -345,7 +345,7 @@ p.name = "Joe"   // compiler error (переназначение val name)
 и вы можете передавать в них методы (не показаны) и анонимные функции:
 
 {% tabs higher-order %}
-{% tab 'Scala 2 and 3' for=higher-order %}
+{% tab 'Scala 2 и 3' for=higher-order %}
 ```scala
 a.dropWhile(_ < 25)
 a.filter(_ < 25)
@@ -444,7 +444,7 @@ _Безопасность_ связана с несколькими новыми
 добавленные в Scala 3 довольно удобочитаемым образом:
 
 {% tabs extension %}
-{% tab 'Scala 3 Only' for=extension %}
+{% tab 'Только в Scala 3' for=extension %}
 ```scala
 // перечисления
 enum Color:

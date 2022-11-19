@@ -109,7 +109,7 @@ Hello, World!
 Чтобы использовать этот метод, вам нужно сначала его импортировать, например:
 
 {% tabs import-readline %}
-{% tab 'Scala 2 and 3' for=import-readline %}
+{% tab 'Scala 2 и 3' for=import-readline %}
 ```scala
 import scala.io.StdIn.readLine
 ```
@@ -190,7 +190,7 @@ Hello, Alvin Alexander!
 если вы не используете подобное предложение `import`:
 
 {% tabs import-readline-2 %}
-{% tab 'Scala 2 and 3' for=import-readline-2 %}
+{% tab 'Scala 2 и 3' for=import-readline-2 %}
 ```scala
 import scala.io.StdIn.readLine
 ```

@@ -27,7 +27,7 @@ Scala обладает большинством возможностей, кот
 
 
 {% tabs function_1 %}
-{% tab 'Scala 2 and 3' for=function_1 %}
+{% tab 'Scala 2 и 3' for=function_1 %}
 ```scala
 val a = List(1, 2, 3).map(i => i * 2)   // List(2,4,6)
 val b = List(1, 2, 3).map(_ * 2)        // List(2,4,6)
@@ -39,7 +39,7 @@ val b = List(1, 2, 3).map(_ * 2)        // List(2,4,6)
 
 
 {% tabs function_2 %}
-{% tab 'Scala 2 and 3' for=function_2 %}
+{% tab 'Scala 2 и 3' for=function_2 %}
 ```scala
 def double(i: Int): Int = i * 2
 
@@ -69,7 +69,7 @@ val b = List(1, 2, 3).map(double)           // List(2,4,6)
 
 
 {% tabs function_3 %}
-{% tab 'Scala 2 and 3' for=function_3 %}
+{% tab 'Scala 2 и 3' for=function_3 %}
 ```scala
 // пример списка
 val nums = (1 to 10).toList   // List(1,2,3,4,5,6,7,8,9,10)

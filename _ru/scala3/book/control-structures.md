@@ -403,7 +403,7 @@ do
 Например, если задана такая `Map` с аббревиатурами штатов и их полными названиями:
 
 {% tabs map %}
-{% tab 'Scala 2 and 3' for=map %}
+{% tab 'Scala 2 и 3' for=map %}
 ```scala
 val states = Map(
   "AK" -> "Alaska",
@@ -504,7 +504,7 @@ val list =
 что показанное выражение `for` эквивалентно вызову метода `map`:
 
 {% tabs map-call %}
-{% tab 'Scala 2 and 3' for=map-call %}
+{% tab 'Scala 2 и 3' for=map-call %}
 ```scala
 val list = (10 to 12).map(i => i * 2)
 ```
@@ -864,7 +864,7 @@ def isTruthy(a: Matchable) = a match
 Примеры ниже показывают, как работает этот метод:
 
 {% tabs is-truthy-call %}
-{% tab 'Scala 2 and 3' for=is-truthy-call %}
+{% tab 'Scala 2 и 3' for=is-truthy-call %}
 ```scala
 isTruthy(0)      // false
 isTruthy(false)  // false

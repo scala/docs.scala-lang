@@ -23,7 +23,7 @@ next-page: taste-contextual-abstractions
 В этих примерах показаны различные способы создания заполненного `List`:
 
 {% tabs collection_1 %}
-{% tab 'Scala 2 and 3' for=collection_1 %}
+{% tab 'Scala 2 и 3' for=collection_1 %}
 
 ```scala
 val a = List(1, 2, 3)           // a: List[Int] = List(1, 2, 3)
@@ -48,7 +48,7 @@ val g = List.range(1, 10, 3)    // g: List[Int] = List(1, 4, 7)
 Результат, возвращаемый каждым выражением, отображается в комментарии к каждой строке:
 
 {% tabs collection_2 %}
-{% tab 'Scala 2 and 3' for=collection_2 %}
+{% tab 'Scala 2 и 3' for=collection_2 %}
 
 ```scala
 // a sample list
@@ -79,7 +79,7 @@ nums.flatMap(_.toUpperCase)           // List('O', 'N', 'E', 'T', 'W', 'O')
 для суммирования значений в последовательности целых чисел:
 
 {% tabs collection_3 %}
-{% tab 'Scala 2 and 3' for=collection_3 %}
+{% tab 'Scala 2 и 3' for=collection_3 %}
 
 ```scala
 val firstTen = (1 to 10).toList            // List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
@@ -100,7 +100,7 @@ firstTen.foldLeft(100)(_ + _)              // 155 (100 является “на�
 Например, используя данный case класс `Person`:
 
 {% tabs collection_4 %}
-{% tab 'Scala 2 and 3' for=collection_4 %}
+{% tab 'Scala 2 и 3' for=collection_4 %}
 
 ```scala
 case class Person(name: String)
@@ -112,7 +112,7 @@ case class Person(name: String)
 Вот как вы создаете кортеж, который содержит `Int`, `String` и пользовательское значение `Person`:
 
 {% tabs collection_5 %}
-{% tab 'Scala 2 and 3' for=collection_5 %}
+{% tab 'Scala 2 и 3' for=collection_5 %}
 
 ```scala
 val t = (11, "eleven", Person("Eleven"))
@@ -125,7 +125,7 @@ val t = (11, "eleven", Person("Eleven"))
 или получить к ним доступ по номеру:
 
 {% tabs collection_6 %}
-{% tab 'Scala 2 and 3' for=collection_6 %}
+{% tab 'Scala 2 и 3' for=collection_6 %}
 
 ```scala
 t(0)   // 11
@@ -139,7 +139,7 @@ t(2)   // Person("Eleven")
 Вы также можете использовать этот метод _извлечения_, чтобы присвоить поля кортежа именам переменных:
 
 {% tabs collection_7 %}
-{% tab 'Scala 2 and 3' for=collection_7 %}
+{% tab 'Scala 2 и 3' for=collection_7 %}
 
 ```scala
 val (num, str, person) = t

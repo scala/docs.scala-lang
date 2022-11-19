@@ -53,7 +53,7 @@ object StringUtils:
 Поскольку `StringUtils` - это "одиночка", его методы можно вызывать непосредственно для объекта:
 
 {% tabs object_2 %}
-{% tab 'Scala 2 and 3' for=object_2 %}
+{% tab 'Scala 2 и 3' for=object_2 %}
 ```scala
 val x = StringUtils.isNullOrEmpty("")    // true
 val x = StringUtils.isNullOrEmpty("a")   // false

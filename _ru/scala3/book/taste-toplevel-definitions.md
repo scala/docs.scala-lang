@@ -17,7 +17,7 @@ next-page: taste-summary
 Например, вы можете создать файл с именем _MyCoolApp.scala_ и поместить в него следующее содержимое:
 
 {% tabs toplevel_1 %}
-{% tab 'Scala 3 only' for=toplevel_1 %}
+{% tab 'Только в Scala 3' for=toplevel_1 %}
 ```scala
 import scala.collection.mutable.ArrayBuffer
 
@@ -57,7 +57,7 @@ type Money = BigDecimal
 как в этом примере:
 
 {% tabs toplevel_2 %}
-{% tab 'Scala 3 only' for=toplevel_2 %}
+{% tab 'Только в Scala 3' for=toplevel_2 %}
 ```scala
 package foo {
   def double(i: Int) = i * 2
