@@ -62,6 +62,8 @@ Let's have a look at how this works in a small example.
 
 Given the following source code written in a Scala 2 style.
 
+{% tabs scala-2-location %}
+{% tab 'Scala 2 Only' %}
 ```scala
 case class State(n: Int, minValue: Int, maxValue: Int) {
   
@@ -80,6 +82,8 @@ case class State(n: Int, minValue: Int, maxValue: Int) {
   }
 }
 ```
+{% endtab %}
+{% endtabs %}
 
 We will be able to move it to new syntax automatically in two steps: first by using the new control structure rewrite (`-new-syntax -rewrite`) and then the significant indentation rewrite (`-indent -rewrite`).
 
@@ -92,13 +96,19 @@ We will be able to move it to new syntax automatically in two steps: first by us
 
 We can use the `-new-syntax -rewrite` options by adding them to the list of scalac options in our build tool.
 
+{% tabs scala-3-location_1 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 // build.sbt
 scalacOptions ++= Seq("-new-syntax", "-rewrite")
 ```
+{% endtab %}
+{% endtabs %}
 
 After compiling the code, the result looks as follows:
 
+{% tabs scala-3-location_2 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 case class State(n: Int, minValue: Int, maxValue: Int) {
   
@@ -117,6 +127,8 @@ case class State(n: Int, minValue: Int, maxValue: Int) {
   }
 }
 ```
+{% endtab %}
+{% endtabs %}
 
 Notice that the parentheses around the `n == maxValue` disappeared, as well as the braces around the `i <- minValue to maxValue` and `j <- 0 to n` generators.
 
@@ -126,6 +138,8 @@ After this first rewrite, we can use the significant indentation syntax to remov
 To do that we use the `-indent` option in combination with the `-rewrite` option.
 It leads us to the following version:
 
+{% tabs scala-3-location_2 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 case class State(n: Int, minValue: Int, maxValue: Int):
   
@@ -142,6 +156,8 @@ case class State(n: Int, minValue: Int, maxValue: Int):
       j <- 0 to n
     do println(i + j)
 ```
+{% endtab %}
+{% endtabs %}
 
 ## Moving back to the Classic syntax
 
@@ -150,6 +166,8 @@ Starting from the latest state of our code sample, we can move backwards to its 
 Let's rewrite the code using braces while retaining the new control structures.
 After compiling with the `-no-indent -rewrite` options, we obtain the following result:
 
+{% tabs scala-3-location_3 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 case class State(n: Int, minValue: Int, maxValue: Int) {
   
@@ -169,9 +187,13 @@ case class State(n: Int, minValue: Int, maxValue: Int) {
   }
 }
 ```
+{% endtab %}
+{% endtabs %}
 
 Applying one more rewrite, with `-old-syntax -rewrite`, takes us back to the original Scala 2-style code.
 
+{% tabs shared-location %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 case class State(n: Int, minValue: Int, maxValue: Int) {
   
@@ -191,6 +213,8 @@ case class State(n: Int, minValue: Int, maxValue: Int) {
   }
 }
 ```
+{% endtab %}
+{% endtabs %}
 
 With this last rewrite, we have come full circle.
 
