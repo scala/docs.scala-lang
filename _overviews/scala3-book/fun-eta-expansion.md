@@ -11,7 +11,7 @@ next-page: fun-hofs
 
 When you look at the Scaladoc for the `map` method on Scala collections classes, you see that it’s defined to accept a _function_:
 
-{% tabs for=fun_1 %}
+{% tabs fun_1 %}
 {% tab 'Scala 2 and 3' for=fun_1 %}
 
 ```scala
@@ -25,7 +25,7 @@ def map[B](f: (A) => B): List[B]
 Indeed, the Scaladoc clearly states, “`f` is the _function_ to apply to each element.”
 But despite that, somehow you can pass a _method_ into `map`, and it still works:
 
-{% tabs for=fun_2 %}
+{% tabs fun_2 %}
 {% tab 'Scala 2 and 3' for=fun_2 %}
 
 ```scala
@@ -55,7 +55,7 @@ Unlike methods, _functions_ are complete objects themselves, making them first-c
 Their syntax is also different.
 This example shows how to define a method and a function that perform the same task, determining if the given integer is even:
 
-{% tabs for=fun_3 %}
+{% tabs fun_3 %}
 {% tab 'Scala 2 and 3' for=fun_3 %}
 
 ```scala
@@ -68,7 +68,7 @@ val isEvenFunction = (i: Int) => i % 2 == 0   // a function
 
 The function truly is an object, so you can use it just like any other variable, such as putting it in a list:
 
-{% tabs for=fun_4 %}
+{% tabs fun_4 %}
 {% tab 'Scala 2 and 3' for=fun_4 %}
 
 ```scala
@@ -78,7 +78,7 @@ val functions = List(isEvenFunction)
 {% endtab %}
 {% endtabs %}
 
-{% tabs for=fun_5 class=tabs-scala-version %}
+{% tabs fun_5 class=tabs-scala-version %}
 {% tab 'Scala 2' for=fun_5 %}
 
 ```scala
