@@ -11,8 +11,8 @@ next-page: fun-hofs
 
 When you look at the Scaladoc for the `map` method on Scala collections classes, you see that it’s defined to accept a _function_:
 
-{% tabs for=fun1 %}
-{% tab 'Scala 2 and 3' for=fun1 %}
+{% tabs for=fun_1 %}
+{% tab 'Scala 2 and 3' for=fun_1 %}
 
 ```scala
 def map[B](f: (A) => B): List[B]
@@ -25,8 +25,8 @@ def map[B](f: (A) => B): List[B]
 Indeed, the Scaladoc clearly states, “`f` is the _function_ to apply to each element.”
 But despite that, somehow you can pass a _method_ into `map`, and it still works:
 
-{% tabs for=fun2 %}
-{% tab 'Scala 2 and 3' for=fun2 %}
+{% tabs for=fun_2 %}
+{% tab 'Scala 2 and 3' for=fun_2 %}
 
 ```scala
 def times10(i: Int) = i * 10   // a method
@@ -55,8 +55,8 @@ Unlike methods, _functions_ are complete objects themselves, making them first-c
 Their syntax is also different.
 This example shows how to define a method and a function that perform the same task, determining if the given integer is even:
 
-{% tabs for=fun3 %}
-{% tab 'Scala 2 and 3' for=fun3 %}
+{% tabs for=fun_3 %}
+{% tab 'Scala 2 and 3' for=fun_3 %}
 
 ```scala
 def isEvenMethod(i: Int) = i % 2 == 0         // a method
@@ -68,8 +68,8 @@ val isEvenFunction = (i: Int) => i % 2 == 0   // a function
 
 The function truly is an object, so you can use it just like any other variable, such as putting it in a list:
 
-{% tabs for=fun4 %}
-{% tab 'Scala 2 and 3' for=fun4 %}
+{% tabs for=fun_4 %}
+{% tab 'Scala 2 and 3' for=fun_4 %}
 
 ```scala
 val functions = List(isEvenFunction)
@@ -78,8 +78,8 @@ val functions = List(isEvenFunction)
 {% endtab %}
 {% endtabs %}
 
-{% tabs for=fun5 class=tabs-scala-version %}
-{% tab 'Scala 2' for=fun5 %}
+{% tabs for=fun_5 class=tabs-scala-version %}
+{% tab 'Scala 2' for=fun_5 %}
 
 ```scala
 // this example shows the Scala 2 error message
@@ -94,7 +94,7 @@ Conversely, a method technically isn’t an object, so in Scala 2 you couldn’t
 
 {% endtab %}
 
-{% tab 'Scala 3' for=fun5 %}
+{% tab 'Scala 3' for=fun_5 %}
 
 ```scala
 val functions = List(isEvenFunction)   // works
