@@ -294,7 +294,7 @@ Note: Polymorphic functions always take term parameters (but `k` can equal zero 
 
 3. the application of `m` is type-checked with expected type `R'`
 * 1. If it succeeds, the above is the created tree.
-* 2. If it fails, go to [Default](#Default).
+* 2. If it fails, go to Default.
 
 At 3.ii. if the cause of the error is such that [Non-polymorphic expected type](#non-polymorphic-expected-type) will never succeed, we might return that error directly, this is at the discretion of the implementation, to make errors as clear as possible.
 
