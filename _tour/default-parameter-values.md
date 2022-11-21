@@ -75,8 +75,8 @@ An important reason why is to avoid the ambiguity that can be caused due to the 
 {% tab 'Scala 2 and 3' for=default-parameter-values-5 %}
 ```scala mdoc:fail
 object A {
-  def func(x: Int = 34): Unit = ...
-  def func(y: String = "abc"): Unit = ...
+  def func(x: Int = 34): Unit
+  def func(y: String = "abc"): Unit
 }
 ```
 {% endtab %}
