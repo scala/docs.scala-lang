@@ -47,7 +47,7 @@ next-page: control-structures
 такие как следующий метод, для той же цели используется `Unit`:
 
 {% tabs unit %}
-{% tab 'Scala 2 and 3' for=unit %}
+{% tab 'Scala 2 и 3' for=unit %}
 ```scala
 def printIt(a: Any): Unit = println(a)
 ```
@@ -58,7 +58,7 @@ def printIt(a: Any): Unit = println(a)
 и могут обрабатываться так же, как и любой другой объект:
 
 {% tabs any %}
-{% tab 'Scala 2 and 3' for=any %}
+{% tab 'Scala 2 и 3' for=any %}
 ```scala
 val list: List[Any] = List(
   "a string",
@@ -93,7 +93,7 @@ true
 В этих примерах показано, как объявлять переменные этих числовых типов:
 
 {% tabs anyval %}
-{% tab 'Scala 2 and 3' for=anyval %}
+{% tab 'Scala 2 и 3' for=anyval %}
 ```scala
 val b: Byte = 1
 val i: Int = 1
@@ -113,7 +113,7 @@ val f: Float = 3.0
 Поскольку `Int` и `Double` являются числовыми типами по умолчанию, их можно создавать без явного объявления типа данных:
 
 {% tabs anynum %}
-{% tab 'Scala 2 and 3' for=anynum %}
+{% tab 'Scala 2 и 3' for=anynum %}
 ```scala
 val i = 123   // по умолчанию Int
 val x = 1.0   // по умолчанию Double
@@ -125,7 +125,7 @@ val x = 1.0   // по умолчанию Double
 для того, чтобы задать `Long`, `Double` или `Float` значения:
 
 {% tabs type-post %}
-{% tab 'Scala 2 and 3' for=type-post %}
+{% tab 'Scala 2 и 3' for=type-post %}
 ```scala
 val x = 1_000L   // val x: Long = 1000
 val y = 2.2D     // val y: Double = 2.2
@@ -137,7 +137,7 @@ val z = 3.3F     // val z: Float = 3.3
 В Scala также есть типы `String` и `Char`, которые обычно можно объявить в неявной форме:
 
 {% tabs type-string %}
-{% tab 'Scala 2 and 3' for=type-string %}
+{% tab 'Scala 2 и 3' for=type-string %}
 ```scala
 val s = "Bill"
 val c = 'a'
@@ -168,7 +168,7 @@ val c = 'a'
 Для действительно больших чисел можно использовать типы `BigInt` и `BigDecimal`:
 
 {% tabs type-bigint %}
-{% tab 'Scala 2 and 3' for=type-bigint %}
+{% tab 'Scala 2 и 3' for=type-bigint %}
 ```scala
 val a = BigInt(1_234_567_890_987_654_321L)
 val b = BigDecimal(123_456.789)
@@ -182,7 +182,7 @@ val b = BigDecimal(123_456.789)
 `BigInt` и `BigDecimal` поддерживают все привычные числовые операторы:
 
 {% tabs type-bigint2 %}
-{% tab 'Scala 2 and 3' for=type-bigint2 %}
+{% tab 'Scala 2 и 3' for=type-bigint2 %}
 ```scala
 val b = BigInt(1234567890)   // scala.math.BigInt = 1234567890
 val c = b + b                // scala.math.BigInt = 2469135780
@@ -204,7 +204,7 @@ val d = b * b                // scala.math.BigInt = 1524157875019052100
 Например, учитывая эти три переменные:
 
 {% tabs string-inside1 %}
-{% tab 'Scala 2 and 3' for=string-inside1 %}
+{% tab 'Scala 2 и 3' for=string-inside1 %}
 ```scala
 val firstName = "John"
 val mi = 'C'
@@ -216,7 +216,7 @@ val lastName = "Doe"
 их комбинацию можно получить так:
 
 {% tabs string-inside2 %}
-{% tab 'Scala 2 and 3' for=string-inside2 %}
+{% tab 'Scala 2 и 3' for=string-inside2 %}
 ```scala
 println(s"Name: $firstName $mi $lastName")   // "Name: John C Doe"
 ```
@@ -228,7 +228,7 @@ println(s"Name: $firstName $mi $lastName")   // "Name: John C Doe"
 Чтобы вставить произвольные выражения в строку, они заключаются в фигурные скобки:
 
 {% tabs string-inside3 %}
-{% tab 'Scala 2 and 3' for=string-inside3 %}
+{% tab 'Scala 2 и 3' for=string-inside3 %}
 ```scala
 println(s"2 + 2 = ${2 + 2}")   // печатает "2 + 2 = 4"
 val x = -1
@@ -249,7 +249,7 @@ println(s"x.abs = ${x.abs}")   // печатает "x.abs = 1"
 Многострочные строки создаются путем включения строки в три двойные кавычки:
 
 {% tabs string-mlines1 %}
-{% tab 'Scala 2 and 3' for=string-mlines1 %}
+{% tab 'Scala 2 и 3' for=string-mlines1 %}
 ```scala
 val quote = """The essence of Scala:
                Fusion of functional and object-oriented
@@ -261,7 +261,7 @@ val quote = """The essence of Scala:
 Одним из недостатков базового подхода является то, что строки после первой имеют отступ.
 
 {% tabs string-mlines2 %}
-{% tab 'Scala 2 and 3' for=string-mlines2 %}
+{% tab 'Scala 2 и 3' for=string-mlines2 %}
 ```scala
 "The essence of Scala:
                Fusion of functional and object-oriented
@@ -273,7 +273,7 @@ val quote = """The essence of Scala:
 Если важно исключить отступ, можно поставить символ `|` перед всеми строками после первой и вызвать метод `stripMargin` после строки:
 
 {% tabs string-mlines3 %}
-{% tab 'Scala 2 and 3' for=string-mlines3 %}
+{% tab 'Scala 2 и 3' for=string-mlines3 %}
 ```scala
 val quote = """The essence of Scala:
                |Fusion of functional and object-oriented
@@ -285,7 +285,7 @@ val quote = """The essence of Scala:
 Теперь все строки выравниваются по левому краю:
 
 {% tabs string-mlines4 %}
-{% tab 'Scala 2 and 3' for=string-mlines4 %}
+{% tab 'Scala 2 и 3' for=string-mlines4 %}
 ```scala
 "The essence of Scala:
 Fusion of functional and object-oriented
@@ -303,7 +303,7 @@ programming in a typed setting."
 Например:
 
 {% tabs cast1 %}
-{% tab 'Scala 2 and 3' for=cast1 %}
+{% tab 'Scala 2 и 3' for=cast1 %}
 ```scala
 val b: Byte = 127
 val i: Int = b  // 127
@@ -318,7 +318,7 @@ val number: Int = face  // 9786
 В противном случае вам нужно четко указать приведение типов:
 
 {% tabs cast2 %}
-{% tab 'Scala 2 and 3' for=cast2 %}
+{% tab 'Scala 2 и 3' for=cast2 %}
 ```scala
 val x: Long = 987654321
 val y: Float = x.toFloat  // 9.8765434E8 (обратите внимание, что требуется `.toFloat`, потому что приведение приводит к потере точности)
