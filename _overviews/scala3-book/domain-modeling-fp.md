@@ -2,7 +2,7 @@
 title: FP Modeling
 type: section
 description: This chapter provides an introduction to FP domain modeling with Scala 3.
-languages: [zh-cn]
+languages: [ru, zh-cn]
 num: 22
 previous-page: domain-modeling-oop
 next-page: methods-intro
