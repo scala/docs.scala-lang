@@ -96,10 +96,10 @@ We will be able to move it to new syntax automatically in two steps: first by us
 
 We can use the `-new-syntax -rewrite` options by adding them to the list of scalac options in our build tool.
 
-{% tabs scala-3-location_1 %}
-{% tab 'Scala 3 Only' %}
+{% tabs sbt-location %}
+{% tab 'sbt' %}
 ```scala
-// build.sbt
+// build.sbt, for Scala 3 project
 scalacOptions ++= Seq("-new-syntax", "-rewrite")
 ```
 {% endtab %}
@@ -138,7 +138,7 @@ After this first rewrite, we can use the significant indentation syntax to remov
 To do that we use the `-indent` option in combination with the `-rewrite` option.
 It leads us to the following version:
 
-{% tabs scala-3-location_2 %}
+{% tabs scala-3-location_3 %}
 {% tab 'Scala 3 Only' %}
 ```scala
 case class State(n: Int, minValue: Int, maxValue: Int):
@@ -166,7 +166,7 @@ Starting from the latest state of our code sample, we can move backwards to its 
 Let's rewrite the code using braces while retaining the new control structures.
 After compiling with the `-no-indent -rewrite` options, we obtain the following result:
 
-{% tabs scala-3-location_3 %}
+{% tabs scala-3-location_4 %}
 {% tab 'Scala 3 Only' %}
 ```scala
 case class State(n: Int, minValue: Int, maxValue: Int) {
