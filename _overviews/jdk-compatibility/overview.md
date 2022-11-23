@@ -17,7 +17,7 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 | 18          | 3.1.3, 2.13.7, 2.12.15                                       |
 | 17 (LTS)    | 3.0.0, 2.13.6, 2.12.15                                       |
 | 11 (LTS)    | 3.0.0, 2.13.0, 2.12.4, 2.11.12                               |
-| 8           | 3.0.0, 2.13.0, 2.12.0, 2.11.0                                |
+| 8 (LTS)     | 3.0.0, 2.13.0, 2.12.0, 2.11.0                                |
 
 **Using latest patch version is always recommended**
 
