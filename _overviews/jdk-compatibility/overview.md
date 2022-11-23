@@ -12,7 +12,7 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 
 | JDK version | Minimum Scala versions                                       |
 |:-----------:|:-------------------------------------------------------------|
-| 20 (ea)     | 3.2.2 (forthcoming), 2.13.11 (forthcoming), 2.12.18 (forthcoming) |
+| 20 (ea)     | 3.3.0 (forthcoming), 2.13.11 (forthcoming), 2.12.18 (forthcoming) |
 | 19          | 3.2.0, 2.13.9, 2.12.16                                       |
 | 18          | 3.1.3, 2.13.7, 2.12.15                                       |
 | 17 (LTS)    | 3.0.0, 2.13.6, 2.12.15                                       |
@@ -98,7 +98,7 @@ Early access builds of JDK 20, a non-LTS release, are already available.
 
 Initial support for JDK 20 has been merged and is already available in
 nightly builds of Scala 2.12, 2.13, and 3.  (The support will be
-included in forthcoming Scala releases: 2.12.18, 2.13.11, and 3.2.2.)
+included in forthcoming Scala releases: 2.12.18, 2.13.11, and 3.3.0.)
 
 ## GraalVM Native Image compatibility notes
 
