@@ -19,7 +19,7 @@ next-page: taste-functions
 Синтаксис простого метода выглядит так:
 
 {% tabs method_1 %}
-{% tab 'Scala 2 and 3' for=method_1 %}
+{% tab 'Scala 2 и 3' for=method_1 %}
 ```scala
 def methodName(param1: Type1, param2: Type2): ReturnType =
   // тело метода
@@ -31,7 +31,7 @@ def methodName(param1: Type1, param2: Type2): ReturnType =
 Вот несколько примеров:
 
 {% tabs method_2 %}
-{% tab 'Scala 2 and 3' for=method_2 %}
+{% tab 'Scala 2 и 3' for=method_2 %}
 ```scala
 def sum(a: Int, b: Int): Int = a + b
 def concatenate(s1: String, s2: String): String = s1 + s2
@@ -42,7 +42,7 @@ def concatenate(s1: String, s2: String): String = s1 + s2
 Вам не нужно объявлять возвращаемый тип метода, поэтому можно написать эти методы следующим образом, если хотите:
 
 {% tabs method_3 %}
-{% tab 'Scala 2 and 3' for=method_3 %}
+{% tab 'Scala 2 и 3' for=method_3 %}
 ```scala
 def sum(a: Int, b: Int) = a + b
 def concatenate(s1: String, s2: String) = s1 + s2
@@ -53,7 +53,7 @@ def concatenate(s1: String, s2: String) = s1 + s2
 Вот как эти методы вызываются:
 
 {% tabs method_4 %}
-{% tab 'Scala 2 and 3' for=method_4 %}
+{% tab 'Scala 2 и 3' for=method_4 %}
 ```scala
 val x = sum(1, 2)
 val y = concatenate("foo", "bar")
@@ -88,7 +88,7 @@ def getStackTraceAsString(t: Throwable): String =
 В этом примере параметр `timeout` имеет значение по умолчанию `5000`:
 
 {% tabs method_6 %}
-{% tab 'Scala 2 and 3' for=method_6 %}
+{% tab 'Scala 2 и 3' for=method_6 %}
 ```scala
 def makeConnection(url: String, timeout: Int = 5000): Unit =
   println(s"url=$url, timeout=$timeout")
@@ -99,7 +99,7 @@ def makeConnection(url: String, timeout: Int = 5000): Unit =
 Поскольку в объявлении метода указано значение по умолчанию для `timeout`, метод можно вызывать двумя способами:
 
 {% tabs method_7 %}
-{% tab 'Scala 2 and 3' for=method_7 %}
+{% tab 'Scala 2 и 3' for=method_7 %}
 ```scala
 makeConnection("https://localhost")         // url=http://localhost, timeout=5000
 makeConnection("https://localhost", 2500)   // url=http://localhost, timeout=2500
@@ -111,7 +111,7 @@ Scala также поддерживает использование _имено
 поэтому вы можете вызвать этот метод, если хотите, вот так:
 
 {% tabs method_8 %}
-{% tab 'Scala 2 and 3' for=method_8 %}
+{% tab 'Scala 2 и 3' for=method_8 %}
 ```scala
 makeConnection(
   url = "https://localhost",
@@ -126,7 +126,7 @@ makeConnection(
 какие параметры установлены в `true` или `false`:
 
 {% tabs method_9 %}
-{% tab 'Scala 2 and 3' for=method_9 %}
+{% tab 'Scala 2 и 3' for=method_9 %}
 
 ```scala
 engage(true, true, true, false)
@@ -145,7 +145,7 @@ engage(true, true, true, false)
 но, опуская эту деталь, примеры показывают, как работают методы расширения:
 
 {% tabs extension %}
-{% tab 'Scala 3 Only' %}
+{% tab 'Только в Scala 3' %}
 
 ```scala
 extension (s: String)

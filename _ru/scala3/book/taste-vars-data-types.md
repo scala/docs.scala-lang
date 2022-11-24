@@ -41,7 +41,7 @@ next-page: taste-control-structures
 Эти примеры показывают, как создавать `val` и `var` переменные:
 
 {% tabs var-express-1 %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
 
 ```scala
 // неизменяемая
@@ -57,7 +57,7 @@ var b = 1
 Появится ошибка компилятора, если попытаться её изменить:
 
 {% tabs var-express-2 %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
 
 ```scala
 val msg = "Hello, world"
@@ -69,7 +69,7 @@ msg = "Aloha"   // ошибка "reassignment to val"; этот код не ск
 И наоборот, `var` можно переназначить:
 
 {% tabs var-express-3 %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
 
 ```scala
 var msg = "Hello, world"
@@ -83,7 +83,7 @@ msg = "Aloha"   // этот код скомпилируется, потому ч
 Когда вы создаете переменную, то можете явно объявить ее тип или позволить компилятору его вывести:
 
 {% tabs var-express-4 %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
 
 ```scala
 val x: Int = 1   // явно
@@ -96,7 +96,7 @@ val x = 1        // неявно; компилятор выводит тип
 Компилятор Scala обычно может определить тип данных за вас, как показано в выводе этих примеров REPL:
 
 {% tabs var-express-5 %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
 
 ```scala
 scala> val x = 1
@@ -115,7 +115,7 @@ val nums: List[Int] = List(1, 2, 3)
 но в простых присваиваниях, подобных нижеследующим, в этом нет необходимости:
 
 {% tabs var-express-6 %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
 
 ```scala
 val x: Int = 1
@@ -136,7 +136,7 @@ Scala поставляется со стандартными числовыми 
 Эти примеры показывают, как объявлять переменные числовых типов:
 
 {% tabs var-express-7 %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
 
 ```scala
 val b: Byte = 1
@@ -152,7 +152,7 @@ val f: Float = 3.0
 Поскольку `Int` и `Double` являются числовыми типами по умолчанию, то обычно они создаются без явного объявления типа:
 
 {% tabs var-express-8 %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
 
 ```scala
 val i = 123   // по умолчанию Int
@@ -165,7 +165,7 @@ val j = 1.0   // по умолчанию Double
 чтобы указать, что они являются `Long`, `Double` или `Float` значениями:
 
 {% tabs var-express-9 %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
 
 ```scala
 val x = 1_000L   // val x: Long = 1000
@@ -178,7 +178,7 @@ val z = 3.3F     // val z: Float = 3.3
 Когда вам нужны действительно большие числа, используйте типы `BigInt` и `BigDecimal`:
 
 {% tabs var-express-10 %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
 
 ```scala
 var a = BigInt(1_234_567_890_987_654_321L)
@@ -192,7 +192,7 @@ var b = BigDecimal(123_456.789)
 В Scala также есть типы данных `String` и `Char`:
 
 {% tabs var-express-11 %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
 
 ```scala
 val name = "Bill"   // String
@@ -214,7 +214,7 @@ val c = 'a'         // Char
 Например, учитывая эти три переменные:
 
 {% tabs var-express-12 %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
 
 ```scala
 val firstName = "John"
@@ -227,7 +227,7 @@ val lastName = "Doe"
 Вы можете объединить эти переменные в строку следующим образом:
 
 {% tabs var-express-13 %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
 
 ```scala
 println(s"Name: $firstName $mi $lastName")   // "Name: John C Doe"
@@ -240,7 +240,7 @@ println(s"Name: $firstName $mi $lastName")   // "Name: John C Doe"
 Чтобы вставить произвольные выражения в строку, заключите их в фигурные скобки:
 
 {% tabs var-express-14 %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
 
 ``` scala
 println(s"2 + 2 = ${2 + 2}")   // prints "2 + 2 = 4"
@@ -261,7 +261,7 @@ println(s"x.abs = ${x.abs}")   // prints "x.abs = 1"
 Многострочные строки создаются путем включения строки в три двойные кавычки:
 
 {% tabs var-express-15 %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
 
 ```scala
 val quote = """The essence of Scala:
