@@ -62,3 +62,28 @@ public class Main {
 ```
 {% endtab %}
 {% endtabs %}
+
+### Default Parameters for Overloaded Methods
+
+Scala doesn't allow having two methods with default parameters and with the same name (overloaded).
+An important reason why is to avoid the ambiguity that can be caused due to the existence of default parameters. To illustrate the problem, let's consider the method declarations provided below:
+
+{% tabs default-parameter-values-5 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala mdoc:fail
+object A {
+  def func(x: Int = 34): Unit
+  def func(y: String = "abc"): Unit
+}
+```
+{% endtab %}
+{% tab 'Scala 3' %}
+```scala
+object A:
+  def func(x: Int = 34): Unit
+  def func(y: String = "abc"): Unit
+```
+{% endtab %}
+{% endtabs %}
+
+If we call `A.func()`, compiler cannot know whether the programmer intended to call `func(x: Int = 34)` or `func(y: String = "abc")`.
