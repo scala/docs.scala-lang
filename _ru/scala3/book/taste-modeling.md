@@ -388,7 +388,7 @@ enum Nat:
 Этот код демонстрирует несколько функций `case class`:
 
 {% tabs case-class %}
-{% tab 'Scala 2 and 3' for=case-class %}
+{% tab 'Scala 2 и 3' for=case-class %}
 
 ```scala
 // определение case class

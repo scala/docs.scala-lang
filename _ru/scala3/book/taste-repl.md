@@ -45,7 +45,7 @@ REPL — это интерпретатор командной строки, по
 Теперь можно вводить выражения Scala, чтобы увидеть, как они работают:
 
 {% tabs expression-one %}
-{% tab 'Scala 2 and 3' for=expression-one %}
+{% tab 'Scala 2 и 3' for=expression-one %}
 ````
 scala> 1 + 1
 val res0: Int = 2
@@ -61,7 +61,7 @@ REPL автоматически создает для вас переменны�
 Эти имена переменных можно использовать в последующих выражениях:
 
 {% tabs expression-two %}
-{% tab 'Scala 2 and 3' for=expression-two %}
+{% tab 'Scala 2 и 3' for=expression-two %}
 ````
 scala> val x = res0 * 10
 val x: Int = 20
@@ -75,7 +75,7 @@ val x: Int = 20
 В этом примере показано, как создать, а затем вызвать метод `sum`:
 
 {% tabs expression-three %}
-{% tab 'Scala 2 and 3' for=expression-three %}
+{% tab 'Scala 2 и 3' for=expression-three %}
 ````
 scala> def sum(a: Int, b: Int): Int = a + b
 def sum(a: Int, b: Int): Int

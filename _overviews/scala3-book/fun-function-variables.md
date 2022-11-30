@@ -1,8 +1,8 @@
 ---
 title: Function Variables
 type: section
-description: This page shows how to use anonymous functions in Scala, including examples with the List class 'map' and 'filter' functions.
-languages: [zh-cn]
+description: This page shows how to use function variables in Scala.
+languages: [ru, zh-cn]
 num: 29
 previous-page: fun-anonymous-functions
 next-page: fun-eta-expansion

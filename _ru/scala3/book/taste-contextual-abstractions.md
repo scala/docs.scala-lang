@@ -22,7 +22,7 @@ next-page: taste-toplevel-definitions
 название города, а затем название улицы.
 
 {% tabs contextual_1 %}
-{% tab 'Scala 2 and 3' for=contextual_1 %}
+{% tab 'Scala 2 и 3' for=contextual_1 %}
 
 ```scala
 val addresses: List[Address] = ...
