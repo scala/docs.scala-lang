@@ -408,7 +408,7 @@ Here’s an example of a “string utilities” object that contains a set of me
 ```scala
 object StringUtils {
   def truncate(s: String, length: Int): String = s.take(length)
-  def containsWhitespace(s: String): Boolean = s.object_1es(".*\\s.*")
+  def containsWhitespace(s: String): Boolean = s.matches(".*\\s.*")
   def isNullOrEmpty(s: String): Boolean = s == null || s.trim.isEmpty
 }
 ```
@@ -420,7 +420,7 @@ object StringUtils {
 ```scala
 object StringUtils:
   def truncate(s: String, length: Int): String = s.take(length)
-  def containsWhitespace(s: String): Boolean = s.object_1es(".*\\s.*")
+  def containsWhitespace(s: String): Boolean = s.matches(".*\\s.*")
   def isNullOrEmpty(s: String): Boolean = s == null || s.trim.isEmpty
 ```
 
