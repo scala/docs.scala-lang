@@ -272,7 +272,7 @@ class Greeter(prefix: String, suffix: String):
 
 The return type of the method `greet` is `Unit`, which signifies that there is nothing meaningful to return. It is used similarly to `void` in Java and C. (A difference is that, because every Scala expression must have some value, there is actually a singleton value of type Unit, written (). It carries no information.)
 
-You can make an instance of a class with the `new` keyword:
+In Scala 2 you can make an instance of a class with the `new` keyword. In Scala 3, however, the `new` keyword is not needed:
 
 {% tabs greeter-usage class=tabs-scala-version %}
 
