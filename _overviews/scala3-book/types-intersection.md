@@ -7,11 +7,15 @@ num: 50
 previous-page: types-generics
 next-page: types-union
 ---
-
+<span class="tag tag-inline">Scala 3 only</span>
 
 Used on types, the `&` operator creates a so called _intersection type_.
 The type `A & B` represents values that are **both** of the type `A` and of the type `B` at the same time.
 For instance, the following example uses the intersection type `Resettable & Growable[String]`:
+
+{% tabs intersection-reset-grow %}
+
+{% tab 'Scala 3 Only' %}
 
 ```scala
 trait Resettable:
@@ -24,6 +28,10 @@ def f(x: Resettable & Growable[String]): Unit =
   x.reset()
   x.add("first")
 ```
+
+{% endtab %}
+
+{% endtabs %}
 
 In the method `f` in this example, the parameter `x` is required to be *both* a `Resettable` and a `Growable[String]`.
 
