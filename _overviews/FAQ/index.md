@@ -177,18 +177,46 @@ according to the situation, it usually means _"anything"_.
 
 ### Why doesn't my function literal with `_` in it work?
 
-Not all function literals (aka lambdas) can be expressed with the `_`
-syntax.
+Not all function literals (aka lambdas) can be expressed with underscores or `_`,
+which is called placeholder syntax.
 
-Every occurrence of `_` introduces a new variable.  So `_ + _` means
-`(x, y) => x + y`, not `x => x + x`.  The latter function cannot be
-written using the `_` syntax.
+The underscore or `_` takes the place of a single parameter, which is used exactly once.
 
-Also, the scope of `_` is always the smallest enclosing expression.
-The scope is determined purely syntactically, during parsing, without
-regard to types. So for example, `foo(_ + 1)` always means `foo(x =>
-x + 1)`; it never means `x => foo(x + 1)`.  The latter function cannot
-be written using the `_` syntax.
+Every occurrence of `_` introduces a new parameter to the function.
+So `_ + _` means `(x, y) => x + y` and not `x => x + x`,
+which cannot be written using placeholder syntax.
+
+The scope of `_` is the smallest enclosing expression that is not just the underscore itself.
+The scope is determined by syntax, during parsing, and is not type-driven.
+For example, `xs.map(_ + 1)` desugars to `xs.map(x => x + 1)`; it does not mean `x => xs.map(x + 1)`.
+
+Conversely, `xs.map(_)` means `x => xs.map(x)`. The function is not expanded at the expression
+that is just the underscore by itself, but at the next enclosing expression.
+Note that it doesn't matter that the `map` method takes a function; the desugaring is a syntactic rewrite.
+The intended function can be written `xs.map(x => x)` or `xs.map(identity)`.
+
+The desugared function may typecheck differently, depending on the version of the compiler.
+Scala 3 will infer a type for the previous example: the argument to `map` is a function `Int => ?`,
+which may be taken as `Int => Any` without further ado.
+
+```
+scala 2.13.10> List(42).map(_)
+                            ^
+               error: missing parameter type for expanded function ((<x$1: error>) => List(42).map(x$1))
+
+scala 3.2.1> List(42).map(_)
+val res0: (Int => Any) => List[Any] = Lambda$1414/0x00000008014ac3e0@401b67a9
+```
+
+Using infix notation can enable placeholder syntax. For example,
+```
+scala 2.13.10> List(42).flatMap(x => List(x + 1))
+val res0: List[Int] = List(43)
+
+scala 2.13.10> List(42).flatMap(List apply _ + 1)
+val res1: List[Int] = List(43)
+```
+This syntax relies on the precedence of symbolic operators
 
 See also [SLS 6.23.2](https://scala-lang.org/files/archive/spec/2.13/06-expressions.html#placeholder-syntax-for-anonymous-functions).
 
