@@ -79,5 +79,5 @@ animals.append(dog)
 animals.append(cat)
 animals.foreach(pet => println(pet.name))  // Prints Harry Sally
 ```
-`trait Pet` が持つ抽象フィールド `name`は、Cat と Dog のコンストラクタで実装された。
+`trait Pet` が持つ抽象フィールド `name`は、Cat と Dog のコンストラクタで実装されています。
 最終行では、`Pet` トレイトの全てのサブタイプの中で実装される必要がある `pet.name` を呼んでいます。
