@@ -1,23 +1,23 @@
 Sttp is the library used to make requests of the Scala Toolkit.
 
-{% altDetails install-info-box 'Installing MUnit' %}
+{% altDetails install-info-box 'Installing sttp' %}
 
-## Installing MUnit
+## Installing sttp
 
-  {% tabs munit-unit-test-1 %}
+  {% tabs sttp-install-methods %}
     {% tab 'Scala CLI' %}
 In Scala CLI, we can install the entire toolkit in a single line:
 ```scala
 //> using toolkit
 ```
 
-Alternatively, we can install a specific version of MUnit:
+Alternatively, we can install a specific version of sttp:
 ```scala
 //> using lib "com.softwaremill.sttp.client3::core:3.8.5"
 ```
     {% endtab %}
     {% tab 'sbt' %}
-In our build.sbt file, we add the dependency to the MUnit library:
+In our build.sbt file, we add the dependency to the sttp library:
 ```scala
 lazy val example = project.in(file("example"))
   .settings(
