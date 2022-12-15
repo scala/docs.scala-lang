@@ -3,7 +3,7 @@ title: Scala for Python Developers
 type: chapter
 description: This page is for Python developers who are interested in learning about Scala 3.
 languages: [zh-cn]
-num: 75
+num: 74
 previous-page: scala-for-javascript-devs
 next-page: where-next
 ---
@@ -1339,6 +1339,6 @@ None of this manual process is necessary in Scala.
 [modeling-intro]: {% link _overviews/scala3-book/domain-modeling-intro.md %}
 [multiversal]: {% link _overviews/scala3-book/ca-multiversal-equality.md %}
 [toplevel]: {% link _overviews/scala3-book/taste-toplevel-definitions.md %}
-[type-classes]: {% link _overviews/scala3-book/types-type-classes.md %}
+[type-classes]: {% link _overviews/scala3-book/ca-type-classes.md %}
 [union-types]: {% link _overviews/scala3-book/types-union.md %}
 </div>

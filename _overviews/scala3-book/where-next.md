@@ -3,9 +3,9 @@ title: Where To Go Next
 type: chapter
 description: Where to go next after reading the Scala Book
 languages: [zh-cn]
-num: 76
+num: 75
 previous-page: scala-for-python-devs
-next-page:
+next-page: 
 ---
 
 We hope you enjoyed this introduction to the Scala programming language, and we also hope we were able to share some of the beauty of the language.
