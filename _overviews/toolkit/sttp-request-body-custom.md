@@ -4,10 +4,11 @@ type: section
 description: How to make an HTTP request with an object as a body with Scala Toolkit.
 num: 17
 previous-page: sttp-request-body
-next-page: 
+next-page: sttp-send-file
 ---
 
 {% include markdown.html path="_markdown/install-sttp.md" %}
+
 
 ## The case classes
 In scala, you can represent structures of data using case classes. You could, for example, have a `case class` representing a Person in your program:

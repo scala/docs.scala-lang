@@ -16,7 +16,7 @@ import sttp.client3.{SimpleHttpClient, UriContext, basicRequest}
 
 val client = SimpleHttpClient() // Create the instance of SimpleHttpClient
 val requestBody = "{'name': 'peter'}" // the body you want to pass
-val request = basicRequest.post(uri"https://example.com/").body(requestBody) // Construct get request to the service - https://people.com/list?filter=peter
+val request = basicRequest.post(uri"https://example.com/").body(requestBody) // Construct post request to the service - https://example.com/
 val response = client.send(request) // send the request and get the response
 println(response.body) // print the body of the response
 ```
