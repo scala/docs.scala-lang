@@ -18,7 +18,7 @@ case class Person(name: String, surname: String)
 It has two values inside of it, the `name` and `surname`. 
 
 ## Custom serializer
-If you wanted to send object of this type as body, you would need to specify a way to convert this object to a request body. `BodySerializer` comes in handy and allows you to do it once and use it implicitly afterwards.
+If you wanted to send an object of this type as body, you would need to specify a way to convert this object to a request body. `BodySerializer` comes in handy and allows you to do it once and use it implicitly afterwards.
 
 ```scala
 import sttp.client3._
@@ -27,7 +27,7 @@ given personSerializer: BodySerializer[Person] = { (p: Person) =>
     StringBody(serialized, "UTF-8")
 }
 ```
-This serializer converts a Person to its name and surname, separated by a comma. `given` keyword may appear strange at first, but it just says that this value may be used later transparently in your code by some methods that needs a `BodySerializer[Person]`. You don't need to think about it for too long, that's the only thing you need to do - as long as this value is available, you will be able to send the Person as a body in a request.
+This serializer converts a Person to its name and surname, separated by a comma. `given` keyword may appear strange at first, but it just says that this value may be used later transparently in your code by some functions that needs a `BodySerializer[Person]`. You don't need to think about it for too long, that's the only thing you need to do - as long as this value is available, you will be able to send the Person as a body in a request.
 
 ## Sending the Person as a body
 When you have the personSerializer specified, you can just pass the value to the `.body` method on `basicRequest`. The full code of the solution:
