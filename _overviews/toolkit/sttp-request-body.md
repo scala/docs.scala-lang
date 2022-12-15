@@ -4,7 +4,7 @@ type: section
 description: How to make an HTTP request with a body with Scala Toolkit.
 num: 16
 previous-page: sttp-request-parameters
-next-page: stt-request-body-custom
+next-page: sttp-request-body-custom
 ---
 
 {% include markdown.html path="_markdown/install-sttp.md" %}
