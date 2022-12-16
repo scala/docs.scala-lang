@@ -11,7 +11,8 @@ next-page:
 
 
 ## Making a request with a file
-You can use either `File` or `Path` from the java standard library to send the file in the request. See [operating on paths](https://docs.oracle.com/javase/tutorial/essential/io/pathOps.html) to learn how to use them. After you have a `File` or `Path`, you can just put them in the request's body with `.body` function on `basicRequest`:
+You can use either `File` or `Path` from the java standard library to send the file in the request. See [operating on paths](https://docs.oracle.com/javase/tutorial/essential/io/pathOps.html) to learn how to use them. 
+After you have a `File` or `Path`, you can just put them in the request's body with `.body` function on `basicRequest`:
 ```scala
 import sttp.client3.{SimpleHttpClient, UriContext, basicRequest}
 import java.nio.file.Path
