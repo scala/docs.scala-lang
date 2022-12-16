@@ -10,7 +10,7 @@ next-page: sttp-request-body-custom
 {% include markdown.html path="_markdown/install-sttp.md" %}
 
 ## Making a request with a body
-If you want to make a POST request with a body, then you can use the `.body` method together with `.post`, on the `basicRequest` value from the `sttp` Toolkit library when making a request:
+If you want to make a POST request with a body, then you can use the `.body` method together with `.post`, on the `basicRequest` value:
 ```scala
 import sttp.client3.{SimpleHttpClient, UriContext, basicRequest}
 
@@ -25,10 +25,8 @@ That will set the body of the request to the provided value.
 ## Binary data
 You can provide binary data as a body by putting an `Array[Byte]`, `ByteBuffer` or `ByteArrayInputStream` as a parameter of `.body` method:
 ```scala
-val bytes: Array[Byte] = ???
+val bytes: Array[Byte] = "john".getBytes
 val request = basicRequest.post(uri"https://example.com/").body(bytes)
-```
-`???` represents some code you used to initialize the binary data.
 
 ## Setting the Content-Type
 When sending a request body you may often want to specify the `Content-Type` header. To do that, you can set the second parameter of the `.body` method:

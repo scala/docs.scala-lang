@@ -13,7 +13,11 @@ next-page: sttp-request-parameters
 You will often find yourself in a situation where the address you want to make a request to has some changing parts. For example, `https://example.com/john` may be a page about someone called John, but you want to be able to check out people with different names
 
 ## The `uri` operator
-The `uri` operator (e.g. in `uri"https://example.com/"`) allows you to safely operate on dynamic addresses. There some pitfalls you may fall into when putting custom strings together in an address, but fortunately you don't need to think about them when using the `uri`. When you have a `$name` value in scope, it will be put in the `uri"https://example.com/$name"` exactly as you would expect. 
+The `uri` operator (e.g. in `uri"https://example.com/"`) allows you to safely create a web address, also called URI.
+When you have a variable in scope, for instance `name`, you can put its value in the URI like this: `uri"https://example.com/$name"`.
+It will produce the URI `https://example.com/peter`, exactly as you would expect.
+`uri` is a custom [String interpolator](overviews/core/string-interpolation.html) defined in sttp.
+When you call it, it replaces the interpolated variables with their values, for instance `$name` is replaced by `peter` and it makes sure, at compile time, that the syntax of the URI is correct.
 
 ```scala
 import sttp.client3.{SimpleHttpClient, UriContext, basicRequest}

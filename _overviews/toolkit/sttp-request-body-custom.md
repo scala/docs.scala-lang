@@ -30,7 +30,7 @@ given personSerializer: BodySerializer[Person] = { (p: Person) =>
 This serializer converts a Person to its name and surname, separated by a comma. `given` keyword may appear strange at first, but it just says that this value may be used later transparently in your code by some functions that needs a `BodySerializer[Person]`. You don't need to think about it for too long, that's the only thing you need to do - as long as this value is available, you will be able to send the Person as a body in a request.
 
 ## Sending the Person as a body
-When you have the personSerializer specified, you can just pass the value to the `.body` method on `basicRequest`. The full code of the solution:
+When you have the `given personSerializer` specified, you can just pass the value, of type `Person`, to the `.body` method on `basicRequest`. The full code of the solution:
 
 ```scala
 import sttp.client3._

@@ -10,10 +10,10 @@ next-page: sttp-request-body
 {% include markdown.html path="_markdown/install-sttp.md" %}
 
 ## Making a request with parameters
-The `uri` string interpolator (e.g. in `uri"https://example.com/"`) allows to easily add request parameters. Let's say you wanted to add a `filter` request parameter to `https://example.com/list` url, for example: `https://example.com/list?filter=peter`. If you wanted to use a static address and always query for `peter`, you would be done now. If you want to be a bit more flexible in your code and allow any filters, then you need to add one simple modification. 
+The `uri` string interpolator (e.g. in `uri"https://example.com/"`) allows to easily add request parameters. Let's say you want to add a `filter` request parameter to `https://example.com/list` url, for example: `https://example.com/list?filter=peter`. If you want to use a static address and always query for `peter`, you would be done now. If you want to be a bit more flexible in your code and allow any filters, then you need to add one simple modification. 
 
-## Adding dynamic request parameters
-You can add request parameters dynamically by putting a value name after a `$` sign in the url. For example, `https://example.com/list?filter=$name` will replace the `$name` with the `name` value that you have in scope (that is either a `val`, `var`, parameter or any other type of value).
+## Adding custom request parameters
+You can add request parameters dynamically by putting a value name after a `$` sign in the url. For example, `https://example.com/list?filter=$name` will replace `$name` with the value of variable `name`.
 
 ```scala
 import sttp.client3.{SimpleHttpClient, UriContext, basicRequest}

@@ -1,4 +1,4 @@
-Sttp is the library used to make requests of the Scala Toolkit.
+sttp is the HTTP client library of the Scala Toolkit.
 
 {% altDetails install-info-box 'Installing sttp' %}
 
