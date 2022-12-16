@@ -1,7 +1,7 @@
 ---
-title: How to make a request to a dynamic URLs 
+title: How to construct URLs from variables
 type: section
-description: How to operate on dynamic URLs with Scala Toolkit.
+description: How to construct URLs from variables with Scala Toolkit.
 num: 14
 previous-page: sttp-make-request
 next-page: sttp-request-parameters
@@ -9,8 +9,9 @@ next-page: sttp-request-parameters
 
 {% include markdown.html path="_markdown/install-sttp.md" %}
 
-## Dynamic URLs
-You will often find yourself in a situation where the address you want to make a request to has some changing parts. For example, `https://example.com/john` may be a page about someone called John, but you want to be able to check out people with different names
+## URLs from variables
+You will often find yourself in a situation where the address you want to make a request to has some changing parts. 
+For example, `https://example.com/john` may be a page about someone called John, but you want to be able to check out people with different names.
 
 ## The `uri` operator
 The `uri` operator (e.g. in `uri"https://example.com/"`) allows you to safely create a web address, also called URI.

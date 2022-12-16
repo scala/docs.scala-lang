@@ -4,7 +4,7 @@ type: section
 description: How to make any HTTP request with Scala Toolkit.
 num: 13
 previous-page: sttp-intro
-next-page: sttp-dynamic-urls
+next-page: sttp-variable-urls
 ---
 
 {% include markdown.html path="_markdown/install-sttp.md" %}

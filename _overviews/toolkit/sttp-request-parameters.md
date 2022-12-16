@@ -3,7 +3,7 @@ title: How to make an HTTP request with parameters?
 type: section
 description: How to make an HTTP request with parameters with Scala Toolkit.
 num: 15
-previous-page: sttp-dynamic-urls
+previous-page: sttp-variable-urls
 next-page: sttp-request-body
 ---
 
