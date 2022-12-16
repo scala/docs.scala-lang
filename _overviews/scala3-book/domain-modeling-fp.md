@@ -748,7 +748,7 @@ implicit class PizzaOps(p: Pizza) {
 ```
 In the above code, we define the different methods on pizzas as methods in an _implicit class_.
 With `implicit class PizzaOps(p: Pizza)` then wherever `PizzaOps` is imported its methods will be available on
-instances of `Pizza`. The reciever in this case is `p`.
+instances of `Pizza`. The receiver in this case is `p`.
 
 {% endtab %}
 {% tab 'Scala 3' for=module_7 %}
