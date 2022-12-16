@@ -34,4 +34,4 @@ Sttp library takes an approach of starting with a simple request prototype, the 
 ## The `uri` operator before website address
 The `uri` operator in the `uri"https://httpbin.org/get"` keeps you safe from making mistakes in the provided addresses.
 It checks at compile-time that the syntax of the URI is correct.
-It can also interpolate values from variables as described in the next tutorial [How to ...](toolkit/sttp-dynamic-urls).
+It can also interpolate values from variables as described in [How to construct URLs from variables](toolkit/sttp-variable-urls).
