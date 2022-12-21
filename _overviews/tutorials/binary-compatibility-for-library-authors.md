@@ -167,11 +167,59 @@ For example, the use of these language features are a common source of binary co
 in library releases:
 
 * Default parameter values for methods or classes
-* Case classes (work around the issue with [this pattern]({{ site.baseurl }}/scala3/book/domain-modeling-tools.html#changing-case-class-definition-in-a-compatible-manner))
+* Case classes
 
 You can find detailed explanations, runnable examples and tips to maintain binary compatibility in [Binary Compatibility Code Examples & Explanation](https://github.com/jatcwang/binary-compatibility-guide).
 
 Again, we recommend using MiMa to double-check that you have not broken binary compatibility after making changes.
+
+### Changing case class definition in a compatible manner
+
+Sometimes it is desirable to be able to change the definition of a case class (adding and/or removing fields) while still staying compatible with the users of the case class, i.e. not breaking the so called _binary compatibility_.
+
+To achieve that, follow this pattern:
+ * make the constructor `private`
+ * define `private` `unapply` function in the companion object (note that by doing so you loose the ability to use the case class in a pattern match)
+ * define `withXXX` methods on the case class that create a new instance with the respective field changed
+ * define custom `apply` factory method(s) in the companion object (these can use the private constructor)
+
+Example:
+
+{% tabs case_class_compat_1 %}
+{% tab 'Scala 3 Only' %}
+
+```scala
+case class Person private (name: String, age: Int):
+  def withName(name: String) = copy(name = name)
+  def withAge(age: Int) = copy(age = age)
+object Person:
+  def apply(name: String, age: Int) = new Person(name, age)
+  private def unapply(p: Person) = p
+```
+{% endtab %}
+{% endtabs %}
+
+Later in time, you can ammend the original case class definition. You
+ * add a new field `address`,
+ * add a custom `withAddress` method and
+ * add an `apply` factory method to the companion.
+
+{% tabs case_class_compat_2 %}
+{% tab 'Scala 3 Only' %}
+```scala
+case class Person private (name: String, age: Int, address: String = ""):
+  ...
+  def withAddress(address: String) = copy(address = address)
+object Person:
+  ...
+  def apply(name: String, age: Int, address: String) = new Person(name, age, address)
+```
+{% endtab %}
+{% endtabs %}
+
+The original users can use the case class `Person` as before, all the methods that existed before are present unmodified after this change, thus the compatibility with the users is maintained.
+
+A regular case class not following this pattern would break its users, because by adding a new field some methods (which could be used by somebody else) change, for example `copy` or the constructor itself.
 
 ## Versioning Scheme - Communicating compatibility breakages
 
