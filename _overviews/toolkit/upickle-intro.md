@@ -1,6 +1,6 @@
 ---
 title: Working with JSONs
-type: section
+type: chapter
 description: How to work with jsons with Scala Toolkit.
 num: 19
 previous-page: sttp-send-file
