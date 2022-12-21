@@ -1107,56 +1107,6 @@ As mentioned, case classes support functional programming (FP):
   This process can be referred to as “update as you copy.”
 - Having an `unapply` method auto-generated for you also lets case classes be used in advanced ways with pattern matching.
 
-### Changing case class definition in a compatible manner
-
-Sometimes it is desirable to be able to change the definition of a case class (adding and/or removing fields) while still staying compatible with the users of the case class, i.e. not breaking the so called _binary compatibility_.
-
-To achieve that, follow this pattern:
- * make the constructor `private`
- * define `private` `unapply` function in the companion object
- * define `withXXX` methods on the case class that create a new instance with the respective field changed
- * define custom `apply` factory method(s) in the companion object (these can use the private constructor)
-
-Example:
-
-{% tabs case_class_compat_1 %}
-{% tab 'Scala 3 Only' %}
-
-```scala
-case class Person private (name: String, age: Int):
-  def withName(name: String) = copy(name = name)
-  def withAge(age: Int) = copy(age = age)
-
-object Person:
-  def apply(name: String, age: Int) = new Person(name, age)
-  private def unapply(p: Person) = p
-```
-{% endtab %}
-{% endtabs %}
-
-Later in time, you can ammend the original case class definition. You
- * add a new field `address`,
- * add a custom `withAddress` method and
- * add an `apply` factory method to the companion.
-
-{% tabs case_class_compat_2 %}
-{% tab 'Scala 3 Only' %}
-```scala
-case class Person private (name: String, age: Int, address: String = ""):
-  ...
-  def withAddress(address: String) = copy(address = address)
-
-object Person:
-  ...
-  def apply(name: String, age: Int, address: String) = new Person(name, age, address)
-```
-{% endtab %}
-{% endtabs %}
-
-The original users can use the case class `Person` as before, all the methods that existed before are present unmodified after this change, thus the compatibility with the users is maintained.
-
-A regular case class not following this pattern would break its users, because by adding a new field some methods (which could be used by somebody else) change, for example `copy` or the constructor itself.
-
 {% comment %}
 NOTE: We can use this following text, if desired. If it’s used, it needs to be updated a little bit.
 
