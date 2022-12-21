@@ -167,7 +167,7 @@ For example, the use of these language features are a common source of binary co
 in library releases:
 
 * Default parameter values for methods or classes
-* Case classes
+* Case classes (work around the issue with [this pattern]({{ site.baseurl }}/scala3/book/domain-modeling-tools.html#changing-case-class-definition-in-a-compatible-manner))
 
 You can find detailed explanations, runnable examples and tips to maintain binary compatibility in [Binary Compatibility Code Examples & Explanation](https://github.com/jatcwang/binary-compatibility-guide).
 
