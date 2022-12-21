@@ -178,7 +178,7 @@ Again, we recommend using MiMa to double-check that you have not broken binary c
 Sometimes it is desirable to be able to change the definition of a case class (adding and/or removing fields) while still staying compatible with the users of the case class, i.e. not breaking the so called _binary compatibility_.
 
 To achieve that, follow this pattern:
- * make the constructor `private`
+ * make the constructor private
  * define a private `unapply` function in the companion object (note that by doing that the case class loses the ability to be used in a pattern match)
  * define `withXXX` methods on the case class that create a new instance with the respective field changed
  * define custom `apply` factory method(s) in the companion object (these can use the private constructor)
