@@ -9,7 +9,11 @@ next-page:
 
 {% include markdown.html path="_markdown/install-upickle.md" %}
 
-## Reading JSONs without knowing its structure
+In Scala Toolkit, it is possible to read a JSON and values inside of it in two ways:
+ - First one offers everything you need to quickly extract data from a JSON, without requiring any specific structure;
+ - While the second one allows you to work with the json in a fully typed code, and even to provide your custom data structures
+
+## First approach - Reading JSONs without knowing its structure
 If you want to just parse a JSON and access some of its field, you may just use a `ujson` library that is included with Toolkit. 
 Function `ujson.read` allows you to read a JSON and access it afterwards. 
 You can access the fields in the returned JSON object by just providing their names exactly as you would to a standard function.
@@ -30,7 +34,7 @@ println(s"$ownerName has a pet called $firstPet")
 ```
 You can traverse the JSON structure as deeply as you want, to extract the fields you require.
 
-## Reading JSONs to a typed structure
+## Second approach - Reading JSONs to a typed structure
 To perform typed operations on JSONs, you can utilize a `upickle` Toolkit library. 
 This approach has an advantage of additional safety and convenience of working with a structured data.
 If you know that your JSON contains a set of fields, where each field's value is an array of numbers, 
