@@ -217,7 +217,7 @@ object Person:
 {% endtab %}
 {% endtabs %}
 
-The original users can use the case class `Person` as before, all the methods that existed before are present unmodified after this change, thus the compatibility with the users is maintained.
+The original users can use the case class `Person` as before, all the methods that existed before are present unmodified after this change, thus the compatibility with the existing usage is maintained.
 
 A regular case class not following this pattern would break its usage, because by adding a new field changes some methods (which could be used by somebody else), for example `copy` or the constructor itself.
 
