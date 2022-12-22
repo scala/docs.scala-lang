@@ -190,7 +190,7 @@ Example:
 
 ```scala
 case class Person private (name: String, age: Int):
-  def withName(name: String) = copy(name = name)
+  def withName(name: String): Person = copy(name = name)
   def withAge(age: Int) = copy(age = age)
 object Person:
   def apply(name: String, age: Int) = new Person(name, age)
