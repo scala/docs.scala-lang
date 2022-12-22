@@ -179,7 +179,7 @@ Sometimes it is desirable to be able to change the definition of a case class (a
 
 To achieve that, follow this pattern:
  * make the constructor private
- * define a private `unapply` function in the companion object (note that by doing that the case class loses the ability to be used in a pattern match)
+ * define a private `unapply` function in the companion object (note that by doing that the case class loses the ability to be used in an extractor pattern match)
  * define `withXXX` methods on the case class that create a new instance with the respective field changed
  * define custom `apply` factory method(s) in the companion object (these can use the private constructor)
 
@@ -219,7 +219,7 @@ object Person:
 
 The original users can use the case class `Person` as before, all the methods that existed before are present unmodified after this change, thus the compatibility with the users is maintained.
 
-A regular case class not following this pattern would break its users, because by adding a new field some methods (which could be used by somebody else) change, for example `copy` or the constructor itself.
+A regular case class not following this pattern would break its usage, because by adding a new field changes some methods (which could be used by somebody else), for example `copy` or the constructor itself.
 
 ## Versioning Scheme - Communicating compatibility breakages
 
