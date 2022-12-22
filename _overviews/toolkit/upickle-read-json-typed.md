@@ -1,7 +1,7 @@
 ---
-title: How to read a JSON?
+title: How to read a JSON to typed structure?
 type: section
-description: How to read a JSON with Scala Toolkit.
+description: How to read a JSON to typed structure with Scala Toolkit
 num: 20
 previous-page: upickle-intro
 next-page: 
@@ -10,31 +10,10 @@ next-page:
 {% include markdown.html path="_markdown/install-upickle.md" %}
 
 In Scala Toolkit, it is possible to read a JSON and values inside of it in two ways:
- - First one offers everything you need to quickly extract data from a JSON, without requiring any specific structure. This approach is described in this article. It is a simple and fast way to read JSONs.
- - While the second one allows you to work with the json in a fully typed code, and even to provide your custom data structures. To discover this approach read the [How to read a JSON to typed structure](upickle-read-json) tutorial. It is more well-suited when you plan on reusing, storing and operating on the structures loaded from jsons.
+ - First one offers everything you need to quickly extract data from a JSON, without requiring any specific structure. This approach is described in the [How to read a JSON](upickle-read-json) tutorial. Visit it if you want a simple and fast way to read JSONs.
+ - The second approach one allows you to work with the json in a fully typed code, and even to provide your custom data structures. This approach is described in this tutorial. It is more well-suited when you plan on reusing, storing and operating on the structures loaded from jsons.
 
-## First approach - Reading JSONs dynamically
-If you want to just parse a JSON and access some of its field, you may just use a `ujson` library that is included with Toolkit. 
-Function `ujson.read` allows you to read a JSON and access it afterwards. 
-You can access the fields in the returned JSON object by just providing their names exactly as you would to a standard function.
-Afterwards you have to declare what you expect to be inside the field, for example `str` extracts field's value as a `String`.
-For example, code below prints out `Peter`.
-```scala
-val jsonString = """{"name": "Peter", "age": 13}"""
-val json = ujson.read(jsonString)
-println(json("name").str) // Prints out "Peter"
-```
-You can operate on arrays similarly, as in the example below.
-```scala
-val jsonString = """{"name": "Peter", "pets": ["Toolkitty", "Scaniel"]}"""
-val json = ujson.read(jsonString)
-val ownerName = json("name").str
-val firstPet = json("pets")(0) .str
-println(s"$ownerName has a pet called $firstPet")
-```
-You can traverse the JSON structure as deeply as you want, to extract the fields you require.
-
-## Second approach - Reading JSONs to a typed structure
+## Reading JSONs to a typed structure
 To perform typed operations on JSONs, you can utilize a `upickle` Toolkit library. 
 This approach has an advantage of additional safety and convenience of working with a structured data.
 If you know that your JSON contains a set of fields, where each field's value is an array of numbers, 
@@ -54,7 +33,7 @@ In Scala, you can use a `case class` to define your own data type. For example, 
 case class PetOwner(name: String, pets: List[String])
 ```
 After defining this `case class`, you can read a JSON containing its fields. But first, you need to provide an instance of `ReadWriter` that will tell the library
-how to handle this type. Luckily, `upickle` is able to fully automate that and all have to do is define this:
+how to handle this type. Luckily, `upickle` is able to fully automate that and all have to do is:
 ```scala
 given ReadWriter[PetOwner] = macroRW
 ```
