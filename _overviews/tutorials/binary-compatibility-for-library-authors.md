@@ -175,7 +175,7 @@ Again, we recommend using MiMa to double-check that you have not broken binary c
 
 ### Changing a case class definition in a backwards-compatible manner
 
-Sometimes it is desirable to be able to change the definition of a case class (adding and/or removing fields) while still staying compatible with the users of the case class, i.e. not breaking the so called _binary compatibility_.
+Sometimes, it is desirable to change the definition of a case class (adding and/or removing fields) while still staying backwards-compatible with the existing usage of the case class, i.e. not breaking the so-called _binary compatibility_.
 
 To achieve that, follow this pattern:
  * make the constructor private
