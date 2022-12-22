@@ -199,7 +199,7 @@ object Person:
 {% endtab %}
 {% endtabs %}
 
-Later in time, you can ammend the original case class definition. You
+Later in time, you can amend the original case class definition. You
  * add a new field `address`,
  * add a custom `withAddress` method and
  * add an `apply` factory method to the companion.
