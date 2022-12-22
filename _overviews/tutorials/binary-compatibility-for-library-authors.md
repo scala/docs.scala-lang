@@ -201,7 +201,7 @@ object Person:
 
 Later in time, you can amend the original case class definition. You
  * add a new field `address`,
- * add a private constructor with the original fields
+ * add a new constructor, private to the companion object, with the original fields
  * add a custom `withAddress` method and
  * add an `apply` factory method to the companion.
 
