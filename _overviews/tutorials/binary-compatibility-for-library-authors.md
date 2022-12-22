@@ -178,7 +178,7 @@ Again, we recommend using MiMa to double-check that you have not broken binary c
 Sometimes, it is desirable to change the definition of a case class (adding and/or removing fields) while still staying backwards-compatible with the existing usage of the case class, i.e. not breaking the so-called _binary compatibility_.
 
 To achieve that, follow this pattern:
- * make the constructor private (this also makes private the `copy` method of the class)
+ * make the constructor private (this makes private the `copy` method of the class)
  * define a private `unapply` function in the companion object (note that by doing that the case class loses the ability to be used in an extractor pattern match)
  * for all the fields, define `withXXX` methods on the case class that create a new instance with the respective field changed
  * define custom `apply` factory method(s) in the companion object (these can use the private constructor)
@@ -201,18 +201,20 @@ object Person:
 
 Later in time, you can amend the original case class definition. You
  * add a new field `address`,
+ * add a private constructor with the original fields
  * add a custom `withAddress` method and
  * add an `apply` factory method to the companion.
 
 {% tabs case_class_compat_2 %}
 {% tab 'Scala 3 Only' %}
 ```scala
-case class Person private (name: String, age: Int, address: String = ""):
+case class Person private (name: String, age: Int, address: Option[String]):
   ...
+  private[Person] def this(name: String, age: Int): Person = this(name, age, None)
   def withAddress(address: String) = copy(address = address)
 object Person:
   ...
-  def apply(name: String, age: Int, address: String) = new Person(name, age, address)
+  def apply(name: String, age: Int, address: String) = new Person(name, age, Some(address))
 ```
 {% endtab %}
 {% endtabs %}
