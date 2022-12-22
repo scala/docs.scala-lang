@@ -2,9 +2,9 @@
 title: How to read a JSON to typed structure?
 type: section
 description: How to read a JSON to typed structure with Scala Toolkit
-num: 20
-previous-page: upickle-intro
-next-page: 
+num: 22
+previous-page: upickle-read-json
+next-page: upickle-write-json
 ---
 
 {% include markdown.html path="_markdown/install-upickle.md" %}
