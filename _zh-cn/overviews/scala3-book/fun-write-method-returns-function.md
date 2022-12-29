@@ -2,6 +2,7 @@
 title: 创建可以返回函数的方法
 type: section
 description: This page demonstrates how to create and use higher-order functions in Scala.
+languages:[en, ru]
 num: 33
 previous-page: fun-write-map-function
 next-page: fun-summary

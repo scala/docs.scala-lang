@@ -2,6 +2,7 @@
 title: 类型初探
 type: chapter
 description: This page provides a brief introduction to Scala's built-in data types, including Int, Double, String, Long, Any, AnyRef, Nothing, and Null.
+languages:[en, ru]
 num: 17
 previous-page: taste-summary
 next-page: control-structures
@@ -11,7 +12,6 @@ overview-name: "Scala 3 — Book"
 layout: multipage-overview
 permalink: "/zh-cn/scala3/book/:title.html"
 ---
-
 
 
 ## 所有值都有一个类型

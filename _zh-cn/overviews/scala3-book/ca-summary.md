@@ -2,6 +2,7 @@
 title: 总结
 type: section
 description: This page provides a summary of the Contextual Abstractions lessons.
+languages:[en]
 num: 67
 previous-page: ca-implicit-conversions
 next-page: concurrency

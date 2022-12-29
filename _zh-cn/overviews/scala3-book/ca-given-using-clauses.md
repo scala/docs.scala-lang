@@ -2,6 +2,7 @@
 title: Given 实例和 Using 语句
 type: section
 description: This page demonstrates how to use 'given' instances and 'using' clauses in Scala 3.
+languages:[en]
 num: 59
 previous-page: ca-contextual-abstractions-intro
 next-page: types-type-classes

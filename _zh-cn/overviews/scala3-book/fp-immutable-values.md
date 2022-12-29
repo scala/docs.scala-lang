@@ -2,6 +2,7 @@
 title: 不可变值
 type: section
 description: This section looks at the use of immutable values in functional programming.
+languages:[en]
 num: 42
 previous-page: fp-what-is-fp
 next-page: fp-pure-functions

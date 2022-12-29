@@ -2,6 +2,7 @@
 title: 下一步去哪
 type: chapter
 description: Where to go next after reading the Scala Book
+languages:[en]
 num: 76
 previous-page: scala-for-python-devs
 next-page:

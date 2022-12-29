@@ -2,6 +2,7 @@
 title: 为什么是 Scala 3 ？
 type: chapter
 description: This page describes the benefits of the Scala 3 programming language.
+languages:[en, ru]
 num: 3
 previous-page: scala-features
 next-page: taste-intro

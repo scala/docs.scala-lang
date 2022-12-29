@@ -2,6 +2,7 @@
 title: 使用 sbt 构建和测试 Scala 项目
 type: section
 description: This section looks at a commonly-used build tool, sbt, and a testing library, ScalaTest.
+languages:[en]
 num: 70
 previous-page: scala-tools
 next-page: tools-worksheets

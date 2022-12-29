@@ -2,6 +2,7 @@
 title: 函数
 type: chapter
 description: This chapter looks at all topics related to functions in Scala 3.
+languages:[en, ru]
 num: 27
 previous-page: methods-summary
 next-page: fun-anonymous-functions

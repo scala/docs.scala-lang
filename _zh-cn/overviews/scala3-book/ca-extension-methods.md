@@ -2,6 +2,7 @@
 title: 扩展方法
 type: section
 description: This page demonstrates how Extension Methods work in Scala 3.
+languages:[en]
 num: 63
 previous-page: ca-given-imports
 next-page: ca-type-classes

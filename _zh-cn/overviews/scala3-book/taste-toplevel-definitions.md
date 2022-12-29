@@ -2,6 +2,7 @@
 title: Toplevel Definitions
 type: section
 description: This page provides an introduction to top-level definitions in Scala 3
+languages:[en, ru]
 num: 15
 previous-page: taste-contextual-abstractions
 next-page: taste-summary

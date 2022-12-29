@@ -2,6 +2,7 @@
 title: 总结 
 type: section
 description: This section summarizes the previous functional programming sections.
+languages:[en]
 num: 46
 previous-page: fp-functional-error-handling
 next-page: types-introduction

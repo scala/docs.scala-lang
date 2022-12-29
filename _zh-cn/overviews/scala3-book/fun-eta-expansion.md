@@ -2,6 +2,7 @@
 title: Eta 扩展
 type: section
 description: This page discusses Eta Expansion, the Scala technology that automatically and transparently converts methods into functions.
+languages:[en, ru]
 num: 30
 previous-page: fun-function-variables
 next-page: fun-hofs
