@@ -175,13 +175,13 @@ Again, we recommend using MiMa to double-check that you have not broken binary c
 
 ### Changing a case class definition in a backwards-compatible manner
 
-Sometimes, it is desirable to change the definition of a case class (adding and/or removing fields) while still staying backwards-compatible with the existing usage of the case class, i.e. not breaking the so-called _binary compatibility_.
+Sometimes, it is desirable to change the definition of a case class (adding and/or removing fields) while still staying backwards-compatible with the existing usage of the case class, i.e. not breaking the so-called _binary compatibility_. The first question you should ask yourself is “do you need a _case_ class?” (as opposed to a regular class, which can be easier to evolve in a binary compatible way). A good reason for using a case class is when you need a structural implementation of `equals` and `hashCode`.
 
 To achieve that, follow this pattern:
- * make the constructor private (this makes private the `copy` method of the class)
- * define a private `unapply` function in the companion object (note that by doing that the case class loses the ability to be used in an extractor pattern match)
- * for all the fields, define `withXXX` methods on the case class that create a new instance with the respective field changed
- * define custom `apply` factory method(s) in the companion object (these can use the private constructor)
+ * make the primary constructor private (this makes private the `copy` method of the class)
+ * define a private `unapply` function in the companion object (note that by doing that the case class loses the ability to be used as an extractor in match expressions)
+ * for all the fields, define `withXXX` methods on the case class that create a new instance with the respective field changed (you can use the private `copy` method to implement them)
+ * create a public constructor by defining an `apply` method in the companion object (it can use the private constructor)
 
 Example:
 
@@ -189,37 +189,66 @@ Example:
 {% tab 'Scala 3 Only' %}
 
 ```scala
+// Mark the primary constructor as private
 case class Person private (name: String, age: Int):
+  // Create withXxx methods for every field, implemented by using the copy method
   def withName(name: String): Person = copy(name = name)
   def withAge(age: Int): Person = copy(age = age)
 object Person:
+  // Create a public constructor (which uses the primary constructor)
   def apply(name: String, age: Int) = new Person(name, age)
+  // Make the extractor private
   private def unapply(p: Person) = p
 ```
 {% endtab %}
 {% endtabs %}
+This class can be published in a library and used as follows:
 
-Later in time, you can amend the original case class definition. You
- * add a new field `address`,
- * add a new constructor, private to the companion object, with the original fields
- * add a custom `withAddress` method and
- * add an `apply` factory method to the companion.
+~~~ scala
+// Create a new instance
+val alice = Person("Alice", 42)
+// Transform an instance
+println(alice.withAge(alice.age + 1)) // Person(Alice, 43)
+~~~
+
+If you try to use `Person` as an extractor in a match expression, it will fail with a message like “method unapply cannot be accessed as a member of Person.type”. Instead, you can use it as a typed pattern:
+
+~~~ scala
+alice match
+  case person: Person => person.name
+~~~
+Later in time, you can amend the original case class definition to, say, add an optional `address` field. You
+ * add a new field `address` and a custom `withAddress` method,
+ * add the former constructor signature as a secondary constructor, private to the companion object. This step is necessary because the public `apply` method in the companion object calls the former constructor, which was effectively public in the bytecode produced by the compiler.
 
 {% tabs case_class_compat_2 %}
 {% tab 'Scala 3 Only' %}
 ```scala
 case class Person private (name: String, age: Int, address: Option[String]):
   ...
+  // Add back the former primary constructor signature
   private[Person] def this(name: String, age: Int): Person = this(name, age, None)
-  def withAddress(address: String) = copy(address = address)
-object Person:
-  ...
-  def apply(name: String, age: Int, address: String) = new Person(name, age, Some(address))
+  def withAddress(address: Option[String]) = copy(address = address)
 ```
 {% endtab %}
 {% endtabs %}
 
+> Note that an alternative solution, instead of adding back the previous constructor signatures as secondary constructors, consists of adding a [MiMa filter](https://github.com/lightbend/mima#filtering-binary-incompatibilities) to simply ignore the problem. Even though the constructors are effectively public in the bytecode, they can’t be called from Scala programs (but they could be called by Java programs). In an sbt build definition you would add the following setting:
+> ~~~ scala
+> import com.typesafe.tools.mima.core._
+> mimaBinaryIssueFilters += ProblemFilters.exclude[DirectMissingMethodProblem]("Person.this")
+> ~~~
+> Otherwise, MiMa would fail with an error like “method this(java.lang.String,Int)Unit in class Person does not have a correspondent in current version”.
 The original users can use the case class `Person` as before, all the methods that existed before are present unmodified after this change, thus the compatibility with the existing usage is maintained.
+
+The new field `address` can be used as follows:
+
+~~~ scala
+// The public constructor sets the address to None by default.
+// To set the address, we call withAddress:
+val bob = Person("Bob", 21).withAddress(Some("Atlantic ocean"))
+println(bob.address)
+~~~
 
 A regular case class not following this pattern would break its usage, because by adding a new field changes some methods (which could be used by somebody else), for example `copy` or the constructor itself.
 
