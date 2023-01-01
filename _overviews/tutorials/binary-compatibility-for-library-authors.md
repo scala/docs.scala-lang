@@ -227,7 +227,7 @@ Later in time, you can amend the original case class definition to, say, add an 
 case class Person private (name: String, age: Int, address: Option[String]):
   ...
   // Add back the former primary constructor signature
-  private[Person] def this(name: String, age: Int): Person = this(name, age, None)
+  private[Person] def this(name: String, age: Int) = this(name, age, None)
   def withAddress(address: Option[String]) = copy(address = address)
 ```
 {% endtab %}
