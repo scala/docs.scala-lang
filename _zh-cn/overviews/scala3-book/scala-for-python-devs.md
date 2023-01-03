@@ -1357,6 +1357,5 @@ pip install -r requirements.txt
 [modeling-intro]: {% link _zh-cn/overviews/scala3-book/domain-modeling-intro.md %}
 [multiversal]: {% link _zh-cn/overviews/scala3-book/ca-multiversal-equality.md %}
 [toplevel]: {% link _zh-cn/overviews/scala3-book/taste-toplevel-definitions.md %}
-<!-- [type-classes]: LINK @ _zh-cn/overviews/scala3-book/types-type-classes.md -->
 [union-types]: {% link _zh-cn/overviews/scala3-book/types-union.md %}
 </div>
