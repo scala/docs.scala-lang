@@ -2,7 +2,7 @@
 title: 集合类型
 type: section
 description: This page introduces the common Scala 3 collections types and some of their methods.
-languages:[en]
+language: zh-cn
 num: 37
 previous-page: collections-intro
 next-page: collections-methods
@@ -372,9 +372,9 @@ val people = ArrayBuffer(
 
 ```scala
 val nums = ArrayBuffer(1, 2, 3)   // ArrayBuffer(1, 2, 3)
-languages:[en]
+language: zh-cn
 nums += 4                         // ArrayBuffer(1, 2, 3, 4)
-languages:[en]
+language: zh-cn
 nums ++= List(5, 6)               // ArrayBuffer(1, 2, 3, 4, 5, 6)
 ```
 

@@ -2,7 +2,7 @@
 title: 隐式转换
 type: section
 description: This page demonstrates how to implement Implicit Conversions in Scala 3.
-languages:[en]
+language: zh-cn
 num: 66
 previous-page: ca-multiversal-equality
 next-page: ca-summary

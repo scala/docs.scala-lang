@@ -2,7 +2,7 @@
 title: First-Class Functions
 type: section
 description: This page provides an introduction to functions in Scala 3.
-languages:[en, ru]
+language: zh-cn
 num: 11
 previous-page: taste-methods
 next-page: taste-objects

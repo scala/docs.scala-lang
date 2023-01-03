@@ -2,7 +2,7 @@
 title: 泛型
 type: section
 description: This section introduces and demonstrates generics in Scala 3.
-languages:[en]
+language: zh-cn
 num: 49
 previous-page: types-inferred
 next-page: types-intersection

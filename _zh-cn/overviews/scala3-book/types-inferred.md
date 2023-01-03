@@ -2,7 +2,7 @@
 title: 类型推断
 type: section
 description: This section introduces and demonstrates inferred types in Scala 3
-languages:[en]
+language: zh-cn
 num: 48
 previous-page: types-introduction
 next-page: types-generics

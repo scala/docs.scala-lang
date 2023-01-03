@@ -2,7 +2,7 @@
 title: Scala 3 特性
 type: chapter
 description: This page discusses the main features of the Scala 3 programming language.
-languages:[en, ru]
+language: zh-cn
 num: 2
 previous-page: introduction
 next-page: why-scala-3
@@ -117,14 +117,10 @@ val p = Person("Martin", "Odersky")
 {% tabs scala-features-4 %}
 {% tab 'Scala 2 and 3' for=scala-features-4 %}
 ```scala
-languages:[en]
 nums.map(i => i * 2)   // long form
-languages:[en]
 nums.map(_ * 2)        // short form
 
-languages:[en]
 nums.filter(i => i > 1)
-languages:[en]
 nums.filter(_ > 1)
 ```
 {% endtab %}

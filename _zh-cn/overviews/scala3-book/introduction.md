@@ -2,7 +2,7 @@
 title: 导言
 type: chapter
 description: This page begins the overview documentation of the Scala 3 language.
-languages:[en, ru]
+language: zh-cn
 num: 1
 previous-page: 
 next-page: scala-features

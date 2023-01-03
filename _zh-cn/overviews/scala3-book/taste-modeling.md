@@ -2,7 +2,7 @@
 title: 领域建模
 type: section
 description: This section provides an introduction to data modeling in Scala 3.
-languages:[en, ru]
+language: zh-cn
 num: 9
 previous-page: taste-control-structures
 next-page: taste-methods

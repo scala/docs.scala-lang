@@ -2,7 +2,7 @@
 title: 不透明类型
 type: section
 description: This section introduces and demonstrates opaque types in Scala 3.
-languages:[en]
+language: zh-cn
 num: 54
 previous-page: types-variance
 next-page: types-structural

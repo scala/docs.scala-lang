@@ -2,7 +2,7 @@
 title: 依赖函数类型
 type: section
 description: This section introduces and demonstrates dependent function types in Scala 3.
-languages:[en]
+language: zh-cn
 num: 56
 previous-page: types-structural
 next-page: types-others

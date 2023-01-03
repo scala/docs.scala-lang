@@ -2,7 +2,7 @@
 title: Collections
 type: section
 description: This page provides a high-level overview of the main features of the Scala 3 programming language.
-languages:[en, ru]
+language: zh-cn
 num: 13
 previous-page: taste-objects
 next-page: taste-contextual-abstractions

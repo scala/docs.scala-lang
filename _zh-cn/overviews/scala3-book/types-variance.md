@@ -2,7 +2,7 @@
 title: 型变
 type: section
 description: This section introduces and demonstrates variance in Scala 3.
-languages:[en]
+language: zh-cn
 num: 53
 previous-page: types-adts-gadts
 next-page: types-opaque-types

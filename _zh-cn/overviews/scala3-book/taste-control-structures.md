@@ -2,7 +2,7 @@
 title: 控制结构
 type: section
 description: This section demonstrates Scala 3 control structures.
-languages:[en, ru]
+language: zh-cn
 num: 8
 previous-page: taste-vars-data-types
 next-page: taste-modeling

@@ -2,7 +2,7 @@
 title: OOP 领域建模
 type: section
 description: This chapter provides an introduction to OOP domain modeling with Scala 3.
-languages:[en, ru]
+language: zh-cn
 num: 21
 previous-page: domain-modeling-tools
 next-page: domain-modeling-fp

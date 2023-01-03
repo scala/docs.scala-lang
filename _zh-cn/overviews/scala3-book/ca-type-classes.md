@@ -2,7 +2,7 @@
 title: 实现类型类
 type: section
 description: This page demonstrates how to create and use type classes in Scala 3.
-languages:[en]
+language: zh-cn
 num: 64
 previous-page: ca-extension-methods
 next-page: ca-multiversal-equality

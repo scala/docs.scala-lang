@@ -2,7 +2,7 @@
 title: 函数变量
 type: section
 description: This page shows how to use anonymous functions in Scala, including examples with the List class 'map' and 'filter' functions.
-languages:[en, ru]
+language: zh-cn
 num: 29
 previous-page: fun-anonymous-functions
 next-page: fun-eta-expansion

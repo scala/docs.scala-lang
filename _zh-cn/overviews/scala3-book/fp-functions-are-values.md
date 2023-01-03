@@ -2,7 +2,7 @@
 title: 函数是值
 type: section
 description: This section looks at the use of functions as values in functional programming.
-languages:[en]
+language: zh-cn
 num: 44
 previous-page: fp-pure-functions
 next-page: fp-functional-error-handling
@@ -92,18 +92,12 @@ fruits.map(_.toUpperCase)       // List(APPLE, PEAR)
 fruits.flatMap(_.toUpperCase)   // List(A, P, P, L, E, P, E, A, R)
 
 val nums = List(5, 1, 3, 11, 7)
-languages:[en]
 nums.map(_ * 2)         // List(10, 2, 6, 22, 14)
-languages:[en]
 nums.filter(_ > 3)      // List(5, 11, 7)
-languages:[en]
 nums.takeWhile(_ < 6)   // List(5, 1, 3)
-languages:[en]
 nums.sortWith(_ < _)    // List(1, 3, 5, 7, 11)
-languages:[en]
 nums.sortWith(_ > _)    // List(11, 7, 5, 3, 1)
 
-languages:[en]
 nums.takeWhile(_ < 6).sortWith(_ < _)   // List(1, 3, 5)
 ```
 
