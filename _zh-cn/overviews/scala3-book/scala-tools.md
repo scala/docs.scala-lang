@@ -3,7 +3,7 @@ title: Scala 工具
 type: chapter
 description: This chapter looks at two commonly-used Scala tools, sbt and ScalaTest.
 language: zh-cn
-num: 69
+num: 68
 previous-page: concurrency
 next-page: tools-sbt
 

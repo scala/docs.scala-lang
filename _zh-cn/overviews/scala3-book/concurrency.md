@@ -3,7 +3,7 @@ title: 并发
 type: chapter
 description: This page discusses how Scala concurrency works, with an emphasis on Scala Futures.
 language: zh-cn
-num: 68
+num: 67
 previous-page: ca-summary
 next-page: scala-tools
 

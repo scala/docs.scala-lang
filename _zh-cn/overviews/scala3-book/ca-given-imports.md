@@ -5,7 +5,7 @@ description: This page demonstrates how 'given' import statements work in Scala 
 language: zh-cn
 num: 62
 previous-page: ca-context-bounds
-next-page: ca-extension-methods
+next-page: ca-type-classes
 
 partof: scala3-book
 overview-name: "Scala 3 — Book"

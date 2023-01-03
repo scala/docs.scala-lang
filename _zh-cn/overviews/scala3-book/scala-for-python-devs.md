@@ -3,9 +3,9 @@ title: Scala for Python Developers
 type: chapter
 description: This page is for Python developers who are interested in learning about Scala 3.
 language: zh-cn
-num: 75
+num: 74
 previous-page: scala-for-javascript-devs
-next-page:
+next-page: where-next
 
 partof: scala3-book
 overview-name: "Scala 3 — Book"

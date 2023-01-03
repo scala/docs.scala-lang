@@ -3,7 +3,7 @@ title: 下一步去哪
 type: chapter
 description: Where to go next after reading the Scala Book
 language: zh-cn
-num: 76
+num: 75
 previous-page: scala-for-python-devs
 next-page:
 

@@ -3,7 +3,7 @@ title: 与 Java 交互
 type: chapter
 description: This page demonstrates how Scala code can interact with Java, and how Java code can interact with Scala code.
 language: zh-cn
-num: 72
+num: 71
 previous-page: tools-worksheets
 next-page: scala-for-java-devs
 
