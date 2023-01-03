@@ -2,7 +2,8 @@
 title: 向 Java 开发者介绍Scala
 type: chapter
 description: This page is for Java developers who are interested in learning about Scala 3.
-num: 73
+language: zh-cn
+num: 72
 previous-page: interacting-with-java
 next-page: scala-for-javascript-devs
 

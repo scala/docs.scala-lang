@@ -2,6 +2,7 @@
 title: Scala 的味道
 type: chapter
 description: This chapter provides a high-level overview of the main features of the Scala 3 programming language.
+language: zh-cn
 num: 4
 previous-page: why-scala-3
 next-page: taste-hello-world

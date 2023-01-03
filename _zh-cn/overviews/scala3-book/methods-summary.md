@@ -2,6 +2,7 @@
 title: 总结
 type: section
 description: This section summarizes the previous sections on Scala 3 methods.
+language: zh-cn
 num: 26
 previous-page: methods-main-methods
 next-page: fun-intro

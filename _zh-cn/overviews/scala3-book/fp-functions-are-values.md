@@ -2,6 +2,7 @@
 title: 函数是值
 type: section
 description: This section looks at the use of functions as values in functional programming.
+language: zh-cn
 num: 44
 previous-page: fp-pure-functions
 next-page: fp-functional-error-handling
