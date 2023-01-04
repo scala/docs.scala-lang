@@ -2,7 +2,7 @@
 title: How to read a JSON to typed structure?
 type: section
 description: How to read a JSON to typed structure with Scala Toolkit
-num: 22
+num: 21
 previous-page: upickle-read-json
 next-page: upickle-write-json
 ---
@@ -10,13 +10,13 @@ next-page: upickle-write-json
 {% include markdown.html path="_markdown/install-upickle.md" %}
 
 In Scala Toolkit, it is possible to read a JSON and values inside of it in two ways:
- - First one offers everything you need to quickly extract data from a JSON, without requiring any specific structure. This approach is described in the [How to read a JSON](upickle-read-json) tutorial. Visit it if you want a simple and fast way to read JSONs.
+ - First one offers everything you need to quickly extract data from a JSON, without requiring any specific structure. This approach is described in the [How to read a JSON](({{ site.baseurl }}/overviews/toolkit/upickle-read-json) tutorial. Visit it if you want a simple and fast way to read JSONs.
  - The second approach one allows you to work with the json in a fully typed code, and even to provide your custom data structures. This approach is described in this tutorial. It is more well-suited when you plan on reusing, storing and operating on the structures loaded from jsons.
 
 ## Reading JSONs to a typed structure
 To perform typed operations on JSONs, you can utilize a `upickle` Toolkit library. 
-This approach has an advantage of additional safety and convenience of working with a structured data.
-If you know that your JSON contains a set of fields, where each field's value is an array of numbers, 
+This approach has an advantage of additional safety and convenience of working with the structured data.
+As an example - if you know that your JSON contains a set of fields, where each field's value is an array of numbers, 
 you can use the `read[Map[String, List[Int]]](json)` function that will return a map of this exact type.
 You can see an example of that below
 ```scala
