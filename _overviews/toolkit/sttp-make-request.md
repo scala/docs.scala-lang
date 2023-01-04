@@ -25,16 +25,15 @@ println(response.body) // print the body of the response
 ## Other request types
 You can swap `basicRequest.get` with any HTTP method you want. For example:
 ```scala
-val request = basicRequest.post(uri"https://httpbin.org/get")
+val request = basicRequest.post(uri"https://httpbin.org/get").body("Hello, world!")
 ```
-Will make a `POST` request.
+Will make a `POST` request with `Hello, world!` as the body.
 
 ## The `basicRequest`
-Sttp library takes an approach of starting with a simple request prototype, the `basicRequest`, then modifying it to suit your needs. 
-The `basicRequest` is already set up with some [basic headers](https://sttp.softwaremill.com/en/latest/requests/basics.html#initial-requests) - all you need to do is provide the address and the method you want to preform with `get` function. 
-Other functions are available for different HTTP methods. 
+Sttp library takes an approach of starting with a simple request description, the `basicRequest`, then modifying it to suit your needs. 
+The `basicRequest` is already set up with some [basic headers](https://sttp.softwaremill.com/en/latest/requests/basics.html#initial-requests) - all you need to do is provide the address and the method you want to preform with `get` method. 
+Other methods are available for different HTTP methods. 
 
 ## The `uri` operator before website address
-The `uri` operator in the `uri"https://httpbin.org/get"` keeps you safe from making mistakes in the provided addresses.
-It checks at compile-time that the syntax of the URI is correct.
-It can also interpolate values from variables as described in [How to construct URLs from variables](_overviews/toolkit/sttp-variable-urls).
+The `uri` operator in the `uri"https://httpbin.org/get"` keeps you safe from making some of the mistakes in the provided addresses.
+It can also interpolate values from variables as described in [How to construct URLs from variables](/overviews/toolkit/sttp-variable-urls).

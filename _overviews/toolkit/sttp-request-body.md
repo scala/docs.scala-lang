@@ -15,7 +15,7 @@ If you want to make a POST request with a body, then you can use the `.body` met
 import sttp.client3.{SimpleHttpClient, UriContext, basicRequest}
 
 val client = SimpleHttpClient() // Create the instance of SimpleHttpClient
-val requestBody = "{'name': 'peter'}" // the body you want to pass
+val requestBody = """{"name": "peter"}""" // the body you want to pass
 val request = basicRequest.post(uri"https://example.com/").body(requestBody) // Construct post request to the service - https://example.com/
 val response = client.send(request) // send the request and get the response
 println(response.body) // print the body of the response
@@ -23,16 +23,16 @@ println(response.body) // print the body of the response
 That will set the body of the request to the provided value.
 
 ## Binary data
-You can provide binary data as a body by putting an `Array[Byte]`, `ByteBuffer` or `ByteArrayInputStream` as a parameter of `.body` method:
+You can provide binary data as a body by putting an `Array[Byte]`, `ByteBuffer` or `InputStream` as a parameter of `.body` method:
 ```scala
 val bytes: Array[Byte] = "john".getBytes
 val request = basicRequest.post(uri"https://example.com/").body(bytes)
 
 ## Setting the Content-Type
-When sending a request body you may often want to specify the `Content-Type` header. To do that, you can set the second parameter of the `.body` method:
+When sending a request body you may often want to specify the `Content-Type` header. To do that, you can use the `contentType` method:
 ```scala
-val requestBody = "peter"
-val request = basicRequest.post(uri"https://example.com/").body(requestBody, "utf8") // use utf8 as Content-Type
+val requestBody = """{"name": "peter"}"""
+val request = basicRequest.post(uri"https://example.com/").body(requestBody).contentType("application/json")
 ```
 
 Learn more in the [sttp documentation chapter about request bodies](https://sttp.softwaremill.com/en/latest/requests/body.html).

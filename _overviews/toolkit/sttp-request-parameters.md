@@ -18,6 +18,8 @@ If you want to be a bit more flexible in your code and allow any filters, then y
 ## Adding custom request parameters
 You can add request parameters dynamically by putting a value name after a `$` sign in the url. 
 For example, `https://example.com/list?filter=$name` will replace `$name` with the value of variable `name`.
+Normally, that could cause problems with special characters breaking the URL.
+However, the `uri` interpolator deals with that for you by escaping these characters.
 
 ```scala
 import sttp.client3.{SimpleHttpClient, UriContext, basicRequest}

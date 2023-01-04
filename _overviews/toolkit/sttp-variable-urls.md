@@ -18,7 +18,9 @@ The `uri` operator (e.g. in `uri"https://example.com/"`) allows you to safely cr
 When you have a variable in scope, for instance `name`, you can put its value in the URI like this: `uri"https://example.com/$name"`.
 It will produce the URI `https://example.com/peter`, exactly as you would expect.
 `uri` is a custom [String interpolator](/overviews/core/string-interpolation.html) defined in sttp.
-When you call it, it replaces the interpolated variables with their values, for instance `$name` is replaced by `peter` and it makes sure, at compile time, that the syntax of the URI is correct.
+When you call it, it replaces the interpolated variables with their values, for instance `$name` is replaced by `peter`.
+Normally, that could cause problems with special characters breaking the URL.
+However, the `uri` interpolator deals with that for you by escaping these characters.
 
 ```scala
 import sttp.client3.{SimpleHttpClient, UriContext, basicRequest}
