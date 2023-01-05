@@ -36,4 +36,4 @@ Other methods are available for different HTTP methods.
 
 ## The `uri` operator before website address
 The `uri` operator in the `uri"https://httpbin.org/get"` keeps you safe from making some of the mistakes in the provided addresses.
-It can also interpolate values from variables as described in [How to construct URLs from variables](/overviews/toolkit/sttp-variable-urls).
+It can also interpolate values from variables as described in [How to construct URLs from variables](/overviews/toolkit/sttp-variable-urls.html).
