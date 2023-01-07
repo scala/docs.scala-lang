@@ -101,7 +101,7 @@ val functions = List(isEvenFunction)   // works
 val methods = List(isEvenMethod)       // works
 ```
 
-As shown in that error message, there is a manual way to convert a method into a function in Scala 2, but the important part for Scala 3 is that the Eta Expansion technology is improved, so now when you attempt to use a method as a variable, it just works---you don’t have to handle the manual conversion yourself:
+The important part for Scala 3 is that the Eta Expansion technology is improved, so now when you attempt to use a method as a variable, it just works---you don’t have to handle the manual conversion yourself.
 
 {% endtab %}
 {% endtabs %}
