@@ -3,9 +3,9 @@ title: Extension Methods
 type: section
 description: This page demonstrates how Extension Methods work in Scala 3.
 languages: [zh-cn]
-num: 63
-previous-page: ca-given-imports
-next-page: ca-type-classes
+num: 59
+previous-page: ca-contextual-abstractions-intro
+next-page: ca-given-using-clauses
 ---
 
 

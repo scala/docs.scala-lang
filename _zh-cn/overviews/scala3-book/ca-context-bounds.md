@@ -2,8 +2,9 @@
 title: 上下文绑定
 type: section
 description: This page demonstrates Context Bounds in Scala 3.
+language: zh-cn
 num: 61
-previous-page: types-type-classes
+previous-page: ca-given-using-clauses
 next-page: ca-given-imports
 
 partof: scala3-book

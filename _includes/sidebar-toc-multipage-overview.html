@@ -52,9 +52,12 @@
           {% endfor %}
         </ul>
       {% elsif page.language and orphanTranslation == false %}
+        {% comment %}
         <!-- i.e. some pages like '/zh-cn/thanks.html' have no english version -->
-        {% assign engPath = page.id | remove_first: "/" | remove_first: page.language | append: '.html' %}
-        {% assign engPg = site.overviews | where: 'partof', page.partof | first %}
+        {% endcomment %}
+        {% assign engId = page.id | remove_first: "/" | remove_first: page.language %}
+        {% assign engPath = engId | append: '.html' %}
+        {% assign engPg = site.overviews | where: 'partof', page.partof | find: 'id', engId %}
         <ul id="available-languages" style="display: none;">
           <li><a href="{{ site.baseurl }}{{ engPath }}">English</a></li>
           {% for l in engPg.languages %}

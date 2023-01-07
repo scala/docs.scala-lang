@@ -83,10 +83,10 @@ individual to individual.  `-Xlint` is valuable to enable.  Some brave
 people enable `-Werror` (formerly `-Xfatal-warnings`) to make warnings
 fatal.
 
-[sbt-tpolecat](https://github.com/DavidGregory084/sbt-tpolecat) is an
+[sbt-tpolecat](https://github.com/typelevel/sbt-tpolecat) is an
 opinionated sbt plugin that sets many options automatically, depending
 on Scala version; you can see
-[here](https://github.com/DavidGregory084/sbt-tpolecat/blob/master/src/main/scala/io/github/davidgregory084/TpolecatPlugin.scala)
+[here](https://github.com/typelevel/sbt-tpolecat/blob/main/plugin/src/main/scala/io/github/davidgregory084/TpolecatPlugin.scala)
 what it sets.  Some choices it makes are oriented towards
 pure-functional programmers.
 
@@ -321,27 +321,7 @@ In many cases one should instead write:
 
     ThisBuild / scalaVersion := "2.13.10"
 
-Conversely, you should not write:
-
-    ThisBuild / name := "sample"
-
-which will result in a warning:
-
-    [warn] there's a key that's not used by any other settings/tasks:
-    [warn]
-    [warn] * ThisBuild / name
-    [warn]   +- sample-project/build.sbt:11
-
-For your quick single-project build with bare settings, the minimal settings are:
-
-    scalaVersion := "2.13.10"
-    organization := "sampler"
-    version := "0.1"
-    name := "sample"          // must not be scoped to ThisBuild
-
-    scalacOptions ++= Seq("-Werror", "-Xlint")  // append to options
-
-Other possible solutions to provide a setting everywhere include:
+Other possibilities include:
 
 * the common settings pattern, where you put shared settings
   in a `val`, typically named `commonSettings`, and then

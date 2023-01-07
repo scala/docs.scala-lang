@@ -5,7 +5,7 @@ description: This chapter provides an introduction to the Scala 3 concept of Con
 languages: [zh-cn]
 num: 58
 previous-page: types-others
-next-page: ca-given-using-clauses
+next-page: ca-extension-methods
 ---
 
 
@@ -37,6 +37,10 @@ While these concepts were gradually “discovered” in Scala 2, they’re now w
 The design of Scala 3 focuses on **intent** rather than **mechanism**.
 Instead of offering one very powerful feature of implicits, Scala 3 offers several use-case oriented features:
 
+- **Retroactively extending classes**.
+  In Scala 2, extension methods had to be encoded using implicit conversions or implicit classes.
+  In contrast, in Scala 3 [extension methods][extension-methods] are now directly built into the language, leading to better error messages and improved type inference.
+
 - **Abstracting over contextual information**.
   [Using clauses][givens] allow programmers to abstract over information that is available in the calling context and should be passed implicitly.
   As an improvement over Scala 2 implicits, using clauses can be specified by type, freeing function signatures from term variable names that are never explicitly referred to.
@@ -44,10 +48,6 @@ Instead of offering one very powerful feature of implicits, Scala 3 offers sever
 - **Providing Type-class instances**.
   [Given instances][type-classes] allow programmers to define the _canonical value_ of a certain type.
   This makes programming with type-classes more straightforward without leaking implementation details.
-
-- **Retroactively extending classes**.
-  In Scala 2, extension methods had to be encoded using implicit conversions or implicit classes.
-  In contrast, in Scala 3 [extension methods][extension-methods] are now directly built into the language, leading to better error messages and improved type inference.
 
 - **Viewing one type as another**.
   Implicit conversion have been [redesigned][implicit-conversions] from the ground up as instances of a type-class `Conversion`.

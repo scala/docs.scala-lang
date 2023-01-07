@@ -2,6 +2,7 @@
 title: 单例对象
 type: section
 description: This section provides an introduction to the use of singleton objects in Scala 3.
+language: zh-cn
 num: 12
 previous-page: taste-functions
 next-page: taste-collections

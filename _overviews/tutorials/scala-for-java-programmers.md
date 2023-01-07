@@ -26,11 +26,11 @@ next_resources:
   - title: Scala Book
     description: Learn Scala by reading a series of short lessons.
     icon: "fa fa-book-open"
-    link: /scala3/book/scala-for-java-devs.html
+    link: /scala3/book/introduction.html
   - title: Online Courses
     description: MOOCs to learn Scala, for beginners and experienced programmers.
     icon: "fa fa-cloud"
-    link: /scala3/book/scala-for-java-devs.html
+    link:  /online-courses.html
 ---
 
 If you are coming to Scala with some Java experience already, this page should give a good overview of

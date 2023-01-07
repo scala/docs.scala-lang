@@ -14,7 +14,7 @@ After this initial tour, the rest of the book provides more details on these fea
 
 ## Setting Up Scala
 
-Througout this chapter, and the rest of the book, we encourage you to try out the examples by either copying
+Throughout this chapter, and the rest of the book, we encourage you to try out the examples by either copying
 them or typing them out manually. The tools necessary to follow along with the examples on your own computer
 can be installed by following our [getting started guide][get-started].
 

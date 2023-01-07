@@ -1,7 +1,6 @@
 ---
 title: SIP-50 - Struct Classes
-status: under-review
+status: withdrawn
 pull-request-number: 50
-stage: design
 
 ---
