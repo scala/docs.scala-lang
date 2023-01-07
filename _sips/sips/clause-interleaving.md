@@ -30,11 +30,6 @@ def foo[A](using a: A)(b: List[A])[C <: a.type, D](cd: (C, D))[E]: Foo[A, B, C, 
 
 ## Motivation
 
-We motivate the feature with two use cases:
-
-* a `getOrElse` method for a heterogeneous key-value store, which is an occurrence of wanting a type parameter whose bounds are path-dependent on a term parameter, and
-
-### Heterogeneous key-value store
 Consider an API for a heterogenous key-value store, where keys know what type of value they must be associated to:
 ~~~ scala
 trait Key:
@@ -83,7 +78,6 @@ While again, this provides the expected API at call site, it also has issues:
 * The behavior is not the same, as `default` has to be a by-value parameter
 * The definition is hard to visually parse, as users are more used to methods (and it is our opinion this should remain so)
 * The definition is cumbersome to write, especially if there are a lot of term parameters
-* Methods containing curried type clauses like `def foo[A][B](x: B)` cannot be represented in this way, as polymorphic methods always have to have a term parameter right after.
 * It is inefficient, as many closures must be created for each call to `getOrElse` (one per term clause to the right of the first non-initial type clause).
 * Same problem as above with overloading
 
@@ -123,7 +117,7 @@ Param                  ::=  id ‘:’ ParamType [‘=’ Expr]
 
 The main rules of interest are `DefParamClauses` and `DefParamClauseChunk`, which now allow any number of type parameter clauses, term parameter clauses and using parameter clauses, in any order as long as there are no two adjacent type clauses.
 
-Note that these are also used for the right-hand side of extension methods, clause interleaving thus also applies to them.
+Note that these are also used for the right-hand side of extension methods, thus clause interleaving also applies to them.
 
 It is worth pointing out that there can still only be at most one implicit parameter clause, which, if present, must be at the end.
 
