@@ -255,8 +255,6 @@ def showNotification(notification: Notification): String = {
       s"You got an email from $sender with title: $title"
     case SMS(number, message) =>
       s"You got an SMS from $number! Message: $message"
-    case VoiceRecording(name, link) =>
-      s"You received a Voice Recording from $name! Click the link to hear it: $link"
   }
 }
 ```
@@ -269,8 +267,6 @@ def showNotification(notification: Notification): String =
       s"You got an email from $sender with title: $title"
     case SMS(number, message) =>
       s"You got an SMS from $number! Message: $message"
-    case VoiceRecording(name, link) =>
-      s"You received a Voice Recording from $name! Click the link to hear it: $link"
 ```
 {% endtab %}
 {% endtabs %}
