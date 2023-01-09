@@ -11,25 +11,35 @@ next-page: fun-hofs
 
 When you look at the Scaladoc for the `map` method on Scala collections classes, you see that it’s defined to accept a _function_:
 
+{% tabs fun_1 %}
+{% tab 'Scala 2 and 3' for=fun_1 %}
+
 ```scala
 def map[B](f: (A) => B): List[B]
            -----------
 ```
 
+{% endtab %}
+{% endtabs %}
+
 Indeed, the Scaladoc clearly states, “`f` is the _function_ to apply to each element.”
 But despite that, somehow you can pass a _method_ into `map`, and it still works:
+
+{% tabs fun_2 %}
+{% tab 'Scala 2 and 3' for=fun_2 %}
 
 ```scala
 def times10(i: Int) = i * 10   // a method
 List(1, 2, 3).map(times10)     // List(10,20,30)
 ```
 
+{% endtab %}
+{% endtabs %}
+
 Have you ever wondered how this works---how you can pass a _method_ into `map`, which expects a _function_?
 
 The technology behind this is known as _Eta Expansion_.
 It converts an expression of _method type_ to an equivalent expression of _function type_, and it does so seamlessly and quietly.
-
-
 
 ## The differences between methods and functions
 
@@ -45,18 +55,31 @@ Unlike methods, _functions_ are complete objects themselves, making them first-c
 Their syntax is also different.
 This example shows how to define a method and a function that perform the same task, determining if the given integer is even:
 
+{% tabs fun_3 %}
+{% tab 'Scala 2 and 3' for=fun_3 %}
+
 ```scala
 def isEvenMethod(i: Int) = i % 2 == 0         // a method
 val isEvenFunction = (i: Int) => i % 2 == 0   // a function
 ```
 
+{% endtab %}
+{% endtabs %}
+
 The function truly is an object, so you can use it just like any other variable, such as putting it in a list:
+
+{% tabs fun_4 %}
+{% tab 'Scala 2 and 3' for=fun_4 %}
 
 ```scala
 val functions = List(isEvenFunction)
 ```
 
-Conversely, a method technically isn’t an object, so in Scala 2 you couldn’t put a method in a `List`, at least not directly, as shown in this example:
+{% endtab %}
+{% endtabs %}
+
+{% tabs fun_5 class=tabs-scala-version %}
+{% tab 'Scala 2' for=fun_5 %}
 
 ```scala
 // this example shows the Scala 2 error message
@@ -67,12 +90,21 @@ Unapplied methods are only converted to functions when a function type is expect
 You can make this conversion explicit by writing `isEvenMethod _` or `isEvenMethod(_)` instead of `isEvenMethod`.
 ```
 
-As shown in that error message, there is a manual way to convert a method into a function in Scala 2, but the important part for Scala 3 is that the Eta Expansion technology is improved, so now when you attempt to use a method as a variable, it just works---you don’t have to handle the manual conversion yourself:
+Conversely, a method technically isn’t an object, so in Scala 2 you couldn’t put a method in a `List`, at least not directly, as shown in this example:
+
+{% endtab %}
+
+{% tab 'Scala 3' for=fun_5 %}
 
 ```scala
 val functions = List(isEvenFunction)   // works
 val methods = List(isEvenMethod)       // works
 ```
+
+The important part for Scala 3 is that the Eta Expansion technology is improved, so now when you attempt to use a method as a variable, it just works---you don’t have to handle the manual conversion yourself.
+
+{% endtab %}
+{% endtabs %}
 
 For the purpose of this introductory book, the important things to know are:
 
@@ -80,8 +112,6 @@ For the purpose of this introductory book, the important things to know are:
 - The technology has been improved in Scala 3 to be almost completely seamless
 
 For more details on how this works, see the [Eta Expansion page][eta_expansion] in the Reference documentation.
-
-
 
 [eta_expansion]: {{ site.scala3ref }}/changed-features/eta-expansion.html
 [extension]: {% link _overviews/scala3-book/ca-extension-methods.md %}
