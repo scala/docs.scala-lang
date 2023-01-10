@@ -219,7 +219,7 @@ alice match
 ~~~
 Later in time, you can amend the original case class definition to, say, add an optional `address` field. You
  * add a new field `address` and a custom `withAddress` method,
- * add the former constructor signature as a secondary constructor, private to the companion object. This step is necessary because the public `apply` method in the companion object calls the former constructor, which was effectively public in the bytecode produced by the compiler.
+ * add the former constructor signature as a secondary constructor, private to the companion object. This step is necessary because the compilers currently emit the private constructors as public constructors in the bytecode (see [#12711](https://github.com/scala/bug/issues/12711) and [#16651](https://github.com/lampepfl/dotty/issues/16651)).
 
 {% tabs case_class_compat_2 %}
 {% tab 'Scala 3 Only' %}
