@@ -185,10 +185,27 @@ To achieve that, follow this pattern:
 
 Example:
 
-{% tabs case_class_compat_1 %}
-{% tab 'Scala 3 Only' %}
+{% tabs case_class_compat_1 class=tabs-scala-version %}
 
-```scala
+{% tab 'Scala 2' %}
+~~~ scala
+// Mark the primary constructor as private
+case class Person private (name: String, age: Int) {
+  // Create withXxx methods for every field, implemented by using the copy method
+  def withName(name: String): Person = copy(name = name)
+  def withAge(age: Int): Person = copy(age = age)
+}
+object Person {
+  // Create a public constructor (which uses the primary constructor)
+  def apply(name: String, age: Int) = new Person(name, age)
+  // Make the extractor private
+  private def unapply(p: Person): Some[Person] = Some(p)
+}
+~~~
+{% endtab %}
+
+{% tab 'Scala 3' %}
+~~~ scala
 // Mark the primary constructor as private
 case class Person private (name: String, age: Int):
   // Create withXxx methods for every field, implemented by using the copy method
@@ -198,38 +215,64 @@ object Person:
   // Create a public constructor (which uses the primary constructor)
   def apply(name: String, age: Int) = new Person(name, age)
   // Make the extractor private
-  private def unapply(p: Person) = p
-```
+  private def unapply(p: Person): Person = p
+~~~
 {% endtab %}
+
 {% endtabs %}
 This class can be published in a library and used as follows:
 
+{% tabs case_class_compat_1_b %}
+{% tab 'Scala 2 and 3' %}
 ~~~ scala
 // Create a new instance
 val alice = Person("Alice", 42)
 // Transform an instance
 println(alice.withAge(alice.age + 1)) // Person(Alice, 43)
 ~~~
+{% endtab %}
+{% endtabs %}
 
 If you try to use `Person` as an extractor in a match expression, it will fail with a message like “method unapply cannot be accessed as a member of Person.type”. Instead, you can use it as a typed pattern:
 
+{% tabs case_class_compat_1_c class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+~~~ scala
+alice match {
+  case person: Person => person.name
+}
+~~~
+{% endtab %}
+{% tab 'Scala 3' %}
 ~~~ scala
 alice match
   case person: Person => person.name
 ~~~
+{% endtab %}
+{% endtabs %}
 Later in time, you can amend the original case class definition to, say, add an optional `address` field. You
  * add a new field `address` and a custom `withAddress` method,
  * add the former constructor signature as a secondary constructor, private to the companion object. This step is necessary because the compilers currently emit the private constructors as public constructors in the bytecode (see [#12711](https://github.com/scala/bug/issues/12711) and [#16651](https://github.com/lampepfl/dotty/issues/16651)).
 
-{% tabs case_class_compat_2 %}
-{% tab 'Scala 3 Only' %}
-```scala
+{% tabs case_class_compat_2 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+~~~ scala
+case class Person private (name: String, age: Int, address: Option[String]) {
+  ...
+  // Add back the former primary constructor signature
+  private[Person] def this(name: String, age: Int) = this(name, age, None)
+  def withAddress(address: Option[String]) = copy(address = address)
+}
+~~~
+{% endtab %}
+{% tab 'Scala 3' %}
+~~~ scala
 case class Person private (name: String, age: Int, address: Option[String]):
   ...
   // Add back the former primary constructor signature
   private[Person] def this(name: String, age: Int) = this(name, age, None)
   def withAddress(address: Option[String]) = copy(address = address)
-```
+~~~
 {% endtab %}
 {% endtabs %}
 
@@ -243,12 +286,16 @@ The original users can use the case class `Person` as before, all the methods th
 
 The new field `address` can be used as follows:
 
+{% tabs case_class_compat_3 %}
+{% tab 'Scala 2 and 3' %}
 ~~~ scala
 // The public constructor sets the address to None by default.
 // To set the address, we call withAddress:
 val bob = Person("Bob", 21).withAddress(Some("Atlantic ocean"))
 println(bob.address)
 ~~~
+{% endtab %}
+{% endtabs %}
 
 A regular case class not following this pattern would break its usage, because by adding a new field changes some methods (which could be used by somebody else), for example `copy` or the constructor itself.
 
