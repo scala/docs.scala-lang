@@ -32,12 +32,13 @@ Scala 的 `if`/`else` 控制结构看起来与其他语言相似：
 {% tab 'Scala 2' for=if-else %}
 
 ```scala
-if x < 0 then
+if (x < 0) {
   println("negative")
-else if x == 0 then
+} else if (x == 0) {
   println("zero")
-else
+} else {
   println("positive")
+}
 ```
 
 {% endtab %}
