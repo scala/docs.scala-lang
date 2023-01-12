@@ -66,7 +66,7 @@ See `tryCompiletimeConstantFold` in [Types].
 [Synthesizer]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/typer/Synthesizer.scala
 [SyntheticMembers]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/transform/SyntheticMembers.scala
 [quotes-impl]: https://github.com/lampepfl/dotty/tree/master/compiler/src/scala/quoted/runtime/impl
-[Inliner]: https://github.com/lampepfl/dotty/tree/master/compiler/src/dotty/tools/dotc/typer/Inliner.scala
+[Inliner]: https://github.com/lampepfl/dotty/blob/main/compiler/src/dotty/tools/dotc/inlines/Inliner.scala
 [Types]: https://github.com/lampepfl/dotty/tree/master/compiler/src/dotty/tools/dotc/core/Types.scala
 [Completion]: https://github.com/lampepfl/dotty/tree/master/compiler/src/dotty/tools/dotc/interactive/Completion.scala
 [DesugarEnums]: https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/ast/DesugarEnums.scala
