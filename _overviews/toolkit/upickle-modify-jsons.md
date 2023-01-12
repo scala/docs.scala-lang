@@ -50,7 +50,7 @@ Above, we first removed the field `name` from the top-level object in the json.
 Then, we selected the array `pets` and removed the value with index `1` from it.
 
 ## Operating on jsons generated from Scala values
-If you want to operate on jsons generate from Scala values (like in the [How to write JSONs](({{ site.baseurl }}/overviews/toolkit/upickle-write-json) tutorial), then it is possible as well.
+If you want to operate on jsons generate from Scala values (like in the [How to write JSONs]({% link _overviews/toolkit/upickle-write-json.md %}) tutorial), then it is possible as well.
 Usually, `upickle.write` operation outputs a `String`. But, if you replace it with `upickle.writeJs`, then it returns a json represention from `ujson`.
 Then you can operate on it in the same way as you did in the previous code snippets in this tutorial. For example:
 ```scala

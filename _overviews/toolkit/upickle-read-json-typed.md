@@ -10,8 +10,10 @@ next-page: upickle-write-json
 {% include markdown.html path="_markdown/install-upickle.md" %}
 
 In Scala Toolkit, it is possible to read a JSON and values inside of it in two ways:
- - First one offers everything you need to quickly extract data from a JSON, without requiring any specific structure. This approach is described in the [How to read a JSON](({{ site.baseurl }}/overviews/toolkit/upickle-read-json) tutorial. Visit it if you want a simple and fast way to read JSONs.
- - The second approach one allows you to work with the json in a fully typed code, and even to provide your custom data structures. This approach is described in this tutorial. It is more well-suited when you plan on reusing, storing and operating on the structures loaded from jsons.
+ - First one offers everything you need to quickly extract data from a JSON, without requiring any specific structure. 
+ This approach is described in the [How to read a JSON]({% link _overviews/toolkit/upickle-read-json.md %}) tutorial. Visit it if you want a simple and fast way to read JSONs.
+ - The second approach one allows you to work with the json in a fully typed code, and even to provide your custom data structures. 
+ This approach is described in this tutorial. It is more well-suited when you plan on reusing, storing and operating on the structures loaded from jsons.
 
 ## Reading JSONs to a typed structure
 To perform typed operations on JSONs, you can utilize a `upickle` Toolkit library. 
