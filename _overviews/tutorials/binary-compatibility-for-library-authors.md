@@ -194,6 +194,7 @@ case class Person private (name: String, age: Int):
   // Create withXxx methods for every field, implemented by using the copy method
   def withName(name: String): Person = copy(name = name)
   def withAge(age: Int): Person = copy(age = age)
+
 object Person:
   // Create a public constructor (which uses the primary constructor)
   def apply(name: String, age: Int) = new Person(name, age)
@@ -204,51 +205,85 @@ object Person:
 {% endtabs %}
 This class can be published in a library and used as follows:
 
+{% tabs case_class_compat_2 %}
+{% tab 'Scala 2 and 3' %}
 ~~~ scala
 // Create a new instance
 val alice = Person("Alice", 42)
 // Transform an instance
 println(alice.withAge(alice.age + 1)) // Person(Alice, 43)
 ~~~
+{% endtab %}
+{% endtabs %}
 
 If you try to use `Person` as an extractor in a match expression, it will fail with a message like “method unapply cannot be accessed as a member of Person.type”. Instead, you can use it as a typed pattern:
 
+{% tabs case_class_compat_3 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+~~~ scala
+alice match {
+  case person: Person => person.name
+}
+~~~
+{% endtab %}
+{% tab 'Scala 3' %}
 ~~~ scala
 alice match
   case person: Person => person.name
 ~~~
+{% endtab %}
+{% endtabs %}
+
 Later in time, you can amend the original case class definition to, say, add an optional `address` field. You
  * add a new field `address` and a custom `withAddress` method,
- * add the former constructor signature as a secondary constructor, private to the companion object. This step is necessary because the compilers currently emit the private constructors as public constructors in the bytecode (see [#12711](https://github.com/scala/bug/issues/12711) and [#16651](https://github.com/lampepfl/dotty/issues/16651)).
+ * tell MiMa to [ignore](https://github.com/lightbend/mima#filtering-binary-incompatibilities) changes to the class constructor. This step is necessary because MiMa does not yet ignore changes in private class constructor signatures (see [#738](https://github.com/lightbend/mima/issues/738)).
 
-{% tabs case_class_compat_2 %}
+{% tabs case_class_compat_4 %}
 {% tab 'Scala 3 Only' %}
 ```scala
 case class Person private (name: String, age: Int, address: Option[String]):
   ...
-  // Add back the former primary constructor signature
-  private[Person] def this(name: String, age: Int) = this(name, age, None)
   def withAddress(address: Option[String]) = copy(address = address)
 ```
 {% endtab %}
 {% endtabs %}
 
-> Note that an alternative solution, instead of adding back the previous constructor signatures as secondary constructors, consists of adding a [MiMa filter](https://github.com/lightbend/mima#filtering-binary-incompatibilities) to simply ignore the problem. Even though the constructors are effectively public in the bytecode, they can’t be called from Scala programs (but they could be called by Java programs). In an sbt build definition you would add the following setting:
+And, in your build definition:
+
+{% tabs case_class_compat_5 %}
+{% tab 'sbt' %}
+~~~ scala
+import com.typesafe.tools.mima.core._
+mimaBinaryIssueFilters += ProblemFilters.exclude[DirectMissingMethodProblem]("Person.this")
+~~~
+{% endtab %}
+{% endtabs %}
+
+Otherwise, MiMa would fail with an error like “method this(java.lang.String,Int)Unit in class Person does not have a correspondent in current version”.
+
+> Note that an alternative solution, instead of adding a MiMa exclusion filter, consists of adding back the previous
+> constructor signatures as secondary constructors:
 > ~~~ scala
-> import com.typesafe.tools.mima.core._
-> mimaBinaryIssueFilters += ProblemFilters.exclude[DirectMissingMethodProblem]("Person.this")
+> case class Person private (name: String, age: Int, address: Option[String]):
+>   ...
+>   // Add back the former primary constructor signature
+>   private[Person] def this(name: String, age: Int) = this(name, age, None)
 > ~~~
-> Otherwise, MiMa would fail with an error like “method this(java.lang.String,Int)Unit in class Person does not have a correspondent in current version”.
+
 The original users can use the case class `Person` as before, all the methods that existed before are present unmodified after this change, thus the compatibility with the existing usage is maintained.
 
 The new field `address` can be used as follows:
 
+{% tabs case_class_compat_6 %}
+{% tab 'Scala 2 and 3' %}
 ~~~ scala
 // The public constructor sets the address to None by default.
 // To set the address, we call withAddress:
 val bob = Person("Bob", 21).withAddress(Some("Atlantic ocean"))
 println(bob.address)
 ~~~
+{% endtab %}
+{% endtabs %}
 
 A regular case class not following this pattern would break its usage, because by adding a new field changes some methods (which could be used by somebody else), for example `copy` or the constructor itself.
 
