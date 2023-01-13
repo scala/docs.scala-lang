@@ -178,7 +178,7 @@ Again, we recommend using MiMa to double-check that you have not broken binary c
 Sometimes, it is desirable to change the definition of a case class (adding and/or removing fields) while still staying backwards-compatible with the existing usage of the case class, i.e. not breaking the so-called _binary compatibility_. The first question you should ask yourself is “do you need a _case_ class?” (as opposed to a regular class, which can be easier to evolve in a binary compatible way). A good reason for using a case class is when you need a structural implementation of `equals` and `hashCode`.
 
 To achieve that, follow this pattern:
- * make the primary constructor private (this makes private the `copy` method of the class)
+ * make the primary constructor private (this makes the `copy` method of the class private as well)
  * define a private `unapply` function in the companion object (note that by doing that the case class loses the ability to be used as an extractor in match expressions)
  * for all the fields, define `withXXX` methods on the case class that create a new instance with the respective field changed (you can use the private `copy` method to implement them)
  * create a public constructor by defining an `apply` method in the companion object (it can use the private constructor)
@@ -197,7 +197,7 @@ case class Person private (name: String, age: Int):
 
 object Person:
   // Create a public constructor (which uses the primary constructor)
-  def apply(name: String, age: Int) = new Person(name, age)
+  def apply(name: String, age: Int): Person = new Person(name, age)
   // Make the extractor private
   private def unapply(p: Person) = p
 ```
@@ -236,6 +236,7 @@ alice match
 
 Later in time, you can amend the original case class definition to, say, add an optional `address` field. You
  * add a new field `address` and a custom `withAddress` method,
+ * update the public `apply` method in the companion object to initialize all the fields,
  * tell MiMa to [ignore](https://github.com/lightbend/mima#filtering-binary-incompatibilities) changes to the class constructor. This step is necessary because MiMa does not yet ignore changes in private class constructor signatures (see [#738](https://github.com/lightbend/mima/issues/738)).
 
 {% tabs case_class_compat_4 %}
@@ -244,6 +245,10 @@ Later in time, you can amend the original case class definition to, say, add an 
 case class Person private (name: String, age: Int, address: Option[String]):
   ...
   def withAddress(address: Option[String]) = copy(address = address)
+
+object Person:
+  // Update the public constructor to also initialize the address field
+  def apply(name: String, age: Int): Person = new Person(name, age, None)
 ```
 {% endtab %}
 {% endtabs %}
@@ -286,6 +291,22 @@ println(bob.address)
 {% endtabs %}
 
 A regular case class not following this pattern would break its usage, because by adding a new field changes some methods (which could be used by somebody else), for example `copy` or the constructor itself.
+
+Optionally, you can also add overloads of the `apply` method in the companion object to initialize more fields
+in one call. In our example, we can add an overload that also initializes the `address` field:
+
+{% tabs case_class_compat_7 %}
+{% tab 'Scala 3 Only' %}
+~~~ scala
+object Person:
+  // Original public constructor
+  def apply(name: String, age: Int): Person = new Person(name, age, None)
+  // Additional constructor that also sets the address
+  def apply(name: String, age: Int, address: String): Person =
+    new Person(name, age, Some(address))
+~~~
+{% endtab %}
+{% endtabs %}
 
 ## Versioning Scheme - Communicating compatibility breakages
 
