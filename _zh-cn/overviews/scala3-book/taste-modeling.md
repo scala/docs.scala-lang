@@ -32,13 +32,37 @@ It’s more about modeling operations, imho.”
 How to resolve? Is there a good DDD term to use here?
 {% endcomment %}
 
-### traits
+### Traits
 
 Scala trait 可以用作简单的接口，但它们也可以包含抽象和具体的方法和字段，并且它们可以有参数，就像类一样。
 它们为您提供了一种将行为组织成小型模块化单元的好方法。
 稍后，当您想要创建属性和行为的具体实现时，类和对象可以扩展特征，根据需要混合尽可能多的特征以实现所需的行为。
 
 作为如何将 traits 用作接口的示例，以下是三个 traits，它们为狗和猫等动物定义了结构良好并且模块化的行为：
+
+{% tabs traits class=tabs-scala-version %}
+{% tab 'Scala 2' for=traits %}
+
+```scala
+trait Speaker {
+  def speak(): String  // has no body, so it’s abstract
+}
+
+trait TailWagger {
+  def startTail(): Unit = println("tail is wagging")
+  def stopTail(): Unit = println("tail is stopped")
+}
+
+trait Runner {
+  def startRunning(): Unit = println("I’m running")
+  def stopRunning(): Unit = println("Stopped running")
+}
+```
+
+{% endtab %}
+
+{% tab 'Scala 3' for=traits %}
+
 
 ```scala
 trait Speaker:
@@ -53,16 +77,50 @@ trait Runner:
   def stopRunning(): Unit = println("Stopped running")
 ```
 
+{% endtab %}
+{% endtabs %}
+
 鉴于这些特征，这里有一个 `Dog` 类，它扩展了所有这些特征，同时为抽象 `speak` 方法提供了一种行为：
+
+{% tabs traits-class class=tabs-scala-version %}
+{% tab 'Scala 2' for=traits-class %}
+
+```scala
+class Dog(name: String) extends Speaker with TailWagger with Runner {
+  def speak(): String = "Woof!"
+}
+```
+
+{% endtab %}
+
+{% tab 'Scala 3' for=traits-class %}
 
 ```scala
 class Dog(name: String) extends Speaker, TailWagger, Runner:
   def speak(): String = "Woof!"
 ```
 
+{% endtab %}
+{% endtabs %}
+
 请注意该类如何使用 `extends` 关键字扩展 traits。
 
 类似地，这里有一个 `Cat` 类，它实现了这些相同的 traits，同时还覆盖了它继承的两个具体方法：
+
+{% tabs traits-override class=tabs-scala-version %}
+{% tab 'Scala 2' for=traits-override %}
+
+```scala
+class Cat(name: String) extends Speaker with TailWagger with Runner {
+  def speak(): String = "Meow"
+  override def startRunning(): Unit = println("Yeah ... I don’t run")
+  override def stopRunning(): Unit = println("No need to stop")
+}
+```
+
+{% endtab %}
+
+{% tab 'Scala 3' for=traits-override %}
 
 ```scala
 class Cat(name: String) extends Speaker, TailWagger, Runner:
@@ -71,7 +129,27 @@ class Cat(name: String) extends Speaker, TailWagger, Runner:
   override def stopRunning(): Unit = println("No need to stop")
 ```
 
+{% endtab %}
+{% endtabs %}
+
 这些示例显示了如何使用这些类：
+
+{% tabs traits-use class=tabs-scala-version %}
+{% tab 'Scala 2' for=traits-use %}
+
+```scala
+val d = new Dog("Rover")
+println(d.speak())      // prints "Woof!"
+
+val c = new Cat("Morris")
+println(c.speak())      // "Meow"
+c.startRunning()        // "Yeah ... I don’t run"
+c.stopRunning()         // "No need to stop"
+```
+
+{% endtab %}
+
+{% tab 'Scala 3' for=traits-use %}
 
 ```scala
 val d = Dog("Rover")
@@ -83,6 +161,9 @@ c.startRunning()        // "Yeah ... I don’t run"
 c.stopRunning()         // "No need to stop"
 ```
 
+{% endtab %}
+{% endtabs %}
+
 如果该代码有意义---太好了，您把 traits 作为接口感到舒服。
 如果没有，请不要担心，它们在 [Domain Modeling][data-1] 章节中有更详细的解释。
 
@@ -90,6 +171,24 @@ c.stopRunning()         // "No need to stop"
 
 Scala _classes_ 用于 OOP 风格的编程。
 这是一个模拟“人”的类的示例。在 OOP 中，字段通常是可变的，所以 `firstName` 和 `lastName` 都被声明为 `var` 参数：
+
+{% tabs class_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=class_1 %}
+
+```scala
+class Person(var firstName: String, var lastName: String) {
+  def printFullName() = println(s"$firstName $lastName")
+}
+
+val p = new Person("John", "Stephens")
+println(p.firstName)   // "John"
+p.lastName = "Legend"
+p.printFullName()      // "John Legend"
+```
+
+{% endtab %}
+
+{% tab 'Scala 3' for=class_1 %}
 
 ```scala
 class Person(var firstName: String, var lastName: String):
@@ -101,12 +200,30 @@ p.lastName = "Legend"
 p.printFullName()      // "John Legend"
 ```
 
+{% endtab %}
+{% endtabs %}
+
 请注意，类声明创建了一个构造函数：
 
-```斯卡拉
+{% tabs class_2 class=tabs-scala-version %}
+{% tab 'Scala 2' for=class_2 %}
+
+```scala
+// this code uses that constructor
+val p = new Person("John", "Stephens")
+```
+
+{% endtab %}
+
+{% tab 'Scala 3' for=class_2 %}
+
+```scala
 // 此代码使用该构造函数
 val p = Person("约翰", "斯蒂芬斯")
 ```
+
+{% endtab %}
+{% endtabs %}
 
 [Domain Modeling][data-1] 章节中介绍了构造函数和其他与类相关的主题。
 
@@ -120,20 +237,57 @@ to replace the Scala2 “sealed trait + case class” pattern. How to resolve?
 
 以 FP 风格编写代码时，您将使用以下结构：
 
-- 枚举来定义 ADT
-- 样例类
-- Traits
+- 代数数据类型（ADT）来定义数据
+- Traits 来定义数据上的功能
 
-### 枚举
+### 枚举和 Sum Types
+
+Sum types 是在 Scala 中给代数数据类型（ADT）建模的一种方法。
 
 `enum` 构造是在 Scala 3 中对代数数据类型 (ADT) 进行建模的好方法。
+
 例如，披萨具有三个主要属性：
 
 - 面饼大小
 - 面饼类型
 - 馅料
 
-这些是用枚举简洁地建模的：
+这些是用枚举简洁地建模的，它们是只包含单例值的 sum types：
+
+{% tabs enum_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=enum_1 %}
+
+In Scala 2 `sealed` classes and `case object` are combined to define an enumeration:
+
+```scala
+sealed abstract class CrustSize
+object CrustSize {
+  case object Small extends CrustSize
+  case object Medium extends CrustSize
+  case object Large extends CrustSize
+}
+
+sealed abstract class CrustType
+object CrustType {
+  case object Thin extends CrustType
+  case object Thick extends CrustType
+  case object Regular extends CrustType
+}
+
+sealed abstract class Topping
+object Topping {
+  case object Cheese extends Topping
+  case object Pepperoni extends Topping
+  case object BlackOlives extends Topping
+  case object GreenOlives extends Topping
+  case object Onions extends Topping
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=enum_1 %}
+
+Scala 3 提供了 `enum` 结构来定义枚举：
 
 ```scala
 enum CrustSize:
@@ -146,7 +300,31 @@ enum Topping:
   case Cheese, Pepperoni, BlackOlives, GreenOlives, Onions
 ```
 
+{% endtab %}
+{% endtabs %}
+
 一旦你有了一个枚举，你就可以按照你通常使用特征、类或对象的所有方式来使用枚举：
+
+{% tabs enum_2 class=tabs-scala-version %}
+{% tab 'Scala 2' for=enum_2 %}
+
+```scala
+import CrustSize._
+val currentCrustSize = Small
+
+// enums in a `match` expression
+currentCrustSize match {
+  case Small => println("Small crust size")
+  case Medium => println("Medium crust size")
+  case Large => println("Large crust size")
+}
+
+// enums in an `if` statement
+if (currentCrustSize == Small) println("Small crust size")
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=enum_2 %}
 
 ```scala
 import CrustSize.*
@@ -162,7 +340,26 @@ currentCrustSize match
 if currentCrustSize == Small then println("Small crust size")
 ```
 
-下面是另一个如何在 Scala 中创建和使用 ADT 的示例：
+{% endtab %}
+{% endtabs %}
+
+下面是另一个如何在 Scala 中创建 sum type 的示例，它不能被叫作枚举，因为 `succ` 样例类有参数：的示例：
+
+{% tabs enum_3 class=tabs-scala-version %}
+{% tab 'Scala 2' for=enum_3 %}
+
+```scala
+sealed abstract class Nat
+object Nat {
+  case object Zero extends Nat
+  case class Succ(pred: Nat) extends Nat
+}
+```
+
+Sum Types 在本书的[领域建模]({% link _overviews/scala3-book/domain-modeling-tools.md %})部分有详细的介绍。
+
+{% endtab %}
+{% tab 'Scala 3' for=enum_3 %}
 
 ```scala
 enum Nat:
@@ -170,11 +367,15 @@ enum Nat:
   case Succ(pred: Nat)
 ```
 
-枚举在本书的 [领域建模][data-1] 部分和 [参考文档]({{ site.scala3ref }}/enums/enums.html) 中有详细介绍。
+枚举在本书的 [领域建模]({% link _overviews/scala3-book/domain-modeling-tools.md %})部分和 [参考文档]({{ site.scala3ref }}/enums/enums.html) 中有详细介绍。
 
-### 样例类
+{% endtab %}
+{% endtabs %}
 
-Scala `case` 类允许您使用不可变数据结构对概念进行建模。
+### Product Types
+
+product type 是代数数据类型（ADT），它只含有一个形状，例如一个单例对象，在Scala 中用 `case` 对象来代表；或者是一个可以获取字段的不可变结构，用 `case` 类来代表。
+
 `case` 类具有 `class` 的所有功能，还包含其他功能，使它们对函数式编程很有用。
 当编译器在 `class` 前面看到 `case` 关键字时，它具有以下效果和好处：
 
@@ -192,6 +393,9 @@ NOTE: Julien had a comment about how he decides when to use case classes vs clas
 您_可以_自己手动将所有这些方法添加到一个类中，但是由于这些功能在函数式编程中非常常用，因此使用“case”类要方便得多。
 
 这段代码演示了几个 `case` 类的特性：
+
+{% tabs case-class %}
+{% tab 'Scala 2 and 3' for=case-class %}
 
 ```scala
 // define a case class
@@ -215,6 +419,9 @@ p.name = "Joe"   // error: can’t reassign a val field
 val p2 = p.copy(name = "Elton John")
 p2               // : Person = Person(Elton John,Singer)
 ```
+
+{% endtab %}
+{% endtabs %}
 
 有关 `case` 类的更多详细信息，请参阅 [领域建模][data-1] 部分。
 
