@@ -38,6 +38,45 @@ In the second case, a conversion `c` is searched for, which is applicable to `e`
 
 An example is to compare two strings `"foo" < "bar"`. In this case, `String` has no member `<`, so the implicit conversion `Predef.augmentString("foo") < "bar"` is inserted. (`scala.Predef` is automatically imported into all Scala programs.)
 
+### How are implicit conversions brought into scope? ###
+
+{% tabs implicit-conversion-scope class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+In Scala 2, an implicit convesion is brought into scope by importing from `ImplicitConversions`.
+
+```scala mdoc
+case class Student(name: String) {
+  def printName: Unit = println(name)
+}
+  
+object Conversions {
+  implicit def fromStringToStudent(name: String): Student = Student(name)
+}
+
+import ImplicitConversions._
+object Usage:
+  def main(args: Array[String]) = "Reginald".printName
+```
+{% endtab %}
+{% tab 'Scala 3' %}
+In Scala 3, an implicit conversion must be explicitly imported in order to be applicable.
+
+```scala mdoc
+case class Student(name: String):
+  def printName: Unit = println(name)
+  
+object Conversions:
+  given fromStringToStudent: Conversion[String, Student] = Student(_)
+  
+import Conversions.fromStringToStudent
+object Usage:
+  @main def run = "Reginald".printName
+```
+
+Note that a wildcard import (`*`) is not enough.
+{% endtab %}
+{% endtabs %}
+
 ### How are implicit conversions selected?
 
 See this [Scala FAQ Answer](https://docs.scala-lang.org/tutorials/FAQ/index.html#where-does-scala-look-for-implicits).
