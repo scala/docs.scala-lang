@@ -53,27 +53,42 @@ object Conversions {
   implicit def fromStringToStudent(name: String): Student = Student(name)
 }
 
-import ImplicitConversions._
+import Conversions._
 object Usage:
   def main(args: Array[String]) = "Reginald".printName
 ```
 {% endtab %}
 {% tab 'Scala 3' %}
-In Scala 3, an implicit conversion must be explicitly imported in order to be applicable.
+In Scala 3, an implicit conversion is brought into scope by either importing `given` or the named conversion from the object that defined it, (e.g. `Conversions` in this case). 
+
+Note that as of Scala 3, implicit conversions cannot be brought into scope anymore by means of a wildcard import (`*`). 
+
+Given the example:
 
 ```scala mdoc
 case class Student(name: String):
   def printName: Unit = println(name)
+object Student:
+  given Conversion[Student, Int] = _.name.length
   
 object Conversions:
   given fromStringToStudent: Conversion[String, Student] = Student(_)
-  
-import Conversions.fromStringToStudent
-object Usage:
-  @main def run = "Reginald".printName
 ```
 
-Note that a wildcard import (`*`) is not enough.
+The following imports would bring the `Conversion[String, Student]` into scope:
+  - `import Conversions.given`
+  - `import Conversions.{given[String, Student]}`
+  - `import Conversions.fromStringToStudent`
+
+If the implicit conversion is in the companion object of the argument type, (e.g. `Student` in this case), then no import is necessary.
+
+```scala mdoc
+import Conversions.given
+object Usage:
+  @main def run =
+    val reginald: Student = "Reginald" // applies the Conversion[String, Student]
+    println(reginald + 2)              // applies the Conversion[Student, Int]
+```
 {% endtab %}
 {% endtabs %}
 
