@@ -257,7 +257,7 @@ Sum types 是在 Scala 中给代数数据类型（ADT）建模的一种方法。
 {% tabs enum_1 class=tabs-scala-version %}
 {% tab 'Scala 2' for=enum_1 %}
 
-在 Scala 2 中，用 `sealed` 类和 `case object` 组合在一起来定义枚举： are combined to define an enumeration:
+在 Scala 2 中，用 `sealed` 类和 `case object` 组合在一起来定义枚举:
 
 ```scala
 sealed abstract class CrustSize
