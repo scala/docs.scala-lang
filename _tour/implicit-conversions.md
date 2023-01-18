@@ -42,7 +42,7 @@ An example is to compare two strings `"foo" < "bar"`. In this case, `String` has
 
 {% tabs implicit-conversion-scope class=tabs-scala-version %}
 {% tab 'Scala 2' %}
-In Scala 2, an implicit convesion is brought into scope by importing from `ImplicitConversions`.
+In Scala 2, an implicit conversion is brought into scope by importing from the object that defined it, (e.g. `Conversions` in this case).
 
 ```scala mdoc
 case class Student(name: String) {
