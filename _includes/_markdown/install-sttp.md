@@ -4,20 +4,20 @@ sttp is the HTTP client library of the Scala Toolkit.
 
 ## Installing sttp
 
-  {% tabs sttp-install-methods %}
-    {% tab 'Scala CLI' %}
-In Scala CLI, we can install the entire toolkit in a single line:
+{% tabs sttp-install-methods %}
+{% tab 'Scala CLI' %}
+In Scala CLI, you can install the entire toolkit in a single line:
 ```scala
 //> using toolkit
 ```
 
-Alternatively, we can install a specific version of sttp:
+Alternatively, you can install a specific version of sttp:
 ```scala
 //> using lib "com.softwaremill.sttp.client3::core:3.8.5"
 ```
-    {% endtab %}
-    {% tab 'sbt' %}
-In our build.sbt file, we add the dependency to the sttp library:
+{% endtab %}
+{% tab 'sbt' %}
+In your build.sbt file, you can add the dependency to the sttp library:
 ```scala
 lazy val example = project.in(file("example"))
   .settings(
@@ -25,9 +25,9 @@ lazy val example = project.in(file("example"))
     libraryDependencies += "com.softwaremill.sttp.client3" %% "core" % "3.8.5"
   )
 ```
-    {% endtab %}
-    {% tab 'Mill' %}
-In your build.sc file, we add the artifact to `ivyDeps`:
+{% endtab %}
+{% tab 'Mill' %}
+In your build.sc file, you can add the dependency to the sttp library:
 ```scala
 object example extends ScalaModule {
   def scalaVersion = "3.2.1"
@@ -37,6 +37,6 @@ object example extends ScalaModule {
     )
 }
 ```
-    {% endtab %}
-  {% endtabs %}
+{% endtab %}
+{% endtabs %}
 {% endaltDetails %}

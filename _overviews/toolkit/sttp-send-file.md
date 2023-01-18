@@ -1,5 +1,5 @@
 ---
-title: How to upload a file over HTTP request?
+title: How to upload a file over HTTP?
 type: section
 description: How to upload a file over HTTP request with Scala Toolkit.
 num: 18
@@ -18,13 +18,15 @@ import sttp.client3.{SimpleHttpClient, UriContext, basicRequest}
 import java.nio.file.Path
 
 val client = SimpleHttpClient() // Create the instance of SimpleHttpClient
-val requestFilePath = Path.of("image.png") // Path for the file you want to send
-val request = basicRequest.post(uri"https://example.com/").body(requestBody) // Construct post request to the service - https://example.com/
-val response = client.send(request) // send the request and get the response
-println(response.body) // print the body of the response
+val requestFilePath = Path.of("image.png") // Path of the file you want to send
+val request = basicRequest.post(uri"https://example.com/").body(requestFilePath) // Construct a POST request to upload the file to https://example.com/
+val response = client.send(request) // Send the request and get the response
+println(response.body) // Print the body of the response
 ```
+
 ## Multi-part request
-Web services often require sending file in the `multipart body`. It also allows upload multiple named files at once. To achieve that with sttp, you can use `.multipartBody` function on `basicRequest`.
+Many webservices can receive one ore many files in a multipart body.
+To achieve that with sttp, you can use the `multipartBody` method on the `basicRequest`.
 ```scala
 import sttp.client3._
 import java.nio.file.Path

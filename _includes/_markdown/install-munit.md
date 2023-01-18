@@ -4,20 +4,20 @@ MUnit is the testing library of the Scala Toolkit.
 
 ## Installing MUnit
 
-  {% tabs munit-unit-test-1 %}
-    {% tab 'Scala CLI' %}
-In Scala CLI, we can install the entire toolkit in a single line:
+{% tabs munit-unit-test-1 %}
+{% tab 'Scala CLI' %}
+In Scala CLI, you can install the entire toolkit in a single line:
 ```scala
 //> using toolkit
 ```
 
-Alternatively, we can install a specific version of MUnit:
+Alternatively, you can install a specific version of MUnit:
 ```scala
 //> using lib "org.scalameta::munit:1.0.0-M6"
 ```
-    {% endtab %}
-    {% tab 'sbt' %}
-In our build.sbt file, we add the dependency to the MUnit library:
+{% endtab %}
+{% tab 'sbt' %}
+In your build.sbt file, you can add the dependency to the MUnit library:
 ```scala
 lazy val example = project.in(file("example"))
   .settings(
@@ -26,10 +26,10 @@ lazy val example = project.in(file("example"))
   )
 ```
 Here the `Test` configuration means that this dependency is only used by the source files in the `example/src/test` directory.
-This is where we will put our test suites.
-    {% endtab %}
-    {% tab 'Mill' %}
-In your build.sc file, we add a `test` object extending `Tests` and `TestModule.Munit`:
+This is where you can put your test suites.
+{% endtab %}
+{% tab 'Mill' %}
+In your build.sc file, you can add a `test` object extending `Tests` and `TestModule.Munit`:
 ```scala
 object example extends ScalaModule {
   def scalaVersion = "3.2.1"
@@ -41,6 +41,6 @@ object example extends ScalaModule {
   }
 }
 ```
-    {% endtab %}
-  {% endtabs %}
+{% endtab %}
+{% endtabs %}
 {% endaltDetails %}
