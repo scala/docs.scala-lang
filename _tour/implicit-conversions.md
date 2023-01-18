@@ -42,11 +42,12 @@ An example is to compare two strings `"foo" < "bar"`. In this case, `String` has
 
 {% tabs implicit-conversion-scope class=tabs-scala-version %}
 {% tab 'Scala 2' %}
-In Scala 2, an implicit conversion is brought into scope by importing from the object that defined it, (e.g. `Conversions` in this case).
+In Scala 2, an implicit conversion is brought into scope by importing from the object that defined it, (e.g. `Conversions` in this case). If the implicit conversion is in the companion object of the argument type, (e.g. `Student` in this case), then no import is necessary.
 
 ```scala mdoc
-case class Student(name: String) {
-  def printName: Unit = println(name)
+case class Student(name: String)
+object Student {
+  implicit def fromStudentToInt(student: Student): Int = student.name.length
 }
   
 object Conversions {
@@ -54,8 +55,12 @@ object Conversions {
 }
 
 import Conversions._
-object Usage:
-  def main(args: Array[String]) = "Reginald".printName
+object Usage {
+  def main(args: Array[String]) = {
+    val reginald: Student = "Reginald" // applies the conversion Conversions.fromStringToStudent
+    println(reginald + 2)              // applies the conversion Student.fromStudentToInt
+  }
+}
 ```
 {% endtab %}
 {% tab 'Scala 3' %}
