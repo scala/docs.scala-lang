@@ -77,7 +77,7 @@ object Conversions:
 
 The following imports would bring the `Conversion[String, Student]` into scope:
   - `import Conversions.given`
-  - `import Conversions.{given[String, Student]}`
+  - `import Conversions.{given Conversion[String, Student]}`
   - `import Conversions.fromStringToStudent`
 
 If the implicit conversion is in the companion object of the argument type, (e.g. `Student` in this case), then no import is necessary.
