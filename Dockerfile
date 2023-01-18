@@ -1,7 +1,6 @@
-FROM ruby:2.6.9
+FROM ruby:2.7.6
 
-RUN gem install rouge -v3.30.0
-RUN gem install bundler:2.3.10 jekyll
+RUN gem install bundler:2.3.10
 
 WORKDIR /srv/jekyll
 
