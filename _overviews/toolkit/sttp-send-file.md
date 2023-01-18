@@ -25,7 +25,7 @@ println(response.body) // Print the body of the response
 ```
 
 ## Multi-part request
-Many webservices can receive one ore many files in a multipart body.
+Many webservices can receive one or many files in a multipart body.
 To achieve that with sttp, you can use the `multipartBody` method on the `basicRequest`.
 ```scala
 import sttp.client3._

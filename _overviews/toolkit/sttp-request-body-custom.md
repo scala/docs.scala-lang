@@ -31,7 +31,7 @@ given BodySerializer[Person] = { (p: Person) =>
 ```
 This serializer converts a `Person` to a `StringBody` by concatenating the `name` and `surname`, separated by a comma. 
 
-The `given` keyword may appear strange at first but is very powerfull.
+The `given` keyword may appear strange at first but is very powerful.
 It makes the `BodySerializer` available in the current scope, to call the `body` method of an HTTP request and pass it a `Person`.
 
 ## Sending a Person as the body of a request
