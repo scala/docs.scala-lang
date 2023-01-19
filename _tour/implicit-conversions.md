@@ -44,7 +44,7 @@ An example is to compare two strings `"foo" < "bar"`. In this case, `String` has
 {% tab 'Scala 2' %}
 In Scala 2, an implicit conversion is brought into scope by importing from the object that defined it, (e.g. `Conversions` in this case). If the implicit conversion is in the companion object of the argument type, (e.g. `Student` in this case), then no import is necessary.
 
-```scala mdoc
+```scala
 import scala.language.implicitConversions // required to define an implicit conversion
 
 case class Student(name: String)
