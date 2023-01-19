@@ -87,7 +87,7 @@ The following imports would bring the `Conversion[String, Student]` into scope:
 
 If the implicit conversion is in the companion object of the argument type, (e.g. `Student` in this case), then no import is necessary.
 
-```scala mdoc
+```scala
 import Conversions.given
 object Usage:
   @main def run =
