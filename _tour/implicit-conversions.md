@@ -45,6 +45,8 @@ An example is to compare two strings `"foo" < "bar"`. In this case, `String` has
 In Scala 2, an implicit conversion is brought into scope by importing from the object that defined it, (e.g. `Conversions` in this case). If the implicit conversion is in the companion object of the argument type, (e.g. `Student` in this case), then no import is necessary.
 
 ```scala mdoc
+import scala.language.implicitConversions // required to define an implicit conversion
+
 case class Student(name: String)
 object Student {
   implicit def fromStudentToInt(student: Student): Int = student.name.length
