@@ -99,9 +99,8 @@ object Usage:
 {% endtab %}
 {% endtabs %}
 
-### How are implicit conversions selected?
-
-See this [Scala FAQ Answer](https://docs.scala-lang.org/tutorials/FAQ/index.html#where-does-scala-look-for-implicits).
+Further reading: 
+  - [Where does Scala look for implicits? (on StackOverflow)](https://docs.scala-lang.org/tutorials/FAQ/index.html#where-does-scala-look-for-implicits).
 
 ### Beware the power of implicit conversions
 
