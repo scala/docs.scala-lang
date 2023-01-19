@@ -70,7 +70,7 @@ Note that as of Scala 3, implicit conversions cannot be brought into scope anymo
 
 Given the example:
 
-```scala mdoc
+```scala
 case class Student(name: String):
   def printName: Unit = println(name)
 object Student:
