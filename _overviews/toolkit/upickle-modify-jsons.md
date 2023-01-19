@@ -9,59 +9,59 @@ next-page:
 
 {% include markdown.html path="_markdown/install-upickle.md" %}
 
-## Modifying jsons
-If you want to set, modify or remove fields of a json, you can do it with Scala Toolkit. 
-First, you have to load the json. You can either do it from a json loaded to a `String`,
-or operate on json generated from Scala values.
+The `ujson.read` method creates a mutable representation of JSON that you can update, by adding, modifying or removing any field and element of its JSON objects and arrays.
+First you need to read the JSON string, then you can update it, and finally you can write it back to a String.
 
-## Loading a json text and modyfing it
-To read the `json` from text, you can use the `ujson.read` function. 
-This function returns an object representing the json that you can operate on. 
-Adding new fields and updating their values is done as a simple assignment:
 ```scala
+// Read the JSON string
+val json = ujson.read("""{"name":"John","pets":["Toolkitty","Scaniel"]}""")
+
+// Update it
 json("name") = "Peter"
+json("surname") = "Scalinsky"
+json("pets").arr.remove(1)
+
+// Write it back to a String
+val result: String = ujson.write(json)
+println(result)
+// Prints {"name":"Peter","pets":["Toolkitty"],"surname":"Scalinisky"}
 ```
-The code above would set the `name` field of the object in `json` to `Peter`.
-If the field is present, then it will be updated. If not, a new one is created.
-Below, you can see an example of all these operations put together. 
-The `ujson.write` function allowed us to convert back the json object represention to a `String`.
+
+
+## Modifying and adding fields
+
+You can access the field `"name"` with `json("name")` and then assign it a new value with the `=` statement.
+If the field does not yet exist, it is added to the JSON object.
+
 ```scala
 val json = ujson.read("""{"name":"John","pets":["Toolkitty","Scaniel"]}""")
 json("name") = "Peter"
 json("surname") = "Scalinsky"
-val jsonString: String = ujson.write(json)
-println(jsonString)
-//prints "{"name":"Peter","pets":["Toolkitty","Scaniel"],"surname":"Scalinisky"}"
 ```
+
+In the above code example, we change the value of the field `"name"`, from `"John"` to `"Peter"`, and we add a new field `"surname"` with value `"Scalinsky"`.
 
 ## Removing fields
-To remove fields from json you need to declare whether you are removing them from an `Object` or an `Array`.
- - To remove a field from an object, you can use the `.obj.remove("name")` function on json object
- - To remove a field from an array, you can use the `.obj.remove(index)` function on json object
- Following the previous example, below you can see how to remove some fields from it.
+
+To remove a field from a JSON object:
+- declare that the JSON value is an object by calling the `obj` method
+- call the `remove` method with the name of the field to remove.
+
 ```scala
 val json = ujson.read("""{"name":"John","pets":["Toolkitty","Scaniel"]}""")
-json.obj.remove("name") // remove "name" field
-json("pets").arr.remove(1) // remove pet with index 1 ("Scaniel")
-val jsonString: String = ujson.write(json)
-println(jsonString) // prints {"pets":["Toolkitty"]}
+json.obj.remove("name") // Remove "name" field from object
+println(ujson.write(json))
 ```
-Above, we first removed the field `name` from the top-level object in the json.
-Then, we selected the array `pets` and removed the value with index `1` from it.
 
-## Operating on jsons generated from Scala values
-If you want to operate on jsons generate from Scala values (like in the [How to write JSONs]({% link _overviews/toolkit/upickle-write-json.md %}) tutorial), then it is possible as well.
-Usually, `upickle.write` operation outputs a `String`. But, if you replace it with `upickle.writeJs`, then it returns a json represention from `ujson`.
-Then you can operate on it in the same way as you did in the previous code snippets in this tutorial. For example:
+## Removing elements from arrays
+
+To remove an element from an JSON array:
+- declare that the JSON value is an array by calling the `arr` method
+- call the `remove` method with the index of the element to remove.
+
 ```scala
-import upickle.default._
-
-case class PetOwner(name: String, pets: List[String])
-given ReadWriter[PetOwner] = macroRW
-val petOwner = PetOwner("Peter", List("Toolkitty", "Scaniel"))
-val json = writeJs[PetOwner](petOwner)
-json("surname") = "Scalinsky"
-val jsonString = ujson.write(json)
-println(jsonString)
-//Prints {"name":"Peter","pets":["Toolkitty","Scaniel"],"surname":"Scalinsky"}
+val json = ujson.read("""{"name":"John","pets":["Toolkitty","Scaniel"]}""")
+json("pets").arr.remove(1) // Remove pet at index 1 ("Scaniel")
+val jsonString: String = ujson.write(json)
+println(jsonString) // Prints {"name":"John","pets":["Toolkitty"]}
 ```
