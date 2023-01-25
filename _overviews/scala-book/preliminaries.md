@@ -45,11 +45,10 @@ One good thing to know up front is that comments in Scala are just like comments
 
 ## IDEs
 
-The three main IDEs (integrated development environments) for Scala are:
+The two main IDEs (integrated development environments) for Scala are:
 
 - [IntelliJ IDEA](https://www.jetbrains.com/idea/download)
 - [Visual Studio Code](https://code.visualstudio.com)
-- [Scala IDE for Eclipse](http://scala-ide.org)
 
 
 

@@ -163,82 +163,6 @@ After adding this, `mvn package` will also create `[artifactId]-[version]-jar-wi
 - `mvn clean`
 - `mvn package`: compile, run tests, and create jar
 
-### Integration with Eclipse ([Scala IDE][24])
-There are instructions at the [Scala Maven Plugin FAQs][23], but I thought I'd expand a bit. The [maven-eclipse-plugin][33] is a core plugin (all plugins prefixed with "maven" are, and are available by default) to generate Eclipse configuration files. However, this plugin does not know about our new Scala source files. We'll be using the [build-helper-maven-plugin][34] to add new source folders:
-
-    ...
-    <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <executions>
-            <execution>
-                <id>add-source</id>
-                <phase>generate-sources</phase>
-                <goals>
-                    <goal>add-source</goal>
-                </goals>
-                <configuration>
-                    <sources>
-                        <source>src/main/scala</source>
-                    </sources>
-                </configuration>
-            </execution>
-            <execution>
-                <id>add-test-source</id>
-                <phase>generate-sources</phase>
-                <goals>
-                    <goal>add-test-source</goal>
-                </goals>
-                <configuration>
-                    <sources>
-                        <source>src/test/scala</source>
-                    </sources>
-                </configuration>
-            </execution>
-        </executions>
-    </plugin>
-    ...
-
-After adding that to your `pom.xml`:
-
-1. Run `mvn eclipse:eclipse` - this generates the Eclipse project files (which are already ignored by our archetype's `.gitignore`)
-2. Run `mvn -Declipse.workspace="path/to/your/eclipse/workspace" eclipse:configure-workspace` - this adds an `M2_REPO` classpath variable to Eclipse
-3. Run `mvn package` to ensure you have all the dependencies in your local Maven repo
-
-Unfortunately, the integration isn't perfect. Firstly, open up the generated `.classpath` file (it will be hidden by default as it's a dotfile, but it should be in your project root directory; where you ran `mvn eclipse:eclipse`). You should see something like this near the top.
-
-    <classpathentry kind="src" path="src/test/scala" output="target/test-classes" including="**/*.java"/>
-    <classpathentry kind="src" path="src/main/scala" including="**/*.java"/>
-
-Change the `*.java` to `*.scala` (or duplicate the lines and change them to `*.scala` if you also have Java sources).
-
-Secondly, open the `.project` eclipse file (again, in the same folder). Change `<buildSpec>` and `<natures>` to look like this. Now Eclipse knows to use the Scala editor, and it won't think that everything is a syntax error.
-
-    <buildSpec>
-      <buildCommand>
-        <name>org.scala-ide.sdt.core.scalabuilder</name>
-      </buildCommand>
-    </buildSpec>
-    <natures>
-      <nature>org.scala-ide.sdt.core.scalanature</nature>
-      <nature>org.eclipse.jdt.core.javanature</nature>
-    </natures>
-
-Finally, in Eclipse, under "File" choose "Import..." and find your project.
-
-#### Using [m2eclipse-scala][35] for Eclipse integration
-m2eclipse-scala is a work in progress, and their website/repository may have updated information.
-It aims to ease integration between m2eclipse and Scala IDE for Eclipse.
-
-Under "Help -> Install New Software", enter "https://alchim31.free.fr/m2e-scala/update-site" and hit enter.
-You should see "Maven Integration for Eclipse -> Maven Integration for Scala IDE".
-
-After it installs, go to "New -> Project -> Other" and select "Maven Project".
-Search fo "scala-archetype" choose the one with the group "net.alchim31.maven".
-The wizard will more or less guide you through what was done with `mvn archetype:generate` above, and you should end up with a new Scala project!
-
-To import an existing project, simply go to "File -> Import -> Existing Maven Project" and find the directory containing your project.
-
 ## Adding Dependencies
 The first thing I do is look for "Maven" in the project page. For example, Google's [Guava] page includes [Maven Central links][28]. As you can see in the previous link, The Central Repository conveniently includes the snippet you have to add to your `pom.xml` on the left sidebar.
 
@@ -277,7 +201,6 @@ I'm not going to explain all of Maven in this tutorial (though I hope to add mor
 [21]: https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22maven-assembly-plugin%22
 [22]: https://davidb.github.io/scala-maven-plugin
 [23]: https://davidb.github.io/scala-maven-plugin/faq.html
-[24]: https://scala-ide.org
 [25]: https://scala-lang.org/api/current/index.html#scala.App
 [26]: https://docs.scala-lang.org/tutorials/tour/polymorphic-methods.html
 [27]: https://code.google.com/p/guava-libraries/
@@ -286,7 +209,5 @@ I'm not going to explain all of Maven in this tutorial (though I hope to add mor
 [30]: https://search.maven.org/#search%7Cga%7C1%7Cscopt
 [31]: https://mvnrepository.com
 [32]: https://docs.scala-lang.org/contribute.html
-[33]: https://maven.apache.org/plugins/maven-eclipse-plugin/
 [34]: https://www.mojohaus.org/build-helper-maven-plugin/
-[35]: https://github.com/sonatype/m2eclipse-scala
 [36]: https://github.com/scala/scala-module-dependency-sample
