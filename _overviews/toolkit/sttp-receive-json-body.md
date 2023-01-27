@@ -1,7 +1,7 @@
 ---
-title: How to read JSON from an HTTP response body?
+title: How to parse JSON from an HTTP response body?
 type: section
-description: How to construct URLs from variables with Scala Toolkit.
+description: How to read JSON from an HTTP response body?
 num: 19
 previous-page: sttp-send-file
 next-page: sttp-send-json-body
@@ -9,40 +9,70 @@ next-page: sttp-send-json-body
 
 {% include markdown.html path="_markdown/install-sttp.md" %}
 
-## Json in HTTP response body
-If you want to read a JSON body of HTTP response, you can use the integration between two of Toolkit libraries - upickle and sttp.
-You can follow the [tutorial on reading jsons to typed structures](({% link _overviews/toolkit/upickle-read-json-typed.md %}) to learn details
-about parsing jsons with upickle. However, using it with STTP is simplified and skips part of the steps.
+To read the JSON body of an HTTP response, you can use the integration between uPickle and sttp.
+This tutorial teaches how to do it in two steps:
+1. Defining your own data type and its uPickle `ReadWriter`
+2. Configuring the response of an HTTP request and sending it using sttp
 
-### Defining your own data type to 
-In Scala, you can use a `case class` to define your own data type. For example, if you wanted to represent a Person with names of its pets, you could do it as follows:
-```scala
-case class PetOwner(name: String, pets: List[String])
-```
-After defining this `case class`, you can read a JSON containing its fields. But first, you need to provide an instance of `ReadWriter` that will tell the library
-how to handle this type. Luckily, `upickle` is able to fully automate that and all have to do is:
-```scala
-given ReadWriter[PetOwner] = macroRW
-```
-`given` keyword may appear strange at first, but it just says that this value may be used later transparently in your code by some functions that needs a `ReadWriter[PetOwner]`. 
-You don't need to think about it for too long, that's the only thing you need to do - as long as this value is available, you will be able to read a JSON that conforms to the type of a `PetOwner`.
-The second part of this definition, `macroRW`, automates everything that needs to be done to provide this mechanism capable of reading these JSONs when parsing the request.
+As an example, we are going to use the [Github REST API](https://docs.github.com/en/rest/users) to get information about the octocat user.
 
-## Reading the JSON from response
-After preparing the upickle to read your type from request response, you can use the `asJson` function as parameter to `response` method on `Request` to specify what type you expect to be in the request.
+## Defining your own data type and its ReadWriter
+
+In Scala, you can use a `case class` to define your own data type.
+For example, you can define a user data type like this:
+```scala
+case class User(login: String, name: String, location: String)
+```
+
+To parse a JSON string to a `User`, you need to provide an instance of `upickle.ReadWriter`.
+Luckily, uPickle is able to fully automate that and all you have to write is:
+```scala
+import upickle.default._
+
+given ReadWriter[User] = macroRW
+```
+
+The `given` keyword may appear strange at first but it is very powerful.
+Having a `given` value of type `ReadWriter[User]` in the current scope informs uPickle and sttp how to parse a JSON string to a `User`.
+You can learn more about `given` instances in the [Scala 3 book](https://docs.scala-lang.org/scala3/book/ca-given-using-clauses.html).
+The second part of this definition, `macroRW`, automates the instanciation of `ReadWriter` so that we don't have to do it by hand.
+
+What's more, if you define the given instance of `ReadWriter[User]` in the companion object of `User`, it becomes available globally:
+
+```scala
+import upickle.default._
+
+case class User(login: String, name: String, location: String)
+
+object User:
+  given ReadWriter[User] = macroRW
+```
+
+## Parsing JSON from the response of an HTTP request
+Once you have a `given ReadWriter`, it is possible to parse the JSON response of an HTTP request to your data type.
+
+In sttp the description of how to handle the response is part of the request itself.
+Thus, to parse a response from JSON to `User`, you can call `response(asJson[User])` on the request.
+
+Here is the complete program that can fetches some information about the octocat user from Github.
+
 ```scala
 import sttp.client3._
 import sttp.client3.upicklejson._
 import upickle.default._
 
-case class PetOwner(name: String, pets: List[String])
-given ReadWriter[PetOwner] = macroRW
+case class User(login: String, name: String, location: String)
+
+object User:
+  given ReadWriter[User] = macroRW
 
 val client = SimpleHttpClient() // Create the instance of SimpleHttpClient
 val request = basicRequest
-    .get(uri"https://example.com/petowner") 
-    .response(asJson[PetOwner])
-val response = client.send(request) // send the request and get the response
-println(response.body) // print the pet of the response
-``` 
+  .get(uri"https://api.github.com/users/octocat") 
+  .response(asJson[User])
+val response = client.send(request) // Send the request and get the response as a User
+println(response.body)
+// Prints "Right(User(octocat,The Octocat,San Francisco))"
+```
 
+When running the program, the `response.body` contains `User("octocat", "The Octocat", "San Francisco")`.
