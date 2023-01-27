@@ -79,7 +79,7 @@ GEM
     typhoeus (1.4.0)
       ethon (>= 0.9.0)
     unicode-display_width (1.8.0)
-    webrick (1.7.0)
+    webrick (1.8.0)
     yell (2.2.2)
 
 PLATFORMS
@@ -91,7 +91,7 @@ DEPENDENCIES
   html-proofer
   jekyll-redirect-from
   kramdown-parser-gfm
-  webrick (~> 1.7)
+  webrick (~> 1.8)
 
 BUNDLED WITH
    2.3.10

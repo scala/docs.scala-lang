@@ -13,4 +13,4 @@ gem 'kramdown-parser-gfm'
 # and do:
 # bundle exec jekyll liveserve --incremental
 
-gem "webrick", "~> 1.7"
+gem "webrick", "~> 1.8"
