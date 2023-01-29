@@ -153,7 +153,7 @@ engage(true, true, true, false)
 
 如果没有IDE的帮助，那段代码可能很难阅读，但这个代码要明显得多：
 
-{% tabs method_9 %}
+{% tabs method_10 %}
 {% tab 'Scala 2 and 3' for=method_10 %}
 
 ```scala
