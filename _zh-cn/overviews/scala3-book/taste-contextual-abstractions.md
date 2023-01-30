@@ -24,11 +24,16 @@ TODO: Now that this is a separate section, it needs a little more content.
 
 例如，考虑一个程序，该程序按两个条件对地址列表进行排序：城市名称，然后是街道名称。
 
+{% tabs contextual_1 %}
+{% tab 'Scala 2 and 3' for=contextual_1 %}
+
 ```scala
 val addresses: List[Address] = ...
 
 addresses.sortBy(address => (address.city, address.street))
 ```
+{% endtab %}
+{% endtabs %}
 
 `sortBy` 方法调用一个函数，该函数为每个地址返回值，这个值会用来与其他地址比较。
 在本例中，我们传递一个函数，该函数返回一对，该对包含城市名称和街道名称。
@@ -44,9 +49,21 @@ addresses.sortBy(address => (address.city, address.street))
 
 但是，也可以显式传递它：
 
+{% tabs contextual_2 class=tabs-scala-version %}
+{% tab 'Scala 2' for=contextual_2 %}
+
+```scala
+addresses.sortBy(address => (address.city, address.street))(Ordering.Tuple2(Ordering.String, Ordering.String))
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=contextual_2 %}
+
 ```scala
 addresses.sortBy(address => (address.city, address.street))(using Ordering.Tuple2(Ordering.String, Ordering.String))
 ```
+{% endtab %}
+{% endtabs %}
 
 在本例中，`Ordering.Tuple2(Ordering.String, Ordering.String)`  实例正是编译器以其他方式推断的实例。
 换句话说，这两个示例生成相同的程序。
