@@ -182,7 +182,8 @@ You can skip the rest of this page and go directly to [Building a Scala Project 
 
 ## Open hello-world project
 
-Let's use an IDE to open the project. The most popular ones are IntelliJ and VSCode.
+Let's use an IDE to open the project. The most popular ones are [IntelliJ](https://www.jetbrains.com/idea/) and
+[VSCode](https://scalameta.org/metals/docs/editors/vscode).
 They both offer rich IDE features, but you can still use [many other editors.](https://scalameta.org/metals/docs/editors/overview.html)
 
 ### Using IntelliJ
