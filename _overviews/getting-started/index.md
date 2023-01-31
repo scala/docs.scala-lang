@@ -184,12 +184,12 @@ You can skip the rest of this page and go directly to [Building a Scala Project 
 
 Let's use an IDE to open the project. The most popular ones are [IntelliJ](https://www.jetbrains.com/idea/) and
 [VSCode](https://scalameta.org/metals/docs/editors/vscode).
-They both offer rich IDE features, but you can still use [many other editors.](https://scalameta.org/metals/docs/editors/overview.html)
+They both offer rich IDE features, but you can still use [many other editors](https://scalameta.org/metals/docs/editors/overview.html).
 
 ### Using IntelliJ
 
-1. Download and install [IntelliJ Community Edition](https://www.jetbrains.com/idea/download/)
-1. Install the Scala plugin by following [the instructions on how to install IntelliJ plugins](https://www.jetbrains.com/help/idea/managing-plugins.html)
+1. Download and install [IntelliJ Community Edition](https://www.jetbrains.com/help/idea/installation-guide.html)
+1. Install the Scala plugin by following [the instructions on how to install IntelliJ plugins](https://www.jetbrains.com/help/idea/discover-intellij-idea-for-scala.html)
 1. Open the `build.sbt` file then choose *Open as a project*
 
 ### Using VSCode with metals
@@ -197,11 +197,6 @@ They both offer rich IDE features, but you can still use [many other editors.](h
 1. Download [VSCode](https://code.visualstudio.com/Download)
 1. Install the Metals extension from [the Marketplace](https://marketplace.visualstudio.com/items?itemName=scalameta.metals)
 1. Next, open the directory containing a `build.sbt` file (this should be the directory `hello-world` if you followed the previous instructions). When prompted to do so, select *Import build*.
-
->[Metals](https://scalameta.org/metals) is a “Scala language server” that provides support for writing Scala code in VS Code and other editors like [Atom, Sublime Text, and more](https://scalameta.org/metals/docs/editors/overview.html), using the Language Server Protocol.
->
-> Under the hood, Metals communicates with the build tool by using
-> the [Build Server Protocol (BSP)](https://build-server-protocol.github.io/). For details on how Metals works, see, [“Write Scala in VS Code, Vim, Emacs, Atom and Sublime Text with Metals”](https://www.scala-lang.org/2019/04/16/metals.html).
 
 ### Play with the source code
 
