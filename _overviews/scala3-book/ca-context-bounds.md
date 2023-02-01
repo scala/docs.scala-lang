@@ -7,6 +7,7 @@ num: 61
 previous-page: ca-given-using-clauses
 next-page: ca-given-imports
 ---
+<span class="tag tag-inline">Scala 3 only</span>
 
 
 {% comment %}
@@ -22,17 +23,33 @@ In that case you don’t have to define a parameter name, and can just provide t
 
 For example, this `maximum` method takes a _context parameter_ of type `Ord`, only to pass it on as an argument to `max`:
 
+{% tabs context-bounds-max-named-param %}
+
+{% tab 'Scala 3 Only' %}
+
 ```scala
 def maximum[A](xs: List[A])(using ord: Ord[A]): A =
   xs.reduceLeft(max(ord))
 ```
 
+{% endtab %}
+
+{% endtabs %}
+
 In that code the parameter name `ord` isn’t actually required; it can be passed on as an inferred argument to `max`, so you just state that `maximum` uses the type `Ord[A]` without giving it a name:
+
+{% tabs context-bounds-no-param-name %}
+
+{% tab 'Scala 3 Only' %}
 
 ```scala
 def maximum[A](xs: List[A])(using Ord[A]): A =
   xs.reduceLeft(max)
 ```
+
+{% endtab %}
+
+{% endtabs %}
 
 
 ## Context bounds
@@ -41,9 +58,18 @@ Given that background, a _context bound_ is a shorthand syntax for expressing th
 
 Using a context bound, the `maximum` method can be written like this:
 
+{% tabs context-bounds-max-rewritten %}
+
+{% tab 'Scala 3 Only' %}
+
 ```scala
 def maximum[A: Ord](xs: List[A]): A = xs.reduceLeft(max)
 ```
+
+{% endtab %}
+
+{% endtabs %}
+
 
 A bound like `: Ord` on a type parameter `A` of a method or class indicates a context parameter with `Ord[A]`.
 
