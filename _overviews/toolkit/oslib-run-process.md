@@ -1,10 +1,10 @@
 ---
-title: How to start a separate process?
+title: How to run a process?
 type: section
 description: Starting external subprocesses with OS-Lib
-num: 15
-previous-page: oslib-write-file
-next-page: oslib-read-directory
+num: 16
+previous-page: oslib-read-directory
+next-page: 
 ---
 
 {% include markdown.html path="_markdown/install-os-lib.md" %}
