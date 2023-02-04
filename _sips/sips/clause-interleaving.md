@@ -2,7 +2,7 @@
 layout: sip
 title: SIP-47 - Clause Interleaving
 stage: implementation
-status: waiting-for-implementation
+status: under-review
 permalink: /sips/:title.html
 ---
 
