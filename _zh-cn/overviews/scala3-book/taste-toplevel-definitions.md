@@ -1,5 +1,5 @@
 ---
-title: Toplevel Definitions
+title: 顶层定义
 type: section
 description: This page provides an introduction to top-level definitions in Scala 3
 language: zh-cn

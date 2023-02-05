@@ -1,5 +1,5 @@
 ---
-title: First-Class Functions
+title: 头等函数
 type: section
 description: This page provides an introduction to functions in Scala 3.
 language: zh-cn
