@@ -63,7 +63,7 @@ def renderWidget(items: List[String])(using c: Config): String = ???
 {% endtab %}
 {% endtabs %}
 
-By starting a parameter section with the keyword `using`, we tell the Scala compiler that at the callsite it should automatically find an argument with the correct type.
+By starting a parameter section with the keyword `using`, we tell the Scala compiler that at the call-site it should automatically find an argument with the correct type.
 The Scala compiler thus performs **term inference**.
 
 In our call to `renderWidget(List("cart"))` the Scala compiler will see that there is a term of type `Config` in scope (the `c`) and automatically provide it to `renderWidget`.
