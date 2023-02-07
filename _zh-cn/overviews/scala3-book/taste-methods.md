@@ -1,5 +1,5 @@
 ---
-title: Methods
+title: 方法
 type: section
 description: This section provides an introduction to defining and using methods in Scala 3.
 language: zh-cn
