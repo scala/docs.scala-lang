@@ -1,5 +1,5 @@
 ---
-title: Collections
+title: 集合
 type: section
 description: This page provides a high-level overview of the main features of the Scala 3 programming language.
 language: zh-cn

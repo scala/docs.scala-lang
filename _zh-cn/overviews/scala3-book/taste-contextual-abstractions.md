@@ -1,5 +1,5 @@
 ---
-title: Contextual Abstractions
+title: 上下文抽象
 type: section
 description: This section provides an introduction to Contextual Abstractions in Scala 3.
 language: zh-cn

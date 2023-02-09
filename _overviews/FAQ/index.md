@@ -149,9 +149,9 @@ See [this]({{ site.baseurl }}/tutorials/FAQ/initialization-order.html).
 
 See the [Scala 2.13 Collections Guide](https://docs.scala-lang.org/overviews/collections-2.13/introduction.html).
 
-### What are context bounds (`[T : Foo]`)?
+### What are context bounds?
 
-It's syntactic sugar for an `implicit` parameter of type `Foo[T]`.
+It's syntactic sugar for a context parameter (an `implicit` parameter in Scala 2, or a `using` parameter in Scala 3).
 
 More details in this [Stack Overflow answer](https://stackoverflow.com/a/4467012).
 
