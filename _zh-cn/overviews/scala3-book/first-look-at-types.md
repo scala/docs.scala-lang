@@ -53,6 +53,9 @@ Scala中的每个用户定义类型都是 `AnyRef` 的子类型。
 def printIt(a: Any): Unit = println(a)
 ```
 
+{% endtab %}
+{% endtabs %}
+
 下面是一个示例，它演示了字符串、整数、字符、布尔值和函数都是 `Any` 的实例，可以像对待其他所有对象一样处理：
 
 {% tabs any %}
