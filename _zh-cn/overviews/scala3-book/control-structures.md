@@ -513,7 +513,7 @@ AR: Arizona
 当 `for` 循环遍历映射时，每个键/值对都绑定到变量 `abbrev` 和 `fullName` ，它们位于元组中：
 
 {% tabs tuple %}
-{% tab 'Scala 2 and 3' for=map %}
+{% tab 'Scala 2 and 3' for=tuple %}
 
 ```scala
 (abbrev, fullName) <- states
