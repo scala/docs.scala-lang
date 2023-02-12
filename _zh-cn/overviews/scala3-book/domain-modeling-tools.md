@@ -18,9 +18,10 @@ Scala 3提供了许多不同的结构，因此我们可以对周围的世界进�
 - 类
 - 对象
 - 伴生对象
-- traits
+- Traits
 - 抽象类
 - 枚举
+<span class="tag tag-inline">Scala 3 独有</span>
 - 样例类
 - 样例对象
 
@@ -28,14 +29,20 @@ Scala 3提供了许多不同的结构，因此我们可以对周围的世界进�
 
 ## 类
 
-与其他语言一样，Scala中的 _类_是用于创建对象实例的模板。
+与其他语言一样，Scala中的_类_是用于创建对象实例的模板。
 下面是一些类的示例：
+
+{% tabs class_1 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 class Person(var name: String, var vocation: String)
 class Book(var title: String, var author: String, var year: Int)
 class Movie(var name: String, var director: String, var year: Int)
 ```
+
+{% endtab %}
+{% endtabs %}
 
 这些例子表明，Scala有一种非常轻量级的方式来声明类。
 
@@ -44,36 +51,83 @@ class Movie(var name: String, var director: String, var year: Int)
 
 在Scala 3之前，您使用 `new` 关键字来创建类的新实例：
 
+{% tabs class_2 %}
+{% tab 'Scala 2 Only' %}
+
 ```scala
 val p = new Person("Robert Allen Zimmerman", "Harmonica Player")
 //      ---
 ```
 
-然而，通过[创造者应用][creator]，在 Scala 3 里面不要求使用 `new`：
+{% endtab %}
+{% endtabs %}
+
+然而，通过[通用 apply 方法][creator]，在 Scala 3 里面不要求使用 `new`：
+<span class="tag tag-inline">Scala 3 独有</span>
+
+{% tabs class_3 %}
+{% tab 'Scala 3 Only' %}
 
 ```scala
 val p = Person("Robert Allen Zimmerman", "Harmonica Player")
 ```
 
-一旦你有了一个类的实例，比如`p`，你就可以访问它的字段，在此示例中，这些字段都是构造函数的参数：
+{% endtab %}
+{% endtabs %}
+
+一旦你有了一个类的实例，比如 `p`，你就可以访问它的字段，在此示例中，这些字段都是构造函数的参数：
+
+{% tabs class_4 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 p.name       // "Robert Allen Zimmerman"
 p.vocation   // "Harmonica Player"
 ```
 
+{% endtab %}
+{% endtabs %}
+
 如前所述，所有这些参数都是作为 `var` 字段创建的，因此您也可以更改它们：
+
+{% tabs class_5 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 p.name = "Bob Dylan"
 p.vocation = "Musician"
 ```
 
+{% endtab %}
+{% endtabs %}
+
 ### 字段和方法
 
 类还可以具有不属于构造函数的方法和其他字段。
 它们在类的主体中定义。
 主体初始化为默认构造函数的一部分：
+
+{% tabs method class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+class Person(var firstName: String, var lastName: String) {
+
+  println("initialization begins")
+  val fullName = firstName + " " + lastName
+
+  // a class method
+  def printFullName: Unit =
+    // access the `fullName` field, which is created above
+    println(fullName)
+
+  printFullName
+  println("initialization ends")
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 class Person(var firstName: String, var lastName: String):
@@ -90,7 +144,25 @@ class Person(var firstName: String, var lastName: String):
   println("initialization ends")
 ```
 
+{% endtab %}
+{% endtabs %}
+
 以下 REPL 会话演示如何使用这个类创建新的 `Person` 实例：
+
+{% tabs demo-person class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+````
+scala> val john = new Person("John", "Doe")
+initialization begins
+John Doe
+initialization ends
+val john: Person = Person@55d8f6bb
+
+scala> john.printFullName
+John Doe
+````
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ````
 scala> val john = Person("John", "Doe")
@@ -103,18 +175,50 @@ scala> john.printFullName
 John Doe
 ````
 
+{% endtab %}
+{% endtabs %}
+
 类还可以扩展 traits和抽象类，我们将在下面专门部分中介绍这些内容。
 
 ### 默认参数值
 
 快速浏览一下其他功能，类构造函数参数也可以具有默认值：
 
+{% tabs default-values_1 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+class Socket(val timeout: Int = 5_000, val linger: Int = 5_000) {
+  override def toString = s"timeout: $timeout, linger: $linger"
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
+
 ```scala
 class Socket(val timeout: Int = 5_000, val linger: Int = 5_000):
   override def toString = s"timeout: $timeout, linger: $linger"
 ```
 
+{% endtab %}
+{% endtabs %}
+
 此功能的一大优点是，它允许代码的使用者以各种不同的方式创建类，就好像该类有别的构造函数一样：
+
+{% tabs default-values_2 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+val s = new Socket()                  // timeout: 5000, linger: 5000
+val s = new Socket(2_500)             // timeout: 2500, linger: 5000
+val s = new Socket(10_000, 10_000)    // timeout: 10000, linger: 10000
+val s = new Socket(timeout = 10_000)  // timeout: 10000, linger: 5000
+val s = new Socket(linger = 10_000)   // timeout: 5000, linger: 10000
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 val s = Socket()                  // timeout: 5000, linger: 5000
@@ -124,8 +228,28 @@ val s = Socket(timeout = 10_000)  // timeout: 10000, linger: 5000
 val s = Socket(linger = 10_000)   // timeout: 5000, linger: 10000
 ```
 
+{% endtab %}
+{% endtabs %}
+
 创建类的新实例时，还可以使用命名参数。
 当许多参数具有相同的类型时，这特别有用，如以下比较所示：
+
+{% tabs default-values_3 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+// option 1
+val s = new Socket(10_000, 10_000)
+
+// option 2
+val s = new Socket(
+  timeout = 10_000,
+  linger = 10_000
+)
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 // option 1
@@ -138,6 +262,9 @@ val s = Socket(
 )
 ```
 
+{% endtab %}
+{% endtabs %}
+
 ### 辅助构造函数
 
 可以为类定义多个构造函数，以便类的使用者用不同的方式来生成这个类。
@@ -149,6 +276,47 @@ val s = Socket(
 - 在他们被录取后，带有姓名，政府 ID 和学生证
 
 在 OOP 风格中处理这种情况的一种方法是使用以下代码：
+
+{% tabs structor_1 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+import java.time._
+
+// [1] the primary constructor
+class Student(
+  var name: String,
+  var govtId: String
+) {
+  private var _applicationDate: Option[LocalDate] = None
+  private var _studentId: Int = 0
+
+  // [2] a constructor for when the student has completed
+  // their application
+  def this(
+    name: String,
+    govtId: String,
+    applicationDate: LocalDate
+  ) = {
+    this(name, govtId)
+    _applicationDate = Some(applicationDate)
+  }
+
+  // [3] a constructor for when the student is approved
+  // and now has a student id
+  def this(
+    name: String,
+    govtId: String,
+    studentId: Int
+  ) = {
+    this(name, govtId)
+    _studentId = studentId
+  }
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 import java.time.*
@@ -182,6 +350,9 @@ class Student(
     _studentId = studentId
 ```
 
+{% endtab %}
+{% endtabs %}
+
 {% comment %}
 // for testing that code
 override def toString = s"""
@@ -200,11 +371,27 @@ override def toString = s"""
 
 这些构造函数可以这样调用：
 
+{% tabs structor_2 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+val s1 = new Student("Mary", "123")
+val s2 = new Student("Mary", "123", LocalDate.now)
+val s3 = new Student("Mary", "123", 456)
+```
+
+{% endtab %}
+
+{% tab 'Scala 3' %}
+
 ```scala
 val s1 = Student("Mary", "123")
 val s2 = Student("Mary", "123", LocalDate.now)
 val s3 = Student("Mary", "123", 456)
 ```
+
+{% endtab %}
+{% endtabs %}
 
 虽然可以使用此技术，但请记住，构造函数参数也可以具有默认值，这使得一个类看起来具有多个构造函数。
 这在前面的 `Socket` 示例中所示。
@@ -218,6 +405,20 @@ Scala 中的对象允许在一个命名空间下对方法和字段进行分组�
 声明 `object` 类似于声明 `class` 。
 下面是一个“字符串实用程序”对象的示例，其中包含一组用于处理字符串的方法：
 
+{% tabs object_1 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+object StringUtils {
+  def truncate(s: String, length: Int): String = s.take(length)
+  def containsWhitespace(s: String): Boolean = s.matches(".*\\s.*")
+  def isNullOrEmpty(s: String): Boolean = s == null || s.trim.isEmpty
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
+
 ```scala
 object StringUtils:
   def truncate(s: String, length: Int): String = s.take(length)
@@ -225,13 +426,35 @@ object StringUtils:
   def isNullOrEmpty(s: String): Boolean = s == null || s.trim.isEmpty
 ```
 
+{% endtab %}
+{% endtabs %}
+
 我们可以这样使用对象：
+
+{% tabs object_2 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 StringUtils.truncate("Chuck Bartowski", 5)  // "Chuck"
 ```
 
-在 Scala 中导入非常灵活，并允许我们导入对象的 _所有_ 成员：
+{% endtab %}
+{% endtabs %}
+
+在 Scala 中导入非常灵活，并允许我们导入对象的_所有_ 成员：
+
+{% tabs object_3 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+import StringUtils._
+truncate("Chuck Bartowski", 5)       // "Chuck"
+containsWhitespace("Sarah Walker")   // true
+isNullOrEmpty("John Casey")          // false
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 import StringUtils.*
@@ -240,7 +463,13 @@ containsWhitespace("Sarah Walker")   // true
 isNullOrEmpty("John Casey")          // false
 ```
 
+{% endtab %}
+{% endtabs %}
+
 或者只是 _部分_ 成员：
+
+{% tabs object_4 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 import StringUtils.{truncate, containsWhitespace}
@@ -249,7 +478,25 @@ containsWhitespace("Captain Awesome")   // true
 isNullOrEmpty("Morgan Grimes")          // Not found: isNullOrEmpty (error)
 ```
 
+{% endtab %}
+{% endtabs %}
+
 对象还可以包含字段，这些字段也可以像静态成员一样访问：
+
+{% tabs object_5 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+object MathConstants {
+  val PI = 3.14159
+  val E = 2.71828
+}
+
+println(MathConstants.PI)   // 3.14159
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 object MathConstants:
@@ -259,15 +506,38 @@ object MathConstants:
 println(MathConstants.PI)   // 3.14159
 ```
 
+{% endtab %}
+{% endtabs %}
 
 ## 伴生对象
 
-与类同名且在与类在相同的文件中声明的 `object` 称为 _“伴生对象”_。
+与类同名且在与类在相同的文件中声明的 `object` 称为_“伴生对象”_。
 同样，相应的类称为对象的伴生类。
 伴生类或对象可以访问其伴生的私有成员。
 
 伴生对象用于不特定于伴生类实例的方法和值。
 例如，在下面的示例中，类 `Circle` 具有一个名为 `area` 的成员，该成员特定于每个实例，其伴生对象具有一个名为 `calculateArea` 的方法，该方法(a)不特定于实例，并且(b)可用于每个实例：
+
+{% tabs companion class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+import scala.math._
+
+class Circle(val radius: Double) {
+  def area: Double = Circle.calculateArea(radius)
+}
+
+object Circle {
+  private def calculateArea(radius: Double): Double = Pi * pow(radius, 2.0)
+}
+
+val circle1 = new Circle(5.0)
+circle1.area
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 import scala.math.*
@@ -281,6 +551,9 @@ object Circle:
 val circle1 = Circle(5.0)
 circle1.area
 ```
+
+{% endtab %}
+{% endtabs %}
 
 在此示例中，每个实例可用的 `area` 方法使用伴生对象中定义的 `calculateArea` 方法。
 再一次， `calculateArea` 类似于Java中的静态方法。
@@ -297,6 +570,45 @@ circle1.area
 - 它们可以包含 `unapply` 方法，用于解构对象，例如模式匹配
 
 下面快速了解如何将 `apply` 方法当作工厂方法来创建新对象：
+
+{% tabs companion-use class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+class Person {
+  var name = ""
+  var age = 0
+  override def toString = s"$name is $age years old"
+}
+
+object Person {
+  // a one-arg factory method
+  def apply(name: String): Person = {
+    var p = new Person
+    p.name = name
+    p
+  }
+
+  // a two-arg factory method
+  def apply(name: String, age: Int): Person = {
+    var p = new Person
+    p.name = name
+    p.age = age
+    p
+  }
+}
+
+val joe = Person("Joe")
+val fred = Person("Fred", 29)
+
+//val joe: Person = Joe is 0 years old
+//val fred: Person = Fred is 29 years old
+```
+
+此处不涉及 `unapply` 方法，但在[语言规范](https://scala-lang.org/files/archive/spec/2.13/08-pattern-matching.html#extractor-patterns)中对此进行了介绍。
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 class Person:
@@ -328,11 +640,14 @@ val fred = Person("Fred", 29)
 //val fred: Person = Fred is 29 years old
 ```
 
+{% endtab %}
+{% endtabs %}
+
 此处不涉及 `unapply` 方法，但在 [参考文档][unapply] 中对此进行了介绍。
 
 ## Traits
 
-如果你熟悉Java，Scala trait 类似于Java 8+中的接口。特质可以包含：
+如果你熟悉Java，Scala trait 类似于Java 8+中的接口。Traits 可以包含：
 
 - 抽象方法和成员
 - 具体方法和成员
@@ -346,8 +661,25 @@ trait Employee:
   def lastName: String
 ```
 
+{% endtab %}
+{% endtabs %}
+
 但是，traits 也可以包含具体成员。
 例如，以下 traits定义了两个抽象成员---`numLegs` 和 `walk()`---并且还具有`stop()`方法的具体实现：
+
+{% tabs traits_1 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+trait Employee {
+  def id: Int
+  def firstName: String
+  def lastName: String
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 trait HasLegs:
@@ -356,7 +688,24 @@ trait HasLegs:
   def stop() = println("Stopped walking")
 ```
 
+{% endtab %}
+{% endtabs %}
+
 下面是另一个具有抽象成员和两个具体实现的 trait：
+
+{% tabs traits_3 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+trait HasTail {
+  def tailColor: String
+  def wagTail() = println("Tail is wagging")
+  def stopTail() = println("Tail is stopped")
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 trait HasTail:
@@ -365,10 +714,28 @@ trait HasTail:
   def stopTail() = println("Tail is stopped")
 ```
 
-请注意，每个 trait 只处理非常特定的属性和行为： `HasLegs` 只处理腿，而 `HasTail` 只处理与尾部相关的功能。
+{% endtab %}
+{% endtabs %}
+
+请注意，每个 trait 只处理非常特定的属性和行为：`HasLegs` 只处理腿，而 `HasTail` 只处理与尾部相关的功能。
 Traits可以让你构建这样的小模块。
 
 在代码的后面部分，类可以混合多个 traits 来构建更大的组件：
+
+{% tabs traits_4 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+class IrishSetter(name: String) extends HasLegs with HasTail {
+  val numLegs = 4
+  val tailColor = "Red"
+  def walk() = println("I’m walking")
+  override def toString = s"$name is a Dog"
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 class IrishSetter(name: String) extends HasLegs, HasTail:
@@ -378,12 +745,28 @@ class IrishSetter(name: String) extends HasLegs, HasTail:
   override def toString = s"$name is a Dog"
 ```
 
+{% endtab %}
+{% endtabs %}
+
 请注意，`IrishSetter` 类实现了在 `HasLegs` 和 `HasTail` 中定义的抽象成员。
 现在，您可以创建新的 `IrishSetter` 实例：
+
+{% tabs traits_5 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+val d = new IrishSetter("Big Red")   // "Big Red is a Dog"
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 val d = IrishSetter（“Big Red”） // “Big Red is a Dog”
 ```
+
+{% endtab %}
+{% endtabs %}
 
 这只是你对 trait 可以完成的事情的一种体验。
 有关更多详细信息，请参阅这些建模课程的其余部分。
@@ -407,7 +790,27 @@ LATER: If anyone wants to update this section, our comments about abstract class
 
 ### 使用构造函数参数的基类
 
-在 Scala 3 之前，当基类需要使用构造函数参数时，你可以将其声明为`abstract class`：
+在 Scala 3 之前，当基类需要使用构造函数参数时，你可以将其声明为 `abstract class`：
+
+{% tabs abstract_1 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+abstract class Pet(name: String) {
+  def greeting: String
+  def age: Int
+  override def toString = s"My name is $name, I say $greeting, and I’m $age"
+}
+
+class Dog(name: String, var age: Int) extends Pet(name) {
+  val greeting = "Woof"
+}
+
+val d = new Dog("Fido", 1)
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 abstract class Pet(name: String):
@@ -421,7 +824,15 @@ class Dog(name: String, age: Int) extends Pet(name):
 val d = Dog("Fido", 1)
 ```
 
+{% endtab %}
+{% endtabs %}
+
+<h4>Trait 参数 <span class="tag tag-inline">Scala 3 独有</span></h4>
+
 但是，在 Scala 3 中，trait 现在可以具有[参数][trait-params]，因此您现在可以在相同情况下使用 trait：
+
+{% tabs abstract_2 %}
+{% tab 'Scala 3 Only' %}
 
 ```scala
 trait Pet(name: String):
@@ -435,15 +846,22 @@ class Dog(name: String, var age: Int) extends Pet(name):
 val d = Dog("Fido", 1)
 ```
 
-trait 的组成更加灵活---您可以混合多个 trait，但只能扩展一个类---并且大多数时候应该优先于类和抽象类。
-经验法则是，每当要创建特定类型的实例时，就使用类;如果要分解和重用行为时，应使用trait。
+{% endtab %}
+{% endtabs %}
 
-## 枚举
+trait 的组成更加灵活---您可以混合多个 trait，但只能扩展一个类---并且大多数时候应该优先于类和抽象类。
+经验法则是，每当要创建特定类型的实例时，就使用类；如果要分解和重用行为时，应使用trait。
+
+<h2>枚举<span class="tag tag-inline">Scala 3 独有</span></h2>
 
 枚举可用于定义由一组有限的命名值组成的类型（在[FP建模][fp-modeling]一节中，我们将看到枚举比这更灵活）。
 基本枚举用于定义常量集，如一年中的月份、一周中的天数、北/南/东/西方向等。
 
 例如，这些枚举定义了与披萨饼相关的属性集：
+
+{% tabs enum_1 %}
+{% tab 'Scala 3 Only' %}
+
 
 ```scala
 enum CrustSize:
@@ -456,14 +874,26 @@ enum Topping:
   case Cheese, Pepperoni, BlackOlives, GreenOlives, Onions
 ```
 
+{% endtab %}
+{% endtabs %}
+
 若要在其他代码中使用它们，请先导入它们，然后使用它们：
+
+{% tabs enum_2 %}
+{% tab 'Scala 3 Only' %}
 
 ```scala
 import CrustSize.*
 val currentCrustSize = Small
 ```
 
+{% endtab %}
+{% endtabs %}
+
 枚举值可以使用等于 （`==`） 进行比较，也可以用匹配的方式：
+
+{% tabs enum_3 %}
+{% tab 'Scala 3 Only' %}
 
 ```scala
 // if/then
@@ -477,9 +907,15 @@ currentCrustSize match
   case Large => println("large")
 ```
 
-### 其他枚举特性
+{% endtab %}
+{% endtabs %}
+
+### 更多枚举特性
 
 枚举也可以参数化：
+
+{% tabs enum_4 %}
+{% tab 'Scala 3 Only' %}
 
 ```scala
 enum Color(val rgb: Int):
@@ -488,7 +924,13 @@ enum Color(val rgb: Int):
   case Blue  extends Color(0x0000FF)
 ```
 
+{% endtab %}
+{% endtabs %}
+
 它们还可以具有成员（如字段和方法）：
+
+{% tabs enum_5 %}
+{% tab 'Scala 3 Only' %}
 
 ```scala
 enum Planet(mass: Double, radius: Double):
@@ -502,13 +944,22 @@ enum Planet(mass: Double, radius: Double):
   // more planets here ...
 ```
 
+{% endtab %}
+{% endtabs %}
+
 ### 与 Java 枚举的兼容性
 
 如果要将 Scala 定义的枚举用作 Java 枚举，可以通过扩展类 `java.lang.Enum`（默认情况下导入）来实现，如下所示：
 
+{% tabs enum_6 %}
+{% tab 'Scala 3 Only' %}
+
 ```scala
 enum Color extends Enum[Color] { case Red, Green, Blue }
 ```
+
+{% endtab %}
+{% endtabs %}
 
 类型参数来自 Java `enum` 定义，并且应与枚举的类型相同。
 在扩展时，无需向`java.lang.Enum`提供构造函数参数（如Java API文档中所定义的那样）---编译器会自动生成它们。
@@ -527,22 +978,40 @@ val res0： Int = -1
 样例类用于对不可变数据结构进行建模。
 举个例子：
 
+{% tabs case-classes_1 %}
+{% tab 'Scala 2 and 3' %}
+
 ```scala
 case class Person(name: String, relation: String)
 ```
 
+{% endtab %}
+{% endtabs %}
+
 由于我们将 `Person` 声明为样例类，因此默认情况下，字段 `name` 和 `relation` 是公共的和不可变的。
 我们可以创建 样例类的实例，如下所示：
+
+{% tabs case-classes_2 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 val christina = Person("Christina", "niece")
 ```
 
+{% endtab %}
+{% endtabs %}
+
 请注意，这些字段不能发生更改：
+
+{% tabs case-classes_3 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 christina.name = "Fred"   // error: reassignment to val
 ```
+
+{% endtab %}
+{% endtabs %}
 
 由于 样例类的字段被假定为不可变的，因此 Scala 编译器可以为您生成许多有用的方法：
 
@@ -552,6 +1021,34 @@ christina.name = "Fred"   // error: reassignment to val
 * 生成默认的 `toString` 方法，对调试很有帮助。
 
 以下示例演示了这些附加功能：
+
+{% tabs case-classes_4 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+// Case classes can be used as patterns
+christina match {
+  case Person(n, r) => println("name is " + n)
+}
+
+// `equals` and `hashCode` methods generated for you
+val hannah = Person("Hannah", "niece")
+christina == hannah       // false
+
+// `toString` method
+println(christina)        // Person(Christina,niece)
+
+// built-in `copy` method
+case class BaseballTeam(name: String, lastWorldSeriesWin: Int)
+val cubs1908 = BaseballTeam("Chicago Cubs", 1908)
+val cubs2016 = cubs1908.copy(lastWorldSeriesWin = 2016)
+// result:
+// cubs2016: BaseballTeam = BaseballTeam(Chicago Cubs,2016)
+
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 // Case classes can be used as patterns
@@ -573,6 +1070,9 @@ val cubs2016 = cubs1908.copy(lastWorldSeriesWin = 2016)
 // cubs2016: BaseballTeam = BaseballTeam(Chicago Cubs,2016)
 ```
 
+{% endtab %}
+{% endtabs %}
+
 ### 支持函数式编程
 
 如前所述，样例类支持函数式编程 （FP）：
@@ -593,19 +1093,55 @@ NOTE: We can use this following text, if desired. If it’s used, it needs to be
 
 为了证明这一点，假设你有这个 trait：
 
+{% tabs case-classes_5 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+trait Person {
+  def name: String
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
+
 ```scala
 trait Person:
   def name: String
 ```
 
+{% endtab %}
+{% endtabs %}
+
 然后，创建以下样例类以扩展该 trait：
+
+{% tabs case-classes_6 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 case class Student(name: String, year: Int) extends Person
 case class Teacher(name: String, specialty: String) extends Person
 ```
 
+{% endtab %}
+{% endtabs %}
+
 由于它们被定义为样例类---并且它们具有内置的 `unapply` 方法---因此您可以编写如下匹配表达式：
+
+{% tabs case-classes_7 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+def getPrintableString(p: Person): String = p match {
+  case Student(name, year) =>
+    s"$name is a student in Year $year."
+  case Teacher(name, whatTheyTeach) =>
+    s"$name teaches $whatTheyTeach."
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 def getPrintableString(p: Person): String = p match
@@ -615,12 +1151,21 @@ def getPrintableString(p: Person): String = p match
     s"$name teaches $whatTheyTeach."
 ```
 
+{% endtab %}
+{% endtabs %}
+
 请注意 `case` 语句中的以下两种模式：
+
+{% tabs case-classes_8 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 case Student(name, year) =>
 case Teacher(name, whatTheyTeach) =>
 ```
+
+{% endtab %}
+{% endtabs %}
 
 这些模式之所以有效，是因为 `Student` 和 `Teacher` 被定义为具有 `unapply` 方法的样例类，其类型签名符合特定标准。
 从技术上讲，这些示例中显示的特定类型的模式匹配称为_结构模式匹配_。
@@ -630,12 +1175,29 @@ case Teacher(name, whatTheyTeach) =>
 
 要显示该代码的工作原理，请创建一个 `Student` 和 `Teacher` 的实例：
 
+{% tabs case-classes_9 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+val s = new Student("Al", 1)
+val t = new Teacher("Bob Donnan", "Mathematics")
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
+
 ```scala
 val s = Student("Al", 1)
 val t = Teacher("Bob Donnan", "Mathematics")
 ```
 
+{% endtab %}
+{% endtabs %}
+
 接下来，这是当您使用这两个实例来调用 `getPrintableString` 时，REPL 中的输出如下所示：
+
+{% tabs case-classes_10 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 scala> getPrintableString(s)
@@ -645,6 +1207,9 @@ scala> getPrintableString(t)
 res1: String = Bob Donnan teaches Mathematics.
 ```
 
+{% endtab %}
+{% endtabs %}
+
 >所有这些关于 `unapply` 方法和提取器的内容对于这样的入门书来说都有些先进，但是因为样例类是一个重要的FP主题，所以似乎最好涵盖它们，而不是跳过它们。
 
 #### 将模式匹配添加到任何具有 unapply 的类型
@@ -652,13 +1217,46 @@ res1: String = Bob Donnan teaches Mathematics.
 Scala 的一个很好的特性是，你可以通过编写自己的 `unapply` 方法来向任何类型添加模式匹配。
 例如，此类在其伴生对象中定义了一个 `unapply` 方法：
 
+{% tabs case-classes_11 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+class Person(var name: String, var age: Int)
+object Person {
+  def unapply(p: Person): Tuple2[String, Int] = (p.name, p.age)
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
+
 ```scala
 class Person(var name: String, var age: Int)
 object Person:
   def unapply(p: Person): Tuple2[String, Int] = (p.name, p.age)
 ```
 
+{% endtab %}
+{% endtabs %}
+
 因为它定义了一个 `unapply` 方法，并且因为该方法返回一个元组，所以您现在可以将 `Person` 与 `match` 表达式一起使用：
+
+{% tabs case-classes_12 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+val p = new Person("Astrid", 33)
+
+p match {
+  case Person(n,a) => println(s"name: $n, age: $a")
+  case null => println("No match")
+}
+
+// that code prints: "name: Astrid, age: 33"
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 val p = Person("Astrid", 33)
@@ -669,8 +1267,11 @@ p match
 
 // that code prints: "name: Astrid, age: 33"
 ```
-{% endcomment %}
 
+{% endtab %}
+{% endtabs %}
+
+{% endcomment %}
 
 ## 样例对象
 
@@ -680,6 +1281,9 @@ p match
 当您需要传递不可变消息时，样例对象非常有用。
 例如，如果您正在处理音乐播放器项目，您将创建一组命令或消息，如下所示：
 
+{% tabs case-objects_1 %}
+{% tab 'Scala 2 and 3' %}
+
 ```scala
 sealed trait Message
 case class PlaySong(name: String) extends Message
@@ -688,7 +1292,25 @@ case class DecreaseVolume(amount: Int) extends Message
 case object StopPlaying extends Message
 ```
 
+{% endtab %}
+{% endtabs %}
+
 然后在代码的其他部分，你可以编写这样的方法，这些方法使用模式匹配来处理传入的消息（假设方法 `playSong` ， `changeVolume` 和 `stopPlayingSong` 在其他地方定义）：
+
+{% tabs case-objects_2 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+def handleMessages(message: Message): Unit = message match {
+  case PlaySong(name)         => playSong(name)
+  case IncreaseVolume(amount) => changeVolume(amount)
+  case DecreaseVolume(amount) => changeVolume(-amount)
+  case StopPlaying            => stopPlayingSong()
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 def handleMessages(message: Message): Unit = message match
@@ -697,6 +1319,9 @@ def handleMessages(message: Message): Unit = message match
   case DecreaseVolume(amount) => changeVolume(-amount)
   case StopPlaying            => stopPlayingSong()
 ```
+
+{% endtab %}
+{% endtabs %}
 
 [ref-enums]: {{ site.scala3ref }}/enums/enums.html
 [adts]: {% link _zh-cn/overviews/scala3-book/types-adts-gadts.md %}
