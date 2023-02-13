@@ -654,6 +654,20 @@ val fred = Person("Fred", 29)
 
 在基本用法中，trait 可以用作接口，仅定义将由其他类实现的抽象成员：
 
+{% tabs traits_1 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+trait Employee {
+  def id: Int
+  def firstName: String
+  def lastName: String
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
+
 ```scala
 trait Employee:
   def id: Int
