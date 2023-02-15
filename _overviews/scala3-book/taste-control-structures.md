@@ -480,7 +480,7 @@ finally
 ## `while` loops
 
 Scala also has a `while` loop construct.
-It’s one-line syntax looks like this:
+Its one-line syntax looks like this:
 
 {% tabs while_1 class=tabs-scala-version %}
 {% tab 'Scala 2' for=while_1 %}
