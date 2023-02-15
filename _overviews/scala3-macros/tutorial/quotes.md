@@ -349,17 +349,23 @@ Note that the previous case could also be written as `case '{ ($ls: List[u]).map
 Types represented with `Type[T]` can be matched on using the patten `case '[...] =>`.
 
 ```scala
-def mirrorFields[T: Type](using Quotes): List[String] =
-  Type.of[T] match
+inline def mirrorFields[T]: List[String] = ${mirrorFieldsImpl[T]}
+
+def mirrorFieldsImpl[T: Type](using Quotes): Expr[List[String]] =
+  
+  def rec[A : Type]: List[String] = Type.of[A] match
     case '[field *: fields] =>
-      Type.show[field] :: mirrorFields[fields]
+      Type.show[field] :: rec[fields]
     case '[EmptyTuple] =>
       Nil
     case _ =>
-      compiletime.error("Expected known tuple but got: " + Type.show[T])
+      quotes.reflect.report.errorAndAbort("Expected known tuple but got: " + Type.show[A])
 
+  Expr(rec)
+```
+```scala
 mirrorFields[EmptyTuple]         // Nil
-mirrorFields[(Int, String, Int)] // List("Int", "String", "Int")
+mirrorFields[(Int, String, Int)] // List("scala.Int", "java.lang.String", "scala.Int")
 mirrorFields[Tuple]              // error: Expected known tuple but got: Tuple
 ```
 
