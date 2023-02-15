@@ -48,7 +48,7 @@ If you want them to be immutable---read only---create them as `val` fields inste
 Prior to Scala 3, you used the `new` keyword to create a new instance of a class:
 
 {% tabs class_2 %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 Only' %}
 
 ```scala
 val p = new Person("Robert Allen Zimmerman", "Harmonica Player")
@@ -1200,8 +1200,16 @@ Technically, the specific type of pattern matching shown in these examples is kn
 
 To show how that code works, create an instance of `Student` and `Teacher`:
 
-{% tabs case-classes_9 %}
-{% tab 'Scala 2 and 3' %}
+{% tabs case-classes_9 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+val s = new Student("Al", 1)
+val t = new Teacher("Bob Donnan", "Mathematics")
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 val s = Student("Al", 1)
@@ -1263,7 +1271,7 @@ Because it defines an `unapply` method, and because that method returns a tuple,
 {% tab 'Scala 2' %}
 
 ```scala
-val p = Person("Astrid", 33)
+val p = new Person("Astrid", 33)
 
 p match {
   case Person(n,a) => println(s"name: $n, age: $a")
