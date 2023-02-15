@@ -32,18 +32,49 @@ Scala 为面向对象设计提供了所有必要的工具：
 可能与支持 OOP 的其他语言（例如 Java）不同，Scala 中分解的主要工具不是类，而是trait。
 它们可以用来描述抽象接口，例如：
 
+{% tabs traits_1 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+trait Showable {
+  def show: String
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
+
 ```scala
 trait Showable:
   def show: String
 ```
 
+{% endtab %}
+{% endtabs %}
+
 并且还可以包含具体的实现：
+
+{% tabs traits_2 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+trait Showable {
+  def show: String
+  def showHtml = "<p>" + show + "</p>"
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 trait Showable:
   def show: String
   def showHtml = "<p>" + show + "</p>"
 ```
+
+{% endtab %}
+{% endtabs %}
 
 你可以看到我们用抽象方法 `show` 来定义方法 `showHtml`。
 
@@ -54,12 +85,28 @@ trait Showable:
 
 我们已经可以在 `Showable` 的示例中看到这一点：定义一个扩展 `Showable` 的类 `Document`，我们仍然必须定义 `show`，但我们提供了 `showHtml`：
 
+{% tabs traits_3 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+class Document(text: String) extends Showable {
+  def show = text
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
+
 ```scala
 class Document(text: String) extends Showable:
   def show = text
 ```
 
+{% endtab %}
+{% endtabs %}
+
 #### 抽象成员
+
 抽象方法并不是trait中唯一可以抽象的东西。
 一个trait可以包含：
 
@@ -67,6 +114,7 @@ class Document(text: String) extends Showable:
 - 抽象值定义（`val x: T`）
 - 抽象类型成员（`type T`），可能有界限（`type T <: S`）
 - 抽象given（`given t: T`）
+<span class="tag tag-inline">Scala 3 only</span>
 
 上述每个特性都可用于指定对 trait 实现者的某种形式的要求。
 
@@ -75,6 +123,23 @@ class Document(text: String) extends Showable:
 traits 不仅可以包含抽象和具体的定义，Scala 还提供了一种组合多个 trait 的强大方法：这个特性通常被称为 _混入组合_。
 
 让我们假设以下两个（可能独立定义的）traits：
+
+{% tabs traits_4 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+trait GreetingService {
+  def translate(text: String): String
+  def sayHello = translate("Hello")
+}
+
+trait TranslationService {
+  def translate(text: String): String = "..."
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 trait GreetingService:
@@ -85,11 +150,27 @@ trait TranslationService:
   def translate(text: String): String = "..."
 ```
 
+{% endtab %}
+{% endtabs %}
+
 要组合这两个服务，我们可以简单地创建一个扩展它们的新trait：
+
+{% tabs traits_5 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+trait ComposedService extends GreetingService with TranslationService
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 trait ComposedService extends GreetingService, TranslationService
 ```
+
+{% endtab %}
+{% endtabs %}
 
 一个 trait 中的抽象成员（例如 `GreetingService` 中的 `translate`）会自动与另一个 trait 中的具体成员匹配。
 这不仅适用于本例中的方法，而且适用于上述所有其他抽象成员（即类型、值定义等）。
@@ -104,10 +185,20 @@ Traits 非常适合模块化组件和描述接口（必需和提供）。
 NOTE: I think “leaves” may technically be the correct word to use, but I prefer “leafs.”
 {% endcomment %}
 
-|Traits      | `T1`, `T2`, `T3`
-|组合 traits | `S extends T1, T2`, `S extends T2, T3`
-|类          | `C extends S, T3`
-|实例        | `C()`
+{% tabs table-traits-cls-summary class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+| Traits      | `T1`, `T2`, `T3`
+| 组合traits | `S1 extends T1 with T2`, `S2 extends T2 with T3`
+| 类          | `C extends S1 with T3`
+| 实例        | `new C()`
+{% endtab %}
+{% tab 'Scala 3' %}
+| Traits      | `T1`, `T2`, `T3`
+| 组合 traits | `S extends T1, T2`, `S extends T2, T3`
+| 类          | `C extends S, T3`
+| 实例        | `C()`
+{% endtab %}
+{% endtabs %}
 
 在 Scala 3 中更是如此，trait 现在也可以接受参数，进一步消除了对类的需求。
 
@@ -115,20 +206,51 @@ NOTE: I think “leaves” may technically be the correct word to use, but I pre
 
 像trait一样，类可以扩展多个trait（但只有一个超类）：
 
+{% tabs class_1 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+class MyService(name: String) extends ComposedService with Showable {
+  def show = s"$name says $sayHello"
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
+
 ```scala
 class MyService(name: String) extends ComposedService, Showable:
   def show = s"$name says $sayHello"
 ```
 
+{% endtab %}
+{% endtabs %}
+
 #### 子类型化
 
 我们可以创建一个 `MyService` 的实例，如下所示：
+
+{% tabs class_2 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+val s1: MyService = new MyService("Service 1")
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 val s1: MyService = MyService("Service 1")
 ```
 
+{% endtab %}
+{% endtabs %}
+
 通过子类型化的方式，我们的实例 `s1` 可以在任何扩展了trait的地方使用：
+
+{% tabs class_3 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 val s2: GreetingService = s1
@@ -137,9 +259,15 @@ val s4: Showable = s1
 // ... and so on ...
 ```
 
+{% endtab %}
+{% endtabs %}
+
 #### 扩展规划
 
 如前所述，可以扩展另一个类：
+
+{% tabs class_4 %}
+{% tab 'Scala 2 and 3' %}
 
 ```scala
 class Person(name: String)
@@ -147,12 +275,21 @@ class SoftwareDeveloper(name: String, favoriteLang: String)
   extends Person(name)
 ```
 
+{% endtab %}
+{% endtabs %}
+
 然而，由于 _traits_ 被设计为主要的分解手段，在一个文件中定义的类_不能_在另一个文件中扩展。
 为了允许这样做，需要将基类标记为 `open`：
+
+{% tabs class_5 %}
+{% tab 'Scala 3 Only' %}
 
 ```scala
 open class Person(name: String)
 ```
+
+{% endtab %}
+{% endtabs %}
 
 用 [`open`][open] 标记类是 Scala 3 的一个新特性。必须将类显式标记为开放可以避免面向对象设计中的许多常见缺陷。
 特别是，它要求库设计者明确计划扩展，例如用额外的扩展契约来记录那些被标记为开放的类。
@@ -167,6 +304,22 @@ I only mention this because I think that book and phrase is pretty well known in
 
 与其他支持 OOP 的语言一样，Scala 中的trait和类可以定义可变字段：
 
+{% tabs instance_6 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+class Counter {
+  // can only be observed by the method `count`
+  private var currentCount = 0
+
+  def tick(): Unit = currentCount += 1
+  def count: Int = currentCount
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
+
 ```scala
 class Counter:
   // can only be observed by the method `count`
@@ -176,7 +329,24 @@ class Counter:
   def count: Int = currentCount
 ```
 
+{% endtab %}
+{% endtabs %}
+
 `Counter` 类的每个实例都有自己的私有状态，只能通过方法 `count` 观察到，如下面的交互所示：
+
+{% tabs instance_7 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+val c1 = new Counter()
+c1.count // 0
+c1.tick()
+c1.tick()
+c1.count // 2
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 val c1 = Counter()
@@ -185,6 +355,9 @@ c1.tick()
 c1.tick()
 c1.count // 2
 ```
+
+{% endtab %}
+{% endtabs %}
 
 #### 访问修饰符
 
@@ -203,24 +376,54 @@ c1.count // 2
 我们的目标是定义一个_种类丰富_的软件组件，而对组件的细化，可以放到以后的实现中
 具体来说，以下代码将组件 `SubjectObserver` 定义为具有两个抽象类型成员的trait， `S` （用于主题）和 `O` （用于观察者）：
 
+{% tabs example_1 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
 ```scala
-trait SubjectObserver:
+trait SubjectObserver {
 
   type S <: Subject
   type O <: Observer
 
   trait Subject { self: S =>
     private var observers: List[O] = List()
-    def subscribe(obs: O): Unit =
+    def subscribe(obs: O): Unit = {
       observers = obs :: observers
-    def publish() =
-      for obs <- observers do obs.notify(this)
+    }
+    def publish() = {
+      for ( obs <- observers ) obs.notify(this)
+    }
   }
 
   trait Observer {
     def notify(sub: S): Unit
   }
+}
 ```
+
+{% endtab %}
+{% tab 'Scala 3' %}
+
+```scala
+trait SubjectObserver:
+
+  type S <: Subject
+  type O <: Observer
+
+  trait Subject:
+    self: S =>
+      private var observers: List[O] = List()
+      def subscribe(obs: O): Unit =
+        observers = obs :: observers
+      def publish() =
+        for obs <- observers do obs.notify(this)
+
+  trait Observer:
+    def notify(sub: S): Unit
+```
+
+{% endtab %}
+{% endtabs %}
 
 有几件事需要解释。
 
@@ -253,6 +456,33 @@ trait SubjectObserver:
 
 我们现在可以实现上述组件并将抽象类型成员定义为具体类型：
 
+{% tabs example_2 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+object SensorReader extends SubjectObserver {
+  type S = Sensor
+  type O = Display
+
+  class Sensor(val label: String) extends Subject {
+    private var currentValue = 0.0
+    def value = currentValue
+    def changeValue(v: Double) = {
+      currentValue = v
+      publish()
+    }
+  }
+
+  class Display extends Observer {
+    def notify(sub: Sensor) =
+      println(s"${sub.label} has value ${sub.value}")
+  }
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
+
 ```scala
 object SensorReader extends SubjectObserver:
   type S = Sensor
@@ -269,6 +499,9 @@ object SensorReader extends SubjectObserver:
     def notify(sub: Sensor) =
       println(s"${sub.label} has value ${sub.value}")
 ```
+
+{% endtab %}
+{% endtabs %}
 
 具体来说，我们定义了一个扩展 `SubjectObserver` 的_单例_对象 `SensorReader`。
 在 `SensorReader` 的实现中，我们说 `S` 类型现在被定义为 `Sensor` 类型，`O` 类型被定义为等于 `Display` 类型。
@@ -289,6 +522,35 @@ NOTE: You might say “the abstract method `notify`” in that last sentence, bu
 ### 使用组件
 
 最后，下面的代码说明了如何使用我们的 `SensorReader` 组件：
+
+{% tabs example_3 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+
+```scala
+import SensorReader._
+
+// setting up a network
+val s1 = new Sensor("sensor1")
+val s2 = new Sensor("sensor2")
+val d1 = new Display()
+val d2 = new Display()
+s1.subscribe(d1)
+s1.subscribe(d2)
+s2.subscribe(d1)
+
+// propagating updates through the network
+s1.changeValue(2)
+s2.changeValue(3)
+
+// prints:
+// sensor1 has value 2.0
+// sensor1 has value 2.0
+// sensor2 has value 3.0
+
+```
+
+{% endtab %}
+{% tab 'Scala 3' %}
 
 ```scala
 import SensorReader.*
@@ -311,6 +573,9 @@ s2.changeValue(3)
 // sensor1 has value 2.0
 // sensor2 has value 3.0
 ```
+
+{% endtab %}
+{% endtabs %}
 
 借助我们掌握的所有面向对象的编程工具，在下一节中，我们将演示如何以函数式风格设计程序。
 
