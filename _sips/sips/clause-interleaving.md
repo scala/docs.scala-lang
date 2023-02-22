@@ -166,8 +166,8 @@ This might be the subject of a follow up proposal, if the concerns can be addres
 As discussed above, we may want to consider generalizing class parameter lists as well. However, we feel it is better to leave that extension to a follow-up proposal, if required.
 
 ## Related work
-* Pre-SIP: https://contributors.scala-lang.org/t/clause-interweaving-allowing-def-f-t-x-t-u-y-u/5525
-* An implementation of the proposal is available as a pull request at https://github.com/lampepfl/dotty/pull/14019
+* Pre-SIP: [https://contributors.scala-lang.org/t/clause-interweaving-allowing-def-f-t-x-t-u-y-u/5525](https://contributors.scala-lang.org/t/clause-interweaving-allowing-def-f-t-x-t-u-y-u/5525)
+* An implementation of the proposal is available as a pull request at [https://github.com/lampepfl/dotty/pull/14019](https://github.com/lampepfl/dotty/pull/14019)
 
 ## FAQ
 Currently empty.
