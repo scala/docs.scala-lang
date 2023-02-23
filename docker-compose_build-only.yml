@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  jekyll:
+    user: "${UID}:${GID}"
+    build: .
+    command: sh -c "chown $UID / && bundle exec jekyll build"
+    volumes:
+      - .:/srv/jekyll
