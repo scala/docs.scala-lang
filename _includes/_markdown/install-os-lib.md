@@ -1,23 +1,23 @@
 OS-Lib is a library for manipulating files and processes. It is part of the Scala Toolkit.
 
-{% altDetails install-info-box 'Installing OS-Lib' %}
+{% altDetails require-info-box 'Requiring OS-Lib' %}
 
-## Installing OS-Lib
+## Requiring OS-Lib
 
   {% tabs oslib--1 %}
     {% tab 'Scala CLI' %}
-In Scala CLI, we can install the entire toolkit in a single line:
+In Scala CLI, we can require the entire toolkit in a single line:
 ```scala
 //> using toolkit
 ```
 
-Alternatively, we can install a specific version of OS-Lib:
+Alternatively, we can require a specific version of OS-Lib:
 ```scala
-//> using lib "com.lihaoyi::os-lib:0.9.0"
+//> using dep "com.lihaoyi::os-lib:0.9.0"
 ```
     {% endtab %}
     {% tab 'sbt' %}
-In our build.sbt file, we add the dependency on the OS-Lib library:
+In our build.sbt file, we add the dependency on OS-Lib:
 ```scala
 lazy val example = project.in(file("example"))
   .settings(
