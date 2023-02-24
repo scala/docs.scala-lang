@@ -37,6 +37,15 @@ getting-started.html
 
 Scaladoc can transform both files and directories (to organize your documentation into a tree-like structure). By default, directories have a title based on the file name and have empty content. It is possible to provide index pages for each section by creating `index.html` or `index.md` (not both) in the dedicated directory.
 
+Before generating your static site you also need to set the `-siteroot` to the name of your `<site-root>`,which means that when you generate documentation for your project, the root URL for the generated documentation will be `<site-root>`.
+The configuration is as follows:
+
+```
+Compile / doc / scalacOptions ++= Seq("-siteroot", "docs")
+```
+
+Note that the `Compile / doc` part of the line refers to the `doc` task in the `Compile` configuration, which generates documentation for the project's main sources. So, the `scalacOptions` set in this line will only be used during the generation of documentation for the main sources, not during compilation or testing. Refer to the settings page for more information
+
 Keep in mind that viewing your site locally with all the features it offers, like search or snippets, require a
 local server. For example if your output directory was `output` you could use a python server to view everything
 by doing the following and opening `localhost:8080`:
