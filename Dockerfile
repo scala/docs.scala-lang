@@ -1,6 +1,6 @@
-FROM ruby:2.7.6
+FROM ruby:3.0.5
 
-RUN gem install bundler:2.3.10
+RUN gem install bundler:2.4.7
 
 WORKDIR /srv/jekyll
 
