@@ -87,7 +87,7 @@ Scala's parallel collection's draws much inspiration from the design of
 Scala's (sequential) collections library-- as a matter of fact, it mirrors the
 regular collections framework's corresponding traits, as shown below.
 
-[<img src="{{ site.baseurl }}/resources/images/parallel-collections-hierarchy.png" width="550">]({{ site.baseurl }}/resources/images/parallel-collections-hierarchy.png)
+[<img src="{{ site.baseurl }}/resources/images/parallel-collections-hierarchy.png" alt="Hierarchy of Scala Collections and Parallel Collections" width="550">]({{ site.baseurl }}/resources/images/parallel-collections-hierarchy.png)
 
 <center><b>Hierarchy of Scala's Collections and Parallel Collections Libraries</b></center>
 <br/>
