@@ -35,7 +35,7 @@ title: マクロパラダイス
 詳細は[機能の一覧を](/ja/overviews/macros/roadmap.html)参照。
 
 具体例に関しては [https://github.com/scalamacros/sbt-example-paradise](https://github.com/scalamacros/sbt-example-paradise) を参照してほしいが、要点をまとめると、マクロパラダイスを使うには以下の二行をビルド定義に加えるだけでいい
-(すでに[sbt を使っている](/ja/overviews/macros/overview.html#using_macros_with_maven_or_sbt)ことが前提だが):
+(すでに[sbt を使っている](/ja/overviews/macros/overview.html#maven-か-sbt-を用いてマクロを使う)ことが前提だが):
 
     resolvers += Resolver.sonatypeRepo("releases")
 
