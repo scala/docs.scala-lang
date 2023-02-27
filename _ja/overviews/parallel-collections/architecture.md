@@ -56,7 +56,7 @@ language: ja
 Scala の並列コレクションは、Scala の（順次）コレクションライブラリの設計から多大な影響を受けている。
 以下に示すよう、トレイト群は通常のコレクションフレームワーク内のトレイト群を鏡写しのように対応している。
 
-[<img src="{{ site.baseurl }}/resources/images/parallel-collections-hierarchy.png" width="550">]({{ site.baseurl }}/resources/images/parallel-collections-hierarchy.png)
+[<img src="{{ site.baseurl }}/resources/images/parallel-collections-hierarchy.png" alt="Hierarchy of Scala Collections and Parallel Collections" width="550">]({{ site.baseurl }}/resources/images/parallel-collections-hierarchy.png)
 
 <center><b>Scala のコレクションと並列コレクションライブラリの継承関係</b></center>
 <br/>

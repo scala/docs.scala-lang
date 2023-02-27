@@ -18,7 +18,7 @@ Scala 将查找这些参数的位置分为两类：
 * Scala 在调用包含有隐式参数块的方法时，将首先查找可以直接访问的隐式定义和隐式参数 (无前缀)。
 * 然后，它在所有伴生对象中查找与隐式候选类型相关的有隐式标记的成员。
 
-更加详细的关于 Scala 到哪里查找隐式参数的指南请参考 [常见问题](//docs.scala-lang.org/tutorials/FAQ/finding-implicits.html)
+更加详细的关于 Scala 到哪里查找隐式参数的指南请参考 [常见问题](/tutorials/FAQ/finding-implicits.html)
 
 在下面的例子中，我们定义了一个方法 `sum`，它使用 Monoid 类的 `add` 和 `unit` 方法计算一个列表中元素的总和。 请注意，隐式值不能是顶级值。
 

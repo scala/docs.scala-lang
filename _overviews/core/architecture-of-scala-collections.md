@@ -789,7 +789,7 @@ storing the strings "abc", "abd", "al", "all" and "xy" would look
 like this:
 
 A sample patricia trie:
-<img src="{{ site.baseurl }}/resources/images/patricia.png" width="550">
+<img src="{{ site.baseurl }}/resources/images/patricia.png" alt="Patricia trie"  width="550">
 
 To find the node corresponding to the string "abc" in this trie,
 simply follow the subtree labeled "a", proceed from there to the
