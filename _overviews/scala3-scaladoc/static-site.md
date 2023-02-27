@@ -39,7 +39,7 @@ Scaladoc can transform both files and directories (to organize your documentatio
 
 Before generating your static site you need to set the `-siteroot` value in your doc `scalacOptions`. The value of this is the directory that holds your docs.  The root URL for the generated documentation will also be `<site-root>`.
 
-For example if you have a directory called `docs` and you'd like that to be treated as your site root :
+For example if you have a directory called `docs` and you'd like that to be treated as your site root:
 
 ```
 .
