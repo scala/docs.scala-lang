@@ -24,3 +24,8 @@ All of OS-Lib is in the `os.*` namespace.
 The Scala Toolkit site provides short tutorials for using OS-Lib for a handful of common tasks. For more complete information on the library, see [OS-Lib on GitHub](https://github.com/com-lihaoyi/os-lib).
 
 See also Chapter 7 of Li Haoyi's book [_Hands-On Scala Programming_](https://www.handsonscala.com). (Li Haoyi is the author of OS-Lib.)
+
+## Next steps
+
+The first tutorial in this series will show you how to read the
+contents of a directory.

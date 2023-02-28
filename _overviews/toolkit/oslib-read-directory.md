@@ -19,7 +19,8 @@ relative path which cannot ascend to parent directories).
 
 Typical starting points for making paths are `os.pwd` (the
 current working directory), `os.home` (the current user's home
-directory), and `os.root` (the root of the filesystem).
+directory), `os.root` (the root of the filesystem), or
+`os.temp.dir()` (a new temporary directory).
 
 Paths have a `/` method for adding path segments. For example:
 
