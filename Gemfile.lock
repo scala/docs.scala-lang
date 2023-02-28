@@ -54,6 +54,8 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
+    nokogiri (1.13.9-arm64-darwin)
+      racc (~> 1.4)
     nokogiri (1.13.9-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.13.9-x86_64-linux)
@@ -81,6 +83,7 @@ GEM
     yell (2.2.2)
 
 PLATFORMS
+  universal-darwin-22
   x86_64-darwin-21
   x86_64-linux
 

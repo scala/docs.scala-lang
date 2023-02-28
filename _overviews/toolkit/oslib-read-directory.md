@@ -2,9 +2,9 @@
 title: How to read a directory?
 type: section
 description: Reading a directory's contents with OS-Lib
-num: 15
-previous-page: oslib-write-file
-next-page: oslib-run-process
+num: 13
+previous-page: oslib-intro
+next-page: oslib-read-file
 ---
 
 {% include markdown.html path="_markdown/install-os-lib.md" %}
@@ -15,13 +15,22 @@ A fundamental data type in OS-Lib is `os.Path`, representing a path
 on the filesystem. An `os.Path` is always an absolute path.
 
 OS-Lib also provides `os.RelPath` (relative paths) and `os.SubPath` (a
-relative path which is not permitted to ascend to parent directories).
+relative path which cannot ascend to parent directories).
 
-Typical starting points for constructing a path are `os.pwd` (the
+Typical starting points for making paths are `os.pwd` (the
 current working directory), `os.home` (the current user's home
 directory), and `os.root` (the root of the filesystem).
 
-Paths have a `/` method for adding path segments.
+Paths have a `/` method for adding path segments. For example:
+
+{% tabs 'etc' %}
+{% tab 'Scala 2 and 3' %}
+```
+scala> os.root / "etc"
+val res0: os.root.ThisType = /etc
+```
+{% endtab %}
+{% endtabs %}
 
 ## Reading a directory
 
@@ -29,35 +38,40 @@ Paths have a `/` method for adding path segments.
 
 {% tabs 'list-etc' %}
 {% tab 'Scala 2 and 3' %}
-```scala
-os.list(os.root / "etc")
+```
+scala> os.list(os.root / "etc")
+val res1: IndexedSeq[os.Path] = ArraySeq(/etc/afpovertcp.cfg, ...
 ```
 {% endtab %}
 {% endtabs %}
 
-If we are interested only in plain files (and not subdirectories),
+Or if we only want subdirectories:
 
-{% tabs 'list-etc' %}
+{% tabs 'subdirs' %}
 {% tab 'Scala 2 and 3' %}
 ```scala
-os.list(os.root / "etc").filter(os.isFile)
+scala> os.list(os.root / "etc").filter(os.isDir)
+val res2: IndexedSeq[os.Path] = ArraySeq(/etc/apache2, ...
 ```
 {% endtab %}
 {% endtabs %}
 
-Some sample usages and outputs:
-
-```scala
-scala> os.list(os.root / "etc").size
-val res18: Int = 77
-
-scala> os.list(os.root / "etc").filter(os.isFile).size
-val res19: Int = 56
-```
+## Traversing a directory tree
 
 To recursively descend an entire subtree, change `os.list` to
-`os.walk`. To process results on the fly rather than reading them
-all into memory first, use `os.walk.stream`.
+`os.walk`:
+
+{% tabs 'tree' %}
+{% tab 'Scala 2 and 3' %}
+```scala
+scala> os.walk(os.root / "etc").size
+val res3: Int = 276
+```
+{% endtab %}
+{% endtabs %}
+
+To process results on the fly rather than reading them
+all into memory first, substitute `os.walk.stream`.
 
 ## Next steps
 

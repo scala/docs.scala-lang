@@ -4,7 +4,7 @@ type: chapter
 description: The introduction of the OS-lib library
 num: 12
 previous-page: munit-assumptions
-next-page: oslib-read-file
+next-page: oslib-read-directory
 ---
 
 ## What is OS-Lib?
