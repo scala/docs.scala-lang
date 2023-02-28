@@ -11,19 +11,23 @@ In Scala CLI, we can require the entire toolkit in a single line:
 //> using toolkit
 ```
 
-Alternatively, we can require a specific version of OS-Lib:
+Alternatively, we can require just a specific version of OS-Lib:
 ```scala
 //> using dep "com.lihaoyi::os-lib:0.9.0"
 ```
     {% endtab %}
     {% tab 'sbt' %}
-In our build.sbt file, we add the dependency on OS-Lib:
+In our `build.sbt` file, we add the dependency on OS-Lib:
 ```scala
-lazy val example = project.in(file("example"))
-  .settings(
-    scalaVersion := "3.2.2",
-    libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.9.0"
-  )
+libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.9.0"
+```
+    {% endtab %}
+    {% tab 'Mill' %}
+In our `build.sc` file, we add the dependency on OS-Lib:
+```scala
+def ivyDeps = Agg(
+  ivy"com.lihaoyi::os-lib:0.9.0"
+)
 ```
     {% endtab %}
   {% endtabs %}
