@@ -22,6 +22,18 @@ An instance of `Person` is defined by two values: its `name` and `surname`.
 To send a value of `Person` as the body of a request, you need to define how to transform it into an HTTP body.
 `BodySerializer` comes in handy and allows you to do it once and for all.
 
+{% tabs 'serializer' %}
+{% tab 'Scala 2' %}
+```scala
+import sttp.client3._
+implicit val bodySer: BodySerializer[Person] = { (p: Person) =>
+  val serialized = s"${p.name},${p.surname}"
+  StringBody(serialized, "UTF-8")
+}
+```
+The `implicit` keyword may appear strange at first but is very powerful.
+{% endtab %}
+{% tab 'Scala 3' %}
 ```scala
 import sttp.client3._
 given BodySerializer[Person] = { (p: Person) =>
@@ -29,15 +41,37 @@ given BodySerializer[Person] = { (p: Person) =>
   StringBody(serialized, "UTF-8")
 }
 ```
+The `given` keyword may appear strange at first but is very powerful.
+{% endtab %}
+{% endtabs %}
+It makes the `BodySerializer` available in the current scope, to call the `body` method of an HTTP request and pass it a `Person`.
 This serializer converts a `Person` to a `StringBody` by concatenating the `name` and `surname`, separated by a comma. 
 
-The `given` keyword may appear strange at first but is very powerful.
-It makes the `BodySerializer` available in the current scope, to call the `body` method of an HTTP request and pass it a `Person`.
 
 ## Sending a Person as the body of a request
 
 When you have the `given BodySerializer[Person]` specified, you can just pass the value, of type `Person`, to the `body` method on `basicRequest`. The full code of the solution:
 
+{% tabs 'full' %}
+{% tab 'Scala 2' %}
+```scala
+import sttp.client3._
+
+case class Person(name: String, surname: String)
+
+implicit val bodySer: BodySerializer[Person] = { (p: Person) =>
+  val serialized = s"${p.name},${p.surname}"
+  StringBody(serialized, "UTF-8")
+}
+
+val client = SimpleHttpClient() // Create the instance of SimpleHttpClient
+val person = Person("Peter", "Jackson")
+val request = basicRequest.post(uri"https://example.com/").body(person) // Define a POST request to https://example.com/, with the person as the body
+val response = client.send(request) // Send the request and get the response
+println(response.body) // Print the body of the response
+```
+{% endtab %}
+{% tab 'Scala 3' %}
 ```scala
 import sttp.client3._
 
@@ -54,11 +88,27 @@ val request = basicRequest.post(uri"https://example.com/").body(person) // Defin
 val response = client.send(request) // Send the request and get the response
 println(response.body) // Print the body of the response
 ```
+{% endtab %}
+{% endtabs %}
 
 ## Make the `BodySerializer[Person]` globally available
 
 You can make the given `BodySerializer[Person]` globally available by defining it in the companion object of `Person`.
 
+{% tabs 'companion' %}
+{% tab 'Scala 2' %}
+```scala
+case class Person(name: String, surname: String)
+
+object Person {
+  implicit val bodySer: BodySerializer[Person] = { (p: Person) =>
+    val serialized = s"${p.name},${p.surname}"
+    StringBody(serialized, "UTF-8")
+  }
+}
+```
+{% endtab %}
+{% tab 'Scala 3' %}
 ```scala
 case class Person(name: String, surname: String)
 
@@ -69,8 +119,10 @@ object Person {
   }
 }
 ```
+{% endtab %}
+{% endtabs %}
 
-The given `BodySerializer[Person]` defined in the companion object of `Person` is globally available.
+The `BodySerializer[Person]` defined in the companion object of `Person` is globally available.
 In any other class or file of your project, you can now pass a `Person` to the `body` method of a request:
 ```scala
 val request = basicRequest.post(uri"https://example.com/").body(person)

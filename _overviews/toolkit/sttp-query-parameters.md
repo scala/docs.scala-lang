@@ -16,6 +16,8 @@ You can add any query parameter in the URI of your request. For example `basicRe
 You can interpolate the value of a variable into a query parameter using the `$` sign, or the `${}` syntax. 
 For example, calling `uri"https://example.com/list?filter=$name"` replaces `$name` with the value of the variable `name`.
 
+{% tabs 'get' %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 import sttp.client3.{SimpleHttpClient, UriContext, basicRequest}
 
@@ -25,6 +27,8 @@ val request = basicRequest.get(uri"https://example.com/list?filter=$name") // De
 val response = client.send(request) // Send the request and get the response
 println(response.body) // Print the body of the response
 ```
+{% endtab %}
+{% endtabs %}
 
 For safety, the `uri` interpolator makes sure to escape all the special characters coming from the interpolated variables.
 
