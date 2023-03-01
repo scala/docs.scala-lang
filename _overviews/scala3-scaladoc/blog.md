@@ -35,25 +35,26 @@ Example name is `2015-10-23-dotty-compiler-bootstraps.md`.
 
 ## Structure
 
+When creating a blog page, you will have a first part to fill in with different fields. See the following example:
+
 ```
 ---
-layout: A reference to the layout for the blog page
-author: Name of the author of the page
-title: Name of the author of the page
-subTitle: Subtitle of the page
+layout: <A reference to the layout page for the blog page>
+author: <Name of the author of the page>
+title: <Title of the page>
+subTitle: <Subtitle of the page>
 excerpt_separator: <!--more-->
-date: Date of creation of the page
-authorImg: Image of the author of the page
+date: <Date of the creation of the page>
+authorImg: <Link to the author's image>
 ---
 <Content>
 ```
-Keep in mind that with the exception of the author's name and title, the fields are optional.
 
-## Special characters for structures
+## Special characters for the content
 
-````<content>```` : For code
+` ```<content>``` ` : For code
 
-`##Subtitle` : For subtitles
+`## Subtitle` : For subtitles
 
 `word` : To highlight
 
