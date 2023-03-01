@@ -57,25 +57,6 @@ val res2: IndexedSeq[os.Path] = ArraySeq(/etc/apache2, ...
 {% endtab %}
 {% endtabs %}
 
-## Traversing a directory tree
-
 To recursively descend an entire subtree, change `os.list` to
-`os.walk`:
-
-{% tabs 'tree' %}
-{% tab 'Scala 2 and 3' %}
-```scala
-scala> os.walk(os.root / "etc").size
-val res3: Int = 276
-```
-{% endtab %}
-{% endtabs %}
-
-To process results on the fly rather than reading them
-all into memory first, substitute `os.walk.stream`.
-
-## Next steps
-
-We've seen how to find out what files a directory contains.
-The next section of the tutorial shows how to process the
-files themselves.
+`os.walk`.  To process results on the fly rather than reading them all
+into memory first, substitute `os.walk.stream`.

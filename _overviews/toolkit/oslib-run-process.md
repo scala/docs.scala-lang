@@ -17,8 +17,8 @@ To set up a process, use `os.proc`, then to actually start it,
 {% tabs 'touch' %}
 {% tab 'Scala 2 and 3' %}
 ```
-scala> val path = os.temp.dir() / "output.txt"
-val path: os.Path = /var/folders/dr4f...q5yj/output.txt
+scala> val path = os.pwd / "output.txt"
+val path: os.Path = /Users/alice/output.txt
 
 scala> os.exists(path)
 val res0: Boolean = false
@@ -74,9 +74,3 @@ Su Mo Tu We Th Fr Sa
 individually here. For example, you can set environment variables
 (`env = ...`), or redirect input and output (`stdin = ...`, `stdout =
 ...`, `stderr = ...`).
-
-## Next steps
-
-For more complete information on OS-Lib, see [OS-Lib on GitHub](https://github.com/com-lihaoyi/os-lib).
-
-See also Chapter 7 of Li Haoyi's book [_Hands-On Scala Programming_](https://www.handsonscala.com). (Li Haoyi is the author of OS-Lib.)

@@ -55,8 +55,3 @@ val res3: Int = 4
 ```
 {% endtab %}
 {% endtabs %}
-
-## Next steps
-
-Now you know how to read and write files. Next let's learn how
-to launch and interact with external processes.

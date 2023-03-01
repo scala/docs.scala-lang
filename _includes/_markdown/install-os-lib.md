@@ -8,7 +8,7 @@ OS-Lib is a library for manipulating files and processes. It is part of the Scal
     {% tab 'Scala CLI' %}
 In Scala CLI, we can require the entire toolkit in a single line:
 ```scala
-//> using toolkit
+//> using toolkit "latest"
 ```
 
 Alternatively, we can require just a specific version of OS-Lib:

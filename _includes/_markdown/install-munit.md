@@ -8,7 +8,7 @@ MUnit is the testing library of the Scala Toolkit.
     {% tab 'Scala CLI' %}
 In Scala CLI, we can install the entire toolkit in a single line:
 ```scala
-//> using toolkit
+//> using toolkit "latest"
 ```
 
 Alternatively, we can install a specific version of MUnit:

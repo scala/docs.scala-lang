@@ -37,8 +37,9 @@ aa
 {% endtab %}
 {% endtabs %}
 
-To read the file as line at a time, substitute `os.read.lines`. We can
-find the longest word in the dictionary:
+To read the file as line at a time, substitute `os.read.lines`.
+
+We can find the longest word in the dictionary:
 
 {% tabs lines %}
 {% tab 'Scala 2 and 3' %}
@@ -64,8 +65,3 @@ val res2: String = A
 
 OS-Lib takes care of closing the file once the generator returned
 by `stream` is exhausted.
-
-## Next steps
-
-We've seen how to read a file. The next section shows how to write a
-file.
