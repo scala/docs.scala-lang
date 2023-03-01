@@ -172,6 +172,7 @@
             color: #859900;
             @include border-radius($border-radius-medium);
             padding: 2px 6px;
+            word-wrap: break-word;
         }
     }
 
