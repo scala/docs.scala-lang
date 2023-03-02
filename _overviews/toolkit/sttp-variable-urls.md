@@ -22,6 +22,8 @@ It will produce the URI `https://example.com/peter`, exactly as you would expect
 When you call it, it replaces the interpolated variables with their values, for instance `$name` is replaced by `peter`.
 The role of the `uri` interpolator is also to escape any special character to build valid URIs.
 
+{% tabs 'variables' %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 import sttp.client3.{SimpleHttpClient, UriContext, basicRequest}
 
@@ -31,5 +33,7 @@ val request = basicRequest.get(uri"https://example.com/$name") // Define the GET
 val response = client.send(request) // Send the request and get the response
 println(response.body) // Print the body of the response
 ```
+{% endtab %}
+{% endtabs %}
 
 Learn more in the [sttp documentation chapter about URIs](https://sttp.softwaremill.com/en/latest/model/uri.html).

@@ -22,7 +22,7 @@ An instance of `Person` is defined by two values: its `name` and `surname`.
 To send a value of `Person` as the body of a request, you need to define how to transform it into an HTTP body.
 `BodySerializer` comes in handy and allows you to do it once and for all.
 
-{% tabs 'serializer' %}
+{% tabs 'serializer' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
 ```scala
 import sttp.client3._
@@ -52,7 +52,7 @@ This serializer converts a `Person` to a `StringBody` by concatenating the `name
 
 When you have the `given BodySerializer[Person]` specified, you can just pass the value, of type `Person`, to the `body` method on `basicRequest`. The full code of the solution:
 
-{% tabs 'full' %}
+{% tabs 'full' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
 ```scala
 import sttp.client3._
@@ -95,7 +95,7 @@ println(response.body) // Print the body of the response
 
 You can make the given `BodySerializer[Person]` globally available by defining it in the companion object of `Person`.
 
-{% tabs 'companion' %}
+{% tabs 'companion' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
 ```scala
 case class Person(name: String, surname: String)

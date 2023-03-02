@@ -13,6 +13,8 @@ next-page: sttp-variable-urls
 The simplest way to send a request with Scala Toolkit's http client library, sttp, is to use the `SimpleHttpClient` instance. 
 You need to import a few members from the library, and then write the code that defines and sends the request:
 
+{% tabs 'request' %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 import sttp.client3.{SimpleHttpClient, UriContext, basicRequest}
 
@@ -21,6 +23,8 @@ val request = basicRequest.get(uri"https://httpbin.org/get") // Define a GET req
 val response = client.send(request) // Send the request and get the response
 println(response.body) // Print the body of the response
 ```
+{% endtab %}
+{% endtabs %}
 
 ## Other request types
 You can swap `basicRequest.get` with any HTTP method you want. For example:

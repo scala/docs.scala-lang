@@ -36,6 +36,8 @@ For safety, the `uri` interpolator makes sure to escape all the special characte
 If you are in a situation where you either can have the query parameter or not, the `uri` interpolator can hanlde that for you automatically. 
 Scala comes with a handy type called `Option`. It allows you to represent something that is either available - `Some`, or something that is not present - `None`. 
 You can use this when adding a request parameter:
+{% tabs 'optionalparams' %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 import sttp.client3.{SimpleHttpClient, UriContext, basicRequest}
 
@@ -45,6 +47,8 @@ val request = basicRequest.get(uri"https://example.com/list?filter=$name") // De
 val response = client.send(request) // Send the request and get the response
 println(response.body) // Print the body of the response
 ```
+{% endtab %}
+{% endtabs %}
 But when the `name` is set to `None`, then the `filter` parameter would not appear at all in the URI.
 ```scala
 val name = None // name is not present
