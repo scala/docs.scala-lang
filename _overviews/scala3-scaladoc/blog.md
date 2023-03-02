@@ -55,8 +55,7 @@ authorImg: <Link to the author's image>
 ## Special characters for the content
 
 ` ```<content>``` ` : Multiline code block
-You can also specify a language type.
-` ```scala <content>``` `
+You can also specify a language type, ` ```scala <content>``` `
 
 `# Title` : For titles
 
