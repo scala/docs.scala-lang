@@ -33,9 +33,9 @@ Scaladoc loads blog if the `_blog` directory exists.
 All the blogpost filenames should start with date in numeric format matching `YYYY-MM-DD`.
 Example name is `2015-10-23-dotty-compiler-bootstraps.md`.
 
-## Structure
+## Page metadata
 
-When creating a blog page, you will have a first part to fill in with different fields. See the following example:
+The blog pages in scaladoc support [Yaml Frontmatter](https://assemble.io/docs/YAML-front-matter.html) which allows you to specify different values which will be used for metadata in your page. Here are the possible fields:
 
 ```
 ---
@@ -43,19 +43,25 @@ layout: <A reference to the layout page for the blog page>
 author: <Name of the author of the page>
 title: <Title of the page>
 subTitle: <Subtitle of the page>
-excerpt_separator: <!--more-->
-date: <Date of the creation of the page>
+date: <Date of the creation of the page>, e.g. 2016-12-05
 authorImg: <Link to the author's image>
 ---
-<Content>
+<Content of your page>
 ```
+
+<!-- Here is an example of a blogpost page with the fields:
+![Blog page](https://assets.digitalocean.com/articles/alligator/boo.svg "Scaladoc blog page") -->
 
 ## Special characters for the content
 
-` ```<content>``` ` : For code
+` ```<content>``` ` : Multiline code block
+You can also specify a language type.
+` ```scala <content>``` `
+
+`# Title` : For titles
 
 `## Subtitle` : For subtitles
 
-`word` : To highlight
+`word` : For inline code.
 
 `[word](Link to a website)`: If you want to put a link in a word
