@@ -8,7 +8,7 @@ sttp is the HTTP client library of the Scala Toolkit.
 {% tab 'Scala CLI' %}
 In Scala CLI, you can install the entire toolkit in a single line:
 ```scala
-//> using toolkit
+//> using toolkit "latest"
 ```
 
 Alternatively, you can install a specific version of sttp:
