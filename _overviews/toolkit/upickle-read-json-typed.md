@@ -21,6 +21,8 @@ To type a JSON object into a Scala `Map`, you can use the `upickle` library.
 This approach is safe and convenient for working with structured data.
 It allows you to quiclky validate the structure of the JSON string.
 
+{% tabs 'parsemap' %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 import upickle.default._
 val jsonString = """{"primes": [2, 3, 5], "evens": [2, 4, 6]} """
@@ -28,6 +30,8 @@ val map = read[Map[String, List[Int]]](jsonString)
 val primes = map("primes")
 println(primes.head) // Prints 2
 ```
+{% endtab %}
+{% endtabs %}
 
 In this example, we expect the JSON string to contain an object, where each fields's value is an array of numbers.
 We call the `upickle.default.read` with the type parameter `Map[String, List[Int]]` to transform the JSON object into a map of this exact type.
@@ -42,25 +46,37 @@ For example, to represent the pets and their owner, you can do it as follows:
 case class PetOwner(name: String, pets: List[String])
 ```
 
-To be able to read a `PetOwner` from a JSON we need to provde a given instance of `ReadWriter[PetOwner]`.
+To be able to read a `PetOwner` from a JSON we need to provide an instance of `ReadWriter[PetOwner]`.
 Luckily, `upickle` is able to fully automate that and all you need to write is:
 
+{% tabs 'given' class=tabs-scala-version %}
+{% tab 'Scala 2' %}
 ```scala
-given ReadWriter[PetOwner] = macroRW
+implicit val ownerRw: ReadWriter[PetOwner] = macroRW
 ```
+{% endtab %}
+{% tab 'Scala 3' %}
+```scala
+case class PetOwner(name: String, pets: List[String]) derives ReadWriter
+```
+`derives` keyword will automatically provide the `ReadWriter[PetOwner]` in current scope.
+{% endtab %}
+{% endtabs %}
 
-The `given` keyword may appear strange at first but is very powerful.
-Having a `given ReadWriter[PetOwner]` in the current scope allows you to ask the `upickle.default.read` method to return a value of `PetOwner`, like this `read[PetOwner](jsonString)`.
-As long as the given value is available, you will be able to read JSON that conforms to the type of a `PetOwner`.
+
+Having a `ReadWriter[PetOwner]` in the current scope allows you to ask the `upickle.default.read` method to return a value of `PetOwner`, like this `read[PetOwner](jsonString)`.
+As long as the value is available, you will be able to read JSON that conforms to the type of a `PetOwner`.
 The second part of this definition, `macroRW`, automates the instanciation of `ReadWriter` so that we don't have to do it by hand.
 
 After this declaration, you can put everything together and read a `PetOwner` from JSON:
+
+{% tabs 'full' class=tabs-scala-version %}
+{% tab 'Scala 2' %}
 ```scala
 import upickle.default._
 
 case class PetOwner(name: String, pets: List[String])
-
-given ReadWriter[PetOwner] = macroRW
+implicit val ownerRw: ReadWriter[PetOwner] = macroRW
 
 val jsonString = """{"name": "Peter", "pets": ["Toolkitty", "Scaniel"]}"""
 val petOwner: PetOwner = read[PetOwner](jsonString)
@@ -68,25 +84,18 @@ val firstPet = petOwner.pets.head
 println(s"${petOwner.name} has a pet called $firstPet")
 // Prints "Peter has a pet called Toolkitty"
 ```
-
-### Making the given ReadWriter globally available
-
-The given `ReadWriter[PetOwner]` is only available in the scope in which it is defined.
-To make it available globally you can define it in the companion object of `PetOwner`.
-
+{% endtab %}
+{% tab 'Scala 3' %}
 ```scala
-case class PetOwner(name: String, pets: List[String])
+import upickle.default._
 
-object PetOwner:
-  given ReadWriter[PetOwner] = macroRW
+case class PetOwner(name: String, pets: List[String]) derives ReadWriter
+
+val jsonString = """{"name": "Peter", "pets": ["Toolkitty", "Scaniel"]}"""
+val petOwner: PetOwner = read[PetOwner](jsonString)
+val firstPet = petOwner.pets.head
+println(s"${petOwner.name} has a pet called $firstPet")
+// Prints "Peter has a pet called Toolkitty"
 ```
-
-The given `ReadWriter[PetOwner]` is now available globally.
-That means you can read a `PetOwner` from a JSON object from any file, class, or method.
-
-```scala
-import upickle.default.read
-
-def readPetOwnerFromJson(json: String): PetOwner =
-  read[PetOwner](json)
-```
+{% endtab %}
+{% endtabs %}

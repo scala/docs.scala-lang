@@ -8,7 +8,7 @@ uPickle is the JSON serialization library of the Scala Toolkit, it includes uJso
 {% tab 'Scala CLI' %}
 Using Scala CLI, you can install the entire toolkit in a single line:
 ```scala
-//> using toolkit
+//> using toolkit "latest"
 ```
 
 Alternatively, you can install a specific version of upickle:

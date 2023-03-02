@@ -21,16 +21,22 @@ It is simple and fast.
 If you want to parse a JSON object and access some of its field, you can use the uJson library, which is brought by uPickle.
 
 The method `ujson.read` can parse a JSON string and make all of its fields available.
+{% tabs 'read' %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val jsonString = """{"name": "Peter", "age": 13}"""
 val json = ujson.read(jsonString)
 println(json("name").str) // Prints out "Peter"
 ```
+{% endtab %}
+{% endtabs %}
 
 You can access a field by passing its name to the `json` value, and then specifying which type you expect.
 If `name` is a field that should contain a string, you can access it using `json("name").str`.
 
 Similarly, you can access an element of an array by passing its indice, as in the example below:
+{% tabs 'array' %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val jsonString = """{"name": "Peter", "pets": ["Toolkitty", "Scaniel"]}"""
 val json = ujson.read(jsonString)
@@ -38,6 +44,8 @@ val ownerName = json("name").str
 val firstPet = json("pets")(0).str
 println(s"$ownerName has a pet called $firstPet")
 ```
+{% endtab %}
+{% endtabs %}
 You can traverse the JSON structure as deeply as you want, to extract any nested field.
 
 ## Extracting values
