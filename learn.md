@@ -20,7 +20,7 @@ More details on [this page]({% link online-courses.md %}).
 
 [Scala Exercises](https://www.scala-exercises.org/) is a series of lessons and exercises created by [47 Degrees](https://www.47deg.com/). It's a great way to get a brief introduction to Scala while testing your knowledge along the way.
 
-[Tour of Scala](https://tourofscala.com) gives you an introduction to Scala, step by step, from begineer to expert.
+[Tour of Scala](https://tourofscala.com) gives you an introduction to Scala, step by step, from beginner to expert.
 
 ## Dr. Mark C Lewis's lectures from Trinity University
 
