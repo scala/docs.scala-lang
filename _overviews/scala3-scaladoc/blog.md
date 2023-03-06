@@ -50,14 +50,16 @@ authorImg: <Link to the author's image>
 ```
 
 ## Special characters for the content
+Keep in mind that the writing of your blog `<content>` is done with regular markdowns but here are some useful examples:
 
-` ```<content>``` ` : Multiline code block
-You can also specify a language type, ` ```scala <content>``` `
+` ```<content>``` ` : Multiline code block.
 
-`# Title` : For titles
+You can also specify a language type, ` ```scala <content>``` `.
 
-`## Subtitle` : For subtitles
+`# Title` : For titles.
+
+`## Subtitle` : For subtitles.
 
 `word` : For inline code.
 
-`[word](Link to a website)`: If you want to put a link in a word
+`[name](Link to a website)`: If you want to put a link in the word.
