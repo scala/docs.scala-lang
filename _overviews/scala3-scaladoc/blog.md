@@ -49,9 +49,6 @@ authorImg: <Link to the author's image>
 <Content of your page>
 ```
 
-<!-- Here is an example of a blogpost page with the fields:
-![Blog page](https://assets.digitalocean.com/articles/alligator/boo.svg "Scaladoc blog page") -->
-
 ## Special characters for the content
 
 ` ```<content>``` ` : Multiline code block
