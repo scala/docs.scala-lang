@@ -10,8 +10,7 @@
   background: #fdfdf7;
   border-collapse: collapse;
 }
-.content-primary .scala3-comparison-page th,
-.content-primary .scala3-comparison-page td
+.content-primary .scala3-comparison-page li
 {
   border-top: 1px solid #E5EAEA;
   border-bottom: 1px solid #E5EAEA;
