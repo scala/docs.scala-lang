@@ -129,6 +129,42 @@ engage(true, true, true, false)
 {% endtab %}
 {% endtabs %}
 
+That code can be difficult to read without the help of an IDE, but this code is much more obvious.
+  
+{% tabs method_10 %}
+{% tab 'Scala 2 and 3' for=method_10 %}
+  
+```scala
+engage(
+  speedIsSet = true,
+  directionIsSet = true,
+  picardSaidMakeItSo = true,
+  turnedOffParkingBrake = false
+)
+```
+{% endtab %}
+{% endtabs %}
+
+## Extended Methods
+
+The _extension_ method allows you to add new methods to a closed class.
+For example, to add two methods named `hello` and `aloha` to the `String` class, declare them as extension methods.
+
+{% tabs extension %}
+{% tab 'Scala 3 Only' %}
+
+```scala
+extension (s: String)
+  def hello: String = s"Hello, ${s.capitalize}!"
+  def aloha: String = s"Aloha, ${s.capitalize}!"
+
+"world".hello    // "Hello, World!"
+"friend".aloha   // "Aloha, Friend!"
+```
+
+{% endtab %}
+{% endtabs %}
+
 The `extension` keyword declares that you’re about to define one or more extension methods on the parameter that’s put in parentheses.
 As shown with this example, the parameter `s` of type `String` can then be used in the body of your extension methods.
 
