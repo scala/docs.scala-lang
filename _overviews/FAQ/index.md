@@ -153,7 +153,7 @@ See the [Scala 2.13 Collections Guide](https://docs.scala-lang.org/overviews/col
 
 It's syntactic sugar for a context parameter (an `implicit` parameter in Scala 2, or a `using` parameter in Scala 3).
 
-More details in this [Stack Overflow answer](https://stackoverflow.com/a/4467012).
+More details in this [section of the Scala 3 Book](https://docs.scala-lang.org/scala3/book/ca-context-bounds.html) and this [Stack Overflow answer](https://stackoverflow.com/a/4467012).
 
 ### How does `for / yield` work?
 
