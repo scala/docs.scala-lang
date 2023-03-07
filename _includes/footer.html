@@ -106,7 +106,7 @@ if ($("#doc-search-bar").length) {
     apiKey: 'fbc439670f5d4e3730cdcb715c359391',
     indexName: 'scala-lang',
     inputSelector: '#doc-search-bar',
-    algoliaOptions: { 'facetFilters': ["language:en"] },
+    algoliaOptions: { 'facetFilters': ["language:en"], 'hitsPerPage': 7 },
     debug: false // Set debug to true if you want to inspect the dropdown
   });
 }
