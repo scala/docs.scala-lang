@@ -149,8 +149,6 @@
 
     li,
     p,
-    tr,
-    td,
     dt,
     dd,
     pre {
@@ -173,6 +171,16 @@
         }
     }
 
+    tr,
+    td{
+        code {
+            font-family: 'Consolas';
+            font-size: 0.9375rem;
+        }
+    }
+
+
+
     pre {
         code {
             overflow-x: auto;
@@ -193,8 +201,8 @@
 
         td,
         th {
-            border-bottom: $base-border-gray;
-            padding: 6px 0;
+            border: $base-border-gray;
+            padding: 6px;
         }
     }
 
