@@ -38,8 +38,8 @@ It is composed of:
 - `=>>`
 - `?=>`
 
-{% tabs keywords_1 class=tabs-scala-version %}
-{% tab 'Scala 2' for=keywords_1 %}
+{% tabs scala-3-keywords_1 %}
+{% tab 'Scala 3 Only' %}
 
 For instance, the following piece of code can be compiled with Scala 2.13 but not with Scala 3.
 ~~~ scala
@@ -50,7 +50,10 @@ object given { //Error: given is now a keyword
 }
 ~~~
 {% endtab %}
-{% tab 'Scala 3' for=keywords_1 %}
+{% endtabs %}
+
+{% tabs scala-3-keywords_2 %}
+{% tab 'Scala 3 Only' %}
 
 The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the code into:
 ~~~ scala
@@ -67,8 +70,8 @@ object `given` {
 
 Procedure syntax has been deprecated for a while and it is dropped in Scala 3.
 
-{% tabs procedure_1 class=tabs-scala-version %}
-{% tab 'Scala 2' for=procedure_1 %}
+{% tabs scala-3-procedure_1 %}
+{% tab 'Scala 3 Only' %}
 
 The following pieces of code are now illegal:
 ~~~ scala
@@ -79,7 +82,10 @@ object Bar {
 }
 ~~~
 {% endtab %}
-{% tab 'Scala 3' for=procedure_1 %}
+{% endtabs %}
+
+{% tabs scala-3-procedure_2 %}
+{% tab 'Scala 3 Only' %}
 
 The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the code into.
 ~~~ scala
@@ -97,13 +103,16 @@ object Bar {
 When followed by its type, the parameter of a lambda is now required to be enclosed in parentheses.
 The following piece of code is invalid.
 
-{% tabs lambda_1 class=tabs-scala-version %}
-{% tab 'Scala 2' for=lambda_1 %}
+{% tabs scala-3-lambda_1 %}
+{% tab 'Scala 3 Only' %}
 ~~~ scala
 val f = { x: Int => x * x } //Error: parentheses are required around the parameter of a lambda
 ~~~
 {% endtab %}
-{% tab 'Scala 3' for=lambda_1 %}
+{% endtabs %}
+
+{% tabs scala-3-lambda_2 %}
+{% tab 'Scala 3 Only' %}
 
 The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the code into:
 ~~~ scala
@@ -169,8 +178,8 @@ test("my test") {
 The Scala 3 compiler now requires correct indentation.
 The following piece of code, that was compiled in Scala 2.13, does not compile anymore because of the indentation.
 
-{% tabs indentation_1 class=tabs-scala-version %}
-{% tab 'Scala 2' for=indentation_1 %}
+{% tabs scala-3-indentation_1 %}
+{% tab 'Scala 3 Only' %}
 
 ~~~ scala
 def bar: (Int, Int) = {
@@ -180,7 +189,10 @@ def bar: (Int, Int) = {
 } // [E007] Type Mismatch Error: Found Unit, Required (Int, Int)
 ~~~
 {% endtab %}
-{% tab 'Scala 3' for=indentation_1 %}
+{% endtabs %}
+
+{% tabs scala-3-indentation_2 %}
+{% tab 'Scala 3 Only' %}
 
 The indentation must be fixed.
 ~~~ scala
