@@ -38,45 +38,43 @@ It is composed of:
 - `=>>`
 - `?=>`
 
-{% tabs scala-3-keywords_1 %}
-{% tab 'Scala 3 Only' %}
+{% tabs scala-2-keywords_1 %}
+{% tab 'Scala 2 Only' %}
 
 For instance, the following piece of code can be compiled with Scala 2.13 but not with Scala 3.
 ~~~ scala
-object given { //Error: given is now a keyword
-  val enum = ??? //Error: enum is now a keyword
+object given { // Error: given is now a keyword
+  val enum = ??? // Error: enum is now a keyword
 
-  println(enum) //Error: enum is now a keyword
+  println(enum) // Error: enum is now a keyword
 }
 ~~~
 {% endtab %}
 {% endtabs %}
-
-{% tabs scala-3-keywords_2 %}
-{% tab 'Scala 3 Only' %}
 
 The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the code into:
-~~~ scala
-object `given` {
-  val `enum` = ???
+{% highlight diff %}
+-object given {
++object `given` {
+-  val enum = ???
++  val `enum` = ???
 
-  println(`enum`)
+-  println(enum)
++  println(`enum`)
 }
-~~~
-{% endtab %}
-{% endtabs %}
+{% endhighlight %}
 
 ## Procedure Syntax
 
 Procedure syntax has been deprecated for a while and it is dropped in Scala 3.
 
-{% tabs scala-3-procedure_1 %}
-{% tab 'Scala 3 Only' %}
+{% tabs scala-2-procedure_1 %}
+{% tab 'Scala 2 Only' %}
 
 The following pieces of code are now illegal:
 ~~~ scala
 object Bar {
-  def print() { //Error: Procedure syntax no longer supported; `: Unit =` should be inserted here
+  def print() { // Error: Procedure syntax no longer supported; `: Unit =` should be inserted here
     println("bar")
   }
 }
@@ -103,17 +101,16 @@ object Bar {
 When followed by its type, the parameter of a lambda is now required to be enclosed in parentheses.
 The following piece of code is invalid.
 
-{% tabs scala-3-lambda_1 %}
-{% tab 'Scala 3 Only' %}
+{% tabs scala-2-lambda_1 %}
+{% tab 'Scala 2 Only' %}
 ~~~ scala
-val f = { x: Int => x * x } //Error: parentheses are required around the parameter of a lambda
+val f = { x: Int => x * x } // Error: parentheses are required around the parameter of a lambda
 ~~~
 {% endtab %}
 {% endtabs %}
 
 {% tabs scala-3-lambda_2 %}
 {% tab 'Scala 3 Only' %}
-
 The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the code into:
 ~~~ scala
 val f = { (x: Int) => x * x }
@@ -157,13 +154,8 @@ type Bar = Foo
   def bar(): Int
 }
 ~~~
-{% endtab %}
-{% endtabs %}
 
 A preferable solution is to write:
-
-{% tabs scala-3-brace_3 %}
-{% tab 'Scala 3 Only' %}
 ~~~ scala
 test("my test") {
   assert(1 == 1)
@@ -178,8 +170,8 @@ test("my test") {
 The Scala 3 compiler now requires correct indentation.
 The following piece of code, that was compiled in Scala 2.13, does not compile anymore because of the indentation.
 
-{% tabs scala-3-indentation_1 %}
-{% tab 'Scala 3 Only' %}
+{% tabs scala-2-indentation_1 %}
+{% tab 'Scala 2 Only' %}
 
 ~~~ scala
 def bar: (Int, Int) = {
@@ -227,16 +219,12 @@ Martin Odersky described this pattern as a "clever exploit of a scalac compiler 
 
 The Scala 3 compiler does not permit this pattern anymore: 
 
-{% tabs scala-3-identifier_2 %}
-{% tab 'Scala 3 Only' %}
-~~~ scala
+{% highlight text %}
 -- [E040] Syntax Error: src/main/scala/anonymous-type-param.scala:4:10
 4 |  def foo[_: Foo]: Unit = ()
   |          ^
   |          an identifier expected, but '_' found
-~~~
-{% endtab %}
-{% endtabs %}
+{% endhighlight %}
 
 The solution is to give the parameter a valid identifier name, for instance `T`.
 This will not break the binary compatibility.
@@ -255,16 +243,12 @@ def foo[T: Foo]: Unit = ???
 
 You cannot write `def foo[+]` or `def foo[-]` anymore.
 
-{% tabs scala-3-identifier_4 %}
-{% tab 'Scala 3 Only' %}
-~~~ scala
+{% highlight text %}
 -- Error: src/main/scala/type-param-identifier.scala:2:10 
 2 |  def foo[+]: +
   |          ^
   |          no `+/-` variance annotation allowed here
-~~~
-{% endtab %}
-{% endtabs %}
+{% endhighlight %}
 
 The solution is to choose another valid identifier, for instance `T`.
 
