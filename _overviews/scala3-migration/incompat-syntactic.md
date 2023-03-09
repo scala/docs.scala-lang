@@ -43,10 +43,10 @@ It is composed of:
 
 For instance, the following piece of code can be compiled with Scala 2.13 but not with Scala 3.
 ~~~ scala
-object given { // Error: given is now a keyword
-  val enum = ??? // Error: enum is now a keyword
+object given { // In Scala 3, Error: given is now a keyword.
+  val enum = ??? // In Scala 3, Error: enum is now a keyword.
 
-  println(enum) // Error: enum is now a keyword
+  println(enum) // In Scala 3, Error: enum is now a keyword.
 }
 ~~~
 {% endtab %}
@@ -74,27 +74,23 @@ Procedure syntax has been deprecated for a while and it is dropped in Scala 3.
 The following pieces of code are now illegal:
 ~~~ scala
 object Bar {
-  def print() { // Error: Procedure syntax no longer supported; `: Unit =` should be inserted here
+  def print() { // In Scala 3, Error: Procedure syntax no longer supported; `: Unit =` should be inserted here.
     println("bar")
   }
 }
 ~~~
 {% endtab %}
 {% endtabs %}
-
-{% tabs scala-3-procedure_2 %}
-{% tab 'Scala 3 Only' %}
 
 The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the code into.
-~~~ scala
+{% highlight diff %}
 object Bar {
-  def print(): Unit = {
+-  def print() {
++  def print(): Unit = {
     println("bar")
   }
 }
-~~~
-{% endtab %}
-{% endtabs %}
+{% endhighlight %}
 
 ## Parentheses Around Lambda Parameter
 
@@ -104,66 +100,60 @@ The following piece of code is invalid.
 {% tabs scala-2-lambda_1 %}
 {% tab 'Scala 2 Only' %}
 ~~~ scala
-val f = { x: Int => x * x } // Error: parentheses are required around the parameter of a lambda
+val f = { x: Int => x * x } // In Scala 3, Error: parentheses are required around the parameter of a lambda.
 ~~~
 {% endtab %}
 {% endtabs %}
 
-{% tabs scala-3-lambda_2 %}
-{% tab 'Scala 3 Only' %}
 The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the code into:
-~~~ scala
-val f = { (x: Int) => x * x }
-~~~
-{% endtab %}
-{% endtabs %}
+{% highlight diff %}
+-val f = { x: Int => x * x }
++val f = { (x: Int) => x * x }
+{% endhighlight %}
 
 ## Open Brace Indentation For Passing An Argument
 
 In Scala 2 it is possible to pass an argument after a new line by enclosing it into braces.
 Although valid, this style of coding is not encouraged by the [Scala style guide](https://docs.scala-lang.org/style) and is no longer supported in Scala 3.
 
-{% tabs brace_1 class=tabs-scala-version %}
-{% tab 'Scala 2' for=brace_1 %}
+{% tabs scala-2-brace_1 %}
+{% tab 'Scala 2 Only' %}
 ~~~ scala
 test("my test")
-{
-  assert(1 == 1)
-}
-~~~
-{% endtab %}
-{% tab 'Scala 3' for=brace_1 %}
-
-The [Scala 3 migration compiler](tooling-migration-mode.html) indents the first line of the block.
-~~~ scala
-test("my test")
-  {
+{ // In Scala 3, Error: This opening brace will start a new statement.
   assert(1 == 1)
 }
 ~~~
 {% endtab %}
 {% endtabs %}
+
+The [Scala 3 migration compiler](tooling-migration-mode.html) indents the first line of the block.
+{% highlight diff %}
+test("my test")
+-{
++  {
+  assert(1 == 1)
+}
+{% endhighlight %}
 
 This migration rule applies to other patterns as well, such as refining a type after a new line.
 
-{% tabs scala-3-brace_2 %}
-{% tab 'Scala 3 Only' %}
-~~~ scala
+{% highlight diff %}
 type Bar = Foo
-   {
+- {
++   {
   def bar(): Int
 }
-~~~
+{% endhighlight %}
 
 A preferable solution is to write:
-~~~ scala
-test("my test") {
+{% highlight diff %}
+-test("my test")
+-{
++test("my test") {
   assert(1 == 1)
 }
-~~~
-{% endtab %}
-{% endtabs %}
-
+{% endhighlight %}
 
 ## Wrong indentation
 
@@ -176,26 +166,22 @@ The following piece of code, that was compiled in Scala 2.13, does not compile a
 ~~~ scala
 def bar: (Int, Int) = {
   val foo = 1.0
-  val bar = foo // [E050] Type Error: value foo does not take parameters
+  val bar = foo // [E050] In Scala 3, type Error: value foo does not take parameters.
     (1, 1)
-} // [E007] Type Mismatch Error: Found Unit, Required (Int, Int)
+} // [E007] In Scala 3, type Mismatch Error: Found Unit, Required (Int, Int).
 ~~~
 {% endtab %}
 {% endtabs %}
 
-{% tabs scala-3-indentation_2 %}
-{% tab 'Scala 3 Only' %}
-
 The indentation must be fixed.
-~~~ scala
+{% highlight diff %}
 def bar: (Int, Int) = {
   val foo = 1.0
   val bar = foo
-  (1, 1)
+-    (1, 1)
++  (1, 1)
 }
-~~~
-{% endtab %}
-{% endtabs %}
+{% endhighlight %}
 
 These errors can be prevented by using a Scala formatting tool such as [scalafmt](https://scalameta.org/scalafmt/) or the [IntelliJ Scala formatter](https://www.jetbrains.com/help/idea/reformat-and-rearrange-code.html).
 Beware that these tools may change the entire code style of your project.
@@ -229,13 +215,10 @@ The Scala 3 compiler does not permit this pattern anymore:
 The solution is to give the parameter a valid identifier name, for instance `T`.
 This will not break the binary compatibility.
 
-{% tabs scala-3-identifier_3 %}
-{% tab 'Scala 3 Only' %}
-~~~ scala
-def foo[T: Foo]: Unit = ???
-~~~
-{% endtab %}
-{% endtabs %}
+{% highlight diff %}
+-def foo[_: Foo]: Unit = ???
++def foo[T: Foo]: Unit = ???
+{% endhighlight %}
 
 ## `+` And `-` As Type Parameters
 
