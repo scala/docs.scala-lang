@@ -25,8 +25,8 @@ Some other features are simplified or restricted to make the language easier, sa
 An inherited member, from a parent trait or class, can shadow an identifier defined in an outer scope.
 That pattern is called inheritance shadowing.
 
-{% tabs scala-3-inheritance_1 %}
-{% tab 'Scala 3 Only' %}
+{% tabs shared-inheritance_1 %}
+{% tab 'Scala 2 and 3' %}
 ~~~ scala
 object B {
   val x = 1
@@ -45,10 +45,9 @@ This is known for being error prone.
 
 That's why, in Scala 3, the compiler requires disambiguation if the parent class `A` does actually have a member `x`.
 
-{% tabs scala-3-inheritance_2 %}
-{% tab 'Scala 3 Only' %}
+{% tabs scala-2-inheritance_2 %}
+{% tab 'Scala 2 Only' %}
 It prevents the following piece of code from compiling.
-
 ~~~ scala
 class A {
   val x = 2
@@ -61,26 +60,27 @@ object B {
   }
 }
 ~~~
+{% endtab %}
+{% endtabs %}
 
-~~~ text
+But if you try to compile with Scala 3 you should see an error of the same kind as:
+{% highlight text %}
 -- [E049] Reference Error: src/main/scala/inheritance-shadowing.scala:9:14 
 9 |      println(x)
   |              ^
   |              Reference to x is ambiguous,
   |              it is both defined in object B
   |              and inherited subsequently in class C
-~~~
+{% endhighlight %}
 
 The [Scala 3 migration compilation](tooling-migration-mode.html) can automatically disambiguate the code by replacing `println(x)` with `println(this.x)`.
-{% endtab %}
-{% endtabs %}
 
 ## Non-private Constructor In Private Class
 
 The Scala 3 compiler requires the constructor of private classes to be private.
 
-{% tabs scala-3-constructor_1 %}
-{% tab 'Scala 3 Only' %}
+{% tabs scala-2-constructor_1 %}
+{% tab 'Scala 2 Only' %}
 For instance, in the example:
 
 ~~~ scala
@@ -88,21 +88,21 @@ package foo
 
 private class Bar private[foo] () {}
 ~~~
+{% endtab %}
+{% endtabs %}
 
-The error message is:
-~~~ text
+If you try to compile in scala 3 you should get the following error message:
+{% highlight text %}
 -- Error: /home/piquerez/scalacenter/scala-3-migration-guide/incompat/access-modifier/src/main/scala-2.13/access-modifier.scala:4:19 
 4 |  private class Bar private[foo] ()
   |                   ^
   |      non-private constructor Bar in class Bar refers to private class Bar
   |      in its type signature (): foo.Foo.Bar
-~~~
+{% endhighlight %}
 
 The [Scala 3 migration compilation](tooling-migration-mode.html) warns about this but no automatic rewrite is provided.
 
 The solution is to make the constructor private, since the class is private.
-{% endtab %}
-{% endtabs %}
 
 ## Abstract Override
 
@@ -149,7 +149,6 @@ Foo.tupled((2, false))
 {% tab 'Scala 3' for=companion_1 %}
 
 A cross-compiling solution is to explicitly eta-expand the method `Foo.apply`.
-
 ~~~ scala
 case class Foo(x: Int, b: Boolean)
 
@@ -187,8 +186,8 @@ case class Location(lat: Double, long: Double)
 {% endtab %}
 {% endtabs %}
 
-{% tabs unapply_2 class=tabs-scala-version %}
-{% tab 'Scala 2' for=unapply_2 %}
+{% tabs scala-2-unapply_2 %}
+{% tab 'Scala 2 Only' %}
 
 The Scala 2.13 compiler generates the following `unapply` method:
 
@@ -198,7 +197,10 @@ object Location {
 }
 ~~~ 
 {% endtab %}
-{% tab 'Scala 3' for=unapply_2 %}
+{% endtabs %}
+
+{% tabs scala-3-unapply_2 %}
+{% tab 'Scala 3 Only' %}
 
 Whereas the Scala 3 compiler generates:
 ~~~ scala
@@ -223,15 +225,15 @@ A possible solution is to use pattern binding:
 
 ~~~ scala
 def tuple(location: Location): (Int, Int) = {
-Location.unapply(location).get
+  Location.unapply(location).get
 }
 ~~~
 {% endtab %}
 {% tab 'Scala 3' for=unaply_3 %}
 ~~~ scala
 def tuple(location: Location): (Int, Int) = {
-val Location(lat, lon) = location
-(lat, lon)
+  val Location(lat, lon) = location
+  (lat, lon)
 }
 ~~~
 {% endtab %}
@@ -291,9 +293,8 @@ A type of the form `=> T` cannot be used as an argument to a type parameter anym
 This decision is explained in [this comment](https://github.com/lampepfl/dotty/blob/0f1a23e008148f76fd0a1c2991b991e1dad600e8/compiler/src/dotty/tools/dotc/core/ConstraintHandling.scala#L144-L152) of the Scala 3 source code.
 
 For instance, it is not allowed to pass a function of type `Int => (=> Int) => Int` to the `uncurried` method since it would assign `=> Int` to the type parameter `T2`. 
-{% tabs scala-3-type_1 %}
-{% tab 'Scala 3 Only' %}
-~~~ scala
+
+{% highlight text %}
 -- [E134] Type Mismatch Error: src/main/scala/by-name-param-type-infer.scala:3:41
 3 |  val g: (Int, => Int) => Int = Function.uncurried(f)
   |                                ^^^^^^^^^^^^^^^^^^
@@ -304,9 +305,7 @@ For instance, it is not allowed to pass a function of type `Int => (=> Int) => I
   | [T1, T2, T3, R](f: T1 => T2 => T3 => R): (T1, T2, T3) => R
   | [T1, T2, R](f: T1 => T2 => R): (T1, T2) => R
   |match arguments ((Test.f : Int => (=> Int) => Int))
-~~~
-{% endtab %}
-{% endtabs %}
+{% endhighlight %}
 
 The solution depends on the situation. In the given example, you can either:
   - define your own `uncurried` method with the appropriate signature
