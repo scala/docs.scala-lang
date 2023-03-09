@@ -14,19 +14,19 @@ Each Scala 2.13 option is associated with its status in Scala 3.
 |-|-|
 | <i class="fa fa-check fa-lg"></i> | it is available in Scala 3 |
 | `<new-name>` | It has been renamed to `<new-name>` |
-| <i class="fa fa-times fa-lg"></i> | It is not available in 3.0.0 but it could be added later |
+| <i class="fa fa-times fa-lg"></i> | It is not yet available could be added later |
 
-> The current comparison is based on Scala 2.13.4 and 3.0.0-M3. 
+> The current comparison is based on Scala 2.13.10 and 3.3.0.
 
 ## Standard Settings
 
-| 2.13.x | 3.0.x |
+| 2.13.x | 3.3.x |
 |-|-|
-| `-Dproperty=value` | <i class="fa fa-times fa-lg"></i> |
-| `-J<flag>` | <i class="fa fa-times fa-lg"></i> |
+| `-Dproperty=value` | <i class="fa fa-check fa-lg"></i> |
+| `-J<flag>` | <i class="fa fa-check fa-lg"></i> |
 | `-P:<plugin>:<opt>` |<i class="fa fa-check fa-lg"></i>|
-| `-V` | <i class="fa fa-times fa-lg"></i> |
-| `-W` | <i class="fa fa-times fa-lg"></i> |
+| `-V` | <i class="fa fa-check fa-lg"></i> |
+| `-W` | <i class="fa fa-check fa-lg"></i> |
 | `-X` |<i class="fa fa-check fa-lg"></i>|
 | `-Y` |<i class="fa fa-check fa-lg"></i>|
 | `-bootclasspath` |<i class="fa fa-check fa-lg"></i>| 
@@ -186,9 +186,10 @@ Each Scala 2.13 option is associated with its status in Scala 3.
 Verbose settings were introduced in 2.13.
 Most of them are not yet implemented in Scala 3.
 
-| 2.13.x | 3.0.x |
+| 2.13.x | 3.3.x |
 |-|-|
 | `-Vbrowse:<phases>` | <i class="fa fa-times fa-lg"></i> |
+| `-Vclasspath` | `-Ylog-classpath` |
 | `-Vdebug-tasty` | <i class="fa fa-times fa-lg"></i> |
 | `-Vdoc` | <i class="fa fa-times fa-lg"></i> |
 | `-Vfree-terms` | <i class="fa fa-times fa-lg"></i> |
@@ -203,10 +204,9 @@ Most of them are not yet implemented in Scala 3.
 | `-Vmacro-lite` | <i class="fa fa-times fa-lg"></i> |
 | `-Vopt <package/Class.method>` | <i class="fa fa-times fa-lg"></i> |
 | `-Vpatmat` | <i class="fa fa-times fa-lg"></i> |
+| `-Vphases` | <i class="fa fa-check fa-lg"></i> |
 | `-Vpos`| <i class="fa fa-times fa-lg"></i> |
-| `-Vprint:<phases>` | `-Xprint:<phases>` |
-| `-Vphases` | `-Xshow-phases` |
-| `-Vclasspath` | `-Ylog-classpath` |
+| `-Vprint:<phases>` | <i class="fa fa-check fa-lg"></i> |
 | `-Vlog:<phases>` | `-Ylog:<phases>`|
 | `-Vdebug` | `-Ydebug` |
 | `-Vprint-args <file>` | <i class="fa fa-times fa-lg"></i> |
@@ -230,17 +230,17 @@ Most of them are not yet implemented in Scala 3.
 Warning settings were introduced in 2.13.
 Most of them are not yet implemented in Scala 3.
 
-| 2.13.x | 3.0.x |
+| 2.13.x | 3.3.x |
 |-|-|
-| `-Wconf` | <i class="fa fa-times fa-lg"></i> |
+| `-Wconf` | <i class="fa fa-check fa-lg"></i> |
 | `-Wdead-code` | <i class="fa fa-times fa-lg"></i> |
-| `-Werror` | `-Xfatal-warnings` |
+| `-Werror` | <i class="fa fa-check fa-lg"></i> |
 | `-Wextra-implicit` | <i class="fa fa-times fa-lg"></i> |
 | `-Wmacros:<mode>` | <i class="fa fa-times fa-lg"></i> |
 | `-Wnumeric-widen` | <i class="fa fa-times fa-lg"></i> |
 | `-Woctal-literal` | <i class="fa fa-times fa-lg"></i> |
-| `-Wunused:<warnings>` | <i class="fa fa-times fa-lg"></i> |
-| `-Wvalue-discard`| <i class="fa fa-times fa-lg"></i> |
+| `-Wunused:<warnings>` | <i class="fa fa-check fa-lg"></i> |
+| `-Wvalue-discard`| <i class="fa fa-check fa-lg"></i> |
 | `-Wself-implicit` | <i class="fa fa-times fa-lg"></i> |
 
 ## Compiler Plugins

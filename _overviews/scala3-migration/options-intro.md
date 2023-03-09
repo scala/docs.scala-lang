@@ -18,4 +18,4 @@ To do so you can refer to the [Lookup Table](options-lookup.html).
 
 You can also discover the new Scala 3 compiler options, that have no equivalent in Scala 2.13, in the [New Compiler Options](options-new.html) page.
 
-For scaladoc settings reference and their compatibility with Scala2 scaladoc, read [Scaladoc settings compatibility between Scala2 and Scala3](scaladoc-settings-compatibility.html) page.
+For Scaladoc settings reference and their compatibility with Scala2 Scaladoc, read [Scaladoc settings compatibility between Scala2 and Scala3](scaladoc-settings-compatibility.html) page.
