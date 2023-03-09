@@ -18,8 +18,8 @@ It is unsound and might cause runtime failures, as demonstrated by this [test](h
 
 The Scala 3 compiler does not permit this anymore.
 
-{% tabs scala-3-unsound_vc_1 %}
-{% tab 'Scala 3 Only' %}
+{% tabs scala-2-unsound_vc_1 %}
+{% tab 'Scala 2 Only' %}
 ~~~ scala
 class Foo[-A](x: List[A]) {
   def f[B](y: List[B] = x): Unit = ???
@@ -29,8 +29,11 @@ class Outer[+A](x: A) {
   class Inner(y: A)
 }
 ~~~
+{% endtab %}
+{% endtabs %}
 
-~~~ text
+So if you compile in Scala 3, you should get this kind of error.
+{% highlight text %}
 -- Error: src/main/scala/variance.scala:2:8 
 2 |  def f[B](y: List[B] = x): Unit = y
   |        ^^^^^^^^^^^^^^^^^
@@ -39,9 +42,7 @@ class Outer[+A](x: A) {
 6 |  class Inner(y: A)
   |              ^^^^
   |covariant type A occurs in contravariant position in type A of parameter y
-~~~
-{% endtab %}
-{% endtabs %}
+{% endhighlight %}
 
 Each problem of this kind needs a specific care.
 You can try the following options on a case-by-case basis:
@@ -51,50 +52,27 @@ You can try the following options on a case-by-case basis:
 
 In our example, we can opt for these two solutions:
 
-{% tabs unsound_vc_2 class=tabs-scala-version %}
-{% tab 'Scala 2' for=unsound_vc_2 %}
-~~~ scala
+{% highlight diff %}
 class Foo[-A](x: List[A]) {
-  def f[B](y: List[B] = x): Unit = ???
+-  def f[B](y: List[B] = x): Unit = ???
++  def f[B](y: List[B]): Unit = ???
++  def f(): Unit = f(x)
 }
 
 class Outer[+A](x: A) {
-  class Inner(y: A)
+-  class Inner(y: A)
++  class Inner[B >: A](y: B)
 }
-~~~
-{% endtab %}
-{% tab 'Scala 3' for=unsound_vc_2 %}
-~~~ scala
-class Foo[-A](x: List[A]) {
-  def f[B](y: List[B]): Unit = ???
-  def f(): Unit = f(x)
-}
-
-class Outer[+A](x: A) {
-  class Inner[B >: A](y: B)
-}
-~~~
-{% endtab %}
-{% endtabs %}
+{% endhighlight %}
 
 Or, as a temporary solution, you can also use the `uncheckedVariance` annotation:
 
-{% tabs unsound_vc_3 class=tabs-scala-version %}
-{% tab 'Scala 2' for=unsound_vc_3 %}
-~~~ scala
+{% highlight diff %}
 class Outer[+A](x: A) {
-  class Inner(y: A)
+-  class Inner(y: A)
++  class Inner(y: A @uncheckedVariance)
 }
-~~~
-{% endtab %}
-{% tab 'Scala 3' for=unsound_vc_3 %}
-~~~ scala
-class Outer[+A](x: A) {
-  class Inner(y: A @uncheckedVariance)
-}
-~~~
-{% endtab %}
-{% endtabs %}
+{% endhighlight %}
 
 ## Unsoundness Fixes in Pattern Matching
 
@@ -102,8 +80,8 @@ Scala 3 fixes some unsoundness bugs in pattern matching, preventing some semanti
 
 For instance, the match expression in `combineReq` can be compiled with Scala 2.13 but not with Scala 3.
 
-{% tabs scala-3-unsound_pm_1 %}
-{% tab 'Scala 3 Only' %}
+{% tabs scala-2-unsound_pm_1 %}
+{% tab 'Scala 2 Only' %}
 ~~~ scala
 trait Request
 case class Fetch[A](ids: Set[A]) extends Request
@@ -118,18 +96,19 @@ object Request {
   }
 }
 ~~~
+{% endtab %}
+{% endtabs %}
 
-The error message is:
+In Scala 3, the error message is:
 
-~~~ text
+{% highlight text %}
 -- [E007] Type Mismatch Error: src/main/scala/pattern-match.scala:9:59 
 9 |      case (x @ Fetch(_), y @ Fetch(_)) => combineFetch(x, y)
   |                                                           ^
   |                                                Found:    (y : Fetch[A$2])
   |                                                Required: Fetch[A$1]
-~~~
-{% endtab %}
-{% endtabs %}
+{% endhighlight %}
+
 
 Which is right, there is no proof that `x` and `y` have the same type parameter `A`.
 
