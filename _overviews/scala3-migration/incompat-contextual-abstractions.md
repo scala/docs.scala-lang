@@ -27,17 +27,17 @@ The Scalafix rule named `ExplicitImplicitTypes` in [ohze/scala-rewrites](https:/
 
 Scala 3 does not support implicit conversion from an implicit function value, of the form `implicit val ev: A => B`.
 
-{% tabs scala-3-implicit_1 %}
-{% tab 'Scala 3 Only' %}
+{% tabs scala-2-implicit_1 %}
+{% tab 'Scala 2 Only' %}
 
-The following piece of code is now invalid:
+The following piece of code is now invalid in Scala 3:
 ~~~ scala
 trait Pretty {
   val print: String
 }
 
 def pretty[A](a: A)(implicit ev: A => Pretty): String =
-  a.print // Error: value print is not a member of A
+  a.print // In Scala 3, Error: value print is not a member of A
 ~~~
 {% endtab %}
 {% endtabs %}
@@ -47,8 +47,8 @@ The [Scala 3 migration compilation](tooling-migration-mode.html) can warn you ab
 Be aware that this incompatibility can produce a runtime incompatibility and break your program.
 Indeed the compiler can find another implicit conversion from a broader scope, which would eventually cause an undesired behavior at runtime.
 
-{% tabs scala-3-implicit_2 %}
-{% tab 'Scala 3 Only' %}
+{% tabs shared-implicit_2 %}
+{% tab 'Scala 2 and 3' %}
 
 This example illustrates the case:
 ~~~ scala
@@ -61,41 +61,42 @@ implicit def anyPretty(any: Any): Pretty = new Pretty { val print = "any" }
 def pretty[A](a: A)(implicit ev: A => Pretty): String =
   a.print // always print "any"
 ~~~
+{% endtab %}
+{% endtabs %}
 
 The resolved conversion depends on the compiler mode:
   - `-source:3.0-migration`: the compiler performs the `ev` conversion
   - `-source:3.0`: the compiler cannot perform the `ev` conversion but it can perform the `anyPretty`, which is undesired
 
-One simple fix is to supply the right conversion explicitly:
+In Scala 3, one simple fix is to supply the right conversion explicitly:
 
-~~~ scala
+{% highlight diff %}
 def pretty[A](a: A)(implicit ev: A => Pretty): String =
-  ev(a).print
-~~~
-{% endtab %}
-{% endtabs %}
+-  a.print
++  ev(a).print
+{% endhighlight %}
 
 ## View Bounds
 
 View bounds have been deprecated for a long time but they are still supported in Scala 2.13.
 They cannot be compiled with Scala 3 anymore.
 
-{% tabs scala-3-bounds_1 %}
-{% tab 'Scala 3 Only' %}
+{% tabs scala-2-bounds_1 %}
+{% tab 'Scala 2 Only' %}
 ~~~ scala
 def foo[A <% Long](a: A): Long = a
 ~~~
+{% endtab %}
+{% endtabs %}
 
-In this example we get:
+In this example, in Scala 3, we get this following error message:
 
-~~~ text
+{% highlight text %}
 -- Error: src/main/scala/view-bound.scala:2:12 
 2 |  def foo[A <% Long](a: A): Long = a
   |            ^
   |          view bounds `<%' are deprecated, use a context bound `:' instead
-~~~
-{% endtab %}
-{% endtabs %}
+{% endhighlight %}
 
 The message suggests to use a context bound instead of a view bound but it would change the signature of the method.
 It is probably easier and safer to preserve the binary compatibility.
@@ -103,39 +104,32 @@ To do so the implicit conversion must be declared and called explicitly.
 
 Be careful not to fall in the runtime incompatibility described above, in [Implicit Views](#implicit-views).
 
-{% tabs runtime_1 class=tabs-scala-version %}
-{% tab 'Scala 2' for=runtime_1 %}
-~~~ scala
-def foo[A <% Long](a: A): Long = a
-~~~
-
-{% endtab %}
-{% tab 'Scala 3' for=runtime_1 %}
-~~~ scala
-def foo[A](a: A)(implicit ev: A => Long): Long = ev(a)
-~~~
-{% endtab %}
-{% endtabs %}
+{% highlight diff %}
+-def foo[A <% Long](a: A): Long = a
++def foo[A](a: A)(implicit ev: A => Long): Long = ev(a)
+{% endhighlight %}
 
 ## Ambiguous Conversion On `A` And `=> A`
 
 In Scala 2.13 the implicit conversion on `A` wins over the implicit conversion on `=> A`.
 It is not the case in Scala 3 anymore, and leads to an ambiguous conversion. 
 
-{% tabs ambiguous_1 class=tabs-scala-version %}
-{% tab 'Scala 2' for=ambiguous_1 %}
-
 For instance, in this example:
+
+{% tabs scala-2-ambiguous_1 %}
+{% tab 'Scala 2 Only' %}
 ~~~ scala
 implicit def boolFoo(bool: Boolean): Foo = ???
 implicit def lazyBoolFoo(lazyBool:  => Boolean): Foo = ???
 
 true.foo()
 ~~~
+{% endtab %}
+{% endtabs %}
 
 The Scala 2.13 compiler chooses the `boolFoo` conversion but the Scala 3 compiler fails to compile.
 
-~~~ text
+{% highlight text %}
 -- Error: src/main/scala/ambiguous-conversion.scala:4:19
 9 |  true.foo()
   |  ^^^^
@@ -143,17 +137,14 @@ The Scala 2.13 compiler chooses the `boolFoo` conversion but the Scala 3 compile
   |Required: ?{ foo: ? }
   |Note that implicit extension methods cannot be applied because they are ambiguous;
   |both method boolFoo in object Foo and method lazyBoolFoo in object Foo provide an extension method `foo` on (true : Boolean)
-~~~
-{% endtab %}
-{% tab 'Scala 3' for=ambiguous_1 %}
+{% endhighlight %}
 
 A temporary solution is to write the conversion explicitly.
 
-~~~ scala
+{% highlight diff %}
 implicit def boolFoo(bool: Boolean): Foo = ???
 implicit def lazyBoolFoo(lazyBool:  => Boolean): Foo = ???
 
-boolFoo(true).foo()
-~~~
-{% endtab %}
-{% endtabs %}
+-true.foo()
++boolFoo(true).foo()
+{% endhighlight %}
