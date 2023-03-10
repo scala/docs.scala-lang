@@ -61,7 +61,7 @@ The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the co
 
 -  println(enum)
 +  println(`enum`)
-}
+ }
 {% endhighlight %}
 
 ## Procedure Syntax
@@ -84,12 +84,12 @@ object Bar {
 
 The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the code into.
 {% highlight diff %}
-object Bar {
+ object Bar {
 -  def print() {
 +  def print(): Unit = {
-    println("bar")
-  }
-}
+     println("bar")
+   }
+ }
 {% endhighlight %}
 
 ## Parentheses Around Lambda Parameter
@@ -129,21 +129,21 @@ test("my test")
 
 The [Scala 3 migration compiler](tooling-migration-mode.html) indents the first line of the block.
 {% highlight diff %}
-test("my test")
+ test("my test")
 -{
 +  {
-  assert(1 == 1)
-}
+   assert(1 == 1)
+ }
 {% endhighlight %}
 
 This migration rule applies to other patterns as well, such as refining a type after a new line.
 
 {% highlight diff %}
-type Bar = Foo
-- {
-+   {
-  def bar(): Int
-}
+ type Bar = Foo
+-{
++  {
+   def bar(): Int
+ }
 {% endhighlight %}
 
 A preferable solution is to write:
@@ -151,8 +151,8 @@ A preferable solution is to write:
 -test("my test")
 -{
 +test("my test") {
-  assert(1 == 1)
-}
+   assert(1 == 1)
+ }
 {% endhighlight %}
 
 ## Wrong indentation
@@ -175,12 +175,12 @@ def bar: (Int, Int) = {
 
 The indentation must be fixed.
 {% highlight diff %}
-def bar: (Int, Int) = {
-  val foo = 1.0
-  val bar = foo
+ def bar: (Int, Int) = {
+   val foo = 1.0
+   val bar = foo
 -    (1, 1)
 +  (1, 1)
-}
+ }
 {% endhighlight %}
 
 These errors can be prevented by using a Scala formatting tool such as [scalafmt](https://scalameta.org/scalafmt/) or the [IntelliJ Scala formatter](https://www.jetbrains.com/help/idea/reformat-and-rearrange-code.html).
