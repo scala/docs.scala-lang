@@ -12,8 +12,8 @@ previous-page: generic-classes
 
 ```scala mdoc
 class Foo[+A] // ковариантный класс
-class Bar[-A] // контрвариантный класс
-class Baz[A]  // инвариантными класс
+class Bar[-A] // контравариантный класс
+class Baz[A]  // инвариантный класс
 ```
 
 ### Ковариантность
