@@ -38,18 +38,21 @@ It is composed of:
 - `=>>`
 - `?=>`
 
-For instance, the following piece of code can be compiled with Scala 2.13 but not wtih Scala 3.
+{% tabs scala-2-keywords_1 %}
+{% tab 'Scala 2 Only' %}
 
-```scala
-object given { // Error: given is now a keyword
-  val enum = ??? // Error: enum is now a keyword
+For instance, the following piece of code can be compiled with Scala 2.13 but not with Scala 3.
+~~~ scala
+object given { // In Scala 3, Error: given is now a keyword.
+  val enum = ??? // In Scala 3, Error: enum is now a keyword.
 
-  println(enum) // Error: enum is now a keyword
+  println(enum) // In Scala 3, Error: enum is now a keyword.
 }
-```
+~~~
+{% endtab %}
+{% endtabs %}
 
 The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the code into:
-
 {% highlight diff %}
 -object given {
 +object `given` {
@@ -64,18 +67,22 @@ The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the co
 ## Procedure Syntax
 
 Procedure syntax has been deprecated for a while and it is dropped in Scala 3.
-The following pieces of code are now illegal:
 
-```scala
+{% tabs scala-2-procedure_1 %}
+{% tab 'Scala 2 Only' %}
+
+The following pieces of code are now illegal:
+~~~ scala
 object Bar {
-  def print() { // Error: Procedure syntax no longer supported; `: Unit =` should be inserted here
+  def print() { // In Scala 3, Error: Procedure syntax no longer supported; `: Unit =` should be inserted here.
     println("bar")
   }
 }
-```
+~~~
+{% endtab %}
+{% endtabs %}
 
 The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the code into.
-
 {% highlight diff %}
 object Bar {
 -  def print() {
@@ -90,12 +97,15 @@ object Bar {
 When followed by its type, the parameter of a lambda is now required to be enclosed in parentheses.
 The following piece of code is invalid.
 
-```scala
-val f = { x: Int => x * x } // Error: parentheses are required around the parameter of a lambda
-```
+{% tabs scala-2-lambda_1 %}
+{% tab 'Scala 2 Only' %}
+~~~ scala
+val f = { x: Int => x * x } // In Scala 3, Error: parentheses are required around the parameter of a lambda.
+~~~
+{% endtab %}
+{% endtabs %}
 
 The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the code into:
-
 {% highlight diff %}
 -val f = { x: Int => x * x }
 +val f = { (x: Int) => x * x }
@@ -106,16 +116,18 @@ The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the co
 In Scala 2 it is possible to pass an argument after a new line by enclosing it into braces.
 Although valid, this style of coding is not encouraged by the [Scala style guide](https://docs.scala-lang.org/style) and is no longer supported in Scala 3.
 
-This syntax is now invalid:
-```scala
+{% tabs scala-2-brace_1 %}
+{% tab 'Scala 2 Only' %}
+~~~ scala
 test("my test")
-{ // Error: This opening brace will start a new statement in Scala 3.
+{ // In Scala 3, Error: This opening brace will start a new statement.
   assert(1 == 1)
 }
-```
+~~~
+{% endtab %}
+{% endtabs %}
 
 The [Scala 3 migration compiler](tooling-migration-mode.html) indents the first line of the block.
-
 {% highlight diff %}
 test("my test")
 -{
@@ -135,7 +147,6 @@ type Bar = Foo
 {% endhighlight %}
 
 A preferable solution is to write:
-
 {% highlight diff %}
 -test("my test")
 -{
@@ -149,16 +160,20 @@ A preferable solution is to write:
 The Scala 3 compiler now requires correct indentation.
 The following piece of code, that was compiled in Scala 2.13, does not compile anymore because of the indentation.
 
-```scala
+{% tabs scala-2-indentation_1 %}
+{% tab 'Scala 2 Only' %}
+
+~~~ scala
 def bar: (Int, Int) = {
   val foo = 1.0
-  val bar = foo // [E050] Type Error: value foo does not take parameters
+  val bar = foo // [E050] In Scala 3, type Error: value foo does not take parameters.
     (1, 1)
-} // [E007] Type Mismatch Error: Found Unit, Required (Int, Int)
-```
+} // [E007] In Scala 3, type Mismatch Error: Found Unit, Required (Int, Int).
+~~~
+{% endtab %}
+{% endtabs %}
 
 The indentation must be fixed.
-
 {% highlight diff %}
 def bar: (Int, Int) = {
   val foo = 1.0
@@ -176,10 +191,13 @@ Beware that these tools may change the entire code style of your project.
 The usage of the `_` identifier as a type parameter is permitted in Scala 2.13, even if it has never been mentioned in the Scala 2 specification.
 It is used in the API of [fastparse](https://index.scala-lang.org/lihaoyi/fastparse), in combination with a context bound, to declare an implicit parameter.
 
-
-```scala
+{% tabs scala-2-identifier_1 %}
+{% tab 'Scala 2 Only' %}
+~~~ scala
 def foo[_: Foo]: Unit = ???
-```
+~~~
+{% endtab %}
+{% endtabs %}
 
 Here, the method `foo` takes a type parameter `_` and an implicit parameter of type `Foo[_]` where `_` refers to the type parameter, not the wildcard symbol.
 
