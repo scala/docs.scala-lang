@@ -21,14 +21,14 @@ For example, this `maximum` method takes a _context parameter_ of type `Ord`, on
 {% tab 'Scala 2' %}
 ```scala
 def maximum[A](xs: List[A])(implicit ord: Ord[A]): A =
-  xs.reduceLeft(max(ord))
+  xs.reduceLeft(max(_, _)(ord))
 ```
 {% endtab %}
 
 {% tab 'Scala 3' %}
 ```scala
 def maximum[A](xs: List[A])(using ord: Ord[A]): A =
-  xs.reduceLeft(max(using ord))
+  xs.reduceLeft(max(_, _)(using ord))
 ```
 {% endtab %}
 
