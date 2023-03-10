@@ -7,14 +7,27 @@ previous-page: options-intro
 next-page: options-new
 ---
 
-The compiler options are classified and ordered according to their Scala 2.13 name.
-Each Scala 2.13 option is associated with its status in Scala 3.
+This table lists the Scala 2.13 compiler options with their equivalent in Scala 3.
+Some options have cross-version support, such as `-Vprint`.
+Others have a close equivalent with a different name. A number of Scala 2 options
+have no equivalent in Scala 3, such as options for debugging Scala 2 macros.
+
+The compiler options are shown as displayed by the help output `scalac -help`, `scalac -X`, etc.
+A few aliases are shown here, but most older aliases, such as `-Xprint` for `-Vprint`,
+or `-Ytyper-debug` for `-Vtyper`, are listed by the latest name.
+
+The option groups `-V` and `-W` were introduced in Scala 2.13, for "verbose" options that
+request additional diagnostic output and "warnings" that request additional checks which
+may or may not indicate errors in code. `-Werror` elevates warnings to errors, and `-Wconf`
+allows precise control over warnings by either ignoring them or taking them as errors.
+The configuration string for `-Wconf` will likely require adjustment when migrating to Scala 3,
+since the configuration syntax and the error messages it matches are different.
 
 | Status | Meaning |
 |-|-|
-| <i class="fa fa-check fa-lg"></i> | it is available in Scala 3 |
-| `<new-name>` | It has been renamed to `<new-name>` |
-| <i class="fa fa-times fa-lg"></i> | It is not yet available could be added later |
+| <i class="fa fa-check fa-lg"></i> | It is available in Scala 3. |
+| `<new-name>` | It has been renamed to `<new-name>`. |
+| <i class="fa fa-times fa-lg"></i> | It is not yet available but could be added later. |
 
 > The current comparison is based on Scala 2.13.10 and 3.3.0.
 
@@ -63,11 +76,74 @@ Each Scala 2.13 option is associated with its status in Scala 3.
 | `-verbose` |<i class="fa fa-check fa-lg"></i>| 
 | `-version` |<i class="fa fa-check fa-lg"></i>|
 
+## Verbose Settings
+
+| 2.13.x | 3.3.x |
+|-|-|
+| `-Vbrowse:<phases>` | <i class="fa fa-times fa-lg"></i> |
+| `-Vclasspath` | `-Ylog-classpath` |
+| `-Vdebug` | `-Ydebug` |
+| `-Vdebug-tasty` | <i class="fa fa-times fa-lg"></i> |
+| `-Vdebug-type-error` | <i class="fa fa-times fa-lg"></i> |
+| `-Vdoc` | <i class="fa fa-times fa-lg"></i> |
+| `-Vfree-terms` | <i class="fa fa-times fa-lg"></i> |
+| `-Vfree-types` | <i class="fa fa-times fa-lg"></i> |
+| `-Vhot-statistics`| <i class="fa fa-times fa-lg"></i> |
+| `-Vide`| <i class="fa fa-times fa-lg"></i> |
+| `-Vimplicit-conversions`| <i class="fa fa-times fa-lg"></i> |
+| `-Vimplicits`| <i class="fa fa-times fa-lg"></i> |
+| `-Vimplicits-max-refined`| <i class="fa fa-times fa-lg"></i> |
+| `-Vimplicits-verbose-tree`| <i class="fa fa-times fa-lg"></i> |
+| `-Vinline <package/Class.method>` | <i class="fa fa-times fa-lg"></i> |
+| `-Vlog:<phases>` | `-Ylog:<phases>`|
+| `-Vmacro` | <i class="fa fa-times fa-lg"></i> |
+| `-Vmacro-lite` | <i class="fa fa-times fa-lg"></i> |
+| `-Vopt <package/Class.method>` | <i class="fa fa-times fa-lg"></i> |
+| `-Vpatmat` | <i class="fa fa-times fa-lg"></i> |
+| `-Vphases` | <i class="fa fa-check fa-lg"></i> |
+| `-Vpos`| <i class="fa fa-times fa-lg"></i> |
+| `-Vprint:<phases>` | <i class="fa fa-check fa-lg"></i> |
+| `-Vprint-args <file>` | <i class="fa fa-times fa-lg"></i> |
+| `-Vprint-pos` | `-Yprint-pos` |
+| `-Vprint-types` | `-Xprint-types` |
+| `-Vquasiquote` | <i class="fa fa-times fa-lg"></i> |
+| `-Vreflective-calls` | <i class="fa fa-times fa-lg"></i> |
+| `-Vreify` | <i class="fa fa-times fa-lg"></i> |
+| `-Vshow:<phases>` | <i class="fa fa-times fa-lg"></i> |
+| `-Vshow-class <class>` | <i class="fa fa-times fa-lg"></i> |
+| `-Vshow-member-pos <output style>` | <i class="fa fa-times fa-lg"></i> |
+| `-Vshow-object <object>` | <i class="fa fa-times fa-lg"></i> |
+| `-Vshow-symkinds` | <i class="fa fa-times fa-lg"></i> |
+| `-Vshow-symowners` | <i class="fa fa-times fa-lg"></i> |
+| `-Vstatistics <phases>` | <i class="fa fa-times fa-lg"></i> |
+| `-Vsymbols` | <i class="fa fa-times fa-lg"></i> |
+| `-Vtype-diffs` | <i class="fa fa-times fa-lg"></i> |
+| `-Vtyper` | <i class="fa fa-times fa-lg"></i> |
+
+## Warning Settings
+
+| 2.13.x | 3.3.x |
+|-|-|
+| `-Wconf` | <i class="fa fa-check fa-lg"></i> |
+| `-Wdead-code` | <i class="fa fa-times fa-lg"></i> |
+| `-Werror` | <i class="fa fa-check fa-lg"></i> |
+| `-Wextra-implicit` | <i class="fa fa-times fa-lg"></i> |
+| `-Wmacros:<mode>` | <i class="fa fa-times fa-lg"></i> |
+| `-Wnonunit-if` | <i class="fa fa-times fa-lg"></i> |
+| `-Wnonunit-statement` | <i class="fa fa-check fa-lg"></i> |
+| `-Wnumeric-widen` | <i class="fa fa-times fa-lg"></i> |
+| `-Woctal-literal` | <i class="fa fa-times fa-lg"></i> |
+| `-Wopt` | <i class="fa fa-times fa-lg"></i> |
+| `-Wperformance` | <i class="fa fa-times fa-lg"></i> |
+| `-Wself-implicit` | <i class="fa fa-times fa-lg"></i> |
+| `-Wunused:<warnings>` | <i class="fa fa-check fa-lg"></i> |
+| `-Wvalue-discard`| <i class="fa fa-check fa-lg"></i> |
+
 ## Advanced Settings
 
-| 2.13.x | 3.0.x |
+| 2.13.x | 3.3.x |
 |-|-|
-| `-X` |<i class="fa fa-check fa-lg"></i>|
+| `-Xasync` | <i class="fa fa-times fa-lg"></i> |
 | `-Xcheckinit` | `-Ycheck-init` |
 | `-Xdev` | <i class="fa fa-times fa-lg"></i> |
 | `-Xdisable-assertions` | <i class="fa fa-times fa-lg"></i> |
@@ -78,30 +154,25 @@ Each Scala 2.13 option is associated with its status in Scala 3.
 | `-Xjline` | <i class="fa fa-times fa-lg"></i> |
 | `-Xlint:deprecation` | `-deprecation` |
 | `-Xlint:<warnings>` | <i class="fa fa-times fa-lg"></i> |
-| `-Xlog-implicit-conversion` | <i class="fa fa-times fa-lg"></i> |
-| `-Xlog-implicits` | <i class="fa fa-times fa-lg"></i> |
-| `-Xlog-reflective-calls` | <i class="fa fa-times fa-lg"></i> |
 | `-Xmacro-settings` | <i class="fa fa-times fa-lg"></i> |
 | `-Xmain-class` | <i class="fa fa-times fa-lg"></i> |
 | `-Xmaxerrs` | <i class="fa fa-times fa-lg"></i> |
 | `-Xmaxwarns` | <i class="fa fa-times fa-lg"></i> |
-| `-Xmigration` |<i class="fa fa-check fa-lg"></i>| 
-| `-Xmixin-force-forwarders` |<i class="fa fa-check fa-lg"></i>| 
+| `-Xmigration` |<i class="fa fa-check fa-lg"></i>|
+| `-Xmixin-force-forwarders` |<i class="fa fa-check fa-lg"></i>|
 | `-Xno-forwarders` |<i class="fa fa-check fa-lg"></i>|
 | `-Xno-patmat-analysis` | <i class="fa fa-times fa-lg"></i> |
+| `-Xnon-strict-patmat-analysis` | <i class="fa fa-times fa-lg"></i> |
 | `-Xnojline` | <i class="fa fa-times fa-lg"></i> |
-| `-Xplugin` |<i class="fa fa-check fa-lg"></i>| 
-| `-Xplugin-disable` |<i class="fa fa-check fa-lg"></i>| 
-| `-Xplugin-list` |<i class="fa fa-check fa-lg"></i>| 
-| `-Xplugin-require` |<i class="fa fa-check fa-lg"></i>| 
+| `-Xplugin` |<i class="fa fa-check fa-lg"></i>|
+| `-Xplugin-disable` |<i class="fa fa-check fa-lg"></i>|
+| `-Xplugin-list` |<i class="fa fa-check fa-lg"></i>|
+| `-Xplugin-require` |<i class="fa fa-check fa-lg"></i>|
 | `-Xpluginsdir` |<i class="fa fa-check fa-lg"></i>|
-| `-Xprint-args` | <i class="fa fa-times fa-lg"></i> |
 | `-Xprompt` |<i class="fa fa-check fa-lg"></i>|
 | `-Xreporter` | <i class="fa fa-times fa-lg"></i> |
 | `-Xresident` | <i class="fa fa-times fa-lg"></i> |
 | `-Xscript` | <i class="fa fa-times fa-lg"></i> |
-| `-Xshow-class <class>` | <i class="fa fa-times fa-lg"></i> |
-| `-Xshow-object <object>` | <i class="fa fa-times fa-lg"></i> |
 | `-Xsource` | `-source` |
 | `-Xsource-reader` | <i class="fa fa-times fa-lg"></i> |
 | `-Xverify` | `-Xverify-signatures` |
@@ -121,14 +192,10 @@ Each Scala 2.13 option is associated with its status in Scala 3.
 | `-Ydelambdafy` | <i class="fa fa-times fa-lg"></i> |
 | `-Ydump-classes` |<i class="fa fa-check fa-lg"></i>|
 | `-Ygen-asmp` | <i class="fa fa-times fa-lg"></i> |
-| `-Yhot-statistics` | <i class="fa fa-times fa-lg"></i> |
-| `-Yide-debug` | <i class="fa fa-times fa-lg"></i> |
 | `-Yimports` | <i class="fa fa-times fa-lg"></i> |
 | `-Yissue-debug` | <i class="fa fa-times fa-lg"></i> |
 | `-Yjar-compression-level` | <i class="fa fa-times fa-lg"></i> |
 | `-YjarFactory` | <i class="fa fa-times fa-lg"></i> |
-| `-Ymacro-debug-lite` | <i class="fa fa-times fa-lg"></i> |
-| `-Ymacro-debug-verbose` | <i class="fa fa-times fa-lg"></i> |
 | `-Ymacro-annotations` | <i class="fa fa-times fa-lg"></i> |
 | `-Ymacro-classpath` | <i class="fa fa-times fa-lg"></i> |
 | `-Ymacro-expand` | <i class="fa fa-times fa-lg"></i> |
@@ -139,109 +206,37 @@ Each Scala 2.13 option is associated with its status in Scala 3.
 | `-Yno-imports` |<i class="fa fa-check fa-lg"></i>|
 | `-Yno-predef` |<i class="fa fa-check fa-lg"></i>|
 | `-Yopt-inline-heuristics` | <i class="fa fa-times fa-lg"></i> |
-| `-Yopt-log-inline <package/Class.method>` | <i class="fa fa-times fa-lg"></i> |
-| `-Yopt-trace <package/Class.method>` | <i class="fa fa-times fa-lg"></i> |
-| `-Ypatmat-debug` | <i class="fa fa-times fa-lg"></i> |
 | `-Ypatmat-exhaust-depth` | <i class="fa fa-times fa-lg"></i> |
-| `-Ypos-debug` | <i class="fa fa-times fa-lg"></i> |
 | `-Ypresentation-any-thread` | <i class="fa fa-times fa-lg"></i> |
 | `-Ypresentation-debug` | <i class="fa fa-times fa-lg"></i> |
 | `-Ypresentation-delay` | <i class="fa fa-times fa-lg"></i> |
 | `-Ypresentation-locate-source-file` | <i class="fa fa-times fa-lg"></i> |
 | `-Ypresentation-log` | <i class="fa fa-times fa-lg"></i> |
+| `-Ypresentation-replay` | <i class="fa fa-times fa-lg"></i> |
 | `-Ypresentation-strict` | <i class="fa fa-times fa-lg"></i> |
 | `-Ypresentation-verbose` | <i class="fa fa-times fa-lg"></i> |
 | `-Yprint-trees` | <i class="fa fa-times fa-lg"></i> |
-| `-Yprofile-destination` |<i class="fa fa-check fa-lg"></i>| 
+| `-Yprofile-destination` |<i class="fa fa-check fa-lg"></i>|
 | `-Yprofile-enabled` |<i class="fa fa-check fa-lg"></i>|
+| `-Yprofile-external-tool` |<i class="fa fa-check fa-lg"></i>|
+| `-Yprofile-run-gc` |<i class="fa fa-check fa-lg"></i>|
 | `-Yprofile-trace` | <i class="fa fa-times fa-lg"></i> |
-| `-Yquasiquote-debug` | <i class="fa fa-times fa-lg"></i> |
 | `-Yrangepos` | <i class="fa fa-times fa-lg"></i> |
 | `-Yrecursion` | <i class="fa fa-times fa-lg"></i> |
 | `-Yreify-copypaste` | <i class="fa fa-times fa-lg"></i> |
-| `-Yreify-debug` | <i class="fa fa-times fa-lg"></i> |
 | `-Yrepl-class-based` | <i class="fa fa-times fa-lg"></i> |
 | `-Yrepl-outdir` | <i class="fa fa-times fa-lg"></i> |
 | `-Yrepl-use-magic-imports` | <i class="fa fa-times fa-lg"></i> |
 | `-Yresolve-term-conflict` |<i class="fa fa-check fa-lg"></i>|
+| `-Yscala3-implicit-resolution` | <i class="fa fa-times fa-lg"></i> |
 | `-Yscriptrunner` | <i class="fa fa-times fa-lg"></i> |
-| `-Yskip` |<i class="fa fa-check fa-lg"></i>| 
-| `-Yshow:<phases>` | <i class="fa fa-times fa-lg"></i> |
-| `-Yshow-member-pos <output style>` | <i class="fa fa-times fa-lg"></i> |
-| `-Yshow-symkinds` | <i class="fa fa-times fa-lg"></i> |
-| `-Yshow-symowners` | <i class="fa fa-times fa-lg"></i> |
-| `-Yshow-syms` | <i class="fa fa-times fa-lg"></i> |
-| `-Ystatistics <phases>` | <i class="fa fa-times fa-lg"></i> |
-| `-Ystop-after` |<i class="fa fa-check fa-lg"></i>| 
-| `-Ystop-before` |<i class="fa fa-check fa-lg"></i>| 
-| `-Ytyper-debug` | <i class="fa fa-times fa-lg"></i> |
+| `-Yskip` |<i class="fa fa-check fa-lg"></i>|
+| `-Ystop-after` |<i class="fa fa-check fa-lg"></i>|
+| `-Ystop-before` |<i class="fa fa-check fa-lg"></i>|
+| `-Ytasty-no-annotations` | <i class="fa fa-times fa-lg"></i> |
+| `-Ytasty-reader` | <i class="fa fa-times fa-lg"></i> |
+| `-Ytrack-dependencies` | <i class="fa fa-times fa-lg"></i> |
 | `-Yvalidate-pos` | <i class="fa fa-times fa-lg"></i> |
-| `-Ywarn-dead-code` | <i class="fa fa-times fa-lg"></i> |
-| `-Ywarn-numeric-widen` | <i class="fa fa-times fa-lg"></i> |
-| `-Ywarn-unused:<warnings>` | <i class="fa fa-times fa-lg"></i> |
-| `-Ywarn-value-discard` | <i class="fa fa-times fa-lg"></i> |
-
-## Verbose Settings
-
-Verbose settings were introduced in 2.13.
-Most of them are not yet implemented in Scala 3.
-
-| 2.13.x | 3.3.x |
-|-|-|
-| `-Vbrowse:<phases>` | <i class="fa fa-times fa-lg"></i> |
-| `-Vclasspath` | `-Ylog-classpath` |
-| `-Vdebug-tasty` | <i class="fa fa-times fa-lg"></i> |
-| `-Vdoc` | <i class="fa fa-times fa-lg"></i> |
-| `-Vfree-terms` | <i class="fa fa-times fa-lg"></i> |
-| `-Vfree-types` | <i class="fa fa-times fa-lg"></i> |
-| `-Vhot-statistics`| <i class="fa fa-times fa-lg"></i> |
-| `-Vide`| <i class="fa fa-times fa-lg"></i> |
-| `-Vimplicit-conversions`| <i class="fa fa-times fa-lg"></i> |
-| `-Vimplicits`| <i class="fa fa-times fa-lg"></i> |
-| `-Vinline <package/Class.method>` | <i class="fa fa-times fa-lg"></i> |
-| `-Vissue`| <i class="fa fa-times fa-lg"></i> |
-| `-Vmacro` | <i class="fa fa-times fa-lg"></i> |
-| `-Vmacro-lite` | <i class="fa fa-times fa-lg"></i> |
-| `-Vopt <package/Class.method>` | <i class="fa fa-times fa-lg"></i> |
-| `-Vpatmat` | <i class="fa fa-times fa-lg"></i> |
-| `-Vphases` | <i class="fa fa-check fa-lg"></i> |
-| `-Vpos`| <i class="fa fa-times fa-lg"></i> |
-| `-Vprint:<phases>` | <i class="fa fa-check fa-lg"></i> |
-| `-Vlog:<phases>` | `-Ylog:<phases>`|
-| `-Vdebug` | `-Ydebug` |
-| `-Vprint-args <file>` | <i class="fa fa-times fa-lg"></i> |
-| `-Vprint-pos` | `-Yprint-pos` |
-| `-Vprint-types` | `-Xprint-types` |
-| `-Vquasiquote` | <i class="fa fa-times fa-lg"></i> |
-| `-Vreflective-calls` | <i class="fa fa-times fa-lg"></i> |
-| `-Vreify` | <i class="fa fa-times fa-lg"></i> |
-| `-Vshow:<phases>` | <i class="fa fa-times fa-lg"></i> |
-| `-Vshow-class <class>` | <i class="fa fa-times fa-lg"></i> |
-| `-Vshow-member-pos <output style>` | <i class="fa fa-times fa-lg"></i> |
-| `-Vshow-object <object>` | <i class="fa fa-times fa-lg"></i> |
-| `-Vshow-symkinds` | <i class="fa fa-times fa-lg"></i> |
-| `-Vshow-symowners` | <i class="fa fa-times fa-lg"></i> |
-| `-Vstatistics <phases>` | <i class="fa fa-times fa-lg"></i> |
-| `-Vsymbols` | <i class="fa fa-times fa-lg"></i> |
-| `-Vtyper` | <i class="fa fa-times fa-lg"></i> |
-
-## Warning Settings
-
-Warning settings were introduced in 2.13.
-Most of them are not yet implemented in Scala 3.
-
-| 2.13.x | 3.3.x |
-|-|-|
-| `-Wconf` | <i class="fa fa-check fa-lg"></i> |
-| `-Wdead-code` | <i class="fa fa-times fa-lg"></i> |
-| `-Werror` | <i class="fa fa-check fa-lg"></i> |
-| `-Wextra-implicit` | <i class="fa fa-times fa-lg"></i> |
-| `-Wmacros:<mode>` | <i class="fa fa-times fa-lg"></i> |
-| `-Wnumeric-widen` | <i class="fa fa-times fa-lg"></i> |
-| `-Woctal-literal` | <i class="fa fa-times fa-lg"></i> |
-| `-Wunused:<warnings>` | <i class="fa fa-check fa-lg"></i> |
-| `-Wvalue-discard`| <i class="fa fa-check fa-lg"></i> |
-| `-Wself-implicit` | <i class="fa fa-times fa-lg"></i> |
 
 ## Compiler Plugins
 

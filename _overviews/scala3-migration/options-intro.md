@@ -16,6 +16,6 @@ To do so you can refer to the [Lookup Table](options-lookup.html).
 > Passing an unavailable option to the Scala 3 compiler does not make it fail.
 > It just prints a warning and ignores the option.
 
-You can also discover the new Scala 3 compiler options, that have no equivalent in Scala 2.13, in the [New Compiler Options](options-new.html) page.
+You can also discover the new Scala 3 compiler options, which have no equivalent in Scala 2.13, in the [New Compiler Options](options-new.html) page.
 
 For Scaladoc settings reference and their compatibility with Scala2 Scaladoc, read [Scaladoc settings compatibility between Scala2 and Scala3](scaladoc-settings-compatibility.html) page.
