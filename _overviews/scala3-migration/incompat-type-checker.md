@@ -32,7 +32,7 @@ class Outer[+A](x: A) {
 {% endtab %}
 {% endtabs %}
 
-So if you compile in Scala 3, you should get this kind of error.
+So if you compile in Scala 3, you will get the following error.
 {% highlight text %}
 -- Error: src/main/scala/variance.scala:2:8 
 2 |  def f[B](y: List[B] = x): Unit = y
@@ -118,12 +118,13 @@ It is not always easy and sometimes it is even not possible, in which case the c
 
 In this example, we can relax the constraint on `x` and `y` by stating that `A` is a common ancestor of both type arguments.
 This makes the compiler type-check the code successfully.
-{% tabs scala-3-unsound_pm_2 %}
-{% tab 'Scala 3 Only' %}
+{% tabs shared-unsound_pm_2 %}
+{% tab 'Scala 2 and 3' %}
 ~~~ scala
 def combineFetch[A](x: Fetch[_ <: A], y: Fetch[_ <: A]): Fetch[A] = Fetch(x.ids ++ y.ids)
 ~~~
-
-Alternatively, a general but unsafe solution is to cast.
 {% endtab %}
 {% endtabs %}
+
+Alternatively, a general but unsafe solution is to cast.
+
