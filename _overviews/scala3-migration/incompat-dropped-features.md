@@ -241,8 +241,8 @@ def foo: List[Class[T]] forSome { type T } // In Scala 3, Error: Existential typ
 
 In Scala 3, the proposed solution is to introduce an enclosing type that carries the dependent type:
 
-{% tabs scala-3-existential_1 %}
-{% tab 'Scala 3 Only' %}
+{% tabs shared-existential_1 %}
+{% tab 'Scala 2 and 3' %}
 ~~~ scala
 trait Bar {
   type T
