@@ -50,7 +50,7 @@ authorImg: <Link to the author's image>
 ```
 
 ## Special characters for the content
-Keep in mind that the writing of your blog `<content>` is done with regular markdowns but here are some useful examples:
+Keep in mind that the writing of your blog is done with classic markdown. So here are some useful examples:
 
 ` ```<content>``` ` : Multiline code block.
 
