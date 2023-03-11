@@ -11,17 +11,17 @@ language: zh-cn
 
 ## 引言
 
-值类型（Value Class 或值类）是在[SIP-15](https://docs.scala-lang.org/sips/pending/value-classes.html)中提出的一种通过继承AnyVal类来避免运行时对象分配的新机制。以下是一个最简单的值类型。
+值类型（Value Class 或值类）是在[SIP-15](https://docs.scala-lang.org/sips/pending/value-classes.html)中提出的一种通过继承AnyVal类来避免运行时对象分配的新机制。以下是一个最简单的值类。
 
     class Wrapper(val underlying: Int) extends AnyVal
 
-它仅有一个被用作运行时底层表示的公有val参数。在编译期，其类型为Wrapper，但在运行时，它被表示为一个Int。值类型可以带有def定义，但不能再定义额外的val、var，以及内嵌的trait、class或object：
+它仅有一个被用作运行时底层表示的公有val参数。在编译期，其类型为Wrapper，但在运行时，它被表示为一个Int。值类可以带有def定义，但不能再定义额外的val、var，以及内嵌的trait、class或object：
 
     class Wrapper(val underlying: Int) extends AnyVal {
       def foo: Wrapper = new Wrapper(underlying * 19)
     }
 
-值类型只能继承universal traits，但其自身不能再被继承。所谓universal trait就是继承自Any的、只有def成员，且不作任何初始化工作的trait。继承自某个universal trait的value class同时继承了该trait的方法，但是（调用这些方法）会带来一定的对象分配开销。例如：
+值类只能继承universal traits，但其自身不能再被继承。所谓universal trait就是继承自Any的、只有def成员，且不作任何初始化工作的trait。继承自某个universal trait的value class同时继承了该trait的方法，但是（调用这些方法）会带来一定的对象分配开销。例如：
 
     trait Printable extends Any {
       def print(): Unit = println(this)
@@ -31,7 +31,7 @@ language: zh-cn
     val w = new Wrapper(3)
     w.print() // 这里实际上会生成一个Wrapper类的实例
 
-本文后续篇幅将介绍相关用例和与对象分配时机相关的细节，并给出一些有关值类型自身限制的具体实例。
+本文后续篇幅将介绍相关用例和与对象分配时机相关的细节，并给出一些有关值类自身限制的具体实例。
 
 ## 扩展方法
 
@@ -77,7 +77,7 @@ language: zh-cn
 
 ### 分配细节
 
-无论何时，将值类型作为另一种类型进行处理时（包括universal trait），此值类实例必须被实例化。例如，值类Meter ：
+无论何时，将值类作为另一种类型进行处理时（包括universal trait），此值类实例必须被实例化。例如，值类Meter ：
 
     trait Distance extends Any
     case class Meter(val value: Double) extends AnyVal with Distance
@@ -96,7 +96,7 @@ language: zh-cn
     def identity[T](t: T): T = t
     identity(Meter(5.0))
 
-必须进行分配的另一种情况是：将它赋值给数组。即使这个数组就是值类型的数组，例如：
+必须进行分配的另一种情况是：将它赋值给数组。即使这个数组就是值类的数组，例如：
 
     val m = Meter(5.0)
     val array = Array[Meter](m)
@@ -115,7 +115,7 @@ language: zh-cn
 
 ## 限制
 
-目前值类型有一些限制，部分原因是JVM并不原生支持值类型。值类型的完整实现细节及其限制见[SIP-15]。
+目前值类有一些限制，部分原因是JVM并不原生支持值类。值类的完整实现细节及其限制见[SIP-15]。
 
 ### 限制概要
 
@@ -208,7 +208,7 @@ Scala不允许惰性val作为构造函数参数， 所以值类也不允许。�
     class Outer(val inner: Inner) extends AnyVal
                     ^
 
-此外，结构类型不能使用值类作为方法的参数或返回值类型。
+此外，结构类型不能使用值类作为方法的参数或返回值类。
 
     class Value(val x: Int) extends AnyVal
     object Usage {
