@@ -464,7 +464,7 @@ do println(post)
 {% endtab %}
 {% endtabs %}
 
-`Future` 提供了一个清晰的手段只用来处理失败的结果，这个手段是使用 `failed` 映射，这个映射把 `Failure[Throwable]` 转换成 `Success[Throwable]`。下面的[映射](#projections)章节提供了这样一个例子。
+`Future` 提供了一个清晰的手段只用来处理失败的结果，这个手段是使用 `failed` 投影，这个投影把 `Failure[Throwable]` 转换成 `Success[Throwable]`。下面的[投影](#projections)章节提供了这样一个例子。
 
 回到前面查找某个关键字第一次出现的例子，我们想要在屏幕上打印出此关键字的位置：
 
