@@ -180,7 +180,7 @@ Future {
 {% endtab %}
 {% endtabs %}
 
-注意 `blocking` 是一个通用结构，它将会在[下面](#blocking-inside-a-future)作深入探讨。
+注意 `blocking` 是一个通用结构，它将会在[下面](#Future-内的阻塞)作深入探讨。
 
 最后你必须记住 `ForkJoinPool` 不是设计用来长连接阻塞操作。
 即使收到 `blocking` 通知，池也可能无法像预期的那样生成新工作，而创建新工作线程时，它们的数量也可能多达 32767。
@@ -464,7 +464,7 @@ do println(post)
 {% endtab %}
 {% endtabs %}
 
-`Future` 提供了一个清晰的手段只用来处理失败的结果，这个手段是使用 `failed` 投影，这个投影把 `Failure[Throwable]` 转换成 `Success[Throwable]`。下面的[投影](#projections)章节提供了这样一个例子。
+`Future` 提供了一个清晰的手段只用来处理失败的结果，这个手段是使用 `failed` 投影，这个投影把 `Failure[Throwable]` 转换成 `Success[Throwable]`。下面的[投影](#投影)章节提供了这样一个例子。
 
 回到前面查找某个关键字第一次出现的例子，我们想要在屏幕上打印出此关键字的位置：
 
@@ -809,7 +809,7 @@ Future {
 综上所述，在 future 上的组合器功能是纯函数式的。
 每种组合器都会返回一个与原future相关的新 future 对象。
 
-### 投影(Projections)
+### 投影
 
 为了确保for解构(for-comprehensions)能够返回异常， future s也提供了投影(projections)。如果原 future 对象失败了，`failed` 的投影会返回一个带有 `Throwable` 类型返回值的 future 对象。如果原 future 成功了，`failed` 的投影失败并有一个 `NoSuchElementException`。下面就是一个在屏幕上打印出异常的例子：
 
