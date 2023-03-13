@@ -29,7 +29,7 @@ This piece of code cannot be compiled with Scala 3:
 
 {% tabs scala-2-literals_1 %}
 {% tab 'Scala 2 Only' %}
-~~~scala
+~~~ scala
 val values: Map[Symbol, Int] = Map('abc -> 1)
 
 val abc = values('abc) // In Scala 3, Migration Warning: symbol literal 'abc is no longer supported
