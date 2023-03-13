@@ -157,7 +157,7 @@ A cross-compiling solution is to explicitly eta-expand the method `Foo.apply`.
 
 Or, for performance reasons, you can introduce an intermediate function value.
 {% tabs scala-3-companion_2 %}
-{% tab 'Scala 3 Only' %}
+{% tab 'Scala 2 and 3' %}
 ~~~ scala
 val fooCtr: (Int, Boolean) => Foo = (x, b) => Foo(x, b)
 
