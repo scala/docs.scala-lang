@@ -49,17 +49,7 @@ authorImg: <Link to the author's image>
 <Content of your page>
 ```
 
-## Special characters for the content
-Keep in mind that the writing of your blog is done with classic markdown. So here are some useful examples:
+You can also find more details about the front matter on the [Jekyll documentation site](https://jekyllrb.com/docs/front-matter/).
 
-` ```<content>``` ` : Multiline code block.
-
-You can also specify a language type, ` ```scala <content>``` `.
-
-`# Title` : For titles.
-
-`## Subtitle` : For subtitles.
-
-`word` : For inline code.
-
-`[name](Link to a website)`: If you want to put a link in the word.
+## Syntax of the content
+Keep in mind that the writing of your blog is done with Markdown. You can find more information about the syntax in [Markdown Guide](https://www.markdownguide.org/basic-syntax/).
