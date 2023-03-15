@@ -77,7 +77,7 @@ Future 和 Promises 围绕 [`ExecutionContext`s](https://www.scala-lang.org/api/
 
 `scala.concurrent` 包是开箱即用的，它带有 `ExecutionContext` 实现，一个全局静态线程池。
 它也可以将 `Exector` 转换为 `ExecutionContext`。
-最后，用户可以自由扩展 `ExecutionContext` trait来实现自己的执行上下文，尽管这只应在极少数情况下完成。
+最后，用户可以自由扩展 `ExecutionContext` trait来实现自己的执行上下文，但只有极少数情况下需要这么做。
 
 ### 全局执行上下文
 
