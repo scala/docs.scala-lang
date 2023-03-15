@@ -783,7 +783,7 @@ extension (p: Pizza)
 {% endtab %}
 {% endtabs %}
 
-使用扩展方法，我们就可以获得和之前一样的 API：
+使用扩展方法，我们可以获得和之前一样的 API，同时也能够在任何其他模块中定义扩展：
 
 {% tabs module_8 %}
 {% tab 'Scala 2 and 3' for=module_8 %}
