@@ -86,7 +86,7 @@ Future 和 Promises 围绕 [`ExecutionContext`s](https://www.scala-lang.org/api/
 `ForkJoinPool` 管理有限数量的线程（线程的最大数量由 *parallelism level* 指定）。
 仅当每个阻塞调用都包装在 `blocking` 调用中时（更多内容见下文），并发阻塞计算的数量才能超过并行度级别。
 否则，全局执行上下文中的线程池会有饥饿死锁风险，致使任何计算无法继续进行。
-缺省情况下，`ExecutionContext.global` 将其底层分叉连接池的并行级别设置为可用处理器的数量([Runtime.availableProcessors](https://docs.oracle.com/javase/7/docs/api/java/lang/Runtime.html#availableProcessors%28%29))。
+缺省情况下，`ExecutionContext.global` 将其底层ForkJoin连接池的并行级别设置为可用处理器的数量([Runtime.availableProcessors](https://docs.oracle.com/javase/7/docs/api/java/lang/Runtime.html#availableProcessors%28%29))。
 通过设置以下一个（或多个） VM 属性，来重载这个设置：
 
   * scala.concurrent.context.minThreads - 缺省为 `Runtime.availableProcessors`
