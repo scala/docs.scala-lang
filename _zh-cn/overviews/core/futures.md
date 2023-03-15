@@ -82,7 +82,7 @@ Future 和 Promises 围绕 [`ExecutionContext`s](https://www.scala-lang.org/api/
 ### 全局执行上下文
 
 `ExecutionContext.global` 是由 [ForkJoinPool](https://docs.oracle.com/javase/tutorial/essential/concurrency/forkjoin.html) 支持的 `ExecutionContext`。
-它应该满足大部分情况，但需要一些注意。
+它应该满足大部分情况，但有几点需要注意。
 `ForkJoinPool` 管理有限数量的线程（线程的最大数量由 *parallelism level* 指定）。
 仅当每个阻塞调用都包装在 `blocking` 调用中时（更多内容见下文），并发阻塞计算的数量才能超过并行度级别。
 否则，存在全局执行上下文中的线程池不足的风险，并且无法继续进行任何计算。
