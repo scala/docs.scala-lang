@@ -75,8 +75,6 @@ def greet(): String => Unit =
 {% tabs fun-write-method-returns-function-5 %}
 {% tab 'Scala 2 and 3' %}
 ````
-{% endtab %}
-{% endtabs %}
 scala> val greetFunction = greet()
 val greetFunction: String => Unit = Lambda....
     -----------------------------------------
