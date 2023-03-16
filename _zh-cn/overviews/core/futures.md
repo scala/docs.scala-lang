@@ -160,7 +160,7 @@ Future {
 {% endtab %}
 {% endtabs %}
 
-幸运的是，并发包为做这样的事情提供了便捷的方法：
+幸运的是，并发包为这提供了便捷的方法：
 
 {% tabs blocking %}
 {% tab 'Scala 2 and 3' for=blocking %}
