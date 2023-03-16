@@ -261,6 +261,12 @@ variableName: (parameterTypes ...) => returnType
 {% tab 'Scala 2' %}
 ```scala
 def executeNTimes(f: () => Unit, n: Int): Unit =
+  for (i <- 1 to n) f()
+```
+{% endtab %}
+{% tab 'Scala 3' %}
+```scala
+def executeNTimes(f: () => Unit, n: Int): Unit =
   for i <- 1 to n do f()
 ```
 {% endtab %}
