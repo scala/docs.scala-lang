@@ -103,5 +103,3 @@ val error = moreBirds.prepend(swallowsFromAntarctica)    // List[Object]
 The covariant type parameter allows `birds` to get the value of `africanSwallows`.
 
 The type bound on the type parameter for `prepend` allows adding different varieties of swallows and getting a wider type: instead of `List[AfricanSwallow]`, we get a `List[Bird]`.
-
-Use `-Xlint` to warn if the inferred type arg is widened too much.
