@@ -63,7 +63,7 @@ This is how you create and use a `Stack[Int]`:
 
 {% tabs stack-usage class=tabs-scala-version %}
 {% tab 'Scala 2' %}
-```
+```scala
 val stack = new Stack[Int]
 stack.push(1)
 stack.push(2)
@@ -71,8 +71,9 @@ println(stack.pop())  // prints 2
 println(stack.pop())  // prints 1
 ```
 {% endtab %}
+
 {% tab 'Scala 3' %}
-```
+```scala
 val stack = Stack[Int]
 stack.push(1)
 stack.push(2)

@@ -18,6 +18,29 @@ permalink: "/zh-cn/scala3/book/:title.html"
 Scala 约定是使用单个字母（如 `A`）来命名这些类型参数。
 然后当需要时，该类型可以在类中用于方法实例参数，或返回类型：
 
+{% tabs stack class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+// here we declare the type parameter A
+//          v
+class Stack[A] {
+  private var elements: List[A] = Nil
+  //                         ^
+  //  Here we refer to the type parameter
+  //          v
+  def push(x: A): Unit =
+    elements = elements.prepended(x)
+  def peek: A = elements.head
+  def pop(): A = {
+    val currentTop = peek
+    elements = elements.tail
+    currentTop
+  }
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 // here we declare the type parameter A
 //          v
@@ -39,7 +62,19 @@ class Stack[A]:
 
 这是创建和使用 `Stack[Int]` 的方式：
 
+{% tabs stack-usage class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+val stack = new Stack[Int]
+stack.push(1)
+stack.push(2)
+println(stack.pop())  // prints 2
+println(stack.pop())  // prints 1
 ```
+{% endtab %}
+
+{% tab 'Scala 3' %}
+```scala
 val stack = Stack[Int]
 stack.push(1)
 stack.push(2)
