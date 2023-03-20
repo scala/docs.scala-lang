@@ -56,6 +56,8 @@ class Stack[A]:
     elements = elements.tail
     currentTop
 ```
+{% endtab %}
+{% endtabs %}
 
 `Stack` 类的这个实现采用任何类型作为参数。
 泛型的美妙之处在于您现在可以创建一个 `Stack[Int]`、`Stack[String]` 等，允许您将 `Stack` 的实现重复用于任意元素类型。
@@ -81,6 +83,8 @@ stack.push(2)
 println(stack.pop())  // prints 2
 println(stack.pop())  // prints 1
 ```
+{% endtab %}
+{% endtabs %}
 
 > 有关如何用泛型类型表达可变的详细信息，请参阅[型变（Variance）部分][variance]。
 
