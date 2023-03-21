@@ -242,7 +242,7 @@ _Conceptually_, enums can be thought of as defining a sealed class together with
 Let’s look at the desugaring of our `Color` enum above:
 
 {% tabs types-adts-gadts-16 class=tabs-scala-version %}
-{% tab 'Scala 2' %}
+{% tab 'Scala 2' for=types-adts-gadts-16 %}
 ```scala
 sealed abstract class Color(val rgb: Int) extends scala.reflect.Enum
 object Color {
@@ -261,7 +261,7 @@ object Color {
 ```
 {% endtab %}
 
-{% tab 'Scala 3' %}
+{% tab 'Scala 3' for=types-adts-gadts-16 %}
 ```scala
 sealed abstract class Color(val rgb: Int) extends scala.reflect.Enum
 object Color:
