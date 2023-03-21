@@ -20,41 +20,59 @@ permalink: "/zh-cn/scala3/book/:title.html"
 
 _enumeration_ 用于定义由一组命名值组成的类型：
 
+{% tabs types-adts-gadts-1 %}
+{% tab 'Scala 3 only' %}
 ```scala
 enum Color:
   case Red, Green, Blue
 ```
+{% endtab %}
+{% endtabs %}
 
 这可以看作是以下的简写：
 
+{% tabs types-adts-gadts-2 %}
+{% tab 'Scala 3 only' %}
 ```scala
 enum Color:
   case Red   extends Color
   case Green extends Color
   case Blue  extends Color
 ```
+{% endtab %}
+{% endtabs %}
 
 #### 参数
 
 枚举可以参数化：
 
+{% tabs types-adts-gadts-3 %}
+{% tab 'Scala 3 only' %}
 ```scala
 enum Color(val rgb: Int):
   case Red   extends Color(0xFF0000)
   case Green extends Color(0x00FF00)
   case Blue  extends Color(0x0000FF)
 ```
+{% endtab %}
+{% endtabs %}
 
 这样，每个不同的变体都有一个值成员 `rgb`，它被分配了相应的值：
 
+{% tabs types-adts-gadts-4 %}
+{% tab 'Scala 3 only' %}
 ```scala
 println(Color.Green.rgb) // prints 65280
 ```
+{% endtab %}
+{% endtabs %}
 
 #### 自定义
 
 枚举也可以有自定义：
 
+{% tabs types-adts-gadts-5 %}
+{% tab 'Scala 3 only' %}
 ```scala
 enum Planet(mass: Double, radius: Double):
 
@@ -67,9 +85,13 @@ enum Planet(mass: Double, radius: Double):
   case Earth   extends Planet(5.976e+24, 6.37814e6)
   // 5 or 6 more planets ...
 ```
+{% endtab %}
+{% endtabs %}
 
 像类和 `case` 类一样，你也可以为枚举定义一个伴生对象：
 
+{% tabs types-adts-gadts-6 %}
+{% tab 'Scala 3 only' %}
 ```scala
 object Planet:
   def main(args: Array[String]) =
@@ -78,17 +100,23 @@ object Planet:
     for (p <- values)
       println(s"Your weight on $p is ${p.surfaceWeight(mass)}")
 ```
+{% endtab %}
+{% endtabs %}
 
 ## 代数数据类型 (ADTs)
 
 `enum` 概念足够通用，既支持_代数数据类型_（ADT）和它的通用版本（GADT）。
 本示例展示了如何将 `Option` 类型表示为 ADT：
 
+{% tabs types-adts-gadts-7 %}
+{% tab 'Scala 3 only' %}
 ```scala
 enum Option[+T]:
   case Some(x: T)
   case None
 ```
+{% endtab %}
+{% endtabs %}
 
 这个例子创建了一个带有协变类型参数 `T` 的 `Option` 枚举，它由两种情况组成， `Some` 和 `None`。
 `Some` 是_参数化_的，它带有值参数 `x`；它是从 `Option` 继承的 `case` 类的简写。
@@ -96,14 +124,20 @@ enum Option[+T]:
 
 前面示例中省略的 `extends` 子句也可以显式给出：
 
+{% tabs types-adts-gadts-8 %}
+{% tab 'Scala 3 only' %}
 ```scala
 enum Option[+T]:
   case Some(x: T) extends Option[T]
   case None       extends Option[Nothing]
 ```
+{% endtab %}
+{% endtabs %}
 
 与普通的 `enum` 值一样，`enum` 的情况是在 `enum` 的伴生对象中定义的，因此它们被引用为 `Option.Some` 和 `Option.None`（除非定义是在导入时单独列出）：
 
+{% tabs types-adts-gadts-9 %}
+{% tab 'Scala 3 only' %}
 ```scala
 scala> Option.Some("hello")
 val res1: t2.Option[String] = Some(hello)
@@ -111,10 +145,14 @@ val res1: t2.Option[String] = Some(hello)
 scala> Option.None
 val res2: t2.Option[Nothing] = None
 ```
+{% endtab %}
+{% endtabs %}
 
 与其他枚举用途一样，ADT 可以定义更多的方法。
 例如，这里又是一个 `Option`，它的伴生对象中有一个 `isDefined` 方法和一个 `Option(...)` 构造函数：
 
+{% tabs types-adts-gadts-10 %}
+{% tab 'Scala 3 only' %}
 ```scala
 enum Option[+T]:
   case Some(x: T)
@@ -128,6 +166,8 @@ object Option:
   def apply[T >: Null](x: T): Option[T] =
     if (x == null) None else Some(x)
 ```
+{% endtab %}
+{% endtabs %}
 
 枚举和 ADT 共享相同的句法结构，因此它们可以
 被简单地视为光谱的两端，把二者混搭是完全可能的。
@@ -135,6 +175,8 @@ object Option:
 `Color` 的实现，可以使用三个枚举值或使用
 RGB 值的参数化情况：
 
+{% tabs types-adts-gadts-11 %}
+{% tab 'Scala 3 only' %}
 ```scala
 enum Color(val rgb: Int):
   case Red   extends Color(0xFF0000)
@@ -142,26 +184,36 @@ enum Color(val rgb: Int):
   case Blue  extends Color(0x0000FF)
   case Mix(mix: Int) extends Color(mix)
 ```
+{% endtab %}
+{% endtabs %}
 
 #### 递归枚举
 
 到目前为止，我们定义的所有枚举都由值或样例类的不同变体组成。
 枚举也可以是递归的，如下面的自然数编码示例所示：
 
+{% tabs types-adts-gadts-12 %}
+{% tab 'Scala 3 only' %}
 ```scala
 enum Nat:
   case Zero
   case Succ(n: Nat)
 ```
+{% endtab %}
+{% endtabs %}
 
 例如，值 `Succ(Succ(Zero))` 表示一元编码中的数字 `2`。
 列表可以以非常相似的方式定义：
 
+{% tabs types-adts-gadts-13 %}
+{% tab 'Scala 3 only' %}
 ```scala
 enum List[+A]:
   case Nil
   case Cons(head: A, tail: List[A])
 ```
+{% endtab %}
+{% endtabs %}
 
 ## 广义代数数据类型 (GADT)
 
@@ -170,19 +222,27 @@ enum List[+A]:
 
 这是一个 GADT 示例，其中类型参数 (`T`) 指定存储在框中的内容：
 
+{% tabs types-adts-gadts-14 %}
+{% tab 'Scala 3 only' %}
 ```scala
 enum Box[T](contents: T):
   case IntBox(n: Int) extends Box[Int](n)
   case BoolBox(b: Boolean) extends Box[Boolean](b)
 ```
+{% endtab %}
+{% endtabs %}
 
 特定构造函数（`IntBox` 或 `BoolBox`）上的模式匹配可恢复类型信息：
 
+{% tabs types-adts-gadts-15 %}
+{% tab 'Scala 3 only' %}
 ```scala
 def extract[T](b: Box[T]): T = b match
   case IntBox(n)  => n + 1
   case BoolBox(b) => !b
 ```
+{% endtab %}
+{% endtabs %}
 
 只有在第一种情况下返回一个 `Int` 才是安全的，因为我们从 pattern 匹配输入是一个“IntBox”。
 
@@ -191,6 +251,27 @@ def extract[T](b: Box[T]): T = b match
 _从概念上讲_，枚举可以被认为是定义一个密封类及其伴生对象。
 让我们看看上面的 `Color` 枚举的无语法糖版本：
 
+{% tabs types-adts-gadts-16 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+sealed abstract class Color(val rgb: Int) extends scala.reflect.Enum
+object Color {
+  case object Red extends Color(0xFF0000) { def ordinal = 0 }
+  case object Green extends Color(0x00FF00) { def ordinal = 1 }
+  case object Blue extends Color(0x0000FF) { def ordinal = 2 }
+  case class Mix(mix: Int) extends Color(mix) { def ordinal = 3 }
+
+  def fromOrdinal(ordinal: Int): Color = ordinal match {
+    case 0 => Red
+    case 1 => Green
+    case 2 => Blue
+    case _ => throw new NoSuchElementException(ordinal.toString)
+  }
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 sealed abstract class Color(val rgb: Int) extends scala.reflect.Enum
 object Color:
@@ -205,6 +286,8 @@ object Color:
     case 2 => Blue
     case _ => throw new NoSuchElementException(ordinal.toString)
 ```
+{% endtab %}
+{% endtabs %}
 
 请注意，上面的去除语法糖被简化了，我们故意省略了[一些细节][desugar-enums]。
 
