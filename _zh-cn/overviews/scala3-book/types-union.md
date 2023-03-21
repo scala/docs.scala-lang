@@ -19,6 +19,8 @@ permalink: "/zh-cn/scala3/book/:title.html"
 
 在下面的例子中，`help` 方法接受一个名为 `id` 的联合类型 `Username | Password`，可以是 `Useername` 或 `Password`：
 
+{% tabs union-types-1 %}
+{% tab 'Scala 3 only' %}
 ```scala
 case class Username(name: String)
 case class Password(hash: Hash)
@@ -29,22 +31,32 @@ def help(id: Username | Password) =
     case Password(hash) => lookupPassword(hash)
   // more code here ...
 ```
+{% endtab %}
+{% endtabs %}
 
 我们通过使用模式匹配区分二者，从而实现 `help` 方法。
 
 此代码是一种灵活且类型安全的解决方案。
 如果您尝试传入`Useername` 或 `Password` 以外的类型，编译器会将其标记为错误：
 
+{% tabs union-types-2 %}
+{% tab 'Scala 3 only' %}
 ```scala
 help("hi")   // error: Found: ("hi" : String)
              //        Required: Username | Password
 ```
+{% endtab %}
+{% endtabs %}
 
 如果您尝试将 `case` 添加到与 `Username` 或 `Password` 类型不匹配的 `match` 表达式中，也会出现错误：
 
+{% tabs union-types-3 %}
+{% tab 'Scala 3 only' %}
 ```scala
 case 1.0 => ???   // ERROR: this line won’t compile
 ```
+{% endtab %}
+{% endtabs %}
 
 ### 联合类型的替代方案
 
@@ -54,12 +66,16 @@ case 1.0 => ???   // ERROR: this line won’t compile
 
 其他语言需要预先规划类层次结构，如下例所示：
 
+{% tabs union-types-4 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 trait UsernameOrPassword
 case class Username(name: String) extends UsernameOrPassword
 case class Password(hash: Hash) extends UsernameOrPassword
 def help(id: UsernameOrPassword) = ...
 ```
+{% endtab %}
+{% endtabs %}
 
 预先计划不能很好地扩展，例如，API 用户的需求可能无法预见。
 此外，使用诸如 `UsernameOrPassword` 之类的标记 trait 使类型层次结构混乱也会使代码更难阅读。
@@ -68,13 +84,17 @@ def help(id: UsernameOrPassword) = ...
 
 另一种选择是定义一个单独的枚举类型，如：
 
+{% tabs union-types-5 %}
+{% tab 'Scala 3 only' %}
 ```scala
 enum UsernameOrPassword:
   case IsUsername(u: Username)
   case IsPassword(p: Password)
 ```
+{% endtab %}
+{% endtabs %}
 
-枚举 `UsernameOrPassword` 表示 `Username` 和 `Password` 的 _标记_联合。
+枚举 `UsernameOrPassword` 表示 `Username` 和 `Password` 的_标记_联合。
 但是，这种联合建模方式需要_显式包装和展开_，例如，`Username` **不是** `UsernameOrPassword` 的子类型。
 
 ### 联合类型推断
@@ -82,20 +102,28 @@ enum UsernameOrPassword:
 _仅当_明确给出这种类型时，编译器才会将联合类型分配给表达式。
 例如，给定这些值：
 
+{% tabs union-types-6 %}
+{% tab 'Scala 3 only' %}
 ```scala
 val name = Username("Eve")     // name: Username = Username(Eve)
 val password = Password(123)   // password: Password = Password(123)
 ```
+{% endtab %}
+{% endtabs %}
 
 这个 REPL 示例展示了在将变量绑定到 `if`/`else` 表达式的结果时如何使用联合类型：
 
-````
+{% tabs union-types-7 %}
+{% tab 'Scala 3 only' %}
+```scala
 scala> val a = if (true) name else password
 val a: Object = Username(Eve)
 
 scala> val b: Password | Username = if (true) name else password
 val b: Password | Username = Username(Eve)
-````
+```
+{% endtab %}
+{% endtabs %}
 
 `a` 的类型是 `Object`，它是 `Username` 和 `Password` 的超类型，但不是二者*最小*的超类型 `Password | Username`。
 如果你想要最小的超类型，你必须明确地给出它，就像对 `b` 所做的那样。
