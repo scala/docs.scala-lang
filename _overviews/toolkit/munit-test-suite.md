@@ -12,16 +12,17 @@ next-page: munit-assertions
 ## Writing a test suite
 
 In Scala we define groups of tests that we call test suites.
-Each test suite is intended to validate a particular component of the software.
+Each test suite is intended to validate a particular component or feature of the software.
 Typically we define one test suite for each source file, or each class, that we want to test.
 
 {% tabs munit-unit-test-2 %}
 {% tab 'Scala CLI' %}
-In Scala CLI, the test file can live in the same folder as the actual code, but the name of the file must end with `.test.scala`. For instance:
+In Scala CLI, the test file can live in the same folder as the actual code, but the name of the file must end with `.test.scala`.
+In the following, `MyTests.test.scala` is a test file.
 ```
 example/
-├── WebService.scala
-└── WebService.test.scala
+├── MyApp.scala
+└── MyTests.test.scala
 ```
 Other valid structures and conventions are described in the [Scala CLI documentation](https://scala-cli.virtuslab.org/docs/commands/test/#test-sources).
 {% endtab %}
@@ -34,10 +35,10 @@ example
 └── src
     ├── main
     │   └── scala
-    │       └── WebService.scala
+    │       └── MyApp.scala
     └── test
         └── scala
-            └── WebServiceTests.scala
+            └── MyTests.scala
 ```
 {% endtab %}
 {% tab 'Mill' %}
@@ -47,15 +48,15 @@ For instance:
 ```
 example
 └── src
-|   └── WebService.scala
+|   └── MyApp.scala
 └── test
     └── src
-        └── WebServiceTests.scala
+        └── MyTests.scala
 ```
 {% endtab %}
 {% endtabs %}
 
-After creating the test file, you can define a test suite:
+In the test file, you can define a test suite, a Scala class that extends `munit.FunSuite`.
 
 ```scala
 class MyTests extends munit.FunSuite:
@@ -66,21 +67,15 @@ class MyTests extends munit.FunSuite:
   }
 ```
 
-In MUnit, a test suite is a `class` that extends `munit.FunSuite`.
+To define a test, call the `test` method in the body of your test suite.
+It takes two arguments: a name and a body.
 
-<blockquote class="help-info">
-<i class="fa fa-info"></i>&nbsp;&nbsp;
-A MUnit test suite must be a class with an empty constructor. It cannot be an object.
-Otherwise MUnit complains with an InvalidTestClassError exception.
-</blockquote>
+In the previous example, we have a test `"sum of integers"` that checks that `2 + 2` equals `4`.
 
-It must contain one or more tests, defined by calling the `test` method in the body of the test suite.
-The `test` method takes a first argument which is the name of the test and a second argument wich is the body of the test.
+The assertion method `assertEquals` is used to check that two values are equal.
+The test passes if all the assertions are met, otherwise it fails.
 
-You can use assertion methods, such as `assertEquals`, in the body of the test to check the correctness of the program.
-
-In the previous example the test passes if the values of `obtained` and `expected` are the same.
-Let's check this by running the test.
+Let's check that `2+2` equals `4` by running the test.
 
 ## Running the tests
 
@@ -88,7 +83,7 @@ You can run all the tests of your program in a single command.
 
 {% tabs munit-unit-test-4 %}
 {% tab 'Scala CLI' %}
-Using Scala CLI, you can run the `test` command and pass it the folder containing all your source files, or just `.` if you run Scala CLI in that folder.
+Using Scala CLI, to run all the tests in folder `example`:
 ```
 scala-cli test example
 # Compiling project (test, Scala 3.2.1, JVM)
@@ -98,7 +93,7 @@ scala-cli test example
 ```
 {% endtab %}
 {% tab 'sbt' %}
-In the sbt shell, you can run the `test` task of the `example` project:
+In the sbt shell, to run all the tests of project `example`:
 ```
 sbt:example> example/test
 # MyTests:
@@ -108,7 +103,7 @@ sbt:example> example/test
 ```
 {% endtab %}
 {% tab 'Mill' %}
-Using Mill, you can run the `test` task in the `test` module of the `example` module:
+In Mill, to run all the tests of module `example`:
 ```
 ./mill example.test.test
 # [71/71] example.test.test 
@@ -120,7 +115,7 @@ Using Mill, you can run the `test` task in the `test` module of the `example` mo
 
 The `+` symbol before the name of the test indicates that the test passed successfully.
 
-You can add a failing test to see the difference:
+Add and run a failing test to see its different report:
 ```scala
 test("failing test") {
   val obtained = 2 + 3
@@ -128,9 +123,6 @@ test("failing test") {
   assertEquals(obtained, expected)
 }
 ```
-
-This test should fail, as `2 + 3` should not return `4`.
-Indeed, after running the test you should see the following output:
 
 ```
 # MyTests:
