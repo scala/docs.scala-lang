@@ -1,7 +1,8 @@
 ---
-title: Summary
+title: 总结
 type: section
 description: This page provides a summary of the previous 'Taste of Scala' sections.
+language: zh-cn
 num: 16
 previous-page: taste-toplevel-definitions
 next-page: first-look-at-types
@@ -25,7 +26,7 @@ permalink: "/zh-cn/scala3/book/:title.html"
 - 如何将对象用于多种目的
 - [上下文抽象][contextual]的介绍
 
-我们还提到，如果您更喜欢使用基于浏览器的游乐场环境而不是 Scala REPL，您还可以使用[Scastie.scala-lang.org](https://scastie.scala-lang.org/?target=dotty) 或 [ScalaFiddle.io](https://scalafiddle.io)。
+我们还提到，如果您更喜欢使用基于浏览器的游乐场环境而不是 Scala REPL，您还可以使用[Scastie](https://scastie.scala-lang.org)。
 
 Scala还有更多功能在这次旋风之旅中没有涵盖。
 有关更多详细信息，请参阅本书的其余部分和[参考文档][reference]。

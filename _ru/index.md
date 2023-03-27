@@ -1,5 +1,5 @@
 ---
-layout: inner-page-documentation
+layout: landing-page
 title: Изучаем Scala
 language: ru
 partof: documentation

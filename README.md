@@ -15,19 +15,34 @@ To build and view the site locally:
 
 For more details, read on.
 
-## Quickstart with Docker ##
+## Quickstart with Docker Compose ##
 
-To build and view site with Docker:
+You need to have [Docker Engine](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/) installed on your machine.
+Under macOS (Intel or Apple silicon), instead of installing [Docker Desktop](https://docs.docker.com/desktop/) you can also use [HomeBrew](https://brew.sh/) with [Colima](https://github.com/abiosoft/colima): `brew install colima docker docker-compose`.  
+UID and GID environment variables are needed to avoid docker from writing files as root in your directory.
+By default, docker-compose will use the file docker-compose.yml which will build the website and serve it on 0.0.0.0:4000 .
+If you just need to build the website, add ```-f docker-compose_build-only.yml```
 
-    env UID="$(id -u)" GID="$(id -g)" docker-compose up
+```
+env UID="$(id -u)" GID="$(id -g)" docker-compose up
+```
 
-It will incrementally build and serve site at `http://localhost:4000`.
+The generated site is available at `http://localhost:4000`.
 
-In case the Dockerfile changed, re-build it with:
+When the website dependencies change (the content of the `Gemfile`),
+you have to re-build the Docker image:
 
-    env UID="$(id -u)" GID="$(id -g)" docker-compose up --build
+```
+env UID="$(id -u)" GID="$(id -g)" docker-compose up --build
+```
 
-For more details on the Docker option, see [this issue](https://github.com/scala/docs.scala-lang/issues/1286).
+If you have problems with the Docker image or want to force the rebuild of the Docker image:
+```
+env UID="$(id -u)" GID="$(id -g)" docker-compose build --no-cache
+```
+
+
+For more details on the Docker option, see also [this issue](https://github.com/scala/docs.scala-lang/issues/1286).
 
 ## Contributing ##
 

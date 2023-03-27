@@ -1,5 +1,5 @@
 ---
-layout: inner-page-parent-dropdown
+layout: root-content-layout
 includeTOC: true
 ---
 
@@ -8,6 +8,9 @@ includeTOC: true
 		<div class="content-primary documentation glossary">
 			<div class="inner-box">
 				<div class="toc-context">
+					{% if page.new-version %}
+					{% include outdated-notice.html new-version=page.new-version %}
+					{% endif %}
 					{{content}}
 				</div>
 				{% if page.languages %}

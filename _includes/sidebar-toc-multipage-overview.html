@@ -21,8 +21,11 @@
               {% assign localizedId = pg.id %}
               {% for lpg in site.[page.language] %}
                 {% if lpg.id == localizedId %}
-                  <li><a {% if page.title == lpg.title %}class="active"{% endif %} href="{{ site.baseurl }}{{ pg.url }}">{{ lpg.title }}</a>
-                  {{ toc }}</li>
+                  {% if pg.type %} <!-- if a type is set in a document, we add it as a class. Used in Scala book to diff between chapter and section -->
+                  <li class="type-{{ pg.type }}"><a {% if page.num == pg.num %}class="active"{% endif %} href="{{ site.baseurl }}{{ pg.url }}">{{ lpg.title }}</a>{{ toc }}</li>
+                  {% else %}
+                  <li><a {% if page.num == pg.num %}class="active"{% endif %} href="{{ site.baseurl }}{{ pg.url }}">{{ lpg.title }}</a>{{ toc }}</li>
+                  {% endif %}
                 {% endif %}
               {% endfor %}
             {% else %} <!-- this must be English, so get the other documents' titles -->
@@ -37,6 +40,7 @@
         {% endfor %}
       </ul>
 
+      {% assign orphanTranslation = page.orphanTranslation | default: false %}
       {% if page.languages %}
         <ul id="available-languages" style="display: none;">
           <li><a href="{{ site.baseurl }}{{ page.url }}">English</a></li>
@@ -47,9 +51,13 @@
             <li><a href="{{ site.baseurl }}/{{ l }}/{{ rootTutorialURL }}" class="lang">{{ lang.name }}</a></li>
           {% endfor %}
         </ul>
-      {% elsif page.language %}
-         {% assign engPath = page.id | remove_first: "/" | remove_first: page.language | append: '.html' %}
-         {% assign engPg = site.overviews | where: 'partof', page.partof | first %}
+      {% elsif page.language and orphanTranslation == false %}
+        {% comment %}
+        <!-- i.e. some pages like '/zh-cn/thanks.html' have no english version -->
+        {% endcomment %}
+        {% assign engId = page.id | remove_first: "/" | remove_first: page.language %}
+        {% assign engPath = engId | append: '.html' %}
+        {% assign engPg = site.overviews | where: 'partof', page.partof | find: 'id', engId %}
         <ul id="available-languages" style="display: none;">
           <li><a href="{{ site.baseurl }}{{ engPath }}">English</a></li>
           {% for l in engPg.languages %}

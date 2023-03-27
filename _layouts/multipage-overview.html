@@ -1,5 +1,5 @@
 ---
-layout: inner-page-parent-dropdown
+layout: root-content-layout
 includeTOC: true
 includeCollectionTOC: true
 ---
@@ -9,6 +9,9 @@ includeCollectionTOC: true
 		<div class="content-primary documentation">
 			<div class="inner-box">
 				<div class="toc-context">
+					{% if page.new-version %}
+					{% include outdated-notice.html new-version=page.new-version %}
+					{% endif %}
 					{% if page.versionSpecific %}
 						{% if page.scala3 %}
 							{% assign versionSpecificLang = 'scala3' %}
@@ -17,6 +20,12 @@ includeCollectionTOC: true
 						{% endif %}
 						{% include version-specific-notice.html language=versionSpecificLang %}
 					{% endif %}
+					<noscript>
+						<blockquote>
+							<span style="font-weight: bold;">Info:</span> JavaScript is currently disabled, code tabs will still work,
+							but preferences will not be remembered.
+						</blockquote>
+					</noscript>
 					{{content}}
 				</div>
 

@@ -34,14 +34,14 @@ Scala のインストーラーは[Coursier](https://get-coursier.io/docs/cli-ove
 {% tab macOS for=install-cs-setup-tabs %}
 {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-brew %}
 {% altDetails cs-setup-macos-nobrew  "または、Homebrewを使用しない場合は" %}
-  {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-default %}
+  {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-x86-64 %}
 {% endaltDetails %}
 {% endtab %}
 <!-- end macOS -->
 
 <!-- Linux -->
 {% tab Linux for=install-cs-setup-tabs %}
-  {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.linux %}
+  {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.linux-x86-64 %}
 {% endtab %}
 <!-- end Linux -->
 

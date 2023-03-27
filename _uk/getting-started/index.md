@@ -38,7 +38,7 @@ _Scastie_ це онлайн “пісочниця”, де ви можете е�
 Виконайте наступну команду в терміналі, виконуючи всі спливаючі інструкції:
 {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-brew %}
 {% altDetails cs-setup-macos-nobrew "Якщо ви не використовуєте Homebrew:" %}
-{% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-default %}
+{% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-x86-64 %}
 {% endaltDetails %}
 {% endtab %}
 <!-- end macOS -->
@@ -46,7 +46,7 @@ _Scastie_ це онлайн “пісочниця”, де ви можете е�
 <!-- Linux -->
 {% tab Linux for=install-cs-setup-tabs %}
 Виконайте наступну команду в терміналі, виконуючи всі спливаючі інструкції:
-{% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.linux %}
+{% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.linux-x86-64 %}
 {% endtab %}
 <!-- end Linux -->
 

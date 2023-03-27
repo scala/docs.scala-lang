@@ -91,7 +91,7 @@ val newNumbers = double(oldNumbers)
 подобные этому, для вычисления того же результата:
 
 {% tabs scala-features-2 %}
-{% tab 'Scala 2 and 3' for=scala-features-2 %}
+{% tab 'Scala 2 и 3' for=scala-features-2 %}
 ```scala
 val newNumbers = oldNumbers.map(_ * 2)
 ```
@@ -108,7 +108,7 @@ Scala имеет краткий, удобочитаемый синтаксис.
 Например, переменные создаются лаконично, а их типы понятны:
 
 {% tabs scala-features-3 %}
-{% tab 'Scala 2 and 3' for=scala-features-3 %}
+{% tab 'Scala 2 и 3' for=scala-features-3 %}
 ```scala
 val nums = List(1,2,3)
 val p = Person("Martin", "Odersky")
@@ -120,7 +120,7 @@ val p = Person("Martin", "Odersky")
 Функции высшего порядка и лямбда-выражения делают код кратким и удобочитаемым:
 
 {% tabs scala-features-4 %}
-{% tab 'Scala 2 and 3' for=scala-features-4 %}
+{% tab 'Scala 2 и 3' for=scala-features-4 %}
 ```scala
 nums.map(i => i * 2)   // длинная форма
 nums.map(_ * 2)        // краткая форма
@@ -318,7 +318,7 @@ Scala 3 делает этот процесс более понятным, чем
 Например, в Scala вы можете читать файлы с помощью `BufferedReader` и `FileReader` из Java:
 
 {% tabs scala-features-7 %}
-{% tab 'Scala 2 and 3' for=scala-features-7 %}
+{% tab 'Scala 2 и 3' for=scala-features-7 %}
 ```scala
 import java.io.*
 val br = BufferedReader(FileReader(filename))
@@ -333,7 +333,7 @@ val br = BufferedReader(FileReader(filename))
 то можете преобразовать их с помощью всего нескольких строк кода:
 
 {% tabs scala-features-8 %}
-{% tab 'Scala 2 and 3' for=scala-features-8 %}
+{% tab 'Scala 2 и 3' for=scala-features-8 %}
 ```scala
 import scala.jdk.CollectionConverters.*
 val scalaList: Seq[Integer] = JavaClass.getJavaList().asScala.toSeq

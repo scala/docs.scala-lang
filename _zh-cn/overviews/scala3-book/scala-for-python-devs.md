@@ -2,9 +2,10 @@
 title: Scala for Python Developers
 type: chapter
 description: This page is for Python developers who are interested in learning about Scala 3.
-num: 75
+language: zh-cn
+num: 74
 previous-page: scala-for-javascript-devs
-next-page:
+next-page: where-next
 
 partof: scala3-book
 overview-name: "Scala 3 — Book"
@@ -1309,7 +1310,9 @@ a.takeWhile(_ < 30)                   // List(10, 20)
 Scala 中的有些概念目前在 Python 中没有等效的功能。
 请点击以下链接了解更多详情：
 
-- 大多数与[上下文抽象][contextual]相关的概念，如[扩展方法][extension-methods]、[类型类][type-classes]、隐式值
+<!-- TODO: add back [类型类][type-classes] link when translation is ready -->
+<!-- - 大多数与[上下文抽象][contextual]相关的概念，如[扩展方法][extension-methods]、[类型类][type-classes]、隐式值 -->
+- 大多数与[上下文抽象][contextual]相关的概念，如[扩展方法][extension-methods]、类型类、隐式值
 - Scala 允许多参数列表，从而实现部分应用函数等特性，以及创建自己的 DSL 的能力
 - 样例类，对于函数式编程和模式匹配非常有用
 - 创建自己的控制结构和 DSL 的能力
@@ -1354,6 +1357,5 @@ pip install -r requirements.txt
 [modeling-intro]: {% link _zh-cn/overviews/scala3-book/domain-modeling-intro.md %}
 [multiversal]: {% link _zh-cn/overviews/scala3-book/ca-multiversal-equality.md %}
 [toplevel]: {% link _zh-cn/overviews/scala3-book/taste-toplevel-definitions.md %}
-[type-classes]: {% link _zh-cn/overviews/scala3-book/types-type-classes.md %}
 [union-types]: {% link _zh-cn/overviews/scala3-book/types-union.md %}
 </div>

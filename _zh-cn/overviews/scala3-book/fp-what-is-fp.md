@@ -2,6 +2,7 @@
 title: 什么是函数式编程？
 type: section
 description: This section provides an answer to the question, what is functional programming?
+language: zh-cn
 num: 41
 previous-page: fp-intro
 next-page: fp-immutable-values

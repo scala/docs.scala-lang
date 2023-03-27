@@ -26,11 +26,11 @@ next_resources:
   - title: Scala Book
     description: Learn Scala by reading a series of short lessons.
     icon: "fa fa-book-open"
-    link: /scala3/book/scala-for-java-devs.html
+    link: /scala3/book/introduction.html
   - title: Online Courses
     description: MOOCs to learn Scala, for beginners and experienced programmers.
     icon: "fa fa-cloud"
-    link: /scala3/book/scala-for-java-devs.html
+    link:  /online-courses.html
 ---
 
 If you are coming to Scala with some Java experience already, this page should give a good overview of
@@ -1254,4 +1254,4 @@ contains more explanations and examples, and consult the *Scala
 
 [scala-book]: {% link _overviews/scala3-book/introduction.md %}
 [maven-setup]: {% link _overviews/tutorials/scala-with-maven.md %}
-[sbt-setup]: {% link _getting-started/sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.md %}#adding-a-dependency
+[sbt-setup]: {% link _overviews/getting-started/sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.md %}#adding-a-dependency

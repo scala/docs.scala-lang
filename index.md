@@ -1,6 +1,7 @@
 ---
-layout: inner-page-documentation
+layout: landing-page
 languages: [ja, zh-cn, ru, uk]
+
 title: Learn Scala
 namespace: root
 discourse: true

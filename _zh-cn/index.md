@@ -1,5 +1,5 @@
 ---
-layout: inner-page-documentation
+layout: landing-page
 language: zh-cn
 title: 学习 Scala
 namespace: root

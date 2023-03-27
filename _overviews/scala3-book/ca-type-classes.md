@@ -1,16 +1,21 @@
 ---
-title: Implementing Type Classes
+title: Type Classes
 type: section
 description: This page demonstrates how to create and use type classes in Scala 3.
 languages: [zh-cn]
-num: 64
-previous-page: ca-extension-methods
+num: 63
+previous-page: ca-given-imports
 next-page: ca-multiversal-equality
 ---
 
 
 A _type class_ is an abstract, parameterized type that lets you add new behavior to any closed data type without using sub-typing.
-This is useful in multiple use-cases, for example:
+If you are coming from Java, you can think of type classes as something like [`java.util.Comparator[T]`][comparator].
+
+> The paper [“Type Classes as Objects and Implicits”][typeclasses-paper] (2010) by Oliveira et al. discusses the basic ideas behind type classes in Scala.
+> Even though the paper uses an older version of Scala, the ideas still hold to the current day.
+
+A type class is useful in multiple use-cases, for example:
 
 - Expressing how a type you don’t own---from the standard library or a third-party library---conforms to such behavior
 - Expressing such a behavior for multiple types without involving sub-typing relationships between those types
@@ -108,4 +113,7 @@ trait HasLegs[A]:
 For a real-world example of how type classes are used in Scala 3, see the `CanEqual` discussion in the [Multiversal Equality section][multiversal].
 
 
+[typeclasses-paper]: https://infoscience.epfl.ch/record/150280/files/TypeClasses.pdf
+[typeclasses-chapter]: {% link _overviews/scala3-book/ca-type-classes.md %}
+[comparator]: https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html
 [multiversal]: {% link _overviews/scala3-book/ca-multiversal-equality.md %}

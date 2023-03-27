@@ -4,12 +4,12 @@ title: Пример 'Hello, World!'
 scala3: true
 partof: scala3-book
 overview-name: "Scala 3 — Book"
-type: chapter
+type: section
 description: В этом примере демонстрируется пример 'Hello, World!' на Scala 3.
 language: ru
 num: 5
 previous-page: taste-intro
-next-page:
+next-page: taste-repl
 ---
 
 > **Подсказка**: в следующих примерах попробуйте выбрать предпочтительную для вас версию Scala. 
@@ -109,7 +109,7 @@ Hello, World!
 Чтобы использовать этот метод, вам нужно сначала его импортировать, например:
 
 {% tabs import-readline %}
-{% tab 'Scala 2 and 3' for=import-readline %}
+{% tab 'Scala 2 и 3' for=import-readline %}
 ```scala
 import scala.io.StdIn.readLine
 ```
@@ -190,7 +190,7 @@ Hello, Alvin Alexander!
 если вы не используете подобное предложение `import`:
 
 {% tabs import-readline-2 %}
-{% tab 'Scala 2 and 3' for=import-readline-2 %}
+{% tab 'Scala 2 и 3' for=import-readline-2 %}
 ```scala
 import scala.io.StdIn.readLine
 ```

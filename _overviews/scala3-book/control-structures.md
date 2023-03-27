@@ -2,7 +2,7 @@
 title: Control Structures
 type: chapter
 description: This page provides an introduction to Scala's control structures, including if/then/else, 'for' loops, 'for' expressions, 'match' expressions, try/catch/finally, and 'while' loops.
-languages: [zh-cn]
+languages: [ru, zh-cn]
 num: 18
 previous-page: first-look-at-types
 next-page: domain-modeling-intro
@@ -22,8 +22,6 @@ It also has two other powerful constructs that you may not have seen before, dep
 - `match` expressions
 
 These are all demonstrated in the following sections.
-
-
 
 ## The if/then/else construct
 
@@ -118,12 +116,19 @@ else
 </blockquote>
 
 You can optionally include an `end if` statement at the end of each expression, if you prefer:
+
+{% tabs control-structures-5 %}
+{% tab 'Scala 3 Only'  %}
+
 ```scala
 if x == 1 then
   println("x is 1, as you can see:")
   println(x)
 end if
 ```
+
+{% endtab %}
+{% endtabs %}
 
 ### `if`/`else` expressions always return a result
 
@@ -142,7 +147,6 @@ val minValue = if a < b then a else b
 ```
 {% endtab %}
 {% endtabs %}
-
 
 Because they return a value, you can use `if`/`else` expressions as the body of a method:
 
@@ -633,7 +637,6 @@ val day = i match
 {% endtab %}
 {% endtabs %}
 
-
 In this example, the variable `i` is tested against the cases shown.
 If it’s between `0` and `6`, `day` is bound to the string that represents that day of the week.
 Otherwise, it matches the catch-all case represented by the character, `_`, and `day` is bound to the string, `"invalid day"`.
@@ -642,7 +645,6 @@ Since the cases are considered in the order they are written, and the first matc
 
 > When writing simple `match` expressions like this, it’s recommended to use the `@switch` annotation on the variable `i`.
 > This annotation provides a compile-time warning if the switch can’t be compiled to a `tableswitch` or `lookupswitch`, which are better for performance.
-
 
 ### Using the default value
 
@@ -749,7 +751,6 @@ i match
 {% endtab %}
 {% endtabs %}
 
-
 Here’s another example, which shows how to match a given value against ranges of numbers:
 
 {% tabs control-structures-27 class=tabs-scala-version %}
@@ -773,8 +774,6 @@ i match
 ```
 {% endtab %}
 {% endtabs %}
-
-
 
 #### Case classes and match expressions
 
@@ -856,6 +855,7 @@ isTruthy(2F)     // true
 Using a `match` expression as the body of a method is a very common use.
 
 #### Match expressions support many different types of patterns
+
 There are many different forms of patterns that can be used to write `match` expressions.
 Examples include:
 

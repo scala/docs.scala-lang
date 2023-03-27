@@ -40,8 +40,7 @@ scala_resources:
     icon: fa fa-bug
     link: /contribute/guide.html
   - title: Code Reviews
-    description: "Review pull requests against scala/scala, lampepfl/dotty, scala/scala-lang, scala/docs.scala-lang,
-    and others."
+    description: "Review pull requests against scala/scala, lampepfl/dotty, scala/scala-lang, scala/docs.scala-lang, and others."
     icon: fa fa-eye
     link: /contribute/codereviews.html
   - title: Core Libraries
