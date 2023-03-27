@@ -2,7 +2,7 @@
 title: How to Inspect Values
 type: section
 description: This page describes inspecting semantic values in the Scala 3 compiler.
-num: 8
+num: 9
 previous-page: procedures-areas
 next-page: procedures-efficiency
 ---
