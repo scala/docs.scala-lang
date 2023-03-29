@@ -1,10 +1,10 @@
 ---
-title: How to modify JSONs?
+title: How to modify JSON?
 type: section
-description: How to modify JSONs with Scala Toolkit.
-num: 30
-previous-page: upickle-write-json
-next-page: 
+description: Modifying JSON with UPickle.
+num: 23
+previous-page: upickle-serialize
+next-page: upickle-files
 ---
 
 {% include markdown.html path="_markdown/install-upickle.md" %}

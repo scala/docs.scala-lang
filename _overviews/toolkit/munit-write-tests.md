@@ -1,10 +1,10 @@
 ---
-title: How to write and run a test suite?
+title: How to write tests?
 type: section
-description: The basics of writing unit tests using munit
-num: 3
+description: The basics of writing a test suite with MUnit
+num: 6
 previous-page: munit-intro
-next-page: munit-assertions
+next-page: munit-run-tests
 ---
 
 {% include markdown.html path="_markdown/install-munit.md" %}
@@ -75,70 +75,46 @@ In the previous example, we have a test `"sum of integers"` that checks that `2 
 The assertion method `assertEquals` is used to check that two values are equal.
 The test passes if all the assertions are met, otherwise it fails.
 
-Let's check that `2+2` equals `4` by running the test.
+## Assertions
 
-## Running the tests
+Assertions describe what to check in your tests. If any assertion in a unit test
+fails, then the test fails. This tutorial shows the main assertion operations
+supported by [MUnit](https://index.scala-lang.org/scalameta/munit):
+- `assertEquals` to check that what you obtain is equal to what you expect,
+- `assert` to check a boolean condition on the result of a method.
 
-You can run all the tests of your program in a single command.
+Here is an example of test that use `assert` to check a boolean condition on a list.
 
-{% tabs munit-unit-test-4 %}
-{% tab 'Scala CLI' %}
-Using Scala CLI, to run all the tests in folder `example`:
-```
-scala-cli test example
-# Compiling project (test, Scala 3.2.1, JVM)
-# Compiled project (test, Scala 3.2.1, JVM)
-# MyTests:
-#  + sum of two integers 0.009s
+{% tabs assertions-1 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+class MyTests extends munit.FunSuite {
+  test("a unit test") {
+    // create a list containing some arbitrary input values
+    val input = List(1, 2, 3, 4)
+    // compute the double of every input value
+    val obtainedResults = input.map(double)
+    // check that they are all even numbers
+    assert(obtainedResults.forall(x => x % 2 == 0))
+  }
+}
 ```
 {% endtab %}
-{% tab 'sbt' %}
-In the sbt shell, to run all the tests of project `example`:
-```
-sbt:example> example/test
-# MyTests:
-#   + sum of two integers 0.006s
-# [info] Passed: Total 1, Failed 0, Errors 0, Passed 1
-# [success] Total time: 0 s, completed Nov 11, 2022 12:54:08 PM
-```
-{% endtab %}
-{% tab 'Mill' %}
-In Mill, to run all the tests of module `example`:
-```
-./mill example.test.test
-# [71/71] example.test.test 
-# MyTests:
-#   + sum of two integers 0.008s
+{% tab 'Scala 3' %}
+```scala
+class MyTests extends munit.FunSuite:
+  test("a unit test") {
+    // create a list containing some arbitrary input values
+    val input = List(1, 2, 3, 4)
+    // compute the double of every input value
+    val obtainedResults = input.map(double)
+    // check that they are all even numbers
+    assert(obtainedResults.forall(x => x % 2 == 0))
+  }
 ```
 {% endtab %}
 {% endtabs %}
 
-The `+` symbol before the name of the test indicates that the test passed successfully.
+MUnit contains more assertion methods that you can discover in its [documentation](https://scalameta.org/munit/docs/assertions.html):
+`assertNotEquals`, `assertNoDiff`, `fail`, and `compileErrors`.
 
-Add and run a failing test to see its different report:
-```scala
-test("failing test") {
-  val obtained = 2 + 3
-  val expected = 4
-  assertEquals(obtained, expected)
-}
-```
-
-```
-# MyTests:
-#   + sum of two integers 0.008s
-# ==> X MyTests.failing test  0.015s munit.ComparisonFailException: ./example/MyTests.test.scala:13
-# 12:    val expected = 4
-# 13:    assertEquals(obtained, expected)
-# 14:  }
-# values are not the same
-# => Obtained
-# 5
-# => Diff (- obtained, + expected)
-# -5
-# +4
-#     at munit.Assertions.failComparison(Assertions.scala:274)
-```
-
-The line starting with `==> X` indicates that the test named `failing test` failed.
-The following lines contain indications of where and why it failed.

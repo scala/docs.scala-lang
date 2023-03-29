@@ -1,16 +1,17 @@
 ---
-title: How to send an HTTP request with some query parameters?
+title: How to send a request with some query parameters?
 type: section
-description: How to make an HTTP request with parameters with Scala Toolkit.
-num: 20
-previous-page: sttp-variable-urls
-next-page: sttp-request-body
+description: Interpolating query parameters in sttp URIs.
+num: 29
+previous-page: sttp-uris
+next-page: sttp-string-body
 ---
 
 {% include markdown.html path="_markdown/install-sttp.md" %}
 
-## Sending a request with some query parameters
-You can add any query parameter in the URI of your request. For example `basicRequest.get(uri"https://example.com/list?filter=peter)"` is a GET request to `https://example.com/list` with a query parameter `filter=peter`.
+## Query parameters
+A query parameter is a way to assign a value to a parameter in a URI.
+For instance, "https://example.com/list?filter=peter" contains the query parameter `filter` with value `peter`.
 
 ## Adding custom query parameters
 You can interpolate the value of a variable into a query parameter using the `$` sign, or the `${}` syntax. 

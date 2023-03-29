@@ -1,15 +1,15 @@
 ---
-title: How to write a JSON?
+title: How to serialize an object to JSON?
 type: section
 description: How to write a JSON with Scala Toolkit.
-num: 29
-previous-page: upickle-read-json-typed
-next-page: upickle-modify-jsons
+num: 22
+previous-page: upickle-parse-json
+next-page: upickle-modify-json
 ---
 
 {% include markdown.html path="_markdown/install-upickle.md" %}
 
-## Writing values to JSONs in Scala Toolkit
+## Serializing a Map to JSON
 In Scala Toolkit, you can use `write` operation from `upickle` library to write Scala primitive and collection types to json.
 It also allows you to write your own data types to json.
 When you want to, for example, convert a list from `String` to `Int` to JSON, you can use the `write` method without any preparation:
@@ -34,7 +34,7 @@ This approach works only when the types are the same in the whole collection.
 You could not output a Map with key `name` pointing to `String`, and  key `pets` pointing to `List[String]`.
 To do that, we need to define our own data type.
 
-## Writing your own data types to JSON
+## Serializing an custom object to JSON
 In Scala, you can use a `case class` to define your own data type. For example, if you wanted to represent a Person with names of its pets, you could do it as follows:
 ```scala
 case class PetOwner(name: String, pets: List[String])

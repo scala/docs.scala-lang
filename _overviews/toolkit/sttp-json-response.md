@@ -1,18 +1,18 @@
 ---
-title: How to parse JSON from an HTTP response body?
+title: How to handle a JSON response?
 type: section
-description: How to read JSON from an HTTP response body?
-num: 24
-previous-page: sttp-send-file
-next-page: sttp-send-json-body
+description: Reading JSON in the response of a request with sttp
+num: 32
+previous-page: sttp-json-body
+next-page: sttp-upload-file
 ---
 
 {% include markdown.html path="_markdown/install-sttp.md" %}
 
 To read the JSON body of an HTTP response, you can use the integration between uPickle and sttp.
 This tutorial teaches how to do it in two steps:
-1. Defining your own data type and its uPickle `ReadWriter`
-2. Configuring the response of an HTTP request and sending it using sttp
+1. Defining your own data type and its uPickle `ReadWriter`.
+2. Handling the response of a request.
 
 As an example, we are going to use the [Github REST API](https://docs.github.com/en/rest/users) to get information about the octocat user.
 
@@ -47,8 +47,8 @@ Having a `given` value of type `ReadWriter[User]` in the current scope informs u
 You can learn more about `given` instances in the [Scala 3 book](https://docs.scala-lang.org/scala3/book/ca-given-using-clauses.html).
 The second part of this definition, `macroRW`, automates the instanciation of `ReadWriter` so that we don't have to do it by hand.
 
-## Parsing JSON from the response of an HTTP request
-Once you have a `given ReadWriter`, it is possible to parse the JSON response of an HTTP request to your data type.
+## Parsing JSON from the response of a request
+Once you have a `given ReadWriter`, it is possible to parse the JSON response of a request to your data type.
 
 In sttp the description of how to handle the response is part of the request itself.
 Thus, to parse a response from JSON to `User`, you can call `response(asJson[User])` on the request.
@@ -92,7 +92,5 @@ println(response.body)
 ```
 {% endtab %}
 {% endtabs %}
-
-
 
 When running the program, the `response.body` contains `User("octocat", "The Octocat", "San Francisco")`.

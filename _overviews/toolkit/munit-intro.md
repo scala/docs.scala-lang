@@ -1,8 +1,8 @@
 ---
 title: Testing with MUnit
 type: chapter
-description: The introduction of the munit library
-num: 2
-previous-page: introduction
-next-page: munit-test-suite
+description: The introduction of the MUnit library
+num: 5
+previous-page: intro-project
+next-page: munit-write-tests
 ---

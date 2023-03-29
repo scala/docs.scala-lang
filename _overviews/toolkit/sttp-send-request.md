@@ -1,10 +1,10 @@
 ---
-title: How to send an HTTP request?
+title: How to send a request?
 type: section
-description: How to send a simple HTTP request with Scala Toolkit.
-num: 18
+description: Sending a simple HTTP request with sttp.
+num: 27
 previous-page: sttp-intro
-next-page: sttp-variable-urls
+next-page: sttp-uris
 ---
 
 {% include markdown.html path="_markdown/install-sttp.md" %}
@@ -40,4 +40,4 @@ Other methods are available for the other HTTP methods: GET, POST, DELETE, etc.
 
 ## The `uri` interpolator
 The `uri` interpolator in `uri"https://httpbin.org/get"` keeps you safe from making some mistakes in the provided addresses.
-It can also interpolate values from variables as described in [How to construct URLs from variables]({% link _overviews/toolkit/sttp-variable-urls.md %}).
+It can also interpolate values from variables as described in ['How to construct URIs?']({% link _overviews/toolkit/sttp-uris.md %}).

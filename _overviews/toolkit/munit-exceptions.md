@@ -2,9 +2,9 @@
 title: How to test exceptions?
 type: section
 description: Describe the intercept assertion
-num: 5
-previous-page: munit-assertions
-next-page: munit-single-test
+num: 9
+previous-page: munit-test-only
+next-page: munit-asynchronous-tests
 ---
 
 {% include markdown.html path="_markdown/install-munit.md" %}

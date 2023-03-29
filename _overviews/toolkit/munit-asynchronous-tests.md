@@ -2,8 +2,8 @@
 title: How to write asynchronous tests?
 type: section
 description: Writing asynchronous tests using MUnit
-num: 8
-previous-page: munit-clues
+num: 10
+previous-page: munit-exceptions
 next-page: munit-resources
 ---
 

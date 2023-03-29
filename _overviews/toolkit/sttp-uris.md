@@ -1,20 +1,16 @@
 ---
-title: How to define URIs from variables
+title: How to construct URIs?
 type: section
-description: How to construct URIs from variables with Scala Toolkit.
-num: 19
+description: Using interpolation to construct URIs
+num: 28
 previous-page: sttp-send-request
 next-page: sttp-query-parameters
 ---
 
 {% include markdown.html path="_markdown/install-sttp.md" %}
 
-## URIs from variables
-You will often find yourself in a situation where the address depends on some variables. 
-For example, `https://example.com/john` may be a page about someone called John, but you may want to check out the pages of other people too.
-
 ## The `uri` interpolator
-The `uri` interpolator (e.g. in `uri"https://example.com/"`) allows you to create valid web addresses, also called URI.
+The `uri` interpolator (e.g. in `uri"https://example.com/"`) allows you to create valid web addresses, also called URIs.
 When you have a variable in scope, for instance `name`, you can put its value in the URI using the `$` sign or the `${}` syntax. For instance, the URI `uri"https://example.com/$name"` contains an interpolated variable `name`.
 It will produce the URI `https://example.com/peter`, exactly as you would expect.
 

@@ -2,7 +2,7 @@
 title: How to read a directory?
 type: section
 description: Reading a directory's contents with OS-Lib
-num: 13
+num: 14
 previous-page: oslib-intro
 next-page: oslib-read-file
 ---

@@ -2,7 +2,7 @@
 title: How to read a file?
 type: section
 description: Reading files from disk with OS-Lib
-num: 14
+num: 15
 previous-page: oslib-read-directory
 next-page: oslib-write-file
 ---

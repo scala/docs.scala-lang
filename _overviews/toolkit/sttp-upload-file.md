@@ -1,10 +1,10 @@
 ---
 title: How to upload a file over HTTP?
 type: section
-description: How to upload a file over HTTP request with Scala Toolkit.
-num: 23
-previous-page: sttp-request-body-custom
-next-page: sttp-receive-json-body
+description: Uploading a file over HTTP with sttp.
+num: 33
+previous-page: sttp-json-response
+next-page: sttp-what-else
 ---
 
 {% include markdown.html path="_markdown/install-sttp.md" %}

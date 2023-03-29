@@ -1,10 +1,10 @@
 ---
-title: How to send an HTTP request with a body?
+title: How to send a request with a string body?
 type: section
-description: How to send an HTTP request with a body using the Scala Toolkit.
-num: 21
+description: Sending a string body with sttp
+num: 30
 previous-page: sttp-query-parameters
-next-page: sttp-request-body-custom
+next-page: sttp-json-body
 ---
 
 {% include markdown.html path="_markdown/install-sttp.md" %}

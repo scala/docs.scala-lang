@@ -1,10 +1,10 @@
 ---
 title: How to run a single test?
 type: section
-description: ???
-num: 6
-previous-page: munit-exceptions
-next-page: munit-clues
+description: About testOnly in the build tool and .only in MUnit
+num: 8
+previous-page: munit-run-tests
+next-page: munit-exceptions
 ---
 
 {% include markdown.html path="_markdown/install-munit.md" %}
@@ -28,7 +28,7 @@ sbt:example> example/testOnly example.MyTests
 {% tab 'Mill' %}
 To run a single `example.MyTests` suite in Mill, use the `testOnly` task:
 ```
-./ mill example.test.testOnly example.MyTests
+./mill example.test.testOnly example.MyTests
 ```
 {% endtab %}
 {% endtabs %}

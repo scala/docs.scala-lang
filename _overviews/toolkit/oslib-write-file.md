@@ -2,7 +2,7 @@
 title: How to write a file?
 type: section
 description: Writing files to disk with OS-Lib
-num: 15
+num: 16
 previous-page: oslib-read-file
 next-page: oslib-run-process
 ---

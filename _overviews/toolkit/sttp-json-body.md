@@ -1,24 +1,24 @@
 ---
-title: How to send JSON as body of an HTTP request?
+title: How to send a request with a JSON body?
 type: section
 description: How to construct URLs from variables with Scala Toolkit.
-num: 25
-previous-page: sttp-receive-json-body
-next-page: upickle-intro
+num: 31
+previous-page: sttp-string-body
+next-page: sttp-json-response
 ---
 
 {% include markdown.html path="_markdown/install-sttp.md" %}
 
-To send an HTTP request with a JSON body, you can use the integration between uPickle and sttp.
+To send a JSON body in a request, you can use the integration between uPickle and sttp.
 This tutorial teaches how to do it in two steps:
 1. Defining your own data type and its uPickle `ReadWriter`
-2. Configuring the body of an HTTP request and sending it using sttp
+2. Configuring the body of a request and sending it using sttp
 
 As an example, we are going to write a program that can update the bio on your personal Github account using the [Github REST API](https://docs.github.com/en/rest/users/users?apiVersion=2022-11-28).
 Beware that you need a secret [Github authentication token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) to run the program.
 Do not share this token with anyone and do not paste it online.
 
-### Defining your own data type to 
+### Defining your own data type 
 In Scala, you can use a `case class` to define your own data type.
 For example, you can describe the information of a Github user like this:
 ```scala
@@ -43,8 +43,8 @@ case class UserInfo(name: String, location: String, bio: String) derives ReadWri
 {% endtab %}
 {% endtabs %}
 
-## Sending an HTTP request with a JSON body of your data type
-Once you have a `given ReadWriter`, it is possible to write an instance of your data type as JSON into the body of your HTTP request.
+## Sending an object as JSON
+Once you have a `given ReadWriter`, it is possible to write an instance of your data type as JSON into the body of your request.
 
 To do so you can call the `body` method and pass it an instance of `UserInfo`.
 

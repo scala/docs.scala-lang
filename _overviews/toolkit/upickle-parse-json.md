@@ -1,22 +1,15 @@
 ---
 title: How to parse a JSON value to a data type?
 type: section
-description: How to read a JSON to typed structure with Scala Toolkit
-num: 28
-previous-page: upickle-read-json
-next-page: upickle-write-json
+description: How to parse JSON to a data type
+num: 21
+previous-page: upickle-access-values
+next-page: upickle-serialize
 ---
 
 {% include markdown.html path="_markdown/install-upickle.md" %}
 
-In the Scala Toolkit, there are two ways of reading JSON: the dynamic way and the fully-typed way.
-- In the first approach, we can quickly extract data from JSON, without requiring any specific schema.
-To discover this approach read the [How to read JSON dynamically]({% link _overviews/toolkit/upickle-read-json.md %}). It is simple and fast.
-- In the second approach, you define your own data type, and transform JSON objects into instances of that data type, making sure that all the required fields are defined with valid types.
-This approach is described below.
-It is well-suited when you need to validate the JSON values, to store them or to operate on them in a safe way.
-
-## Parsing a JSON object to a Map
+## Parsing JSON to a Map
 To type a JSON object into a Scala `Map`, you can use the `upickle` library. 
 This approach is safe and convenient for working with structured data.
 It allows you to quiclky validate the structure of the JSON string.
@@ -38,7 +31,7 @@ We call the `upickle.default.read` with the type parameter `Map[String, List[Int
 
 If the JSON value does not match the expected type, upickle throws an exception.
 
-### Parsing a JSON object to a custom data type
+### Parsing JSON to a custom data type
 
 In Scala, you can use a `case class` to define your own data type.
 For example, to represent the pets and their owner, you can do it as follows:
