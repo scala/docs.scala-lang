@@ -1,7 +1,7 @@
 ---
 title: How to read JSON dynamically?
 type: section
-description: How to read JSON with Scala Toolkit.
+description: How to read JSON with the Scala Toolkit.
 num: 20
 previous-page: upickle-intro
 next-page: upickle-read-json-typed

@@ -4,7 +4,7 @@ type: section
 description: How to upload a file over HTTP request with Scala Toolkit.
 num: 18
 previous-page: sttp-request-body-custom
-next-page:
+next-page: sttp-receive-json-body
 ---
 
 {% include markdown.html path="_markdown/install-sttp.md" %}

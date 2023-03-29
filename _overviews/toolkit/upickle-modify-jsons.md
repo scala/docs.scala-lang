@@ -2,7 +2,7 @@
 title: How to modify JSONs?
 type: section
 description: How to modify JSONs with Scala Toolkit.
-num: 23
+num: 25
 previous-page: upickle-write-json
 next-page: 
 ---
