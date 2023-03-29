@@ -1,7 +1,7 @@
 ---
-title: How to parse a JSON value to a data type?
+title: How to parse JSON to a data type?
 type: section
-description: How to parse JSON to a data type
+description: Parsing JSON to a custome data type
 num: 21
 previous-page: upickle-access-values
 next-page: upickle-serialize
