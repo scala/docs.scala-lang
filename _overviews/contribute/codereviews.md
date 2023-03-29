@@ -42,7 +42,7 @@ own pull requests.
        <p>The Scala language website.</p>
      </div>
      <div class="span4 doc-block">
-       <h4><a href="https://github.com/scala/docs.scala-lang.org/pulls">scala/docs.scala-lang.org</a></h4>
+       <h4><a href="https://github.com/scala/docs.scala-lang/pulls">scala/docs.scala-lang.org</a></h4>
        <p>Scala documentation site.</p>
      </div>
    </div>

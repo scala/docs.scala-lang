@@ -2,7 +2,7 @@
 title: Control Structures
 type: section
 description: This section demonstrates Scala 3 control structures.
-languages: [zh-cn]
+languages: [ru, zh-cn]
 num: 8
 previous-page: taste-vars-data-types
 next-page: taste-modeling
@@ -480,7 +480,7 @@ finally
 ## `while` loops
 
 Scala also has a `while` loop construct.
-It’s one-line syntax looks like this:
+Its one-line syntax looks like this:
 
 {% tabs while_1 class=tabs-scala-version %}
 {% tab 'Scala 2' for=while_1 %}

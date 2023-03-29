@@ -2,6 +2,7 @@
 title: 类型初探
 type: chapter
 description: This page provides a brief introduction to Scala's built-in data types, including Int, Double, String, Long, Any, AnyRef, Nothing, and Null.
+language: zh-cn
 num: 17
 previous-page: taste-summary
 next-page: control-structures
@@ -11,7 +12,6 @@ overview-name: "Scala 3 — Book"
 layout: multipage-overview
 permalink: "/zh-cn/scala3/book/:title.html"
 ---
-
 
 
 ## 所有值都有一个类型
@@ -46,11 +46,20 @@ Scala中的每个用户定义类型都是 `AnyRef` 的子类型。
 在基于语句的编程语言中， `void` 用于没有返回值的方法。
 如果您在Scala中编写没有返回值的方法，例如以下方法，则 `Unit` 用于相同的目的：
 
+{% tabs unit %}
+{% tab 'Scala 2 and 3' for=unit %}
+
 ```scala
 def printIt(a: Any): Unit = println(a)
 ```
 
+{% endtab %}
+{% endtabs %}
+
 下面是一个示例，它演示了字符串、整数、字符、布尔值和函数都是 `Any` 的实例，可以像对待其他所有对象一样处理：
+
+{% tabs any %}
+{% tab 'Scala 2 and 3' for=any %}
 
 ```scala
 val list: List[Any] = List(
@@ -63,6 +72,9 @@ val list: List[Any] = List(
 
 list.foreach(element => println(element))
 ```
+
+{% endtab %}
+{% endtabs %}
 
 该代码定义了一个类型为 `List[Any]` 的值 `list` 。
 该列表使用各种类型的元素进行初始化，但每个元素都是 `scala.Any` 的实例，因此我们可以将它们添加到列表中。
@@ -82,6 +94,9 @@ true
 如上所示，Scala的值类型扩展了 `AnyVal`，它们都是成熟的对象。
 这些示例演示如何声明以下数值类型的变量：
 
+{% tabs anyval %}
+{% tab 'Scala 2 and 3' for=anyval %}
+
 ```scala
 val b: Byte = 1
 val i: Int = 1
@@ -91,17 +106,29 @@ val d: Double = 2.0
 val f: Float = 3.0
 ```
 
+{% endtab %}
+{% endtabs %}
+
 在前四个示例中，如果未显式指定类型，则数字 `1` 将默认为 `Int` ，因此，如果需要其他数据类型之一 --- `Byte` 、`Long` 或 `Short` --- 则需要显式声明这些类型，如上面代码所示。
 带有小数的数字（如2.0）将默认为 `Double` ，因此，如果您想要 `Float` ，则需要声明 `Float` ，如上一个示例所示。
 
 由于 `Int` 和 `Double` 是默认数值类型，因此通常在不显式声明数据类型的情况下创建它们：
+
+{% tabs anynum %}
+{% tab 'Scala 2 and 3' for=anynum %}
 
 ```scala
 val i = 123   // defaults to Int
 val x = 1.0   // defaults to Double
 ```
 
+{% endtab %}
+{% endtabs %}
+
 在代码中，您还可以将字符 `L` 、 `D` 和 `F` （及其小写等效项）加到数字末尾，以指定它们是 `Long`, `Double`, 或 `Float` 值：
+
+{% tabs type-post %}
+{% tab 'Scala 2 and 3' for=type-post %}
 
 ```scala
 val x = 1_000L   // val x: Long = 1000
@@ -109,12 +136,21 @@ val y = 2.2D     // val y: Double = 2.2
 val z = 3.3F     // val z: Float = 3.3
 ```
 
+{% endtab %}
+{% endtabs %}
+
 Scala还具有 `String` 和 `Char` 类型，通常可以使用隐式形式声明：
+
+{% tabs type-string %}
+{% tab 'Scala 2 and 3' for=type-string %}
 
 ```scala
 val s = "Bill"
 val c = 'a'
 ```
+
+{% endtab %}
+{% endtabs %}
 
 如下面表格所示，将字符串括在双引号中 --- 或多行字符串括在三引号中 --- 或字符括在单引号中。
 
@@ -136,20 +172,32 @@ val c = 'a'
 
 当您需要非常大的数字时，请使用 `BigInt` 和 `BigDecimal` 类型：
 
+{% tabs type-bigint %}
+{% tab 'Scala 2 and 3' for=type-bigint %}
+
 ```scala
 val a = BigInt(1_234_567_890_987_654_321L)
 val b = BigDecimal(123_456.789)
 ```
 
+{% endtab %}
+{% endtabs %}
+
 其中 `Double` 和 `Float` 是近似的十进制数， `BigDecimal` 用于精确算术，例如在使用货币时。
 
 `BigInt` 和 `BigDecimal` 的一个好处是，它们支持您习惯于用于数字类型的所有运算符：
+
+{% tabs type-bigint2 %}
+{% tab 'Scala 2 and 3' for=type-bigint2 %}
 
 ```scala
 val b = BigInt(1234567890)   // scala.math.BigInt = 1234567890
 val c = b + b                // scala.math.BigInt = 2469135780
 val d = b * b                // scala.math.BigInt = 1524157875019052100
 ```
+
+{% endtab %}
+{% endtabs %}
 
 ## 关于字符串的两个注释
 
@@ -163,27 +211,45 @@ Scala字符串类似于Java字符串，但它们有两个很棒的附加特性�
 字符串插值提供了一种非常可读的方式在字符串中使用变量。
 例如，给定以下三个变量：
 
+{% tabs string-inside1 %}
+{% tab 'Scala 2 and 3' for=string-inside1 %}
+
 ```scala
 val firstName = "John"
 val mi = 'C'
 val lastName = "Doe"
 ```
 
+{% endtab %}
+{% endtabs %}
+
 你可以把那些变量组合成这样的字符串：
+
+{% tabs string-inside2 %}
+{% tab 'Scala 2 and 3' for=string-inside2 %}
 
 ```scala
 println(s"Name: $firstName $mi $lastName")   // "Name: John C Doe"
 ```
 
+{% endtab %}
+{% endtabs %}
+
 只需在字符串前面加上字母 `s` ，然后在字符串内的变量名称之前放置一个 `$` 符号。
 
 如果要在字符串中使用可能较大的表达式时，请将它们放在大括号中：
+
+{% tabs string-inside3 %}
+{% tab 'Scala 2 and 3' for=string-inside3 %}
 
 ```scala
 println(s"2 + 2 = ${2 + 2}")   // prints "2 + 2 = 4"
 val x = -1
 println(s"x.abs = ${x.abs}")   // prints "x.abs = 1"
 ```
+
+{% endtab %}
+{% endtabs %}
 
 #### 其他插值器
 
@@ -196,13 +262,22 @@ println(s"x.abs = ${x.abs}")   // prints "x.abs = 1"
 
 多行字符串是通过将字符串包含在三个双引号内来创建的：
 
+{% tabs string-mlines1 %}
+{% tab 'Scala 2 and 3' for=string-mlines1 %}
+
 ```scala
 val quote = """The essence of Scala:
                Fusion of functional and object-oriented
                programming in a typed setting."""
 ```
 
+{% endtab %}
+{% endtabs %}
+
 这种基本方法的一个缺点是，第一行之后的行是缩进的，如下所示：
+
+{% tabs string-mlines2 %}
+{% tab 'Scala 2 and 3' for=string-mlines2 %}
 
 ```scala
 "The essence of Scala:
@@ -210,7 +285,13 @@ val quote = """The essence of Scala:
                programming in a typed setting."
 ```
 
+{% endtab %}
+{% endtabs %}
+
 当间距很重要时，在第一行之后的所有行前面放一个 `|` 符号，并在字符串之后调用 `stripMargin` 方法：
+
+{% tabs string-mlines3 %}
+{% tab 'Scala 2 and 3' for=string-mlines3 %}
 
 ```scala
 val quote = """The essence of Scala:
@@ -218,13 +299,22 @@ val quote = """The essence of Scala:
                |programming in a typed setting.""".stripMargin
 ```
 
+{% endtab %}
+{% endtabs %}
+
 现在字符串里所有行都是左对齐了：
+
+{% tabs string-mlines4 %}
+{% tab 'Scala 2 and 3' for=string-mlines4 %}
 
 ```scala
 "The essence of Scala:
 Fusion of functional and object-oriented
 programming in a typed setting."
 ```
+
+{% endtab %}
+{% endtabs %}
 
 ## 类型转换
 
@@ -234,6 +324,9 @@ programming in a typed setting."
 
 例如：
 
+{% tabs cast1 %}
+{% tab 'Scala 2 and 3' for=cast1 %}
+
 ```scala
 val b: Byte = 127
 val i: Int = b  // 127
@@ -242,13 +335,22 @@ val face: Char = '☺'
 val number: Int = face  // 9786
 ```
 
+{% endtab %}
+{% endtabs %}
+
 只有在没有丢失信息的情况下，才能强制转换为类型。否则，您需要明确说明强制转换：
+
+{% tabs cast2 %}
+{% tab 'Scala 2 and 3' for=cast2 %}
 
 ```scala
 val x: Long = 987654321
 val y: Float = x.toFloat  // 9.8765434E8 (注意 `.toFloat` 是必须的，因为强制类型转换后的精度会损)
 val z: Long = y  // Error
 ```
+
+{% endtab %}
+{% endtabs %}
 
 还可以将引用类型强制转换为子类型。
 这将在教程的后面部分介绍。

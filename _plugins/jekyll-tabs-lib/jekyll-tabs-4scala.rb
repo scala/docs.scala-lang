@@ -3,7 +3,7 @@ require 'erb'
 module Jekyll
     module Tabs
 
-        ScalaVersions = Set.new ['Scala 2', 'Scala 3']
+        ScalaVersions = ['Scala 2', 'Scala 3']
 
         def self.unquote(string)
             string.gsub(/^['"]|['"]$/, '')
@@ -54,31 +54,73 @@ module Jekyll
 
                 allTabs = environment["tabs-#{@name}"]
 
-                seenTabs = Set.new
+                seenTabs = []
+
+                def joinScalaVersions()
+                    Tabs::ScalaVersions.to_a.map{|item| "'#{item}'"}.join(", ")
+                end
+
+                def errorNonScalaVersion(tab)
+                    SyntaxError.new(
+                        "Scala version tab label '#{tab.label}' is not valid for tabs '#{@name}' with " +
+                        "class=tabs-scala-version. Valid tab labels are: #{joinScalaVersions()}")
+                end
+
+                def errorScalaVersionWithoutClass(tab)
+                    SyntaxError.new(
+                        "Scala version tab label '#{tab.label}' is not valid for tabs '#{@name}' without " +
+                        "class=tabs-scala-version")
+                end
+
+                def errorMissingScalaVersion()
+                    SyntaxError.new(
+                        "Tabs '#{@name}' with class=tabs-scala-version must have exactly the following " +
+                        "tab labels: #{joinScalaVersions()}")
+                end
+
+                def errorDuplicateTab(tab)
+                    SyntaxError.new("Duplicate tab label '#{tab.label}' in tabs '#{@name}'")
+                end
+
+                def errorScalaVersionDefault(tab)
+                    SyntaxError.new(
+                        "Scala version tab label '#{tab.label}' should not be default for tabs '#{@name}' " +
+                        "with class=tabs-scala-version")
+                end
 
                 allTabs.each do | tab |
                     if seenTabs.include? tab.label
-                        raise SyntaxError.new("Duplicate tab label '#{tab.label}' in tabs '#{@name}'")
+                        raise errorDuplicateTab(tab)
                     end
-                    seenTabs.add tab.label
+                    seenTabs.push tab.label
                     if tab.defaultTab
                         foundDefault = true
                     end
+
+                    isScalaTab = Tabs::ScalaVersions.include? tab.label
+
+                    if @is_scala_tabs
+                        if !isScalaTab
+                            raise errorNonScalaVersion(tab)
+                        elsif tab.defaultTab
+                            raise errorScalaVersionDefault(tab)
+                        end
+                    elsif !@is_scala_tabs and isScalaTab
+                        raise errorScalaVersionWithoutClass(tab)
+                    end
+                end
+
+                if @is_scala_tabs and seenTabs != Tabs::ScalaVersions
+                    raise errorMissingScalaVersion()
                 end
 
                 if !foundDefault and allTabs.length > 0
-                    # set last tab to default
-                    allTabs[-1].defaultTab = true
-                end
-
-                if @is_scala_tabs
-                    allTabs.each do | tab |
-                        if !Tabs::ScalaVersions.include?(tab.label)
-                            joined_versions = Tabs::ScalaVersions.to_a.map{|item| "'#{item}'"}.join(", ")
-                            raise SyntaxError.new(
-                                "Scala version tab label '#{tab.label}' is not valid for tabs '#{@name}' with " +
-                                "class=tabs-scala-version. Valid tab labels are: #{joined_versions}")
-                        end
+                    if @is_scala_tabs
+                        # set last tab to default ('Scala 3')
+                        allTabs[-1].defaultTab = true
+                    else
+                        # set first tab to default
+                        allTabs[0].defaultTab = true
                     end
                 end
 

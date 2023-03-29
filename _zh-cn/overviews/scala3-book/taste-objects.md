@@ -2,6 +2,7 @@
 title: 单例对象
 type: section
 description: This section provides an introduction to the use of singleton objects in Scala 3.
+language: zh-cn
 num: 12
 previous-page: taste-functions
 next-page: taste-collections
@@ -28,6 +29,20 @@ permalink: "/zh-cn/scala3/book/:title.html"
 因为 `object` 是单例，所以它的方法可以像 Java 类中的 `static` 方法一样被访问。
 例如，此 `StringUtils` 对象包含一个与字符串相关的方法的小型集合：
 
+{% tabs object_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=object_1 %}
+
+```scala
+object StringUtils {
+  def isNullOrEmpty(s: String): Boolean = s == null || s.trim.isEmpty
+  def leftTrim(s: String): String = s.replaceAll("^\\s+", "")
+  def rightTrim(s: String): String = s.replaceAll("\\s+$", "")
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=object_1 %}
+
 ```scala
 object StringUtils:
   def isNullOrEmpty(s: String): Boolean = s == null || s.trim.isEmpty
@@ -35,12 +50,21 @@ object StringUtils:
   def rightTrim(s: String): String = s.replaceAll("\\s+$", "")
 ```
 
+{% endtab %}
+{% endtabs %}
+
 由于 `StringUtils` 是一个单例，因此可以直接在对象上调用其方法：
+
+{% tabs object_2 %}
+{% tab 'Scala 2 and 3' for=object_2 %}
 
 ```scala
 val x = StringUtils.isNullOrEmpty("")    // true
 val x = StringUtils.isNullOrEmpty("a")   // false
 ```
+
+{% endtab %}
+{% endtabs %}
 
 ## 伴生对象
 
@@ -48,6 +72,29 @@ val x = StringUtils.isNullOrEmpty("a")   // false
 对不特定于伴生类实例的方法和值使用伴生对象。
 
 此示例演示了伴生类中的 `area` 方法如何访问其伴生对象中的私有 `calculateArea` 方法：
+
+{% tabs object_3 class=tabs-scala-version %}
+{% tab 'Scala 2' for=object_3 %}
+
+```scala
+import scala.math._
+
+class Circle(radius: Double) {
+  import Circle._
+  def area: Double = calculateArea(radius)
+}
+
+object Circle {
+  private def calculateArea(radius: Double): Double =
+    Pi * pow(radius, 2.0)
+}
+
+val circle1 = new Circle(5.0)
+circle1.area   // Double = 78.53981633974483
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=object_3 %}
 
 ```scala
 import scala.math.*
@@ -64,10 +111,37 @@ val circle1 = Circle(5.0)
 circle1.area   // Double = 78.53981633974483
 ```
 
+{% endtab %}
+{% endtabs %}
+
 ## 从 traits 创建模块
 
 对象还可用于实现创建模块的 trait。
 这种技术需要两个traits，并将它们结合起来创建一个具体的 `object`：
+
+{% tabs object_4 class=tabs-scala-version %}
+{% tab 'Scala 2' for=object_4 %}
+
+```scala
+trait AddService {
+  def add(a: Int, b: Int) = a + b
+}
+
+trait MultiplyService {
+  def multiply(a: Int, b: Int) = a * b
+}
+
+// implement those traits as a concrete object
+object MathService extends AddService with MultiplyService
+
+// use the object
+import MathService._
+println(add(1,1))        // 2
+println(multiply(2,2))   // 4
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=object_4 %}
 
 ```scala
 trait AddService:
@@ -84,6 +158,9 @@ import MathService.*
 println(add(1,1))        // 2
 println(multiply(2,2))   // 4
 ```
+
+{% endtab %}
+{% endtabs %}
 
 {% comment %}
 NOTE: I don’t know if this is worth keeping, but I’m leaving it here as a comment for now.

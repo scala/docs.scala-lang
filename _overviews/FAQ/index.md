@@ -83,10 +83,10 @@ individual to individual.  `-Xlint` is valuable to enable.  Some brave
 people enable `-Werror` (formerly `-Xfatal-warnings`) to make warnings
 fatal.
 
-[sbt-tpolecat](https://github.com/DavidGregory084/sbt-tpolecat) is an
+[sbt-tpolecat](https://github.com/typelevel/sbt-tpolecat) is an
 opinionated sbt plugin that sets many options automatically, depending
 on Scala version; you can see
-[here](https://github.com/DavidGregory084/sbt-tpolecat/blob/master/src/main/scala/io/github/davidgregory084/TpolecatPlugin.scala)
+[here](https://github.com/typelevel/sbt-tpolecat/blob/main/plugin/src/main/scala/io/github/davidgregory084/TpolecatPlugin.scala)
 what it sets.  Some choices it makes are oriented towards
 pure-functional programmers.
 
@@ -149,11 +149,11 @@ See [this]({{ site.baseurl }}/tutorials/FAQ/initialization-order.html).
 
 See the [Scala 2.13 Collections Guide](https://docs.scala-lang.org/overviews/collections-2.13/introduction.html).
 
-### What are context bounds (`[T : Foo]`)?
+### What are context bounds?
 
-It's syntactic sugar for an `implicit` parameter of type `Foo[T]`.
+It's syntactic sugar for a context parameter (an `implicit` parameter in Scala 2, or a `using` parameter in Scala 3).
 
-More details in this [Stack Overflow answer](https://stackoverflow.com/a/4467012).
+More details in this [section of the Scala 3 Book](https://docs.scala-lang.org/scala3/book/ca-context-bounds.html) and this [Stack Overflow answer](https://stackoverflow.com/a/4467012).
 
 ### How does `for / yield` work?
 
@@ -312,14 +312,14 @@ setting in a multi-project build.
 
 For example, if you add this to your `build.sbt`:
 
-    scalaVersion := "2.13.7"
+    scalaVersion := "2.13.10"
 
 that's a "bare" setting, and you might expect it to apply build-wide.
 But it doesn't. _It only applies to the root project._
 
 In many cases one should instead write:
 
-    ThisBuild / scalaVersion := "2.13.7"
+    ThisBuild / scalaVersion := "2.13.10"
 
 Other possibilities include:
 

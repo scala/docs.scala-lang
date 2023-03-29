@@ -216,4 +216,4 @@ To experiment with this on your own, please see the *PizzaOopExample* project in
 
 - [github.com/alvinj/HelloScalaExamples](https://github.com/alvinj/HelloScalaExamples)
 
-To compile this project it will help to either (a) use IntelliJ IDEA or Eclipse, or (b) know how to use the [Scala Build Tool](http://www.scala-sbt.org).
+To compile this project it will help to either (a) use IntelliJ IDEA or Metals, or (b) know how to use the [Scala Build Tool](http://www.scala-sbt.org).

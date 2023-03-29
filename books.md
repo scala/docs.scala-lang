@@ -1,6 +1,6 @@
 ---
 title: Books
-layout: inner-page
+layout: basic-index
 redirect_from:
   - /documentation/books.html
 ---

@@ -18,7 +18,9 @@ It is unsound and might cause runtime failures, as demonstrated by this [test](h
 
 The Scala 3 compiler does not permit this anymore.
 
-```scala
+{% tabs scala-2-unsound_vc_1 %}
+{% tab 'Scala 2 Only' %}
+~~~ scala
 class Foo[-A](x: List[A]) {
   def f[B](y: List[B] = x): Unit = ???
 }
@@ -26,8 +28,11 @@ class Foo[-A](x: List[A]) {
 class Outer[+A](x: A) {
   class Inner(y: A)
 }
-```
+~~~
+{% endtab %}
+{% endtabs %}
 
+So if you compile in Scala 3, you will get the following error.
 {% highlight text %}
 -- Error: src/main/scala/variance.scala:2:8 
 2 |  def f[B](y: List[B] = x): Unit = y
@@ -75,7 +80,9 @@ Scala 3 fixes some unsoundness bugs in pattern matching, preventing some semanti
 
 For instance, the match expression in `combineReq` can be compiled with Scala 2.13 but not with Scala 3.
 
-```scala
+{% tabs scala-2-unsound_pm_1 %}
+{% tab 'Scala 2 Only' %}
+~~~ scala
 trait Request
 case class Fetch[A](ids: Set[A]) extends Request
 
@@ -88,9 +95,11 @@ object Request {
     }
   }
 }
-```
+~~~
+{% endtab %}
+{% endtabs %}
 
-The error message is:
+In Scala 3, the error message is:
 
 {% highlight text %}
 -- [E007] Type Mismatch Error: src/main/scala/pattern-match.scala:9:59 
@@ -100,6 +109,7 @@ The error message is:
   |                                                Required: Fetch[A$1]
 {% endhighlight %}
 
+
 Which is right, there is no proof that `x` and `y` have the same type parameter `A`.
 
 Coming from Scala 2, this is clearly an improvement to help us locate mistakes in our code.
@@ -108,9 +118,13 @@ It is not always easy and sometimes it is even not possible, in which case the c
 
 In this example, we can relax the constraint on `x` and `y` by stating that `A` is a common ancestor of both type arguments.
 This makes the compiler type-check the code successfully.
-
-```scala
+{% tabs shared-unsound_pm_2 %}
+{% tab 'Scala 2 and 3' %}
+~~~ scala
 def combineFetch[A](x: Fetch[_ <: A], y: Fetch[_ <: A]): Fetch[A] = Fetch(x.ids ++ y.ids)
-```
+~~~
+{% endtab %}
+{% endtabs %}
 
 Alternatively, a general but unsafe solution is to cast.
+

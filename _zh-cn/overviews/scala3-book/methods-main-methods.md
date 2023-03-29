@@ -2,6 +2,7 @@
 title: main 方法
 type: section
 description: This page describes how 'main' methods and the '@main' annotation work in Scala 3.
+language: zh-cn
 num: 25
 previous-page: methods-most
 next-page: methods-summary
@@ -11,7 +12,6 @@ overview-name: "Scala 3 — Book"
 layout: multipage-overview
 permalink: "/zh-cn/scala3/book/:title.html"
 ---
-
 
 
 Scala 3 提供了一种定义可以从命令行调用的程序的新方法：在方法中添加 `@main` 注释会将其变成可执行程序的入口点：

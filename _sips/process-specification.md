@@ -218,6 +218,12 @@ An implementation will be reviewed by the compiler team, and once the
 implementation is deemed good enough, it can ship as an Experimental feature in
 the following practical release of the compiler.
 
+Often, proposals not only need to be implemented in the compiler, but also in
+several other tools (IDEs, syntax highlighters, code formatters, etc.). As soon
+as a proposal reaches the implementation stage, the Committee notifies the
+impacted tools that they should start implementing support for it. A list of
+tools of the ecosystem is maintained in [this document][tooling ecosystem].
+
 The implementers may hit challenges that were not foreseen by the Committee. 
 Early users may also provide feedback based on practical experience with the 
 Experimental feature. This feedback can be sent back to the Committee by 
@@ -227,12 +233,12 @@ case, the SIP Author and Reviewers will work together with the implementers to
 address the feedback. This is again an iterative process. Reviewers may merge
 changes to the proposal at their discretion during this phase.
 
-Once the implementation is deemed stable, including appropriate tests, the
-implementers and reviewers can schedule the SIP to the next Committee meeting
-for final approval. Once again, a SIP needs to gather strictly more than 50% 
-"Accept" votes to be Completed. If that is not achieved, it may likewise be sent 
-back for refinements, or be rejected, with the same rules as in the "Design 
-Stage -- Vote" section.
+Once the implementation is deemed stable, including appropriate tests and
+sufficient support by the tooling ecosystem, the implementers and reviewers can
+schedule the SIP to the next Committee meeting for final approval. Once again, a
+SIP needs to gather strictly more than 50% "Accept" votes to be Completed. If
+that is not achieved, it may likewise be sent back for refinements, or be
+rejected, with the same rules as in the "Design Stage -- Vote" section.
 
 ### Completed Stage
 
@@ -321,3 +327,5 @@ exceptions to the process, or to refine the process.
 ## How do I submit?
 
 Follow the [submission tutorial]({% link _sips/sip-tutorial.md %}).
+
+[tooling ecosystem]: https://github.com/scala/improvement-proposals/blob/main/tooling-ecosystem.md

@@ -2,6 +2,7 @@
 title: 结构化类型
 type: section
 description: This section introduces and demonstrates structural types in Scala 3.
+language: zh-cn
 num: 55
 previous-page: types-opaque-types
 next-page: types-dependent-function

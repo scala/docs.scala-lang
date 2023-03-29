@@ -1,5 +1,5 @@
 ---
-layout: inner-page-documentation
+layout: landing-page
 title: Documentation for Scala 3
 language: ja
 namespace: root

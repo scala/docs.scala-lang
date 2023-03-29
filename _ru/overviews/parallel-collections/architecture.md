@@ -48,7 +48,7 @@ _Примечание:_ Если есть два `Combiner`а, `c1` и `c2` гд
 
 Параллельные коллекции Scala во многом созданы под влиянием дизайна библиотеки (последовательных) коллекций Scala. На рисунке ниже показано, что их дизайн фактически отражает соответствующие трейты фреймворка обычных коллекций.
 
-[<img src="{{ site.baseurl }}/resources/images/parallel-collections-hierarchy.png" width="550">]({{ site.baseurl }}/resources/images/parallel-collections-hierarchy.png)
+[<img src="{{ site.baseurl }}/resources/images/parallel-collections-hierarchy.png" alt="parallel Collections Hierarchy" width="550">]({{ site.baseurl }}/resources/images/parallel-collections-hierarchy.png)
 
 <center><b>Иерархия библиотеки Scala: коллекции и параллельные коллекции</b></center>
 <br/>

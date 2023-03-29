@@ -2,7 +2,7 @@
 title: Write Your Own map Method
 type: section
 description: This page demonstrates how to create and use higher-order functions in Scala.
-languages: [zh-cn]
+languages: [ru, zh-cn]
 num: 32
 previous-page: fun-hofs
 next-page: fun-write-method-returns-function

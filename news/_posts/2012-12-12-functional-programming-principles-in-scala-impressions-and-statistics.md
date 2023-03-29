@@ -1,5 +1,5 @@
 ---
-layout: inner-page-no-masthead
+layout: singlepage-overview
 title: "Functional Programming Principles in Scala: Impressions and Statistics"
 ---
 ###### By Heather Miller and Martin Odersky
@@ -79,7 +79,7 @@ We also collected numbers about the used programming tools. First, we were inter
 
 <div style="text-align: center;"><h6>Which editor do you normally use, and which editor did you use for the course?</h6><div id="editors">&nbsp;</div></div>
 
-The collected numbers are markedly different. In no small part this is due to the fact that the [Scala IDE for Eclipse](https://scala-ide.org) introduced a new [worksheet](https://github.com/scala-ide/scala-worksheet/wiki/Getting-Started) component used throughout the lectures.
+The collected numbers are markedly different. In no small part this is due to the fact that the Scala IDE for Eclipse introduced a new [worksheet](https://github.com/scala-ide/scala-worksheet/wiki/Getting-Started) component used throughout the lectures.
 
 We'd like to close with some fun, and partially surprising, information on the demographics of those who took the course and completed our survey. Here is a world map showing the number of participants per country&mdash; darker colors indicate a larger number of students per-country:
 

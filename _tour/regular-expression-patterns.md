@@ -107,11 +107,11 @@ key: width value: 100
 
 Moreover, regular expressions can be used as patterns (in `match` expressions) to conveniently extract the matched groups:
 
-{% tabs regex-patterns_saveContactInfomation class=tabs-scala-version %}
+{% tabs regex-patterns_saveContactInformation class=tabs-scala-version %}
 
-{% tab 'Scala 2' for=regex-patterns_saveContactInfomation %}
+{% tab 'Scala 2' for=regex-patterns_saveContactInformation %}
 ```scala mdoc
-def saveContactInfomation(contact: String): Unit = {
+def saveContactInformation(contact: String): Unit = {
   import scala.util.matching.Regex
 
   val emailPattern: Regex = """^(\w+)@(\w+(.\w+)+)$""".r
@@ -127,15 +127,15 @@ def saveContactInfomation(contact: String): Unit = {
   }
 }
 
-saveContactInfomation("123-456-7890")
-saveContactInfomation("JohnSmith@sample.domain.com")
-saveContactInfomation("2 Franklin St, Mars, Milky Way")
+saveContactInformation("123-456-7890")
+saveContactInformation("JohnSmith@sample.domain.com")
+saveContactInformation("2 Franklin St, Mars, Milky Way")
 ```
 {% endtab %}
 
-{% tab 'Scala 3' for=regex-patterns_saveContactInfomation %}
+{% tab 'Scala 3' for=regex-patterns_saveContactInformation %}
 ```scala
-def saveContactInfomation(contact: String): Unit =
+def saveContactInformation(contact: String): Unit =
   import scala.util.matching.Regex
 
   val emailPattern: Regex = """^(\w+)@(\w+(.\w+)+)$""".r
@@ -149,9 +149,9 @@ def saveContactInfomation(contact: String): Unit =
     case _ =>
       println("Invalid contact information, neither an email address nor phone number.")
 
-saveContactInfomation("123-456-7890")
-saveContactInfomation("JohnSmith@sample.domain.com")
-saveContactInfomation("2 Franklin St, Mars, Milky Way")
+saveContactInformation("123-456-7890")
+saveContactInformation("JohnSmith@sample.domain.com")
+saveContactInformation("2 Franklin St, Mars, Milky Way")
 ```
 {% endtab %}
 

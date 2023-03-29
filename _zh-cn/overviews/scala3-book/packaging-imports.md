@@ -2,6 +2,7 @@
 title: 打包和导入
 type: chapter
 description: A discussion of using packages and imports to organize your code, build related modules of code, control scope, and help prevent namespace collisions.
+language: zh-cn
 num: 35
 previous-page: fun-summary
 next-page: collections-intro

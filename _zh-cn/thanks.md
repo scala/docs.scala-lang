@@ -1,7 +1,8 @@
 ---
-layout: inner-page-no-masthead
+layout: singlepage-overview
 language: zh-cn
 title: 致谢名单
+orphanTranslation: true
 ---
 
 2013年10月份起，CSDN CODE开始组织志愿者翻译Scala官方文档。计划翻译的文档主要为Scala官网上overview部分的内容，包含以下部分：
