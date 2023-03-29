@@ -2,7 +2,7 @@
 title: How to send an HTTP request with some query parameters?
 type: section
 description: How to make an HTTP request with parameters with Scala Toolkit.
-num: 15
+num: 20
 previous-page: sttp-variable-urls
 next-page: sttp-request-body
 ---

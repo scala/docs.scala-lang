@@ -2,7 +2,7 @@
 title: How to parse JSON from an HTTP response body?
 type: section
 description: How to read JSON from an HTTP response body?
-num: 19
+num: 24
 previous-page: sttp-send-file
 next-page: sttp-send-json-body
 ---

@@ -2,7 +2,7 @@
 title: How to send JSON as body of an HTTP request?
 type: section
 description: How to construct URLs from variables with Scala Toolkit.
-num: 20
+num: 25
 previous-page: sttp-receive-json-body
 next-page: upickle-intro
 ---

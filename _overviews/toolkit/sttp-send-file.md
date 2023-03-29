@@ -2,7 +2,7 @@
 title: How to upload a file over HTTP?
 type: section
 description: How to upload a file over HTTP request with Scala Toolkit.
-num: 18
+num: 23
 previous-page: sttp-request-body-custom
 next-page: sttp-receive-json-body
 ---

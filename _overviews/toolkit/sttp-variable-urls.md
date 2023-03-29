@@ -2,7 +2,7 @@
 title: How to define URIs from variables
 type: section
 description: How to construct URIs from variables with Scala Toolkit.
-num: 14
+num: 19
 previous-page: sttp-send-request
 next-page: sttp-query-parameters
 ---

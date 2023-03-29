@@ -2,7 +2,7 @@
 title: How to send an HTTP request?
 type: section
 description: How to send a simple HTTP request with Scala Toolkit.
-num: 13
+num: 18
 previous-page: sttp-intro
 next-page: sttp-variable-urls
 ---

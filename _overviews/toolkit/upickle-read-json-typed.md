@@ -2,7 +2,7 @@
 title: How to parse a JSON value to a data type?
 type: section
 description: How to read a JSON to typed structure with Scala Toolkit
-num: 23
+num: 28
 previous-page: upickle-read-json
 next-page: upickle-write-json
 ---

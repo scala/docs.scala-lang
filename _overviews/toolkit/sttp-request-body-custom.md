@@ -2,7 +2,7 @@
 title: How to send a custom object as the body of an HTTP request?
 type: section
 description: How to make an HTTP request with an object as a body with Scala Toolkit.
-num: 17
+num: 22
 previous-page: sttp-request-body
 next-page: sttp-send-file
 ---

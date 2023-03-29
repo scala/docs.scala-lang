@@ -2,7 +2,7 @@
 title: How to send an HTTP request with a body?
 type: section
 description: How to send an HTTP request with a body using the Scala Toolkit.
-num: 16
+num: 21
 previous-page: sttp-query-parameters
 next-page: sttp-request-body-custom
 ---

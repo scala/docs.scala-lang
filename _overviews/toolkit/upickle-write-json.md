@@ -2,7 +2,7 @@
 title: How to write a JSON?
 type: section
 description: How to write a JSON with Scala Toolkit.
-num: 24
+num: 29
 previous-page: upickle-read-json-typed
 next-page: upickle-modify-jsons
 ---
