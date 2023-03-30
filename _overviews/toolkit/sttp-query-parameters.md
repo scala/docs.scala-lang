@@ -1,5 +1,5 @@
 ---
-title: How to send a request with some query parameters?
+title: How to send a request with query parameters?
 type: section
 description: Interpolating query parameters in sttp URIs.
 num: 29
