@@ -71,6 +71,6 @@ Su Mo Tu We Th Fr Sa
 ## Customizing the process
 
 `call()` takes various optional arguments, too many to explain
-individually here. For example, you can set environment variables
-(`env = ...`), or redirect input and output (`stdin = ...`, `stdout =
-...`, `stderr = ...`).
+individually here. For example, you can set the working directory
+(`cwd = ...`), set environment variables (`env = ...`), or redirect
+input and output (`stdin = ...`, `stdout = ...`, `stderr = ...`).
