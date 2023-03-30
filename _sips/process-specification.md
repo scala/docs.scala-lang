@@ -272,7 +272,7 @@ The current Chairperson is:
 
 The current Secretary is:
 
-- Seth Tisue ([@sethtisue](https://github.com/sethtisue)), Lightbend
+- Seth Tisue ([@SethTisue](https://github.com/SethTisue)), Lightbend
 
 ### Committee Meetings
 
