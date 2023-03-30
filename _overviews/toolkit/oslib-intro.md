@@ -1,11 +1,13 @@
 ---
-title: Files and processes with OS-Lib
+title: Working with files and processes with OS-Lib
 type: chapter
 description: The introduction of the OS-lib library
 num: 13
 previous-page: munit-what-else
 next-page: oslib-read-directory
 ---
+
+{% include markdown.html path="_markdown/install-os-lib.md" %}
 
 ## What is OS-Lib?
 
