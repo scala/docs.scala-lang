@@ -28,13 +28,15 @@ from an idea to the inclusion in the language.
   language (additions, changes, and/or removals).
 - Committee: a group of experienced Scala practitioners and language designers, 
   who evaluate changes to the Scala programming language. It consists of a
-  Chairperson and Members.
+  Secretary, a Chairperson, and Members.
 - Chairperson: person in charge of executing the process. They organize and 
   chair the meetings of the Committee, and generally make sure the process is
   followed, but do not vote on proposals. The Chairperson is an appointed 
   employee of the Scala Center.
 - Committee Member: member of the Committee with voting rights. The Chairperson
   cannot be a Member at the same time.
+- Secretary: person attending the regular meetings and responsible for writing
+  notes of the discussions.
 - SIP Author: any individual or group of people who writes a SIP for submission
   to the Committee. The Chairperson and Committee Members may also be SIP Authors.
   Authors are responsible for building consensus within the community and
@@ -267,6 +269,10 @@ The current committee members are:
 The current Chairperson is:
 
 - Julien Richard-Foy ([@julienrf](https://github.com/julienrf)), Scala Center
+
+The current Secretary is:
+
+- Seth Tisue ([@sethtisue](https://github.com/sethtisue)), Lightbend
 
 ### Committee Meetings
 
