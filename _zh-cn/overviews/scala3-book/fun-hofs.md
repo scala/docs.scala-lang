@@ -41,9 +41,13 @@ permalink: "/zh-cn/scala3/book/:title.html"
 例如，您可以通过查看 Scaladoc 来了解 `filter` 接受的函数类型。
 这是 `List[A]` 类中的 `filter` 定义：
 
+{% tabs filter-definition %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 def filter(p: (A) => Boolean): List[A]
 ```
+{% endtab %}
+{% endtabs %}
 
 这表明 `filter` 是一个接受名为 `p` 的函数参数的方法。
 按照惯例，`p` 代表 *谓词（predicate）*，它只是一个返回 `Boolean` 值的函数。
@@ -53,16 +57,24 @@ def filter(p: (A) => Boolean): List[A]
 
 具体看函数参数 `p`，这部分 `filter` 的描述：
 
+{% tabs filter-definition_1 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 p: (A) => Boolean
 ```
+{% endtab %}
+{% endtabs %}
 
 意味着您传入的任何函数都必须将类型 `A` 作为输入参数并返回一个 `Boolean` 。
 因此，如果您的列表是 `List[Int]`，则可以将通用类型 `A` 替换为 `Int`，并像这样读取该签名：
 
+{% tabs filter-definition_2 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 p: (Int) => Boolean
 ```
+{% endtab %}
+{% endtabs %}
 
 因为 `isEven` 具有这种类型——它将输入 `Int` 转换为结果 `Boolean`——它可以与 `filter` 一起使用。
 
@@ -85,15 +97,23 @@ NOTE: (A low-priority issue): The next several sections can be condensed.
 
 为了证明这一点，这里有一个方法，它接受一个名为 `f` 的输入参数，其中 `f` 是一个函数：
 
+{% tabs sayHello-definition %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 def sayHello(f: () => Unit): Unit = f()
 ```
+{% endtab %}
+{% endtabs %}
 
 这部分代码---*类型签名*---声明 `f` 是一个函数，并定义了 `sayHello` 方法将接受的函数类型：
 
+{% tabs sayHello-definition_1 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 f: () => Unit
 ```
+{% endtab %}
+{% endtabs %}
 
 这是它的工作原理：
 
@@ -107,15 +127,23 @@ f: () => Unit
 现在我们已经定义了 `sayHello`，让我们创建一个函数来匹配 `f` 的签名，以便我们可以测试它。
 以下函数不接受任何输入参数并且不返回任何内容，因此它匹配 `f` 的类型签名：
 
+{% tabs helloJoe-definition %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 def helloJoe(): Unit = println("Hello, Joe")
 ```
+{% endtab %}
+{% endtabs %}
 
 因为类型签名匹配，你可以将 `helloJoe` 传递给 `sayHello`：
 
+{% tabs sayHello-usage %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 sayHello(helloJoe)   // prints "Hello, Joe"
 ```
+{% endtab %}
+{% endtabs %}
 
 如果您以前从未这样做过，那么恭喜您：
 您刚刚定义了一个名为 `sayHello` 的方法，它接受一个函数作为输入参数，然后在其方法体中调用该函数。
@@ -125,16 +153,24 @@ sayHello(helloJoe)   // prints "Hello, Joe"
 重要的是要知道这种方法的美妙之处并不是说​​ `sayHello` 可以将 *一个* 函数作为输入参数；而在于它可以采用与 `f` 签名匹配的 *任意一个* 函数。
 例如，因为下一个函数没有输入参数并且不返回任何内容，所以它也适用于 `sayHello`：
 
+{% tabs bonjourJulien-definition %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 def bonjourJulien(): Unit = println("Bonjour, Julien")
 ```
+{% endtab %}
+{% endtabs %}
 
 它在 REPL 中：
 
+{% tabs bonjourJulien-usage %}
+{% tab 'Scala 2 and 3' %}
 ````
 scala> sayHello(bonjourJulien)
 Bonjour, Julien
 ````
+{% endtab %}
+{% endtabs %}
 
 这是一个好的开始。
 现在唯一要做的就是查看更多示例，了解如何为函数参数定义不同的类型签名。
@@ -143,48 +179,72 @@ Bonjour, Julien
 
 在这种方法中：
 
+{% tabs sayHello-definition-2 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 def sayHello(f: () => Unit): Unit
 ```
+{% endtab %}
+{% endtabs %}
 
 我们注意到 `f` 的类型签名是：
 
+{% tabs sayHello-definition-2_1 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 () => Unit
 ```
+{% endtab %}
+{% endtabs %}
 
 我们知道这意味着，“一个没有输入参数并且不返回任何有意义的东西的函数（由 `Unit` 给出）。”
 
 为了演示更多类型签名示例，这里有一个函数，它接受一个 `String` 参数并返回一个 `Int`：
 
+{% tabs sayHello-definition-2_2 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 f: (String) => Int
 ```
+{% endtab %}
+{% endtabs %}
 
 什么样的函数接受一个字符串并返回一个整数？
 “字符串长度”和校验和等函数就是两个例子。
 
 同样，此函数接受两个 `Int` 参数并返回一个 `Int`：
 
+{% tabs sayHello-definition-2_3 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 f: (Int, Int) => Int
 ```
+{% endtab %}
+{% endtabs %}
 
 你能想象什么样的函数匹配那个签名？
 
 答案是任何接受两个 `Int` 输入参数并返回 `Int` 的函数都与该签名匹配，因此所有这些“函数”（实际上是方法）都是匹配的：
 
+{% tabs add-sub-mul-definitions %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 def add(a: Int, b: Int): Int = a + b
 def subtract(a: Int, b: Int): Int = a - b
 def multiply(a: Int, b: Int): Int = a * b
 ```
+{% endtab %}
+{% endtabs %}
 
 正如您可以从这些示例中推断出的，定义函数参数类型签名的一般语法是：
 
+{% tabs add-sub-mul-definitions_1 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 variableName: (parameterTypes ...) => returnType
 ```
+{% endtab %}
+{% endtabs %}
 
 > 因为函数式编程就像创建和组合一系列代数方程，所以在设计函数和应用程序时通常会考虑*很多*类型。
 > 你可能会说你“在类型中思考”。
@@ -197,29 +257,47 @@ variableName: (parameterTypes ...) => returnType
 
 例如，这是一个名为 `executeNTimes` 的方法，它有两个输入参数：一个函数和一个 `Int`：
 
+{% tabs executeNTimes-definition class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+def executeNTimes(f: () => Unit, n: Int): Unit =
+  for (i <- 1 to n) f()
+```
+{% endtab %}
+{% tab 'Scala 3' %}
 ```scala
 def executeNTimes(f: () => Unit, n: Int): Unit =
   for i <- 1 to n do f()
 ```
+{% endtab %}
+{% endtabs %}
 
 如代码所示，`executeNTimes` 执行了`f` 函数 `n` 次。
 因为像这样的简单 `for` 循环没有返回值，`executeNTimes` 返回 `Unit`。
 
 要测试 `executeNTimes`，请定义一个匹配 `f` 签名的方法：
 
+{% tabs helloWorld-definition %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 // a method of type `() => Unit`
 def helloWorld(): Unit = println("Hello, world")
 ```
+{% endtab %}
+{% endtabs %}
 
 然后将该方法与 `Int` 一起传递给`executeNTimes`：
 
+{% tabs helloWorld-usage %}
+{% tab 'Scala 2 and 3' %}
 ````
 scala> executeNTimes(helloWorld, 3)
 Hello, world
 Hello, world
 Hello, world
 ````
+{% endtab %}
+{% endtabs %}
 
 优秀。
 `executeNTimes` 方法执行 `helloWorld` 函数 3 次。
@@ -229,13 +307,19 @@ Hello, world
 您的方法可以继续变得尽可能复杂。
 例如，此方法采用类型为 `(Int, Int) => Int` 的函数，以及两个输入参数：
 
+{% tabs executeAndPrint-definition %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 def executeAndPrint(f: (Int, Int) => Int, i: Int, j: Int): Unit =
   println(f(i, j))
 ```
+{% endtab %}
+{% endtabs %}
 
 因为这些 `sum` 和 `multiply` 方法与该类型签名匹配，所以它们可以与两个 `Int` 值一起传递到 `executeAndPrint` 中：
 
+{% tabs executeAndPrint-usage %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 def sum(x: Int, y: Int) = x + y
 def multiply(x: Int, y: Int) = x * y
@@ -243,6 +327,8 @@ def multiply(x: Int, y: Int) = x * y
 executeAndPrint(sum, 3, 11)       // prints 14
 executeAndPrint(multiply, 3, 9)   // prints 27
 ```
+{% endtab %}
+{% endtabs %}
 
 ## 函数类型签名一致性
 
@@ -250,9 +336,13 @@ executeAndPrint(multiply, 3, 9)   // prints 27
 
 例如，如果你要编写一个计算两个整数之和的函数，你可以这样写：
 
+{% tabs f-val-definition %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val f: (Int, Int) => Int = (a, b) => a + b
 ```
+{% endtab %}
+{% endtabs %}
 
 该代码由类型签名组成：
 
