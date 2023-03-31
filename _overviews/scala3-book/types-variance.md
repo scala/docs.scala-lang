@@ -86,10 +86,7 @@ def oneOf(
 ): Buyable = {
   val b1 = p1.process(b)
   val b2 = p2.process(b)
-  if (b1.price < b2.price)
-    b1 
-  else
-    b2
+  if (b1.price < b2.price) b1 else b2
  } 
 ```
 {% endtab %}
