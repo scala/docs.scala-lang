@@ -149,6 +149,11 @@ These articles provide more information about Scala 3 macros:
 - [The reference documentation on Quotes Reflect][quotes-reflect]
 - [The reference documentation on macros](macros)
 
+<!-- Keep synced with https://docs.scala-lang.org/scala3/reference/metaprogramming/tasty-inspect.html# -->
+TASTyViz is a tool to inspect TASTy files visually.
+At the time of writing, it is still in the early stages of developement, therefore you can expect missing functionality and less-than-ideal user experience, but it could still prove useful when debugging.
+You can check it out [here](https://github.com/shardulc/tastyviz).
+
 [benefits]: https://www.scala-lang.org/blog/2018/04/30/in-a-nutshell.html
 [erasure]: https://www.scala-lang.org/files/archive/spec/2.13/03-types.html#type-erasure
 [binary]: {% link _overviews/tutorials/binary-compatibility-for-library-authors.md %}
