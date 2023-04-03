@@ -40,8 +40,8 @@ never a bad idea to check.
 
 #### Nice To Have
 
-An IDE, such as [Metals] will help you develop in Scala 3 with features such as goto-definition,
-and with the [VS Code][vs-code] text editor you can even create interactive worksheets for an
+An IDE, such as [Metals] will help you develop in Scala 3 with features such as autocompletion or goto-definition,
+and with the [VS Code][vs-code] text editor you can even use the Scala debugger, or create interactive worksheets for an
 iterative workflow.
 
 ### Clone the Code

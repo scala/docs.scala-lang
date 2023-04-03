@@ -32,6 +32,19 @@ Scala 的解决方案是使用类似 `Option`/`Some`/`None` 类的结构。
 想象一下，您想编写一个方法，可以轻松地将字符串转换为整数值，并且您想要一种优雅的方法来处理异常，这个是异常是该方法获取类似“Hello”而不是“1”的字符串时引发的。
 对这种方法的初步猜测可能如下所示：
 
+{% tabs fp-java-try class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+def makeInt(s: String): Int =
+  try {
+    Integer.parseInt(s.trim)
+  } catch {
+    case e: Exception => 0
+  }
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 def makeInt(s: String): Int =
   try
@@ -39,6 +52,8 @@ def makeInt(s: String): Int =
   catch
     case e: Exception => 0
 ```
+{% endtab %}
+{% endtabs %}
 
 如果转换成功，则此方法返回正确的 `Int` 值，但如果失败，则该方法返回 `0`。
 出于某些目的，这可能是可以的，但它并不准确。
@@ -57,6 +72,19 @@ Scala 中这个问题的一个常见解决方案是使用三个类，称为 `Opt
 
 这是 `makeInt` 的修订版：
 
+{% tabs fp--try-option class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+def makeInt(s: String): Option[Int] =
+  try {
+    Some(Integer.parseInt(s.trim))
+  } catch {
+    case e: Exception => None
+  }
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 def makeInt(s: String): Option[Int] =
   try
@@ -64,16 +92,22 @@ def makeInt(s: String): Option[Int] =
   catch
     case e: Exception => None
 ```
+{% endtab %}
+{% endtabs %}
 
 这段代码可以理解为，“当给定的字符串转换为整数时，返回包裹在 `Some` 中的 `Int`，例如 `Some(1)`。
 当字符串无法转换为整数时，会抛出并捕获异常，并且该方法返回一个 `None` 值。”
 
 这些示例展示了 `makeInt` 的工作原理：
 
+{% tabs fp-try-option-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val a = makeInt("1")     // Some(1)
 val b = makeInt("one")   // None
 ```
+{% endtab %}
+{% endtabs %}
 
 如图所示，字符串`"1"`产生一个 `Some(1)`，而字符串 `"one"` 产生一个 `None`。
 这是错误处理的 `Option` 方法的本质。
@@ -99,11 +133,24 @@ val b = makeInt("one")   // None
 
 一种可能的解决方案是使用 `match` 表达式：
 
+{% tabs fp-option-match class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+makeInt(x) match {
+  case Some(i) => println(i)
+  case None => println("That didn’t work.")
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 makeInt(x) match
   case Some(i) => println(i)
   case None => println("That didn’t work.")
 ```
+{% endtab %}
+{% endtabs %}
 
 在本例中，如果 `x` 可以转换为 `Int`，则计算第一个 `case` 子句右侧的表达式；如果 `x` 不能转换为 `Int`，则计算第二个 `case` 子句右侧的表达式。
 
@@ -113,6 +160,20 @@ makeInt(x) match
 例如，假设您要将三个字符串转换为整数值，然后将它们相加。
 这就是你使用 `for` 表达式和 `makeInt` 的方法：
 
+{% tabs fp-for-comprehension class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+val y = for {
+  a <- makeInt(stringA)
+  b <- makeInt(stringB)
+  c <- makeInt(stringC)
+} yield {
+  a + b + c
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 val y = for
   a <- makeInt(stringA)
@@ -121,6 +182,8 @@ val y = for
 yield
   a + b + c
 ```
+{% endtab %}
+{% endtabs %}
 
 在该表达式运行后，`y` 将是以下两种情况之一：
 
@@ -129,6 +192,24 @@ yield
 
 你可以自己测试一下：
 
+{% tabs fp-for-comprehension-evaluation class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+val stringA = "1"
+val stringB = "2"
+val stringC = "3"
+
+val y = for {
+  a <- makeInt(stringA)
+  b <- makeInt(stringB)
+  c <- makeInt(stringC)
+} yield {
+  a + b + c
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 val stringA = "1"
 val stringB = "2"
@@ -141,15 +222,21 @@ val y = for
 yield
   a + b + c
 ```
+{% endtab %}
+{% endtabs %}
 
 使用该样本数据，变量 `y` 的值将是 `Some(6)` 。
 
 要查看失败案例，请将这些字符串中的任何一个更改为不会转换为整数的字符串。
 当你这样做时，你会看到 `y` 是 `None`：
 
+{% tabs fp-for-comprehension-failure-result %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 y: Option[Int] = None
 ```
+{% endtab %}
+{% endtabs %}
 
 ## 将 Option 视为容器
 
@@ -171,10 +258,14 @@ They have many of the methods you’d expect from a collection class, including 
 
 This raises an interesting question: What will these two values print, if anything?
 
+{% tabs fp-option-methods-evaluation %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 makeInt("1").foreach(println)
 makeInt("x").foreach(println)
 ```
+{% endtab %}
+{% endtabs %}
 
 Answer: The first example prints the number `1`, and the second example doesn’t print anything.
 The first example prints `1` because:
@@ -196,12 +287,30 @@ Somewhere in Scala’s history, someone noted that the first example (the `Some`
 *But* despite having two different possible outcomes, the great thing with `Option` is that there’s really just one path: The code you write to handle the `Some` and `None` possibilities is the same in both cases.
 The `foreach` examples look like this:
 
+{% tabs fp-another-option-method-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 makeInt(aString).foreach(println)
 ```
+{% endtab %}
+{% endtabs %}
 
 And the `for` expression looks like this:
 
+{% tabs fp-another-for-comprehension-example  class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+val y = for {
+  a <- makeInt(stringA)
+  b <- makeInt(stringB)
+  c <- makeInt(stringC)
+} yield {
+  a + b + c
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 val y = for
   a <- makeInt(stringA)
@@ -210,16 +319,31 @@ val y = for
 yield
   a + b + c
 ```
+{% endtab %}
+{% endtabs %}
 
 With exceptions you have to worry about handling branching logic, but because `makeInt` returns a value, you only have to write one piece of code to handle both the Happy and Unhappy Paths, and that simplifies your code.
 
 Indeed, the only time you have to think about whether the `Option` is a `Some` or a `None` is when you handle the result value, such as in a `match` expression:
 
+{% tabs fp-option-match-handle class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+makeInt(x) match {
+  case Some(i) => println(i)
+  case None => println("That didn't work.")
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 makeInt(x) match
   case Some(i) => println(i)
   case None => println("That didn't work.")
 ```
+{% endtab %}
+{% endtabs %}
 
 > There are several other ways to handle `Option` values.
 > See the reference documentation for more details.
@@ -229,6 +353,8 @@ makeInt(x) match
 
 回到 `null` 值，`null` 值可以悄悄地潜入你的代码的地方是这样的类：
 
+{% tabs fp=case-class-nulls %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 class Address(
   var street1: String,
@@ -238,10 +364,26 @@ class Address(
   var zip: String
 )
 ```
+{% endtab %}
+{% endtabs %}
 
 虽然地球上的每个地址都有一个 `street1` 值，但 `street2` 值是可选的。
 因此，`street2` 字段可以被分配一个 `null` 值：
 
+{% tabs fp-case-class-nulls-example class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+val santa = new Address(
+  "1 Main Street",
+  null,               // <-- D’oh! A null value!
+  "North Pole",
+  "Alaska",
+  "99705"
+)
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 val santa = Address(
   "1 Main Street",
@@ -251,10 +393,14 @@ val santa = Address(
   "99705"
 )
 ```
+{% endtab %}
+{% endtabs %}
 
 从历史上看，开发人员在这种情况下使用了空白字符串和空值，这两种方法都是使用技巧来解决基础性的问题，这个问题是：`street2` 是一个*可选*字段。
 在 Scala 和其他现代语言中，正确的解决方案是预先声明 `street2` 是可选的：
 
+{% tabs fp-case-class-with-options %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 class Address(
   var street1: String,
@@ -264,9 +410,25 @@ class Address(
   var zip: String
 )
 ```
+{% endtab %}
+{% endtabs %}
 
 现在开发人员可以编写更准确的代码，如下所示：
 
+{% tabs fp-case-class-with-options-example-none class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+val santa = new Address(
+  "1 Main Street",
+  None,           // 'street2' has no value
+  "North Pole",
+  "Alaska",
+  "99705"
+)
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 val santa = Address(
   "1 Main Street",
@@ -276,9 +438,25 @@ val santa = Address(
   "99705"
 )
 ```
+{% endtab %}
+{% endtabs %}
 
 或这个：
 
+{% tabs fp-case-class-with-options-example-some class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+val santa = new Address(
+  "123 Main Street",
+  Some("Apt. 2B"),
+  "Talkeetna",
+  "Alaska",
+  "99676"
+)
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 val santa = Address(
   "123 Main Street",
@@ -288,6 +466,8 @@ val santa = Address(
   "99676"
 )
 ```
+{% endtab %}
+{% endtabs %}
 
 ## `Option` 不是唯一的解决方案
 
