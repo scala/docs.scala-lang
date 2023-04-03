@@ -484,7 +484,7 @@ object B:
 ```
 {% endtab %}
 {% endtabs %}
-
+In Scala 2, that style of import does not exist. Implicit definitions are always imported by the wildcard import.
 ### Discussion
 
 The wildcard selector `*` brings all definitions other than givens or extensions into scope, whereas a `given` selector brings all *givens*---including those resulting from extensions---into scope.
