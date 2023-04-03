@@ -469,6 +469,7 @@ This makes them private to the current class, so they can’t be called nor over
 
 {% tabs method_20 class=tabs-scala-version %}
 {% tab 'Scala 2' for=method_20 %}
+
 ```scala
 class Animal {
   private def breathe() = println("I’m breathing")
