@@ -456,7 +456,7 @@ val c = Vector(-1, 0) ++: a   // Vector(-1, 0, 1, 2, 3)
 > Подробную информацию о производительности `Vector` и других коллекций 
 > см. [в характеристиках производительности коллекций](https://docs.scala-lang.org/overviews/collections-2.13/performance-characteristics.html).
 
-Наконец, `Vector` в цикле `for` используется точно так же, как `List`, `ArrayBuffer` или любая другая последовательность:
+Наконец, `Vector` в выражениях вида `for` используется точно так же, как `List`, `ArrayBuffer` или любая другая последовательность:
 
 {% tabs vector-loop class=tabs-scala-version %}
 
