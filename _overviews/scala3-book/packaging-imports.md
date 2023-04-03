@@ -99,7 +99,7 @@ These examples demonstrate some of that flexibility:
 import users._                            // import everything from the `users` package
 import users.User                         // import only the `User` class
 import users.{User, UserPreferences}      // import only two selected members
-import users.{UserPreferences as UPrefs}  // rename a member as you import it
+import users.{UserPreferences => UPrefs}  // rename a member as you import it
 ```
 
 {% endtab %}
