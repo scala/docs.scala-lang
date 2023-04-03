@@ -56,12 +56,12 @@ class Person ...
 
 {% tabs packaging-imports-1 class=tabs-scala-version %}
 {% tab 'Scala 2' %}```scala
-package users{
+package users {
 
-  package administrators{  // the full name of this package is users.administrators
+  package administrators {  // the full name of this package is users.administrators
     class AdminUser        // the full name of this class users.administrators.AdminUser
   }
-  package normalusers{     // the full name of this package is users.normalusers
+  package normalusers {     // the full name of this package is users.normalusers
     class NormalUser       // the full name of this class is users.normalusers.NormalUser
   }
 }
