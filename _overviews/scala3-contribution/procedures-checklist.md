@@ -2,7 +2,7 @@
 title: Pull Request Checklist
 type: section
 description: This page describes a checklist before opening a Pull Request to the Scala 3 compiler.
-num: 11
+num: 12
 previous-page: procedures-testing
 next-page: arch-intro
 ---

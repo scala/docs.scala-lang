@@ -17,19 +17,27 @@ permalink: "/zh-cn/scala3/book/:title.html"
 Scala 是一种独特的语言，因为它是静态类型的，但通常_感觉_它灵活和动态。
 例如，由于类型推断，您可以编写这样的代码而无需显式指定变量类型：
 
+{% tabs hi %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val a = 1
 val b = 2.0
 val c = "Hi!"
 ```
+{% endtab %}
+{% endtabs %}
 
 这使代码感觉是动态类型的。
 并且由于新特性，例如 Scala 3 中的 [联合类型][union-types]，您还可以编写如下代码，非常简洁地表达出期望哪些值作为参数，哪些值作为返回的类型：
 
+{% tabs union-example %}
+{% tab 'Scala 3 Only' %}
 ```scala
 def isTruthy(a: Boolean | Int | String): Boolean = ???
 def dogCatOrWhatever(): Dog | Plant | Car | Sun = ???
 ```
+{% endtab %}
+{% endtabs %}
 
 正如例子所暗示的，当使用联合类型时，这些类型不必共享一个公共层次结构，您仍然可以接受它们作为参数或从方法中返回它们。
 

@@ -12,7 +12,7 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 
 | JDK version | Minimum Scala versions                                       |
 |:-----------:|:-------------------------------------------------------------|
-| 20 (ea)     | 3.3.0 (forthcoming), 2.13.11 (forthcoming), 2.12.18 (forthcoming) |
+| 20          | 3.3.0 (soon), 2.13.11 (soon), 2.12.18 (soon)                 |
 | 19          | 3.2.0, 2.13.9, 2.12.16                                       |
 | 18          | 3.1.3, 2.13.7, 2.12.15                                       |
 | 17 (LTS)    | 3.0.0, 2.13.6, 2.12.15                                       |
@@ -29,21 +29,21 @@ Lightbend offers [commercial support](https://www.lightbend.com/lightbend-platfo
 
 ## Running versus compiling
 
-JDK 8, 11, and 17 are all reasonable choices both for *compiling* and *running* Scala code.
+JDK 8, 11, 17, and 20 are all reasonable choices both for *compiling* and *running* Scala code.
 
 Since the JVM is normally backwards compatible, it is usually safe to use a newer JVM for *running* your code than the one it was compiled on, especially if you are not using JVM features designated "experimental" or "unsafe".
 
-JDK 8 remains in use at many shops (as of early 2022), but usage is declining and some projects are dropping support. If you compile on JDK 11+ but want to allow your users to stay on 8, additional care is needed to avoid using APIs and features that don't exist in 8. (For this reason, some Scala developers use JDK 11 or 17 for their daily work but do release builds on JDK 8.)
+JDK 8 remains in use at some shops (as of early 2023), but usage is declining and some projects are dropping support. If you compile on JDK 11+ but want to allow your users to stay on 8, additional care is needed to avoid using APIs and features that don't exist in 8. (For this reason, some Scala developers use a newer JDK for their daily work but do release builds on JDK 8.)
 
 ## Long Term Support (LTS) versions
 
 After Java 8, Oracle introduced the concept of LTS versions of the JDK. These versions will remain supported (by Oracle, and likely by the rest of the ecosystem, including Scala) for longer than the versions in between. See <https://www.oracle.com/technetwork/java/eol-135779.html>.
 
-JDK 8, 11, and 17 are LTS versions.
+JDK 8, 11, and 17 are LTS versions. (The next LTS version will be 21.)
 
 Scala provides experimental support for running the Scala compiler on non-LTS versions of the JDK. The current LTS versions are normally tested in our CI matrix and by the Scala community build. We may also test non-LTS versions, but any issues found there are considered lower priority, and will not be considered release blockers. (Lightbend may be able to offer faster resolution of issues like this under commercial support.)
 
-As already mentioned, Scala code compiled on JDK 8 should run without problems in later JVMs. We will give higher priority to bugs that break this property. (For example, later in the 2.13.x series we hope to provide support for JPMS module access checks, to ensure your code won't incur `LinkageErrors` due to module access violations.)
+As already mentioned, Scala code compiled on JDK 8 should run without problems in later JVMs. We will give higher priority to bugs that break this property. (For example, in 2.13.x we might eventually provide support for JPMS module access checks, to ensure your code won't incur `LinkageErrors` due to module access violations.)
 
 ## JDK vendors and distributions
 
@@ -72,7 +72,7 @@ To track progress on JDK 11 related issues in Scala, watch:
 
 JDK 17 is an LTS release.
 
-Scala 2.13.6 and 2.12.15 support JDK 17.
+Scala 2.13.6+ and 2.12.15+ support JDK 17.
 
 The Scala test suite and Scala community build are green on JDK 17.
 
@@ -94,11 +94,25 @@ Support for JDK 19 was included in Scala 2.13.9 and 2.12.16.
 
 ## JDK 20 compatibility notes
 
-Early access builds of JDK 20, a non-LTS release, are already available.
+JDK 20, a non-LTS release, came out in March 2023.
+
+Support for JDK 20 has already been merged and is available in
+[nightly builds](https://stackoverflow.com/questions/40622878/how-do-i-tell-sbt-or-scala-cli-to-use-a-nightly-build-of-scala-2-12-or-2-13)
+of Scala 2.12, 2.13, and 3.
+
+The support will be included in forthcoming Scala releases: 2.12.18,
+2.13.11, and 3.3.0.  We hope to release these in April 2023, or not
+long after.
+
+<!--
+## JDK 21 compatibility notes
+
+Early access builds of JDK 21, a non-LTS release, are already available.
 
 Initial support for JDK 20 has been merged and is already available in
 nightly builds of Scala 2.12, 2.13, and 3.  (The support will be
-included in forthcoming Scala releases: 2.12.18, 2.13.11, and 3.3.0.)
+included in forthcoming Scala releases: 2.12.19, 2.13.12, and 3.3.1.)
+-->
 
 ## GraalVM Native Image compatibility notes
 

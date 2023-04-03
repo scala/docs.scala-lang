@@ -19,12 +19,16 @@ permalink: "/zh-cn/scala3/book/:title.html"
 这个特性有很多好处，其中最常见的是（a）您可以定义方法来接受函数参数，以及（b）您可以将函数作为参数传递给方法。
 你已经在本书的多个地方看到了这一点，每当演示像 `map` 和 `filter` 这样的方法时：
 
+{% tabs fp-function-as-values-anonymous %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val nums = (1 to 10).toList
 
 val doubles = nums.map(_ * 2)           // double each value
 val lessThanFive = nums.filter(_ < 5)   // List(1,2,3,4)
 ```
+{% endtab %}
+{% endtabs %}
 
 在这些示例中，匿名函数被传递到 `map` 和 `filter` 中。
 
@@ -32,6 +36,8 @@ val lessThanFive = nums.filter(_ < 5)   // List(1,2,3,4)
 
 除了将匿名函数传递给 `filter` 和 `map` 之外，您还可以为它们提供 *方法*：
 
+{% tabs fp-function-as-values-defined %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 // two methods
 def double(i: Int): Int = i * 2
@@ -40,6 +46,8 @@ def underFive(i: Int): Boolean = i < 5
 // pass those methods into filter and map
 val doubles = nums.filter(underFive).map(double)
 ```
+{% endtab %}
+{% endtabs %}
 
 这种将方法和函数视为值的能力是函数式编程语言提供的强大特性。
 
@@ -50,29 +58,45 @@ val doubles = nums.filter(underFive).map(double)
 
 正如您在这些示例中看到的，这是一个匿名函数：
 
+{% tabs fp-anonymous-function-short %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 _ * 2
 ```
+{% endtab %}
+{% endtabs %}
 
 如 [高阶函数][hofs] 讨论中所示，上面的写法是下面语法的简写版本：
 
+{% tabs fp-anonymous-function-full %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 (i: Int) => i * 2
 ```
+{% endtab %}
+{% endtabs %}
 
 像这样的函数被称为“匿名”，因为它们没有名字。
 如果你想给一个名字，只需将它分配给一个变量：
 
+{% tabs fp-function-assignement %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val double = (i: Int) => i * 2
 ```
+{% endtab %}
+{% endtabs %}
 
 现在你有了一个命名函数，一个分配给变量的函数。
 您可以像使用方法一样使用此函数：
 
+{% tabs fp-function-used-like-method %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 double(2)   // 4
 ```
+{% endtab %}
+{% endtabs %}
 
 在大多数情况下，`double` 是函数还是方法并不重要。 Scala 允许您以同样的方式对待它们。
 在幕后，让您像对待函数一样对待方法的 Scala 技术被称为 [Eta 表达式][eta]。
@@ -82,6 +106,8 @@ double(2)   // 4
 
 如果您对将函数作为参数传递给其他函数的过程不适应，可以尝试以下几个示例：
 
+{% tabs fp-function-as-values-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 List("bob", "joe").map(_.toUpperCase)   // List(BOB, JOE)
 List("bob", "joe").map(_.capitalize)    // List(Bob, Joe)
@@ -100,6 +126,8 @@ nums.sortWith(_ > _)    // List(11, 7, 5, 3, 1)
 
 nums.takeWhile(_ < 6).sortWith(_ < _)   // List(1, 3, 5)
 ```
+{% endtab %}
+{% endtabs %}
 
 [hofs]: {% link _zh-cn/overviews/scala3-book/fun-hofs.md %}
 [eta]: {% link _zh-cn/overviews/scala3-book/fun-eta-expansion.md %}
