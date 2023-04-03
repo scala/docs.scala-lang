@@ -898,7 +898,7 @@ val x = (1 to 5).toBuffer   // ArrayBuffer(1, 2, 3, 4, 5)
 
 {% endtabs %}
 
-Они также используются в циклах `for`:
+Они также используются в `for` выражениях:
 
 {% tabs range-iteration class=tabs-scala-version %}
 
