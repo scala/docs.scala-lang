@@ -310,7 +310,7 @@ package foo
 import scala.util.Random
 
 class ClassA {
-  def printRandom = {
+  def printRandom(): Unit = {
     val r = new Random   // use the imported class
     // more code here...
   }
