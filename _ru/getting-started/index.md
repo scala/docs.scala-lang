@@ -53,7 +53,7 @@ newcomer_resources:
 Запустите в терминале следующую команду, следуя инструкциям на экране:
 {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-brew %}
 {% altDetails cs-setup-macos-nobrew  "В качестве альтернативы, если вы не используете Homebrew:" %}
-  {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-default %}
+  {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-x86-64 %}
 {% endaltDetails %}
 {% endtab %}
 <!-- end macOS -->
@@ -61,7 +61,7 @@ newcomer_resources:
 <!-- Linux -->
 {% tab Linux for=install-cs-setup-tabs %}
   Запустите в терминале следующую команду, следуя инструкциям на экране:
-  {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.linux %}
+  {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.linux-x86-64 %}
 {% endtab %}
 <!-- end Linux -->
 

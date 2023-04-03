@@ -7,10 +7,15 @@ num: 62
 previous-page: ca-context-bounds
 next-page: ca-type-classes
 ---
+<span class="tag tag-inline">Scala 3 only</span>
 
 
 To make it more clear where givens in the current scope are coming from, a special form of the `import` statement is used to import `given` instances.
 The basic form is shown in this example:
+
+{% tabs given-imports-basic-form %}
+
+{% tab 'Scala 3 Only' %}
 
 ```scala
 object A:
@@ -23,14 +28,26 @@ object B:
   import A.given   // import the given instance
 ```
 
+{% endtab %}
+
+{% endtabs %}
+
 In this code the `import A.*` clause of object `B` imports all members of `A` *except* the `given` instance, `tc`.
 Conversely, the second import, `import A.given`, imports *only* that `given` instance.
 The two `import` clauses can also be merged into one:
+
+{% tabs given-imports-merged %}
+
+{% tab 'Scala 3 Only' %}
 
 ```scala
 object B:
   import A.{given, *}
 ```
+
+{% endtab %}
+
+{% endtabs %}
 
 
 ## Discussion

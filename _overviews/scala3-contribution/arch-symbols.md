@@ -2,7 +2,7 @@
 title: Symbols
 type: section
 description: This page describes symbols in the Scala 3 compiler.
-num: 18
+num: 19
 previous-page: arch-time
 next-page:
 ---

@@ -68,7 +68,7 @@ Scala 3 support for Maven will soon land in the [scala-maven-plugin](https://git
 
 ### Metals
 
-[Metals](https://scalameta.org/metals/) is a Scala language server that works with VS Code, Vim, Emacs, Sublime Text and Eclipse.
+[Metals](https://scalameta.org/metals/) is a Scala language server that works with VS Code, Vim, Emacs, Sublime Text, and other editors.
 
 Scala 3 is already very well supported by Metals.
 Some minor adjustments for the new syntax changes and new features are coming. 

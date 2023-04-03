@@ -39,7 +39,7 @@ Scala 提供的另一个帮助您编写函数式代码的特性是编写纯函�
 
 这些 `String` 方法也是纯函数：
 
--`isEmpty`
+- `isEmpty`
 - `length`
 - `substring`
 
@@ -85,17 +85,34 @@ Scala 集合类上的大多数方法也可以作为纯函数工作，包括 `dro
 要在 Scala 中编写纯函数，只需使用 Scala 的方法语法编写它们（尽管您也可以使用 Scala 的函数语法）。
 例如，这是一个将给定输入值加倍的纯函数：
 
+{% tabs fp-pure-function %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 def double(i: Int): Int = i * 2
 ```
+{% endtab %}
+{% endtabs %}
 
 如果您对递归感到满意，这是一个计算整数列表之和的纯函数：
 
+{% tabs fp-pure-recursive-function class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+def sum(xs: List[Int]): Int = xs match {
+  case Nil => 0
+  case head :: tail => head + sum(tail)
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 def sum(xs: List[Int]): Int = xs match
   case Nil => 0
   case head :: tail => head + sum(tail)
 ```
+{% endtab %}
+{% endtabs %}
 
 如果您理解该代码，您会发现它符合纯函数定义。
 

@@ -27,14 +27,17 @@ But the `scala.Symbol` class still exists so that each string literal can be saf
 
 This piece of code cannot be compiled with Scala 3:
 
-```scala
+{% tabs scala-2-literals_1 %}
+{% tab 'Scala 2 Only' %}
+~~~ scala
 val values: Map[Symbol, Int] = Map('abc -> 1)
 
-val abc = values('abc) // Migration Warning: symbol literal 'abc is no longer supported
-```
+val abc = values('abc) // In Scala 3, Migration Warning: symbol literal 'abc is no longer supported
+~~~
+{% endtab %}
+{% endtabs %}
 
 The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the code into:
-
 {% highlight diff %}
 val values: Map[Symbol, Int] = Map(Symbol("abc") -> 1)
 
@@ -54,19 +57,26 @@ It is recommended to use the equivalent `while ({ <body>; <cond> }) ()` that can
 
 The following piece of code cannot be compiled with Scala 3.
 
-```scala
-do { // Migration Warning: `do <body> while <cond>` is no longer supported
+{% tabs scala-2-do_while_1 %}
+{% tab 'Scala 2 Only' %}
+~~~ scala
+do { // In Scala 3, Migration Warning: `do <body> while <cond>` is no longer supported
   i += 1
 } while (f(i) == 0)
-```
+~~~
+{% endtab %}
+{% endtabs %}
 
 The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites it into. 
-
-```scala
+{% tabs scala-3-do_while_2 %}
+{% tab 'Scala 3 Only' %}
+~~~ scala
 while ({ {
   i += 1
 } ; f(i) == 0}) ()
-```
+~~~
+{% endtab %}
+{% endtabs %}
 
 ## Auto-application
 
@@ -75,16 +85,19 @@ It is deprecated in Scala 2.13 and dropped in Scala 3.
 
 The following code is invalid in Scala 3:
 
-```scala
+{% tabs scala-2-auto_application_1 %}
+{% tab 'Scala 2 Only' %}
+~~~ scala
 object Hello {
   def message(): String = "Hello"
 }
 
-println(Hello.message) // Migration Warning: method message must be called with () argument
-```
+println(Hello.message) // In Scala 3, Migration Warning: method message must be called with () argument
+~~~
+{% endtab %}
+{% endtabs %}
 
 The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites it into:
-
 {% highlight diff %}
 object Hello {
   def message(): String = "Hello"
@@ -103,13 +116,16 @@ Furthermore Scala 3 does not allow eta-expansion of values to nullary functions 
 
 Thus, this piece of code is invalid in Scala 3:
 
-```scala
+{% tabs scala-2-eta_expansion_1 %}
+{% tab 'Scala 2 Only' %}
+~~~ scala
 val x = 1
-val f: () => Int = x _ // Migration Warning: The syntax `<function> _` is no longer supported;
-```
+val f: () => Int = x _ // In Scala 3, Migration Warning: The syntax `<function> _` is no longer supported;
+~~~
+{% endtab %}
+{% endtabs %}
 
 The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites it into:
-
 {% highlight diff %}
 val x = 1
 -val f: () => Int = x _
@@ -120,14 +136,17 @@ val x = 1
 
 The implicit `Predef.any2stringadd` conversion is deprecated in Scala 2.13 and dropped in Scala 3.
 
-This piece of code does not compile anymore.
+This piece of code does not compile anymore in Scala 3.
 
-```scala
-val str = new AnyRef + "foo" // Error: value + is not a member of Object
-```
+{% tabs scala-2-any2stringadd_1 %}
+{% tab 'Scala 2 Only' %}
+~~~ scala
+val str = new AnyRef + "foo" // In Scala 3, Error: value + is not a member of Object
+~~~
+{% endtab %}
+{% endtabs %}
 
 The conversion to `String` must be applied explicitly, for instance with `String.valueOf`.
-
 {% highlight diff %}
 -val str = new AnyRef + "foo"
 +val str = String.valueOf(new AnyRef) + "foo"
@@ -140,9 +159,11 @@ This rewrite can be applied by the `fix.scala213.Any2StringAdd` Scalafix rule in
 Early initializers are deprecated in Scala 2.13 and dropped in Scala 3.
 They were rarely used, and mostly to compensate for the lack of [Trait parameters]({{ site.scala3ref }}/other-new-features/trait-parameters.html) which are now supported in Scala 3.
 
-That is why the following piece of code does not compile anymore.
+That is why the following piece of code does not compile anymore in Scala 3.
 
-```scala
+{% tabs scala-2-initializer_1 %}
+{% tab 'Scala 2 Only' %}
+~~~ scala
 trait Bar {
   val name: String
   val size: Int = name.size
@@ -151,7 +172,9 @@ trait Bar {
 object Foo extends {
   val name = "Foo"
 } with Bar
-```
+~~~
+{% endtab %}
+{% endtabs %}
 
 The Scala 3 compiler produces two error messages:
 
@@ -161,7 +184,6 @@ The Scala 3 compiler produces two error messages:
   |                   ^
   |                   `extends` must be followed by at least one parent
 {% endhighlight %}
-
 {% highlight text %}
 -- [E009] Syntax Error: src/main/scala/early-initializer.scala:8:2 
 8 |} with Bar
@@ -171,51 +193,66 @@ The Scala 3 compiler produces two error messages:
 
 It suggests to use trait parameters which would give us:
 
-```scala
+{% tabs scala-3-initializer_2 %}
+{% tab 'Scala 3 Only' %}
+~~~ scala
 trait Bar(name: String) {
   val size: Int = name.size
 }
 
 object Foo extends Bar("Foo")
-```
+~~~
+{% endtab %}
+{% endtabs %}
 
 Since trait parameters are not available in Scala 2.13, it does not cross-compile.
 If you need a cross-compiling solution you can use an intermediate class that carries the early initialized `val`s and `var`s as constructor parameters.
 
-```scala
+{% tabs shared-initializer_4 %}
+{% tab 'Scala 2 and 3' %}
+~~~ scala
 abstract class BarEarlyInit(val name: String) extends Bar
 
 object Foo extends BarEarlyInit("Foo")
-```
+~~~ 
 
 In the case of a class, it is also possible to use a secondary constructor with a fixed value, as shown by:
-
-```scala
+~~~ scala
 class Fizz private (val name: String) extends Bar {
   def this() = this("Fizz")
 }
-```
+~~~
+{% endtab %}
+{% endtabs %}
 
 ## Existential Type
 
 Existential type is a [dropped feature]({{ site.scala3ref }}/dropped-features/existential-types.html), which makes the following code invalid.
-
-```scala
-def foo: List[Class[T]] forSome { type T } // Error: Existential types are no longer supported
-```
+  
+{% tabs scala-2-existential_1 %}
+{% tab 'Scala 2 Only' %}
+~~~ scala
+def foo: List[Class[T]] forSome { type T } // In Scala 3, Error: Existential types are no longer supported
+~~~
+{% endtab %}
+{% endtabs %}
 
 > Existential type is an experimental feature in Scala 2.13 that must be enabled explicitly either by importing `import scala.language.existentials` or by setting the `-language:existentials` compiler flag.
 
-The proposed solution is to introduce an enclosing type that carries the dependent type:
+In Scala 3, the proposed solution is to introduce an enclosing type that carries the dependent type:
 
-```scala
+{% tabs shared-existential_1 %}
+{% tab 'Scala 2 and 3' %}
+~~~ scala
 trait Bar {
   type T
   val value: List[Class[T]]
 }
 
 def foo: Bar
-```
+~~~
+{% endtab %}
+{% endtabs %}
 
 Note that using a wildcard argument, `_` or `?`, is often simpler but is not always possible.
 For instance you could replace `List[T] forSome { type  T }` by `List[?]`.

@@ -87,7 +87,7 @@ de la librería de colecciones secuenciales -- de hecho, "replican" los correspo
 traits presentes en el framework de colecciones secuenciales, tal y como se muestra
 a continuación.
 
-[<img src="{{ site.baseurl }}/resources/images/parallel-collections-hierarchy.png" width="550">]({{ site.baseurl }}/resources/images/parallel-collections-hierarchy.png)
+[<img src="{{ site.baseurl }}/resources/images/parallel-collections-hierarchy.png" alt="Hierarchy of Scala Collections and Parallel Collections"  width="550">]({{ site.baseurl }}/resources/images/parallel-collections-hierarchy.png)
 
 <center><b>Jerarquía de clases de las librerías de colecciones secuenciales y paralelas de Scala</b></center>
 <br/>

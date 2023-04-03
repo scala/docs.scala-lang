@@ -99,4 +99,4 @@ Scala will look for available given values in two places:
 * Scala will first look for given definitions and using parameters that can be accessed directly (without a prefix) at the call site of `max`.
 * Then it looks for members marked `given`/`implicit` in the companion objects associated with the implicit candidate type (for example: `object Comparator` for the candidate type `Comparator[Int]`).
 
-A more detailed guide to where Scala looks for implicits can be found in [the FAQ](//docs.scala-lang.org/tutorials/FAQ/finding-implicits.html).
+A more detailed guide to where Scala looks for implicits can be found in [the FAQ](/tutorials/FAQ/finding-implicits.html).

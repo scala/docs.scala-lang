@@ -2,7 +2,7 @@
 title: Contexts
 type: section
 description: This page describes symbols in the Scala 3 compiler.
-num: 14
+num: 15
 previous-page: arch-lifecycle
 next-page: arch-phases
 ---
