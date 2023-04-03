@@ -343,7 +343,7 @@ scala> x.take(1).foreach(println)
 {% endtab %}
 {% endtabs %}
 
-有关严格和非严格的用途、好处和缺点的更多信息严格（惰性）集合，请参阅 [Scala 2.13集合的构造][strict] 页面上的“严格”和“非严格”讨论。
+有关严格和非严格的用途、好处和缺点的更多信息严格（惰性）集合，请参阅 [Scala 2.13集合的架构][strict] 页面上的“严格”和“非严格”讨论。
 
 <!--
 Given that definition, collections can also be thought of in terms of being strict or lazy. In a _strict_ collection, memory for the elements is allocated immediately, and all of its elements are immediately evaluated when a transformer method is invoked. In a _lazy_ collection, memory for the elements is not allocated immediately, and transformer methods do not construct new elements until they are demanded.
