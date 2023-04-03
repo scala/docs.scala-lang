@@ -29,12 +29,28 @@ Scala 方法有很多特性，包括：
 
 本节演示了其中一些功能，但是当您定义一个不使用这些功能的“简单”方法时，语法如下所示：
 
+{% tabs method_1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=method_1 %}
+
+```scala
+def methodName(param1: Type1, param2: Type2): ReturnType = {
+  // the method body
+  // goes here
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=method_1 %}
+
 ```scala
 def methodName(param1: Type1, param2: Type2): ReturnType =
   // the method body
   // goes here
 end methodName   // this is optional
 ```
+
+{% endtab %}
+{% endtabs %}
 
 在该语法中：
 
@@ -48,10 +64,16 @@ end methodName   // this is optional
 下面是一个名为 `add` 的单行方法的两个示例，它接受两个 `Int` 输入参数。
 第一个版本明确显示方法的 `Int` 返回类型，第二个版本没有：
 
+{% tabs method_2 %}
+{% tab 'Scala 2 and 3' for=method_2 %}
+
 ```scala
 def add(a: Int, b: Int): Int = a + b
 def add(a: Int, b: Int) = a + b
 ```
+
+{% endtab %}
+{% endtabs %}
 
 建议使用返回类型注释公开可见的方法。
 声明返回类型可以让您在几个月或几年后查看它或查看其他人的代码时更容易理解它。
@@ -60,12 +82,21 @@ def add(a: Int, b: Int) = a + b
 
 调用方法很简单：
 
+{% tabs method_3 %}
+{% tab 'Scala 2 and 3' for=method_3 %}
+
 ```scala
 val x = add(1, 2)   // 3
 ```
 
+{% endtab %}
+{% endtabs %}
+
 Scala 集合类有几十个内置方法。
 这些示例显示了如何调用它们：
+
+{% tabs method_4 %}
+{% tab 'Scala 2 and 3' for=method_4 %}
 
 ```scala
 val x = List(1, 2, 3)
@@ -75,15 +106,32 @@ x.contains(1)   // true
 x.map(_ * 10)   // List(10, 20, 30)
 ```
 
+{% endtab %}
+{% endtabs %}
+
 注意：
 
 - `size` 不带参数，并返回列表中元素的数量
 - `contains` 方法接受一个参数，即要搜索的值
-- `map` 接受一个参数，一个函数；在这种情况下，一个匿名函数被传递给它
+- `map` 接受一个函数参数；在上述情况下，传递给它的是一个匿名函数
 
 ## 多行方法
 
 当方法超过一行时，从第二行开始方法体，向右缩进：
+
+{% tabs method_5 class=tabs-scala-version %}
+{% tab 'Scala 2' for=method_5 %}
+
+```scala
+def addThenDouble(a: Int, b: Int): Int = {
+  // imagine that this body requires multiple lines
+  val sum = a + b
+  sum * 2
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=method_5 %}
 
 ```scala
 def addThenDouble(a: Int, b: Int): Int =
@@ -92,6 +140,9 @@ def addThenDouble(a: Int, b: Int): Int =
   sum * 2
 ```
 
+{% endtab %}
+{% endtabs %}
+
 在那个方法中：
 
 - `sum` 是一个不可变的局部变量；它不能在方法之外访问
@@ -99,19 +150,31 @@ def addThenDouble(a: Int, b: Int): Int =
 
 当您将该代码粘贴到 REPL 中时，您会看到它按预期工作：
 
+{% tabs method_6 %}
+{% tab 'Scala 2 and 3' for=method_6 %}
+
 ```scala
 scala> addThenDouble(1, 1)
 res0: Int = 4
 ```
+
+{% endtab %}
+{% endtabs %}
 
 请注意，方法末尾不需要 `return` 语句。
 因为在 Scala 中几乎所有的东西都是一个_表达式_——意味着每一行代码都返回（或_执行_）一个值——不需要使用 `return`。
 
 当您压缩该方法并将其写在一行上时，这一点变得更加清晰：
 
+{% tabs method_7 %}
+{% tab 'Scala 2 and 3' for=method_7 %}
+
 ```scala
 def addThenDouble(a: Int, b: Int): Int = (a + b) * 2
 ```
+
+{% endtab %}
+{% endtabs %}
 
 方法的主体可以使用语言的所有不同特性：
 
@@ -125,12 +188,29 @@ def addThenDouble(a: Int, b: Int): Int = (a + b) * 2
 
 作为一个真实世界的多行方法的例子，这个 `getStackTraceAsString` 方法将它的 `Throwable` 输入参数转换成一个格式良好的 `String`：
 
+{% tabs method_8 class=tabs-scala-version %}
+{% tab 'Scala 2' for=method_8 %}
+
+```scala
+def getStackTraceAsString(t: Throwable): String = {
+  val sw = new StringWriter()
+  t.printStackTrace(new PrintWriter(sw))
+  sw.toString
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=method_8 %}
+
 ```scala
 def getStackTraceAsString(t: Throwable): String =
   val sw = StringWriter()
   t.printStackTrace(PrintWriter(sw))
   sw.toString
 ```
+
+{% endtab %}
+{% endtabs %}
 
 在那个方法中：
 
@@ -143,19 +223,41 @@ def getStackTraceAsString(t: Throwable): String =
 方法参数可以有默认值。
 在此示例中，为 `timeout` 和 `protocol` 参数提供了默认值：
 
+{% tabs method_9 class=tabs-scala-version %}
+{% tab 'Scala 2' for=method_9 %}
+
+```scala
+def makeConnection(timeout: Int = 5_000, protocol: String = "http") = {
+  println(f"timeout = ${timeout}%d, protocol = ${protocol}%s")
+  // more code here ...
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=method_9 %}
+
 ```scala
 def makeConnection(timeout: Int = 5_000, protocol: String = "http") =
   println(f"timeout = ${timeout}%d, protocol = ${protocol}%s")
   // more code here ...
 ```
 
+{% endtab %}
+{% endtabs %}
+
 由于参数具有默认值，因此可以通过以下方式调用该方法：
+
+{% tabs method_10 %}
+{% tab 'Scala 2 and 3' for=method_10 %}
 
 ```scala
 makeConnection()                 // timeout = 5000, protocol = http
 makeConnection(2_000)            // timeout = 2000, protocol = http
 makeConnection(3_000, "https")   // timeout = 3000, protocol = https
 ```
+
+{% endtab %}
+{% endtabs %}
 
 以下是关于这些示例的一些要点：
 
@@ -170,6 +272,9 @@ makeConnection(3_000, "https")   // timeout = 3000, protocol = https
 如果您愿意，也可以在调用方法时使用方法参数的名称。
 例如，`makeConnection` 也可以通过以下方式调用：
 
+{% tabs method_11 %}
+{% tab 'Scala 2 and 3' for=method_11 %}
+
 ```scala
 makeConnection(timeout=10_000)
 makeConnection(protocol="https")
@@ -177,14 +282,26 @@ makeConnection(timeout=10_000, protocol="https")
 makeConnection(protocol="https", timeout=10_000)
 ```
 
+{% endtab %}
+{% endtabs %}
+
 在某些框架中，命名参数被大量使用。
 当多个方法参数具有相同类型时，它们也非常有用：
+
+{% tabs method_12 %}
+{% tab 'Scala 2 and 3' for=method_12 %}
 
 ```scala
 engage(true, true, true, false)
 ```
 
+{% endtab %}
+{% endtabs %}
+
 如果没有 IDE 的帮助，代码可能难以阅读，但这段代码更加清晰和明显：
+
+{% tabs method_13 %}
+{% tab 'Scala 2 and 3' for=method_13 %}
 
 ```scala
 engage(
@@ -194,6 +311,9 @@ engage(
   turnedOffParkingBrake = false
 )
 ```
+
+{% endtab %}
+{% endtabs %}
 
 ## 关于不带参数的方法的建议
 
@@ -206,16 +326,28 @@ engage(
 
 例如，这个方法会产生副作用，所以它用空括号声明：
 
+{% tabs method_14 %}
+{% tab 'Scala 2 and 3' for=method_14 %}
+
 ```scala
 def speak() = println("hi")
 ```
 
+{% endtab %}
+{% endtabs %}
+
 这样做需要方法的调用者在调用方法时使用括号：
+
+{% tabs method_15 %}
+{% tab 'Scala 2 and 3' for=method_15 %}
 
 ```scala
 speak     // error: "method speak must be called with () argument"
 speak()   // prints "hi"
 ```
+
+{% endtab %}
+{% endtabs %}
 
 虽然这只是一个约定，但遵循它可以显着提高代码的可读性：它可以让您更容易一目了然地理解 arity-0 方法执行副作用。
 
@@ -228,6 +360,21 @@ Some of that wording comes from this page: https://docs.scala-lang.org/style/met
 因为 `if`/`else` 表达式返回一个值，所以它们可以用作方法的主体。
 这是一个名为 `isTruthy` 的方法，它实现了 Perl 对 `true` 和 `false` 的定义：
 
+{% tabs method_16 class=tabs-scala-version %}
+{% tab 'Scala 2' for=method_16 %}
+
+```scala
+def isTruthy(a: Any) = {
+  if (a == 0 || a == "" || a == false)
+    false
+  else
+    true
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=method_16 %}
+
 ```scala
 def isTruthy(a: Any) =
   if a == 0 || a == "" || a == false then
@@ -236,7 +383,13 @@ def isTruthy(a: Any) =
     true
 ```
 
+{% endtab %}
+{% endtabs %}
+
 这些示例显示了该方法的工作原理：
+
+{% tabs method_17 %}
+{% tab 'Scala 2 and 3' for=method_17 %}
 
 ```scala
 isTruthy(0)      // false
@@ -245,10 +398,26 @@ isTruthy("hi")   // true
 isTruthy(1.0)    // true
 ```
 
+{% endtab %}
+{% endtabs %}
+
 ## 使用 `match` 作为方法体
 
 `match` 表达式也可以用作整个方法体，而且经常如此。
 这是 `isTruthy` 的另一个版本，用 `match` 表达式编写：
+
+{% tabs method_18 class=tabs-scala-version %}
+{% tab 'Scala 2' for=method_18 %}
+
+```scala
+def isTruthy(a: Any) = a match {
+  case 0 | "" | false => false
+  case _ => true
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=method_18 %}
 
 ```scala
 def isTruthy(a: Matchable) = a match
@@ -256,13 +425,32 @@ def isTruthy(a: Matchable) = a match
   case _ => true
 ```
 
-此方法的工作方式与之前使用 `if`/`else` 表达式的方法一样。我们使用 `Matchable` 而不是 `Any` 作为参数的类型来接受任何支持模式匹配的值。
+> 此方法的工作方式与之前使用 `if`/`else` 表达式的方法一样。我们使用 `Matchable` 而不是 `Any` 作为参数的类型来接受任何支持模式匹配的值。
 
-有关 `Matchable` trait 的更多详细信息，请参阅 [参考文档][reference_matchable]。
+> 有关 `Matchable` trait 的更多详细信息，请参阅 [参考文档][reference_matchable]。
+
+[reference_matchable]: {{ site.scala3ref }}/other-new-features/matchable.html
+{% endtab %}
+{% endtabs %}
 
 ## 控制类中的可见性
 
 在类、对象、trait和枚举中，Scala 方法默认是公共的，所以这里创建的 `Dog` 实例可以访问 `speak` 方法：
+
+{% tabs method_19 class=tabs-scala-version %}
+{% tab 'Scala 2' for=method_19 %}
+
+```scala
+class Dog {
+  def speak() = println("Woof")
+}
+
+val d = new Dog
+d.speak()   // prints "Woof"
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=method_19 %}
 
 ```scala
 class Dog:
@@ -272,8 +460,28 @@ val d = new Dog
 d.speak()   // prints "Woof"
 ```
 
+{% endtab %}
+{% endtabs %}
+
 方法也可以标记为 `private`。
 这使得它们对当前类是私有的，因此它们不能在子类中被调用或重载：
+
+{% tabs method_20 class=tabs-scala-version %}
+{% tab 'Scala 2' for=method_20 %}
+
+```scala
+class Animal {
+  private def breathe() = println("I’m breathing")
+}
+
+class Cat extends Animal {
+  // this method won’t compile
+  override def breathe() = println("Yo, I’m totally breathing")
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=method_20 %}
 
 ```scala
 class Animal:
@@ -284,7 +492,36 @@ class Cat extends Animal:
   override def breathe() = println("Yo, I’m totally breathing")
 ```
 
+{% endtab %}
+{% endtabs %}
+
 如果你想让一个方法对当前类私有，并且允许子类调用它或覆盖它，将该方法标记为 `protected`，如本例中的 `speak` 方法所示：
+
+{% tabs method_21 class=tabs-scala-version %}
+{% tab 'Scala 2' for=method_21 %}
+
+```scala
+class Animal {
+  private def breathe() = println("I’m breathing")
+  def walk() = {
+    breathe()
+    println("I’m walking")
+  }
+  protected def speak() = println("Hello?")
+}
+
+class Cat extends Animal {
+  override def speak() = println("Meow")
+}
+
+val cat = new Cat
+cat.walk()
+cat.speak()
+cat.breathe()   // won’t compile because it’s private
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=method_21 %}
 
 ```scala
 class Animal:
@@ -303,6 +540,9 @@ cat.speak()
 cat.breathe()   // won’t compile because it’s private
 ```
 
+{% endtab %}
+{% endtabs %}
+
 `protected` 设置意味着：
 
 - 方法（或字段）可以被同一类的其他实例访问
@@ -315,6 +555,37 @@ cat.breathe()   // won’t compile because it’s private
 Scala `object` 关键字用于创建单例类，对象也可以包含方法。
 这是对一组“实用程序”方法进行分组的好方法。
 例如，此对象包含一组处理字符串的方法：
+
+{% tabs method_22 class=tabs-scala-version %}
+{% tab 'Scala 2' for=method_22 %}
+
+```scala
+object StringUtils {
+
+  /**
+   * Returns a string that is the same as the input string, but
+   * truncated to the specified length.
+   */
+  def truncate(s: String, length: Int): String = s.take(length)
+
+  /**
+    * Returns true if the string contains only letters and numbers.
+    */
+  def lettersAndNumbersOnly_?(s: String): Boolean =
+    s.matches("[a-zA-Z0-9]+")
+
+  /**
+   * Returns true if the given string contains any whitespace
+   * at all. Assumes that `s` is not null.
+   */
+  def containsWhitespace(s: String): Boolean =
+    s.matches(".*\\s.*")
+
+}
+```
+
+{% endtab %}
+{% tab 'Scala 3' for=method_22 %}
 
 ```scala
 object StringUtils:
@@ -341,18 +612,42 @@ object StringUtils:
 end StringUtils
 ```
 
+{% endtab %}
+{% endtabs %}
+
 ## 扩展方法
 
 扩展方法在上下文抽象一章的[扩展方法部分][extension]中讨论。
-它们的主要目的是让您向封闭类添加新功能。
+有很多情况，你想向封闭类添加功能。
 如该部分所示，假设您有一个 `Circle` 类，但您无法更改其源代码。
 例如，它可以在第三方库中这样定义：
+
+{% tabs method_23 %}
+{% tab 'Scala 2 and 3' for=method_23 %}
 
 ```scala
 case class Circle(x: Double, y: Double, radius: Double)
 ```
 
+{% endtab %}
+{% endtabs %}
+
 当你想给这个类添加方法时，你可以将它们定义为扩展方法，像这样：
+
+{% tabs method_24 class=tabs-scala-version %}
+{% tab 'Scala 2' for=method_24 %}
+
+```scala
+implicit class CircleOps(c: Circle) {
+  def circumference: Double = c.radius * math.Pi * 2
+  def diameter: Double = c.radius * 2
+  def area: Double = math.Pi * c.radius * c.radius
+}
+```
+在 Scala 2 中使用 `implicit class`，在[这](/overviews/core/implicit-classes.html)找到更多细节。
+
+{% endtab %}
+{% tab 'Scala 3' for=method_24 %}
 
 ```scala
 extension (c: Circle)
@@ -360,8 +655,17 @@ extension (c: Circle)
   def diameter: Double = c.radius * 2
   def area: Double = math.Pi * c.radius * c.radius
 ```
+在 Scala 3 中使用新的 `extension` 结构。更多细节可以看[本书][extension]的章节，或者 [Scala 3 参考][reference-ext]。
+
+[reference-ext]: {{ site.scala3ref }}/contextual/extension-methods.html
+[extension]: {% link _zh-cn/overviews/scala3-book/ca-extension-methods.md %}
+{% endtab %}
+{% endtabs %}
 
 现在，当您有一个名为 `aCircle` 的 `Circle` 实例时，您可以像这样调用这些方法：
+
+{% tabs method_25 %}
+{% tab 'Scala 2 and 3' for=method_25 %}
 
 ```scala
 aCircle.circumference
@@ -369,7 +673,8 @@ aCircle.diameter
 aCircle.area
 ```
 
-请参阅本书的[扩展方法部分][reference_extension_methods]，以及[“扩展方法”参考页面][reference]了解更多详细信息。
+{% endtab %}
+{% endtabs %}
 
 ## 更多
 
@@ -384,9 +689,12 @@ aCircle.area
 - 编写具有多个参数组的方法（部分应用的函数）
 - 创建具有泛型类型参数的方法
 
-有关这些功能的更多详细信息，请参阅 [参考文档][reference]。
+{% comment %}
+Jamie: there really needs better linking here - previously it was to the Scala 3 Reference, which doesnt cover any
+of this
+{% endcomment %}
 
-[extension]: {% link _zh-cn/overviews/scala3-book/ca-extension-methods.md %}
+有关这些特性的更多详细信息，请看本书其它章节。
+
 [reference_extension_methods]: {{ site.scala3ref }}/contextual/extension-methods.html
-[reference]: {{ site.scala3ref }}/overview.html
 [reference_matchable]: {{ site.scala3ref }}/other-new-features/matchable.html

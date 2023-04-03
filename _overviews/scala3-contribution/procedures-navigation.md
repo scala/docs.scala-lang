@@ -4,7 +4,7 @@ type: section
 description: This page describes navigating around the Scala 3 compiler.
 num: 6
 previous-page: procedures-reproduce
-next-page: procedures-areas
+next-page: procedures-debugging
 ---
 
 In this section, you will be able to answer questions such as:

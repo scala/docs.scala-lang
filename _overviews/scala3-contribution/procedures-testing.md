@@ -2,7 +2,7 @@
 title: Testing Your Changes
 type: section
 description: This page describes test procedures in the Scala 3 compiler.
-num: 10
+num: 11
 previous-page: procedures-efficiency
 next-page: procedures-checklist
 ---

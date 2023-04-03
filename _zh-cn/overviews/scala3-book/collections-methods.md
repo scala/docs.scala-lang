@@ -39,6 +39,8 @@ Scala 集合的一大优势在于它们提供了许多开箱即用的方法，�
 为了让您大致了解在后面章节中将看到的内容，这些示例展示了一些最常用的集合方法。
 首先，这里有一些不使用 lambda 的方法：
 
+{% tabs common-method-examples %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val a = List(10, 20, 30, 40, 10)      // List(10, 20, 30, 40, 10)
 
@@ -56,12 +58,16 @@ a.tail                                // List(20, 30, 40, 10)
 a.take(3)                             // List(10, 20, 30)
 a.takeRight(2)                        // List(40, 10)
 ```
+{% endtab %}
+{% endtabs %}
 
 ### 高阶函数和 lambda
 
 接下来，我们将展示一些常用的接受 lambda（匿名函数）的高阶函数 (HOF)。
 首先，这里有几个 lambda 语法的变体，从最长的形式开始，逐步过渡最简洁的形式：
 
+{% tabs higher-order-functions-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 // these functions are all equivalent and return
 // the same data: List(10, 20, 10)
@@ -71,6 +77,8 @@ a.filter((i) => i < 25)        // 2. `Int` is not required
 a.filter(i => i < 25)          // 3. the parens are not required
 a.filter(_ < 25)               // 4. `i` is not required
 ```
+{% endtab %}
+{% endtabs %}
 
 在那些编号的例子中：
 
@@ -84,6 +92,8 @@ a.filter(_ < 25)               // 4. `i` is not required
 
 现在您已经看到了简洁的形式，下面是使用短形式 lambda 语法的其他 HOF 的示例：
 
+{% tabs anonymous-functions-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 a.dropWhile(_ < 25)   // List(30, 40, 10)
 a.filter(_ > 100)     // List()
@@ -91,11 +101,15 @@ a.filterNot(_ < 25)   // List(30, 40)
 a.find(_ > 20)        // Some(30)
 a.takeWhile(_ < 30)   // List(10, 20)
 ```
+{% endtab %}
+{% endtabs %}
 
 值得注意的是，HOF 也接受方法和函数作为参数——不仅仅是 lambda 表达式。
 下面是一些使用名为 `double` 的方法的`map` HOF 示例。
 再次显示了 lambda 语法的几种变体：
 
+{% tabs method-as-parameter-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 def double(i: Int) = i * 2
 
@@ -104,26 +118,36 @@ a.map(i => double(i))
 a.map(double(_))
 a.map(double)
 ```
+{% endtab %}
+{% endtabs %}
 
 在最后一个示例中，当匿名函数由一个接受单个参数的函数调用组成时，您不必命名参数，因此甚至不需要 `_`。
 
 最后，您可以根据需要组合 HOF 来解决问题：
 
+{% tabs higher-order-functions-combination-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 // yields `List(100, 200)`
 a.filter(_ < 40)
  .takeWhile(_ < 30)
  .map(_ * 10)
 ```
+{% endtab %}
+{% endtabs %}
 
 ## 例子数据
 
 以下部分中的示例使用这些列表：
 
+{% tabs sample-data %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val oneToTen = (1 to 10).toList
 val names = List("adam", "brandy", "chris", "david")
 ```
+{% endtab %}
+{% endtabs %}
 
 ## `map`
 
@@ -132,22 +156,32 @@ val names = List("adam", "brandy", "chris", "david")
 
 这是一个将 `map` 方法应用于 `oneToTen` 列表的示例：
 
+{% tabs map-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 scala> val doubles = oneToTen.map(_ * 2)
 doubles: List[Int] = List(2, 4, 6, 8, 10, 12, 14, 16, 18, 20)
 ```
+{% endtab %}
+{% endtabs %}
 
 您还可以使用长格式编写匿名函数，如下所示：
 
+{% tabs map-example-anonymous %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 scala> val doubles = oneToTen.map(i => i * 2)
 doubles: List[Int] = List(2, 4, 6, 8, 10, 12, 14, 16, 18, 20)
 ```
+{% endtab %}
+{% endtabs %}
 
 但是，在本课中，我们将始终使用第一种较短的形式。
 
 以下是更多应用于 `oneToTen` 和 `names` 列表的 `map` 方法的示例：
 
+{% tabs few-more-examples %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 scala> val capNames = names.map(_.capitalize)
 capNames: List[String] = List(Adam, Brandy, Chris, David)
@@ -158,6 +192,8 @@ nameLengthsMap: Map[String, Int] = Map(adam -> 4, brandy -> 6, chris -> 5, david
 scala> val isLessThanFive = oneToTen.map(_ < 5)
 isLessThanFive: List[Boolean] = List(true, true, true, true, false, false, false, false, false, false)
 ```
+{% endtab %}
+{% endtabs %}
 
 如最后两个示例所示，使用 `map` 返回与原始类型不同类型的集合是完全合法的（并且很常见）。
 
@@ -167,6 +203,8 @@ isLessThanFive: List[Boolean] = List(true, true, true, true, false, false, false
 谓词或条件是返回 `Boolean`（`true` 或 `false`）的函数。
 这里有一些例子：
 
+{% tabs filter-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 scala> val lessThanFive = oneToTen.filter(_ < 5)
 lessThanFive: List[Int] = List(1, 2, 3, 4)
@@ -177,20 +215,30 @@ evens: List[Int] = List(2, 4, 6, 8, 10)
 scala> val shortNames = names.filter(_.length <= 4)
 shortNames: List[String] = List(adam)
 ```
+{% endtab %}
+{% endtabs %}
 
 集合上的函数式方法的一个优点是您可以将它们链接在一起以解决问题。
 例如，这个例子展示了如何链接 `filter` 和 `map`：
 
+{% tabs filter-example-anonymous %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 oneToTen.filter(_ < 4).map(_ * 10)
 ```
+{% endtab %}
+{% endtabs %}
 
 REPL 显示结果：
 
+{% tabs filter-example-anonymous-repl %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 scala> oneToTen.filter(_ < 4).map(_ * 10)
 val res1: List[Int] = List(10, 20, 30)
 ```
+{% endtab %}
+{% endtabs %}
 
 ## `foreach`
 
@@ -198,6 +246,8 @@ val res1: List[Int] = List(10, 20, 30)
 请注意，`foreach` 用于副作用，例如打印信息。
 这是一个带有 `names` 列表的示例：
 
+{% tabs foreach-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 scala> names.foreach(println)
 adam
@@ -205,37 +255,55 @@ brandy
 chris
 david
 ```
+{% endtab %}
+{% endtabs %}
 
 ## `head`
 
 `head` 方法来自 Lisp 和其他早期的函数式编程语言。
 它用于访问列表的第一个元素（头元素）：
 
+{% tabs head-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 oneToTen.head   // 1
 names.head      // adam
 ```
+{% endtab %}
+{% endtabs %}
 
 因为 `String` 可以看作是一个字符序列，所以你也可以把它当作一个列表。
 这就是 `head` 在这些字符串上的工作方式：
 
+{% tabs string-head-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 "foo".head // 'f'
 "bar".head // 'b'
 ```
+{% endtab %}
+{% endtabs %}
 
 `head` 是一个很好的方法，但需要注意的是，在空集合上调用它时也会抛出异常：
 
+{% tabs head-error-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val emptyList = List[Int]()   // emptyList: List[Int] = List()
 emptyList.head                // java.util.NoSuchElementException: head of empty list
 ```
+{% endtab %}
+{% endtabs %}
 
 因此，您可能希望使用 `headOption` 而不是 `head`，尤其是在以函数式编程时：
 
+{% tabs head-option-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 emptyList.headOption          // None
 ```
+{% endtab %}
+{% endtabs %}
 
 如图所示，它不会抛出异常，它只是返回值为 `None` 的类型 `Option`。
 您可以在 [函数式编程][fp-intro] 章节中了解有关这种编程风格的更多信息。
@@ -245,6 +313,8 @@ emptyList.headOption          // None
 `tail` 方法也来自 Lisp，它用于打印列表头元素之后的每个元素。
 几个例子展示了这一点：
 
+{% tabs tail-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 oneToTen.head   // 1
 oneToTen.tail   // List(2, 3, 4, 5, 6, 7, 8, 9, 10)
@@ -252,43 +322,72 @@ oneToTen.tail   // List(2, 3, 4, 5, 6, 7, 8, 9, 10)
 names.head      // adam
 names.tail      // List(brandy, chris, david)
 ```
+{% endtab %}
+{% endtabs %}
 
 就像 `head` 一样，`tail` 也适用于字符串：
 
+{% tabs string-tail-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 "foo".tail   // "oo"
 "bar".tail   // "ar"
 ```
+{% endtab %}
+{% endtabs %}
 
 如果列表为空，`tail` 会抛出 _java.lang.UnsupportedOperationException_，所以就像 `head` 和 `headOption` 一样，还有一个 `tailOption` 方法，这是函数式编程的首选方法。
 
 也可以匹配一个列表，因此您可以编写如下表达式：
 
+{% tabs tail-match-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val x :: xs = names
 ```
+{% endtab %}
+{% endtabs %}
 
 将该代码放在 REPL 中显示 `x` 分配给列表的头部，而 `xs` 分配给列表尾部：
 
+{% tabs tail-match-example-repl %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 scala> val x :: xs = names
 val x: String = adam
 val xs: List[String] = List(brandy, chris, david)
 ```
+{% endtab %}
+{% endtabs %}
 
 像这样的模式匹配在许多情况下都很有用，例如使用递归编写一个 `sum` 方法：
 
+{% tabs tail-match-sum-example class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+def sum(list: List[Int]): Int = list match {
+  case Nil => 0
+  case x :: xs => x + sum(xs)
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 def sum(list: List[Int]): Int = list match
   case Nil => 0
   case x :: xs => x + sum(xs)
 ```
+{% endtab %}
+{% endtabs %}
 
 ## `take`、`takeRight`、`takeWhile`
 
 `take`、`takeRight` 和 `takeWhile` 方法为您提供了一种从列表中“获取”要用于创建新列表的元素的好方法。
 这是 `take` 和 `takeRight`：
 
+{% tabs take-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 oneToTen.take(1)        // List(1)
 oneToTen.take(2)        // List(1, 2)
@@ -296,28 +395,40 @@ oneToTen.take(2)        // List(1, 2)
 oneToTen.takeRight(1)   // List(10)
 oneToTen.takeRight(2)   // List(9, 10)
 ```
+{% endtab %}
+{% endtabs %}
 
 注意这些方法是如何处理“临界”情况的，当我们要求比序列中更多的元素，或者要求零元素的时候：
 
+{% tabs take-edge-cases-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 oneToTen.take(Int.MaxValue)        // List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 oneToTen.takeRight(Int.MaxValue)   // List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 oneToTen.take(0)                   // List()
 oneToTen.takeRight(0)              // List()
 ```
+{% endtab %}
+{% endtabs %}
 
-这是`takeWhle`，它与谓词函数一起使用：
+这是`takeWhile`，它与谓词函数一起使用：
 
+{% tabs take-while-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 oneToTen.takeWhile(_ < 5)       // List(1, 2, 3, 4)
 names.takeWhile(_.length < 5)   // List(adam)
 ```
+{% endtab %}
+{% endtabs %}
 
 ## `drop`、`dropRight`、`dropWhile`
 
 `drop`、`dropRight` 和 `dropWhile` 本质上与它们对应的“取”相反，从列表中删除元素。
 这里有些例子：
 
+{% tabs drop-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 oneToTen.drop(1)        // List(2, 3, 4, 5, 6, 7, 8, 9, 10)
 oneToTen.drop(5)        // List(6, 7, 8, 9, 10)
@@ -325,22 +436,32 @@ oneToTen.drop(5)        // List(6, 7, 8, 9, 10)
 oneToTen.dropRight(8)   // List(1, 2)
 oneToTen.dropRight(7)   // List(1, 2, 3)
 ```
+{% endtab %}
+{% endtabs %}
 
 再次注意这些方法如何处理临界情况：
 
+{% tabs drop-edge-cases-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 oneToTen.drop(Int.MaxValue)        // List()
 oneToTen.dropRight(Int.MaxValue)   // List()
 oneToTen.drop(0)                   // List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 oneToTen.dropRight(0)              // List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 ```
+{% endtab %}
+{% endtabs %}
 
 这是 `dropWhile`，它与谓词函数一起使用：
 
+{% tabs drop-while-example %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 oneToTen.dropWhile(_ < 5)       // List(5, 6, 7, 8, 9, 10)
 names.dropWhile(_ != "chris")   // List(chris, david)
 ```
+{% endtab %}
+{% endtabs %}
 
 ## `reduce`
 
@@ -350,21 +471,41 @@ names.dropWhile(_ != "chris")   // List(chris, david)
 解释 `reduce` 的最好方法是创建一个可以传递给它的小辅助方法。
 例如，这是一个将两个整数相加的 `add` 方法，还为我们提供了一些不错的调试输出：
 
+{% tabs reduce-example class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+def add(x: Int, y: Int): Int = {
+  val theSum = x + y
+  println(s"received $x and $y, their sum is $theSum")
+  theSum
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 def add(x: Int, y: Int): Int =
   val theSum = x + y
   println(s"received $x and $y, their sum is $theSum")
   theSum
 ```
+{% endtab %}
+{% endtabs %}
 
 有上面的方法和下面的列表：
 
+{% tabs reduce-example-init %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val a = List(1,2,3,4)
 ```
+{% endtab %}
+{% endtabs %}
 
 这就是将 `add` 方法传递给 `reduce` 时发生的情况：
 
+{% tabs reduce-example-evaluation %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 scala> a.reduce(add)
 received 1 and 2, their sum is 3
@@ -372,22 +513,32 @@ received 3 and 3, their sum is 6
 received 6 and 4, their sum is 10
 res0: Int = 10
 ```
+{% endtab %}
+{% endtabs %}
 
 如该结果所示，`reduce` 使用`add` 将列表 `a` 归约为单个值，在这种情况下，是列表中整数的总和。
 
 一旦你习惯了 `reduce`，你会写一个像这样的“求和”算法：
 
+{% tabs reduce-example-sum %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 scala> a.reduce(_ + _)
 res0: Int = 10
 ```
+{% endtab %}
+{% endtabs %}
 
 类似地，“连乘”算法如下所示：
 
+{% tabs reduce-example-multiply %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 scala> a.reduce(_ * _)
 res1: Int = 24
 ```
+{% endtab %}
+{% endtabs %}
 
 > 关于 `reduce` 的一个重要概念是——顾名思义——它用于将集合_归约_为单个值。
 
