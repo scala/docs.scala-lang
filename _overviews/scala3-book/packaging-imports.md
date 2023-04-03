@@ -257,7 +257,7 @@ To hide multiple members during the import process, list them before using the f
 {% tabs packaging-imports-11 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
 ```scala
-scala> import java.util.{List => _, Map => _, Set => _, _}
+import java.util.{List => _, Map => _, Set => _, _}
 ```
 
 {% endtab %}
