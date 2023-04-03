@@ -454,7 +454,7 @@ import _root_.accounts.*
 
 ## Importing `given` instances
 
-As you’ll see in the [Contextual Abstractions][contextual] chapter, a special form of the `import` statement is used to import `given` instances.
+As you’ll see in the [Contextual Abstractions][contextual] chapter, in Scala 3 a special form of the `import` statement is used to import `given` instances.
 The basic form is shown in this example:
 
 {% tabs packaging-imports-19 %}
