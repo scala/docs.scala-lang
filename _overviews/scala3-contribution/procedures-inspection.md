@@ -13,7 +13,9 @@ while the compiler is running, and inspect produced artifacts of the compiler.
 ## Inspecting variables in-place
 
 Frequently you will need to inspect the content of a particular variable.
-Often, it is sufficient to use `println`.
+You can either use `println`s or the debugger, more info on how to setup the latter [here](https://docs.scala-lang.org/scala3/guides/contribution/procedures-debugging.html).
+
+In the remeainder of this article we'll use `println(<someUsefulExpression>)` inserted in the code, but the same effect can be accomplished by stopping at a breakpoint, and typing `<someUsefulExpression>` in the [debug console](https://docs.scala-lang.org/scala3/guides/contribution/procedures-debugging.html#the-debug-console) of the debugger.
 
 When printing a variable, it's always a good idea to call `show` on that variable: `println(x.show)`.
 Many objects of the compiler define `show`, returning a human-readable string.
