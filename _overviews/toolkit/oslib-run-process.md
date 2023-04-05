@@ -17,23 +17,19 @@ To set up a process, use `os.proc`, then to actually start it,
 {% tabs 'touch' %}
 {% tab 'Scala 2 and 3' %}
 ```
-scala> val path = os.pwd / "output.txt"
-val path: os.Path = /Users/alice/output.txt
-
-scala> os.exists(path)
-val res0: Boolean = false
-
-scala> os.proc("touch", path).call()
-val res1: os.CommandResult =
-Result of touch…: 0
-
-scala> os.exists(path)
-val res2: Boolean = true
+val path: os.Path = os.pwd / "output.txt"
+println(os.exists(path))
+// prints: false
+val result: os.CommandResult = os.proc("touch", path).call()
+println(result.exitCode)
+// prints: 0
+println(os.exists(path))
+// prints: true
 ```
 {% endtab %}
 {% endtabs %}
 
-Note that `proc` accepts both strings and `Path`s.
+Note that `proc` accepts both strings and `os.Path`s.
 
 ## Reading the output of a process
 
@@ -46,9 +42,10 @@ For example, we could use `bc` to do some math for us:
 {% tabs 'bc' %}
 {% tab 'Scala 2 and 3' %}
 ```
-scala> os.proc("bc", "-e", "2 + 2").call()
-     |   .out.text().trim.toInt
-val res20: Int = 4
+val text: String =
+  os.proc("bc", "-e", "2 + 2").call().out.text()
+println(text.trim.toInt)
+// prints: 4
 ```
 {% endtab %}
 {% endtabs %}
@@ -58,15 +55,19 @@ Or have `cal` show us a calendar:
 {% tabs 'cal' %}
 {% tab 'Scala 2 and 3' %}
 ```
-scala> os.proc("cal", "-h", "2", "2023").call()
-     |   .out.lines().foreach(println)
-   February 2023
-Su Mo Tu We Th Fr Sa
-          1  2  3  4
-...
+os.proc("cal", "-h", "2", "2023").call()
+  .out.lines().foreach(println)
+// prints:
+//   February 2023
+// Su Mo Tu We Th Fr Sa
+//          1  2  3  4
+// ...
 ```
 {% endtab %}
 {% endtabs %}
+
+(The particular commands in the examples might not exist on all
+machines.)
 
 ## Customizing the process
 

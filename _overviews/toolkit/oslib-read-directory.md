@@ -27,8 +27,7 @@ Paths have a `/` method for adding path segments. For example:
 {% tabs 'etc' %}
 {% tab 'Scala 2 and 3' %}
 ```
-scala> os.root / "etc"
-val res0: os.root.ThisType = /etc
+val etc: os.Path = os.root / "etc"
 ```
 {% endtab %}
 {% endtabs %}
@@ -40,8 +39,7 @@ val res0: os.root.ThisType = /etc
 {% tabs 'list-etc' %}
 {% tab 'Scala 2 and 3' %}
 ```
-scala> os.list(os.root / "etc")
-val res1: IndexedSeq[os.Path] = ArraySeq(/etc/afpovertcp.cfg, ...
+val entries: Seq[os.Path] = os.list(os.root / "etc")
 ```
 {% endtab %}
 {% endtabs %}
@@ -51,8 +49,7 @@ Or if we only want subdirectories:
 {% tabs 'subdirs' %}
 {% tab 'Scala 2 and 3' %}
 ```scala
-scala> os.list(os.root / "etc").filter(os.isDir)
-val res2: IndexedSeq[os.Path] = ArraySeq(/etc/apache2, ...
+val dirs: Seq[os.Path] = os.list(os.root / "etc").filter(os.isDir)
 ```
 {% endtab %}
 {% endtabs %}

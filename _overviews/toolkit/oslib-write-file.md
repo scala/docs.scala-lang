@@ -16,13 +16,10 @@ next-page: oslib-run-process
 {% tabs write %}
 {% tab 'Scala 2 and 3' %}
 ```
-scala> val path = os.pwd / "output.txt"
-val path: os.pwd.ThisType = /Users/tisue/tmp/os-lib/output.txt
-
-scala> os.write(path, "hello\nthere\n")
-
-scala> os.read.lines(path).size
-val res1: Int = 2
+val path: os.Path = os.pwd / "output.txt"
+os.write(path, "hello\nthere\n")
+println(os.read.lines(path).size)
+// prints: 2
 ```
 {% endtab %}
 {% endtabs %}
@@ -34,8 +31,9 @@ val res1: Int = 2
 {% tabs already-exists %}
 {% tab 'Scala 2 and 3' %}
 ```
-scala> os.write(path, "this will fail")
-java.nio.file.FileAlreadyExistsException: /Users/alice/output.txt
+os.write(path, "this will fail")
+// this exception is thrown:
+// java.nio.file.FileAlreadyExistsException
 ```
 {% endtab %}
 {% endtabs %}
@@ -48,10 +46,9 @@ You can also use `os.write.append` to add more to the end:
 {% tabs append %}
 {% tab 'Scala 2 and 3' %}
 ```
-scala> os.write.append(path, "two more\nlines\n")
-
-scala> os.read.lines(path).size
-val res3: Int = 4
+os.write.append(path, "two more\nlines\n")
+println(os.read.lines(path).size)
+// prints: 4
 ```
 {% endtab %}
 {% endtabs %}
