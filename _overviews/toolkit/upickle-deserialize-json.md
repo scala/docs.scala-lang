@@ -1,5 +1,5 @@
 ---
-title: How to parse JSON to a data type?
+title: How to deserialize JSON to an object?
 type: section
 description: Parsing JSON to a custom data type
 num: 21

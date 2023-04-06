@@ -4,13 +4,13 @@ type: section
 description: Accessing JSON values using ujson.
 num: 20
 previous-page: upickle-intro
-next-page: upickle-parse-json
+next-page: upickle-deserialize-json
 ---
 
 {% include markdown.html path="_markdown/install-upickle.md" %}
 
 ## Accessing values inside JSON
-If you want to parse a JSON object and access some of its field, you can use the uJson library, which is brought by uPickle.
+If you want to parse a JSON string and access some of its field, you can use the uJson library, which is brought by uPickle.
 
 The method `ujson.read` can parse a JSON string and make all of its fields available.
 {% tabs 'read' %}

@@ -1,7 +1,7 @@
 ---
 title: How to modify JSON?
 type: section
-description: Modifying JSON with UPickle.
+description: Modifying JSON with uPickle.
 num: 23
 previous-page: upickle-serialize
 next-page: upickle-files
