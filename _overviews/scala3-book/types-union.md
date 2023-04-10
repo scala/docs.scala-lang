@@ -7,6 +7,7 @@ num: 51
 previous-page: types-intersection
 next-page: types-adts-gadts
 ---
+Scala 3 only
 
 Used on types, the `|` operator creates a so-called _union type_.
 The type `A | B` represents values that are **either** of the type `A` **or** of the type `B`.
