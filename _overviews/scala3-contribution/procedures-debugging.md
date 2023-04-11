@@ -60,13 +60,12 @@ In the `args` you need to specify the compiler arguments, which must contain at 
 
 To start with, we can compile the `../tests/pos/HelloWorld.scala` file.
 In the classpath, we always need at least the `scala-library_2.13` and the bootstrapped `scala3-library_3`.
-To locate them on your filesystem you can run the `show scala3-library-bootstrapped/fullClasspath` command in sbt.
+To locate them on your filesystem you can run the `export scala3-library-bootstrapped/fullClasspath` command in sbt.
 
 ```
 $ sbt
-> show scala3-library-bootstrapped/fullClasspath
-[info] * Attributed(/home/user/lampepfl/dotty/out/bootstrap/scala3-library-bootstrapped/scala-3.3.1-RC1-bin-SNAPSHOT-nonbootstrapped/classes)
-[info] * Attributed(/home/user/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.10/scala-library-2.13.10.jar)
+> export scala3-library-bootstrapped/fullClasspath
+/home/user/lampepfl/dotty/out/bootstrap/scala3-library-bootstrapped/scala-3.3.1-RC1-bin-SNAPSHOT-nonbootstrapped/classes:/home/user/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.10/scala-library-2.13.10.jar
 [success] Total time: 1 s, completed Mar 10, 2023, 4:37:43 PM
 ```
 
@@ -85,7 +84,6 @@ Here is the final configuration:
     "../tests/pos/HelloWorld.scala",
     "-classpath",
     // To replace with your own paths
-    // On Windows you must replace all '\' by '/'.
     "/home/user/lampepfl/dotty/out/bootstrap/scala3-library-bootstrapped/scala-3.3.1-RC1-bin-SNAPSHOT-nonbootstrapped/classes:/home/user/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.10/scala-library-2.13.10.jar",
     "-color",
     "never"
