@@ -415,37 +415,32 @@ $(document).ready(function() {
     });
   };
 
-  /** Links all tabs created in Liquid templates with class ".tabs-scala-version"
+  /** Links all tabs created in Liquid templates with class ".tabs-$namespace"
    *  on the page together, such that
-   *  changing a tab to `Scala 2` will activate all other tab sections to
-   *  also change to "Scala 2".
-   *  Also records a preference for the Scala version in localStorage, so
+   *  changing a tab to some value will activate all other tab sections to
+   *  also change to that value.
+   *  Also records a preference for the tab in localStorage, so
    *  that when the page is refreshed, the same tab will be selected.
-   *  On page load, selects the tab corresponding to stored Scala version.
+   *  On page load, selects the tab corresponding to stored value.
    */
-  function setupScalaVersionTabs(scalaVersionTabs) {
-    const DocsPreferences = Storage('org.scala-lang.docs.preferences');
-    const Scala3 = 'scala-3';
-    const scalaVersion = DocsPreferences.getPreference('scalaVersion', Scala3);
+  function setupTabs(tabs, namespace, defaultValue) {
+    const PreferenceStorage = Storage('org.scala-lang.docs.preferences');
+    const preferredValue = PreferenceStorage.getPreference(namespace, defaultValue);
 
-    function activateTab(tabs, scalaVersion) {
-      // click the code tab corresponding to the preferred Scala version.
-      tabs.find('input[data-target=' + scalaVersion + ']').prop("checked", true);
-    }
-
-    activateTab(scalaVersionTabs, scalaVersion);
+  // activate tabs: check the code tab corresponding to the preferred value
+  tabs.find('input[data-target=' + preferredValue + ']').prop("checked", true);
 
     // setup listeners to record new preferred Scala version.
-    scalaVersionTabs.find('input').on('change', function() {
+    tabs.find('input').on('change', function() {
       // if checked then set the preferred version, and activate the other tabs on page.
       if ($(this).is(':checked')) {
         const parent = $(this).parent();
-        const scalaVersion = $(this).data('target');
+        const newValue = $(this).data('target');
 
-        DocsPreferences.setPreference('scalaVersion', scalaVersion, oldValue => {
+        PreferenceStorage.setPreference(namespace, newValue, oldValue => {
           // when we set a new scalaVersion, find scalaVersionTabs except current one
           // and activate those tabs.
-          activateTab(scalaVersionTabs.not(parent), scalaVersion);
+          activateTab(tabs.not(parent), newValue);
         });
 
       }
@@ -456,7 +451,11 @@ $(document).ready(function() {
   if (storageAvailable('localStorage')) {
     var scalaVersionTabs = $(".tabsection.tabs-scala-version");
     if (scalaVersionTabs.length) {
-      setupScalaVersionTabs(scalaVersionTabs);
+      setupTabs(scalaVersionTabs, "scalaVersion", "scala-3");
+    }
+    var buildToolTabs = $(".tabsection.tabs-build-tool");
+    if (buildToolTabs.length) {
+      setupTabs(buildToolTabs, "buildTool", "scala-cli");
     }
   }
 

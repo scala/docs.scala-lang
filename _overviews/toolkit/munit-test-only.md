@@ -11,7 +11,7 @@ next-page: munit-exceptions
 
 ## Running a single test suite
 
-{% tabs munit-unit-test-2 %}
+{% tabs munit-unit-test-only class=tabs-build-tool %}
 {% tab 'Scala CLI' %}
 To run a single `example.MyTests` suite with Scala CLI, use the `--test-only` option of the `test` command.
 ```

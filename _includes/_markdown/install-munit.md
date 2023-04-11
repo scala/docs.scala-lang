@@ -4,7 +4,7 @@ MUnit is the testing library of the Scala Toolkit.
 
 ## Installing MUnit
 
-{% tabs munit-unit-test-1 %}
+{% tabs munit-unit-test-1 class=tabs-build-tool %}
 {% tab 'Scala CLI' %}
 In Scala CLI, you can install the entire toolkit in a single line:
 ```scala

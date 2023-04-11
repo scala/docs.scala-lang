@@ -15,7 +15,7 @@ In Scala we define groups of tests that we call test suites.
 Each test suite is intended to validate a particular component or feature of the software.
 Typically we define one test suite for each source file, or each class, that we want to test.
 
-{% tabs munit-unit-test-2 %}
+{% tabs munit-unit-test-2 class=tabs-build-tool %}
 {% tab 'Scala CLI' %}
 In Scala CLI, the test file can live in the same folder as the actual code, but the name of the file must end with `.test.scala`.
 In the following, `MyTests.test.scala` is a test file.

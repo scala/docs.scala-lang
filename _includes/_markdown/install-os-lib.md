@@ -4,8 +4,8 @@ OS-Lib is a library for manipulating files and processes. It is part of the Scal
 
 ## Requiring OS-Lib
 
-  {% tabs oslib--1 %}
-    {% tab 'Scala CLI' %}
+{% tabs oslib-install class=tabs-build-tool %}
+{% tab 'Scala CLI' %}
 In Scala CLI, we can require the entire toolkit in a single line:
 ```scala
 //> using toolkit "latest"
@@ -15,20 +15,20 @@ Alternatively, we can require just a specific version of OS-Lib:
 ```scala
 //> using dep "com.lihaoyi::os-lib:0.9.1"
 ```
-    {% endtab %}
-    {% tab 'sbt' %}
+{% endtab %}
+{% tab 'sbt' %}
 In our `build.sbt` file, we add the dependency on OS-Lib:
 ```scala
 libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.9.1"
 ```
-    {% endtab %}
-    {% tab 'Mill' %}
+{% endtab %}
+{% tab 'Mill' %}
 In our `build.sc` file, we add the dependency on OS-Lib:
 ```scala
 def ivyDeps = Agg(
   ivy"com.lihaoyi::os-lib:0.9.1"
 )
 ```
-    {% endtab %}
-  {% endtabs %}
+{% endtab %}
+{% endtabs %}
 {% endaltDetails %}

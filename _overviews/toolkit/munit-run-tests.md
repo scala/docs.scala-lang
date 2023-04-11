@@ -13,7 +13,7 @@ next-page: munit-test-only
 
 You can run all the tests of your program in a single command.
 
-{% tabs munit-unit-test-4 %}
+{% tabs munit-unit-test-4 class=tabs-build-tool %}
 {% tab 'Scala CLI' %}
 Using Scala CLI, to run all the tests in folder `example`:
 ```
