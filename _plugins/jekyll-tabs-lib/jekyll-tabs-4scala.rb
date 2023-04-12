@@ -123,7 +123,7 @@ module Jekyll
                 checkExhaustivity(seenTabs, "tabs-build-tool", Tabs::BuildTools)
 
                 if !foundDefault and allTabs.length > 0
-                    if @tab_class == "tabs-scala-version" or @tab_class == "tabs-build-tool"
+                    if @tab_class == "tabs-scala-version"
                         # set last tab to default ('Scala 3')
                         allTabs[-1].defaultTab = true
                     else
