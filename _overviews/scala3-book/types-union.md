@@ -6,6 +6,8 @@ languages: [zh-cn]
 num: 51
 previous-page: types-intersection
 next-page: types-adts-gadts
+scala3: true
+versionSpecific: true
 ---
 
 Used on types, the `|` operator creates a so-called _union type_.
@@ -45,12 +47,17 @@ As shown, union types can be used to represent alternatives of several different
 #### Pre-planning the Class Hierarchy
 Other languages would require pre-planning of the class hierarchy, like the following example illustrates:
 
+{% tabs pre-planning %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 trait UsernameOrPassword
 case class Username(name: String) extends UsernameOrPassword
 case class Password(hash: Hash) extends UsernameOrPassword
 def help(id: UsernameOrPassword) = ...
 ```
+{% endtab %}
+{% endtabs %}
+
 Pre-planning does not scale very well since, for example, requirements of API users might not be foreseeable.
 Additionally, cluttering the type hierarchy with marker traits like `UsernameOrPassword` also makes the code more difficult to read.
 
