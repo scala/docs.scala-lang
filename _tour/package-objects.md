@@ -7,7 +7,7 @@ num: 36
 previous-page: packages-and-imports
 ---
 
-Often, it is convenient to have definitions accessible accross an entire package, and not need to invent a
+Often, it is convenient to have definitions accessible across an entire package, and not need to invent a
 name for a wrapper `object` to contain them.
 
 {% tabs pkg-obj-vs-top-lvl_1 class=tabs-scala-version %}
