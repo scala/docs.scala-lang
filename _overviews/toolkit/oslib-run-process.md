@@ -33,6 +33,9 @@ Note that `proc` accepts both strings and `os.Path`s.
 
 ## Reading the output of a process
 
+(The particular commands in the following examples might not exist on all
+machines.)
+
 Above we saw that `call()` returned an `os.CommandResult`. We can
 access the result's entire output with `out.text()`, or as lines
 with `out.lines()`.
@@ -42,8 +45,8 @@ For example, we could use `bc` to do some math for us:
 {% tabs 'bc' %}
 {% tab 'Scala 2 and 3' %}
 ```
-val text: String =
-  os.proc("bc", "-e", "2 + 2").call().out.text()
+val result: os.CommandResult = os.proc("bc", "-e", "2 + 2").call()
+val text: String = result.out.text()
 println(text.trim.toInt)
 // prints: 4
 ```
@@ -55,8 +58,8 @@ Or have `cal` show us a calendar:
 {% tabs 'cal' %}
 {% tab 'Scala 2 and 3' %}
 ```
-os.proc("cal", "-h", "2", "2023").call()
-  .out.lines().foreach(println)
+val result: os.CommandResult = os.proc("cal", "-h", "2", "2023").call()
+result.out.lines().foreach(println)
 // prints:
 //   February 2023
 // Su Mo Tu We Th Fr Sa
@@ -66,12 +69,11 @@ os.proc("cal", "-h", "2", "2023").call()
 {% endtab %}
 {% endtabs %}
 
-(The particular commands in the examples might not exist on all
-machines.)
-
 ## Customizing the process
 
 `call()` takes various optional arguments, too many to explain
 individually here. For example, you can set the working directory
 (`cwd = ...`), set environment variables (`env = ...`), or redirect
 input and output (`stdin = ...`, `stdout = ...`, `stderr = ...`).
+Find more information about the `call` method on [the README of OS-Lib](https://github.com/com-lihaoyi/os-lib#osproccall).
+

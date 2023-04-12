@@ -26,7 +26,7 @@ Then we can slurp the entire file into a string with `os.read`:
 {% tabs slurp %}
 {% tab 'Scala 2 and 3' %}
 ```
-val contents = os.read(path)
+val content: String = os.read(path)
 ```
 {% endtab %}
 {% endtabs %}
@@ -53,7 +53,8 @@ if we just want to read the first line, the most efficient way is:
 {% tab 'Scala 2 and 3' %}
 ```
 val lineStream: geny.Generator[String] = os.read.lines.stream(path)
-println(lineStream.head)
+val firstLine: String = lineStream.head
+println(firstLine)
 // prints: A
 ```
 {% endtab %}
