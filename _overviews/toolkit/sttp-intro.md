@@ -17,3 +17,5 @@ sttp has a unified API for all platforms: it can runs on the JVM, in the browser
 
 One of the key benefits of sttp, compared to other HTTP client library, is its versatility.
 Whether you're working on a synchronous script or a large-scale highly-concurrent application, sttp provides the same level of quality on a wide-range of features.
+
+{% include markdown.html path="_markdown/install-sttp.md" %}

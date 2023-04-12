@@ -16,4 +16,6 @@ Despite its simplicity, MUnit contains all the most useful features for testing:
 - fixtures to ensure that the tests have access to all the necessary resources
 - asynchronous support, for testing concurrent and distributed applications.
 
-MUnit produces actionable error reports, with diifs and source location, to help you quickly understand a test failure.
+MUnit produces actionable error reports, with diff and source location, to help you quickly understand a test failure.
+
+{% include markdown.html path="_markdown/install-munit.md" %}

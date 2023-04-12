@@ -1,8 +1,4 @@
-uPickle is the JSON serialization library of the Scala Toolkit, it includes uJson, a Scala representation of the JSON format.
-
 {% altDetails install-info-box 'Installing upickle' %}
-
-## Installing upickle
 
 {% tabs upickle-install-methods class=tabs-build-tool %}
 {% tab 'Scala CLI' %}

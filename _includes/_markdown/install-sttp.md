@@ -1,12 +1,8 @@
-sttp is the HTTP client library of the Scala Toolkit.
-
 {% altDetails install-info-box 'Installing sttp' %}
-
-## Installing sttp
 
 {% tabs sttp-install-methods class=tabs-build-tool%}
 {% tab 'Scala CLI' %}
-In Scala CLI, you can install the entire toolkit in a single line:
+You can install the entire toolkit in a single line:
 ```scala
 //> using toolkit "latest"
 ```

@@ -1,17 +1,13 @@
-OS-Lib is a library for manipulating files and processes. It is part of the Scala Toolkit.
-
-{% altDetails require-info-box 'Requiring OS-Lib' %}
-
-## Requiring OS-Lib
+{% altDetails require-info-box 'Installing OS-Lib' %}
 
 {% tabs oslib-install class=tabs-build-tool %}
 {% tab 'Scala CLI' %}
-In Scala CLI, we can require the entire toolkit in a single line:
+You can install the entire toolkit in a single line:
 ```scala
 //> using toolkit "latest"
 ```
 
-Alternatively, we can require just a specific version of OS-Lib:
+Alternatively, you can install just a specific version of OS-Lib:
 ```scala
 //> using dep "com.lihaoyi::os-lib:0.9.1"
 ```
