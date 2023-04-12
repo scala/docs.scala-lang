@@ -9,18 +9,16 @@ next-page: intro-interactive
 
 ## What is the Scala Toolkit?
 
-The Scala Toolkit is a set of libraries designed to make common programming tasks simpler and more efficient.
-Whether you're working on a script or an application, the Toolkit provides a wide range of tools to help you get the job done.
+The Scala Toolkit is a set of libraries designed to make common programming tasks simpler and more efficient. It includes such functionalities as working with files and processes, parsing JSON, sending HTTP requests and unit-testing.
 
-These tutorials show you how to use the libraries in the Toolkit to
-do ordinary programming tasks such as working with files, processes,
-HTTP requests, JSON, and unit tests.
+Whether you're working on a script or an application, the Toolkit adapts to your environment, allowing you to write code in Scala 2 or Scala 3 that run seamlessly in the different platforms: the JVM, Scala.js and Scala Native.
+You can use this versatile tool in a wide range of applications, including but not limited to:
+- backend scripts that run on JVM, to scrape a website, to collect and transform data, or to fetch and process some files,
+- frontend scripts that run on the browser and power your websites,
+- command-line tools, packaged as native binaries, that start up immediately on all of the most commonly used operating systems.
 
-The Scala Toolkit adapts to your environment: it is available in Scala 2 and Scala 3 and it is cross-platform.
-Using the Toolkit you can run on the JVM, you can compile to JavaScript to run in the browser, or you can package native binaries that start up immediately.
-
-Overall, the Scala Toolkit is an essential resource for any developer looking to simplify their coding tasks.
-In this series of tutorials, you'll find many short code examples, to help you get started quickly and be more productive with Scala.
+This series of tutorials focuses on short code examples, to help you get started quickly and be more productive.
+Overall, it is an essential resource for any Scala developer looking to simplify their daily programming tasks.
 
 ## How to run the code?
 
@@ -29,18 +27,6 @@ Scala code. The tutorials focus on the code itself, not on the process
 of running it.
 
 Ways to run Scala code include:
-
-* in your **browser**
-* in the **REPL**
-* in a **worksheet**
-* in a **script**
-* with a **build tool**
-* with an **IDE**
-
-Feel free to use whichever option you're most comfortable with.
-
-Here's a quick rundown of the main pros and cons of each method:
-
 * in your **browser** with [Scastie](https://scastie.scala-lang.org)
     * pros: zero installation, online sharing
     * cons: single-file only, online-only
@@ -62,3 +48,4 @@ Here's a quick rundown of the main pros and cons of each method:
 
 These choices, with their pros and cons, are common to most programing
 languages.
+Feel free to use whichever option you're most comfortable with.
