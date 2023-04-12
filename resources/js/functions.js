@@ -415,6 +415,11 @@ $(document).ready(function() {
     });
   };
 
+  function activateTab(tabs, value) {
+    // check the code tab corresponding to the preferred value
+    tabs.find('input[data-target=' + value + ']').prop("checked", true);
+  }
+
   /** Links all tabs created in Liquid templates with class ".tabs-$namespace"
    *  on the page together, such that
    *  changing a tab to some value will activate all other tab sections to
@@ -426,9 +431,8 @@ $(document).ready(function() {
   function setupTabs(tabs, namespace, defaultValue) {
     const PreferenceStorage = Storage('org.scala-lang.docs.preferences');
     const preferredValue = PreferenceStorage.getPreference(namespace, defaultValue);
-
-  // activate tabs: check the code tab corresponding to the preferred value
-  tabs.find('input[data-target=' + preferredValue + ']').prop("checked", true);
+    
+    activateTab(tabs, preferredValue)
 
     // setup listeners to record new preferred Scala version.
     tabs.find('input').on('change', function() {
