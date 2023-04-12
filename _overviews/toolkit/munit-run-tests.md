@@ -15,7 +15,7 @@ You can run all the tests of your program in a single command.
 
 {% tabs munit-unit-test-4 class=tabs-build-tool %}
 {% tab 'Scala CLI' %}
-Using Scala CLI, to run all the tests in folder `example`:
+Using Scala CLI, the following command runs all the tests in the folder `example`:
 ```
 scala-cli test example
 # Compiling project (test, Scala 3.2.1, JVM)
@@ -25,7 +25,7 @@ scala-cli test example
 ```
 {% endtab %}
 {% tab 'sbt' %}
-In the sbt shell, to run all the tests of project `example`:
+In the sbt shell, the following command run all the tests of the project `example`:
 ```
 sbt:example> example/test
 # MyTests:
@@ -35,7 +35,7 @@ sbt:example> example/test
 ```
 {% endtab %}
 {% tab 'Mill' %}
-In Mill, to run all the tests of module `example`:
+In Mill, the following command run all the tests of the module `example`:
 ```
 ./mill example.test.test
 # [71/71] example.test.test 
@@ -45,9 +45,13 @@ In Mill, to run all the tests of module `example`:
 {% endtab %}
 {% endtabs %}
 
+The test report, printed in the console, contains the status of each test.
 The `+` symbol before the name of the test indicates that the test passed successfully.
 
 Add and run a failing test to see its different report:
+
+{% tabs assertions-1 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 test("failing test") {
   val obtained = 2 + 3
@@ -55,6 +59,8 @@ test("failing test") {
   assertEquals(obtained, expected)
 }
 ```
+{% endtab %}
+{% endtabs %}
 
 ```
 # MyTests:
@@ -72,5 +78,6 @@ test("failing test") {
 #     at munit.Assertions.failComparison(Assertions.scala:274)
 ```
 
-The line starting with `==> X` indicates that the test named `failing test` failed.
-The following lines contain indications of where and why it failed.
+The line starting with `==> X` indicates that the test named `failing test` fails.
+The following lines contain indications of where and why it fails.
+Here it shows that the obtained value is 5, while the expected value is 4.

@@ -9,6 +9,8 @@ next-page: munit-asynchronous-tests
 
 {% include markdown.html path="_markdown/install-munit.md" %}
 
+## Intercepting an exception
+
 In a test, you can use the `intercept` assertion to check that your code throws an exception.
 
 {% tabs 'intercept-1' class=tabs-scala-version %}
@@ -53,10 +55,14 @@ The test passes if the code throws the expected exception and it fails otherwise
 The `intercept` method returns the exception that is thrown.
 You can check more assertions on it.
 
+{% tabs 'intercept-2' %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val exception = intercept[NoSuchFileException](os.read(missingFile))
 assert(clue(exception.getMessage).contains("missing.txt"))
 ```
+{% endtab %}
+{% endtabs %}
 
 You can also use the more concise `interceptMessage` method to test the exception and its message in a single assertion.
 Learn more about it in the [MUnit documentation](https://scalameta.org/munit/docs/assertions.html#interceptmessage).

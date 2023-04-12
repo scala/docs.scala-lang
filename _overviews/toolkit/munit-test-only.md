@@ -33,12 +33,11 @@ To run a single `example.MyTests` suite in Mill, use the `testOnly` task:
 {% endtab %}
 {% endtabs %}
 
-## Running specific tests in a test suite
+## Running a single test in a test suite
 
 Within a test suite file, you can select individual tests to run by appending `.only` to a test name, e.g.
 
 {% tabs 'only-demo' class=tabs-scala-version %}
-
 {% tab 'Scala 2' %}
 ```scala
 class MathSuite extends munit.FunSuite {
@@ -48,10 +47,6 @@ class MathSuite extends munit.FunSuite {
 
   test("multiplication".only) {
     assert(3 * 7 == 21)
-  }
-
-  test("remainder".only) {
-    assert(13 % 5 == 3)
   }
 }
 ```
@@ -66,17 +61,12 @@ class MathSuite extends munit.FunSuite:
   test("multiplication".only) {
     assert(3 * 7 == 21)
   }
-
-  test("remainder".only) {
-    assert(13 % 5 == 3)
-  }
 ```
 {% endtab %}
-
 {% endtabs %}
 
-In the above example, only the `"multiplication"` and `"remainder"` tests will run (i.e. `"addition"` is ignored).
-This is useful to quickly debug specific tests in a suite.
+In the above example, only the `"multiplication"` tests will run (i.e. `"addition"` is ignored).
+This is useful to quickly debug a specific test in a suite.
 
 ## Alternative: excluding specific tests
 
@@ -84,7 +74,6 @@ You can exclude specific tests from running by appending `.ignore` to the test n
 For example the following ignores the `"addition"` test, and run all the others:
 
 {% tabs 'ignore-demo' class=tabs-scala-version %}
-
 {% tab 'Scala 2' %}
 ```scala
 class MathSuite extends munit.FunSuite {
@@ -118,7 +107,6 @@ class MathSuite extends munit.FunSuite:
   }
 ```
 {% endtab %}
-
 {% endtabs %}
 
 ## Use tags to group tests, and run specific tags

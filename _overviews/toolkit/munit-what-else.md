@@ -11,7 +11,7 @@ next-page: oslib-intro
 
 ## Adding clues to get better error report
 
-Use `clue` inside an `assert` to get better error reports when the assertion fails.
+Use `clue` inside an `assert` to a get better error report when the assertion fails.
 
 {% tabs clues %}
 {% tab 'Scala 2 and 3' %}
@@ -40,9 +40,10 @@ A test is skipped if one of its assumption is not met.
 ```scala
 import scala.util.Properties
 
-test("paths") {
+test("home directory") {
   assume(Properties.isLinux, "this test runs only on Linux")
-  assume(Properties.versionNumberString.startsWith("2.13"), "this test runs only on Scala 2.13")
+
+  assert(os.home.toString.startsWith("/home/"))
 }
 ```
 {% endtab %}
