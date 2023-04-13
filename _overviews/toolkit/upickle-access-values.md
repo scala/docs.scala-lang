@@ -10,40 +10,71 @@ next-page: upickle-deserialize-json
 {% include markdown.html path="_markdown/install-upickle.md" %}
 
 ## Accessing values inside JSON
-If you want to parse a JSON string and access some of its field, you can use the uJson library, which is brought by uPickle.
 
-The method `ujson.read` can parse a JSON string and make all of its fields available.
+To parse a JSON string and access some of its field, you can use the uJson library, which is brought in by uPickle.
+
+The method `ujson.read` parses a JSON string to make its fields available.
 {% tabs 'read' %}
 {% tab 'Scala 2 and 3' %}
 ```scala
-val jsonString = """{"name": "Peter", "age": 13}"""
-val json = ujson.read(jsonString)
-println(json("name").str) // Prints out "Peter"
+val jsonString: String = """{"name": "Peter", "age": 13}"""
+val json: ujson.Value  = ujson.read(jsonString)
+println(json("name").str)
+// prints: Peter
 ```
 {% endtab %}
 {% endtabs %}
 
-You can access a field by passing its name to the `json` value, and then specifying which type you expect.
-If `name` is a field that should contain a string, you can access it using `json("name").str`.
+To access the `"name"` field, we do `json("name")` and then call `.str` to type it as a string.
 
-Similarly, you can access an element of an array by passing its indice, as in the example below:
+To access the elements by index in a JSON array, you can do as follows:
+
 {% tabs 'array' %}
 {% tab 'Scala 2 and 3' %}
 ```scala
-val jsonString = """{"name": "Peter", "pets": ["Toolkitty", "Scaniel"]}"""
-val json = ujson.read(jsonString)
-val ownerName = json("name").str
-val firstPet = json("pets")(0).str
-println(s"$ownerName has a pet called $firstPet")
+val pets: ujson.Value = json("pets")
+val firstPet: String = pets(0).str
+val secondPet: String = pets(1).str
+println(s"The pets are $firstPet and $seconPet")
+// prints: The pets are Toolkitty and Scaniel
 ```
 {% endtab %}
 {% endtabs %}
-You can traverse the JSON structure as deeply as you want, to extract any nested field.
+
+You can traverse the JSON structure as deeply as you want, to extract any nested value.
+For instance, `json("field1")(0)("field2").str` is the string value of "field2" in the first element of the array in "field1".
 
 ## JSON types
-In the previous example we used the `str` method on fields to extract a `String` from the field's value.
+
+In the previous examples we used `str` to type a JSON value as a string.
 Similar operations are available to extract other types of values. Namely:
- - `num` for numeric values, it returns an `Int`
+ - `num` for numeric values, it returns a `Double`
  - `bool` for boolean values, it returns a `Boolean`
- - `arr` for arrays
- - `obj` for objects
+ - `arr` for arrays, it returns a mutable `Buffer[ujson.Value]`
+ - `obj` for objects, it returns a mutable `Map[String, ujson.Value]`
+
+{% tabs 'typing' %}
+{% tab 'Scala 2 and 3' %}
+```scala
+import scala.collection.mutable
+
+val jsonString: String = """{"name": "Peter", "age": 13, "pets": ["Toolkitty", "Scaniel"]}"""
+val json: ujson.Value = ujson.read(jsonString)
+
+val person: mutable.Map[String, ujson.Value] = json.obj
+val age: Int = person("age").num
+val pets: mutable.Buffer[ujson.Value] = person("pets").arr
+```
+{% endtab %}
+{% endtabs %}
+
+If a JSON value does not conform to the expected type, uJson throws a `ujson.Value.InvalidData` exception.
+
+{% tabs 'exception' %}
+{% tab 'Scala 2 and 3' %}
+```scala
+val name: Boolean = person("name").bool
+// throws a ujson.Value.InvalidData: Expected ujson.Bool (data: "Peter")
+```
+{% endtab %}
+{% endtabs %}

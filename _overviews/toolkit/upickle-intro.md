@@ -8,7 +8,7 @@ next-page: upickle-access-values
 ---
 
 uPickle is a lightweight and efficient serialization library for the Scala language.
-It comes with uJson, a JSON manipulation library that can read a JSON string, access or mutate its values, and write it back to a string.
+It comes with uJson, a JSON manipulation library that can parse JSON strings, access or mutate their values, and print them back to strings.
 
 uPickle is a serialization library.
 It can serialize and deserialize Scala objects directly to and from JSON strings.

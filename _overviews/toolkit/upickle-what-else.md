@@ -13,11 +13,9 @@ next-page: sttp-intro
 {% tabs construct%}
 {% tab 'Scala 2 and Scala 3' %}
 ```scala
-import ujson.*
-
-val obj = Js.Obj(
+val obj: ujson.Value = ujson.Obj(
   "library" -> "upickle",
-  "versions" -> Js.Arr("1.6.0", "2.0.0", "3.1.0")
+  "versions" -> ujson.Arr("1.6.0", "2.0.0", "3.1.0"),
   "documentation" -> "https://com-lihaoyi.github.io/upickle/",
 )
 ```
@@ -28,7 +26,7 @@ Learn more about constructing JSON in the [uJson documentation](https://com-liha
 
 ## Defining custom JSON serialization
 
-You can customize your `ReadWriter`s by accessing the `ujson.Value`, like this:
+You can customize the `ReadWriter` of your data type by mapping the `ujson.Value`, like this:
 
 {% tabs custom-serializer class=tabs-scala-version %}
 {% tab 'Scala 2' %}
@@ -38,8 +36,8 @@ import upickle.default.*
 case class Bar(i: Int, s: String)
 
 object Bar {
-  implicit val barReadWriter: ReadWriter[Bar] =
-    readwriter[ujson.Value].bimap[Bar](
+  implicit val barReadWriter: ReadWriter[Bar] = readwriter[ujson.Value]
+    .bimap[Bar](
       x => ujson.Arr(x.s, x.i),
       json => new Bar(json(1).num.toInt, json(0).str)
     )
@@ -53,8 +51,8 @@ import upickle.default.*
 case class Bar(i: Int, s: String)
 
 object Bar:
-  given ReadWriter[Bar] =
-    readwriter[ujson.Value].bimap[Bar](
+  given ReadWriter[Bar] = readwriter[ujson.Value]
+    .bimap[Bar](
       x => ujson.Arr(x.s, x.i),
       json => new Bar(json(1).num.toInt, json(0).str)
     )
