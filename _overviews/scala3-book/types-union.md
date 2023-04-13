@@ -45,18 +45,14 @@ case 1.0 => ???   // ERROR: this line won’t compile
 As shown, union types can be used to represent alternatives of several different types, without requiring those types to be part of a custom-crafted class hierarchy, or requiring explicit wrapping.
 
 #### Pre-planning the Class Hierarchy
-Other languages would require pre-planning of the class hierarchy, like the following example illustrates:
+Without union types, it would require pre-planning of the class hierarchy, like the following example illustrates:
 
-{% tabs pre-planning %}
-{% tab 'Scala 2 and 3' %}
 ```scala
 trait UsernameOrPassword
 case class Username(name: String) extends UsernameOrPassword
 case class Password(hash: Hash) extends UsernameOrPassword
 def help(id: UsernameOrPassword) = ...
 ```
-{% endtab %}
-{% endtabs %}
 
 Pre-planning does not scale very well since, for example, requirements of API users might not be foreseeable.
 Additionally, cluttering the type hierarchy with marker traits like `UsernameOrPassword` also makes the code more difficult to read.
