@@ -2,7 +2,7 @@
 title: Testing Your Changes
 type: section
 description: This page describes test procedures in the Scala 3 compiler.
-num: 11
+num: 12
 previous-page: procedures-efficiency
 next-page: procedures-checklist
 ---
@@ -12,6 +12,15 @@ and act as proof of what is valid/invalid Scala code (in case it is broken in th
 In this section you will see the testing procedures in Scala 3.
 
 ## Running all Tests
+
+Running all tests in Dotty is as simple as:
+
+```bash
+$ sbt test
+```
+Specifically, `sbt test` runs all tests that do _not_ require a bootstrapped
+compiler. In practice, this means that it runs all compilation tests meeting
+this criterion, as well as all non-compiler tests.
 
 To run all tests of Scala 3, including for compiler, REPL, libraries and more, run the following in sbt:
 
@@ -194,6 +203,12 @@ sbt:scala3> scala3-compiler/Test/runMain
 
 then compare the changes via version control.
 
+## Troubleshooting
+
+Some of the tests depend on temporary state stored in the `out` directory. In rare cases, that directory
+can enter an inconsistent state and cause spurious test failures. If you suspect a spurious test failure,
+you can run `rm -rf out/*` from the root of the repository and run your tests again. If that fails, you
+can try `git clean -xfd`.
 
 [CompilationTests]: https://github.com/lampepfl/dotty/blob/master/compiler/test/dotty/tools/dotc/CompilationTests.scala
 [compiler/test]: https://github.com/lampepfl/dotty/blob/master/compiler/test/

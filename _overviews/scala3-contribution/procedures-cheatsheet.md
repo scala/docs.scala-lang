@@ -14,17 +14,18 @@ For more in-depth explanations, see the rest of this chapter.
 
 The following commands can be run within `sbt` in the dotty directory:
 
-| Commands                                                                                      |
-|-----------------------------------------------------------------------------------------------|
-| `testCompilation` Run compilation tests on files that match the first argument.               |
-| `scala3/scalac` Run the compiler directly, with any current changes.                          |
-| `scala3/scala` Run the main method of a given class name.                                     |
-| `repl` Start a REPL with the bootstrapped compiler.                                           |
-| `testOnly *CompilationTests -- *pos` Run test `pos` from the compilation test suite.          |
-| `scala3-compiler/Test/runMain dotty.tools.printTypes` Print types underlying representation   |
-| `scala3/scalac -print-tasty Foo.tasty` Print the TASTy of top-level class `Foo`               |
-| `scala3-bootstrapped/test` Run all tests for Scala 3. (Slow, recommended for CI only)         |
-| `scala3-bootstrapped/publishLocal` Build Scala 3 locally. (Use to debug a specific project)   |
+| Commands                                                            | Description                                                                                                                    |
+|---------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| `testCompilation sample`                                            |  In all test suites, run test files containing the word `sample` in their title.                                               |
+| `scala3/scalac`                                                     |  Run the compiler directly, with any current changes.                                                                          |
+| `scala3/scala`                                                      |  Run the main method of a given class name.                                                                                    |
+| `repl`                                                              |  Start a REPL with the bootstrapped compiler.                                                                                  |
+| `testOnly *CompilationTests -- *pos`                                |  Run test `pos` from the compilation test suite.                                                                               |
+| `scala3-compiler/Test/runMain dotty.tools.printTypes`               |  Print types underlying representation                                                                                         |
+| `scala3/scalac -print-tasty Foo.tasty`                              |  Print the TASTy of top-level class `Foo`                                                                                      |
+| `scala3-bootstrapped/test`                                          |  Run all tests for Scala 3. (Slow, recommended for CI only)                                                                    |
+| `scala3-bootstrapped/publishLocal`                                  |  Build Scala 3 locally. (Use to debug a specific project)                                                                      |
+| `scalac ../issues/Playground.scala`                                 |  Compile the given file – path relative to the Dotty directory. Output the compiled class files to the Dotty directory itself. |
 
 ## Shell Commands
 

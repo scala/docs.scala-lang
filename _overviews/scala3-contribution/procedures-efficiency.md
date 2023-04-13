@@ -2,7 +2,7 @@
 title: Improving Your Workflow
 type: section
 description: This page describes improving efficiency of debugging the Scala 3 compiler.
-num: 10
+num: 11
 previous-page: procedures-inspection
 next-page: procedures-testing
 ---

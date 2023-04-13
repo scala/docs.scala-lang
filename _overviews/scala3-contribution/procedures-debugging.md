@@ -4,7 +4,7 @@ type: section
 description: This page describes navigating around the Scala 3 compiler.
 num: 7
 previous-page: procedures-navigation
-next-page: procedures-areas
+next-page: procedures-other-debugging
 ---
 
 The debugger is a powerful tool to navigate the internals of the compiler and track bugs.

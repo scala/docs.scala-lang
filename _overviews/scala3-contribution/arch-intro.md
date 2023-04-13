@@ -2,8 +2,8 @@
 title: High Level Architecture
 type: chapter
 description: This page introduces the high level architecture of the Scala 3 compiler.
-num: 13
-previous-page: procedures-checklist
+num: 15
+previous-page: procedures-vulpix
 next-page: arch-lifecycle
 ---
 

@@ -2,8 +2,8 @@
 title: Common Issue Locations
 type: section
 description: This page describes common areas of issues around the Scala 3 compiler.
-num: 8
-previous-page: procedures-navigation
+num: 9
+previous-page: procedures-other-debugging
 next-page: procedures-inspection
 ---
 
