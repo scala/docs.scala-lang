@@ -22,9 +22,6 @@ One common way to achieve this is by passing the configuration as additional arg
 
 In the following example, we define a case class `Config` to model some website configuration and pass it around in the different methods.
 
-{% tabs nonusing %}
-{% tab 'Scala 2 and 3' %}
-
 ```scala
 case class Config(port: Int, baseUrl: String)
 
@@ -36,9 +33,6 @@ def renderWidget(items: List[String], c: Config): String = ???
 val config = Config(8080, "docs.scala-lang.org")
 renderWebsite("/home", config)
 ```
-
-{% endtab %}
-{% endtabs %}
 
 Let us assume that the configuration does not change throughout most of our code base.
 Passing `c` to each and every method call (like `renderWidget`) becomes very tedious and makes our program more difficult to read, since we need to ignore the `c` argument.
