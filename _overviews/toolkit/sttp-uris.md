@@ -1,35 +1,124 @@
 ---
-title: How to construct URIs?
+title: How to construct URIs and query parameters?
 type: section
 description: Using interpolation to construct URIs
 num: 28
 previous-page: sttp-send-request
-next-page: sttp-query-parameters
+next-page: sttp-string-body
 ---
 
 {% include markdown.html path="_markdown/install-sttp.md" %}
 
 ## The `uri` interpolator
-The `uri` interpolator (e.g. in `uri"https://example.com/"`) allows you to create valid web addresses, also called URIs.
-When you have a variable in scope, for instance `name`, you can put its value in the URI using the `$` sign or the `${}` syntax. For instance, the URI `uri"https://example.com/$name"` contains an interpolated variable `name`.
-It will produce the URI `https://example.com/peter`, exactly as you would expect.
 
-`uri` is a custom [String interpolator](/overviews/core/string-interpolation.html) defined in sttp.
-When you call it, it replaces the interpolated variables with their values, for instance `$name` is replaced by `peter`.
-The role of the `uri` interpolator is also to escape any special character to build valid URIs.
+`uri` is a custom [String interpolator](/overviews/core/string-interpolation.html), that allows you to create valid web addresses, also called URIs (e.g., `uri"https://example.com/"`).
 
-{% tabs 'variables' %}
+You can interpolate any variable or expression in your URI using the `$` or `${}` syntax.
+For instance `uri"https://example.com/$name"`, interpolate the value of the variable `name` into an URI.
+If `name` contains `"peter"` it produces `https://example.com/peter`.
+
+One of the benefits of the `uri` interpolator is that it escapes all special characters automatically.
+
+{% tabs 'uri' %}
 {% tab 'Scala 2 and 3' %}
 ```scala
-import sttp.client3.{SimpleHttpClient, UriContext, basicRequest}
+import sttp.client4.quick.*
+import sttp.model.Uri
 
-val client = SimpleHttpClient() // Create the instance of SimpleHttpClient
-val name = "peter" // The name you want to pass
-val request = basicRequest.get(uri"https://example.com/$name") // Define the GET request to https://example.com/peter
-val response = client.send(request) // Send the request and get the response
-println(response.body) // Print the body of the response
+val book = "programming in scala"
+val bookUri: Uri = uri"https://example.com/books/$book"
+
+println(bookUri)
+// prints: https://example.com/books/programming%20in%20scala
 ```
 {% endtab %}
 {% endtabs %}
 
-Learn more in the [sttp documentation chapter about URIs](https://sttp.softwaremill.com/en/latest/model/uri.html).
+## Query parameters
+
+A query parameter is a key-value pair that is appended to the end of a URI in an HTTP request to specify additonal details about the request.
+The web server can use those parameters to compute the appropriate response.
+
+For example, consider the following URL:
+
+```
+https://example.com/search?q=scala&limit=10&page=1
+```
+
+It contains three query parameters: `q=scala`, `limit=10` and `page=1`.
+
+### Using a map of query parameters
+
+The `uri` interpolator can interpolate a `Map[String, String]` as query parameters:
+
+{% tabs 'queryparams' %}
+{% tab 'Scala 2 and 3' %}
+```scala
+import sttp.client4.quick.*
+
+val queryParams = Map(
+  "q" -> "scala",
+  "limit" -> "10",
+  "page" -> "1"
+)
+val uriWithQueryParams = uri"https://example.com/search?$queryParams" 
+println(uriWithQueryParams)
+// prints: https://example.com/search?q=scala&limit=10&page=1
+```
+{% endtab %}
+{% endtabs %}
+
+For safety, all the special characters in the parameters are automatically escaped by the interpolator.
+
+## Using an optional query parameter
+
+Suppose you have an optional query parameter, that is sometimes defined but not always.
+A convenient way to handle this is to use an `Option`, and to interpolate it in a `uri"..."`.
+
+{% tabs 'optional' %}
+{% tab 'Scala 2 and 3' %}
+```scala
+import sttp.client4.quick.*
+import sttp.model.Uri
+
+def getUri(limit: Option[Int]): Uri =
+  uri"https://example.com/all?limit=$limit"
+
+println(getUri(Some(10)))
+// prints: https://example.com/all?limit=100
+
+println(getUri(None))
+// prints: https://example.com/all
+```
+{% endtab %}
+{% endtabs %}
+
+Notice that the query parameter completely disappeared form the URI when limit is `None`.
+
+## Using a sequence as values of a single query parameter
+
+A query parameter can be repeated in a URI to represent a list of values.
+For example, the `version` parameter in `?version=1.0.0&version=1.0.1&version=1.1.0` contains 3 values: `1.0.0`, `1.0.1` and `1.1.0`.
+
+To build such query parameter in a URI, you can interpolate a `Seq` (or `List`, `Array`, etc) in a `uri"..."`.
+
+{% tabs 'seq' %}
+{% tab 'Scala 2 and 3' %}
+```scala
+import sttp.client4.quick.*
+import sttp.model.Uri
+
+def getUri(versions: Seq[String]): Uri =
+  uri"https://example.com/scala?version=$versions"
+
+println(getUri(Seq("3.2.2")))
+// prints: https://example.com/scala?version=3.2.2
+
+println(getUri(Seq("2.13.8", "2.13.9", "2.13.10")))
+// prints: https://example.com/scala?version=2.13.8&version=2.13.9&version=2.13.10
+
+println(getUri(Seq.empty))
+// prints: https://example.com/scala
+```
+{% endtab %}
+{% endtabs %}

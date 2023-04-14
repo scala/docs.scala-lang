@@ -11,7 +11,6 @@ sttp is a popular, hightly flexible and feature-rich library for making HTTP req
 
 Out of the box, it provides a synchronous backend, an asynchronous, `Future`-base backend, and the WebSocket support.
 It is pluggable with many extensions that enrich its core functionnalities with streaming, logging, telemetry, serialization, and more.
-It operates well with uPickle for the JSON serialization and deserialization of requests and responses.
 
 sttp has a unified API for all platforms: it can runs on the JVM, in the browser with Scala.js, and it can compile to native binaries with Scala Native.
 

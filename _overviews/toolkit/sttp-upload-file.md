@@ -10,41 +10,46 @@ next-page: sttp-what-else
 {% include markdown.html path="_markdown/install-sttp.md" %}
 
 
-## Making a request with a file
-You can use either `File` or `Path` from the java standard library to send the file in the request. See [operating on paths](https://docs.oracle.com/javase/tutorial/essential/io/pathOps.html) to learn how to use them. 
-After you have a `File` or `Path`, you can just put them in the request's body with `.body` function on `basicRequest`:
+## Uploading a file
+
+To upload a file, you can put a Java `Path` in the body of a request.
+
+You can get a `Path` directly using `Paths.get("path/to/file")` or by converting an OS-Lib path to a Java path with `.toNIO`.
+
 {% tabs 'file' %}
 {% tab 'Scala 2 and 3' %}
 ```scala
-import sttp.client3.{SimpleHttpClient, UriContext, basicRequest}
-import java.nio.file.Path
+import sttp.client4.quick.*
 
-val client = SimpleHttpClient() // Create the instance of SimpleHttpClient
-val requestFilePath = Path.of("image.png") // Path of the file you want to send
-val request = basicRequest.post(uri"https://example.com/").body(requestFilePath) // Construct a POST request to upload the file to https://example.com/
-val response = client.send(request) // Send the request and get the response
-println(response.body) // Print the body of the response
+val file: java.nio.file.Path = (os.pwd / "image.png").toNIO
+val response = quickRequest.post(uri"https://example.com/").body(file).send()
+
+println(response.code)
+// prints: 200
 ```
 {% endtab %}
 {% endtabs %}
 
-## Multi-part request
-Many webservices can receive one or many files in a multipart body.
-To achieve that with sttp, you can use the `multipartBody` method on the `basicRequest`.
+## Multi-part requests
+
+If the web server can receive multiple files at once, you can use a multipart body, as follows:
+
 {% tabs 'multipart' %}
 {% tab 'Scala 2 and 3' %}
 ```scala
-import sttp.client3._
-import java.nio.file.Path
+import sttp.client4.quick.*
 
-val file1 = Path.of("avatar1.png")
-val file2 = Path.of("avatar2.png")
-val request = basicRequest.multipartBody(Seq(
-    multipart("avatar1.png", file1), 
-    multipart("avatar2.png", file2)
-))
+val file1 = (os.pwd / "avatar1.png").toNIO
+val file2 = (os.pwd / "avatar2.png").toNIO
+val response = quickRequest
+  .post(uri"https://example.com/")
+  .multipartBody(
+    multipartFile("avatar1.png", file1), 
+    multipartFile("avatar2.png", file2)
+  )
+  .send()
 ```
 {% endtab %}
 {% endtabs %}
 
-See more in the [sttp documention about multipart requests](https://sttp.softwaremill.com/en/latest/requests/multipart.html).
+Learn more about multipart requests in the [sttp documention](https://sttp.softwaremill.com/en/latest/requests/multipart.html).

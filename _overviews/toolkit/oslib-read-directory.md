@@ -38,7 +38,7 @@ val etc: os.Path = os.root / "etc"
 
 {% tabs 'list-etc' %}
 {% tab 'Scala 2 and 3' %}
-```
+```scala
 val entries: Seq[os.Path] = os.list(os.root / "etc")
 ```
 {% endtab %}

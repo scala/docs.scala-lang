@@ -9,7 +9,7 @@ You can install the entire toolkit in a single line:
 
 Alternatively, you can install a specific version of sttp:
 ```scala
-//> using lib "com.softwaremill.sttp.client3::core:3.8.5"
+//> using lib "com.softwaremill.sttp.client4::core:4.0.0-M1"
 ```
 {% endtab %}
 {% tab 'sbt' %}
@@ -18,7 +18,7 @@ In your build.sbt file, you can add the dependency to the sttp library:
 lazy val example = project.in(file("example"))
   .settings(
     scalaVersion := "3.2.1",
-    libraryDependencies += "com.softwaremill.sttp.client3" %% "core" % "3.8.5"
+    libraryDependencies += "com.softwaremill.sttp.client4" %% "core" % "4.0.0-M1"
   )
 ```
 {% endtab %}
@@ -29,7 +29,7 @@ object example extends ScalaModule {
   def scalaVersion = "3.2.1"
   def ivyDeps =
     Agg(
-      ivy"com.softwaremill.sttp.client3::core:3.8.5"
+      ivy"com.softwaremill.sttp.client4::core:4.0.0-M1"
     )
 }
 ```
