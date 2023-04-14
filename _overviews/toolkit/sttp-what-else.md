@@ -9,8 +9,6 @@ next-page:
 
 {% include markdown.html path="_markdown/install-upickle.md" %}
 
-Here is an non-exhaustive list of features of sttp.
-
 ## Asynchronous requests
 
 To send a request asynchronously you can use a `DefaultFutureBackend`:
@@ -31,14 +29,14 @@ val response: Future[Response[String]] = quickRequest
 
 You can learn more about `Future`-based backends in [sttp documentation](https://sttp.softwaremill.com/en/latest/backends/future.html).
 
-sttp supports many more asynchronous wrappers such as, the Monix [Task], the cats [Effect], the [ZIO] type and more.
+sttp supports many more asynchronous wrappers such as, the Monix `Task`, the cats `Effect`, the `ZIO` type and more.
 You can see the full list of supported backends [here](https://sttp.softwaremill.com/en/latest/backends/summary.html).
 
 ## Websockets
 
 You can use a `DefaultFutureBackend` to open a websocket, as follows.
 
-{% tabs 'ws' class=scala-version-tabs %}
+{% tabs 'ws' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
 ```scala
 import scala.concurrent.duration.Duration

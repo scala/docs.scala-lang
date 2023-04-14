@@ -14,7 +14,7 @@ next-page: sttp-what-else
 
 To upload a file, you can put a Java `Path` in the body of a request.
 
-You can get a `Path` directly using `Paths.get("path/to/file")` or by converting an OS-Lib path to a Java path with `.toNIO`.
+You can get a `Path` directly using `Paths.get("path/to/file")` or by converting an OS-Lib path to a Java path with `toNIO`.
 
 {% tabs 'file' %}
 {% tab 'Scala 2 and 3' %}

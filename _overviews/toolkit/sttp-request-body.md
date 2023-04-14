@@ -11,7 +11,7 @@ next-page: sttp-json
 
 ## Sending a request with a string body
 
-To send a POST request with a string body, you can chain `.post` and `.body` on a `quickRequest`:
+To send a POST request with a string body, you can chain `post` and `body` on a `quickRequest`:
 {% tabs 'body' %}
 {% tab 'Scala 2 and 3' %}
 ```scala

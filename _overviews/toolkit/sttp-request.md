@@ -67,7 +67,7 @@ sttp can also add the "Content-Type" and "Content-Length" automatically if the r
 
 ## Authentication
 
-If you need authentication to access a resource, you can use one of the `.auth.basic`, `.auth.basicToken`, `auth.bearer` or `auth.digest` methods.
+If you need authentication to access a resource, you can use one of the `auth.basic`, `auth.basicToken`, `auth.bearer` or `auth.digest` methods.
 
 {% tabs 'auth' %}
 {% tab 'Scala 2 and 3' %}

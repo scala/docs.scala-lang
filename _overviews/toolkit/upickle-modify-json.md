@@ -17,8 +17,7 @@ First you need to read the JSON string, then you can update it, and finally you 
 {% tab 'Scala 2 and 3' %}
 ```scala
 // Parse the JSON string
-val jsonString: String = """{"name":"John","pets":["Toolkitty","Scaniel"]}"""
-val json: ujson.Value = ujson.read(jsonString)
+val json: ujson.Value = ujson.read("""{"name":"John","pets":["Toolkitty","Scaniel"]}""")
 
 // Update it
 json("name") = "Peter"

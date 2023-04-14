@@ -9,13 +9,15 @@ next-page: sttp-upload-file
 
 {% include markdown.html path="_markdown/install-sttp.md" %}
 
-JSON is common format to send and receive data from and to web servers, in the request and response bodies.
+## HTTP and JSON
+
+JSON is common format to send and receive data through HTTP, in the request and response bodies.
 
 In the examples below, We use the [Github REST API](https://docs.github.com/en/rest/users/users?apiVersion=2022-11-28).
 You will need a secret [Github authentication token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) to run the programs.
 Do not share this token with anyone and do not paste it online!
 
-## Sending and receiving raw JSON
+## Sending and receiving JSON
 
 To send JSON in a request and parse JSON from a response we use sttp in combination with uJson.
 
@@ -82,9 +84,9 @@ println(json("login").str)
 To run the program, you need to define the `GITHUB_TOKEN` environment variable.
 Running the program should print your own login.
 
-## Sending and receiving Scala object using JSON
+## Sending and receiving Scala objects using JSON
 
-Alternatively, you can use uPickle to send Scala object using JSON.
-Read the followin to learn [*How to serialize an object to JSON*](/toolkit/upickle-serialize) and [*How to deserialize JSON to an object*](/toolkit/upickle-deserialize-json).
+Alternatively, you can use uPickle to send or receive Scala objects using JSON.
+Read the following to learn [*How to serialize an object to JSON*](/toolkit/upickle-serialize) and [*How to deserialize JSON to an object*](/toolkit/upickle-deserialize).
 
 

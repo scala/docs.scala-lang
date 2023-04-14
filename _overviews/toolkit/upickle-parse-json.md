@@ -17,7 +17,7 @@ The method `ujson.read` parses a JSON string to make its fields available.
 {% tabs 'read' %}
 {% tab 'Scala 2 and 3' %}
 ```scala
-val jsonString: String = """{"name": "Peter", "age": 13}"""
+val jsonString = """{"name": "Peter", "age": 13}"""
 val json: ujson.Value  = ujson.read(jsonString)
 println(json("name").str)
 // prints: Peter
@@ -25,7 +25,7 @@ println(json("name").str)
 {% endtab %}
 {% endtabs %}
 
-To access the `"name"` field, we do `json("name")` and then call `.str` to type it as a string.
+To access the `"name"` field, we do `json("name")` and then call `str` to type it as a string.
 
 To access the elements by index in a JSON array, you can do as follows:
 
@@ -33,8 +33,10 @@ To access the elements by index in a JSON array, you can do as follows:
 {% tab 'Scala 2 and 3' %}
 ```scala
 val pets: ujson.Value = json("pets")
+
 val firstPet: String = pets(0).str
 val secondPet: String = pets(1).str
+
 println(s"The pets are $firstPet and $seconPet")
 // prints: The pets are Toolkitty and Scaniel
 ```
@@ -58,8 +60,8 @@ Similar operations are available to extract other types of values. Namely:
 ```scala
 import scala.collection.mutable
 
-val jsonString: String = """{"name": "Peter", "age": 13, "pets": ["Toolkitty", "Scaniel"]}"""
-val json: ujson.Value = ujson.read(jsonString)
+val jsonString = """{"name": "Peter", "age": 13, "pets": ["Toolkitty", "Scaniel"]}"""
+val json = ujson.read(jsonString)
 
 val person: mutable.Map[String, ujson.Value] = json.obj
 val age: Int = person("age").num
