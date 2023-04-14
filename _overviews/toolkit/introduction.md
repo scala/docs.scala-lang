@@ -3,8 +3,8 @@ title: Introduction
 type: chapter
 description: Introducing the Scala Toolkit tutorials
 num: 1
-previous-page:
-next-page: intro-interactive
+previous-page: 
+next-page: munit-intro
 ---
 
 ## What is the Scala Toolkit?

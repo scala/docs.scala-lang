@@ -2,7 +2,7 @@
 title: What else can MUnit do?
 type: section
 description: A incomplete list of features of MUnit
-num: 12
+num: 9
 previous-page: munit-resources
 next-page: oslib-intro
 ---

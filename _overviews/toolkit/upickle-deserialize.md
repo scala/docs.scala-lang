@@ -2,8 +2,8 @@
 title: How to deserialize JSON to an object?
 type: section
 description: Parsing JSON to a custom data type
-num: 21
-previous-page: upickle-access-values
+num: 19
+previous-page: upickle-modify-json
 next-page: upickle-serialize
 ---
 

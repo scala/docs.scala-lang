@@ -2,7 +2,7 @@
 title: How to send a request?
 type: section
 description: Sending a simple HTTP request with sttp.
-num: 27
+num: 24
 previous-page: sttp-intro
 next-page: sttp-uris
 ---

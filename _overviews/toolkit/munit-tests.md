@@ -2,9 +2,9 @@
 title: How to write tests?
 type: section
 description: The basics of writing a test suite with MUnit
-num: 6
+num: 3
 previous-page: munit-intro
-next-page: munit-run-tests
+next-page: munit-run
 ---
 
 {% include markdown.html path="_markdown/install-munit.md" %}

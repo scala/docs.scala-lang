@@ -2,7 +2,7 @@
 title: How to manage the resources of a test?
 type: section
 description: Describe the functional fixtures
-num: 11
+num: 8
 previous-page: munit-asynchronous-tests
 next-page: munit-what-else
 ---

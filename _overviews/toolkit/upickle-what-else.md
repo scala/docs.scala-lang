@@ -2,7 +2,7 @@
 title: What else can uPickle do?
 type: section
 description: An incomplete list of features of uPickle
-num: 25
+num: 22
 previous-page: upickle-files
 next-page: sttp-intro
 ---

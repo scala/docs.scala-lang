@@ -2,8 +2,8 @@
 title: How to run a process?
 type: section
 description: Starting external subprocesses with OS-Lib
-num: 17
-previous-page: oslib-read-directory
+num: 14
+previous-page: oslib-write-file
 next-page: oslib-what-else
 ---
 

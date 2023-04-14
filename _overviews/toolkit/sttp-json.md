@@ -2,9 +2,9 @@
 title: How to send and receive JSON?
 type: section
 description: How to send JSON in a request and to parse JSON from the response.
-num: 31
-previous-page: sttp-send-body
-next-page: sttp-json-response
+num: 27
+previous-page: sttp-request-body
+next-page: sttp-upload-file
 ---
 
 {% include markdown.html path="_markdown/install-sttp.md" %}

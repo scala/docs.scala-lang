@@ -2,9 +2,9 @@
 title: How to access values inside JSON?
 type: section
 description: Accessing JSON values using ujson.
-num: 20
+num: 17
 previous-page: upickle-intro
-next-page: upickle-deserialize-json
+next-page: upickle-modify-json
 ---
 
 {% include markdown.html path="_markdown/install-upickle.md" %}

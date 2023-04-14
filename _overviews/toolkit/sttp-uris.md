@@ -2,9 +2,9 @@
 title: How to construct URIs and query parameters?
 type: section
 description: Using interpolation to construct URIs
-num: 28
-previous-page: sttp-send-request
-next-page: sttp-string-body
+num: 25
+previous-page: sttp-request
+next-page: sttp-request-body
 ---
 
 {% include markdown.html path="_markdown/install-sttp.md" %}

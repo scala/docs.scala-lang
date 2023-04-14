@@ -2,8 +2,8 @@
 title: How to test exceptions?
 type: section
 description: Describe the intercept assertion
-num: 9
-previous-page: munit-test-only
+num: 6
+previous-page: munit-run-only
 next-page: munit-asynchronous-tests
 ---
 

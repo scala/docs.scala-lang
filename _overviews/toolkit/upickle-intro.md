@@ -2,9 +2,9 @@
 title: Handling JSON with uPickle
 type: chapter
 description: Description of the uPickle library.
-num: 19
+num: 16
 previous-page: oslib-what-else
-next-page: upickle-access-values
+next-page: upickle-parse-json
 ---
 
 uPickle is a lightweight and efficient serialization library for the Scala language.

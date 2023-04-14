@@ -2,8 +2,8 @@
 title: How to upload a file over HTTP?
 type: section
 description: Uploading a file over HTTP with sttp.
-num: 33
-previous-page: sttp-json-response
+num: 28
+previous-page: sttp-json
 next-page: sttp-what-else
 ---
 

@@ -2,7 +2,7 @@
 title: What else can OS-Lib do?
 type: section
 description: An incomplete list of features of OS-Lib
-num: 18
+num: 15
 previous-page: oslib-run-process
 next-page: upickle-intro
 ---

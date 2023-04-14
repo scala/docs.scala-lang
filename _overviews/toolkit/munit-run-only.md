@@ -2,8 +2,8 @@
 title: How to run a single test?
 type: section
 description: About testOnly in the build tool and .only in MUnit
-num: 8
-previous-page: munit-run-tests
+num: 5
+previous-page: munit-run
 next-page: munit-exceptions
 ---
 

@@ -2,9 +2,9 @@
 title: How to send a request with a body?
 type: section
 description: Sending a string body with sttp
-num: 30
+num: 26
 previous-page: sttp-uris
-next-page: sttp-json-body
+next-page: sttp-json
 ---
 
 {% include markdown.html path="_markdown/install-sttp.md" %}

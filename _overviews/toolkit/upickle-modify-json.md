@@ -2,9 +2,9 @@
 title: How to modify JSON?
 type: section
 description: Modifying JSON with uPickle.
-num: 23
-previous-page: upickle-serialize
-next-page: upickle-files
+num: 18
+previous-page: upickle-parse-json
+next-page: upickle-deserialize
 ---
 
 {% include markdown.html path="_markdown/install-upickle.md" %}

@@ -2,9 +2,9 @@
 title: How to serialize an object to JSON?
 type: section
 description: How to write JSON with Scala Toolkit.
-num: 22
-previous-page: upickle-deserialize-json
-next-page: upickle-modify-json
+num: 20
+previous-page: upickle-deserialize
+next-page: upickle-files
 ---
 
 {% include markdown.html path="_markdown/install-upickle.md" %}

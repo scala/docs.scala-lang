@@ -2,9 +2,9 @@
 title: Testing with MUnit
 type: chapter
 description: The introduction of the MUnit library
-num: 5
-previous-page: intro-project
-next-page: munit-write-tests
+num: 2
+previous-page: introduction
+next-page: munit-tests
 ---
 
 MUnit is a lightweight testing library that focuses on ease of use and flexibility. It provides a single testing syntax that help you get started quiclky, even if you are new to testing with Scala.
