@@ -35,7 +35,7 @@ Ignoring the division of whole numbers, the possible *operations* on those value
 +, -, *
 ````
 
-An FP design is implemented in a similar way:
+In FP, design is implemented in a similar way:
 
 - You describe your set of values (your data)
 - You describe operations that work on those values (your functions)
