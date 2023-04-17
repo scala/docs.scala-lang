@@ -28,7 +28,7 @@ val frankenstein = Book("978-0486282114")
 
 {% endtabs %}
 
-Notice how the keyword `new` was not used to instantiate the `Book` case class. This is because case classes have an `apply` method by default which takes care of object construction.
+Although that is usually left out, it is possible to explicitly use the `new` keyword, as `new Book()`. This is because case classes have an `apply` method by default which takes care of object construction.
 
 When you create a case class with parameters, the parameters are public `val`s.
 
