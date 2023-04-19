@@ -19,6 +19,7 @@ Most of these changes can be handled automatically during the [Scala 3 migration
 |[`any2stringadd` conversion](#any2stringadd-conversion)|Deprecation||[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/Any2StringAdd.scala)|
 |[Early initializer](#early-initializer)|Deprecation|||
 |[Existential type](#existential-type)|Feature warning|||
+|[@specialized](#specialized)|Deprecation|||
 
 ## Symbol literals
 
@@ -256,3 +257,12 @@ def foo: Bar
 
 Note that using a wildcard argument, `_` or `?`, is often simpler but is not always possible.
 For instance you could replace `List[T] forSome { type  T }` by `List[?]`.
+
+## Specialized
+
+The `@specialized` annotation from Scala 2 is ignored in Scala 3.
+
+However, there is limited support for specialized `Function` and `Tuple`.
+
+Similar benefits can be derived from `inline` declarations.
+
