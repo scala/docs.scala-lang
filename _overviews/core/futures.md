@@ -14,7 +14,8 @@ permalink: /overviews/core/:title.html
 ## Introduction
 
 Futures provide a way to reason about performing many operations
-in parallel-- in an efficient and non-blocking way.
+in parallel -- in an efficient and non-blocking way.
+
 A [`Future`](https://www.scala-lang.org/api/current/scala/concurrent/Future.html)
 is a placeholder object for a value that may not yet exist.
 Generally, the value of the Future is supplied concurrently and can subsequently be used.
@@ -283,7 +284,7 @@ Completion can take one of two forms:
 A `Future` has an important property that it may only be assigned
 once.
 Once a `Future` object is given a value or an exception, it becomes
-in effect immutable-- it can never be overwritten.
+in effect immutable -- it can never be overwritten.
 
 The simplest way to create a future object is to invoke the `Future.apply`
 method which starts an asynchronous computation and returns a
@@ -335,8 +336,8 @@ To obtain the list of friends of a user, a request
 has to be sent over a network, which can take a long time.
 This is illustrated with the call to the method `getFriends` that returns `List[Friend]`.
 To better utilize the CPU until the response arrives, we should not
-block the rest of the program-- this computation should be scheduled
-asynchronously. The `Future.apply` method does exactly that-- it performs
+block the rest of the program -- this computation should be scheduled
+asynchronously. The `Future.apply` method does exactly that -- it performs
 the specified computation block concurrently, in this case sending
 a request to the server and waiting for a response.
 
@@ -396,7 +397,7 @@ We are often interested in the result of the computation, not just its
 side-effects.
 
 In many future implementations, once the client of the future becomes interested
-in its result, it has to block its own computation and wait until the future is completed--
+in its result, it has to block its own computation and wait until the future is completed --
 only then can it use the value of the future to continue its own computation.
 Although this is allowed by the Scala `Future` API as we will show later,
 from a performance point of view a better way to do it is in a completely
@@ -428,7 +429,7 @@ value is a `Throwable`.
 Coming back to our social network example, let's assume we want to
 fetch a list of our own recent posts and render them to the screen.
 We do so by calling a method `getRecentPosts` which returns
-a `List[String]`-- a list of recent textual posts:
+a `List[String]` -- a list of recent textual posts:
 
 {% tabs futures-05 class=tabs-scala-version %}
 {% tab 'Scala 2' for=futures-05 %}
@@ -650,7 +651,7 @@ some other currency. We would have to repeat this pattern within the
 to reason about.
 
 Second, the `purchase` future is not in the scope with the rest of
-the code-- it can only be acted upon from within the `foreach`
+the code -- it can only be acted upon from within the `foreach`
 callback. This means that other parts of the application do not
 see the `purchase` future and cannot register another `foreach`
 callback to it, for example, to sell some other currency.
@@ -760,7 +761,7 @@ Here is an example of `flatMap` and `withFilter` usage within for-comprehensions
 {% endtabs %}
 
 The `purchase` future is completed only once both `usdQuote`
-and `chfQuote` are completed-- it depends on the values
+and `chfQuote` are completed -- it depends on the values
 of both these futures so its own computation cannot begin
 earlier.
 
@@ -1086,7 +1087,7 @@ Here is an example of how to block on the result of a future:
 
 In the case that the future fails, the caller is forwarded the
 exception that the future is failed with. This includes the `failed`
-projection-- blocking on it results in a `NoSuchElementException`
+projection -- blocking on it results in a `NoSuchElementException`
 being thrown if the original future is completed successfully.
 
 Alternatively, calling `Await.ready` waits until the future becomes
@@ -1095,7 +1096,7 @@ that method will not throw an exception if the future is failed.
 
 The `Future` trait implements the `Awaitable` trait with methods
 `ready()` and `result()`. These methods cannot be called directly
-by the clients-- they can only be called by the execution context.
+by the clients -- they can only be called by the execution context.
 
 
 
@@ -1226,7 +1227,7 @@ continues its computation, and finally completes the future `f` with a
 valid result, by completing promise `p`.
 
 Promises can also be completed with a `complete` method which takes
-a potential value `Try[T]`-- either a failed result of type `Failure[Throwable]` or a
+a potential value `Try[T]` -- either a failed result of type `Failure[Throwable]` or a
 successful result of type `Success[T]`.
 
 Analogous to `success`, calling `failure` and `complete` on a promise that has already
