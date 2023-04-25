@@ -7,6 +7,12 @@ partof: implicit-classes
 languages: [zh-cn]
 
 permalink: /overviews/core/:title.html
+versionSpecific: true
+scala2: true
+---
+
+In Scala 3, implicit classes have been superseded by [extension methods]({% link _overviews/scala3-book/ca-extension-methods.md %}).
+
 ---
 
 **Josh Suereth**
