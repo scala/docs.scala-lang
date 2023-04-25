@@ -6,6 +6,7 @@ languages: [zh-cn]
 num: 63
 previous-page: ca-given-imports
 next-page: ca-multiversal-equality
+redirect_from: /scala3/book/types-type-classes.html
 ---
 
 
