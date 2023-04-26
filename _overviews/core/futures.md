@@ -1106,8 +1106,8 @@ When asynchronous computations throw unhandled exceptions, futures
 associated with those computations fail. Failed futures store an
 instance of `Throwable` instead of the result value. `Future`s provide
 the `failed` projection method, which allows this `Throwable` to be
-treated as the success value of another `Future`. The following special
-exceptions are treated differently:
+treated as the success value of another `Future`.
+The following exceptions receive special treatment:
 
 1. `scala.runtime.NonLocalReturnControl[_]` -- this exception holds a value
 associated with the return. Typically, `return` constructs in method
@@ -1122,11 +1122,88 @@ behind this is to prevent propagation of critical and control-flow related
 exceptions normally not handled by the client code and at the same time inform
 the client in which future the computation failed.
 
-Fatal exceptions (as determined by `NonFatal`) are rethrown in the thread executing
+Fatal exceptions (as determined by `NonFatal`) are rethrown from the thread executing
 the failed asynchronous computation. This informs the code managing the executing
 threads of the problem and allows it to fail fast, if necessary. See
 [`NonFatal`](https://www.scala-lang.org/api/current/scala/util/control/NonFatal$.html)
-for a more precise description of the semantics.
+for a more precise description of which exceptions are considered fatal.
+
+`ExecutionContext.global` handles fatal exceptions by printing a stack trace, by default.
+
+A fatal exception means that the `Future` associated with the computation will never complete.
+That is, "fatal" means that the error is not recoverable for the `ExecutionContext`
+and is also not intended to be handled by user code. By contrast, application code may
+attempt recovery from a "failed" `Future`, which has completed but with an exception.
+
+An execution context can be customized with a reporter that handles fatal exceptions.
+See the factory methods [`fromExecutor`](https://www.scala-lang.org/api/current/scala/concurrent/ExecutionContext$.html#fromExecutor(e:java.util.concurrent.Executor,reporter:Throwable=%3EUnit):scala.concurrent.ExecutionContextExecutor)
+and [`fromExecutorService`](https://www.scala-lang.org/api/current/scala/concurrent/ExecutionContext$.html#fromExecutorService(e:java.util.concurrent.ExecutorService,reporter:Throwable=%3EUnit):scala.concurrent.ExecutionContextExecutorService).
+
+Since it is necessary to set the [`UncaughtExceptionHandler`](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/Thread.UncaughtExceptionHandler.html)
+for executing threads, as a convenience, `fromExecutor` will create a correctly configured context when passed a `null` executor.
+
+The following example demonstrates how to obtain an `ExecutionContext` with custom error handling
+and also shows the result of different exceptions, as described above:
+
+{% tabs exceptions %}
+{% tab 'Scala 2 and 3' for=exceptions %}
+    import scala.concurrent._, duration._
+    import scala.util.chaining._
+    import java.util.concurrent.ForkJoinPool
+    import java.util.concurrent.TimeUnit.SECONDS
+
+    class C {
+      def crashing(x: Any): Int = throw new NoSuchMethodError("test")
+      def failing(x: Any): Int = throw new NumberFormatException("test")
+      def interrupt(x: Any): Int = throw new InterruptedException("test")
+      def erroring(x: Any): Int = throw new AssertionError("test")
+      // warning: return statement uses an exception to pass control to the caller of the enclosing named method nonlocally
+      def nonlocally(xs: List[Int]): Int = { xs.foreach(x => if (x > 0) return x); -1 }
+      def testCrashes()(implicit ec: ExecutionContext): Future[Int] = Future.unit.map(crashing)
+      def testFails()(implicit ec: ExecutionContext): Future[Int] = Future.unit.map(failing)
+      def testInterrupted()(implicit ec: ExecutionContext): Future[Int] = Future.unit.map(interrupt)
+      def testError()(implicit ec: ExecutionContext): Future[Int] = Future.unit.map(erroring)
+      def testNonLocal()(implicit ec: ExecutionContext): Future[Int] = Future(List(42)).map(nonlocally)
+    }
+
+    object Test extends App {
+      val c = new C
+      def check(f: => Future[Int]): Future[Int] =
+        try Await.ready(f, Duration(1L, SECONDS)).tap(res => println(s"ready $res"))
+        catch { case e: Exception => println(s"threw $e"); Future.never }
+      def reporter(t: Throwable) = println(s"reported $t")
+      locally {
+        import ExecutionContext.Implicits._
+        check(c.testFails())       // a failed Future
+        check(c.testCrashes())     // threw java.util.concurrent.TimeoutException
+        check(c.testInterrupted()) // a failed Future
+          .failed
+          .foreach(e => println(s"failed ${e.getCause}")) // failed java.lang.InterruptedException: test
+        check(c.testError())       // a failed Future (like InterruptedException)
+        check(c.testNonLocal())    // a successful Future
+      }
+      locally {
+        implicit val ec: ExecutionContext = ExecutionContext.fromExecutor(null, reporter)
+        check(c.testCrashes())  // reported java.lang.NoSuchMethodError: test
+      }
+      locally {
+        implicit val ec: ExecutionContext = ExecutionContext.fromExecutor(ForkJoinPool.commonPool(), reporter)
+        check(c.testCrashes())  // not reported
+      }
+      locally {
+        val ueh: Thread.UncaughtExceptionHandler = (t: Thread, e: Throwable) => reporter(e)
+        val pool = new ForkJoinPool(
+          Runtime.getRuntime.availableProcessors,
+          ForkJoinPool.defaultForkJoinWorkerThreadFactory,
+          ueh,
+          /*asyncMode=*/ false
+        )
+        implicit val ec: ExecutionContext = ExecutionContext.fromExecutor(pool, reporter)
+        check(c.testCrashes())  // reported java.lang.NoSuchMethodError: test
+      }
+    }
+{% endtab %}
+{% endtabs %}
 
 ## Promises
 
