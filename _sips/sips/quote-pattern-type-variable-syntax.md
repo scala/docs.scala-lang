@@ -81,7 +81,7 @@ We want to be able to refer to the variable by its non-backticked name uniformly
 
 ### High-level overview
 
-We first want to introduce syntax for explicit type variable definitions in quoted type patterns that aligns with expression quoted patterns. We can use the syntax described in [explicit type variables](Explicit-type-variables).
+We first want to introduce syntax for explicit type variable definitions in quoted type patterns that aligns with expression quoted patterns. We can use the syntax described in [explicit type variables](#explicit-type-variables).
 
 ```scala
 case '[ type t; List[`t`] ] => f[t]
