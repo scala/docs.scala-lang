@@ -15,8 +15,6 @@ In Scala, HOFs are possible because functions are first-class values.
 As an important note, while we use the common industry term “higher-order function” in this document, in Scala this phrase applies to both *methods* and *functions*.
 Thanks to Scala’s [Eta Expansion technology][eta_expansion], they can generally be used in the same places.
 
-
-
 ## From consumer to creator
 
 In the examples so far in this book you’ve seen how to be a *consumer* of methods that take other functions as input parameters, such as using HOFs like `map` and `filter`.
@@ -31,8 +29,6 @@ In the process you’ll see:
 - How to call a function once you have a reference to it
 
 As a beneficial side effect of this discussion, once you’re comfortable with this syntax, you’ll use it to define function parameters, anonymous functions, and function variables, and it also becomes easier to read the Scaladoc for higher-order functions.
-
-
 
 ## Understanding filter’s Scaladoc
 
@@ -56,20 +52,26 @@ At this point, if you don’t know the purpose of the `filter` method, all you�
 
 Looking specifically at the function parameter `p`, this part of `filter`’s description:
 
+{% tabs filter-definition_1 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 p: A => Boolean
 ```
+{% endtab %}
+{% endtabs %}
 
 means that whatever function you pass in must take the type `A` as an input parameter and return a `Boolean`.
 So if your list is a `List[Int]`, you can replace the generic type `A` with `Int`, and read that signature like this:
 
+{% tabs filter-definition_2 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 p: Int => Boolean
 ```
+{% endtab %}
+{% endtabs %}
 
 Because `isEven` has this type---it transforms an input `Int` into a resulting `Boolean`---it can be used with `filter`.
-
-
 
 {% comment %}
 NOTE: (A low-priority issue): The next several sections can be condensed.
@@ -101,9 +103,13 @@ def sayHello(f: () => Unit): Unit = f()
 
 This portion of the code---the *type signature*---states that `f` is a function, and defines the types of functions the `sayHello` method will accept:
 
+{% tabs sayHello-definition_1 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 f: () => Unit
 ```
+{% endtab %}
+{% endtabs %}
 
 Here’s how this works:
 
@@ -125,7 +131,6 @@ def helloJoe(): Unit = println("Hello, Joe")
 {% endtab %}
 {% endtabs %}
 
-
 Because the type signatures match, you can pass `helloJoe` into `sayHello`:
 
 {% tabs sayHello-usage %}
@@ -138,7 +143,6 @@ sayHello(helloJoe)   // prints "Hello, Joe"
 
 If you’ve never done this before, congratulations:
 You just defined a method named `sayHello` that takes a function as an input parameter, and then invokes that function in its method body.
-
 
 ### sayHello can take many functions
 
@@ -167,8 +171,6 @@ Bonjour, Julien
 This is a good start.
 The only thing to do now is see a few more examples of how to define different type signatures for function parameters.
 
-
-
 ## The general syntax for defining function input parameters
 
 In this method:
@@ -183,26 +185,38 @@ def sayHello(f: () => Unit): Unit
 
 We noted that the type signature for `f` is:
 
+{% tabs sayHello-definition-2_1 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 () => Unit
 ```
+{% endtab %}
+{% endtabs %}
 
 We know that this means, “a function that takes no input parameters and returns nothing meaningful (given by `Unit`).”
 
 To demonstrate more type signature examples, here’s a function that takes a `String` parameter and returns an `Int`:
 
+{% tabs sayHello-definition-2_2 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 f: String => Int
 ```
+{% endtab %}
+{% endtabs %}
 
 What kinds of functions take a string and return an integer?
 Functions like “string length” and checksum are two examples.
 
 Similarly, this function takes two `Int` parameters and returns an `Int`:
 
+{% tabs sayHello-definition-2_3 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 f: (Int, Int) => Int
 ```
+{% endtab %}
+{% endtabs %}
 
 Can you imagine what sort of functions match that signature?
 
@@ -220,14 +234,16 @@ def multiply(a: Int, b: Int): Int = a * b
 
 As you can infer from these examples, the general syntax for defining function parameter type signatures is:
 
+{% tabs add-sub-mul-definitions_1 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 variableName: (parameterTypes ...) => returnType
 ```
+{% endtab %}
+{% endtabs %}
 
 > Because functional programming is like creating and combining a series of algebraic equations, it’s common to think about types a *lot* when designing functions and applications.
 > You might say that you “think in types.”
-
-
 
 ## Taking a function parameter along with other parameters
 
@@ -279,11 +295,8 @@ Hello, world
 {% endtab %}
 {% endtabs %}
 
-
 Excellent.
 The `executeNTimes` method executes the `helloWorld` function three times.
-
-
 ### As many parameters as needed
 
 Your methods can continue to get as complicated as necessary.
@@ -298,7 +311,6 @@ def executeAndPrint(f: (Int, Int) => Int, i: Int, j: Int): Unit =
 {% endtab %}
 {% endtabs %}
 
-
 Because these `sum` and `multiply` methods match that type signature, they can be passed into `executeAndPrint` along with two `Int` values:
 
 {% tabs executeAndPrint-usage %}
@@ -312,7 +324,6 @@ executeAndPrint(multiply, 3, 9)   // prints 27
 ```
 {% endtab %}
 {% endtabs %}
-
 
 ## Function type signature consistency
 

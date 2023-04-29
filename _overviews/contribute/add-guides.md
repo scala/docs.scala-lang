@@ -83,7 +83,7 @@ clarifications, etc.
 ## Code blocks
 
 It's common for various kinds of documents to require code examples.
-You can contribute code in a markdown document by either
+You can contribute code in a Markdown document by either
 - in-line by putting backticks around it,
 - surrounding by triple backticks,
 - or indenting it by 4 spaces, e.g.:
@@ -92,6 +92,7 @@ You can contribute code in a markdown document by either
 inline example: `val x = 23`
 
 block example:
+
 ```scala
 println("hello")
 ```
@@ -103,9 +104,31 @@ indented example:
 
 ### Scala 2 vs Scala 3
 
-Sometimes you would like to compare between Scala 2 and Scala 3 in a document, for example in
-our [Hello World][hello-world] chapter of the Scala Book. Here is an example of how you
-can generate the same tabs in markdown with the `tabs` directive and class `tabs-scala-version`:
+Our goal is to have a unified documentation that covers both Scala 2 and Scala 3. In many cases, the
+code examples are the same in both Scala 2 and Scala 3, but sometimes there are some syntactic
+differences. In some less common cases, a page may explain a concept that is new in Scala 3 and has
+no equivalent in Scala 2, or a concept that has been removed in Scala 3. In all the cases, the
+documentation should clearly "label" the code examples so that the readers know in which versions
+of Scala they are valid.
+
+The following sections explain how to properly "label" the code examples.
+
+#### Labelling the code snippets of a page documenting a concept available in both Scala 2 and Scala 3
+
+When the content of a page not specific to Scala 2 or Scala 3, like for example our
+[Hello World][hello-world] chapter of the Scala Book, the code snippets should show both the
+Scala 2 and Scala 3 syntax. We achieve this by labelling the code snippets in tabs according
+to the following rules:
+
+- if the idiomatic syntax is different in Scala 2 and Scala 3, we create two tabs,
+  “Scala 2” and “Scala 3”, showing the corresponding syntax
+- if the code snippet is idiomatic in both Scala 2 and Scala 3, we create a single tab,
+  “Scala 2 and 3”
+- if the code snippet is valid only in Scala 2 or Scala 3, we create a single tab,
+  “Scala 2 Only” or “Scala 3 Only”
+
+Here is an example of how you
+can generate such tabs in Markdown with the `tabs` directive and class `tabs-scala-version`:
 
 <!-- {% raw  %} -->
 ~~~liquid
@@ -160,6 +183,32 @@ a parameter `for=tab-group` as in this example:
 ...
 ~~~
 <!-- {% endraw  %} -->
+
+#### Labelling an entire page documenting a concept that is specific to a Scala version
+
+When the content of a page explains a concept that is new in Scala 3 and has no
+equivalent in Scala 2 (e.g. [TASTy]({% link scala3/guides/tasty-overview.md %})),
+or a concept that has been removed in Scala 3, we label the entire page instead
+of labelling each code example.
+
+We achieve this by setting a couple of a attributes in the [YAML front
+matter](https://jekyllrb.com/docs/front-matter/) of the Markdown file. For
+instance, for a page that is specific to Scala 3:
+
+~~~ yaml
+scala3: true
+versionSpecific: true
+~~~
+
+Or, for a page that is specific to Scala 2:
+
+~~~ yaml
+scala2: true
+versionSpecific: true
+~~~
+
+Please note that when the entire page is labelled, its code examples do not
+need to have tabs.
 
 ### Typechecked Examples
 

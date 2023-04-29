@@ -41,10 +41,23 @@ Therefore, as shown, `Resettable & Growable[String]` has member methods `reset` 
 Intersection types can be useful to describe requirements _structurally_.
 That is, in our example `f`, we directly express that we are happy with any value for `x` as long as it’s a subtype of both `Resettable` and `Growable`.
 We **did not** have to create a _nominal_ helper trait like the following:
+
+{% tabs normal-trait class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+trait Both[A] extends Resettable with Growable[A]
+def f(x: Both[String]): Unit
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
 ```scala
 trait Both[A] extends Resettable, Growable[A]
 def f(x: Both[String]): Unit
 ```
+{% endtab %}
+{% endtabs %}
+
 There is an important difference between the two alternatives of defining `f`: While both allow `f` to be called with instances of `Both`, only the former allows passing instances that are subtypes of `Resettable` and `Growable[String]`, but _not of_ `Both[String]`.
 
 > Note that `&` is _commutative_: `A & B` is the same type as `B & A`.
