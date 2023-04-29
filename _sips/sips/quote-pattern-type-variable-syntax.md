@@ -27,6 +27,8 @@ Namely when using explicit type variable definitions.
 
 ### Background
 
+* [Reference Documentation](http://dotty.epfl.ch/docs/reference/metaprogramming/macros.html#type-variables)
+
 Quoted expressions support two ways of defining type variables: explicit and nested.
 
 ##### Explicit type variables
