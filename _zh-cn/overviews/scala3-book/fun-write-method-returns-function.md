@@ -25,48 +25,72 @@ permalink: "/zh-cn/scala3/book/:title.html"
 鉴于该声明，您可以开始构建 `greet`。
 你知道这将是一种方法：
 
+{% tabs fun-write-method-returns-function-1 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 def greet()
 ```
+{% endtab %}
+{% endtabs %}
 
 您还知道此方法将返回一个函数，该函数 (a) 采用 `String` 参数，并且 (b) 使用 `println` 打印该字符串。
 因此，该函数的类型为 `String => Unit`：
 
+{% tabs fun-write-method-returns-function-2 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 def greet(): String => Unit = ???
            ----------------
 ```
+{% endtab %}
+{% endtabs %}
 
 现在你只需要一个方法体。
 您知道该方法需要返回一个函数，并且该函数接受一个“字符串”并打印它。
 此匿名函数与该描述匹配：
 
+{% tabs fun-write-method-returns-function-3 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 (name: String) => println(s"Hello, $name")
 ```
+{% endtab %}
+{% endtabs %}
 
 现在您只需从方法中返回该函数：
 
+{% tabs fun-write-method-returns-function-4 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 // a method that returns a function
 def greet(): String => Unit = 
   (name: String) => println(s"Hello, $name")
 ```
+{% endtab %}
+{% endtabs %}
 
 因为这个方法返回一个函数，所以你可以通过调用`greet()`来得到这个函数。
 这是在 REPL 中做的一个很好的步骤，因为它验证了新函数的类型：
 
+{% tabs fun-write-method-returns-function-5 %}
+{% tab 'Scala 2 and 3' %}
 ````
 scala> val greetFunction = greet()
 val greetFunction: String => Unit = Lambda....
     -----------------------------------------
 ````
+{% endtab %}
+{% endtabs %}
 
 现在你可以调用`greetFunction`了：
 
+{% tabs fun-write-method-returns-function-6 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 greetFunction("Joe")   // prints "Hello, Joe"
 ```
+{% endtab %}
+{% endtabs %}
 
 恭喜，您刚刚创建了一个返回函数的方法，然后执行了该函数。
 
@@ -75,29 +99,43 @@ greetFunction("Joe")   // prints "Hello, Joe"
 如果您可以传递问候语，我们的方法会更有用，所以让我们这样做。
 您所要做的就是将问候语作为参数传递给 `greet` 方法，并在 `println` 中的字符串中使用它：
 
+{% tabs fun-write-method-returns-function-7 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 def greet(theGreeting: String): String => Unit =
   (name: String) => println(s"$theGreeting, $name")
 ```
+{% endtab %}
+{% endtabs %}
 
 现在，当您调用您的方法时，该过程更加灵活，因为您可以更改问候语。
 当您从此方法创建函数时，它是这样的：
 
+{% tabs fun-write-method-returns-function-8 %}
+{% tab 'Scala 2 and 3' %}
 ````
 scala> val sayHello = greet("Hello")
 val sayHello: String => Unit = Lambda.....
     ----------------------
 ````
+{% endtab %}
+{% endtabs %}
 
 REPL 类型签名输出显示 `sayHello` 是一个接受 `String` 输入参数并返回 `Unit`（无）的函数。
 所以现在当你给 `sayHello` 一个 `String` 时，它会打印问候语：
 
+{% tabs fun-write-method-returns-function-9 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 sayHello("Joe")   // prints "Hello, Joe"
 ```
+{% endtab %}
+{% endtabs %}
 
 您还可以根据需要更改问候语以创建新函数：
 
+{% tabs fun-write-method-returns-function-10 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val sayCiao = greet("Ciao")
 val sayHola = greet("Hola")
@@ -105,6 +143,8 @@ val sayHola = greet("Hola")
 sayCiao("Isabella")   // prints "Ciao, Isabella"
 sayHola("Carlos")     // prints "Hola, Carlos"
 ```
+{% endtab %}
+{% endtabs %}
 
 ## 一个更真实的例子
 
@@ -117,27 +157,53 @@ sayHola("Carlos")     // prints "Hola, Carlos"
 此外，由于该函数会打印给定的字符串，因此您知道它的类型为 `String => Unit`。
 使用该信息编写方法签名：
 
+{% tabs fun-write-method-returns-function-11 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 def createGreetingFunction(desiredLanguage: String): String => Unit = ???
 ```
+{% endtab %}
+{% endtabs %}
 
 接下来，因为您知道可能返回的函数接受一个字符串并打印它，所以您可以为英语和法语编写两个匿名函数：
 
+{% tabs fun-write-method-returns-function-12 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 (name: String) => println(s"你好，$name")
 (name: String) => println(s"Bonjour, $name")
 ```
+{% endtab %}
+{% endtabs %}
 
 在方法内部，如果你给这些匿名函数起一些名字，它可能会更易读，所以让我们将它们分配给两个变量：
 
+{% tabs fun-write-method-returns-function-13 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val englishGreeting = (name: String) => println(s"Hello, $name")
 val frenchGreeting = (name: String) => println(s"Bonjour, $name")
 ```
+{% endtab %}
+{% endtabs %}
 
 现在您需要做的就是 (a) 如果 `desiredLanguage` 是英语，则返回 `englishGreeting`，并且 (b) 如果 `desiredLanguage` 是法语，则返回 `frenchGreeting`。
 一种方法是使用 `match` 表达式：
 
+{% tabs fun-write-method-returns-function-14 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+def createGreetingFunction(desiredLanguage: String): String => Unit = {
+  val englishGreeting = (name: String) => println(s"Hello, $name")
+  val frenchGreeting = (name: String) => println(s"Bonjour, $name")
+  desiredLanguage match {
+    case "english" => englishGreeting
+    case "french" => frenchGreeting
+  }
+}
+```
+{% endtab %}
+{% tab 'Scala 3' %}
 ```scala
 def createGreetingFunction(desiredLanguage: String): String => Unit =
   val englishGreeting = (name: String) => println(s"Hello, $name")
@@ -146,23 +212,33 @@ def createGreetingFunction(desiredLanguage: String): String => Unit =
     case "english" => englishGreeting
     case "french" => frenchGreeting
 ```
+{% endtab %}
+{% endtabs %}
 
 这是最后的方法。
 请注意，从方法返回函数值与返回字符串或整数没有什么不同呃值。
 
 这就是 `createGreetingFunction` 构建法语问候函数的方式：
 
+{% tabs fun-write-method-returns-function-15 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val greetInFrench = createGreetingFunction("french")
 greetInFrench("Jonathan")   // prints "Bonjour, Jonathan"
 ```
+{% endtab %}
+{% endtabs %}
 
 这就是它构建英语问候功能的方式：
 
+{% tabs fun-write-method-returns-function-16 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val greetInEnglish = createGreetingFunction("english")
 greetInEnglish("Joe")   // prints "Hello, Joe"
 ```
+{% endtab %}
+{% endtabs %}
 
 如果你对这段代码感到满意——恭喜——你现在知道如何编写返回函数的方法了。
 

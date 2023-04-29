@@ -18,14 +18,39 @@ permalink: "/zh-cn/scala3/book/:title.html"
 
 为了解释型变，让我们假设以下类型定义：
 
+{% tabs types-variance-1 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 trait Item { def productNumber: String }
 trait Buyable extends Item { def price: Int }
 trait Book extends Buyable { def isbn: String }
 ```
+{% endtab %}
+{% endtabs %}
 
 我们还假设以下参数化类型：
 
+{% tabs types-variance-2 class=tabs-scala-version %}
+{% tab 'Scala 2' for=types-variance-2 %}
+```scala
+// an example of an invariant type
+trait Pipeline[T] {
+  def process(t: T): T
+}
+
+// an example of a covariant type
+trait Producer[+T] {
+  def make: T
+}
+
+// an example of a contravariant type
+trait Consumer[-T] {
+  def take(t: T): Unit
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=types-variance-2 %}
 ```scala
 // an example of an invariant type
 trait Pipeline[T]:
@@ -39,8 +64,10 @@ trait Producer[+T]:
 trait Consumer[-T]:
   def take(t: T): Unit
 ```
+{% endtab %}
+{% endtabs %}
 
-一般来说，方差有三种模式：
+一般来说，型变有三种模式：
 
 - **不变的**---默认值，写成 `Pipeline[T]`
 - **协变**---用`+`注释，例如 `Producer[+T]`
@@ -55,6 +82,25 @@ trait Consumer[-T]:
 
 理所当然地！假设以下方法使用两个类型为`Pipeline[Buyable]` 的值，并根据价格将其参数 `b` 传递给其中一个：
 
+{% tabs types-variance-3 class=tabs-scala-version %}
+{% tab 'Scala 2' for=types-variance-3 %}
+```scala
+def oneOf(
+  p1: Pipeline[Buyable],
+  p2: Pipeline[Buyable],
+  b: Buyable
+): Buyable = {
+  val b1 = p1.process(b)
+  val b2 = p2.process(b)
+  if (b1.price < b2.price)
+    b1 
+  else
+    b2
+ } 
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=types-variance-3 %}
 ```scala
 def oneOf(
   p1: Pipeline[Buyable],
@@ -65,12 +111,18 @@ def oneOf(
   val b2 = p2.process(b)
   if b1.price < b2.price then b1 else b2
 ```
+{% endtab %}
+{% endtabs %}
 
 现在，回想一下，我们的类型之间存在以下_子类型关系_：
 
+{% tabs types-variance-4 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 Book <: Buyable <: Item
 ```
+{% endtab %}
+{% endtabs %}
 
 我们不能将 `Pipeline[Book]` 传递给 `oneOf` 方法，因为在其实现中，我们调用的 `p1` 和 `p2` 是 `Buyable` 类型的值。
 `Pipeline[Book]` 需要的是 `Book`，这可能会导致运行时错误。
@@ -93,17 +145,25 @@ Book <: Buyable <: Item
 
 以下示例说明了这一点，其中函数 `makeTwo` 需要一个 `Producer[Buyable]`：
 
+{% tabs types-variance-5 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 def makeTwo(p: Producer[Buyable]): Int =
   p.make.price + p.make.price
 ```
+{% endtab %}
+{% endtabs %}
 
 通过书籍制作人是完全可以的：
 
-```
+{% tabs types-variance-6 %}
+{% tab 'Scala 2 and 3' %}
+```scala
 val bookProducer: Producer[Book] = ???
 makeTwo(bookProducer)
 ```
+{% endtab %}
+{% endtabs %}
 
 在 `makeTwo` 中调用 `price` 对书籍仍然有效。
 
@@ -113,10 +173,14 @@ makeTwo(bookProducer)
 
 例如，`List` 和 `Vector` 大致定义为：
 
+{% tabs types-variance-7 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 class List[+A] ...
 class Vector[+A] ...
 ```
+{% endtab %}
+{% endtabs %}
 
 这样，您可以在需要 `List[Buyable]` 的地方使用 `List[Book]`。
 这在直觉上也是有道理的：如果您期望收藏可以购买的东西，那么给您收藏书籍应该没问题。
@@ -139,16 +203,30 @@ class Vector[+A] ...
 逆变类型比协变类型少得多。
 在我们的示例中，您可以将它们视为“消费者”。你可能来的最重要的类型标记为逆变的 cross 是函数之一：
 
+{% tabs types-variance-8 class=tabs-scala-version %}
+{% tab 'Scala 2' for=types-variance-8 %}
+```scala
+trait Function[-A, +B] {
+  def apply(a: A): B
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=types-variance-8 %}
 ```scala
 trait Function[-A, +B]:
   def apply(a: A): B
 ```
+{% endtab %}
+{% endtabs %}
 
 它的参数类型 `A` 被标记为逆变的 `A` ——它消费 `A` 类型的值。
 相反，它的结果类型 `B` 被标记为协变——它产生 `B` 类型的值。
 
 以下是一些示例，这些示例说明了由函数上可变注释引起的子类型关系：
 
+{% tabs types-variance-9 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val f: Function[Buyable, Buyable] = b => b
 
@@ -158,6 +236,8 @@ val g: Function[Buyable, Item] = f
 // OK to provide a Book where a Buyable is expected
 val h: Function[Book, Buyable] = f
 ```
+{% endtab %}
+{% endtabs %}
 
 ## 概括
 

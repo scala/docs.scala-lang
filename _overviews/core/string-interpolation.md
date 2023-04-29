@@ -232,7 +232,7 @@ implicit class JsonHelper(val sc: StringContext) extends AnyVal {
   def json(args: Any*): JSONObject = {
     val strings = sc.parts.iterator
     val expressions = args.iterator
-    var buf = new StringBuilder(strings.next())
+    val buf = new StringBuilder(strings.next())
     while (strings.hasNext) {
       buf.append(expressions.next())
       buf.append(strings.next())
@@ -249,7 +249,7 @@ extension (sc: StringContext)
   def json(args: Any*): JSONObject =
     val strings = sc.parts.iterator
     val expressions = args.iterator
-    var buf = new StringBuilder(strings.next())
+    val buf = new StringBuilder(strings.next())
     while strings.hasNext do
       buf.append(expressions.next())
       buf.append(strings.next())

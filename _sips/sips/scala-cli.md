@@ -1,8 +1,8 @@
 ---
 layout: sip
 permalink: /sips/:title.html
-stage: implementation
-status: under-review
+stage: completed
+status: accepted
 title: SIP-46 - Scala CLI as default Scala command
 ---
 

@@ -338,7 +338,7 @@ $(document).ready(function() {
       resultsContainer: document.getElementById('result-container'),
       json: '/resources/json/search.json',
       searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
-      limit: 7,
+      limit: 5,
     });
 
     $("#blog-search-bar").on("change paste keyup", function() {

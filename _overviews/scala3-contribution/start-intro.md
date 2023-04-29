@@ -11,7 +11,7 @@ next-page: procedures-intro
 
 ### Scala CLA
 
-Sometime before submitting you're pull request you'll want to make sure you have
+Sometime before submitting your pull request you'll want to make sure you have
 signed the [Scala CLA][scala-cla]. You can read more about why we require a CLA
 and what exactly is included in it [here][scala-cla].
 
@@ -21,7 +21,7 @@ Before digging into an issue or starting on a new feature it's a good idea to
 make sure an [issue][dotty-issue] or a [discussion][dotty-discussion] has been
 created outlining what you plan to work on. This is both for your and the team's
 benefit. It ensures you get the help you need, and also gives the compiler team
-a heads up that someone is working on an issue.
+a heads-up that someone is working on an issue.
 
 For some small changes like documentation, this isn't always necessary, but it's
 never a bad idea to check.
@@ -40,8 +40,8 @@ never a bad idea to check.
 
 #### Nice To Have
 
-An IDE, such as [Metals] will help you develop in Scala 3 with features such as goto-definition,
-and with the [VS Code][vs-code] text editor you can even create interactive worksheets for an
+An IDE, such as [Metals] will help you develop in Scala 3 with features such as autocompletion or goto-definition,
+and with the [VS Code][vs-code] text editor you can even use the Scala debugger, or create interactive worksheets for an
 iterative workflow.
 
 ### Clone the Code
