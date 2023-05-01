@@ -29,9 +29,11 @@ previous-page: tour-of-scala
 
 {% tabs expression %}
 {% tab 'Scala 2 и 3' for=expression %}
+
 ```scala mdoc
 1 + 1
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -39,12 +41,14 @@ previous-page: tour-of-scala
 
 {% tabs println %}
 {% tab 'Scala 2 и 3' for=println %}
+
 ```scala mdoc
 println(1) // 1
 println(1 + 1) // 2
 println("Hello!") // Hello!
 println("Hello," + " world!") // Hello, world!
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -54,10 +58,12 @@ println("Hello," + " world!") // Hello, world!
 
 {% tabs val %}
 {% tab 'Scala 2 и 3' for=val %}
+
 ```scala mdoc
 val x = 1 + 1
 println(x) // 2
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -68,9 +74,11 @@ println(x) // 2
 
 {% tabs val-error %}
 {% tab 'Scala 2 и 3' for=val-error %}
+
 ```scala mdoc:fail
 x = 3 // Не компилируется.
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -78,9 +86,11 @@ x = 3 // Не компилируется.
 
 {% tabs type-inference %}
 {% tab 'Scala 2 и 3' for=type-inference %}
+
 ```scala mdoc:nest
 val x: Int = 1 + 1
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -92,11 +102,13 @@ val x: Int = 1 + 1
 
 {% tabs var %}
 {% tab 'Scala 2 и 3' for=var %}
+
 ```scala mdoc:nest
 var x = 1 + 1
 x = 3 // Компилируется потому что "x" объявлен с ключевым словом "var".
 println(x * x) // 9
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -104,9 +116,11 @@ println(x * x) // 9
 
 {% tabs type-inference-2 %}
 {% tab 'Scala 2 и 3' for=type-inference-2 %}
+
 ```scala mdoc:nest
 var x: Int = 1 + 1
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -118,12 +132,14 @@ var x: Int = 1 + 1
 
 {% tabs blocks %}
 {% tab 'Scala 2 и 3' for=blocks %}
+
 ```scala mdoc
 println({
   val x = 1 + 1
   x + 1
 }) // 3
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -135,9 +151,11 @@ println({
 
 {% tabs anonymous-function %}
 {% tab 'Scala 2 и 3' for=anonymous-function %}
+
 ```scala mdoc
 (x: Int) => x + 1
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -147,10 +165,12 @@ println({
 
 {% tabs named-function %}
 {% tab 'Scala 2 и 3' for=named-function %}
+
 ```scala mdoc
 val addOne = (x: Int) => x + 1
 println(addOne(1)) // 2
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -158,10 +178,12 @@ println(addOne(1)) // 2
 
 {% tabs multiple-parameters %}
 {% tab 'Scala 2 и 3' for=multiple-parameters %}
+
 ```scala mdoc
 val add = (x: Int, y: Int) => x + y
 println(add(1, 2)) // 3
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -169,10 +191,12 @@ println(add(1, 2)) // 3
 
 {% tabs no-parameters %}
 {% tab 'Scala 2 и 3' for=no-parameters %}
+
 ```scala mdoc
 val getTheAnswer = () => 42
 println(getTheAnswer()) // 42
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -180,14 +204,16 @@ println(getTheAnswer()) // 42
 
 Методы выглядят и ведут себя очень похоже на функции, но между ними есть несколько принципиальных различий.
 
-Методы задаются ключевым словом `def`.  За `def` следует имя, список параметров, возвращаемый тип и тело.
+Методы задаются ключевым словом `def`. За `def` следует имя, список параметров, возвращаемый тип и тело.
 
 {% tabs method %}
 {% tab 'Scala 2 и 3' for=method %}
+
 ```scala mdoc:nest
 def add(x: Int, y: Int): Int = x + y
 println(add(1, 2)) // 3
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -197,10 +223,12 @@ println(add(1, 2)) // 3
 
 {% tabs multiple-parameter-lists %}
 {% tab 'Scala 2 и 3' for=multiple-parameter-lists %}
+
 ```scala mdoc
 def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
 println(addThenMultiply(1, 2)(3)) // 9
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -208,10 +236,12 @@ println(addThenMultiply(1, 2)(3)) // 9
 
 {% tabs no-parameter-lists %}
 {% tab 'Scala 2 и 3' for=no-parameter-lists %}
+
 ```scala mdoc
 def name: String = System.getProperty("user.name")
 println("Hello, " + name + "!")
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -219,10 +249,10 @@ println("Hello, " + name + "!")
 
 Методы также могут иметь многострочные выражения.
 
-
 {% tabs get-square-string class=tabs-scala-version %}
 
 {% tab 'Scala 2' for=get-square-string %}
+
 ```scala mdoc
 def getSquareString(input: Double): String = {
   val square = input * input
@@ -230,9 +260,11 @@ def getSquareString(input: Double): String = {
 }
 println(getSquareString(2.5)) // 6.25
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=get-square-string %}
+
 ```scala
 def getSquareString(input: Double): String =
   val square = input * input
@@ -240,6 +272,7 @@ def getSquareString(input: Double): String =
 
 println(getSquareString(2.5)) // 6.25
 ```
+
 {% endtab %}
 
 {% endtabs %}
@@ -253,20 +286,24 @@ println(getSquareString(2.5)) // 6.25
 {% tabs greeter-definition class=tabs-scala-version %}
 
 {% tab 'Scala 2' for=greeter-definition %}
+
 ```scala mdoc
 class Greeter(prefix: String, suffix: String) {
   def greet(name: String): Unit =
     println(prefix + name + suffix)
 }
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=greeter-definition %}
+
 ```scala
 class Greeter(prefix: String, suffix: String):
   def greet(name: String): Unit =
     println(prefix + name + suffix)
 ```
+
 {% endtab %}
 
 {% endtabs %}
@@ -275,21 +312,24 @@ class Greeter(prefix: String, suffix: String):
 
 Вы можете создать экземпляр класса, используя ключевое слово `new`.
 
-
 {% tabs greeter-usage class=tabs-scala-version %}
 
 {% tab 'Scala 2' for=greeter-usage %}
+
 ```scala mdoc:nest
 val greeter = new Greeter("Hello, ", "!")
 greeter.greet("Scala developer") // Hello, Scala developer!
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=greeter-usage %}
+
 ```scala
 val greeter = Greeter("Hello, ", "!")
 greeter.greet("Scala developer") // Hello, Scala developer!
 ```
+
 {% endtab %}
 
 {% endtabs %}
@@ -302,9 +342,11 @@ greeter.greet("Scala developer") // Hello, Scala developer!
 
 {% tabs case-class-definition %}
 {% tab 'Scala 2 и 3' for=case-class-definition %}
+
 ```scala mdoc
 case class Point(x: Int, y: Int)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -312,20 +354,22 @@ case class Point(x: Int, y: Int)
 
 {% tabs case-class-creation %}
 {% tab 'Scala 2 и 3' for=case-class-creation %}
+
 ```scala mdoc
 val point = Point(1, 2)
 val anotherPoint = Point(1, 2)
 val yetAnotherPoint = Point(2, 2)
 ```
+
 {% endtab %}
 {% endtabs %}
 
 Они сравниваются по значению.
 
-
 {% tabs compare-case-class-equality class=tabs-scala-version %}
 
 {% tab 'Scala 2' for=compare-case-class-equality %}
+
 ```scala mdoc
 if (point == anotherPoint) {
   println(s"$point and $anotherPoint are the same.")
@@ -339,9 +383,11 @@ if (point == yetAnotherPoint) {
   println(s"$point and $yetAnotherPoint are different.")
 } // Point(1,2) и Point(2,2) разные.
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=compare-case-class-equality %}
+
 ```scala
 if point == anotherPoint then
   println(s"$point and $anotherPoint are the same.")
@@ -355,6 +401,7 @@ else
   println(s"$point and $yetAnotherPoint are different.")
 // Point(1,2) и Point(2,2) разные.
 ```
+
 {% endtab %}
 
 {% endtabs %}
@@ -367,10 +414,10 @@ else
 
 Вы можете задать объекты при помощи ключевого слова `object`.
 
-
 {% tabs id-factory-definition class=tabs-scala-version %}
 
 {% tab 'Scala 2' for=id-factory-definition %}
+
 ```scala mdoc
 object IdFactory {
   private var counter = 0
@@ -380,9 +427,11 @@ object IdFactory {
   }
 }
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=id-factory-definition %}
+
 ```scala
 object IdFactory:
   private var counter = 0
@@ -390,6 +439,7 @@ object IdFactory:
     counter += 1
     counter
 ```
+
 {% endtab %}
 
 {% endtabs %}
@@ -398,12 +448,14 @@ object IdFactory:
 
 {% tabs id-factory-usage %}
 {% tab 'Scala 2 и 3' for=id-factory-usage %}
+
 ```scala mdoc
 val newId: Int = IdFactory.create()
 println(newId) // 1
 val newerId: Int = IdFactory.create()
 println(newerId) // 2
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -418,18 +470,22 @@ println(newerId) // 2
 {% tabs greeter-trait-def class=tabs-scala-version %}
 
 {% tab 'Scala 2' for=greeter-trait-def %}
+
 ```scala mdoc:nest
 trait Greeter {
   def greet(name: String): Unit
 }
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=greeter-trait-def %}
+
 ```scala
 trait Greeter:
   def greet(name: String): Unit
 ```
+
 {% endtab %}
 
 {% endtabs %}
@@ -439,30 +495,34 @@ trait Greeter:
 {% tabs greeter-trait-def-impl class=tabs-scala-version %}
 
 {% tab 'Scala 2' for=greeter-trait-def-impl %}
+
 ```scala mdoc:reset
 trait Greeter {
   def greet(name: String): Unit =
     println("Hello, " + name + "!")
 }
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=greeter-trait-def-impl %}
+
 ```scala
 trait Greeter:
   def greet(name: String): Unit =
     println("Hello, " + name + "!")
 ```
+
 {% endtab %}
 
 {% endtabs %}
 
 Вы можете наследовать свойства трейтов, используя ключевое слово `extends` и переопределять реализацию с помощью ключевого слова `override`.
 
-
 {% tabs greeter-implementations class=tabs-scala-version %}
 
 {% tab 'Scala 2' for=greeter-implementations %}
+
 ```scala mdoc
 class DefaultGreeter extends Greeter
 
@@ -478,9 +538,11 @@ greeter.greet("Scala developer") // Hello, Scala developer!
 val customGreeter = new CustomizableGreeter("How are you, ", "?")
 customGreeter.greet("Scala developer") // How are you, Scala developer?
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=greeter-implementations %}
+
 ```scala
 class DefaultGreeter extends Greeter
 
@@ -494,6 +556,7 @@ greeter.greet("Scala developer") // Hello, Scala developer!
 val customGreeter = CustomizableGreeter("How are you, ", "?")
 customGreeter.greet("Scala developer") // How are you, Scala developer?
 ```
+
 {% endtab %}
 
 {% endtabs %}
@@ -521,6 +584,7 @@ object Main {
     println("Hello, Scala developer!")
 }
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' for=hello-world-demo %}
@@ -530,10 +594,11 @@ In Scala 3, with the `@main` annotation, a main method is automatically generate
 ```scala
 @main def hello() = println("Hello, Scala developer!")
 ```
+
 {% endtab %}
 
 {% endtabs %}
 
 ## Дополнительные ресурсы
 
-* Обзор [Scala book](/ru/scala3/book/taste-intro.html)
+- Обзор [Scala book](/ru/scala3/book/taste-intro.html)
