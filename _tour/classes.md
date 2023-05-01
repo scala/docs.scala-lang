@@ -262,5 +262,5 @@ point.x  // <-- does not compile
 
 ## More resources
 
-* Learn more about Classes in the [Scala Book](/overviews/scala-book/classes.html)
-* How to use [Auxiliary Class Constructors](/overviews/scala-book/classes-aux-constructors.html)
+* Learn more about Classes in the [Scala Book](/scala3/book/domain-modeling-tools.html#classes)
+* How to use [Auxiliary Class Constructors](/scala3/book/domain-modeling-tools.html#auxiliary-constructors)

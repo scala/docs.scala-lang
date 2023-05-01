@@ -262,3 +262,8 @@ point.x  // <-- не компилируется
 {% endtab %}
 
 {% endtabs %}
+
+## Дополнительные ресурсы
+
+* Узнайте больше о классах в [Scala Book](/ru/scala3/book/domain-modeling-tools.html#классы)
+* Как использовать [вспомогательные конструкторы классов](/ru/scala3/book/domain-modeling-tools.html#вспомогательные-конструкторы)
