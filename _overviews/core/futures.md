@@ -1147,75 +1147,198 @@ but with the supplied reporter for handling exceptions.
 The following example demonstrates how to obtain an `ExecutionContext` with custom error handling
 and also shows the result of different exceptions, as described above:
 
-{% tabs exceptions %}
-{% tab 'Scala 2 and 3' for=exceptions %}
-    import scala.concurrent._, duration._
-    import scala.util.chaining._
-    import java.util.concurrent.ForkJoinPool
-    import java.util.concurrent.TimeUnit.SECONDS
+{% tabs exceptions class=tabs-scala-version %}
+{% tab 'Scala 2' for=exceptions %}
+~~~ scala
+import scala.concurrent.{Await, ExecutionContext, Future}
+import scala.concurrent.duration.DurationInt
+import java.util.concurrent.{ForkJoinPool, TimeoutException}
+import scala.util.{Failure, Success}
 
-    object Test extends App {
-      def crashing(): Int  = throw new NoSuchMethodError("test")
-      def failing(): Int   = throw new NumberFormatException("test")
-      def interrupt(): Int = throw new InterruptedException("test")
-      def erroring(): Int  = throw new AssertionError("test")
+object Test extends App {
+  def crashing(): Int  = throw new NoSuchMethodError("test")
+  def failing(): Int   = throw new NumberFormatException("test")
+  def interrupt(): Int = throw new InterruptedException("test")
+  def erroring(): Int  = throw new AssertionError("test")
 
-      // computations can fail in the middle of a chain of combinators, after the initial Future job has completed
-      def testCrashes()(implicit ec: ExecutionContext): Future[Int]     = Future.unit.map(_ => crashing())
-      def testFails()(implicit ec: ExecutionContext): Future[Int]       = Future.unit.map(_ => failing())
-      def testInterrupted()(implicit ec: ExecutionContext): Future[Int] = Future.unit.map(_ => interrupt())
-      def testError()(implicit ec: ExecutionContext): Future[Int]       = Future.unit.map(_ => erroring())
+  // computations can fail in the middle of a chain of combinators, after the initial Future job has completed
+  def testCrashes()(implicit ec: ExecutionContext): Future[Int] =
+    Future.unit.map(_ => crashing())
+  def testFails()(implicit ec: ExecutionContext): Future[Int] =
+    Future.unit.map(_ => failing())
+  def testInterrupted()(implicit ec: ExecutionContext): Future[Int] =
+    Future.unit.map(_ => interrupt())
+  def testError()(implicit ec: ExecutionContext): Future[Int] =
+    Future.unit.map(_ => erroring())
 
-      def check(f: Future[Int]): Future[Int] =
-        try Await.ready(f, Duration(1L, SECONDS)).tap(res => println(s"ready $res"))
-        catch { case e: Exception => Future.never.tap(_ => println(s"threw $e")) }
-
-      def reporter(t: Throwable) = println(s"reported $t")
-
-      locally {
-        // using the `global` implicit context
-        import ExecutionContext.Implicits._
-        // a successful Future and a failure, with the output printed by `check`
-        check(Future(42))        // ready Future(Success(42))
-        check(Future(failing())) // ready Future(Failure(java.lang.NumberFormatException: test))
-
-        // the Future completes with an application exception
-        check(testFails())       // ready Future(Failure(java.lang.NumberFormatException: test))
-        // the Future does not complete because of a linkage error; the trace is printed to stderr by default
-        check(testCrashes())     // threw java.util.concurrent.TimeoutException: Future timed out after [1 second]
-        // the Future completes with an operational exception that is wrapped
-        check(testInterrupted()) // ready Future(Failure(java.util.concurrent.ExecutionException: Boxed Exception))
-          .failed
-          .foreach(e => println(s"failed ${e.getCause}")) // failed java.lang.InterruptedException: test
-        // the Future completes due to a failed assert, which is bad for the app, but is handled the same as interruption
-        check(testError())       // ready Future(Failure(java.util.concurrent.ExecutionException: Boxed Exception))
-          .failed
-          .foreach(e => println(s"failed ${e.getCause}")) // failed java.lang.AssertionError: test
+  // Wait for 1 second for the the completion of the passed `future` value and print it
+  def check(future: Future[Int]): Unit =
+    try {
+      Await.ready(future, 1.second)
+      for (completion <- future.value) {
+        println(s"completed $completion")
+        // In case of failure, also print the cause of the exception, when defined
+        completion match {
+          case Failure(exception) if exception.getCause != null =>
+            println(s"  caused by ${exception.getCause}")
+          _ => ()
+        }
       }
-      locally {
-        // same as `global`, but adds a custom reporter that will handle uncaught exceptions and errors reported to the context
-        implicit val ec: ExecutionContext = ExecutionContext.fromExecutor(null, reporter)
-        check(testCrashes())     // reported java.lang.NoSuchMethodError: test
-      }
-      locally {
-        // does not handle uncaught exceptions; the executor would have to be configured separately
-        implicit val ec: ExecutionContext = ExecutionContext.fromExecutor(ForkJoinPool.commonPool(), reporter)
-        // the reporter is not invoked and the Future does not complete
-        check(testCrashes())     // threw java.util.concurrent.TimeoutException: Future timed out after [1 second]
-      }
-      locally {
-        // sample minimal configuration for a context and underlying pool that use the reporter
-        val handler: Thread.UncaughtExceptionHandler = (t: Thread, e: Throwable) => reporter(e)
-        val pool = new ForkJoinPool(
-          Runtime.getRuntime.availableProcessors,
-          ForkJoinPool.defaultForkJoinWorkerThreadFactory, // threads use the pool's handler
-          handler,
-          /*asyncMode=*/ false
-        )
-        implicit val ec: ExecutionContext = ExecutionContext.fromExecutor(pool, reporter)
-        check(testCrashes())     // reported java.lang.NoSuchMethodError: test
-      }
+    } catch {
+      // If the future value did not complete within 1 second, the call
+      // to `Await.ready` throws a TimeoutException
+      case _: TimeoutException => println(s"did not complete")
     }
+
+  def reporter(t: Throwable) = println(s"reported $t")
+
+  locally {
+    // using the `global` implicit context
+    import ExecutionContext.Implicits._
+    // a successful Future
+    check(Future(42))        // completed Success(42)
+    // a Future that completes with an application exception
+    check(Future(failing())) // completed Failure(java.lang.NumberFormatException: test)
+    // same, but the exception is thrown somewhere in the chain of combinators
+    check(testFails())       // completed Failure(java.lang.NumberFormatException: test)
+    // a Future that does not complete because of a linkage error;
+    // the trace is printed to stderr by default
+    check(testCrashes())     // did not complete
+    // a Future that completes with an operational exception that is wrapped
+    check(testInterrupted()) // completed Failure(java.util.concurrent.ExecutionException: Boxed Exception)
+                             //   caused by java.lang.InterruptedException: test
+    // a Future that completes due to a failed assert, which is bad for the app,
+    // but is handled the same as interruption
+    check(testError())       // completed Failure(java.util.concurrent.ExecutionException: Boxed Exception)
+                             //   caused by java.lang.AssertionError: test
+  }
+  locally {
+    // same as `global`, but adds a custom reporter that will handle uncaught
+    // exceptions and errors reported to the context
+    implicit val ec: ExecutionContext = ExecutionContext.fromExecutor(null, reporter)
+    check(testCrashes())     // reported java.lang.NoSuchMethodError: test
+                             // did not complete
+  }
+  locally {
+    // does not handle uncaught exceptions; the executor would have to be
+    // configured separately
+    val executor = ForkJoinPool.commonPool()
+    implicit val ec: ExecutionContext = ExecutionContext.fromExecutor(executor, reporter)
+    // the reporter is not invoked and the Future does not complete
+    check(testCrashes())     // did not complete
+  }
+  locally {
+    // sample minimal configuration for a context and underlying pool that
+    // use the reporter
+    val handler: Thread.UncaughtExceptionHandler =
+      (_: Thread, t: Throwable) => reporter(t)
+    val executor = new ForkJoinPool(
+      Runtime.getRuntime.availableProcessors,
+      ForkJoinPool.defaultForkJoinWorkerThreadFactory, // threads use the pool's handler
+      handler,
+      /*asyncMode=*/ false
+    )
+    implicit val ec: ExecutionContext = ExecutionContext.fromExecutor(executor, reporter)
+    check(testCrashes())     // reported java.lang.NoSuchMethodError: test
+                             // did not complete
+  }
+}
+~~~
+{% endtab %}
+
+{% tab 'Scala 3' for=exceptions %}
+~~~ scala
+import scala.concurrent.{Await, ExecutionContext, Future}
+import scala.concurrent.duration.DurationInt
+import java.util.concurrent.{ForkJoinPool, TimeoutException}
+import scala.util.{Failure, Success}
+
+def crashing(): Int  = throw new NoSuchMethodError("test")
+def failing(): Int   = throw new NumberFormatException("test")
+def interrupt(): Int = throw new InterruptedException("test")
+def erroring(): Int  = throw new AssertionError("test")
+
+// computations can fail in the middle of a chain of combinators,
+// after the initial Future job has completed
+def testCrashes()(using ExecutionContext): Future[Int] =
+  Future.unit.map(_ => crashing())
+def testFails()(using ExecutionContext): Future[Int] =
+  Future.unit.map(_ => failing())
+def testInterrupted()(using ExecutionContext): Future[Int] =
+  Future.unit.map(_ => interrupt())
+def testError()(using ExecutionContext): Future[Int] =
+  Future.unit.map(_ => erroring())
+
+// Wait for 1 second for the the completion of the passed `future` value and print it
+def check(future: Future[Int]): Unit =
+  try
+    Await.ready(future, 1.second)
+    for completion <- future.value do
+      println(s"completed $completion")
+      // In case of failure, also print the cause of the exception, when defined
+      completion match
+        case Failure(exception) if exception.getCause != null =>
+          println(s"  caused by ${exception.getCause}")
+        case _ => ()
+  catch
+    // If the future value did not complete within 1 second, the call
+    // to `Await.ready` throws a TimeoutException
+    case _: TimeoutException => println(s"did not complete")
+
+def reporter(t: Throwable) = println(s"reported $t")
+
+@main def test(): Unit =
+  locally:
+    // using the `global` implicit context
+    import ExecutionContext.Implicits.*
+    // a successful Future
+    check(Future(42))        // completed Success(42)
+    // a Future that completes with an application exception
+    check(Future(failing())) // completed Failure(java.lang.NumberFormatException: test)
+    // same, but the exception is thrown somewhere in the chain of combinators
+    check(testFails())       // completed Failure(java.lang.NumberFormatException: test)
+    // a Future that does not complete because of a linkage error;
+    // the trace is printed to stderr by default
+    check(testCrashes())     // did not complete
+    // a Future that completes with an operational exception that is wrapped
+    check(testInterrupted()) // completed Failure(java.util.concurrent.ExecutionException: Boxed Exception)
+                             //   caused by java.lang.InterruptedException: test
+    // a Future that completes due to a failed assert, which is bad for the app,
+    // but is handled the same as interruption
+    check(testError())       // completed Failure(java.util.concurrent.ExecutionException: Boxed Exception)
+                             //   caused by java.lang.AssertionError: test
+
+  locally:
+    // same as `global`, but adds a custom reporter that will handle uncaught
+    // exceptions and errors reported to the context
+    given ExecutionContext = ExecutionContext.fromExecutor(null, reporter)
+    check(testCrashes())     // reported java.lang.NoSuchMethodError: test
+                             // did not complete
+
+  locally:
+    // does not handle uncaught exceptions; the executor would have to be
+    // configured separately
+    val executor = ForkJoinPool.commonPool()
+    given ExecutionContext = ExecutionContext.fromExecutor(executor, reporter)
+    // the reporter is not invoked and the Future does not complete
+    check(testCrashes())     // did not complete
+
+  locally:
+    // sample minimal configuration for a context and underlying pool that
+    // use the reporter
+    val handler: Thread.UncaughtExceptionHandler =
+      (_: Thread, t: Throwable) => reporter(t)
+    val executor = new ForkJoinPool(
+      Runtime.getRuntime.availableProcessors,
+      ForkJoinPool.defaultForkJoinWorkerThreadFactory, // threads use the pool's handler
+      handler,
+      /*asyncMode=*/ false
+    )
+    given ExecutionContext = ExecutionContext.fromExecutor(executor, reporter)
+    check(testCrashes())     // reported java.lang.NoSuchMethodError: test
+                             // did not complete
+end test
+~~~
 {% endtab %}
 {% endtabs %}
 
