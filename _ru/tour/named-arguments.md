@@ -13,7 +13,7 @@ prerequisite-knowledge: function-syntax
 
 {% tabs named-arguments-when-good %}
 
-{% tab 'Scala 2 and 3' for=named-arguments-when-good %}
+{% tab 'Scala 2 и 3' for=named-arguments-when-good %}
 ```scala mdoc
 def printName(first: String, last: String): Unit =
   println(first + " " + last)
@@ -33,7 +33,7 @@ printName(last = "Smith", first = "John")  // выводит "John Smith"
 
 {% tabs named-arguments-when-error %}
 
-{% tab 'Scala 2 and 3' for=named-arguments-when-error %}
+{% tab 'Scala 2 и 3' for=named-arguments-when-error %}
 ```scala mdoc:fail
 printName(last = "Smith", "john") // ошибка: позиция после именованного аргумента
 ```
