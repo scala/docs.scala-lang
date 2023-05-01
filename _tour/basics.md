@@ -232,7 +232,7 @@ println(getSquareString(2.5)) // 6.25
 {% endtab %}
 
 {% tab 'Scala 3' for=get-square-string %}
-```scala
+```scala mdoc
 def getSquareString(input: Double): String =
   val square = input * input
   square.toString
@@ -261,7 +261,7 @@ class Greeter(prefix: String, suffix: String) {
 {% endtab %}
 
 {% tab 'Scala 3' for=greeter-definition %}
-```scala
+```scala mdoc
 class Greeter(prefix: String, suffix: String):
   def greet(name: String): Unit =
     println(prefix + name + suffix)
@@ -284,7 +284,7 @@ greeter.greet("Scala developer") // Hello, Scala developer!
 {% endtab %}
 
 {% tab 'Scala 3' for=greeter-usage %}
-```scala
+```scala mdoc:nest
 val greeter = Greeter("Hello, ", "!")
 greeter.greet("Scala developer") // Hello, Scala developer!
 ```
@@ -341,7 +341,7 @@ if (point == yetAnotherPoint) {
 {% endtab %}
 
 {% tab 'Scala 3' for=compare-case-class-equality %}
-```scala
+```scala mdoc
 if point == anotherPoint then
   println(s"$point and $anotherPoint are the same.")
 else
@@ -381,7 +381,7 @@ object IdFactory {
 {% endtab %}
 
 {% tab 'Scala 3' for=id-factory-definition %}
-```scala
+```scala mdoc
 object IdFactory:
   private var counter = 0
   def create(): Int =
@@ -424,7 +424,7 @@ trait Greeter {
 {% endtab %}
 
 {% tab 'Scala 3' for=greeter-trait-def %}
-```scala
+```scala mdoc:nest
 trait Greeter:
   def greet(name: String): Unit
 ```
@@ -446,7 +446,7 @@ trait Greeter {
 {% endtab %}
 
 {% tab 'Scala 3' for=greeter-trait-def-impl %}
-```scala
+```scala mdoc:reset
 trait Greeter:
   def greet(name: String): Unit =
     println("Hello, " + name + "!")
@@ -478,7 +478,7 @@ customGreeter.greet("Scala developer") // How are you, Scala developer?
 {% endtab %}
 
 {% tab 'Scala 3' for=greeter-implementations %}
-```scala
+```scala mdoc
 class DefaultGreeter extends Greeter
 
 class CustomizableGreeter(prefix: String, postfix: String) extends Greeter:
@@ -523,7 +523,7 @@ object Main {
 
 In Scala 3, with the `@main` annotation, a main method is automatically generated from a method as follows:
 
-```scala
+```scala mdoc
 @main def hello() = println("Hello, Scala developer!")
 ```
 {% endtab %}
