@@ -533,3 +533,7 @@ In Scala 3, with the `@main` annotation, a main method is automatically generate
 {% endtab %}
 
 {% endtabs %}
+
+## Дополнительные ресурсы
+
+* Обзор [Scala book](/ru/scala3/book/taste-intro.html)
