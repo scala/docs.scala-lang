@@ -1150,9 +1150,9 @@ and also shows the result of different exceptions, as described above:
 {% tabs exceptions class=tabs-scala-version %}
 {% tab 'Scala 2' for=exceptions %}
 ~~~ scala
+import java.util.concurrent.{ForkJoinPool, TimeoutException}
 import scala.concurrent.{Await, ExecutionContext, Future}
 import scala.concurrent.duration.DurationInt
-import java.util.concurrent.{ForkJoinPool, TimeoutException}
 import scala.util.{Failure, Success}
 
 object Test extends App {
@@ -1248,9 +1248,9 @@ object Test extends App {
 
 {% tab 'Scala 3' for=exceptions %}
 ~~~ scala
+import java.util.concurrent.{ForkJoinPool, TimeoutException}
 import scala.concurrent.{Await, ExecutionContext, Future}
 import scala.concurrent.duration.DurationInt
-import java.util.concurrent.{ForkJoinPool, TimeoutException}
 import scala.util.{Failure, Success}
 
 def crashing(): Int  = throw new NoSuchMethodError("test")
@@ -1290,7 +1290,7 @@ def reporter(t: Throwable) = println(s"reported $t")
 @main def test(): Unit =
   locally:
     // using the `global` implicit context
-    import ExecutionContext.Implicits.*
+    import ExecutionContext.Implicits.given
     // a successful Future
     check(Future(42))        // completed Success(42)
     // a Future that completes with an application exception
