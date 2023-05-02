@@ -221,6 +221,8 @@ GEM
     minitest (5.18.0)
     nokogiri (1.14.3-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.14.3-x64-mingw-ucrt)
+      racc (~> 1.4)
     nokogiri (1.14.3-x86_64-linux)
       racc (~> 1.4)
     octokit (4.25.1)
@@ -266,6 +268,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  x64-mingw-ucrt
   x86_64-linux
 
 DEPENDENCIES
