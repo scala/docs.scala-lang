@@ -9,7 +9,6 @@ next-page: sttp-what-else
 
 {% include markdown.html path="_markdown/install-sttp.md" %}
 
-
 ## Uploading a file
 
 To upload a file, you can put a Java `Path` in the body of a request.
@@ -44,7 +43,7 @@ val file2 = (os.pwd / "avatar2.png").toNIO
 val response = quickRequest
   .post(uri"https://example.com/")
   .multipartBody(
-    multipartFile("avatar1.png", file1), 
+    multipartFile("avatar1.png", file1),
     multipartFile("avatar2.png", file2)
   )
   .send()

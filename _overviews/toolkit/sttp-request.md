@@ -10,9 +10,10 @@ next-page: sttp-uris
 {% include markdown.html path="_markdown/install-sttp.md" %}
 
 ## Sending an HTTP request
-The simplest way to send a request with sttp, is to use `quickRequest`.
 
-First you need to import `sttp.client4.quick.*`, then you can define a GET request with `quickRequest.get(uri"...")` and send it. 
+The simplest way to send a request with sttp is `quickRequest`.
+
+You can define a GET request with `.get` and send it with `.send`.
 
 {% tabs 'request' %}
 {% tab 'Scala 2 and 3' %}
@@ -38,15 +39,15 @@ A `Response[String]` contains a status code and a string body.
 
 ### The HTTP method and URI
 
-To specify the HTTP method and URI of a `qucikRequest`, you can use one of `get`, `post`, `put`, `delete`, etc.
+To specify the HTTP method and URI of a `quickRequest`, you can use `get`, `post`, `put`, or `delete`.
 
 To construct a URI you can use the `uri` interpolator, for e.g. `uri"https://example.com"`.
-To learn more about it, you may read [*How to construct URIs and query parameters?*](/toolkit/sttp-uris).
+To learn more about that, see [*How to construct URIs and query parameters?*](/toolkit/sttp-uris).
 
 ### The headers
 
 By default, the `quickRequest` contains the "Accept-Encoding" and the "deflate" headers.
-To add one or many headers, you can call one of the `header` or `headers` overloads:
+To add more headers, you can call one of the `header` or `headers` overloads:
 
 {% tabs 'headers' %}
 {% tab 'Scala 2 and 3' %}
@@ -63,7 +64,7 @@ println(request.headers)
 {% endtab %}
 {% endtabs %}
 
-sttp can also add the "Content-Type" and "Content-Length" automatically if the request contains a body.
+sttp can also add "Content-Type" and "Content-Length" automatically if the request contains a body.
 
 ## Authentication
 

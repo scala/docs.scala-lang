@@ -11,13 +11,13 @@ next-page: sttp-request-body
 
 ## The `uri` interpolator
 
-`uri` is a custom [String interpolator](/overviews/core/string-interpolation.html), that allows you to create valid web addresses, also called URIs (e.g., `uri"https://example.com/"`).
+`uri` is a custom [string interpolator](/overviews/core/string-interpolation.html) that allows you to create valid web addresses, also called URIs. For example, you can write `uri"https://example.com/"`.
 
-You can interpolate any variable or expression in your URI using the `$` or `${}` syntax.
-For instance `uri"https://example.com/$name"`, interpolate the value of the variable `name` into an URI.
-If `name` contains `"peter"` it produces `https://example.com/peter`.
+You can insert any variable or expression in your URI with the usual `$` or `${}` syntax.
+For instance `uri"https://example.com/$name"`, interpolates the value of the variable `name` into an URI.
+If `name` contains `"peter"`, the result is `https://example.com/peter`.
 
-One of the benefits of the `uri` interpolator is that it escapes all special characters automatically.
+`uri` escapes special characters automatically, as seen in this example:
 
 {% tabs 'uri' %}
 {% tab 'Scala 2 and 3' %}
@@ -36,7 +36,7 @@ println(bookUri)
 
 ## Query parameters
 
-A query parameter is a key-value pair that is appended to the end of a URI in an HTTP request to specify additonal details about the request.
+A query parameter is a key-value pair that is appended to the end of a URI in an HTTP request to specify additional details about the request.
 The web server can use those parameters to compute the appropriate response.
 
 For example, consider the following URL:
@@ -61,19 +61,19 @@ val queryParams = Map(
   "limit" -> "10",
   "page" -> "1"
 )
-val uriWithQueryParams = uri"https://example.com/search?$queryParams" 
+val uriWithQueryParams = uri"https://example.com/search?$queryParams"
 println(uriWithQueryParams)
 // prints: https://example.com/search?q=scala&limit=10&page=1
 ```
 {% endtab %}
 {% endtabs %}
 
-For safety, all the special characters in the parameters are automatically escaped by the interpolator.
+For safety, special characters in the parameters are automatically escaped by the interpolator.
 
 ## Using an optional query parameter
 
-Suppose you have an optional query parameter, that is sometimes defined but not always.
-A convenient way to handle this is to use an `Option`, and to interpolate it in a `uri"..."`.
+A query parameter might be optional.
+The `uri` interpolator can interpolate `Option`s:
 
 {% tabs 'optional' %}
 {% tab 'Scala 2 and 3' %}
@@ -93,7 +93,7 @@ println(getUri(None))
 {% endtab %}
 {% endtabs %}
 
-Notice that the query parameter completely disappeared form the URI when limit is `None`.
+Notice that the query parameter disappears entirely when `limit` is `None`.
 
 ## Using a sequence as values of a single query parameter
 

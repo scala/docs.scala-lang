@@ -27,9 +27,9 @@ val response: Future[Response[String]] = quickRequest
 {% endtab %}
 {% endtabs %}
 
-You can learn more about `Future`-based backends in [sttp documentation](https://sttp.softwaremill.com/en/latest/backends/future.html).
+You can learn more about `Future`-based backends in the [sttp documentation](https://sttp.softwaremill.com/en/latest/backends/future.html).
 
-sttp supports many more asynchronous wrappers such as, the Monix `Task`, the cats `Effect`, the `ZIO` type and more.
+sttp supports other asynchronous wrappers such as Monix `Task`s, cats-effect `Effect`s, ZIO's `ZIO` type, and more.
 You can see the full list of supported backends [here](https://sttp.softwaremill.com/en/latest/backends/summary.html).
 
 ## Websockets
