@@ -7,11 +7,10 @@ previous-page: oslib-what-else
 next-page: upickle-parse-json
 ---
 
-uPickle is a lightweight and efficient serialization library for the Scala language.
-It comes with uJson, a JSON manipulation library that can parse JSON strings, access or mutate their values, and print them back to strings.
+uPickle is a lightweight serialization library for Scala.
 
-uPickle is a serialization library.
-It can serialize and deserialize Scala objects directly to and from JSON strings.
-It knows how to handle the Scala collections, such as the `Map` or `Seq`, as well as your custom data types, such as `case class`s and `enum`s (Scala 3 only).
+It includes uJson, a JSON manipulation library that can parse JSON strings, access or mutate their values in memory, and write them back out again.
+
+uJson can also serialize and deserialize Scala objects directly to and from JSON. It knows how to handle the Scala collections such as `Map` and `Seq`, as well as your own data types, such as `case class`s and Scala 3 `enum`s.
 
 {% include markdown.html path="_markdown/install-upickle.md" %}

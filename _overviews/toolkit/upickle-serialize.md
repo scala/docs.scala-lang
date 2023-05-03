@@ -11,15 +11,15 @@ next-page: upickle-files
 
 ## Serializing a Map to JSON
 
-UPickle can serialize your Scala objects to JSON, so that you can save them in files or send them through the network.
+uPickle can serialize your Scala objects to JSON, so that you can save them in files or send them over the network.
 
-By default it can serialize any primitive types, such as `Int` or `String`, and standard collections such as `Map` or `List`.
+By default it can serialize primitive types such as `Int` or `String`, as well as standard collections such as `Map` and `List`.
 
 {% tabs 'array' %}
 {% tab 'Scala 2 and 3' %}
 ```scala
 val map: Map[String, Int] =
-  Map("Toolkitty" -> 3, "Scaniel"   -> 5)
+  Map("Toolkitty" -> 3, "Scaniel" -> 5)
 val jsonString: String = upickle.default.write(map)
 println(jsonString)
 // prints: {"Toolkitty":3,"Scaniel":5}
@@ -30,7 +30,7 @@ println(jsonString)
 ## Serializing a custom object to JSON
 
 In Scala, you can use a `case class` to define your own data type.
-For example, to represent a pet owner with the name of its pets, you can do as follows:
+For example, to represent a pet owner with the name of its pets, you can
 ```scala
 case class PetOwner(name: String, pets: List[String])
 ```
@@ -55,14 +55,14 @@ import upickle.default.*
 
 case class PetOwner(name: String, pets: List[String]) derives ReadWriter
 ```
-The `derives` keyword is used to automatically generate type class instances for case classes and enums.
-Using the information about the fields of `PetOwner` it generates a `ReadWriter[PetOwner]`.
+The `derives` keyword is used to automatically generate given instances.
+Using the compiler's knowledge of the fields in `PetOwner`, it generates a `ReadWriter[PetOwner]`.
 {% endtab %}
 {% endtabs %}
 
-This means that you can now write (and read) `Foo` objects to JSON with `upickle.default.write(petOwner)`.
+This means that you can now write (and read) `PetOwner` objects to JSON with `upickle.default.write(petOwner)`.
 
-Notice that you do not need to pass the instance of `ReadWriter[PetOwner]` explicitly to the `write` method. But it does, nevertheless, get it from the context. You may find more information about contextual abstractions in the [Scala 3 Book](https://docs.scala-lang.org/scala3/book/ca-contextual-abstractions-intro.html).
+Notice that you do not need to pass the instance of `ReadWriter[PetOwner]` explicitly to the `read` method. But it does, nevertheless, get it from the context, as "given" value. You may find more information about contextual abstractions in the [Scala 3 Book](https://docs.scala-lang.org/scala3/book/ca-contextual-abstractions-intro.html).
 
 Putting everything together you should get:
 
@@ -78,7 +78,7 @@ val petOwner = PetOwner("Peter", List("Toolkitty", "Scaniel"))
 val json: String = write(petOwner)
 println(json)
 // prints: {"name":"Peter","pets":["Toolkitty","Scaniel"]}"
-``` 
+```
 {% endtab %}
 {% tab 'Scala 3' %}
 ```scala
@@ -88,8 +88,8 @@ case class PetOwner(name: String, pets: List[String]) derives ReadWriter
 
 val petOwner = PetOwner("Peter", List("Toolkitty", "Scaniel"))
 val json: String = write(petOwner)
-println(json) 
+println(json)
 // prints: {"name":"Peter","pets":["Toolkitty","Scaniel"]}"
-``` 
+```
 {% endtab %}
 {% endtabs %}

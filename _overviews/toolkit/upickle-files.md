@@ -11,7 +11,7 @@ next-page: upickle-what-else
 
 ## Read and write raw JSON
 
-To read and write JSON to and from files, you can use uJson and OS-Lib as follows:
+To read and write JSON files, you can use uJson and OS-Lib as follows:
 
 {% tabs 'raw' %}
 {% tab 'Scala 2 and 3' %}
@@ -30,7 +30,7 @@ os.write(os.pwd / "raw-updated.json", ujson.write(json))
 
 ## Read and write Scala objects using JSON
 
-To read and write Scala objects to and from files, using JSON, you can use uPickle and OS-Lib as follows:
+To read and write Scala objects to and from JSON files, you can use uPickle and OS-Lib as follows:
 
 {% tabs 'object' class=tabs-scala-version %}
 {% tab 'Scala 2' %}

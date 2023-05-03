@@ -9,9 +9,9 @@ next-page: upickle-deserialize
 
 {% include markdown.html path="_markdown/install-upickle.md" %}
 
-The `ujson.read` method creates a mutable representation of JSON that you can update, by adding, modifying or removing any field or element.
+`ujson.read` returns a mutable representation of JSON that you can update. Fields and elemnts can be added, modified, or removed.
 
-First you need to read the JSON string, then you can update it, and finally you can write it back to a String.
+First you read the JSON string, then you update it in memory, and finally you write it back out again.
 
 {% tabs 'modify' %}
 {% tab 'Scala 2 and 3' %}

@@ -11,9 +11,9 @@ next-page: upickle-modify-json
 
 ## Accessing values inside JSON
 
-To parse a JSON string and access some of its field, you can use the uJson library, which is brought in by uPickle.
+To parse a JSON string and access fields inside it, you can use uJson, which is part of uPickle.
 
-The method `ujson.read` parses a JSON string to make its fields available.
+The method `ujson.read` parses a JSON string into memory:
 {% tabs 'read' %}
 {% tab 'Scala 2 and 3' %}
 ```scala
@@ -27,7 +27,7 @@ println(json("name").str)
 
 To access the `"name"` field, we do `json("name")` and then call `str` to type it as a string.
 
-To access the elements by index in a JSON array, you can do as follows:
+To access the elements by index in a JSON array,
 
 {% tabs 'array' %}
 {% tab 'Scala 2 and 3' %}
@@ -44,16 +44,16 @@ println(s"The pets are $firstPet and $seconPet")
 {% endtabs %}
 
 You can traverse the JSON structure as deeply as you want, to extract any nested value.
-For instance, `json("field1")(0)("field2").str` is the string value of "field2" in the first element of the array in "field1".
+For instance, `json("field1")(0)("field2").str` is the string value of `field2` in the first element of the array in `field1`.
 
 ## JSON types
 
 In the previous examples we used `str` to type a JSON value as a string.
-Similar operations are available to extract other types of values. Namely:
- - `num` for numeric values, it returns a `Double`
- - `bool` for boolean values, it returns a `Boolean`
- - `arr` for arrays, it returns a mutable `Buffer[ujson.Value]`
- - `obj` for objects, it returns a mutable `Map[String, ujson.Value]`
+Similar methods exist for other types of values, namely:
+ - `num` for numeric values, returning `Double`
+ - `bool` for boolean values, returning `Boolean`
+ - `arr` for arrays, returning a mutable `Buffer[ujson.Value]`
+ - `obj` for objects, returning a mutable `Map[String, ujson.Value]`
 
 {% tabs 'typing' %}
 {% tab 'Scala 2 and 3' %}
