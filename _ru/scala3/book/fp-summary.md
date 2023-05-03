@@ -9,7 +9,7 @@ description: Этот раздел суммирует предыдущие ра�
 language: ru
 num: 46
 previous-page: fp-functional-error-handling
-next-page:
+next-page: types-introduction
 ---
 
 
