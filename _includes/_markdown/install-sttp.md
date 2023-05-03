@@ -1,13 +1,13 @@
-{% altDetails install-info-box 'Installing sttp' %}
+{% altDetails install-info-box 'Getting sttp' %}
 
 {% tabs sttp-install-methods class=tabs-build-tool%}
 {% tab 'Scala CLI' %}
-You can install the entire toolkit in a single line:
+You can require the entire toolkit in a single line:
 ```scala
 //> using toolkit "latest"
 ```
 
-Alternatively, you can install a specific version of sttp:
+Alternatively, you can require a specific version of sttp:
 ```scala
 //> using lib "com.softwaremill.sttp.client4::core:4.0.0-M1"
 ```

@@ -1,13 +1,13 @@
-{% altDetails require-info-box 'Installing OS-Lib' %}
+{% altDetails require-info-box 'Getting OS-Lib' %}
 
 {% tabs oslib-install class=tabs-build-tool %}
 {% tab 'Scala CLI' %}
-You can install the entire toolkit in a single line:
+You can require the entire toolkit in a single line:
 ```scala
 //> using toolkit "latest"
 ```
 
-Alternatively, you can install just a specific version of OS-Lib:
+Alternatively, you can require just a specific version of OS-Lib:
 ```scala
 //> using dep "com.lihaoyi::os-lib:0.9.1"
 ```

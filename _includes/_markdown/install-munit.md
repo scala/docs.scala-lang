@@ -1,13 +1,13 @@
-{% altDetails install-info-box 'Installing MUnit' %}
+{% altDetails install-info-box 'Getting MUnit' %}
 
 {% tabs munit-unit-test-1 class=tabs-build-tool %}
 {% tab 'Scala CLI' %}
-You can install the entire toolkit in a single line:
+You can require the entire toolkit in a single line:
 ```scala
 //> using toolkit "latest"
 ```
 
-Alternatively, you can install a specific version of MUnit:
+Alternatively, you can require a specific version of MUnit:
 ```scala
 //> using lib "org.scalameta::munit:1.0.0-M6"
 ```

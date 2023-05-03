@@ -1,13 +1,13 @@
-{% altDetails install-info-box 'Installing upickle' %}
+{% altDetails install-info-box 'Getting upickle' %}
 
 {% tabs upickle-install-methods class=tabs-build-tool %}
 {% tab 'Scala CLI' %}
-Using Scala CLI, you can install the entire toolkit in a single line:
+Using Scala CLI, you can require the entire toolkit in a single line:
 ```scala
 //> using toolkit "latest"
 ```
 
-Alternatively, you can install a specific version of upickle:
+Alternatively, you can require a specific version of upickle:
 ```scala
 //> using lib "com.lihaoyi::upickle:1.6.0"
 ```
