@@ -17,7 +17,7 @@ In your build.sbt file, you can add the dependency to the sttp library:
 ```scala
 lazy val example = project.in(file("example"))
   .settings(
-    scalaVersion := "3.2.1",
+    scalaVersion := "3.2.2",
     libraryDependencies += "com.softwaremill.sttp.client4" %% "core" % "4.0.0-M1"
   )
 ```
@@ -26,7 +26,7 @@ lazy val example = project.in(file("example"))
 In your build.sc file, you can add the dependency to the sttp library:
 ```scala
 object example extends ScalaModule {
-  def scalaVersion = "3.2.1"
+  def scalaVersion = "3.2.2"
   def ivyDeps =
     Agg(
       ivy"com.softwaremill.sttp.client4::core:4.0.0-M1"

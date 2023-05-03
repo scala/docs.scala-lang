@@ -9,7 +9,7 @@ Using Scala CLI, you can require the entire toolkit in a single line:
 
 Alternatively, you can require a specific version of upickle:
 ```scala
-//> using lib "com.lihaoyi::upickle:1.6.0"
+//> using lib "com.lihaoyi::upickle:3.1.0
 ```
 {% endtab %}
 {% tab 'sbt' %}
@@ -17,8 +17,8 @@ In your build.sbt file, you can add the dependency to the upickle library:
 ```scala
 lazy val example = project.in(file("example"))
   .settings(
-    scalaVersion := "3.2.1",
-    libraryDependencies += "com.lihaoyi" %% "upickle" % "1.6.0"
+    scalaVersion := "3.2.2",
+    libraryDependencies += "com.lihaoyi" %% "upickle" % "3.1.0"
   )
 ```
 {% endtab %}
@@ -26,10 +26,10 @@ lazy val example = project.in(file("example"))
 In your build.sc file, you can add the dependency to the upickle library:
 ```scala
 object example extends ScalaModule {
-  def scalaVersion = "3.2.1"
+  def scalaVersion = "3.2.2"
   def ivyDeps =
     Agg(
-      ivy"com.lihaoyi::upickle:1.6.0"
+      ivy"com.lihaoyi::upickle:3.1.0"
     )
 }
 ```

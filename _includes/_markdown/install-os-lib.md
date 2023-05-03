@@ -15,15 +15,23 @@ Alternatively, you can require just a specific version of OS-Lib:
 {% tab 'sbt' %}
 In our `build.sbt` file, we add the dependency on OS-Lib:
 ```scala
-libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.9.1"
+lazy val example = project.in(file("example"))
+  .settings(
+    scalaVersion := "3.2.2",
+    libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.9.1"
+  )
 ```
 {% endtab %}
 {% tab 'Mill' %}
 In our `build.sc` file, we add the dependency on OS-Lib:
 ```scala
-def ivyDeps = Agg(
-  ivy"com.lihaoyi::os-lib:0.9.1"
-)
+object example extends ScalaModule {
+  def scalaVersion = "3.2.2"
+  def ivyDeps =
+    Agg(
+      ivy"com.lihaoyi::os-lib:0.9.1"
+    )
+}
 ```
 {% endtab %}
 {% endtabs %}
