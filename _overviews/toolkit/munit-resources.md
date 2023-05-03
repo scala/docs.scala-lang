@@ -70,8 +70,8 @@ You can use `FunFixture.map2` to compose two functional fixtures into one.
 val using2TempFiles: FunFixture[(os.Path, os.Path)] =
   FunFixture.map2(usingTempFile, usingTempFile)
 
-using2TempFiles.test("merge tow files") {
-  case (file1, file2) =>
+using2TempFiles.test("merge two files") {
+  (file1, file2) =>
     // body of the test
 }
 ```
@@ -81,8 +81,8 @@ using2TempFiles.test("merge tow files") {
 val using2TempFiles: FunFixture[(os.Path, os.Path)] =
   FunFixture.map2(usingTempFile, usingTempFile)
 
-using2TempFiles.test("merge tow files"):
-  case (file1, file2) =>
+using2TempFiles.test("merge two files"):
+  (file1, file2) =>
     // body of the test
 ```
 {% endtab %}

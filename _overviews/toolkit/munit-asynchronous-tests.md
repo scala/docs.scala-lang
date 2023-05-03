@@ -49,7 +49,7 @@ You can therefore write the test as follows:
 // Import the global execution context, required to call async methods
 import scala.concurrent.ExecutionContext.Implicits.global
 
-class AsyncMathLibTests extends munit.FunSuite:
+class AsyncMathLibTests extends munit.FunSuite {
   test("square") {
     for
       squareOf3 <- AsyncMathLib.square(3)
@@ -58,6 +58,7 @@ class AsyncMathLibTests extends munit.FunSuite:
       assertEquals(squareOf3, 9)
       assertEquals(squareOfMinus4, 16)
   }
+}
 ```
 {% endtab %}
 {% tab 'Scala 3' %}
