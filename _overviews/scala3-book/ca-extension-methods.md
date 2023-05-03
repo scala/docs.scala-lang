@@ -5,7 +5,7 @@ description: This page demonstrates how Extension Methods work in Scala 3.
 languages: [zh-cn]
 num: 59
 previous-page: ca-contextual-abstractions-intro
-next-page: ca-given-using-clauses
+next-page: ca-context-parameters
 scala3: true
 versionSpecific: true
 ---

@@ -61,7 +61,7 @@ This section describes how to define and use implicit conversions.
 In Scala 2, an implicit conversion from type `S` to type `T` is defined by an
 [implicit class]({% link _overviews/core/implicit-classes.md %}) `T` that takes
 a single constructor parameter of type `S`, an
-[implicit value]({% link _overviews/scala3-book/ca-given-using-clauses.md %}) of
+[implicit value]({% link _overviews/scala3-book/ca-context-parameters.md %}) of
 function type `S => T`, or by an implicit method convertible to a value of that type.
 
 For example, the following code defines an implicit conversion from `Int` to `Long`:
@@ -81,7 +81,7 @@ at the beginning.
 
 {% tab 'Scala 3' %}
 In Scala 3, an implicit conversion from type `S` to type `T` is defined by a
-[`given` instance]({% link _overviews/scala3-book/ca-given-using-clauses.md %})
+[`given` instance]({% link _overviews/scala3-book/ca-context-parameters.md %})
 of type `scala.Conversion[S, T]`. For compatibility with Scala 2, it can also
 be defined by an implicit method (read more in the Scala 2 tab).
 

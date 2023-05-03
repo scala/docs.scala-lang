@@ -236,7 +236,7 @@ Scala 的类型系统在编译时强制要求以安全与连贯的方式使用�
 - [交叉类型]({% link _zh-cn/overviews/scala3-book/types-intersection.md %})
 - [联合类型]({% link _zh-cn/overviews/scala3-book/types-union.md %})
 - [类型 Lambda]({{ site.scala3ref }}/new-types/type-lambdas.html)
-- [`given` 实例与 `using` 子句]({% link _zh-cn/overviews/scala3-book/ca-given-using-clauses.md %})
+- [`given` 实例与 `using` 子句]({% link _zh-cn/overviews/scala3-book/ca-context-parameters.md %})
 - [扩展方法]({% link _zh-cn/overviews/scala3-book/ca-extension-methods.md %})
 - [类型类]({% link _zh-cn/overviews/scala3-book/ca-type-classes.md %})
 - [多元相等]({% link _zh-cn/overviews/scala3-book/ca-multiversal-equality.md %})
@@ -533,5 +533,5 @@ JSON 库：
 [reference]: {{ site.scala3ref }}/overview.html
 [multiversal]: {% link _zh-cn/overviews/scala3-book/ca-multiversal-equality.md %}
 [extension]: {% link _zh-cn/overviews/scala3-book/ca-extension-methods.md %}
-[givens]: {% link _zh-cn/overviews/scala3-book/ca-given-using-clauses.md %}
+[givens]: {% link _zh-cn/overviews/scala3-book/ca-context-parameters.md %}
 [opaque_types]: {% link _zh-cn/overviews/scala3-book/types-opaque-types.md %}

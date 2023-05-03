@@ -1257,7 +1257,7 @@ Scala 中还有其他一些概念目前在 Java 11 中是没有的。
 [equality]: {% link _zh-cn/overviews/scala3-book/ca-multiversal-equality.md %}
 [error-handling]: {% link _zh-cn/overviews/scala3-book/fp-functional-error-handling.md %}
 [extension-methods]: {% link _zh-cn/overviews/scala3-book/ca-extension-methods.md %}
-[givens]: {% link _zh-cn/overviews/scala3-book/ca-given-using-clauses.md %}
+[givens]: {% link _zh-cn/overviews/scala3-book/ca-context-parameters.md %}
 [hofs]: {% link _zh-cn/overviews/scala3-book/fun-hofs.md %}
 [imports]: {% link _zh-cn/overviews/scala3-book/packaging-imports.md %}
 [modeling-intro]: {% link _zh-cn/overviews/scala3-book/domain-modeling-intro.md %}

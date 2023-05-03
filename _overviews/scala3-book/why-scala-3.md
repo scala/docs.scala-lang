@@ -490,7 +490,7 @@ Several surveys have shown that different groups of developers love different fe
 Hopefully you’ll discover more great Scala features as you use the language.
 
 [java]: {% link _overviews/scala3-book/interacting-with-java.md %}
-[given]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
+[given]: {% link _overviews/scala3-book/ca-context-parameters.md %}
 [contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}
 [reference]: {{ site.scala3ref }}
 [dropped]: {{ site.scala3ref }}/dropped-features

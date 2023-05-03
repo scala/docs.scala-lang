@@ -5,7 +5,7 @@ description: This chapter provides an introduction to the Scala 3 concept of Con
 language: zh-cn
 num: 58
 previous-page: types-others
-next-page: ca-given-using-clauses
+next-page: ca-extension-methods
 
 partof: scala3-book
 overview-name: "Scala 3 — Book"
@@ -78,7 +78,7 @@ Scala 3 中的这些更改实现了术语推理与语言其余部分的更好分
 本章将在以下各节中介绍其中的许多新功能。
 
 
-[givens]: {% link _zh-cn/overviews/scala3-book/ca-given-using-clauses.md %}
+[givens]: {% link _zh-cn/overviews/scala3-book/ca-context-parameters.md %}
 [given-imports]: {% link _zh-cn/overviews/scala3-book/ca-given-imports.md %}
 [implicit-conversions]: {% link _zh-cn/overviews/scala3-book/ca-implicit-conversions.md %}
 [extension-methods]: {% link _zh-cn/overviews/scala3-book/ca-extension-methods.md %}

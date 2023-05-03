@@ -78,7 +78,7 @@ Benefits of these changes include:
 
 This chapter introduces many of these new features in the following sections.
 
-[givens]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
+[givens]: {% link _overviews/scala3-book/ca-context-parameters.md %}
 [given-imports]: {% link _overviews/scala3-book/ca-given-imports.md %}
 [implicit-conversions]: {% link _overviews/scala3-book/ca-implicit-conversions.md %}
 [extension-methods]: {% link _overviews/scala3-book/ca-extension-methods.md %}
