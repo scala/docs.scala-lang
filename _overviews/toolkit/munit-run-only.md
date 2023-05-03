@@ -35,7 +35,7 @@ To run a single `example.MyTests` suite in Mill, use the `testOnly` task:
 
 ## Running a single test in a test suite
 
-Within a test suite file, you can select individual tests to run by appending `.only` to a test name, e.g.
+Within a test suite file, you can select individual tests to run by temporarily appending `.only`, e.g.
 
 {% tabs 'only-demo' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
@@ -44,7 +44,6 @@ class MathSuite extends munit.FunSuite {
   test("addition") {
     assert(1 + 1 == 2)
   }
-
   test("multiplication".only) {
     assert(3 * 7 == 21)
   }
@@ -54,13 +53,10 @@ class MathSuite extends munit.FunSuite {
 {% tab 'Scala 3' %}
 ```scala
 class MathSuite extends munit.FunSuite:
-  test("addition") {
+  test("addition"):
     assert(1 + 1 == 2)
-  }
-
-  test("multiplication".only) {
+  test("multiplication".only):
     assert(3 * 7 == 21)
-  }
 ```
 {% endtab %}
 {% endtabs %}
@@ -80,11 +76,9 @@ class MathSuite extends munit.FunSuite {
   test("addition".ignore) {
     assert(1 + 1 == 2)
   }
-
   test("multiplication") {
     assert(3 * 7 == 21)
   }
-
   test("remainder") {
     assert(13 % 5 == 3)
   }
@@ -94,24 +88,19 @@ class MathSuite extends munit.FunSuite {
 {% tab 'Scala 3' %}
 ```scala
 class MathSuite extends munit.FunSuite:
-  test("addition".ignore) {
+  test("addition".ignore):
     assert(1 + 1 == 2)
-  }
-
-  test("multiplication") {
+  test("multiplication"):
     assert(3 * 7 == 21)
-  }
-
-  test("remainder") {
+  test("remainder"):
     assert(13 % 5 == 3)
-  }
 ```
 {% endtab %}
 {% endtabs %}
 
 ## Use tags to group tests, and run specific tags
 
-MUnit lets you group and run tests accross suites by tags, aka textual labels.
-[Read the MUnit docs][munit-tags] for clear instructions on how to do this.
+MUnit lets you group and run tests across suites by tags, which are textual labels.
+[The MUnit docs][munit-tags] have instructions on how to do this.
 
 [munit-tags]: https://scalameta.org/munit/docs/filtering.html#include-and-exclude-tests-based-on-tags

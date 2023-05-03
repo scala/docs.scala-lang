@@ -11,9 +11,10 @@ next-page: munit-run
 
 ## Writing a test suite
 
-In Scala we group our tests in some special classes that we call test classes or tests suites.
-Each test suite is intended to validate a particular component or feature of the software.
-Typically we define one test suite for each source file, or each class, that we need to test.
+A group of tests in a single class is called a test class or test suite.
+
+Each test suite validates a particular component or feature of the software.
+Typically we define one test suite for each source file or class that we want to test.
 
 {% tabs munit-unit-test-2 class=tabs-build-tool %}
 {% tab 'Scala CLI' %}
@@ -27,7 +28,7 @@ example/
 Other valid structures and conventions are described in the [Scala CLI documentation](https://scala-cli.virtuslab.org/docs/commands/test/#test-sources).
 {% endtab %}
 {% tab 'sbt' %}
-In sbt, the test files must be written in the `src/test/scala` folder of a project.
+In sbt, test sources go in the `src/test/scala` folder.
 
 For instance, the following is the file structure of a project `example`:
 ```
@@ -42,7 +43,7 @@ example
 ```
 {% endtab %}
 {% tab 'Mill' %}
-In Mill, the test files must be written in the `test/src` folder of a module.
+In Mill, test sources go in the `test/src` folder.
 
 For instance, the following is the file structure of a module `example`:
 ```
@@ -56,7 +57,7 @@ example
 {% endtab %}
 {% endtabs %}
 
-In the test file, create a new test suite containing a single test:
+In the test source file, define a suite containing a single test:
 
 {% tabs munit-unit-test-3 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
@@ -77,46 +78,51 @@ class MyTests extends munit.FunSuite {
 package example
 
 class MyTests extends munit.FunSuite:
-  test("sum of two integers") {
+  test("sum of two integers"):
     val obtained = 2 + 2
     val expected = 4
     assertEquals(obtained, expected)
-  }
 ```
 {% endtab %}
 {% endtabs %}
 
 A test suite is a Scala class that extends `munit.FunSuite`.
-It contains one or many tests, each defined by calling the `test` method.
-Typically we define more than one tests in each test suite.
+It contains one or more tests, each defined by a call to the `test` method.
 
 In the previous example, we have a single test `"sum of integers"` that checks that `2 + 2` equals `4`.
 We use the assertion method `assertEquals` to check that two values are equal.
-The test passes if all the assertions are correct, and fails otherwise.
+The test passes if all the assertions are correct and fails otherwise.
 
 ## Assertions
 
 It is important to use assertions in each and every test to describe what to check.
-The main assertion operations in MUnit are:
-- `assertEquals` to check that what you obtain is equal to what you expect,
-- `assert` to check a boolean condition on the result of a method.
+The main assertion methods in MUnit are:
+- `assertEquals` to check that what you obtain is equal to what you expected
+- `assert` to check a boolean condition
 
 The following is an example of a test that use `assert` to check a boolean condition on a list.
 
-{% tabs assertions-1 %}
-{% tab 'Scala 2 and 3' %}
+{% tabs assertions-1 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
 ```scala
 test("all even numbers") {
   val input: List[Int] = List(1, 2, 3, 4)
   val obtainedResults: List[Int] = input.map(_ * 2_)
-
   // check that obtained values are all even numbers
   assert(obtainedResults.forall(x => x % 2 == 0))
 }
+```
+{% endtab %}
+{% tab 'Scala 3' %}
+```scala
+test("all even numbers"):
+  val input: List[Int] = List(1, 2, 3, 4)
+  val obtainedResults: List[Int] = input.map(_ * 2_)
+  // check that obtained values are all even numbers
+  assert(obtainedResults.forall(x => x % 2 == 0))
 ```
 {% endtab %}
 {% endtabs %}
 
 MUnit contains more assertion methods that you can discover in its [documentation](https://scalameta.org/munit/docs/assertions.html):
 `assertNotEquals`, `assertNoDiff`, `fail`, and `compileErrors`.
-

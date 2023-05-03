@@ -11,7 +11,7 @@ next-page: munit-asynchronous-tests
 
 ## Intercepting an exception
 
-In a test, you can use the `intercept` assertion to check that your code throws an exception.
+In a test, you can use `intercept` to check that your code throws an exception.
 
 {% tabs 'intercept-1' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
@@ -34,14 +34,11 @@ class FileTests extends munit.FunSuite {
 import java.nio.file.NoSuchFileException
 
 class FileTests extends munit.FunSuite:
-  test("read missing file") {
+  test("read missing file"):
     val missingFile = os.pwd / "missing.txt"
-    
-    intercept[NoSuchFileException] {
+    intercept[NoSuchFileException]:
       // the code that should throw an exception
       os.read(missingFile)
-    }
-  }
 ```
 {% endtab %}
 {% endtabs %}
