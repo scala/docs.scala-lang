@@ -7,14 +7,14 @@ previous-page: upickle-what-else
 next-page: sttp-request
 ---
 
-sttp is a popular, hightly flexible and feature-rich library for making HTTP requests to web servers.
+sttp is a popular and feature-rich library for making HTTP requests to web servers.
 
-Out of the box, it provides a synchronous backend, an asynchronous, `Future`-base backend, and the WebSocket support.
-It is pluggable with many extensions that enrich its core functionnalities with streaming, logging, telemetry, serialization, and more.
+It provides both a synchronous API and an asynchronous `Future`-based API. It also supports WebSockets.
 
-sttp has a unified API for all platforms: it can runs on the JVM, in the browser with Scala.js, and it can compile to native binaries with Scala Native.
+Extensions are available that add capabilities such as streaming, logging, telemetry, and serialization.
 
-One of the key benefits of sttp, compared to other HTTP client library, is its versatility.
-Whether you're working on a synchronous script or a large-scale highly-concurrent application, sttp provides the same level of quality on a wide-range of features.
+sttp offers the same APIs on all platforms (JVM, Scala.js, and Scala Native).
+
+sttp is a good choice for small synchronous scripts as well as large-scale, highly concurrent, asynchronous applications.
 
 {% include markdown.html path="_markdown/install-sttp.md" %}
