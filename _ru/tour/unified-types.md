@@ -13,7 +13,7 @@ prerequisite-knowledge: classes, basics
 
 <a href="{{ site.baseurl }}/resources/images/tour/unified-types-diagram.svg"><img  style="width:100%" src="{{ site.baseurl }}/resources/images/tour/unified-types-diagram.svg" alt="Scala Type Hierarchy"></a>
 
-## Иерархия типов Scala ##
+## Иерархия типов Scala
 
 [`Any`](https://www.scala-lang.org/api/2.12.1/scala/Any.html) это супертип всех типов, также называемый верхним типом. Он определяет несколько универсальных методов, таких как `equals`, `hashCode` и `toString`. У `Any` есть два прямых подкласса: `AnyVal` и `AnyRef`.
 
@@ -22,6 +22,9 @@ prerequisite-knowledge: classes, basics
 `AnyRef` представляет ссылочные типы. Все типы, не относящиеся к "числовым типам", называются ссылочными типами. Каждый объявляемый пользователем тип в Scala является подтипом `AnyRef`. Если в Scala исходить из контекста среды исполнения Java, `AnyRef` соответствует `java.lang.Object`.
 
 Вот пример, демонстрирующий, что строки, целые числа, символы, логические значения и функции являются объектами, как и любой другой объект:
+
+{% tabs unified-types-1 %}
+{% tab 'Scala 2 и 3' for=unified-types-1 %}
 
 ```scala mdoc
 val list: List[Any] = List(
@@ -34,6 +37,9 @@ val list: List[Any] = List(
 
 list.foreach(element => println(element))
 ```
+
+{% endtab %}
+{% endtabs %}
 
 Объявляем переменную `list` типа `List[Any]`. Список инициализируется элементами различных типов, но все они являются экземпляром `scala.Any`, так что вы можете добавить их в список.
 
@@ -48,10 +54,14 @@ true
 ```
 
 ## Приведение типа
+
 Числовые типы могут быть приведены следующим образом:
 <a href="{{ site.baseurl }}/resources/images/tour/type-casting-diagram.svg"><img  style="width:100%" src="{{ site.baseurl }}/resources/images/tour/type-casting-diagram.svg" alt="Scala Type Hierarchy"></a>
 
 Например:
+
+{% tabs unified-types-2 %}
+{% tab 'Scala 2 и 3' for=unified-types-2 %}
 
 ```scala mdoc
 val x: Long = 987654321
@@ -61,7 +71,13 @@ val face: Char = '☺'
 val number: Int = face  // 9786
 ```
 
+{% endtab %}
+{% endtabs %}
+
 Приведение типа - однонаправленно. Следующий пример не скомпилируется:
+
+{% tabs unified-types-3 %}
+{% tab 'Scala 2 и 3' for=unified-types-3 %}
 
 ```
 val x: Long = 987654321
@@ -69,9 +85,13 @@ val y: Float = x.toFloat  // 9.8765434E8
 val z: Long = y  // обратно не подходит
 ```
 
+{% endtab %}
+{% endtabs %}
+
 Вы также можете приводить к своему подтипу. Об этом мы поговорим позже в ходе нашего обзора.
 
 ## Nothing и Null
-`Nothing` является подтипом всех типов, также называемым нижним типом. Нет значения, которое имеет тип `Nothing`.  Обычно он используется чтоб дать сигнал о не вычислимости, например брошено исключение, выход из программы, бесконечное зацикливание (т.е. это тип выражения, которое не вычисляется).
+
+`Nothing` является подтипом всех типов, также называемым нижним типом. Нет значения, которое имеет тип `Nothing`. Обычно он используется чтоб дать сигнал о не вычислимости, например брошено исключение, выход из программы, бесконечное зацикливание (т.е. это тип выражения, которое не вычисляется).
 
 `Null` подтип всех ссылочных типов (т.е. любой подтип AnyRef). Он имеет одно значение, определяемое ключевым словом литерала `null`. `Null` предоставляется в основном для функциональной совместимости с другими языками JVM и почти никогда не должен использоваться в коде Scala. Об альтернативах `null` мы поговорим позднее.
