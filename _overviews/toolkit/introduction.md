@@ -9,16 +9,25 @@ next-page: munit-intro
 
 ## What is the Scala Toolkit?
 
-The Scala Toolkit is a set of libraries designed to make common programming tasks simpler and more efficient. It includes such functionalities as working with files and processes, parsing JSON, sending HTTP requests and unit-testing.
+The Scala Toolkit is a set of libraries designed to make common programming tasks simple and efficient. It supports working with files and processes, parsing JSON, sending HTTP requests, and unit testing.
 
-Whether you're working on a script or an application, the Toolkit adapts to your environment, allowing you to write code in Scala 2 or Scala 3 that run seamlessly in the different platforms: the JVM, Scala.js and Scala Native.
-You can use this versatile tool in a wide range of applications, including but not limited to:
+The Toolkit supports:
+* Scripts and applications
+* Scala 3 and Scala 2
+* JVM, Scala.js, and Scala Native
+
+Use cases for the toolkit include:
+
 - backend scripts that run on JVM, to scrape a website, to collect and transform data, or to fetch and process some files,
 - frontend scripts that run on the browser and power your websites,
-- command-line tools, packaged as native binaries, that start up immediately on all of the most commonly used operating systems.
+- command-line scripts
+- command-line tools packaged as native binaries for instant startup
 
-This series of tutorials focuses on short code examples, to help you get started quickly and be more productive.
-Overall, it is an essential resource for any Scala developer looking to simplify their daily programming tasks.
+## What are these tutorials?
+
+This series of tutorials focuses on short code examples, to help you get started quickly.
+
+If you need more in-depth information, the tutorials include links to further documentation for all of the libraries in the toolkit.
 
 ## How to run the code?
 
