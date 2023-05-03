@@ -263,7 +263,7 @@ alice match
 
 Later in time, you can amend the original case class definition to, say, add an optional `address` field. You
  * add a new field `address` and a custom `withAddress` method,
- * update the public `apply` method in the companion object to initialize all the fields,
+ * add a new `apply` method to the companion object to initialize all the fields and adjust the old `apply`,
  * tell MiMa to [ignore](https://github.com/lightbend/mima#filtering-binary-incompatibilities) changes to the class constructor. This step is necessary because MiMa does not yet ignore changes in private class constructor signatures (see [#738](https://github.com/lightbend/mima/issues/738)).
  * (Scala 2) add the new field to the `copy` method
  * (Scala 3) add a new case to the `fromProduct` method in the companion object
@@ -274,7 +274,7 @@ Later in time, you can amend the original case class definition to, say, add an 
 case class Person private (name: String, age: Int, address: Option[String]) {
   ...
   // Add the new field to the `copy` method
-  private def copy(name: String = name, age: Int = age, address: Option[String] = None) = new Person(name, age, address)
+  private def copy(name: String = name, age: Int = age, address: Option[String] = address) = new Person(name, age, address)
   // Add the `withXxx` method
   def withAddress(address: Option[String]) = copy(address = address)
 }
@@ -282,6 +282,8 @@ case class Person private (name: String, age: Int, address: Option[String]) {
 object Person {
   // Update the public constructor to also initialize the address field
   def apply(name: String, age: Int): Person = new Person(name, age, None)
+  // Add a new `apply` with the address field
+  def apply(name: String, age: Int, address: Option[String]): Person = new Person(name, age, address)
 }
 ~~~
 {% endtab %}
@@ -294,6 +296,8 @@ case class Person private (name: String, age: Int, address: Option[String]):
 object Person:
   // Update the public constructor to also initialize the address field
   def apply(name: String, age: Int): Person = new Person(name, age, None)
+  // Add a new `apply` with the address field
+  def apply(name: String, age: Int, address: Option[String]): Person = new Person(name, age, address)
   // Add a new case to `fromProduct`
   def fromProduct(p: Product): Person = p.productArity match
     case 2 =>
