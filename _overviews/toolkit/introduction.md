@@ -4,7 +4,7 @@ type: chapter
 description: Introducing the Scala Toolkit tutorials
 num: 1
 previous-page: 
-next-page: munit-intro
+next-page: testing-intro
 ---
 
 ## What is the Scala Toolkit?

@@ -3,8 +3,8 @@ title: What else can OS-Lib do?
 type: section
 description: An incomplete list of features of OS-Lib
 num: 15
-previous-page: oslib-run-process
-next-page: upickle-intro
+previous-page: os-run-process
+next-page: json-intro
 ---
 
 {% include markdown.html path="_markdown/install-os-lib.md" %}

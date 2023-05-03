@@ -3,8 +3,8 @@ title: How to deserialize JSON to an object?
 type: section
 description: Parsing JSON to a custom data type
 num: 19
-previous-page: upickle-modify-json
-next-page: upickle-serialize
+previous-page: json-modify
+next-page: json-serialize
 ---
 
 {% include markdown.html path="_markdown/install-upickle.md" %}

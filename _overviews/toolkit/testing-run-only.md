@@ -3,8 +3,8 @@ title: How to run a single test?
 type: section
 description: About testOnly in the build tool and .only in MUnit
 num: 5
-previous-page: munit-run
-next-page: munit-exceptions
+previous-page: testing-run
+next-page: testing-exceptions
 ---
 
 {% include markdown.html path="_markdown/install-munit.md" %}

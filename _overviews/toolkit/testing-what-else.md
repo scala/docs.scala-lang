@@ -3,8 +3,8 @@ title: What else can MUnit do?
 type: section
 description: A incomplete list of features of MUnit
 num: 9
-previous-page: munit-resources
-next-page: oslib-intro
+previous-page: testing-resources
+next-page: os-intro
 ---
 
 {% include markdown.html path="_markdown/install-munit.md" %}

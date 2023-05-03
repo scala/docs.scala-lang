@@ -3,8 +3,8 @@ title: How to read a file?
 type: section
 description: Reading files from disk with OS-Lib
 num: 12
-previous-page: oslib-read-directory
-next-page: oslib-write-file
+previous-page: os-read-directory
+next-page: os-write-file
 ---
 
 {% include markdown.html path="_markdown/install-os-lib.md" %}

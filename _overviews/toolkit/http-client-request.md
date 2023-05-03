@@ -3,8 +3,8 @@ title: How to send a request?
 type: section
 description: Sending a simple HTTP request with sttp.
 num: 24
-previous-page: sttp-intro
-next-page: sttp-uris
+previous-page: http-client-intro
+next-page: http-client-uris
 ---
 
 {% include markdown.html path="_markdown/install-sttp.md" %}
@@ -42,7 +42,7 @@ A `Response[String]` contains a status code and a string body.
 To specify the HTTP method and URI of a `quickRequest`, you can use `get`, `post`, `put`, or `delete`.
 
 To construct a URI you can use the `uri` interpolator, for e.g. `uri"https://example.com"`.
-To learn more about that, see [*How to construct URIs and query parameters?*](/toolkit/sttp-uris).
+To learn more about that, see [*How to construct URIs and query parameters?*](/toolkit/http-client-uris).
 
 ### The headers
 

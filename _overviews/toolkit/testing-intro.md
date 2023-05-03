@@ -4,7 +4,7 @@ type: chapter
 description: The introduction of the MUnit library
 num: 2
 previous-page: introduction
-next-page: munit-tests
+next-page: testing-suite
 ---
 
 MUnit is a lightweight testing library. It provides a single style for writing tests, a style that can be learned quickly.

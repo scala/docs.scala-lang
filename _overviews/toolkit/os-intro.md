@@ -3,8 +3,8 @@ title: Working with files and processes with OS-Lib
 type: chapter
 description: The introduction of the OS-lib library
 num: 10
-previous-page: munit-what-else
-next-page: oslib-read-directory
+previous-page: testing-what-else
+next-page: os-read-directory
 ---
 
 OS-Lib is a library for manipulating files and processes. It is part of the Scala Toolkit.

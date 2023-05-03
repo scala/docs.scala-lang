@@ -3,8 +3,8 @@ title: How to run a process?
 type: section
 description: Starting external subprocesses with OS-Lib
 num: 14
-previous-page: oslib-write-file
-next-page: oslib-what-else
+previous-page: os-write-file
+next-page: os-what-else
 ---
 
 {% include markdown.html path="_markdown/install-os-lib.md" %}

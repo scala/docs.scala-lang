@@ -3,8 +3,8 @@ title: Sending HTTP requests with sttp
 type: chapter
 description: The introduction of the sttp library
 num: 23
-previous-page: upickle-what-else
-next-page: sttp-request
+previous-page: json-what-else
+next-page: http-client-request
 ---
 
 sttp is a popular and feature-rich library for making HTTP requests to web servers.

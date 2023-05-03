@@ -3,8 +3,8 @@ title: How to upload a file over HTTP?
 type: section
 description: Uploading a file over HTTP with sttp.
 num: 28
-previous-page: sttp-json
-next-page: sttp-what-else
+previous-page: http-client-json
+next-page: http-client-what-else
 ---
 
 {% include markdown.html path="_markdown/install-sttp.md" %}

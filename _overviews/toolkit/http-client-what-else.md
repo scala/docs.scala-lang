@@ -3,7 +3,7 @@ title: What else can sttp do?
 type: section
 description: An incomplete list of features of sttp
 num: 29
-previous-page: sttp-upload-file
+previous-page: http-client-upload-file
 next-page: 
 ---
 

@@ -3,8 +3,8 @@ title: How to run tests?
 type: section
 description: Running the MUnit tests
 num: 4
-previous-page: munit-tests
-next-page: munit-run-only
+previous-page: testing-suite
+next-page: testing-run-only
 ---
 
 {% include markdown.html path="_markdown/install-munit.md" %}

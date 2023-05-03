@@ -3,8 +3,8 @@ title: What else can uPickle do?
 type: section
 description: An incomplete list of features of uPickle
 num: 22
-previous-page: upickle-files
-next-page: sttp-intro
+previous-page: json-files
+next-page: http-client-intro
 ---
 
 {% include markdown.html path="_markdown/install-upickle.md" %}

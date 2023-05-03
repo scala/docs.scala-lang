@@ -3,8 +3,8 @@ title: How to read and write JSON files?
 type: section
 description: Reading and writing JSON files using UPickle and OSLib
 num: 21
-previous-page: upickle-serialize
-next-page: upickle-what-else
+previous-page: json-serialize
+next-page: json-what-else
 ---
 
 {% include markdown.html path="_markdown/install-upickle.md" %}
@@ -69,4 +69,4 @@ os.write(os.pwd / "pet-owner-updated.json", write(petOwnerUpdated))
 {% endtabs %}
 
 To serialize and deserialize Scala case classes (or enums) to JSON we need an instance of `ReadWriter`.
-To understand how uPickle generates it for you, you can read the [*How to deserialize JSON to an object?*](/toolkit/upickle-deserialize) or the [*How to serialize an object to JSON?*](/toolkit/upickle-serialize) tutorials.
+To understand how uPickle generates it for you, you can read the [*How to deserialize JSON to an object?*](/toolkit/json-deserialize) or the [*How to serialize an object to JSON?*](/toolkit/json-serialize) tutorials.

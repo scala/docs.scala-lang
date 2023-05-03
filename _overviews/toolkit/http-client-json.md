@@ -3,8 +3,8 @@ title: How to send and receive JSON?
 type: section
 description: How to send JSON in a request and to parse JSON from the response.
 num: 27
-previous-page: sttp-request-body
-next-page: sttp-upload-file
+previous-page: http-client-request-body
+next-page: http-client-upload-file
 ---
 
 {% include markdown.html path="_markdown/install-sttp.md" %}
@@ -87,4 +87,4 @@ Running the program should print your own login.
 ## Sending and receiving Scala objects using JSON
 
 Alternatively, you can use uPickle to send or receive Scala objects using JSON.
-Read the following to learn [*How to serialize an object to JSON*](/toolkit/upickle-serialize) and [*How to deserialize JSON to an object*](/toolkit/upickle-deserialize).
+Read the following to learn [*How to serialize an object to JSON*](/toolkit/json-serialize) and [*How to deserialize JSON to an object*](/toolkit/json-deserialize).

@@ -3,8 +3,8 @@ title: How to manage the resources of a test?
 type: section
 description: Describe the functional fixtures
 num: 8
-previous-page: munit-asynchronous-tests
-next-page: munit-what-else
+previous-page: testing-asynchronous
+next-page: testing-what-else
 ---
 
 {% include markdown.html path="_markdown/install-munit.md" %}

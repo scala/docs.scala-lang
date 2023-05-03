@@ -3,8 +3,8 @@ title: How to write asynchronous tests?
 type: section
 description: Writing asynchronous tests using MUnit
 num: 7
-previous-page: munit-exceptions
-next-page: munit-resources
+previous-page: testing-exceptions
+next-page: testing-resources
 ---
 
 {% include markdown.html path="_markdown/install-munit.md" %}
