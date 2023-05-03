@@ -11,19 +11,38 @@ prerequisite-knowledge: function-syntax
 
 При вызове методов можно конкретно указывать название задаваемого аргумента следующим образом:
 
-```scala mdoc
-def printName(first: String, last: String): Unit = {
-  println(first + " " + last)
-}
+{% tabs named-arguments-when-good %}
 
-printName("John", "Smith")  // Prints "John Smith"
-printName(first = "John", last = "Smith")  // Prints "John Smith"
-printName(last = "Smith", first = "John")  // Prints "John Smith"
+{% tab 'Scala 2 и 3' for=named-arguments-when-good %}
+
+```scala mdoc
+def printName(first: String, last: String): Unit =
+  println(first + " " + last)
+
+printName("John", "Smith")                 // выводит "John Smith"
+printName(first = "John", last = "Smith")  // выводит "John Smith"
+printName(last = "Smith", first = "John")  // выводит "John Smith"
 ```
-Обратите внимание, что при указании имени параметра, порядок аргумента может быть изменен. Однако если какие-то аргументы именованные, а другие нет, то аргументы без имени должны стоять на первом месте и располагаться в том порядке, в котором описаны параметры метода.
+
+{% endtab %}
+
+{% endtabs %}
+
+Обратите внимание, что при указании имени параметра, порядок аргумента может быть изменен.
+Однако если какие-то аргументы именованные, а другие нет,
+то аргументы без имени должны стоять на первом месте и располагаться в том порядке, в котором описаны параметры метода.
+
+{% tabs named-arguments-when-error %}
+
+{% tab 'Scala 2 и 3' for=named-arguments-when-error %}
 
 ```scala mdoc:fail
 printName(last = "Smith", "john") // ошибка: позиция после именованного аргумента
 ```
 
-Обратите внимание, что именованные аргументы не работают при вызове Java методов.
+{% endtab %}
+
+{% endtabs %}
+
+Именованные аргументы работают при вызове Java методов, но только в том случае,
+если используемая Java библиотека была скомпилирована с `-parameters`.
