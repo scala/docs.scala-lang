@@ -62,7 +62,7 @@ Using the compiler's knowledge of the fields in `PetOwner`, it generates a `Read
 
 This means that you can now write (and read) `PetOwner` objects to JSON with `upickle.default.write(petOwner)`.
 
-Notice that you do not need to pass the instance of `ReadWriter[PetOwner]` explicitly to the `read` method. But it does, nevertheless, get it from the context, as "given" value. You may find more information about contextual abstractions in the [Scala 3 Book](https://docs.scala-lang.org/scala3/book/ca-contextual-abstractions-intro.html).
+Notice that you do not need to pass the instance of `ReadWriter[PetOwner]` explicitly to the `write` method. But it does, nevertheless, get it from the context, as "given" value. You may find more information about contextual abstractions in the [Scala 3 Book](https://docs.scala-lang.org/scala3/book/ca-contextual-abstractions-intro.html).
 
 Putting everything together you should get:
 
