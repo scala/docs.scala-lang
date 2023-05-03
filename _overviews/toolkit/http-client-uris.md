@@ -19,8 +19,20 @@ If `name` contains `"peter"`, the result is `https://example.com/peter`.
 
 `uri` escapes special characters automatically, as seen in this example:
 
-{% tabs 'uri' %}
-{% tab 'Scala 2 and 3' %}
+{% tabs 'uri' class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala mdoc
+import sttp.client4.quick._
+import sttp.model.Uri
+
+val book = "programming in scala"
+val bookUri: Uri = uri"https://example.com/books/$book"
+
+println(bookUri)
+// prints: https://example.com/books/programming%20in%20scala
+```
+{% endtab %}
+{% tab 'Scala 3' %}
 ```scala
 import sttp.client4.quick.*
 import sttp.model.Uri
@@ -53,9 +65,7 @@ The `uri` interpolator can interpolate a `Map[String, String]` as query paramete
 
 {% tabs 'queryparams' %}
 {% tab 'Scala 2 and 3' %}
-```scala
-import sttp.client4.quick.*
-
+```scala mdoc
 val queryParams = Map(
   "q" -> "scala",
   "limit" -> "10",
@@ -77,10 +87,7 @@ The `uri` interpolator can interpolate `Option`s:
 
 {% tabs 'optional' %}
 {% tab 'Scala 2 and 3' %}
-```scala
-import sttp.client4.quick.*
-import sttp.model.Uri
-
+```scala mdoc
 def getUri(limit: Option[Int]): Uri =
   uri"https://example.com/all?limit=$limit"
 
@@ -104,10 +111,7 @@ To build such query parameter in a URI, you can interpolate a `Seq` (or `List`, 
 
 {% tabs 'seq' %}
 {% tab 'Scala 2 and 3' %}
-```scala
-import sttp.client4.quick.*
-import sttp.model.Uri
-
+```scala mdoc:nest
 def getUri(versions: Seq[String]): Uri =
   uri"https://example.com/scala?version=$versions"
 

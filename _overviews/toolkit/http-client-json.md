@@ -28,8 +28,31 @@ To send JSON, you can construct a `uJson.Value` and write it as a string in the 
 In the following example we use [GitHub users endpoint](https://docs.github.com/en/rest/users/users?apiVersion=2022-11-28) to update the profile of the authenticated user.
 We provide the new location and bio of the profile in a JSON object.
 
-{% tabs 'json' %}
-{% tab 'Scala 2 and 3' %}
+{% tabs 'json' class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala mdoc
+import sttp.client4.quick._
+
+val json = ujson.Obj(
+  "location" -> "hometown",
+  "bio" -> "Scala programmer"
+)
+
+val response = quickRequest
+  .patch(uri"https://api.github.com/user")
+  .auth.bearer(sys.env("GITHUB_TOKEN"))
+  .header("Content-Type", "application/json")
+  .body(ujson.write(json))
+  .send()
+
+println(response.code)
+// prints: 200
+
+println(response.body)
+// prints the full updated profile in JSON
+```
+{% endtab %}
+{% tab 'Scala 3' %}
 ```scala
 import sttp.client4.quick.*
 
@@ -63,8 +86,23 @@ To parse JSON from the response of a request, you can use `ujson.read`.
 
 Again we use the GitHub user endpoint, this time to get the authenticated user.
 
-{% tabs 'json-2' %}
-{% tab 'Scala 2 and 3' %}
+{% tabs 'json-2' class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala mdoc:reset
+import sttp.client4.quick._
+
+val response = quickRequest
+  .get(uri"https://api.github.com/user")
+  .auth.bearer(sys.env("GITHUB_TOKEN"))
+  .send()
+
+val json = ujson.read(response.body)
+
+println(json("login").str)
+// prints your login
+```
+{% endtab %}
+{% tab 'Scala 3' %}
 ```scala
 import sttp.client4.quick.*
 

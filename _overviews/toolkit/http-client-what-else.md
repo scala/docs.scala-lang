@@ -13,8 +13,19 @@ next-page:
 
 To send a request asynchronously you can use a `DefaultFutureBackend`:
 
-{% tabs 'async' %}
-{% tab 'Scala 2 and 3' %}
+{% tabs 'async' class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala mdoc
+import scala.concurrent.Future
+import sttp.client4._
+
+val asyncBackend = DefaultFutureBackend()
+val response: Future[Response[String]] = quickRequest
+  .get(uri"https://example.com")
+  .send(asyncBackend)
+```
+{% endtab %}
+{% tab 'Scala 3' %}
 ```scala
 import scala.concurrent.Future
 import sttp.client4.*
@@ -38,12 +49,12 @@ You can use a `DefaultFutureBackend` to open a websocket, as follows.
 
 {% tabs 'ws' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
-```scala
+```scala mdoc:reset
 import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, Future}
 import scala.concurrent.ExecutionContext.Implicits.global
 
-import sttp.client4.*
+import sttp.client4._
 import sttp.ws.WebSocket
 
 val asyncBackend = DefaultFutureBackend()

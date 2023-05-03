@@ -15,10 +15,27 @@ The simplest way to send a request with sttp is `quickRequest`.
 
 You can define a GET request with `.get` and send it with `.send`.
 
-{% tabs 'request' %}
-{% tab 'Scala 2 and 3' %}
+{% tabs 'request' class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala mdoc
+import sttp.client4.quick._
+import sttp.client4.Response
+
+val response: Response[String] = quickRequest
+  .get(uri"https://httpbin.org/get")
+  .send()
+
+println(response.code)
+// prints: 200
+
+println(response.body)
+// prints some JSON string
+```
+{% endtab %}
+{% tab 'Scala 3' %}
 ```scala
 import sttp.client4.quick.*
+import sttp.client4.Response
 
 val response: Response[String] = quickRequest
   .get(uri"https://httpbin.org/get")
@@ -49,8 +66,20 @@ To learn more about that, see [*How to construct URIs and query parameters?*](/t
 By default, the `quickRequest` contains the "Accept-Encoding" and the "deflate" headers.
 To add more headers, you can call one of the `header` or `headers` overloads:
 
-{% tabs 'headers' %}
-{% tab 'Scala 2 and 3' %}
+{% tabs 'headers' class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala mdoc:reset
+import sttp.client4.quick._
+
+val request = quickRequest
+  .get(uri"https://example.com")
+  .header("Origin", "https://scala-lang.org")
+
+println(request.headers)
+// prints: Vector(Accept-Encoding: gzip, deflate, Origin: https://scala-lang.org)
+```
+{% endtab %}
+{% tab 'Scala 3' %}
 ```scala
 import sttp.client4.quick.*
 
@@ -70,8 +99,18 @@ sttp can also add "Content-Type" and "Content-Length" automatically if the reque
 
 If you need authentication to access a resource, you can use one of the `auth.basic`, `auth.basicToken`, `auth.bearer` or `auth.digest` methods.
 
-{% tabs 'auth' %}
-{% tab 'Scala 2 and 3' %}
+{% tabs 'auth' class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala mdoc:reset
+import sttp.client4.quick._
+
+// a request with a authentication
+val request = quickRequest
+  .get(uri"https://example.com")
+  .auth.basic(user = "user", password = "***")
+```
+{% endtab %}
+{% tab 'Scala 3' %}
 ```scala
 import sttp.client4.quick.*
 
