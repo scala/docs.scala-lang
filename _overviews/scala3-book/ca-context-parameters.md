@@ -150,5 +150,7 @@ renderWebsite("/home")
 //   again no argument
 ```
 
+A detailed guide to where Scala looks for canonical values can be found in [the FAQ]({% link _overviews/FAQ/index.md %}#where-does-scala-look-for-implicits).
+
 [reference]: {{ site.scala3ref }}/overview.html
 [blog-post]: /2020/11/06/explicit-term-inference-in-scala-3.html
