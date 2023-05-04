@@ -15,7 +15,7 @@ First you read the JSON string, then you update it in memory, and finally you wr
 
 {% tabs 'modify' %}
 {% tab 'Scala 2 and 3' %}
-```scala
+```scala mdoc
 // Parse the JSON string
 val json: ujson.Value = ujson.read("""{"name":"John","pets":["Toolkitty","Scaniel"]}""")
 

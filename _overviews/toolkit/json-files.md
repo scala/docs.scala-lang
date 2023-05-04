@@ -15,7 +15,7 @@ To read and write JSON files, you can use uJson and OS-Lib as follows:
 
 {% tabs 'raw' %}
 {% tab 'Scala 2 and 3' %}
-```scala
+```scala mdoc:compile-only
 // read a JSON file
 val json = ujson.read(os.read(os.pwd / "raw.json"))
 
@@ -34,8 +34,8 @@ To read and write Scala objects to and from JSON files, you can use uPickle and 
 
 {% tabs 'object' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
-```scala
-import upickle.default.*
+```scala mdoc:compile-only
+import upickle.default._
 
 case class PetOwner(name: String, pets: List[String])
 implicit val ownerRw: ReadWriter[PetOwner] = macroRW

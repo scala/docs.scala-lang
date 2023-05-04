@@ -25,7 +25,7 @@ We can for instance, deserialize to a `Map[String, List[Int]]`:
 
 {% tabs 'parsemap' %}
 {% tab 'Scala 2 and 3' %}
-```scala
+```scala mdoc
 val json = """{"primes": [2, 3, 5], "evens": [2, 4, 6]} """
 val map: Map[String, List[Int]] =
   upickle.default.read[Map[String, List[Int]]](json)
@@ -40,7 +40,7 @@ If a value is the wrong type, uPickle throws a `upickle.core.AbortException`.
 
 {% tabs 'parsemap-error' %}
 {% tab 'Scala 2 and 3' %}
-```scala
+```scala mdoc:reset:crash
 val json = """{"name": "Peter"} """
 upickle.default.read[Map[String, List[Int]]](json)
 // throws: upickle.core.AbortException: expected sequence got string at index 9
@@ -52,7 +52,7 @@ upickle.default.read[Map[String, List[Int]]](json)
 
 In Scala, you can use a `case class` to define your own data type.
 For example, to represent a pet owner, you might:
-```scala
+```scala mdoc:reset
 case class PetOwner(name: String, pets: List[String])
 ```
 
@@ -61,8 +61,8 @@ uPickle can do that automatically:
 
 {% tabs 'given' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
-```scala
-import upickle.default.*
+```scala mdoc
+import upickle.default._
 
 implicit val ownerRw: ReadWriter[PetOwner] = macroRW[PetOwner]
 ```
@@ -90,14 +90,14 @@ Putting everything together you should get:
 
 {% tabs 'full' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
-```scala
-import upickle.default.*
+```scala mdoc:reset
+import upickle.default._
 
 case class PetOwner(name: String, pets: List[String])
 implicit val ownerRw: ReadWriter[PetOwner] = macroRW
 
 val json = """{"name": "Peter", "pets": ["Toolkitty", "Scaniel"]}"""
-val petOwner: PetOwner = read[PetOwner](jsonString)
+val petOwner: PetOwner = read[PetOwner](json)
 
 val firstPet = petOwner.pets.head
 println(s"${petOwner.name} has a pet called $firstPet")
@@ -111,7 +111,7 @@ import upickle.default.*
 case class PetOwner(name: String, pets: List[String]) derives ReadWriter
 
 val json = """{"name": "Peter", "pets": ["Toolkitty", "Scaniel"]}"""
-val petOwner: PetOwner = read[PetOwner](jsonString)
+val petOwner: PetOwner = read[PetOwner](json)
 
 val firstPet = petOwner.pets.head
 println(s"${petOwner.name} has a pet called $firstPet")

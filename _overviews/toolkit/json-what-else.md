@@ -12,7 +12,7 @@ next-page: http-client-intro
 
 {% tabs construct%}
 {% tab 'Scala 2 and Scala 3' %}
-```scala
+```scala mdoc
 val obj: ujson.Value = ujson.Obj(
   "library" -> "upickle",
   "versions" -> ujson.Arr("1.6.0", "2.0.0", "3.1.0"),
@@ -30,8 +30,8 @@ You can customize the `ReadWriter` of your data type by mapping the `ujson.Value
 
 {% tabs custom-serializer class=tabs-scala-version %}
 {% tab 'Scala 2' %}
-```scala
-import upickle.default.*
+```scala mdoc
+import upickle.default._
 
 case class Bar(i: Int, s: String)
 
@@ -42,6 +42,11 @@ object Bar {
       json => new Bar(json(1).num.toInt, json(0).str)
     )
 }
+
+val bar = Bar(5, "bar")
+val json = upickle.default.write(bar)
+println(json)
+// prints: [5, "bar"]
 ```
 {% endtab %}
 {% tab 'Scala 3' %}
@@ -56,6 +61,11 @@ object Bar:
       x => ujson.Arr(x.s, x.i),
       json => new Bar(json(1).num.toInt, json(0).str)
     )
+
+val bar = Bar(5, "bar")
+val json = upickle.default.write(bar)
+println(json)
+// prints: [5, "bar"]
 ```
 {% endtab %}
 {% endtabs %}

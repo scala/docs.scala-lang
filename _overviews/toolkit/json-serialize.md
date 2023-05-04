@@ -17,7 +17,7 @@ By default it can serialize primitive types such as `Int` or `String`, as well a
 
 {% tabs 'array' %}
 {% tab 'Scala 2 and 3' %}
-```scala
+```scala mdoc
 val map: Map[String, Int] =
   Map("Toolkitty" -> 3, "Scaniel" -> 5)
 val jsonString: String = upickle.default.write(map)
@@ -31,7 +31,7 @@ println(jsonString)
 
 In Scala, you can use a `case class` to define your own data type.
 For example, to represent a pet owner with the name of its pets, you can
-```scala
+```scala mdoc:reset
 case class PetOwner(name: String, pets: List[String])
 ```
 
@@ -40,8 +40,8 @@ Luckily, `upickle` is able to fully automate that:
 
 {% tabs 'given' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
-```scala
-import upickle.default.*
+```scala mdoc
+import upickle.default._
 
 implicit val ownerRw: ReadWriter[PetOwner] = macroRW[PetOwner]
 ```

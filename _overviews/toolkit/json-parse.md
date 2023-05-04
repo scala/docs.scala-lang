@@ -16,8 +16,8 @@ To parse a JSON string and access fields inside it, you can use uJson, which is 
 The method `ujson.read` parses a JSON string into memory:
 {% tabs 'read' %}
 {% tab 'Scala 2 and 3' %}
-```scala
-val jsonString = """{"name": "Peter", "age": 13}"""
+```scala mdoc
+val jsonString = """{"name": "Peter", "age": 13, "pets": ["Toolkitty", "Scaniel"]}"""
 val json: ujson.Value  = ujson.read(jsonString)
 println(json("name").str)
 // prints: Peter
@@ -31,13 +31,13 @@ To access the elements by index in a JSON array,
 
 {% tabs 'array' %}
 {% tab 'Scala 2 and 3' %}
-```scala
+```scala mdoc
 val pets: ujson.Value = json("pets")
 
 val firstPet: String = pets(0).str
 val secondPet: String = pets(1).str
 
-println(s"The pets are $firstPet and $seconPet")
+println(s"The pets are $firstPet and $secondPet")
 // prints: The pets are Toolkitty and Scaniel
 ```
 {% endtab %}
@@ -57,14 +57,14 @@ Similar methods exist for other types of values, namely:
 
 {% tabs 'typing' %}
 {% tab 'Scala 2 and 3' %}
-```scala
+```scala mdoc:reset
 import scala.collection.mutable
 
 val jsonString = """{"name": "Peter", "age": 13, "pets": ["Toolkitty", "Scaniel"]}"""
 val json = ujson.read(jsonString)
 
 val person: mutable.Map[String, ujson.Value] = json.obj
-val age: Int = person("age").num
+val age: Double = person("age").num
 val pets: mutable.Buffer[ujson.Value] = person("pets").arr
 ```
 {% endtab %}
@@ -74,7 +74,7 @@ If a JSON value does not conform to the expected type, uJson throws a `ujson.Val
 
 {% tabs 'exception' %}
 {% tab 'Scala 2 and 3' %}
-```scala
+```scala mdoc:crash
 val name: Boolean = person("name").bool
 // throws a ujson.Value.InvalidData: Expected ujson.Bool (data: "Peter")
 ```
