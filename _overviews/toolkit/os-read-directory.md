@@ -26,7 +26,7 @@ Paths have a `/` method for adding path segments. For example:
 
 {% tabs 'etc' %}
 {% tab 'Scala 2 and 3' %}
-```
+```scala mdoc
 val etc: os.Path = os.root / "etc"
 ```
 {% endtab %}
@@ -38,7 +38,7 @@ val etc: os.Path = os.root / "etc"
 
 {% tabs 'list-etc' %}
 {% tab 'Scala 2 and 3' %}
-```scala
+```scala mdoc
 val entries: Seq[os.Path] = os.list(os.root / "etc")
 ```
 {% endtab %}
@@ -48,7 +48,7 @@ Or if we only want subdirectories:
 
 {% tabs 'subdirs' %}
 {% tab 'Scala 2 and 3' %}
-```scala
+```scala mdoc
 val dirs: Seq[os.Path] = os.list(os.root / "etc").filter(os.isDir)
 ```
 {% endtab %}

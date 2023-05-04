@@ -16,7 +16,7 @@ To set up a process, use `os.proc`, then to actually start it,
 
 {% tabs 'touch' %}
 {% tab 'Scala 2 and 3' %}
-```
+```scala mdoc:compile-only
 val path: os.Path = os.pwd / "output.txt"
 println(os.exists(path))
 // prints: false
@@ -44,9 +44,9 @@ For example, we could use `bc` to do some math for us:
 
 {% tabs 'bc' %}
 {% tab 'Scala 2 and 3' %}
-```
-val result: os.CommandResult = os.proc("bc", "-e", "2 + 2").call()
-val text: String = result.out.text()
+```scala mdoc:compile-only
+val res: os.CommandResult = os.proc("bc", "-e", "2 + 2").call()
+val text: String = res.out.text()
 println(text.trim.toInt)
 // prints: 4
 ```
@@ -57,9 +57,9 @@ Or have `cal` show us a calendar:
 
 {% tabs 'cal' %}
 {% tab 'Scala 2 and 3' %}
-```
-val result: os.CommandResult = os.proc("cal", "-h", "2", "2023").call()
-result.out.lines().foreach(println)
+```scala mdoc:compile-only
+val res: os.CommandResult = os.proc("cal", "-h", "2", "2023").call()
+res.out.lines().foreach(println)
 // prints:
 //   February 2023
 // Su Mo Tu We Th Fr Sa

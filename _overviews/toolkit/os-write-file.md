@@ -15,8 +15,8 @@ next-page: os-run-process
 
 {% tabs write %}
 {% tab 'Scala 2 and 3' %}
-```
-val path: os.Path = os.pwd / "output.txt"
+```scala mdoc
+val path: os.Path = os.temp.dir() / "output.txt"
 os.write(path, "hello\nthere\n")
 println(os.read.lines(path).size)
 // prints: 2
@@ -30,7 +30,7 @@ println(os.read.lines(path).size)
 
 {% tabs already-exists %}
 {% tab 'Scala 2 and 3' %}
-```
+```scala mdoc:crash
 os.write(path, "this will fail")
 // this exception is thrown:
 // java.nio.file.FileAlreadyExistsException
@@ -45,7 +45,7 @@ You can also use `os.write.append` to add more to the end:
 
 {% tabs append %}
 {% tab 'Scala 2 and 3' %}
-```
+```scala mdoc
 os.write.append(path, "two more\nlines\n")
 println(os.read.lines(path).size)
 // prints: 4
