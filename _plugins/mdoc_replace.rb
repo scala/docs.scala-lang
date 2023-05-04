@@ -12,6 +12,7 @@ module Jekyll
     end
 
     def convert(content)
+      content = content.gsub("```scala mdoc:compile-only\n", "```scala\n")
       content = content.gsub("```scala mdoc:fail\n", "```scala\n")
       content = content.gsub("```scala mdoc:crash\n", "```scala\n")
       content = content.gsub("```scala mdoc:nest\n", "```scala\n")

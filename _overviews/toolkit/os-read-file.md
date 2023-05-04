@@ -25,7 +25,7 @@ Then we can slurp the entire file into a string with `os.read`:
 
 {% tabs slurp %}
 {% tab 'Scala 2 and 3' %}
-```scala mdoc
+```scala mdoc:compile-only
 val content: String = os.read(path)
 ```
 {% endtab %}
@@ -37,7 +37,7 @@ We can find the longest word in the dictionary:
 
 {% tabs lines %}
 {% tab 'Scala 2 and 3' %}
-```scala mdoc
+```scala mdoc:compile-only
 val lines: Seq[String]  = os.read.lines(path)
 println(lines.maxBy(_.size))
 // prints: antidisestablishmentarianism
@@ -51,7 +51,7 @@ if we just want to read the first line, the most efficient way is:
 
 {% tabs lines-stream %}
 {% tab 'Scala 2 and 3' %}
-```scala mdoc
+```scala mdoc:compile-only
 val lineStream: geny.Generator[String] = os.read.lines.stream(path)
 val firstLine: String = lineStream.head
 println(firstLine)
