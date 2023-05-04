@@ -39,7 +39,7 @@ Within a test suite file, you can select individual tests to run by temporarily 
 
 {% tabs 'only-demo' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
-```scala
+```scala mdoc
 class MathSuite extends munit.FunSuite {
   test("addition") {
     assert(1 + 1 == 2)
@@ -71,7 +71,7 @@ For example the following ignores the `"addition"` test, and run all the others:
 
 {% tabs 'ignore-demo' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
-```scala
+```scala mdoc:reset
 class MathSuite extends munit.FunSuite {
   test("addition".ignore) {
     assert(1 + 1 == 2)

@@ -30,7 +30,7 @@ We provide the new location and bio of the profile in a JSON object.
 
 {% tabs 'json' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
-```scala mdoc
+```scala mdoc:compile-only
 import sttp.client4.quick._
 
 val json = ujson.Obj(
@@ -88,7 +88,7 @@ Again we use the GitHub user endpoint, this time to get the authenticated user.
 
 {% tabs 'json-2' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
-```scala mdoc:reset
+```scala mdoc:compile-only
 import sttp.client4.quick._
 
 val response = quickRequest

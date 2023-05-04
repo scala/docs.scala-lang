@@ -15,7 +15,7 @@ In a test, you can use `intercept` to check that your code throws an exception.
 
 {% tabs 'intercept-1' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
-```scala
+```scala mdoc
 import java.nio.file.NoSuchFileException
 
 class FileTests extends munit.FunSuite {

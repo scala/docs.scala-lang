@@ -18,8 +18,8 @@ In a test suite, you can define and use a `FunFixture` as follows:
 
 {% tabs 'resources-1' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
-```scala
-class FileTests extends munit.FunSuite:
+```scala mdoc
+class FileTests extends munit.FunSuite {
   val usingTempFile: FunFixture[os.Path] = FunFixture(
     setup = _ => os.temp(prefix = "file-tests"),
     teardown = tempFile => os.remove(tempFile)
@@ -29,6 +29,7 @@ class FileTests extends munit.FunSuite:
     val obtained = os.read(tempFile)
     assertEquals(obtained, "Hello, World!")
   }
+}
 ```
 {% endtab %}
 {% tab 'Scala 3' %}

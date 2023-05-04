@@ -18,11 +18,11 @@ For example, consider an asynchronous variant of a `square` method:
 
 {% tabs 'async-1' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
-```scala
+```scala mdoc
 import scala.concurrent.{ExecutionContext, Future}
 
 object AsyncMathLib {
-  def square(x: Int)(using ExecutionContext): Future[Int] =
+  def square(x: Int)(implicit ec: ExecutionContext): Future[Int] =
     Future(x * x)
 }
 ```
@@ -32,7 +32,7 @@ object AsyncMathLib {
 import scala.concurrent.{ExecutionContext, Future}
 
 object AsyncMathLib:
-  def square(x: Int)(implicit ec: ExecutionContext): Future[Int] =
+  def square(x: Int)(using ExecutionContext): Future[Int] =
     Future(x * x)
 ```
 {% endtab %}
@@ -45,18 +45,19 @@ You can therefore write the test as follows:
 
 {% tabs 'async-3' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
-```scala
+```scala mdoc
 // Import the global execution context, required to call async methods
 import scala.concurrent.ExecutionContext.Implicits.global
 
 class AsyncMathLibTests extends munit.FunSuite {
   test("square") {
-    for
+    for {
       squareOf3 <- AsyncMathLib.square(3)
       squareOfMinus4 <- AsyncMathLib.square(-4)
-    yield
+    } yield {
       assertEquals(squareOf3, 9)
       assertEquals(squareOfMinus4, 16)
+    }
   }
 }
 ```
