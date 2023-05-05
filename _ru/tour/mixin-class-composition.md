@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: Композиция классов с примесями
+title: Композиция классов с трейтами
 partof: scala-tour
 num: 7
 language: ru
@@ -193,6 +193,6 @@ richStringIter.foreach(println)
 
 {% endtabs %}
 
-Новый класс `RichStringIter` включает `StringIterator` как суперкласс и `RichIterator` как примесь.
+Новый класс `RichStringIter` включает `StringIterator` как суперкласс и `RichIterator` как трейт.
 
 Используя только одиночное наследование мы бы не смогли добиться того же уровня гибкости.
