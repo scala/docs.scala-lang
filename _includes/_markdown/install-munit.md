@@ -3,8 +3,11 @@
 {% tabs munit-unit-test-1 class=tabs-build-tool %}
 {% tab 'Scala CLI' %}
 You can require the entire toolkit in a single line:
-```scala
+<!-- ```scala
 //> using toolkit "latest"
+``` -->
+```scala
+//> using dep "org.scala-lang::toolkit-test:0.1.7"
 ```
 
 Alternatively, you can require just a specific version of MUnit:
