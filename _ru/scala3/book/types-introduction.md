@@ -4,12 +4,12 @@ title: Типы и система типов
 scala3: true
 partof: scala3-book
 overview-name: "Scala 3 — Book"
-type: section
+type: chapter
 description: В этой главе представлено введение в типы и систему типов Scala 3.
 language: ru
 num: 47
 previous-page: fp-summary
-next-page:
+next-page: types-inferred
 ---
 
 Scala — уникальный язык, поскольку он статически типизирован, но часто кажется гибким и динамичным.
