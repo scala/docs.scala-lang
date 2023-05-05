@@ -5,23 +5,40 @@ description: Introducing the Scala Toolkit tutorials
 num: 1
 previous-page: 
 next-page: testing-intro
+toolkit-index:
+  - title: Tests
+    description: Testing code with MUnit.
+    icon: "fa fa-vial-circle-check"
+    link: /toolkit/testing-intro.html
+  - title: Files and Processes
+    description: Writing files and running processes with OS-Lib.
+    icon: "fa fa-folder-open"
+    link: /toolkit/os-intro.html
+  - title: JSON
+    description: Parsing JSON and serializing objects to JSON with uPickle.
+    icon: "fa fa-file-code"
+    link: /toolkit/json-intro.html
+  - title: HTTP Requests
+    description: Sending HTTP requests and uploading files with sttp.
+    icon: "fa fa-globe"
+    link: /toolkit/http-client-intro.html
 ---
 
 ## What is the Scala Toolkit?
 
-The Scala Toolkit is a set of libraries designed to make common programming tasks simple and efficient. It supports working with files and processes, parsing JSON, sending HTTP requests, and unit testing.
+The Scala Toolkit is a set of libraries designed to effectively perform common programming tasks. It includes tools for working with files and processes, parsing JSON, sending HTTP requests, and unit testing.
 
 The Toolkit supports:
-* Scripts and applications
 * Scala 3 and Scala 2
 * JVM, Scala.js, and Scala Native
 
-Use cases for the toolkit include:
+Use cases for the Toolkit include:
 
-- backend scripts that run on JVM, to scrape a website, to collect and transform data, or to fetch and process some files,
+- short-lived programs running on the JVM, to scrape a website, to collect and transform data, or to fetch and process some files,
 - frontend scripts that run on the browser and power your websites,
-- command-line scripts
 - command-line tools packaged as native binaries for instant startup
+
+{% include inner-documentation-sections.html links=page.toolkit-index %}
 
 ## What are these tutorials?
 
