@@ -178,11 +178,10 @@ Again, we recommend using MiMa to double-check that you have not broken binary c
 Sometimes, it is desirable to change the definition of a case class (adding and/or removing fields) while still staying backwards-compatible with the existing usage of the case class, i.e. not breaking the so-called _binary compatibility_. The first question you should ask yourself is “do you need a _case_ class?” (as opposed to a regular class, which can be easier to evolve in a binary compatible way). A good reason for using a case class is when you need a structural implementation of `equals` and `hashCode`.
 
 To achieve that, follow this pattern:
- * make the primary constructor private (for Scala 3, this makes the `copy` method of the class and `apply` in the companion object private as well)
+ * make the primary constructor private (for Scala 3, this makes the `copy` method of the class and `apply` in the companion object private as well, for Scala 2 you get this behavior using `-Xsource:3`)
  * for all the fields, define `withXXX` methods on the case class that create a new instance with the respective field changed (you can use the private `copy` method to implement them)
  * create a public constructor by defining an `apply` method in the companion object (it can use the private constructor)
  * (Scala 2) you have to add the compiler option `-Xsource:3`
- * (Scala 2) define the `copy` method with all the current fields manually and set it as `private`
  * (Scala 2) define a private `unapply` method in the companion object (note that by doing that the case class loses the ability to be used as an extractor in match expressions)
  * (Scala 3) define a custom `fromProduct` method in the companion object
 
@@ -193,8 +192,6 @@ Example:
 ~~~ scala
 // Mark the primary constructor as private
 case class Person private (name: String, age: Int) {
-  // Ensure the `copy` method is private
-  private def copy(name: String = name, age: Int = age) = new Person(name, age)
   // Create withXxx methods for every field, implemented by using the (private) copy method
   def withName(name: String): Person = copy(name = name)
   def withAge(age: Int): Person = copy(age = age)
@@ -265,7 +262,6 @@ Later in time, you can amend the original case class definition to, say, add an 
  * add a new field `address` and a custom `withAddress` method,
  * add a new `apply` method to the companion object to initialize all the fields and adjust the old `apply`,
  * tell MiMa to [ignore](https://github.com/lightbend/mima#filtering-binary-incompatibilities) changes to the class constructor. This step is necessary because MiMa does not yet ignore changes in private class constructor signatures (see [#738](https://github.com/lightbend/mima/issues/738)).
- * (Scala 2) add the new field to the `copy` method
  * (Scala 3) add a new case to the `fromProduct` method in the companion object
 
 {% tabs case_class_compat_4 class=tabs-scala-version %}
@@ -273,8 +269,6 @@ Later in time, you can amend the original case class definition to, say, add an 
 ~~~ scala
 case class Person private (name: String, age: Int, address: Option[String]) {
   ...
-  // Add the new field to the `copy` method
-  private def copy(name: String = name, age: Int = age, address: Option[String] = address) = new Person(name, age, address)
   // Add the `withXxx` method
   def withAddress(address: Option[String]) = copy(address = address)
 }
