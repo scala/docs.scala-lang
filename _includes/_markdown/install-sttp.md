@@ -9,7 +9,7 @@ You can require the entire toolkit in a single line:
 
 Alternatively, you can require a specific version of sttp:
 ```scala
-//> using lib "com.softwaremill.sttp.client4::core:4.0.0-M1"
+//> using dep "com.softwaremill.sttp.client4::core:4.0.0-M1"
 ```
 {% endtab %}
 {% tab 'sbt' %}

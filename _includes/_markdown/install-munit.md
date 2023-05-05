@@ -9,7 +9,7 @@ You can require the entire toolkit in a single line:
 
 Alternatively, you can require a specific version of MUnit:
 ```scala
-//> using lib "org.scalameta::munit:1.0.0-M7"
+//> using dep "org.scalameta::munit:1.0.0-M7"
 ```
 {% endtab %}
 {% tab 'sbt' %}

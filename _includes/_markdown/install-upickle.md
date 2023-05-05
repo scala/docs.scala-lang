@@ -9,7 +9,7 @@ Using Scala CLI, you can require the entire toolkit in a single line:
 
 Alternatively, you can require a specific version of upickle:
 ```scala
-//> using lib "com.lihaoyi::upickle:3.1.0
+//> using dep "com.lihaoyi::upickle:3.1.0
 ```
 {% endtab %}
 {% tab 'sbt' %}
