@@ -7,22 +7,26 @@ You can require the entire toolkit in a single line:
 //> using toolkit "latest"
 ```
 
-Alternatively, you can require a specific version of MUnit:
+Alternatively, you can require just a specific version of MUnit:
 ```scala
 //> using dep "org.scalameta::munit:1.0.0-M7"
 ```
 {% endtab %}
 {% tab 'sbt' %}
-In your build.sbt file, you can add the dependency to the MUnit library:
+In your build.sbt file, you can add the dependency on toolkit-test:
 ```scala
 lazy val example = project.in(file("example"))
   .settings(
     scalaVersion := "3.2.2",
-    libraryDependencies += "org.scalameta" %% "munit" % "1.0.0-M7" % Test
+    libraryDependencies += "org.scala-lang" %% "toolkit-test" % "0.1.7" % Test
   )
 ```
-Here the `Test` configuration means that this dependency is only used by the source files in the `example/src/test` directory.
-This is where you can put your test suites.
+Here the `Test` configuration means that the dependency is only used by the source files in `example/src/test`.
+
+Alternatively, you can require just a specific version of MUnit:
+```scala
+libraryDependencies += "org.scalameta" %% "munit" % "1.0.0-M7" % Test
+```
 {% endtab %}
 {% tab 'Mill' %}
 In your build.sc file, you can add a `test` object extending `Tests` and `TestModule.Munit`:
@@ -32,10 +36,15 @@ object example extends ScalaModule {
   object test extends Tests with TestModule.Munit {
     def ivyDeps =
       Agg(
-        ivy"org.scalameta::munit::1.0.0-M7"
+        ivy"org.scala-lang::toolkit-test:0.1.7"
       )
   }
 }
+```
+
+Alternatively, you can require just a specific version of MUnit:
+```scala
+ivy"org.scalameta::munit:1.0.0-M7"
 ```
 {% endtab %}
 {% endtabs %}
