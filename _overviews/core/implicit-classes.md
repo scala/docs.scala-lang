@@ -11,7 +11,7 @@ versionSpecific: true
 scala2: true
 ---
 
-In Scala 3, implicit classes have been superseded by [extension methods]({% link _overviews/scala3-book/ca-extension-methods.md %}).
+In Scala 3, implicit classes are still supported for compatibility reasons but the recommended way to achieve the same result is to use [extension methods]({% link _overviews/scala3-book/ca-extension-methods.md %}).
 
 ---
 

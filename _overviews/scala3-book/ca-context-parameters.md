@@ -129,8 +129,9 @@ implicit val config: Config = Config(8080, "docs.scala-lang.org")
 {% tab 'Scala 3' %}
 ```scala
 val config = Config(8080, "docs.scala-lang.org")
-//  this is the type that we want to provide the
-//  canonical value for
+
+// this is the type that we want to provide the
+// canonical value for
 //    vvvvvv
 given Config = config
 //             ^^^^^^

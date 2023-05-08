@@ -45,13 +45,12 @@ trait Showable[A] {
 ```scala
 // a type class
 trait Showable[A]:
-  extension(a: A) def show: String
+  extension (a: A) def show: String
 ```
 {% endtab %}
 {% endtabs %}
 
-This is the Scala 3 way of saying that any type that implements this trait must define how the `show` method works.
-Notice that the syntax is very close to a normal trait:
+Notice that this approach is close to the usual object-oriented approach, where you would typically define a trait `Show` as follows:
 
 {% tabs 'trait' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
@@ -73,8 +72,8 @@ trait Show:
 
 There are a few important things to point out:
 
-1. Type-classes like `Showable` take a type parameter `A` to say which type we provide the implementation of `show` for; in contrast, normal traits like `Show` do not.
-2. To add the show functionality to a certain type `A`, the normal trait requires that `A extends Show`, while for type-classes we require to have an implementation of `Showable[A]`.
+1. Type-classes like `Showable` take a type parameter `A` to say which type we provide the implementation of `show` for; in contrast, classic traits like `Show` do not.
+2. To add the show functionality to a certain type `A`, the classic trait requires that `A extends Show`, while for type-classes we require to have an implementation of `Showable[A]`.
 3. In Scala 3, to allow the same method calling syntax in both `Showable` that mimics the one of `Show`, we define `Showable.show` as an extension method.
 
 ### Implement concrete instances
@@ -90,9 +89,7 @@ case class Person(firstName: String, lastName: String)
 {% endtab %}
 {% endtabs %}
 
-you’ll define a `given` value for `Showable[Person]` in Scala 3, or an `implicit` value for `Showable[Person]` in Scala 2.
-
-This code provides a concrete instance of `Showable` for the `Person` class:
+you’ll define a single _canonical value_ of type `Showable[Person]`, ie an instance of `Showable` for the type `Person`, as the following code example demonstrates:
 
 {% tabs 'instance' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
@@ -106,7 +103,7 @@ implicit val showablePerson: Showable[Person] = new Showable[Person] {
 {% tab 'Scala 3' %}
 ```scala
 given Showable[Person] with
-  extension(p: Person) def show: String =
+  extension (p: Person) def show: String =
     s"${p.firstName} ${p.lastName}"
 ```
 {% endtab %}
