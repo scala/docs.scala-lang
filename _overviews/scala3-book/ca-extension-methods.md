@@ -5,9 +5,14 @@ description: This page demonstrates how Extension Methods work in Scala 3.
 languages: [zh-cn]
 num: 59
 previous-page: ca-contextual-abstractions-intro
-next-page: ca-given-using-clauses
+next-page: ca-context-parameters
+scala3: true
+versionSpecific: true
 ---
 
+In Scala 2, a similar result could be achieved with [implicit classes]({% link _overviews/core/implicit-classes.md %}).
+
+---
 
 Extension methods let you add methods to a type after the type is defined, i.e., they let you add new methods to closed classes.
 For example, imagine that someone else has created a `Circle` class:

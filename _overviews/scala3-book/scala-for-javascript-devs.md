@@ -1366,7 +1366,7 @@ There are other concepts in Scala which currently have no equivalent in JavaScri
 [control]: {% link _overviews/scala3-book/control-structures.md %}
 [extension-methods]: {% link _overviews/scala3-book/ca-extension-methods.md %}
 [fp-intro]: {% link _overviews/scala3-book/fp-intro.md %}
-[givens]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
+[givens]: {% link _overviews/scala3-book/ca-context-parameters.md %}
 [hofs]: {% link _overviews/scala3-book/fun-hofs.md %}
 [intersection-types]: {% link _overviews/scala3-book/types-intersection.md %}
 [modeling-fp]: {% link _overviews/scala3-book/domain-modeling-fp.md %}

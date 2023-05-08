@@ -4,11 +4,11 @@ type: section
 description: This page demonstrates Context Bounds in Scala.
 languages: [zh-cn]
 num: 61
-previous-page: ca-given-using-clauses
+previous-page: ca-context-parameters
 next-page: ca-given-imports
 ---
 
-In many situations the name of a [context parameter]({% link _overviews/scala3-book/ca-given-using-clauses.md %}#using-clauses) does not have to be mentioned explicitly, since it is only used by the compiler in synthesized arguments for other context parameters.
+In many situations the name of a [context parameter]({% link _overviews/scala3-book/ca-context-parameters.md %}#context-parameters) does not have to be mentioned explicitly, since it is only used by the compiler in synthesized arguments for other context parameters.
 In that case you don’t have to define a parameter name, and can just provide the parameter type.
 
 

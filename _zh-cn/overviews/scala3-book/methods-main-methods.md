@@ -82,7 +82,7 @@ Happy 23rd Birthday, Lisa and Peter!
 ```
 
 如图所示，`@main` 方法可以有任意数量的参数。
-对于每个参数类型，必须是 `scala.util.CommandLineParser.FromString` 类型类的一个 [given实例](./ca-given-using-clauses.html)，它将参数 `String` 转换为所需的参数类型。
+对于每个参数类型，必须是 `scala.util.CommandLineParser.FromString` 类型类的一个 [given实例]({% link _overviews/scala3-book/ca-context-parameters.md %})，它将参数 `String` 转换为所需的参数类型。
 同样如图所示，主方法的参数列表可以以重复参数结尾，例如 `String*`，它接受命令行中给出的所有剩余参数。
 
 从 `@main` 方法实现的程序检查命令行上是否有足够的参数来填充所有参数，以及参数字符串是否可以转换为所需的类型。
