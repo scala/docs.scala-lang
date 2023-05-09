@@ -6,12 +6,9 @@ languages: [zh-cn]
 num: 64
 previous-page: ca-type-classes
 next-page: ca-implicit-conversions
+scala3: true
+versionSpecific: true
 ---
-<span class="tag tag-inline">New In Scala 3</span>
-
-> Multiversal Equality is a new language feature that was introduced in Scala 3.
-> Because it has no equivalent in Scala 2, all code examples
-> in this lesson assume you are using Scala 3.
 
 Previously, Scala had *universal equality*: Two values of any types could be compared with each other using `==` and `!=`.
 This came from the fact that `==` and `!=` are implemented in terms of Java’s `equals` method, which can also compare values of any two reference types.

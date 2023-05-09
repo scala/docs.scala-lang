@@ -481,7 +481,7 @@ Scala обладает множеством замечательных функ�
 Надеемся, вы откроете для себя больше замечательных возможностей Scala по мере использования языка.
 
 [java]: {% link _overviews/scala3-book/interacting-with-java.md %}
-[given]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
+[given]: {% link _overviews/scala3-book/ca-context-parameters.md %}
 [contextual]: {% link _overviews/scala3-book/ca-contextual-abstractions-intro.md %}
 [reference]: {{ site.scala3ref }}
 [dropped]: {{ site.scala3ref }}/dropped-features

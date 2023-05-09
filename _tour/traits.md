@@ -161,5 +161,5 @@ The `trait Pet` has an abstract field `name` that gets implemented by Cat and Do
 
 ## More resources
 
-* Learn more about traits in the [Scala Book](/overviews/scala-book/traits-intro.html)
-* Use traits to define [Enum](/overviews/scala-book/enumerations-pizza-class.html)
+* Learn more about traits in the [Scala Book](/scala3/book/domain-modeling-tools.html#traits)
+* Use traits to define [Enum](/scala3/book/domain-modeling-fp.html#modeling-the-data)

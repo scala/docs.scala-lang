@@ -230,7 +230,7 @@ val z = nums
 - [Типы пересечения]({% link _overviews/scala3-book/types-intersection.md %})
 - [Типы объединения]({% link _overviews/scala3-book/types-union.md %})
 - [Лямбда-типы]({{ site.scala3ref }}/new-types/type-lambdas.html)
-- [Экземпляры `given` и предложения `using`]({% link _overviews/scala3-book/ca-given-using-clauses.md %})
+- [Экземпляры `given` и предложения `using`]({% link _overviews/scala3-book/ca-context-parameters.md %})
 - [Методы расширения]({% link _overviews/scala3-book/ca-extension-methods.md %})
 - [Типовые классы]({% link _overviews/scala3-book/ca-type-classes.md %})
 - [Многостороннее равенство]({% link _overviews/scala3-book/ca-multiversal-equality.md %})
@@ -482,6 +482,6 @@ JSON библиотеки:
 [reference]: {{ site.scala3ref }}/overview.html
 [multiversal]: {% link _overviews/scala3-book/ca-multiversal-equality.md %}
 [extension]: {% link _overviews/scala3-book/ca-extension-methods.md %}
-[givens]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
+[givens]: {% link _overviews/scala3-book/ca-context-parameters.md %}
 [opaque_types]: {% link _overviews/scala3-book/types-opaque-types.md %}
 

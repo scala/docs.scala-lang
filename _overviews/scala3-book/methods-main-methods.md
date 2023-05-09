@@ -72,7 +72,7 @@ Happy 23rd Birthday, Lisa and Peter!
 ```
 
 As shown, the `@main` method can have an arbitrary number of parameters.
-For each parameter type there must be a [given instance](./ca-given-using-clauses.html) of the `scala.util.CommandLineParser.FromString` type class that converts an argument `String` to the required parameter type.
+For each parameter type there must be a [given instance]({% link _overviews/scala3-book/ca-context-parameters.md %}) of the `scala.util.CommandLineParser.FromString` type class that converts an argument `String` to the required parameter type.
 Also as shown, a main method’s parameter list can end in a repeated parameter like `String*` that takes all remaining arguments given on the command line.
 
 The program implemented from an `@main` method checks that there are enough arguments on the command line to fill in all parameters, and that the argument strings can be converted to the required types.

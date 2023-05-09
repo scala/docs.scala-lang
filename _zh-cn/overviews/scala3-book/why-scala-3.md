@@ -493,7 +493,7 @@ Scala 有许多很棒的特性，选择十大列表可能是主观的。
 多项调查表明，不同的开发人员群体喜欢不同的特性。
 
 [java]: {% link _zh-cn/overviews/scala3-book/interacting-with-java.md %}
-[given]: {% link _zh-cn/overviews/scala3-book/ca-given-using-clauses.md %}
+[given]: {% link _zh-cn/overviews/scala3-book/ca-context-parameters.md %}
 [contextual]: {% link _zh-cn/overviews/scala3-book/ca-contextual-abstractions-intro.md %}
 [reference]: {{ site.scala3ref }}
 [dropped]: {{ site.scala3ref }}/dropped-features

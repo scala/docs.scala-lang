@@ -16,9 +16,15 @@ permalink: "/zh-cn/scala3/book/:title.html"
 
 Scala 3 提供了一种定义可以从命令行调用的程序的新方法：在方法中添加 `@main` 注释会将其变成可执行程序的入口点：
 
+{% tabs method_1 %}
+{% tab 'Scala 3 Only' for=method_1 %}
+
 ```scala
 @main def hello() = println("Hello, world")
 ```
+
+{% endtab %}
+{% endtabs %}
 
 只需将该行代码保存在一个名为 *Hello.scala* 的文件中——文件名不必与方法名匹配——并使用 `scalac` 编译它：
 
@@ -36,10 +42,19 @@ Hello, world
 `@main` 注释方法可以写在顶层（如图所示），也可以写在静态可访问的对象中。
 在任何一种情况下，程序的名称都是方法的名称，没有任何对象前缀。
 
+学习更多 `@main` 注解，可以阅读以下章节，或者看这个视频：
+
+<div style="text-align: center">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/uVMGPrH5_Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 ### 命令行参数
 
 使用这种方法，您的`@main` 方法可以处理命令行参数，并且这些参数可以有不同的类型。
 例如，给定这个 `@main` 方法，它接受一个 `Int`、一个 `String` 和一个可变参数 `String*` 参数：
+
+{% tabs method_2 %}
+{% tab 'Scala 3 Only' for=method_2 %}
 
 ```scala
 @main def happyBirthday(age: Int, name: String, others: String*) =
@@ -56,6 +71,9 @@ Hello, world
   sb.toString
 ```
 
+{% endtab %}
+{% endtabs %}
+
 当你编译该代码时，它会创建一个名为 `happyBirthday` 的主程序，它的调用方式如下：
 
 ```
@@ -64,7 +82,7 @@ Happy 23rd Birthday, Lisa and Peter!
 ```
 
 如图所示，`@main` 方法可以有任意数量的参数。
-对于每个参数类型，必须有一个 *scala.util.FromString* 类型类的实例，它将参数 `String` 转换为所需的参数类型。
+对于每个参数类型，必须是 `scala.util.CommandLineParser.FromString` 类型类的一个 [given实例]({% link _overviews/scala3-book/ca-context-parameters.md %})，它将参数 `String` 转换为所需的参数类型。
 同样如图所示，主方法的参数列表可以以重复参数结尾，例如 `String*`，它接受命令行中给出的所有剩余参数。
 
 从 `@main` 方法实现的程序检查命令行上是否有足够的参数来填充所有参数，以及参数字符串是否可以转换为所需的类型。
@@ -88,6 +106,9 @@ Scala 编译器从 `@main` 方法 `f` 生成程序，如下所示：
 
 例如，上面的 `happyBirthday` 方法会生成与以下类等效的附加代码：
 
+{% tabs method_3 %}
+{% tab 'Scala 3 Only' for=method_3 %}
+
 ```scala
 final class happyBirthday {
   import scala.util.{CommandLineParser as CLP}
@@ -107,34 +128,42 @@ final class happyBirthday {
 > 此功能不适用于 Scala 中的用户程序。
 > 常规“静态”成员在 Scala 中使用对象生成。
 
-## Scala 3 与 Scala 2 的比较
+{% endtab %}
+{% endtabs %}
+
+## 与 Scala 2 的向后兼容性
 
 `@main` 方法是在 Scala 3 中生成可以从命令行调用的程序的推荐方法。
 它们取代了 Scala 2 中以前的方法，即创建一个扩展 `App` 类的 `object` ：
-
-```scala
-// scala 2
-object happyBirthday extends App {
-  // needs by-hand parsing of the command line arguments ...
-}
-```
 
 之前依赖于“神奇”的 `DelayedInit` trait 的 `App` 功能不再可用。
 `App` 目前仍以有限的形式存在，但它不支持命令行参数，将来会被弃用。
 
 如果程序需要在 Scala 2 和 Scala 3 之间交叉构建，建议使用带有 `Array[String]` 参数的显式 `main` 方法：
 
+{% tabs method_4 %}
+{% tab 'Scala 2 and 3' %}
+
 ```scala
-object happyBirthday:
-  def main(args: Array[String]) = println("Hello, world")
+object happyBirthday {
+  private def happyBirthday(age: Int, name: String, others: String*) = {
+    ... // same as before
+  }
+  def main(args: Array[String]): Unit =
+    happyBirthday(args(0).toInt, args(1), args.drop(2).toIndexedSeq:_*)
+}
 ```
+
+> 注意我们用 `:_*` 来传递不定数量的参数。为了保持向后兼容性，Scala 3 保持了这种用法。
+
+{% endtab %}
+{% endtabs %}
 
 如果将该代码放在名为 *happyBirthday.scala* 的文件中，则可以使用 `scalac` 编译它并使用 `scala` 运行它，如前所示：
 
 ```bash
 $ scalac happyBirthday.scala
 
-$ scala happyBirthday
-Hello, world
+$ scala happyBirthday 23 Lisa Peter
+Happy 23rd Birthday, Lisa and Peter!
 ```
-

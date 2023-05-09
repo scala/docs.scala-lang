@@ -11,6 +11,8 @@ partof: scala3-book
 overview-name: "Scala 3 — Book"
 layout: multipage-overview
 permalink: "/zh-cn/scala3/book/:title.html"
+scala3: true
+versionSpecific: true
 ---
 
 
@@ -54,12 +56,16 @@ case 1.0 => ???   // ERROR: this line won’t compile
 
 其他语言需要预先规划类层次结构，如下例所示：
 
+{% tabs pre-planning %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 trait UsernameOrPassword
 case class Username(name: String) extends UsernameOrPassword
 case class Password(hash: Hash) extends UsernameOrPassword
 def help(id: UsernameOrPassword) = ...
 ```
+{% endtab %}
+{% endtabs %}
 
 预先计划不能很好地扩展，例如，API 用户的需求可能无法预见。
 此外，使用诸如 `UsernameOrPassword` 之类的标记 trait 使类型层次结构混乱也会使代码更难阅读。

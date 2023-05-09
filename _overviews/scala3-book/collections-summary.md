@@ -2,7 +2,7 @@
 title: Summary
 type: section
 description: This page provides a summary of the Collections chapter.
-languages: [zh-cn]
+languages: [ru, zh-cn]
 num: 39
 previous-page: collections-methods
 next-page: fp-intro

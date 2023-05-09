@@ -56,23 +56,22 @@ First You can give a `name` to your configuration, for instance `Debug Scala 3 C
 
 The two most important parameters, to debug the compiler, are `mainClass` and `args`.
 The `mainClass` of the compiler is `dotty.tools.dotc.Main`.
-In the `args` you need to specify the compiler arguments, which must contain at least a `.scala` file to compile and a `-classpath` option.
+In the `args` you need to specify the compiler arguments, which must contain at least a Scala file to compile and a `-classpath` option.
 
 To start with, we can compile the `../tests/pos/HelloWorld.scala` file.
 In the classpath, we always need at least the `scala-library_2.13` and the bootstrapped `scala3-library_3`.
-To locate them on your filesystem you can run the `show scala3-library-bootstrapped/fullClasspath` command in sbt.
+To locate them on your filesystem you can run the `export scala3-library-bootstrapped/fullClasspath` command in sbt.
 
 ```
 $ sbt
-> show scala3-library-bootstrapped/fullClasspath
-[info] * Attributed(/home/user/lampepfl/dotty/out/bootstrap/scala3-library-bootstrapped/scala-3.3.1-RC1-bin-SNAPSHOT-nonbootstrapped/classes)
-[info] * Attributed(/home/user/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.10/scala-library-2.13.10.jar)
+> export scala3-library-bootstrapped/fullClasspath
+/home/user/lampepfl/dotty/out/bootstrap/scala3-library-bootstrapped/scala-3.3.1-RC1-bin-SNAPSHOT-nonbootstrapped/classes:/home/user/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.10/scala-library-2.13.10.jar
 [success] Total time: 1 s, completed Mar 10, 2023, 4:37:43 PM
 ```
 
 Note that it is important to use the bootstrapped version of the `scala3-library` to get the correct TASTy version.
 
-Additionally you can add the `["-color", "never"]` arguments to prevent the compiler from printing ANSI codes as strings in the debug console. 
+Additionally you can add the `-color` and `never` arguments to prevent the compiler from printing ANSI codes as strings in the debug console. 
 
 Here is the final configuration:
 ```json
@@ -84,7 +83,7 @@ Here is the final configuration:
   "args": [
     "../tests/pos/HelloWorld.scala",
     "-classpath",
-    // to replace with your own paths
+    // To replace with your own paths
     "/home/user/lampepfl/dotty/out/bootstrap/scala3-library-bootstrapped/scala-3.3.1-RC1-bin-SNAPSHOT-nonbootstrapped/classes:/home/user/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.10/scala-library-2.13.10.jar",
     "-color",
     "never"

@@ -244,7 +244,7 @@ In particular, the type system supports:
 - [Intersection types]({% link _overviews/scala3-book/types-intersection.md %})
 - [Union types]({% link _overviews/scala3-book/types-union.md %})
 - [Type lambdas]({{ site.scala3ref }}/new-types/type-lambdas.html)
-- [`given` instances and `using` clauses]({% link _overviews/scala3-book/ca-given-using-clauses.md %})
+- [`given` instances and `using` clauses]({% link _overviews/scala3-book/ca-context-parameters.md %})
 - [Extension methods]({% link _overviews/scala3-book/ca-extension-methods.md %})
 - [Type classes]({% link _overviews/scala3-book/ca-type-classes.md %})
 - [Multiversal equality]({% link _overviews/scala3-book/ca-multiversal-equality.md %})
@@ -572,7 +572,7 @@ As this page shows, Scala has many terrific programming language features at a h
 [reference]: {{ site.scala3ref }}/overview.html
 [multiversal]: {% link _overviews/scala3-book/ca-multiversal-equality.md %}
 [extension]: {% link _overviews/scala3-book/ca-extension-methods.md %}
-[givens]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
+[givens]: {% link _overviews/scala3-book/ca-context-parameters.md %}
 [opaque_types]: {% link _overviews/scala3-book/types-opaque-types.md %}
 
 

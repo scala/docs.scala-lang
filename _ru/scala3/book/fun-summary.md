@@ -9,7 +9,7 @@ description: На этой странице представлен обзор п
 language: ru
 num: 34
 previous-page: fun-write-method-returns-function
-next-page:
+next-page: packaging-imports
 ---
 
 Это была длинная глава, поэтому давайте рассмотрим ключевые моменты, которые мы прошли.

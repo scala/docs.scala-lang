@@ -532,4 +532,4 @@ In Scala 3, with the `@main` annotation, a main method is automatically generate
 
 ## More resources
 
-* [Scala book](/overviews/scala-book/prelude-taste-of-scala.html) overview
+* [Scala book](/scala3/book/taste-intro.html) overview

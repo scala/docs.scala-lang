@@ -6,6 +6,8 @@ languages: [zh-cn]
 num: 52
 previous-page: types-union
 next-page: types-variance
+scala3: true
+versionSpecific: true
 ---
 
 

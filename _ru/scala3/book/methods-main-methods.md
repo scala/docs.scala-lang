@@ -175,4 +175,4 @@ $ scala happyBirthday 23 Lisa Peter
 Happy 23rd Birthday, Lisa and Peter!
 ```
 
-[given]: {% link _overviews/scala3-book/ca-given-using-clauses.md %}
+[given]: {% link _overviews/scala3-book/ca-context-parameters.md %}
