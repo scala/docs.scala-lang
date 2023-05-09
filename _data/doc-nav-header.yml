@@ -37,6 +37,8 @@
       url: "/tutorials/scala-on-android.html"
     - title: Scala with Maven
       url: "/tutorials/scala-with-maven.html"
+    - title: Using the Scala Toolkit
+      url: "/toolkit/introduction.html"
 - title: Reference
   url: "#"
   submenu:

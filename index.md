@@ -26,6 +26,10 @@ sections:
         description: "Learn Scala by reading a series of short lessons."
         icon: "fa fa-book-open"
         link: /scala3/book/introduction.html
+      - title: "Scala Toolkit"
+        description: "Sending HTTP requests, writing files, running processes, parsing JSON..."
+        icon: "fa fa-toolbox"
+        link: /toolkit/introduction.html
       - title: Online Courses
         description: "MOOCs to learn Scala, for beginners and experienced programmers."
         icon: "fa fa-cloud"

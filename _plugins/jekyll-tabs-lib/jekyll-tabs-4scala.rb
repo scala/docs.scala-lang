@@ -4,6 +4,7 @@ module Jekyll
     module Tabs
 
         ScalaVersions = ['Scala 2', 'Scala 3']
+        BuildTools = ['Scala CLI', 'sbt', 'Mill']
 
         def self.unquote(string)
             string.gsub(/^['"]|['"]$/, '')
@@ -25,13 +26,11 @@ module Jekyll
                 if markup =~ SYNTAX
                     @name = Tabs::unquote($1)
                     @css_classes = ""
-                    @is_scala_tabs = false
+                    @tab_class = ""
                     if $2
                         css_class = Tabs::unquote($2)
                         css_class.strip!
-                        if css_class == "tabs-scala-version"
-                            @is_scala_tabs = true
-                        end
+                        @tab_class = css_class
                         # append $2 to @css_classes
                         @css_classes = " #{css_class}"
                     end
@@ -56,36 +55,36 @@ module Jekyll
 
                 seenTabs = []
 
-                def joinScalaVersions()
-                    Tabs::ScalaVersions.to_a.map{|item| "'#{item}'"}.join(", ")
+                def joinTabs(tabs)
+                    tabs.to_a.map{|item| "'#{item}'"}.join(", ")
                 end
 
-                def errorNonScalaVersion(tab)
+                def errorInvalidTab(tab, expectedTabs)
                     SyntaxError.new(
-                        "Scala version tab label '#{tab.label}' is not valid for tabs '#{@name}' with " +
-                        "class=tabs-scala-version. Valid tab labels are: #{joinScalaVersions()}")
+                        "Tab label '#{tab.label}' is not valid for tabs '#{@name}' with " +
+                        "class=#{@tab_class}. Valid tab labels are: #{joinTabs(expectedTabs)}")
                 end
 
-                def errorScalaVersionWithoutClass(tab)
+                def errorTabWithoutClass(tab, tabClass)
                     SyntaxError.new(
-                        "Scala version tab label '#{tab.label}' is not valid for tabs '#{@name}' without " +
-                        "class=tabs-scala-version")
+                        "Tab label '#{tab.label}' is not valid for tabs '#{@name}' without " +
+                        "class=#{tabClass}")
                 end
 
-                def errorMissingScalaVersion()
+                def errorMissingTab(expectedTabs)
                     SyntaxError.new(
-                        "Tabs '#{@name}' with class=tabs-scala-version must have exactly the following " +
-                        "tab labels: #{joinScalaVersions()}")
+                        "Tabs '#{@name}' with class=#{@tab_class} must have exactly the following " +
+                        "tab labels: #{joinTabs(expectedTabs)}")
                 end
 
                 def errorDuplicateTab(tab)
                     SyntaxError.new("Duplicate tab label '#{tab.label}' in tabs '#{@name}'")
                 end
 
-                def errorScalaVersionDefault(tab)
+                def errorTabDefault(tab)
                     SyntaxError.new(
-                        "Scala version tab label '#{tab.label}' should not be default for tabs '#{@name}' " +
-                        "with class=tabs-scala-version")
+                        "Tab label '#{tab.label}' should not be default for tabs '#{@name}' " +
+                        "with class=#{@tab_class}")
                 end
 
                 allTabs.each do | tab |
@@ -97,25 +96,34 @@ module Jekyll
                         foundDefault = true
                     end
 
-                    isScalaTab = Tabs::ScalaVersions.include? tab.label
-
-                    if @is_scala_tabs
-                        if !isScalaTab
-                            raise errorNonScalaVersion(tab)
-                        elsif tab.defaultTab
-                            raise errorScalaVersionDefault(tab)
+                    def checkTab(tab, tabClass, expectedTabs, raiseIfMissingClass)
+                        isValid = expectedTabs.include? tab.label
+                        if @tab_class == tabClass
+                            if !isValid
+                                raise errorInvalidTab(tab, expectedTabs)
+                            elsif tab.defaultTab
+                                raise errorTabDefault(tab)
+                            end
+                        elsif raiseIfMissingClass and isValid
+                            raise errorTabWithoutClass(tab, tabClass)
                         end
-                    elsif !@is_scala_tabs and isScalaTab
-                        raise errorScalaVersionWithoutClass(tab)
+                    end
+
+                    checkTab(tab, "tabs-scala-version", Tabs::ScalaVersions, true)
+                    checkTab(tab, "tabs-build-tool", Tabs::BuildTools, false)
+                end
+
+                def checkExhaustivity(seenTabs, tabClass, expectedTabs)
+                    if @tab_class == tabClass and seenTabs != expectedTabs
+                      raise errorMissingTab(expectedTabs)
                     end
                 end
 
-                if @is_scala_tabs and seenTabs != Tabs::ScalaVersions
-                    raise errorMissingScalaVersion()
-                end
+                checkExhaustivity(seenTabs, "tabs-scala-version", Tabs::ScalaVersions)
+                checkExhaustivity(seenTabs, "tabs-build-tool", Tabs::BuildTools)
 
                 if !foundDefault and allTabs.length > 0
-                    if @is_scala_tabs
+                    if @tab_class == "tabs-scala-version"
                         # set last tab to default ('Scala 3')
                         allTabs[-1].defaultTab = true
                     else
