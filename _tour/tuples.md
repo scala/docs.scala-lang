@@ -126,4 +126,4 @@ Users may sometimes find it hard to choose between tuples and case classes. Case
 
 ## More resources
 
-* Learn more about tuples in the [Scala Book](/overviews/scala-book/tuples.html)
+* Learn more about tuples in the [Scala Book](/scala3/book/taste-collections.html#tuples)
