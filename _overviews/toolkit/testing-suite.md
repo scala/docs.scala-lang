@@ -107,7 +107,7 @@ The following is an example of a test that use `assert` to check a boolean condi
 ```scala
 test("all even numbers") {
   val input: List[Int] = List(1, 2, 3, 4)
-  val obtainedResults: List[Int] = input.map(_ * 2_)
+  val obtainedResults: List[Int] = input.map(_ * 2)
   // check that obtained values are all even numbers
   assert(obtainedResults.forall(x => x % 2 == 0))
 }
@@ -117,7 +117,7 @@ test("all even numbers") {
 ```scala
 test("all even numbers"):
   val input: List[Int] = List(1, 2, 3, 4)
-  val obtainedResults: List[Int] = input.map(_ * 2_)
+  val obtainedResults: List[Int] = input.map(_ * 2)
   // check that obtained values are all even numbers
   assert(obtainedResults.forall(x => x % 2 == 0))
 ```
