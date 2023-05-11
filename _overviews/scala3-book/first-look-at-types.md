@@ -58,6 +58,7 @@ val list: List[Any] = List(
   "a string",
   732,  // an integer
   'c',  // a character
+  '\'', // a character with a backslash escape
   true, // a boolean value
   () => "an anonymous function returning a string"
 )
@@ -76,6 +77,7 @@ Here’s the output of the program:
 a string
 732
 c
+'
 true
 <function>
 ```
@@ -119,7 +121,22 @@ In your code you can also append the characters `L`, `D`, and `F` (and their low
 ```scala
 val x = 1_000L   // val x: Long = 1000
 val y = 2.2D     // val y: Double = 2.2
-val z = 3.3F     // val z: Float = 3.3
+val z = -3.3F    // val z: Float = -3.3
+```
+
+You may also use hexadecimal notation to format integer numbers (normally `Int`, but which also support the
+`L` suffix to specify that they are `Long`):
+
+```scala
+val a = 0xACE    // val a: Int = 2766
+val b = 0xfd_3aL // val b: Long = 64826
+```
+
+Scala supports many different ways to format the same floating point number, e.g.
+```scala
+val q = .25      // val q: Double = 0.25
+val r = 2.5e-1   // val r: Double = 0.25
+val s = .0025e2F // val s: Float = 0.25
 ```
 {% endtab %}
 {% endtabs %}
