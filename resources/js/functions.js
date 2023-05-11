@@ -67,6 +67,7 @@ $(document).ready(function() {
   hljs.configure({
     languages: ["scala", "bash"]
   })
+  hljs.registerLanguage("scala", highlightDotty);
   hljs.highlightAll();
 });
 
@@ -431,7 +432,7 @@ $(document).ready(function() {
   function setupTabs(tabs, namespace, defaultValue) {
     const PreferenceStorage = Storage('org.scala-lang.docs.preferences');
     const preferredValue = PreferenceStorage.getPreference(namespace, defaultValue);
-    
+
     activateTab(tabs, preferredValue)
 
     // setup listeners to record new preferred Scala version.
