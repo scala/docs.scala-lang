@@ -271,7 +271,7 @@ function highlightDotty(hljs) {
   // Methods
   const METHOD = {
     className: 'function',
-    begin: `((${modifiers}|transparent|inline|infix) +)*def`, end: / =\s|\n/,
+    begin: `((${modifiers}|transparent|inline|infix) +)*def `, end: / =\s|\n/,
     excludeEnd: true,
     relevance: 5,
     keywords: withSoftKeywords('inline infix transparent'),
@@ -301,7 +301,7 @@ function highlightDotty(hljs) {
   // Type declarations
   const TYPEDEF = {
     className: 'typedef',
-    begin: `((${modifiers}|opaque) +)*type`, end: /[=;\n]| ?[<>]:/,
+    begin: `((${modifiers}|opaque) +)*type `, end: /[=;\n]| ?[<>]:/,
     excludeEnd: true,
     keywords: withSoftKeywords('opaque'),
     contains: [
@@ -314,17 +314,14 @@ function highlightDotty(hljs) {
 
   // Given instances
   const GIVEN = {
-    begin: /given/, end: / =|[=;\n]/,
+    begin: `((${modifiers}|transparent|inline) +)*given `, end: / =|[=;\n]/,
     excludeEnd: true,
-    keywords: 'given using with',
+    keywords: withSoftKeywords('inline transparent given using with'),
     contains: [
       hljs.C_LINE_COMMENT_MODE,
       hljs.C_BLOCK_COMMENT_MODE,
       PARAMS,
-      {
-        begin: 'as',
-        keywords: 'as'
-      },
+      CTX_PARAMS,
       PROBABLY_TYPE,
       TITLE
     ]
