@@ -125,4 +125,4 @@ Running the program should print your own login.
 ## Sending and receiving Scala objects using JSON
 
 Alternatively, you can use uPickle to send or receive Scala objects using JSON.
-Read the following to learn [*How to serialize an object to JSON*](/toolkit/json-serialize) and [*How to deserialize JSON to an object*](/toolkit/json-deserialize).
+Read the following to learn [*How to serialize an object to JSON*](/toolkit/json-serialize.html) and [*How to deserialize JSON to an object*](/toolkit/json-deserialize.html).

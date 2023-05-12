@@ -69,4 +69,4 @@ os.write(os.pwd / "pet-owner-updated.json", write(petOwnerUpdated))
 {% endtabs %}
 
 To serialize and deserialize Scala case classes (or enums) to JSON we need an instance of `ReadWriter`.
-To understand how uPickle generates it for you, you can read the [*How to deserialize JSON to an object?*](/toolkit/json-deserialize) or the [*How to serialize an object to JSON?*](/toolkit/json-serialize) tutorials.
+To understand how uPickle generates it for you, you can read the [*How to deserialize JSON to an object?*](/toolkit/json-deserialize.html) or the [*How to serialize an object to JSON?*](/toolkit/json-serialize.html) tutorials.
