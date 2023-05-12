@@ -16,6 +16,7 @@ module Jekyll
       content = content.gsub("```scala mdoc:fail\n", "```scala\n")
       content = content.gsub("```scala mdoc:crash\n", "```scala\n")
       content = content.gsub("```scala mdoc:nest\n", "```scala\n")
+      content = content.gsub("```scala mdoc:reset:crash\n", "```scala\n")
       content = content.gsub("```scala mdoc:reset\n", "```scala\n")
       content.gsub("```scala mdoc\n", "```scala\n")
     end
