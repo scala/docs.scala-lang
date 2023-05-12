@@ -59,11 +59,11 @@ We want to be able to set the bounds of type variables to be able to match again
 ```scala
 case '[ head *: tail ] => h[tail]
 ```
-See https://github.com/lampepfl/dotty/issues/11738.
+See [https://github.com/lampepfl/dotty/issues/11738](https://github.com/lampepfl/dotty/issues/11738).
 
 ### Support matching on any kind of type
 We want to match against higher-kinded (or `AnyKind`) types. This is not possible due to the default upper bound of `Any`.
-See https://github.com/lampepfl/dotty/issues/10864.
+See [https://github.com/lampepfl/dotty/issues/10864](https://github.com/lampepfl/dotty/issues/10864).
 
 ### Support multiple references to the same type in quoted type patterns
 We want to be able to match using several references to the same type variable.
@@ -135,7 +135,7 @@ TASTy only contains explicit type variable definitions, and this encoding would 
 
 ## Related work
 
-* Proof of concept of type variable syntax: https://github.com/lampepfl/dotty/pull/16910
-* Proof of concept of backticks (only interested in the first bullet point): https://github.com/lampepfl/dotty/pull/16935
+* Proof of concept of type variable syntax: [https://github.com/lampepfl/dotty/pull/16910](https://github.com/lampepfl/dotty/pull/16910)
+* Proof of concept of backticks (only interested in the first bullet point): [https://github.com/lampepfl/dotty/pull/16935](https://github.com/lampepfl/dotty/pull/16935)
 
 <!-- ## FAQ -->
