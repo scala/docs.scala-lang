@@ -53,3 +53,24 @@ You can also find more details about the front matter on the [Jekyll documentati
 
 ## Syntax of the content
 Keep in mind that the writing of your blog is done with Markdown. You can find more information about the syntax in [Markdown Guide](https://www.markdownguide.org/basic-syntax/).
+
+## Blog configuration
+When creating your blog, Scaladoc also allows you to configure it.
+
+In order to modify the default settings of the blog documentation, users need to create a file named `blog.yml` in the **root directory of the blog**. The file should contain the parameters that the user wants to change. For example, if a user wants to change the input directory to "my_posts", the output directory to "my_docs", and temporarily hide the blog, they can create a file with the following content:
+
+```
+input: my_posts
+output: my_docs
+hidden: true
+```
+
+### Parameters:
+
+`input`: specifies the directory containing markdown files for the blog posts (default: "_posts" in "docs").
+
+`output`: specifies the folder where HTML pages will be generated (default: "blog" in "target/docs").
+
+`hidden`: allows users to temporarily hide the blog (default: "false").
+
+To change these settings, create a file with the parameters and save it in the blog's root directory. The next time the blog is built, the new settings will be used.
