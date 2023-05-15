@@ -34,11 +34,13 @@ class FileTests extends munit.FunSuite {
 import java.nio.file.NoSuchFileException
 
 class FileTests extends munit.FunSuite:
-  test("read missing file"):
+  test("read missing file") {
     val missingFile = os.pwd / "missing.txt"
-    intercept[NoSuchFileException]:
+    intercept[NoSuchFileException] {
       // the code that should throw an exception
       os.read(missingFile)
+    }
+  }
 ```
 {% endtab %}
 {% endtabs %}

@@ -53,10 +53,12 @@ class MathSuite extends munit.FunSuite {
 {% tab 'Scala 3' %}
 ```scala
 class MathSuite extends munit.FunSuite:
-  test("addition"):
+  test("addition") {
     assert(1 + 1 == 2)
-  test("multiplication".only):
+  }
+  test("multiplication".only) {
     assert(3 * 7 == 21)
+  }
 ```
 {% endtab %}
 {% endtabs %}
@@ -88,12 +90,15 @@ class MathSuite extends munit.FunSuite {
 {% tab 'Scala 3' %}
 ```scala
 class MathSuite extends munit.FunSuite:
-  test("addition".ignore):
+  test("addition".ignore) {
     assert(1 + 1 == 2)
-  test("multiplication"):
+  }
+  test("multiplication") {
     assert(3 * 7 == 21)
-  test("remainder"):
+  }
+  test("remainder") {
     assert(13 % 5 == 3)
+  }
 ```
 {% endtab %}
 {% endtabs %}
