@@ -82,9 +82,10 @@ using2TempFiles.test("merge two files") {
 val using2TempFiles: FunFixture[(os.Path, os.Path)] =
   FunFixture.map2(usingTempFile, usingTempFile)
 
-using2TempFiles.test("merge two files"):
+using2TempFiles.test("merge two files") {
   (file1, file2) =>
     // body of the test
+}
 ```
 {% endtab %}
 {% endtabs %}

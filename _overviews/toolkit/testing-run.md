@@ -62,10 +62,11 @@ test("failing test") {
 {% endtab %}
 {% tab 'Scala 3' %}
 ```scala
-test("failing test"):
+test("failing test") {
   val obtained = 2 + 3
   val expected = 4
   assertEquals(obtained, expected)
+}
 ```
 {% endtab %}
 {% endtabs %}

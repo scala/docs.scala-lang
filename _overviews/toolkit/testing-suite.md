@@ -78,10 +78,11 @@ class MyTests extends munit.FunSuite {
 package example
 
 class MyTests extends munit.FunSuite:
-  test("sum of two integers"):
+  test("sum of two integers") {
     val obtained = 2 + 2
     val expected = 4
     assertEquals(obtained, expected)
+  }
 ```
 {% endtab %}
 {% endtabs %}
@@ -115,11 +116,12 @@ test("all even numbers") {
 {% endtab %}
 {% tab 'Scala 3' %}
 ```scala
-test("all even numbers"):
+test("all even numbers") {
   val input: List[Int] = List(1, 2, 3, 4)
   val obtainedResults: List[Int] = input.map(_ * 2)
   // check that obtained values are all even numbers
   assert(obtainedResults.forall(x => x % 2 == 0))
+}
 ```
 {% endtab %}
 {% endtabs %}

@@ -49,9 +49,10 @@ test("home directory") {
 ```scala
 import scala.util.Properties
 
-test("home directory"):
+test("home directory") {
   assume(Properties.isLinux, "this test runs only on Linux")
   assert(os.home.toString.startsWith("/home/"))
+}
 ```
 {% endtab %}
 {% endtabs %}
@@ -73,8 +74,9 @@ test("requests".flaky) {
 {% endtab %}
 {% tab 'Scala 3' %}
 ```scala
-test("requests".flaky):
+test("requests".flaky) {
   // I/O heavy tests that sometimes fail
+}
 ```
 {% endtab %}
 {% endtabs %}
