@@ -48,6 +48,8 @@ from an idea to the inclusion in the language.
 - SIP Reviewers: a subset of Committee Members assigned by the Chairperson to
   review in detail a particular SIP. The same person cannot be both a SIP Author
   and a SIP Reviewer for the same SIP.
+- SIP Manager: one of the SIP Reviewers who is responsible for the all the
+  communications related to the SIP, throughout its entire life-cycle. This includes requesting a vote on the SIP from the whole Committee, presenting the SIP to the Committee at the plenary meetings, merging or closing the corresponding PR, reporting to the community on the vote outcome, and announcing when it is available for testing.
 
 ## Stages
 
@@ -127,8 +129,9 @@ To submit a SIP, a SIP Author writes a pull request to the
 repository, following the [tutorial]({% link _sips/sip-tutorial.md %}), and 
 pointing to the Pre-SIP discussion. If the proposal correctly follows the 
 template, and the Pre-SIP discussion seems to show some community support,
-the Chairperson will accept the SIP for review, assign a SIP number, and assign
-3 reviewers to the SIP among the Committee Members. Since "community support" is
+the Chairperson will accept the SIP for review, assign a SIP number, assign
+3 reviewers to the SIP among the Committee Members, and assign one of the reviewers
+to be the Manager of that SIP. Since "community support" is
 loosely defined, any Committee Member can also comment on the PR to accept the
 SIP for review (this is meant mostly as an escape hatch to prevent the 
 Chairperson from unilaterally blocking a SIP from entering the process). From 
@@ -169,7 +172,7 @@ After each request for a new review, the reviewers have 3 weeks to do another
 round.
 
 When the reviewers are confident that the SIP is in good shape to be discussed 
-with the full Committee, they set its status to "Vote Requested" and decide on a 
+with the full Committee, the Manager sets its status to "Vote Requested" and decide on a 
 Vote Recommendation that they will bring to the Committee. A Vote Recommendation 
 is either "Recommend Accept" or "Recommend Reject". The proposal is then
 scheduled on the agenda of the next Committee meeting (which happens once a 
@@ -183,7 +186,7 @@ the SIP will automatically be considered to be Withdrawn.
 
 ### Design Stage -- Vote
 
-During the Committee meeting, the reviewers of any scheduled SIP present the SIP
+During the Committee meeting, the Managers of any scheduled SIP present the SIP
 to the Committee, their recommendation, and explain why they made that
 recommendation. After discussion, the Committee votes for advancing the SIP to
 the Implementation Stage. There are three possible outcomes:
@@ -203,10 +206,12 @@ must gather strictly more than 50% of "Advance" votes among the whole Committee.
 
 For instance, if the Committee is made of 11 members, at least 6 members have to vote "Advance" for the SIP to move to the next stage.
 
-If there was a strict majority in favor of "Advance", the PR for the SIP is Merged at this point.
+If there was a strict majority in favor of "Advance", the PR for the SIP is Merged at this point by its Manager.
 Otherwise, a second vote between 
 Reject and Keep will be used. A proposal needs more than 50% "Reject" votes to
 be rejected in that case. Otherwise, it is kept.
+
+The SIP Manager shares the outcome of the vote with the community by posting a comment to proposal’s Pre-SIP discussion.
 
 ### Implementation Stage
 
@@ -216,15 +221,15 @@ The SIP is now a recommendation for the compiler team or any other individual or
 group of people to provide an implementation of the proposal, as a pull request
 to the Scala 3 compiler repository. There is no set timeline for this phase.
 
-An implementation will be reviewed by the compiler team, and once the
-implementation is deemed good enough, it can ship as an Experimental feature in
-the following practical release of the compiler.
-
 Often, proposals not only need to be implemented in the compiler, but also in
 several other tools (IDEs, syntax highlighters, code formatters, etc.). As soon
-as a proposal reaches the implementation stage, the Committee notifies the
+as a proposal reaches the implementation stage, the Chairperson notifies the
 impacted tools that they should start implementing support for it. A list of
 tools of the ecosystem is maintained in [this document][tooling ecosystem].
+
+An implementation will be reviewed by the compiler team, and once the
+implementation is deemed good enough, it can ship as an Experimental feature in
+the following practical release of the compiler. At that point, the SIP Manager posts a follow-up comment on the Pre-SIP discussion to invite the community to test the feature and provide feedback.
 
 The implementers may hit challenges that were not foreseen by the Committee. 
 Early users may also provide feedback based on practical experience with the 
@@ -299,6 +304,7 @@ If a Committee Member cannot attend a meeting, they are welcome to share their f
    4. Explain the latest progress in every meeting.
 - Play a role in the discussions, learn in advance about the topic if needed,
   and make up their mind in the voting process.
+- Establish communication channels with the community to share updates about the evolution of proposals and collect feedback.
 
 ### Guests
 
