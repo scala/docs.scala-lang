@@ -203,7 +203,7 @@ must gather strictly more than 50% of "Advance" votes among the whole Committee.
 
 For instance, if the Committee is made of 11 members, at least 6 members have to vote "Advance" for the SIP to move to the next stage.
 
-If there was a strict majority in favor of "Advance", the PR for the SIP Merged at this point.
+If there was a strict majority in favor of "Advance", the PR for the SIP is Merged at this point.
 Otherwise, a second vote between 
 Reject and Keep will be used. A proposal needs more than 50% "Reject" votes to
 be rejected in that case. Otherwise, it is kept.
@@ -288,7 +288,7 @@ have the following purposes:
 - Make any exception to the process that they judge necessary to unblock a 
   situation.
 
-If a Committee Member cannot attend a meeting, they are welcome to share their feedback about the proposals listed in the agenda of the meeting with the Chairperson, who will relate it during the meeting. A Committee member cannot give their voting power to someone else, and they must not miss more than 2 meetings within a year.
+If a Committee Member cannot attend a meeting, they are welcome to share their feedback about the proposals listed in the agenda of the meeting with the Chairperson, who will relate it during the meeting. A Committee Member cannot give their voting power to someone else. If a Committee Member misses more than 2 meetings within a year, they lose their seat.
 
 ### Responsibilities of the Committee Members
 
