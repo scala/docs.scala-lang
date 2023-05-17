@@ -120,7 +120,7 @@ val person = Person("John", "Doe")
 println(showablePerson.show(person))
 ```
 
-Not that in practice, type classes are typically used with values whose type is unknown, unlike the type `Person`, as shown in the next section.
+Note that in practice, type classes are typically used with values whose type is unknown, unlike the type `Person`, as shown in the next section.
 {% endtab %}
 {% tab 'Scala 3' %}
 ```scala
