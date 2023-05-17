@@ -54,8 +54,6 @@
       url: "https://docs.scala-lang.org/scala3/reference"
     - title: Scala Contribution Guide
       url: "/contribute/"
-    - title: Scala 3 Compiler Contributing Guide
-      url: "/scala3/guides/contribution/contribution-intro.html"
     - title: Style Guide
       url: "/style/index.html"
     - title: Cheatsheet

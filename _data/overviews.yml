@@ -194,12 +194,6 @@
 - category: Compiler
   description: "Guides and overviews covering the Scala compiler: compiler plugins, reflection, and metaprogramming tools such as macros."
   overviews:
-    - title: "Scala 3 Contributing Guide"
-      by: Jamie Thompson, Anatolii Kmetiuk
-      icon: cogs
-      root: "scala3/guides/"
-      url: "contribution/contribution-intro.html"
-      description: "Guide to the Scala 3 Compiler and fixing an issue"
     - title: Scala 2 Reflection
       by: Heather Miller, Eugene Burmako, and Philipp Haller
       icon: binoculars

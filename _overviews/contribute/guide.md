@@ -68,7 +68,7 @@ the Scala project source tree. The hacker's guides ([Scala 2][hackers], or [Scal
 [community-tickets]: {% link _overviews/contribute/index.md %}#community-tickets
 [bug-reporting-guide]: {% link _overviews/contribute/bug-reporting-guide.md %}
 [bug-report-check-dupes]: {% link _overviews/contribute/bug-reporting-guide.md %}#please-check-before-reporting-a-bug
-[scala3-hackers]: {% link _overviews/scala3-contribution/procedures-intro.md %}
+[scala3-hackers]: {% link _overviews/contribute/scala3.md %}
 [contrib-forum]: https://contributors.scala-lang.org/
 [why-its-a-good-idea]: {% link _overviews/contribute/scala-internals.md %}#why-its-a-good-idea
 [hackers-connect]: {% link _overviews/contribute/hacker-guide.md %}#1-connect
