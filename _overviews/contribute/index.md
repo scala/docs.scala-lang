@@ -24,7 +24,7 @@ compiler_resources:
   - title: "Scala 3 Contributing Guide"
     description: "Guide to the Scala 3 Compiler and fixing an issue"
     icon: "fa fa-code-merge"
-    link: /scala3/guides/contribution/contribution-intro.html
+    link: /scala3/guides/contribution/start-intro.html
   - title: "Compiler Academy Videos"
     description: "In-depth tours of the Scala 3 compiler's internals"
     icon: "fa fa-circle-play"
