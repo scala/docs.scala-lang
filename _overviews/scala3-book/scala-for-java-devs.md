@@ -813,7 +813,7 @@ Called a _ternary operator_ in Java:
         <code>val monthAsString = day match
         <br>&nbsp; case 1 =&gt; "January"
         <br>&nbsp; case 2 =&gt; "February"
-        <br>&nbsp; _ =&gt; "Other"
+        <br>&nbsp; case _ =&gt; "Other"
         </code>
       </td>
     </tr>
