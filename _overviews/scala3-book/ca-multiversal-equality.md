@@ -175,14 +175,12 @@ case class AudioBook(
     // override to allow AudioBook to be compared to PrintedBook
     override def equals(that: Any): Boolean = that match
         case a: AudioBook =>
-            if this.author == a.author
+            this.author == a.author
             && this.title == a.title
             && this.year == a.year
             && this.lengthInMinutes == a.lengthInMinutes
-                then true else false
         case p: PrintedBook =>
-            if this.author == p.author && this.title == p.title
-                then true else false
+            this.author == p.author && this.title == p.title
         case _ =>
             false
 ```
