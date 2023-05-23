@@ -172,6 +172,14 @@ Which means:
 - all snippets in files under directory `my/path/f` should fail during compilation
 - all other snippets should compile successfully
 
+#### -scastie-configuration
+
+Define the additional sbt configuration for your Scastie snippets. For example, when you import external libraries into your snippets, you need to add the related dependencies.
+
+```
+"-scastie-configuration", """libraryDependencies += "org.apache.commons" % "commons-lang3" % "3.12.0""""
+```
+
 ##### -Ysnippet-compiler-debug
 
 Setting this option makes snippet compiler print the snippet as it is compiled (after wrapping).
