@@ -6,7 +6,7 @@ You can require the entire toolkit in a single line:
 ```scala
 //> using toolkit latest
 ```
-**However, MUnit won't be available in your script right away.**
+**However, MUnit won't be available in your source right away.**
 MUnit will be available in the test scope sources only.
 To write a source file in the test scope, you can either put it in a `test` directory,
 or change its name to end with `.test.scala`. You can also use a dedicated directive to set the scope of your file.
