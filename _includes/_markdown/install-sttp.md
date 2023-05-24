@@ -4,12 +4,12 @@
 {% tab 'Scala CLI' %}
 You can require the entire toolkit in a single line:
 ```scala
-//> using toolkit "latest"
+//> using toolkit latest
 ```
 
 Alternatively, you can require just a specific version of sttp:
 ```scala
-//> using dep "com.softwaremill.sttp.client4::core:4.0.0-M1"
+//> using dep com.softwaremill.sttp.client4::core:4.0.0-M1
 ```
 {% endtab %}
 {% tab 'sbt' %}

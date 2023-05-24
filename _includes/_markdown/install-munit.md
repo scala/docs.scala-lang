@@ -4,9 +4,9 @@
 {% tab 'Scala CLI' %}
 You can require the entire toolkit in a single line:
 ```scala
-//> using toolkit "latest"
+//> using toolkit latest
 ```
-**However, munit won't be available in your script right away.**
+**However, MUnit won't be available in your script right away.**
 MUnit will be available in the test scope sources only.
 To write a source file in the test scope, you can either put it in a `test` directory,
 or change its name to end with `.test.scala`. You can also use a dedicated directive to set the scope of your file.
@@ -14,7 +14,7 @@ Learn more in the [Scala CLI documentation on tests](https://scala-cli.virtuslab
 
 Alternatively, you can require just a specific version of MUnit:
 ```scala
-//> using dep "org.scalameta::munit:1.0.0-M7"
+//> using dep org.scalameta::munit:1.0.0-M7
 ```
 {% endtab %}
 {% tab 'sbt' %}
