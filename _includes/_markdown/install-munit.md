@@ -6,11 +6,7 @@ You can require the entire toolkit in a single line:
 ```scala
 //> using toolkit latest
 ```
-**However, MUnit won't be available in your source right away.**
-MUnit will be available in the test scope sources only.
-To write a source file in the test scope, you can either put it in a `test` directory,
-or change its name to end with `.test.scala`. You can also use a dedicated directive to set the scope of your file.
-Learn more in the [Scala CLI documentation on tests](https://scala-cli.virtuslab.org/docs/commands/test/).
+MUnit being a testing framework, is only available in test files: files in a `test` directory or ones that have the `.test.scala` extension. Refer to the [Scala CLI documentation](https://scala-cli.virtuslab.org/docs/commands/test/) to learn more about the test scope.
 
 Alternatively, you can require just a specific version of MUnit:
 ```scala
