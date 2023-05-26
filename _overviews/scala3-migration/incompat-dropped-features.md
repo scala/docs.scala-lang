@@ -236,8 +236,9 @@ class Adder {
   def add(x: Int): Unit = sum += x
   add(1)
 }
-class LogAdder extends Adder {
+class LogAdder extends {
   private var added: Set[Int] = Set.empty
+} with Adder {
   override def add(x: Int): Unit = { added += x; super.add(x) }
 }
 ~~~
