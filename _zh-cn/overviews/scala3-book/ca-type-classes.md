@@ -15,7 +15,7 @@ permalink: "/zh-cn/scala3/book/:title.html"
 
 
 _类型类_ 是一种抽象的参数化类型，它允许您在不使用子类型的情况下向任何封闭数据类型添加新行为。
-如果你从 Java 那边过来，你可以把类型类当成像是 [`java.util.Comparator[T]`][comparator] 类。
+如果你从 Java 那边过来，你可以将类型类视为类似于 [`java.util.Comparator[T]`][comparator] 的东西。
 
 > Oliveira 等人写的论文 [“Type Classes as Objects and Implicits”][typeclasses-paper] (2010) 讨论了在 Scala 中类型类背后的基本观点。
 > 虽然论文用了旧的 Scala 版本，但其中的观点至今依然有用。
