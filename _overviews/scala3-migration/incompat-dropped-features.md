@@ -226,6 +226,45 @@ class Fizz private (val name: String) extends Bar {
 {% endtab %}
 {% endtabs %}
 
+Another use case for early initializers in Scala 2 is private state in the subclass that is accessed (through an overridden method) by the constructor of the superclass:
+
+{% tabs scala-2-initializer_5 %}
+{% tab 'Scala 2 Only' %}
+~~~ scala
+class Adder {
+  var sum = 0
+  def add(x: Int): Unit = sum += x
+  add(1)
+}
+class LogAdder extends Adder {
+  private var added: Set[Int] = Set.empty
+  override def add(x: Int): Unit = { added += x; super.add(x) }
+}
+~~~
+{% endtab %}
+{% endtabs %}
+
+This case can be refactored by moving the private state into a nested `object`, which is initialized on demand:
+
+{% tabs shared-initializer_6 %}
+{% tab 'Scala 2 and 3' %}
+~~~ scala
+class Adder {
+  var sum = 0
+  def add(x: Int): Unit = sum += x
+  add(1)
+}
+class LogAdder extends Adder {
+  private object state {
+    var added: Set[Int] = Set.empty
+  }
+  import state._
+  override def add(x: Int): Unit = { added += x; super.add(x) }
+}
+~~~
+{% endtab %}
+{% endtabs %}
+
 ## Existential Type
 
 Existential type is a [dropped feature]({{ site.scala3ref }}/dropped-features/existential-types.html), which makes the following code invalid.
