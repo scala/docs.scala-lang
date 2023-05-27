@@ -17,6 +17,8 @@ permalink: "/zh-cn/scala3/book/:title.html"
 为了更清楚地说明当前作用域中的 given 来自何处，我们使用一种特殊形式的 `import` 语句来导入 `given` 实例。
 此示例中显示了基本形式：
 
+{% tabs given1 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 object A:
   class TC
@@ -27,15 +29,21 @@ object B:
   import A.*       // import all non-given members
   import A.given   // import the given instance
 ```
+{% endtab %}
+{% endtabs %}
 
-在此代码中，对象 `B` 的 `import A.*` 子句导入 `A` 的所有成员*除了* `given` 实例 `tc`。
-相反，第二个导入 `import A.given` *仅*导入 `given` 实例。
+在此代码中，对象 `B` 的 `import A.*` 子句导入 `A` 的所有成员 *除了* `given` 实例 `tc`。
+相反，第二个导入 `import A.given` *仅* 导入 `given` 实例。
 两个 `import` 子句也可以合并为一个：
 
+{% tabs given2 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 object B:
   import A.{given, *}
 ```
+{% endtab %}
+{% endtabs %}
 
 ## 讨论
 
