@@ -16,11 +16,15 @@ This came from the fact that `==` and `!=` are implemented in terms of Java’s 
 Universal equality is convenient, but it’s also dangerous since it undermines type safety.
 For instance, let’s assume that after some refactoring, you’re left with an erroneous program where a value `y` has type `S` instead of the correct type `T`:
 
+{% tabs multiequ01 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val x = ...   // of type T
 val y = ...   // of type S, but should be T
 x == y        // typechecks, will always yield false
 ```
+{% endtab %}
+{% endtabs %}
 
 If `y` gets compared to other values of type `T`, the program will still typecheck, since values of all types can be compared with each other.
 But it will probably give unexpected results and fail at runtime.
@@ -28,11 +32,12 @@ But it will probably give unexpected results and fail at runtime.
 A type-safe programming language can do better, and multiversal equality is an opt-in way to make universal equality safer.
 It uses the binary type class `CanEqual` to indicate that values of two given types can be compared with each other.
 
-
 ## Allowing the comparison of class instances
 
 By default, in Scala 3 you can still create an equality comparison like this:
 
+{% tabs multiequ02 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 case class Cat(name: String)
 case class Dog(name: String)
@@ -41,10 +46,14 @@ val c = Cat("Morris")
 
 d == c  // false, but it compiles
 ```
+{% endtab %}
+{% endtabs %}
 
 But with Scala 3 you can disable such comparisons.
 By (a) importing `scala.language.strictEquality` or (b) using the `-language:strictEquality` compiler flag, this comparison no longer compiles:
 
+{% tabs multiequ03 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 import scala.language.strictEquality
 
@@ -55,41 +64,79 @@ println(rover == fido)   // compiler error
 // compiler error message:
 // Values of types Dog and Dog cannot be compared with == or !=
 ```
-
+{% endtab %}
+{% endtabs %}
 
 ## Enabling comparisons
 
 There are two ways to enable this comparison using the Scala 3 `CanEqual` type class.
 For simple cases like this, your class can *derive* the `CanEqual` class:
 
+4% tabs multiequ04 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 // Option 1
 case class Dog(name: String) derives CanEqual
 ```
+{% endtab %}
+{% endtabs %}
 
 As you’ll see in a few moments, when you need more flexibility you can also use this syntax:
 
+{% tabs multiequ05 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 // Option 2
 case class Dog(name: String)
 given CanEqual[Dog, Dog] = CanEqual.derived
 ```
+{% endtab %}
+{% endtabs %}
 
 Either of those two approaches now let `Dog` instances to be compared to each other.
-
 
 ## A more real-world example
 
 In a more real-world example, imagine you have an online bookstore and want to allow or disallow the comparison of physical, printed books, and audiobooks.
 With Scala 3 you start by enabling multiversal equality as shown in the previous example:
 
+{% tabs multiequ06 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 // [1] add this import, or this command line flag: -language:strictEquality
 import scala.language.strictEquality
 ```
+{% endtab %}
+{% endtabs %}
 
 Then create your domain objects as usual:
 
+{% tabs multiequ07 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+// [2] create your class hierarchy
+trait Book {
+    def author: String
+    def title: String
+    def year: Int
+}
+
+case class PrintedBook(
+    author: String,
+    title: String,
+    year: Int,
+    pages: Int
+) extends Book
+
+case class AudioBook(
+    author: String,
+    title: String,
+    year: Int,
+    lengthInMinutes: Int
+) extends Book
+```
+{% endtab %}
+{% tab 'Scala 3' %}
 ```scala
 // [2] create your class hierarchy
 trait Book:
@@ -111,9 +158,13 @@ case class AudioBook(
     lengthInMinutes: Int
 ) extends Book
 ```
+{% endtab %}
+{% endtabs %}
 
 Finally, use `CanEqual` to define which comparisons you want to allow:
 
+{% tabs multiequ08 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 // [3] create type class instances to define the allowed comparisons.
 //     allow `PrintedBook == PrintedBook`
@@ -131,6 +182,8 @@ val pBook = PrintedBook("1984", "George Orwell", 1961, 328)
 val aBook = AudioBook("1984", "George Orwell", 2006, 682)
 println(pBook == aBook)   // compiler error
 ```
+{% endtab %}
+{% endtabs %}
 
 The last line of code results in this compiler error message:
 
@@ -140,24 +193,31 @@ Values of types PrintedBook and AudioBook cannot be compared with == or !=
 
 This is how multiversal equality catches illegal type comparisons at compile time.
 
-
 ### Enabling “PrintedBook == AudioBook”
 
 That works as desired, but in some situations you may want to allow the comparison of physical books to audiobooks.
 When you want this, create these two additional equality comparisons:
 
+{% tabs multiequ09 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 // allow `PrintedBook == AudioBook`, and `AudioBook == PrintedBook`
 given CanEqual[PrintedBook, AudioBook] = CanEqual.derived
 given CanEqual[AudioBook, PrintedBook] = CanEqual.derived
 ```
+{% endtab %}
+{% endtabs %}
 
 Now you can compare physical books to audiobooks without a compiler error:
 
+{% tabs multiequ10 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 println(pBook == aBook)   // false
 println(aBook == pBook)   // false
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Implement “equals” to make them really work
 
@@ -165,6 +225,32 @@ While these comparisons are now allowed, they will always be `false` because the
 Therefore, the solution is to override the `equals` methods for each class.
 For instance, when you override the `equals` method for `AudioBook`:
 
+{% tabs multiequ11 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+case class AudioBook(
+    author: String,
+    title: String,
+    year: Int,
+    lengthInMinutes: Int
+) extends Book {
+    // override to allow AudioBook to be compared to PrintedBook
+    override def equals(that: Any): Boolean = that match {
+        case a: AudioBook => {
+            this.author == a.author
+            && this.title == a.title
+            && this.year == a.year
+            && this.lengthInMinutes == a.lengthInMinutes
+            }
+        case p: PrintedBook => {
+            this.author == p.author && this.title == p.title
+            }
+        case _ => false
+    }
+}
+```
+{% endtab %}
+{% tab 'Scala 3' %}
 ```scala
 case class AudioBook(
     author: String,
@@ -184,13 +270,19 @@ case class AudioBook(
         case _ =>
             false
 ```
+{% endtab %}
+{% endtabs %}
 
 You can now compare an `AudioBook` to a `PrintedBook`:
 
+{% tabs multiequ12 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 println(aBook == pBook)   // true (works because of `equals` in `AudioBook`)
 println(pBook == aBook)   // false
 ```
+{% endtab %}
+{% endtabs %}
 
 Currently, the `PrintedBook` book doesn’t have an `equals` method, so the second comparison returns `false`.
 To enable that comparison, just override the `equals` method in `PrintedBook`.

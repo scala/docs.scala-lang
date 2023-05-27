@@ -20,12 +20,15 @@ permalink: "/zh-cn/scala3/book/:title.html"
 通用相等性很方便，但也很危险，因为它破坏了类型安全。
 例如，假设在一些重构之后，你会得到一个错误的程序，其中值 `y` 的类型为 `S` 而不是正确的类型 `T`：
 
+{% tabs multiequ01 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 val x = ...   // of type T
 val y = ...   // of type S, but should be T
 x == y        // typechecks, will always yield false
-
 ```
+{% endtab %}
+{% endtabs %}
 
 如果 `y` 与其他类型为 `T` 的值进行比较，程序仍然会进行类型检查，因为所有类型的值都可以相互比较。
 但它可能会产生意想不到的结果并在运行时失败。
@@ -37,6 +40,8 @@ x == y        // typechecks, will always yield false
 
 默认情况下，在 Scala 3 中，您仍然可以像这样创建相等比较：
 
+{% tabs multiequ02 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 case class Cat(name: String)
 case class Dog(name: String)
@@ -45,10 +50,14 @@ val c = Cat("Morris")
 
 d == c  // false, but it compiles
 ```
+{% endtab %}
+{% endtabs %}
 
 但是使用 Scala 3，您可以禁用此类比较。
 通过 (a) 导入 `scala.language.strictEquality` 或 (b) 使用 `-language:strictEquality` 编译器标志，此比较不再编译：
 
+{% tabs multiequ03 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 import scala.language.strictEquality
 
@@ -59,24 +68,34 @@ println(rover == fido)   // compiler error
 // compiler error message:
 // Values of types Dog and Dog cannot be compared with == or !=
 ```
+{% endtab %}
+{% endtabs %}
 
 ## 启用比较
 
 有两种方法可以使用 Scala 3 `CanEqual` 类型类来启用这种比较。
 对于像这样的简单情况，您的类可以*派生* `CanEqual` 类：
 
+4% tabs multiequ04 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 // Option 1
 case class Dog(name: String) derives CanEqual
 ```
+{% endtab %}
+{% endtabs %}
 
 稍后您将看到，当您需要更多的灵活性时，您还可以使用以下语法：
 
+{% tabs multiequ05 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 // Option 2
 case class Dog(name: String)
 given CanEqual[Dog, Dog] = CanEqual.derived
 ```
+{% endtab %}
+{% endtabs %}
 
 现在，这两种方法中的任何一种都可以让 `Dog` 实例相互比较。
 
@@ -85,13 +104,43 @@ given CanEqual[Dog, Dog] = CanEqual.derived
 在一个更真实的示例中，假设您有一家在线书店，并且想要允许或禁止比较实体书、打印的书和有声读物。
 在 Scala 3 中，您首先启用多元平等性，如前面的示例所示：
 
+{% tabs multiequ06 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 // [1] add this import, or this command line flag: -language:strictEquality
 import scala.language.strictEquality
 ```
+{% endtab %}
+{% endtabs %}
 
 然后像往常一样创建你的领域对象：
 
+{% tabs multiequ07 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+// [2] create your class hierarchy
+trait Book {
+    def author: String
+    def title: String
+    def year: Int
+}
+
+case class PrintedBook(
+    author: String,
+    title: String,
+    year: Int,
+    pages: Int
+) extends Book
+
+case class AudioBook(
+    author: String,
+    title: String,
+    year: Int,
+    lengthInMinutes: Int
+) extends Book
+```
+{% endtab %}
+{% tab 'Scala 3' %}
 ```scala
 // [2] create your class hierarchy
 trait Book:
@@ -113,9 +162,13 @@ case class AudioBook(
     lengthInMinutes: Int
 ) extends Book
 ```
+{% endtab %}
+{% endtabs %}
 
 最后，使用 `CanEqual` 定义您想要允许的比较：
 
+{% tabs multiequ08 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 // [3] create type class instances to define the allowed comparisons.
 //     allow `PrintedBook == PrintedBook`
@@ -133,6 +186,8 @@ val pBook = PrintedBook("1984", "George Orwell", 1961, 328)
 val aBook = AudioBook("1984", "George Orwell", 2006, 682)
 println(pBook == aBook)   // compiler error
 ```
+{% endtab %}
+{% endtabs %}
 
 最后一行代码导致此编译器错误消息：
 
@@ -147,18 +202,26 @@ Values of types PrintedBook and AudioBook cannot be compared with == or !=
 这可以按需要工作，但在某些情况下，您可能希望允许将实体书与有声读物进行比较。
 如果需要，请创建以下两个额外的相等比较：
 
+{% tabs multiequ09 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 // allow `PrintedBook == AudioBook`, and `AudioBook == PrintedBook`
 given CanEqual[PrintedBook, AudioBook] = CanEqual.derived
 given CanEqual[AudioBook, PrintedBook] = CanEqual.derived
 ```
+{% endtab %}
+{% endtabs %}
 
 现在，您可以将实体书与有声书进行比较，而不会出现编译错误：
 
+{% tabs multiequ10 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 println(pBook == aBook)   // false
 println(aBook == pBook)   // false
 ```
+{% endtab %}
+{% endtabs %}
 
 #### 实现 “equals” 以使它们真正起作用
 
@@ -166,6 +229,32 @@ println(aBook == pBook)   // false
 因此，解决方案是覆盖每个类的 `equals` 方法。
 例如，当您覆盖 `AudioBook` 的 `equals` 方法时：
 
+{% tabs multiequ11 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+case class AudioBook(
+    author: String,
+    title: String,
+    year: Int,
+    lengthInMinutes: Int
+) extends Book {
+    // override to allow AudioBook to be compared to PrintedBook
+    override def equals(that: Any): Boolean = that match {
+        case a: AudioBook => {
+            this.author == a.author
+            && this.title == a.title
+            && this.year == a.year
+            && this.lengthInMinutes == a.lengthInMinutes
+            }
+        case p: PrintedBook => {
+            this.author == p.author && this.title == p.title
+            }
+        case _ => false
+    }
+}
+```
+{% endtab %}
+{% tab 'Scala 3' %}
 ```scala
 case class AudioBook(
     author: String,
@@ -187,13 +276,19 @@ case class AudioBook(
         case _ =>
             false
 ```
+{% endtab %}
+{% endtabs %}
 
 您现在可以将 `AudioBook` 与 `PrintedBook` 进行比较：
 
+{% tabs multiequ12 %}
+{% tab 'Scala 2 and 3' %}
 ```scala
 println(aBook == pBook)   // true (works because of `equals` in `AudioBook`)
 println(pBook == aBook)   // false
 ```
+{% endtab %}
+{% endtabs %}
 
 目前 `PrintedBook` 书没有 `equals` 方法，所以第二个比较返回 `false`。
 要启用该比较，只需覆盖 `PrintedBook` 中的 `equals` 方法。
