@@ -4,12 +4,12 @@
 {% tab 'Scala CLI' %}
 You can require the entire toolkit in a single line:
 ```scala
-//> using toolkit "latest"
+//> using toolkit latest
 ```
 
 Alternatively, you can require just a specific version of OS-Lib:
 ```scala
-//> using dep "com.lihaoyi::os-lib:0.9.1"
+//> using dep com.lihaoyi::os-lib:0.9.1
 ```
 {% endtab %}
 {% tab 'sbt' %}

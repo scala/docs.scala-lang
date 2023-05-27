@@ -4,12 +4,13 @@
 {% tab 'Scala CLI' %}
 You can require the entire toolkit in a single line:
 ```scala
-//> using dep "org.scala-lang::toolkit-test:0.1.7"
+//> using toolkit latest
 ```
+MUnit, being a testing framework, is only available in test files: files in a `test` directory or ones that have the `.test.scala` extension. Refer to the [Scala CLI documentation](https://scala-cli.virtuslab.org/docs/commands/test/) to learn more about the test scope.
 
 Alternatively, you can require just a specific version of MUnit:
 ```scala
-//> using dep "org.scalameta::munit:1.0.0-M7"
+//> using dep org.scalameta::munit:1.0.0-M7
 ```
 {% endtab %}
 {% tab 'sbt' %}
