@@ -17,7 +17,7 @@ keywords:
 
 scala-version: 2.13.10
 scala-212-version: 2.12.17
-scala-3-version: 3.2.2
+scala-3-version: 3.3.0
 
 collections:
   style:
