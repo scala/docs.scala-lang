@@ -53,7 +53,7 @@ The following fragment of `RichInt` shows how it extends `Int` to allow the expr
     }
 
 At runtime, this expression `3.toHexString` is optimised to the equivalent of a method call on a static object
-(`RichInt$.MODULE$.extension$toHexString(3)`), rather than a method call on a newly instantiated object.
+(`RichInt$.MODULE$.toHexString$extension(3)`), rather than a method call on a newly instantiated object.
 
 ## Correctness
 

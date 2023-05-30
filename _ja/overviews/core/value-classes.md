@@ -51,7 +51,7 @@ language: ja
       def toHexString: String = java.lang.Integer.toHexString(self)
     }
 
-実行時には、この `3.toHexString` という式は、新しくインスタンス化されるオブジェクトへのメソッド呼び出しではなく、静的なオブジェクトへのメソッド呼び出しと同様のコード (`RichInt$.MODULE$.extension$toHexString(3)`) へと最適化される。
+実行時には、この `3.toHexString` という式は、新しくインスタンス化されるオブジェクトへのメソッド呼び出しではなく、静的なオブジェクトへのメソッド呼び出しと同様のコード (`RichInt$.MODULE$.toHexString$extension(3)`) へと最適化される。
 
 ## 正当性
 
