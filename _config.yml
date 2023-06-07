@@ -16,7 +16,7 @@ keywords:
 - Guide
 
 scala-version: 2.13.11
-scala-212-version: 2.12.17
+scala-212-version: 2.12.18
 scala-3-version: 3.3.0
 
 collections:
