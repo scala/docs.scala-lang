@@ -46,8 +46,8 @@ Možete, zato što `Predef` uključuje slj. implicitnu konverziju:
 ```scala mdoc
 import scala.language.implicitConversions
 
-implicit def int2Integer(x: Int) =
-  java.lang.Integer.valueOf(x)
+implicit def int2Integer(x: Int): Integer =
+  Integer.valueOf(x)
 ```
 
 Pošto su implicitne konverzije opasne ako se koriste pogrešno, kompajler upozorava kada kompajlira definiciju implicitne konverzije.

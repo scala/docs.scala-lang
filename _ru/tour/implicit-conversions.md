@@ -44,8 +44,8 @@ implicit def list2ordered[A](x: List[A])
 ```scala mdoc
 import scala.language.implicitConversions
 
-implicit def int2Integer(x: Int) =
-  java.lang.Integer.valueOf(x)
+implicit def int2Integer(x: Int): Integer =
+  Integer.valueOf(x)
 ```
 
 Компилятор предупреждает при компиляции об обнаружении неявных преобразований, т.к. неявные преобразования могут иметь разные подводные камни (особенно если использовать их без разбора).
