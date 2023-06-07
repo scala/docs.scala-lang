@@ -124,7 +124,7 @@ Welcome to Scala 3.2.0 (17.0.3, Java OpenJDK 64-Bit Server VM).
 Type in expressions for evaluation. Or try :help.
 
 scala> util.Properties.versionNumberString
-val res0: String = 2.13.10
+val res0: String = 2.13.11
 ```
 
 Note that Scala 3 offers
@@ -312,14 +312,14 @@ setting in a multi-project build.
 
 For example, if you add this to your `build.sbt`:
 
-    scalaVersion := "2.13.10"
+    scalaVersion := "2.13.11"
 
 that's a "bare" setting, and you might expect it to apply build-wide.
 But it doesn't. _It only applies to the root project._
 
 In many cases one should instead write:
 
-    ThisBuild / scalaVersion := "2.13.10"
+    ThisBuild / scalaVersion := "2.13.11"
 
 Other possibilities include:
 

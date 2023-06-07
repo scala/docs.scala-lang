@@ -42,8 +42,8 @@ implicit def list2ordered[A](x: List[A])
 ```scala mdoc
 import scala.language.implicitConversions
 
-implicit def int2Integer(x: Int) =
-  java.lang.Integer.valueOf(x)
+implicit def int2Integer(x: Int): Integer =
+  Integer.valueOf(x)
 ```
 
 暗黙の変換は見境なく使われると落とし穴になり得るため、暗黙の変換の定義をコンパイルしている時にコンパイラは警告を出します。
