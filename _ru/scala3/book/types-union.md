@@ -1,19 +1,24 @@
 ---
-title: Union Types
+layout: multipage-overview
+title: Объединение типов
+scala3: true
+partof: scala3-book
+overview-name: "Scala 3 — Book"
 type: section
-description: This section introduces and demonstrates union types in Scala 3.
-languages: [zh-cn]
+description: В этом разделе представлены объединение типов в Scala 3.
+language: ru
 num: 51
 previous-page: types-intersection
-next-page: types-adts-gadts
-scala3: true
-versionSpecific: true
+next-page:
 ---
 
-Used on types, the `|` operator creates a so-called _union type_.
-The type `A | B` represents values that are **either** of the type `A` **or** of the type `B`.
+<span class="tag tag-inline">Только в Scala 3</span>
 
-In the following example, the `help` method accepts a parameter named `id` of the union type `Username | Password`, that can be either a `Username` or a `Password`:
+Используемый для типов `|` оператор создает так называемый _тип объединения_ (_union type_). 
+Тип `А | B` представляет значения, которые относятся **либо** к типу `A`, **либо** к типу `B`.
+
+В следующем примере метод `help` принимает параметр с именем `id` типа объединения `Username | Password`, 
+который может быть либо `Username`, либо `Password`:
 
 ```scala
 case class Username(name: String)
@@ -23,29 +28,34 @@ def help(id: Username | Password) =
   val user = id match
     case Username(name) => lookupName(name)
     case Password(hash) => lookupPassword(hash)
-  // more code here ...
+  // ещё больше кода здесь ...
 ```
-We implement the method `help` by distinguishing between the two alternatives using pattern matching.
 
-This code is a flexible and type-safe solution.
-If you attempt to pass in a type other than a `Username` or `Password`, the compiler flags it as an error:
+Мы реализуем метод `help`, разделяя две альтернативы, используя сопоставление с образцом.
+
+Этот код является гибким и типобезопасным решением. 
+Если попытаться передать тип, отличный от `Username` или `Password`, компилятор пометит это как ошибку:
 
 ```scala
 help("hi")   // error: Found: ("hi" : String)
              //        Required: Username | Password
 ```
 
-You’ll also get an error if you attempt to add a `case` to the `match` expression that doesn’t match the `Username` or `Password` types:
+Ошибка также будет получена, если попытаться добавить `case` в выражение `match`, 
+которое не соответствует типам `Username` или `Password`:
 
 ```scala
-case 1.0 => ???   // ERROR: this line won’t compile
+case 1.0 => ???   // Ошибка: это строка не компилируется
 ```
 
-### Alternative to Union Types
-As shown, union types can be used to represent alternatives of several different types, without requiring those types to be part of a custom-crafted class hierarchy, or requiring explicit wrapping.
+### Альтернатива объединенным типам
 
-#### Pre-planning the Class Hierarchy
-Without union types, it would require pre-planning of the class hierarchy, like the following example illustrates:
+Как показано, объединенные типы могут использоваться для представления вариантов нескольких разных типов, 
+не требуя, чтобы эти типы были частью специально созданной иерархии классов.
+
+#### Предварительное планирование иерархии классов
+
+Другие языки требуют предварительного планирования иерархии классов, как показано в следующем примере:
 
 ```scala
 trait UsernameOrPassword
@@ -54,30 +64,36 @@ case class Password(hash: Hash) extends UsernameOrPassword
 def help(id: UsernameOrPassword) = ...
 ```
 
-Pre-planning does not scale very well since, for example, requirements of API users might not be foreseeable.
-Additionally, cluttering the type hierarchy with marker traits like `UsernameOrPassword` also makes the code more difficult to read.
+Предварительное планирование не очень хорошо масштабируется, 
+поскольку, например, требования пользователей API могут быть непредсказуемыми. 
+Кроме того, загромождение иерархии типов маркерами типа `UsernameOrPassword` затрудняет чтение кода.
 
-#### Tagged Unions
-Another alternative is to define a separate enumeration type like:
+#### Теговые объединения
+
+Другой альтернативой является задание отдельного типа перечисления, например:
 
 ```scala
 enum UsernameOrPassword:
   case IsUsername(u: Username)
   case IsPassword(p: Password)
 ```
-The enumeration `UsernameOrPassword` represents a _tagged_ union of `Username` and `Password`.
-However, this way of modeling the union requires _explicit wrapping and unwrapping_ and, for instance, `Username` is **not** a subtype of `UsernameOrPassword`.
 
-### Inference of Union Types
-The compiler assigns a union type to an expression _only if_ such a type is explicitly given.
-For instance, given these values:
+Перечисление `UsernameOrPassword` представляет собой _помеченное_ (_tagged_) объединение `Username` и `Password`. 
+Однако этот способ моделирования объединения требует _явной упаковки и распаковки_, 
+и, например, `Username` **не** является подтипом `UsernameOrPassword`.
+
+### Вывод типов объединения
+
+Компилятор присваивает типу объединения выражение, _только если_ такой тип явно задан. 
+Например, рассмотрим такие значения:
 
 ```scala
 val name = Username("Eve")     // name: Username = Username(Eve)
 val password = Password(123)   // password: Password = Password(123)
 ```
 
-This REPL example shows how a union type can be used when binding a variable to the result of an `if`/`else` expression:
+В этом REPL примере показано, 
+как можно использовать тип объединения при привязке переменной к результату выражения `if`/`else`:
 
 ````
 scala> val a = if true then name else password
@@ -87,9 +103,9 @@ scala> val b: Password | Username = if true then name else password
 val b: Password | Username = Username(Eve)
 ````
 
-The type of `a` is `Object`, which is a supertype of `Username` and `Password`, but not the *least* supertype, `Password | Username`.
-If you want the least supertype you have to give it explicitly, as is done for `b`.
+Типом `a` является `Object`, который является супертипом `Username` и `Password`, 
+но не _наименьшим_ супертипом, `Password | Username`. 
+Если необходим наименьший супертип, его нужно указать явно, как это делается для `b`.
 
-> Union types are duals of intersection types.
-> And like `&` with intersection types, `|` is also commutative: `A | B` is the same type as `B | A`.
-
+> Типы объединения являются двойственными типам пересечения. 
+> И как `&` с типами пересечения, `|` также коммутативен: `A | B` того же типа, что и `B | А`.
