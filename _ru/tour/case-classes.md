@@ -45,7 +45,7 @@ val frankenstein = Book("978-0486282114")
 case class Message(sender: String, recipient: String, body: String)
 val message1 = Message("guillaume@quebec.ca", "jorge@catalonia.es", "Ça va ?")
 
-println(message1.sender)  // prints guillaume@quebec.ca
+println(message1.sender)  // печатает guillaume@quebec.ca
 message1.sender = "travis@washington.us"  // эта строка не компилируется
 ```
 

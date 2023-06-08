@@ -15,7 +15,7 @@ previous-page: higher-order-functions
 {% tab 'Scala 2' for=Nested_functions_definition %}
 
 ```scala mdoc
- def factorial(x: Int): Int = {
+def factorial(x: Int): Int = {
   def fact(x: Int, accumulator: Int): Int = {
     if (x <= 1) accumulator
     else fact(x - 1, x * accumulator)
