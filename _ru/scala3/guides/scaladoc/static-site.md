@@ -137,12 +137,12 @@ layout: main
 
 ```html
 <html>
-  <head>
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    {{ content }}
-  </body>
+    <head>
+        <title>Hello, world!</title>
+    </head>
+    <body>
+        {{ content }}
+    </body>
 </html>
 ```
 
