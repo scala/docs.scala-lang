@@ -229,7 +229,7 @@ Future 内の値が利用可能となることを必要とするため、Future 
       connection.getCurrentValue(USD)
     }
 
-    for( quote <- rateQuote) {
+    for (quote <- rateQuote) {
       val purchase = Future {
         if (isProfitable(quote)) connection.buy(amount, quote)
         else throw new Exception("有益ではない")
