@@ -139,43 +139,18 @@ Future の実装の多くは、Future の結果を知りたくなったクライ
     }
 
 `onComplete` メソッドは、Future 計算の失敗と成功の両方の結果を扱えるため、汎用性が高い。
-成功した結果のみ扱う場合は、(部分関数を受け取る) `onSuccess` コールバックを使う:
+成功した結果のみ扱う場合は、`foreach` コールバックを使う:
 
     val f: Future[List[String]] = Future {
       session.getRecentPosts
     }
 
-    f onSuccess {
-      case posts => for (post <- posts) println(post)
+    f foreach { posts =>
+      for (post <- posts) println(post)
     }
 
-失敗した結果のみ扱う場合は、`onFailure` コールバックを使う:
-
-    val f: Future[List[String]] = Future {
-      session.getRecentPosts
-    }
-
-    f onFailure {
-      case t => println("エラーが発生した: " + t.getMessage)
-    }
-
-    f onSuccess {
-      case posts => for (post <- posts) println(post)
-    }
-
-`onFalure` コールバックは Future が失敗した場合、つまりそれが例外を保持する場合のみ実行される。
-
-部分関数は `isDefinedAt` メソッドを持つため、`onFailure` メソッドはコールバックが特定の `Throwable` に対して定義されている場合のみ発火される。
-以下の例では、登録された `onFailure` コールバックは発火されない:
-
-    val f = Future {
-      2 / 0
-    }
-
-    f onFailure {
-      case npe: NullPointerException =>
-        println("これが表示されているとしたらビックリ。")
-    }
+失敗した結果のみ扱う場合は、 `Failure[Throwable]`から`Success[Throwable]`に返送する
+`failed`投射を使う。詳細は[投射](#projections)を参照。
 
 キーワードの初出の位置を検索する例に戻ると、キーワードの位置を画面に表示したいかもしれない:
 
@@ -184,15 +159,12 @@ Future の実装の多くは、Future の結果を知りたくなったクライ
       source.toSeq.indexOfSlice("myKeyword")
     }
 
-    firstOccurence onSuccess {
-      case idx => println("キーワードの初出位置: " + idx)
+    firstOccurence oncomplete {
+      case Success(idx) => println("キーワードの初出位置: " + idx)
+      case Failure(t) => println("処理失敗：" + t.getMessage)
     }
 
-    firstOccurence onFailure {
-      case t => println("ファイルの処理に失敗した: " + t.getMessage)
-    }
-
-`onComplete`、`onSuccess`、および `onFailure` メソッドは全て `Unit` 型を返すため、これらの呼び出しを連鎖させることができない。
+`onComplete`、および `foreach` メソッドは全て `Unit` 型を返すため、これらの呼び出しを連鎖させることができない。
 これは意図的な設計で、連鎖された呼び出しが登録されたコールバックの実行の順序を暗示しないようにしている
 (同じ Future に登録されたコールバックは順不同に発火される)。
 
@@ -212,12 +184,12 @@ Future 内の値が利用可能となることを必要とするため、Future 
       "na" * 16 + "BATMAN!!!"
     }
 
-    text onSuccess {
-      case txt => totalA += txt.count(_ == 'a')
+    text.foreach { txt =>
+      totalA += txt.count(_ == 'a')
     }
 
-    text onSuccess {
-      case txt => totalA += txt.count(_ == 'A')
+    text.foreach { txt =>
+      totalA += txt.count(_ == 'A')
     }
 
 2つのコールバックが順次に実行された場合は、変数 `totalA` は期待される値 `18` を持つ。
@@ -232,7 +204,7 @@ Future 内の値が利用可能となることを必要とするため、Future 
 <ol>
 <li>Future に <code>onComplete</code> コールバックを登録することで、対応するクロージャが Future が完了した後に eventually に実行されることが保証される。</li>
 
-<li><code>onSuccess</code> や <code>onFailure</code> コールバックを登録することは <code>onComplete</code> と同じ意味論を持つ。ただし、クロージャがそれぞれ成功したか失敗した場合のみに呼ばれるという違いがある。</li>
+<li><code>foreach</code> コールバックを登録することは <code>onComplete</code> と同じ意味論を持つ。ただし、クロージャがそれぞれ成功したか失敗した場合のみに呼ばれるという違いがある。</li>
 
 <li>既に完了した Future にコールバックを登録することは (1 により) コールバックが eventually に実行されることとなる。</li>
 
@@ -257,33 +229,32 @@ Future 内の値が利用可能となることを必要とするため、Future 
       connection.getCurrentValue(USD)
     }
 
-    rateQuote onSuccess { case quote =>
+    for( quote <- rateQuote) {
       val purchase = Future {
         if (isProfitable(quote)) connection.buy(amount, quote)
         else throw new Exception("有益ではない")
       }
 
-      purchase onSuccess {
-        case _ => println(amount + " USD を購入した")
-      }
+      for (amount <- purchase)
+        println(amount + " USD を購入した")
     }
 
 まずは現在の為替相場を取得する `rateQuote` という `Future` を作る。
 この値がサーバから取得できて Future が成功した場合は、計算は
-`onSuccess` コールバックに進み、ここで買うかどうかの決断をすることができる。
+`foreach` コールバックに進み、ここで買うかどうかの決断をすることができる。
 ここでもう 1つの Future である `purchase` を作って、有利な場合のみ買う決定をしてリクエストを送信する。
 最後に、`purchase` が完了すると、通知メッセージを標準出力に表示する。
 
 これは動作するが、2つの理由により不便だ。
-第一に、`onSuccess` を使わなくてはいけなくて、2つ目の Future である
+第一に、`foreach` を使わなくてはいけなくて、2つ目の Future である
 `purchase` をその中に入れ子にする必要があることだ。
 例えば `purchase` が完了した後に別の貨幣を売却したいとする。
-それはまた `onSuccess` の中でこのパターンを繰り返すことになり、インデントしすぎで理解しづらく肥大化したコードとなる。
+それはまた `foreach` の中でこのパターンを繰り返すことになり、インデントしすぎで理解しづらく肥大化したコードとなる。
 
-第二に、`purchase` は他のコードのスコープ外にあり、`onSuccess`
+第二に、`purchase` は他のコードのスコープ外にあり、`foreach`
 コールバック内においてのみ操作することができる。
 そのため、アプリケーションの他の部分は `purchase` を見ることができず、他の貨幣を売るために別の
-`onSuccess` コールバックを登録することもできない。
+`foreach` コールバックを登録することもできない。
 
 これらの 2つの理由から Future はより自然な合成を行うコンビネータを提供する。
 基本的なコンビネータの 1つが `map` で、これは与えられた Future
@@ -301,11 +272,11 @@ Future の投射はコレクションの投射と同様に考えることがで�
       else throw new Exception("有益ではない")
     }
 
-    purchase onSuccess {
-      case _ => println(amount + " USD を購入した")
+    purchase.foreach { amount =>
+      println(amount + " USD を購入した")
     }
 
-`rateQuote` に対して `map` を使うことで `onSuccess` コールバックを一切使わないようになった。
+`rateQuote` に対して `map` を使うことで `foreach` コールバックを一切使わないようになった。
 それと、より重要なのが入れ子が無くなったことだ。
 ここで他の貨幣を売却したいと思えば、`purchase` に再び `map` するだけでいい。
 
@@ -321,7 +292,7 @@ Future の投射はコレクションの投射と同様に考えることがで�
 この例外を伝搬させる意味論は他のコンビネータにおいても同様だ。
 
 Future の設計指針の 1つは for 内包表記から利用できるようにすることだった。
-このため、Future は `flatMap`、`filter` そして `foreach` コンビネータを持つ。
+このため、Future は `flatMap` そして `withFilter` コンビネータを持つ。
 `flatMap` メソッドは値を新しい Future `g` に投射する関数を受け取り、`g`
 が完了したときに完了する新たな Future を返す。
 
@@ -338,8 +309,8 @@ Future の設計指針の 1つは for 内包表記から利用できるように
       if isProfitable(usd, chf)
     } yield connection.buy(amount, chf)
 
-    purchase onSuccess {
-      case _ => println(amount + " CHF を購入した")
+    purchase foreach { _ =>
+      println(amount + " CHF を購入した")
     }
 
 この `purchase` は `usdQuote` と `chfQuote` が完了した場合のみ完了する。
@@ -369,10 +340,6 @@ for 内包表記以外の場合はあまり使われない。
 Future に関しては、`filter` の呼び出しは `withFilter` の呼び出しと全く同様の効果がある。
 
 `collect` と `filter` コンビネータの関係はコレクション API におけるこれらのメソッドの関係に似ている。
-
-`foreach` コンビネータで注意しなければいけないのは値が利用可能となった場合に走査するのにブロックしないということだ。
-かわりに、`foreach` のための関数は Future が成功した場合のみ非同期に実行される。
-そのため、`foreach` は `onSuccess` コールバックと全く同じ意味を持つ。
 
 `Future` トレイトは概念的に (計算結果と例外という) 2つの型の値を保持することができるため、例外処理のためのコンビネータが必要となる。
 
@@ -418,7 +385,7 @@ Future は同じ `Throwable` とともに失敗する。
 
     val anyQuote = usdQuote fallbackTo chfQuote
 
-    anyQuote onSuccess { println(_) }
+    anyQuote foreach { println(_) }
 
 `andThen` コンビネータは副作用の目的のためだけに用いられる。
 これは、成功したか失敗したかに関わらず現在の Future と全く同一の結果を返す新たな Future を作成する。
@@ -454,12 +421,17 @@ Future は同じ `Throwable` とともに失敗する。
     }
     for (exc <- f.failed) println(exc)
 
-以下の例は画面に何も表示しない:
+以上のfor内包表記はこのように訳される
 
-    val f = Future {
+    f.failed.foreach( exc => println(exc))
+
+`f`が失敗したのために、クロージャは新しく成功した`Future[Throwable]`に
+登録される。 以下の例は画面に何も表示しない:
+
+    val g = Future {
       4 / 2
     }
-    for (exc <- f.failed) println(exc)
+    for (exc <- g.failed) println(exc)
 
 <!--
 There is another projection called `timedout` which is specific to the
@@ -536,8 +508,7 @@ Future が失敗した場合は、呼び出し元には Future が失敗した�
 
 非同期の計算が処理されない例外を投げた場合、その計算が行われた Future は失敗する。
 失敗した Future は計算値のかわりに `Throwable` のインスタンスを格納する。
-`Future` は、`Throwable` に適用することができる `PartialFunction` を受け取る
-`onFailure` コールバックメソッドを提供する。
+`Future`の`failed`投射メソッドは`Throwable`の例外を成功したFutureのように処理される。
 以下の特別な例外に対しては異なる処理が行われる:
 
 1. `scala.runtime.NonLocalReturnControl[_]`。この例外は戻り値に関連する値を保持する。
@@ -576,14 +547,14 @@ Promise の `p` は `p.future` によって返される Future を完了させ�
 
     val producer = Future {
       val r = produceSomething()
-      p success r
+      p.success(r)
       continueDoingSomethingUnrelated()
     }
 
     val consumer = Future {
       startDoingSomething()
-      f onSuccess {
-        case r => doSomethingWithResult()
+      f.foreach { r =>
+        doSomethingWithResult()
       }
     }
 
@@ -644,8 +615,8 @@ HTTP レスポンスにのみ興味がある場合で、これは最初に Promi
 
     p completeWith f
 
-    p.future onSuccess {
-      case x => println(x)
+    p.future.foreach { x =>
+      println(x)
     }
 
 Promise を例外とともに失敗させる場合は、`Throwable` の 3つのサブタイプが特殊扱いされる。
@@ -664,12 +635,12 @@ Promise、Future の `onComplete` メソッド、そして `future`
     def first[T](f: Future[T], g: Future[T]): Future[T] = {
       val p = Promise[T]()
 
-      f onSuccess {
-        case x => p.tryComplete(x)
+      f.foreach { x =>
+        p.tryComplete(x)
       }
 
-      g onSuccess {
-        case x => p.tryComplete(x)
+      g.foreach { x =>
+        p.tryComplete(x)
       }
 
       p.future
