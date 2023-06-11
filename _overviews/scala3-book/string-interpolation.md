@@ -1,8 +1,7 @@
 ---
 title: String Interpolation
 type: chapter
-description: This page provides more information about creating strings and using string
-interpolation.
+description: This page provides more information about creating strings and using string interpolation.
 languages: [es, ja, zh-cn]
 num: 18
 previous-page: first-look-at-types
@@ -72,9 +71,9 @@ String interpolators can also take arbitrary expressions. For example:
 {% tabs example-4 %}
 {% tab 'Scala 2 and 3' for=example-4 %}
 ```scala
-println(s"2 + 2 = ${2 + 2}")   // prints "2 + 2 = 4"
+println(s"2 + 2 = ${2 + 2}")   // "2 + 2 = 4"
 val x = -1
-println(s"x.abs = ${x.abs}")   // prints "x.abs = 1"
+println(s"x.abs = ${x.abs}")   // "x.abs = 1"
 ```
 {% endtab %}
 {% endtabs %}
@@ -87,7 +86,7 @@ To represent an actual dollar sign you can double it `$$`, like here:
 {% tabs example-5 %}
 {% tab 'Scala 2 and 3' for=example-5 %}
 ```scala
-println(s"New offers starting at $$14.99")   // prints "New offers starting at $14.99"
+println(s"New offers starting at $$14.99")   // "New offers starting at $14.99"
 ```
 {% endtab %}
 {% endtabs %}
@@ -97,7 +96,7 @@ Double quotes also need to be escaped. This can be done by using triple quotes a
 {% tabs example-6 %}
 {% tab 'Scala 2 and 3' for=example-6 %}
 ```scala
-println(s"""{"name":"James"}""")     // prints `{"name":"James"}`
+println(s"""{"name":"James"}""")     // `{"name":"James"}`
 ```
 {% endtab %}
 {% endtabs %}
@@ -137,7 +136,7 @@ interpolator, all variable references should be followed by a `printf`-style for
 ```scala
 val height = 1.9d
 val name = "James"
-println(f"$name%s is $height%2.2f meters tall")  // James is 1.90 meters tall
+println(f"$name%s is $height%2.2f meters tall")  // "James is 1.90 meters tall"
 ```
 {% endtab %}
 {% endtabs %}
@@ -182,9 +181,9 @@ definition a formatter of `%s` (`String`) is assumed.
 Finally, as in Java, use `%%` to get a literal `%` character in the output string:
 
 {% tabs literal-percent %}
-{% tab 'Scala 3' for=literal-percent %}
+{% tab 'Scala 2 and 3' for=literal-percent %}
 ```scala
-println(f"3/19 is ${300.0/19}%0.2f%%")  // Prints "3/19 is 15.79%"
+println(f"3/19 is less than 20%%")  // "3/19 is less than 20%"
 ```
 {% endtab %}
 {% endtabs %}
@@ -257,7 +256,7 @@ val pt = p"1,-2"     // Point(1.0,-2.0)
 We'd create a custom `p`-interpolator by first implementing a `StringContext` extension
 with something like:
 
-{% tabs custom-interpolator class=tabs-scala-version %}
+{% tabs custom-interpolator-2 class=tabs-scala-version %}
 
 {% tab 'Scala 2' for=custom-interpolator-2 %}
 ```scala
@@ -266,7 +265,8 @@ implicit class PointHelper(val sc: StringContext) extends AnyVal {
 }
 ```
 
-**Note:** It's important to extend `AnyVal` in Scala 2.x to prevent runtime instantiation on each interpolation. See the [value class documentation][value-class] for more.
+**Note:** It's important to extend `AnyVal` in Scala 2.x to prevent runtime instantiation on each interpolation. See the [value class]({% link _overviews/core/value-classes.md %}) documentation for more.
+
 {% endtab %}
 
 {% tab 'Scala 3' for=custom-interpolator-2 %}
