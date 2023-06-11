@@ -6,6 +6,8 @@ languages: [es, ja, zh-cn]
 num: 18
 previous-page: first-look-at-types
 next-page: control-structures
+redirect_from:
+  - /overviews/core/string-interpolation.html
 ---
 
 ## Introduction
