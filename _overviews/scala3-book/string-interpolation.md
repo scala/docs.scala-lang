@@ -17,9 +17,9 @@ For instance:
 {% tabs example-1 %}
 {% tab 'Scala 2 and 3' for=example-1 %}
 ```scala
-val name = "John"
+val name = "James"
 val age = 30
-println(s"$name is $age years old")   // "John is 30 years old"
+println(s"$name is $age years old")   // "James is 30 years old"
 ```
 {% endtab %}
 {% endtabs %}
@@ -44,9 +44,9 @@ Prepending `s` to any string literal allows the usage of variables directly in t
 {% tabs example-2 %}
 {% tab 'Scala 2 and 3' for=example-2 %}
 ```scala
-val name = "John"
+val name = "James"
 val age = 30
-println(s"$name is $age years old")   // "John is 30 years old"
+println(s"$name is $age years old")   // "James is 30 years old"
 ```
 {% endtab %}
 {% endtabs %}
@@ -60,7 +60,7 @@ While it may seem obvious, it's important to note here that string interpolation
 {% tabs example-3 %}
 {% tab 'Scala 2 and 3' for=example-3 %}
 ```scala
-val name = "John"
+val name = "James"
 val age = 30
 println("$name is $age years old")   // "$name is $age years old"
 ```
@@ -97,20 +97,43 @@ Double quotes also need to be escaped. This can be done by using triple quotes a
 {% tabs example-6 %}
 {% tab 'Scala 2 and 3' for=example-6 %}
 ```scala
-val person = """{"name":"James"}"""
+println(s"""{"name":"James"}""")     // prints `{"name":"James"}`
 ```
 {% endtab %}
 {% endtabs %}
 
-which will produce the string `{"name":"James"}` when printed.
+Finally, all multi-line string literals can also be interpolated
+
+{% tabs example-7 %}
+{% tab 'Scala 2 and 3' for=example-7 %}
+```scala
+val name = "James"
+val age = 30
+
+println(s"""{
+  "name": "$name",
+  "age": $age
+}""")
+```
+
+This will pretty print the json as
+
+```json
+{
+  "name": "James",
+  "age": 30
+}
+```
+{% endtab %}
+{% endtabs %}
 
 ## The `f` Interpolator (`f`-Strings)
 
 Prepending `f` to any string literal allows the creation of simple formatted strings, similar to `printf` in other languages.  When using the `f`
-interpolator, all variable references should be followed by a `printf`-style format string, like `%d`.   Let's look at an example:
+interpolator, all variable references should be followed by a `printf`-style format string, like `%d`. Let's look at an example:
 
-{% tabs example-7 %}
-{% tab 'Scala 2 and 3' for=example-7 %}
+{% tabs example-8 %}
+{% tab 'Scala 2 and 3' for=example-8 %}
 ```scala
 val height = 1.9d
 val name = "James"
@@ -170,8 +193,8 @@ println(f"3/19 is ${300.0/19}%0.2f%%")  // Prints "3/19 is 15.79%"
 
 The raw interpolator is similar to the `s` interpolator except that it performs no escaping of literals within the string.  Here's an example processed string:
 
-{% tabs example-8 %}
-{% tab 'Scala 2 and 3' for=example-8 %}
+{% tabs example-9 %}
+{% tab 'Scala 2 and 3' for=example-9 %}
 ```scala
 scala> s"a\nb"
 res0: String =
@@ -183,8 +206,8 @@ b
 
 Here the `s` string interpolator replaced the characters `\n` with a return character. The `raw` interpolator will not do that.
 
-{% tabs example-9 %}
-{% tab 'Scala 2 and 3' for=example-9 %}
+{% tabs example-10 %}
+{% tab 'Scala 2 and 3' for=example-10 %}
 ```scala
 scala> raw"a\nb"
 res1: String = a\nb
@@ -207,8 +230,8 @@ here's a quick example to help illustrate how they work.
 
 In Scala, all processed string literals are simple code transformations. Anytime the compiler encounters a processed string literal of the form:
 
-{% tabs example-10 %}
-{% tab 'Scala 2 and 3' for=example-10 %}
+{% tabs example-11 %}
+{% tab 'Scala 2 and 3' for=example-11 %}
 ```scala
 id"string content"
 ```
@@ -238,22 +261,18 @@ with something like:
 
 {% tab 'Scala 2' for=custom-interpolator-2 %}
 ```scala
-// Note: We extend AnyVal to prevent runtime instantiation.  See
-// value class guide for more info.
 implicit class PointHelper(val sc: StringContext) extends AnyVal {
   def p(args: Any*): Point = ???
 }
-
-val pt = p"1,-2"    // Point(1.0, -2.0)
 ```
+
+**Note:** It's important to extend `AnyVal` in Scala 2.x to prevent runtime instantiation on each interpolation. See the [value class documentation][value-class] for more.
 {% endtab %}
 
 {% tab 'Scala 3' for=custom-interpolator-2 %}
 ```scala
 extension (sc: StringContext)
   def p(args: Any*): Point = ???
-
-val pt = p"1,-2"    // Point(1.0, -2.0)
 ```
 {% endtab %}
 
@@ -300,8 +319,8 @@ processing of the string `parts` and expression `args` instead of reusing the
 ```scala
 implicit class PointHelper(val sc:StringContext) extends AnyVal {
   def p(args: Double*): Point = {
-    // reuse the `s` method and then split on ','
-    val pts = sc.s(args:_*).split(",", 2).map { _.toDoubleOption.getOrElse(0.0) }
+    // reuse the `s`-interpolator and then split on ','
+    val pts = sc.s(args: _*).split(",", 2).map { _.toDoubleOption.getOrElse(0.0) }
     Point(pts(0), pts(1))
   }
 }
@@ -317,8 +336,8 @@ p"${x/5}, $x"   // Point(2.4, 12.0)
 ```scala
 extension (sc: StringContext)
   def p(args: Double*): Point = {
-    // reuse the `s` method and then split on ','
-    val pts = sc.s(args:_*).split(",", 2).map { _.toDoubleOption.getOrElse(0.0) }
+    // reuse the `s`-interpolator and then split on ','
+    val pts = sc.s(args: _*).split(",", 2).map { _.toDoubleOption.getOrElse(0.0) }
     Point(pts(0), pts(1))
   }
 
@@ -332,8 +351,9 @@ p"${x/5}, $x"   // Point(2.4, 12.0)
 
 While string interpolators were originally used to create some form of a String, the use
 of custom interpolators as above can allow for powerful syntactic shorthand, and the
-community has already made swift use of this syntax for things like ansi terminal color
-expansion, executing sql queries, magic `$"identifier"` representations, and many others.
+community has already made swift use of this syntax for things like ANSI terminal color
+expansion, executing SQL queries, magic `$"identifier"` representations, and many others.
 
-[java-format-docs][https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Formatter.html#detail]
+[java-format-docs]: https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Formatter.html#detail
+[value-class]: {% link _overviews/core/value-classes.md %}
 [sip-11]: {% link _sips/sips/string-interpolation.md %}
