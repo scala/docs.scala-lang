@@ -3,7 +3,7 @@ title: Summary
 type: section
 description: This page provides a summary of the previous 'Functions' sections.
 languages: [ru, zh-cn]
-num: 34
+num: 35
 previous-page: fun-write-method-returns-function
 next-page: packaging-imports
 ---

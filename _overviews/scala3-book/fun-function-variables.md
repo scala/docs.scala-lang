@@ -3,7 +3,7 @@ title: Function Variables
 type: section
 description: This page shows how to use function variables in Scala.
 languages: [ru, zh-cn]
-num: 29
+num: 30
 previous-page: fun-anonymous-functions
 next-page: fun-eta-expansion
 ---

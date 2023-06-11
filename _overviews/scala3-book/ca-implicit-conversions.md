@@ -3,7 +3,7 @@ title: Implicit Conversions
 type: section
 description: This page demonstrates how to implement Implicit Conversions in Scala.
 languages: [zh-cn]
-num: 65
+num: 66
 previous-page: ca-multiversal-equality
 next-page: ca-summary
 ---
