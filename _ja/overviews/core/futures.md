@@ -149,8 +149,9 @@ Future の実装の多くは、Future の結果を知りたくなったクライ
       for (post <- posts) println(post)
     }
 
-失敗した結果のみ扱う場合は、 `Failure[Throwable]`から`Success[Throwable]`に返送する
-`failed`投射を使う。詳細は[投射](#projections)を参照。
+`Future` は、失敗した結果のみを処理する方法を提供していて、
+`Failure[Throwable]` を `Success[Throwable]` へと変換する `failed` 投射を用いることができる。
+詳細は以下の[投射](#projections)を参照。
 
 キーワードの初出の位置を検索する例に戻ると、キーワードの位置を画面に表示したいかもしれない:
 
