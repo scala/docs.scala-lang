@@ -422,7 +422,7 @@ Future は同じ `Throwable` とともに失敗する。
     }
     for (exc <- f.failed) println(exc)
 
-以上のfor内包表記はこのように訳される
+上の例での for 内包表記は以下のように書き換えることができる:
 
     f.failed.foreach( exc => println(exc))
 
