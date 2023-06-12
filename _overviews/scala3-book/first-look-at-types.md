@@ -176,7 +176,7 @@ When you need really large numbers, use the `BigInt` and `BigDecimal` types:
 {% tab 'Scala 2 and 3' for=type-bigint %}
 ```scala
 val a = BigInt(1_234_567_890_987_654_321L)
-val b = BigDecimal(123_456.789)
+val b = BigDecimal(123456.789)
 ```
 {% endtab %}
 {% endtabs %}
