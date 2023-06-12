@@ -426,8 +426,9 @@ Future は同じ `Throwable` とともに失敗する。
 
     f.failed.foreach( exc => println(exc))
 
-`f`が失敗したのために、クロージャは新しく成功した`Future[Throwable]`に
-登録される。 以下の例は画面に何も表示しない:
+`f` が失敗したため、クロージャは新規に成功値を持つ `Future[Throwable]` の
+`foreach` コールバックに登録される。
+以下の例は画面に何も表示しない:
 
     val g = Future {
       4 / 2
