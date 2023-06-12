@@ -509,7 +509,7 @@ Future が失敗した場合は、呼び出し元には Future が失敗した�
 
 非同期の計算が処理されない例外を投げた場合、その計算が行われた Future は失敗する。
 失敗した Future は計算値のかわりに `Throwable` のインスタンスを格納する。
-`Future`の`failed`投射メソッドは`Throwable`の例外を成功したFutureのように処理される。
+また、`Future` はこの `Throwable` インスタンスを別の `Future` の計算値として扱う `failed` 投射メソッドを提供する。
 以下の特別な例外に対しては異なる処理が行われる:
 
 1. `scala.runtime.NonLocalReturnControl[_]`。この例外は戻り値に関連する値を保持する。
