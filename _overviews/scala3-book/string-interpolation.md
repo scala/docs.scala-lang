@@ -312,6 +312,8 @@ As a result, each of the fragments of the processed String are exposed in the
 `StringContext.parts` member, while any expressions values in the string are passed in
 to the method's `args` parameter.
 
+### Example Implementation
+
 A naive implementation of our Point interpolator method might look something like below,
 though a more sophisticated method may choose to have more precise control over the
 processing of the string `parts` and expression `args` instead of reusing the
