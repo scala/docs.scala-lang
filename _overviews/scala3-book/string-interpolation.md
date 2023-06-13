@@ -2,7 +2,7 @@
 title: String Interpolation
 type: chapter
 description: This page provides more information about creating strings and using string interpolation.
-languages: [es, ja, zh-cn]
+languages: []
 num: 18
 previous-page: first-look-at-types
 next-page: control-structures
@@ -12,7 +12,7 @@ redirect_from:
 
 ## Introduction
 
-String interpolation provides a very readable way to use variables inside strings.
+String interpolation provides a way to use variables inside strings.
 For instance:
 
 {% tabs example-1 %}
@@ -25,7 +25,7 @@ println(s"$name is $age years old")   // "James is 30 years old"
 {% endtab %}
 {% endtabs %}
 
-Using string interpolation is as simple as putting an `s` in front of your string
+Using string interpolation consists of putting an `s` in front of your string
 quotes, and prefixing any variable names with a `$` symbol.
 
 ### Other interpolators
@@ -35,8 +35,8 @@ provides.
 
 Scala provides three string interpolation methods out of the box:  `s`, `f` and `raw`.
 Further, a string interpolator is a just special method so it is possible to define your
-own. For instance, some database libraries define the very powerful `sql` interpolator
-which returns the result of a database query.
+own. For instance, some database libraries define a `sql` interpolator that returns a
+database query.
 
 ## The `s` Interpolator (`s`-Strings)
 
@@ -222,7 +222,7 @@ In addition to the three default string interpolators, users can define their ow
 
 ## Advanced Usage
 
-The literal `s"Hi $name"` is parsed by scala as a _processed_ string literal.
+The literal `s"Hi $name"` is parsed by Scala as a _processed_ string literal.
 This means that the compiler does some additional work to this literal. The specifics
 of processed strings and string interpolation are described in [SIP-11][sip-11], but
 here's a quick example to help illustrate how they work.
@@ -248,7 +248,7 @@ As a trivial example, let's assume we have a simple `Point` class and want to cr
 {% tabs custom-interpolator-1 %}
 {% tab 'Scala 2 and 3' for=custom-interpolator-1 %}
 ```scala
-case class Point(x:Double, y:Double)
+case class Point(x: Double, y: Double)
 
 val pt = p"1,-2"     // Point(1.0,-2.0)
 ```
@@ -281,26 +281,28 @@ extension (sc: StringContext)
 {% endtabs %}
 
 Once this extension is in scope and the Scala compiler encounters `p"some string"`, it
-will process `some $string` to turn it into String tokens and expression arguments.
-For example, `p"1, $var"` would turn into:
+will process `some string` to turn it into String tokens and expression arguments for
+each embedded variable in the string.
+
+For example, `p"1, $someVar"` would turn into:
 
 {% tabs extension-desugaring class=tabs-scala-version %}
 
 {% tab 'Scala 2' for=extension-desugaring %}
 ```scala
-new StringContext("1, ", "").p(var)
+new StringContext("1, ", "").p(someVar)
 ```
 
 The implicit class is then used to rewrite it to the following:
 
 ```scala
-new PointHelper(new StringContext("1, ", "")).p(var)
+new PointHelper(new StringContext("1, ", "")).p(someVar)
 ```
 {% endtab %}
 
 {% tab 'Scala 3' for=extension-desugaring %}
 ```scala
-StringContext("1, ","").p(var)
+StringContext("1, ","").p(someVar)
 ```
 {% endtab %}
 
@@ -319,7 +321,7 @@ processing of the string `parts` and expression `args` instead of reusing the
 
 {% tab 'Scala 2' for=naive-implementation %}
 ```scala
-implicit class PointHelper(val sc:StringContext) extends AnyVal {
+implicit class PointHelper(val sc: StringContext) extends AnyVal {
   def p(args: Double*): Point = {
     // reuse the `s`-interpolator and then split on ','
     val pts = sc.s(args: _*).split(",", 2).map { _.toDoubleOption.getOrElse(0.0) }
