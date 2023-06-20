@@ -108,22 +108,15 @@ Finally, all multi-line string literals can also be interpolated
 {% tabs example-7 %}
 {% tab 'Scala 2 and 3' for=example-7 %}
 ```scala
-val name = "James"
-val age = 30
-
-println(s"""{
-  "name": "$name",
-  "age": $age
-}""")
+println(s"""name: "$name",
+           |age: $age""".stripMargin)
 ```
 
-This will pretty print the json as
+This will print as follows:
 
-```json
-{
-  "name": "James",
-  "age": 30
-}
+```
+name: "James"
+age: 30
 ```
 {% endtab %}
 {% endtabs %}
