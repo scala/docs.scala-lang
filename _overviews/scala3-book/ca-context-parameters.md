@@ -3,7 +3,7 @@ title: Context Parameters
 type: section
 description: This page demonstrates how to declare context parameters, and how the compiler infers them at call-site.
 languages: [zh-cn]
-num: 60
+num: 61
 previous-page: ca-extension-methods
 next-page: ca-context-bounds
 redirect_from: /scala3/book/ca-given-using-clauses.html
