@@ -221,6 +221,33 @@ function highlightDotty(hljs) {
     ]
   }
 
+  // glob all non-whitespace characters as a "string"
+  const DIRECTIVE_VALUE = {
+    className: 'string',
+    begin: /\S+/,
+  }
+
+  // glob all non-whitespace characters as a "type", so that we can highlight differently to values
+  const DIRECTIVE_KEY = {
+    className: 'type',
+    begin: /\S+/,
+  }
+
+  // directives
+  const USING_DIRECTIVE = hljs.COMMENT('//>', '\n', {
+    contains: [
+      {
+        begin: /using /,
+        end: /\s/,
+        keywords: 'using',
+        contains: [
+          DIRECTIVE_KEY
+        ]
+      },
+      DIRECTIVE_VALUE,
+    ]
+  })
+
   // Documentation
   const SCALADOC = hljs.COMMENT('/\\*\\*', '\\*/', {
     contains: [
@@ -454,6 +481,7 @@ function highlightDotty(hljs) {
       NUMBER,
       CHAR,
       STRING,
+      USING_DIRECTIVE,
       SCALADOC,
       hljs.C_LINE_COMMENT_MODE,
       hljs.C_BLOCK_COMMENT_MODE,
