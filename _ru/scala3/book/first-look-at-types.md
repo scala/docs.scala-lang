@@ -9,9 +9,8 @@ description: На этой странице представлено кратк�
 language: ru
 num: 17
 previous-page: taste-summary
-next-page: control-structures
+next-page: string-interpolation
 ---
-
 
 ## Все значения имеют тип
 
@@ -33,12 +32,12 @@ next-page: control-structures
 
 `Matchable` содержит два важных подтипа: `AnyVal` и `AnyRef`.
 
-*`AnyVal`* представляет типы значений.
+_`AnyVal`_ представляет типы значений.
 Существует несколько предопределенных типов значений, и они non-nullable:
 `Double`, `Float`, `Long`, `Int`, `Short`, `Byte`, `Char`, `Unit` и `Boolean`.
 `Unit` - это тип значения, который не несет никакой значимой информации. Существует ровно один экземпляр `Unit` - `()`.
 
-*`AnyRef`* представляет ссылочные типы. Все типы, не являющиеся значениями, определяются как ссылочные типы.
+_`AnyRef`_ представляет ссылочные типы. Все типы, не являющиеся значениями, определяются как ссылочные типы.
 Каждый пользовательский тип в Scala является подтипом `AnyRef`.
 Если Scala используется в контексте среды выполнения Java, `AnyRef` соответствует `java.lang.Object`.
 
@@ -48,9 +47,11 @@ next-page: control-structures
 
 {% tabs unit %}
 {% tab 'Scala 2 и 3' for=unit %}
+
 ```scala
 def printIt(a: Any): Unit = println(a)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -59,17 +60,20 @@ def printIt(a: Any): Unit = println(a)
 
 {% tabs any %}
 {% tab 'Scala 2 и 3' for=any %}
+
 ```scala
 val list: List[Any] = List(
   "a string",
   732,  // число
   'c',  // буква
+  '\'', // Экранированный символ
   true, // булево значение
   () => "an anonymous function returning a string"
 )
 
 list.foreach(element => println(element))
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -83,6 +87,7 @@ list.foreach(element => println(element))
 a string
 732
 c
+'
 true
 <function>
 ```
@@ -94,6 +99,7 @@ true
 
 {% tabs anyval %}
 {% tab 'Scala 2 и 3' for=anyval %}
+
 ```scala
 val b: Byte = 1
 val i: Int = 1
@@ -102,6 +108,7 @@ val s: Short = 1
 val d: Double = 2.0
 val f: Float = 3.0
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -114,10 +121,12 @@ val f: Float = 3.0
 
 {% tabs anynum %}
 {% tab 'Scala 2 и 3' for=anynum %}
+
 ```scala
 val i = 123   // по умолчанию Int
 val x = 1.0   // по умолчанию Double
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -126,11 +135,30 @@ val x = 1.0   // по умолчанию Double
 
 {% tabs type-post %}
 {% tab 'Scala 2 и 3' for=type-post %}
+
 ```scala
 val x = 1_000L   // val x: Long = 1000
 val y = 2.2D     // val y: Double = 2.2
-val z = 3.3F     // val z: Float = 3.3
+val z = -3.3F    // val z: Float = -3.3
 ```
+
+Вы также можете использовать шестнадцатеричное представление для форматирования целых чисел
+(обычно это `Int`, но также поддерживается суффикс `L` для указания `Long`):
+
+```scala
+val a = 0xACE    // val a: Int = 2766
+val b = 0xfd_3aL // val b: Long = 64826
+```
+
+Scala поддерживает множество различных способов форматирования одного и того же числа с плавающей запятой,
+например:
+
+```scala
+val q = .25      // val q: Double = 0.25
+val r = 2.5e-1   // val r: Double = 0.25
+val s = .0025e2F // val s: Float = 0.25
+```
+
 {% endtab %}
 {% endtabs %}
 
@@ -138,10 +166,12 @@ val z = 3.3F     // val z: Float = 3.3
 
 {% tabs type-string %}
 {% tab 'Scala 2 и 3' for=type-string %}
+
 ```scala
 val s = "Bill"
 val c = 'a'
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -151,7 +181,7 @@ val c = 'a'
 Типы данных и их диапазоны:
 
 | Тип данных | Возможные значения                                                                                                             |
-|------------|--------------------------------------------------------------------------------------------------------------------------------|
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | Boolean    | `true` или `false`                                                                                                             |
 | Byte       | 8-битное целое число в дополнении до двух со знаком (от -2^7 до 2^7-1 включительно)<br/>от -128 до 127                         |
 | Short      | 16-битное целое число в дополнении до двух со знаком (от -2^15 до 2^15-1 включительно)<br/>от -32 768 до 32 767                |
@@ -162,6 +192,70 @@ val c = 'a'
 | Char       | 16-битный символ Unicode без знака (от 0 до 2^16-1 включительно)<br/>от 0 до 65 535                                            |
 | String     | последовательность `Char`                                                                                                      |
 
+## Строки
+
+Строки Scala похожи на строки Java,
+хотя в отличие от Java (по крайней мере, до Java 15)
+в Scala легко создавать многострочные строки с тройными кавычками:
+
+{% tabs string-mlines1 %}
+{% tab 'Scala 2 и 3' for=string-mlines1 %}
+
+```scala
+val quote = """The essence of Scala:
+               Fusion of functional and object-oriented
+               programming in a typed setting."""
+```
+
+{% endtab %}
+{% endtabs %}
+
+Одним из недостатков этого базового подхода является то,
+что строки после первой строки содержат отступ и выглядят следующим образом:
+
+{% tabs string-mlines2 %}
+{% tab 'Scala 2 и 3' for=string-mlines2 %}
+
+```scala
+"The essence of Scala:
+               Fusion of functional and object-oriented
+               programming in a typed setting."
+```
+
+{% endtab %}
+{% endtabs %}
+
+Если важно исключить отступ, можно поставить символ `|` перед всеми строками после первой
+и вызвать метод `stripMargin` после строки:
+
+{% tabs string-mlines3 %}
+{% tab 'Scala 2 и 3' for=string-mlines3 %}
+
+```scala
+val quote = """The essence of Scala:
+               |Fusion of functional and object-oriented
+               |programming in a typed setting.""".stripMargin
+```
+
+{% endtab %}
+{% endtabs %}
+
+Теперь все строки выравниваются по левому краю:
+
+{% tabs string-mlines4 %}
+{% tab 'Scala 2 и 3' for=string-mlines4 %}
+
+```scala
+"The essence of Scala:
+Fusion of functional and object-oriented
+programming in a typed setting."
+```
+
+{% endtab %}
+{% endtabs %}
+
+Строки Scala также поддерживают мощные методы интерполяции строк,
+о которых мы поговорим [в следующей главе][string-interpolation].
 
 ## `BigInt` и `BigDecimal`
 
@@ -169,10 +263,12 @@ val c = 'a'
 
 {% tabs type-bigint %}
 {% tab 'Scala 2 и 3' for=type-bigint %}
+
 ```scala
 val a = BigInt(1_234_567_890_987_654_321L)
-val b = BigDecimal(123_456.789)
+val b = BigDecimal(123456.789)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -183,114 +279,13 @@ val b = BigDecimal(123_456.789)
 
 {% tabs type-bigint2 %}
 {% tab 'Scala 2 и 3' for=type-bigint2 %}
+
 ```scala
 val b = BigInt(1234567890)   // scala.math.BigInt = 1234567890
 val c = b + b                // scala.math.BigInt = 2469135780
 val d = b * b                // scala.math.BigInt = 1524157875019052100
 ```
-{% endtab %}
-{% endtabs %}
 
-## Два замечания о строках
-
-Строки Scala похожи на строки Java, но у них есть две замечательные дополнительные функции:
-
-- Они поддерживают интерполяцию строк
-- Легко создавать многострочные строки
-
-### Интерполяция строк
-
-Интерполяция строк обеспечивает очень удобный способ использования переменных внутри строк.
-Например, учитывая эти три переменные:
-
-{% tabs string-inside1 %}
-{% tab 'Scala 2 и 3' for=string-inside1 %}
-```scala
-val firstName = "John"
-val mi = 'C'
-val lastName = "Doe"
-```
-{% endtab %}
-{% endtabs %}
-
-их комбинацию можно получить так:
-
-{% tabs string-inside2 %}
-{% tab 'Scala 2 и 3' for=string-inside2 %}
-```scala
-println(s"Name: $firstName $mi $lastName")   // "Name: John C Doe"
-```
-{% endtab %}
-{% endtabs %}
-
-Достаточно поставить перед строкой букву `s`, а затем - символ `$` перед именами переменных внутри строки.
-
-Чтобы вставить произвольные выражения в строку, они заключаются в фигурные скобки:
-
-{% tabs string-inside3 %}
-{% tab 'Scala 2 и 3' for=string-inside3 %}
-```scala
-println(s"2 + 2 = ${2 + 2}")   // печатает "2 + 2 = 4"
-val x = -1
-println(s"x.abs = ${x.abs}")   // печатает "x.abs = 1"
-```
-{% endtab %}
-{% endtabs %}
-
-#### Другие интерполяторы
-
-То `s`, что вы помещаете перед строкой, является лишь одним из возможных интерполяторов.
-Если вы используете `f` вместо `s`, вы можете использовать `printf` - синтаксис форматирования стиля в строке.
-Кроме того, строковый интерполятор — это всего лишь специальный метод, и вы можете определить свой собственный.
-Например, некоторые библиотеки баз данных определяют очень мощный интерполятор `sql`.
-
-### Многострочные строки
-
-Многострочные строки создаются путем включения строки в три двойные кавычки:
-
-{% tabs string-mlines1 %}
-{% tab 'Scala 2 и 3' for=string-mlines1 %}
-```scala
-val quote = """The essence of Scala:
-               Fusion of functional and object-oriented
-               programming in a typed setting."""
-```
-{% endtab %}
-{% endtabs %}
-
-Одним из недостатков базового подхода является то, что строки после первой имеют отступ.
-
-{% tabs string-mlines2 %}
-{% tab 'Scala 2 и 3' for=string-mlines2 %}
-```scala
-"The essence of Scala:
-               Fusion of functional and object-oriented
-               programming in a typed setting."
-```
-{% endtab %}
-{% endtabs %}
-
-Если важно исключить отступ, можно поставить символ `|` перед всеми строками после первой и вызвать метод `stripMargin` после строки:
-
-{% tabs string-mlines3 %}
-{% tab 'Scala 2 и 3' for=string-mlines3 %}
-```scala
-val quote = """The essence of Scala:
-               |Fusion of functional and object-oriented
-               |programming in a typed setting.""".stripMargin
-```
-{% endtab %}
-{% endtabs %}
-
-Теперь все строки выравниваются по левому краю:
-
-{% tabs string-mlines4 %}
-{% tab 'Scala 2 и 3' for=string-mlines4 %}
-```scala
-"The essence of Scala:
-Fusion of functional and object-oriented
-programming in a typed setting."
-```
 {% endtab %}
 {% endtabs %}
 
@@ -304,6 +299,7 @@ programming in a typed setting."
 
 {% tabs cast1 %}
 {% tab 'Scala 2 и 3' for=cast1 %}
+
 ```scala
 val b: Byte = 127
 val i: Int = b  // 127
@@ -311,6 +307,7 @@ val i: Int = b  // 127
 val face: Char = '☺'
 val number: Int = face  // 9786
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -319,11 +316,13 @@ val number: Int = face  // 9786
 
 {% tabs cast2 %}
 {% tab 'Scala 2 и 3' for=cast2 %}
+
 ```scala
 val x: Long = 987654321
 val y: Float = x.toFloat  // 9.8765434E8 (обратите внимание, что требуется `.toFloat`, потому что приведение приводит к потере точности)
 val z: Long = y  // Ошибка
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -349,7 +348,7 @@ val z: Long = y  // Ошибка
 
 [reference]: {{ site.scala3ref }}/overview.html
 [matchable]: {{ site.scala3ref }}/other-new-features/matchable.html
-[interpolation]: {% link _overviews/scala3-book/string-interpolation.md %}
 [fp]: {% link _overviews/scala3-book/fp-intro.md %}
+[string-interpolation]: {% link _overviews/scala3-book/string-interpolation.md %}
 [option-api]: https://scala-lang.org/api/3.x/scala/Option.html
 [safe-null]: {{ site.scala3ref }}/experimental/explicit-nulls.html
