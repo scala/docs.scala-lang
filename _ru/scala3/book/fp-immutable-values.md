@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: В этом разделе рассматривается использование неизменяемых значений в функциональном программировании.
 language: ru
-num: 42
+num: 43
 previous-page: fp-what-is-fp
 next-page: fp-pure-functions
 ---

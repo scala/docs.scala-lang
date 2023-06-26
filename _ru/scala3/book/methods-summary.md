@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: Эта страница подводит итог предыдущим разделам о методах в Scala 3.
 language: ru
-num: 26
+num: 27
 previous-page: methods-main-methods
 next-page: fun-intro
 ---

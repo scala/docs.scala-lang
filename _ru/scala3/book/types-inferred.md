@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: В этом разделе представлены и демонстрируются выводимые типы в Scala 3.
 language: ru
-num: 48
+num: 49
 previous-page: types-introduction
 next-page: types-generics
 ---

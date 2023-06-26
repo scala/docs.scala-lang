@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: На этой странице представлены общие типы коллекций Scala 3 и некоторые из их методов.
 language: ru
-num: 37
+num: 38
 previous-page: collections-intro
 next-page: collections-methods
 ---

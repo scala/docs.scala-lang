@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: На этой странице описывается, как основные методы и аннотация @main работают в Scala 3.
 language: ru
-num: 25
+num: 26
 previous-page: methods-most
 next-page: methods-summary
 ---

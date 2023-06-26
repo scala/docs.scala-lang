@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: На этой странице описано, как создать свой собственный метод map
 language: ru
-num: 32
+num: 33
 previous-page: fun-hofs
 next-page: fun-write-method-returns-function
 ---

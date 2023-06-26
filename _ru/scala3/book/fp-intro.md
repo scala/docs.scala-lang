@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: chapter
 description: В этой главе представлено введение в функциональное программирование в Scala 3.
 language: ru
-num: 40
+num: 41
 previous-page: collections-summary
 next-page: fp-what-is-fp
 ---

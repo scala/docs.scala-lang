@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: На этой странице представлен обзор предыдущего раздела 'Функции'.
 language: ru
-num: 34
+num: 35
 previous-page: fun-write-method-returns-function
 next-page: packaging-imports
 ---
