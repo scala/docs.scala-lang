@@ -300,4 +300,4 @@ Scala also allows the definition of patterns independently of case classes, usin
 
 ## More resources
 
-* More details on match expressions in the [Scala Book](/overviews/scala-book/match-expressions.html)
+* More details on match expressions in the [Scala Book](/scala3/book/control-structures.html#match-expressions)
