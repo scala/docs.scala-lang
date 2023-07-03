@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: На этой странице обсуждается Eta Expansion, технология Scala, которая автоматически и прозрачно преобразует методы в функции.
 language: ru
-num: 30
+num: 31
 previous-page: fun-function-variables
 next-page: fun-hofs
 ---

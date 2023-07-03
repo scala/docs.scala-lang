@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: В этом разделе представлены параметризованные типы в Scala 3.
 language: ru
-num: 49
+num: 50
 previous-page: types-inferred
 next-page: types-intersection
 ---

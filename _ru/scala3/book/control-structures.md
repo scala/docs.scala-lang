@@ -7,8 +7,8 @@ overview-name: "Scala 3 — Book"
 type: chapter
 description: На этой странице представлено введение в структуры управления Scala, включая if/then/else, циклы for, выражения for, выражения match, try/catch/finally и циклы while.
 language: ru
-num: 18
-previous-page: first-look-at-types
+num: 19
+previous-page: string-interpolation
 next-page: domain-modeling-intro
 ---
 

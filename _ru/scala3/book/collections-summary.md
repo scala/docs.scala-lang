@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: На этой странице представлен краткий итог главы «Коллекции».
 language: ru
-num: 39
+num: 40
 previous-page: collections-methods
 next-page: fp-intro
 ---

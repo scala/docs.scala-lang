@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: chapter
 description: В этой главе рассматриваются темы, связанные с функциями в Scala 3.
 language: ru
-num: 27
+num: 28
 previous-page: methods-summary
 next-page: fun-anonymous-functions
 ---

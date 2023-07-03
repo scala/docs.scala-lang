@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: В этом разделе представлены пересечение типов в Scala 3.
 language: ru
-num: 50
+num: 51
 previous-page: types-generics
 next-page: types-union
 ---

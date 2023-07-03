@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: chapter
 description: Обсуждение использования пакетов и импорта для организации кода, создания связанных модулей кода, управления областью действия и предотвращения конфликтов пространств имен.
 language: ru
-num: 35
+num: 36
 previous-page: fun-summary
 next-page: collections-intro
 ---

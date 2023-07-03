@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: В этом разделе представлены объединение типов в Scala 3.
 language: ru
-num: 51
+num: 52
 previous-page: types-intersection
 next-page:
 ---

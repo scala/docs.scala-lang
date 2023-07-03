@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: В этом разделе представлены методы Scala 3, включая main методы, методы расширения и многое другое.
 language: ru
-num: 24
+num: 25
 previous-page: methods-intro
 next-page: methods-main-methods
 ---
