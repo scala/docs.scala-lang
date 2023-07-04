@@ -9,7 +9,7 @@ description: В этом разделе представлены объедин�
 language: ru
 num: 52
 previous-page: types-intersection
-next-page:
+next-page: types-adts-gadts
 ---
 
 <span class="tag tag-inline">Только в Scala 3</span>

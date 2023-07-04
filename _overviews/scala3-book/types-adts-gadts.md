@@ -2,7 +2,7 @@
 title: Algebraic Data Types
 type: section
 description: This section introduces and demonstrates algebraic data types (ADTs) in Scala 3.
-languages: [zh-cn]
+languages: [ru, zh-cn]
 num: 53
 previous-page: types-union
 next-page: types-variance
