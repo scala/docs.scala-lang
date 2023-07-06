@@ -2,7 +2,7 @@
 title: Structural Types
 type: section
 description: This section introduces and demonstrates structural types in Scala 3.
-languages: [zh-cn]
+languages: [ru, zh-cn]
 num: 56
 previous-page: types-opaque-types
 next-page: types-dependent-function

@@ -9,7 +9,7 @@ description: В этом разделе представлена и демонс
 language: ru
 num: 54
 previous-page: types-adts-gadts
-next-page:
+next-page: types-opaque-types
 ---
 
 _Вариантность_ (_variance_) параметра типа управляет подтипом параметризованных типов (таких, как классы или трейты).

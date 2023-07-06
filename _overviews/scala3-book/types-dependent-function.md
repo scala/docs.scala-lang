@@ -2,7 +2,7 @@
 title: Dependent Function Types
 type: section
 description: This section introduces and demonstrates dependent function types in Scala 3.
-languages: [zh-cn]
+languages: [ru, zh-cn]
 num: 57
 previous-page: types-structural
 next-page: types-others
