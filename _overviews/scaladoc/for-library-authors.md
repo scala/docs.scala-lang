@@ -293,7 +293,7 @@ Current holes:
   * it is unclear how `#` is to be handled within argument/return types: `#` doesn't seem to work
     and neither does `\#`: there are no tests for this, so perhaps this is a bug.
   * it is unclear how to avoid a need for space after `implicit`, again, no tests for this: spaces
-    cannot be escapes with `\ `.
+    cannot be escaped with `\ `.
 
 ## More details on writing Scaladoc
 
