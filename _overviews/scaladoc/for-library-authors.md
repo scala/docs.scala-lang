@@ -239,6 +239,19 @@ The markup for list blocks looks like:
 - DRY - don't repeat yourself. Resist duplicating the method description in the
   `@return` tag and other forms of repetitive commenting.
 
+## Resolving Ambiguous Links within Scaladoc Comments
+<!-- FIXME: this is wrong in a few ways -->
+Disambiguating terms and types: Suffix terms with '$' and types with '!' in case both names are in use:
+ - `[[scala.collection.immutable.List!.apply class List's apply method]]` and
+ - `[[scala.collection.immutable.List$.apply object List's apply method]]`
+Disambiguating overloaded members: If a term is overloaded, you can indicate the first part of its signature followed by *:
+ - `[[[scala.collection.immutable.List$.fill[A](Int)(=> A):List[A]* Fill with a single parameter]]]`
+ - `[[[scala.collection.immutable.List$.fill[A](Int, Int)(=> A):List[List[A]]* Fill with a two parameters]]]`
+Notes:
+ - you can use any number of matching square brackets to avoid interference with the signature
+ - you can use `\\.` to escape dots in prefixes (don't forget to use * at the end to match the signature!)
+ - you can use `\\#` to escape hashes, otherwise they will be considered as delimiters, like dots.
+
 ## More details on writing Scaladoc
 
 Further information on the formatting and style recommendations can be found in
