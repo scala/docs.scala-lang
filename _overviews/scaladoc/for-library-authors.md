@@ -240,17 +240,60 @@ The markup for list blocks looks like:
   `@return` tag and other forms of repetitive commenting.
 
 ## Resolving Ambiguous Links within Scaladoc Comments
-<!-- FIXME: this is wrong in a few ways -->
-Disambiguating terms and types: Suffix terms with '$' and types with '!' in case both names are in use:
+When two methods are indistinguishable from each other lexically, it can cause Scaladoc to
+report that there are ambiguous methods. As an example:
+
+```scala
+import scala.collection.mutable.ListBuffer
+class bar {
+    def foo(x: Int): Boolean = ???
+    def foo(x: ListBuffer[Int], y: String): Int = ???
+}
+```
+
+If one references `foo` via `[[foo]]`, then the Scaladoc will complain and offers up both
+alternatives. Fixing this means elaborating the signature _enough_ so that it becomes unambiguous.
+There are a few things to be aware of in general:
+
+* You must not use a space in the description of the signature: this will cause Scaladoc to
+  think the link has ended and move onto its description.
+* You must fully qualify any types you are using: assume that you have written your program without
+  any import statements!
+
+Then, to disambuate between objects and types (where both are in use), postfix with a `$` for objects
+and `!` for types. For example:
  - `[[scala.collection.immutable.List!.apply class List's apply method]]` and
  - `[[scala.collection.immutable.List$.apply object List's apply method]]`
-Disambiguating overloaded members: If a term is overloaded, you can indicate the first part of its signature followed by *:
- - `[[[scala.collection.immutable.List$.fill[A](Int)(=> A):List[A]* Fill with a single parameter]]]`
- - `[[[scala.collection.immutable.List$.fill[A](Int, Int)(=> A):List[List[A]]* Fill with a two parameters]]]`
-Notes:
- - you can use any number of matching square brackets to avoid interference with the signature
- - you can use `\\.` to escape dots in prefixes (don't forget to use * at the end to match the signature!)
- - you can use `\\#` to escape hashes, otherwise they will be considered as delimiters, like dots.
+
+When dealing with ambiguous overloads, however, it gets a bit more complex:
+
+* You must finish the signature, complete or otherwise, with a `*`, which serves as a wildcard
+  that allows you to cut off the signature when it is umambiguous.
+* You must specify the names of the arguments and they must be _exactly_ as written in the
+  function definition:
+  - `[[bar.foo(Int)*]]` is **illegal** (no name)
+  - `[[bar.foo(y:Int)*]]` is **illegal** (wrong name)
+  - `[[bar.foo(x: Int)*]]` is **illegal** (space! Scaladoc sees this as `bar.foo(x:`)
+  - `[[bar.foo(x:Int):Boolean]]` is **illegal** (no `*`)
+  - `[[bar.foo(x:Int)*]]` is **legal** and unambiguous
+  - `[[bar.foo(x:Int*]]` is **legal**, the `Int` is enough to disambiguate so no closing paren needed
+* The enclosing scope (package/class/object etc) of the method must use `.`, but within the arguments
+  and return type `\.` must be used instead:
+  - `[[bar.foo(x:ListBuffer[Int],y:String)*]]` is **illegal** (no qualification on `ListBuffer`)
+  - `[[bar.foo(x:scala.collection.mutable.ListBuffer[Int],y:String)*]]` is **illegal** (non-escaped dots!)
+  - `[[bar.foo(x:scala\.collection\.mutable\.ListBuffer[Int],y:String)*]]` is **legal**
+  - `[[bar.foo(x:scala\.collection\.mutable\.ListBuffer[Int]*]]` is **legal**, the first argument is
+    enough to disambiguate.
+* When generics are involved, any number of additional square brackets may be used to avoid the
+  signature accidentally closing the link:
+  - `[[baz(x:List[List[A]])*]]` is **illegal** (it is read as `baz(x:List[List[A`)
+  - `[[[baz(x:List[List[A]])*]]]` is **legal** (the `]]` is no longer a terminator, `]]]` is)
+
+Current holes:
+  * it is unclear how `#` is to be handled within argument/return types: `#` doesn't seem to work
+    and neither does `\#`: there are no tests for this, so perhaps this is a bug.
+  * it is unclear how to avoid a need for space after `implicit`, again, no tests for this: spaces
+    cannot be escapes with `\ `.
 
 ## More details on writing Scaladoc
 
