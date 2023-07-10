@@ -251,7 +251,7 @@ class bar {
 }
 ```
 
-If one references `foo` via `[[foo]]`, then the Scaladoc will complain and offers up both
+If one references `foo` via `[[foo]]`, then the Scaladoc will complain and offer both
 alternatives. Fixing this means elaborating the signature _enough_ so that it becomes unambiguous.
 There are a few things to be aware of in general:
 
@@ -260,8 +260,9 @@ There are a few things to be aware of in general:
 * You must fully qualify any types you are using: assume that you have written your program without
   any import statements!
 
-Then, to disambuate between objects and types (where both are in use), postfix with a `$` for objects
-and `!` for types. For example:
+Then, to disambiguate between objects and types, append `$` to designate a term name
+and `!` for a type name. Term names include members which are not types, such as `val`, `def`, and
+`object` definitions. For example:
  - `[[scala.collection.immutable.List!.apply class List's apply method]]` and
  - `[[scala.collection.immutable.List$.apply object List's apply method]]`
 
@@ -278,22 +279,22 @@ When dealing with ambiguous overloads, however, it gets a bit more complex:
   - `[[bar.foo(x:Int)*]]` is **legal** and unambiguous
   - `[[bar.foo(x:Int*]]` is **legal**, the `Int` is enough to disambiguate so no closing paren needed
 * The enclosing scope (package/class/object etc) of the method must use `.`, but within the arguments
-  and return type `\.` must be used instead:
+  and return type `\.` must be used instead to fully qualify types:
   - `[[bar.foo(x:ListBuffer[Int],y:String)*]]` is **illegal** (no qualification on `ListBuffer`)
   - `[[bar.foo(x:scala.collection.mutable.ListBuffer[Int],y:String)*]]` is **illegal** (non-escaped dots!)
+  - `[[bar\.foo(x:scala\.collection\.mutable\.ListBuffer[Int],y:String)*]]` is **illegal** (must not escape dots in the prefix)
   - `[[bar.foo(x:scala\.collection\.mutable\.ListBuffer[Int],y:String)*]]` is **legal**
   - `[[bar.foo(x:scala\.collection\.mutable\.ListBuffer[Int]*]]` is **legal**, the first argument is
     enough to disambiguate.
-* When generics are involved, any number of additional square brackets may be used to avoid the
-  signature accidentally closing the link:
+* When generics are involved, additional square brackets may be used to avoid the
+  signature accidentally closing the link. Essentially, the number of leading left brackets
+  determines the number of right brackets required to complete the link:
   - `[[baz(x:List[List[A]])*]]` is **illegal** (it is read as `baz(x:List[List[A`)
   - `[[[baz(x:List[List[A]])*]]]` is **legal** (the `]]` is no longer a terminator, `]]]` is)
 
-Current holes:
-  * it is unclear how `#` is to be handled within argument/return types: `#` doesn't seem to work
-    and neither does `\#`: there are no tests for this, so perhaps this is a bug.
-  * it is unclear how to avoid a need for space after `implicit`, again, no tests for this: spaces
-    cannot be escaped with `\ `.
+### Known Limitations
+  * `#` syntax does not seem to be supported for parameters and return types.
+  * Spaces cannot be escaped with `\ `, so `implicit` parameters seem not to be supported either.
 
 ## More details on writing Scaladoc
 
