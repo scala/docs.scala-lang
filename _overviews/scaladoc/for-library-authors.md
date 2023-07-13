@@ -239,6 +239,63 @@ The markup for list blocks looks like:
 - DRY - don't repeat yourself. Resist duplicating the method description in the
   `@return` tag and other forms of repetitive commenting.
 
+## Resolving Ambiguous Links within Scaladoc Comments
+When two methods are indistinguishable from each other lexically, it can cause Scaladoc to
+report that there are ambiguous methods. As an example:
+
+```scala
+import scala.collection.mutable.ListBuffer
+class bar {
+    def foo(x: Int): Boolean = ???
+    def foo(x: ListBuffer[Int], y: String): Int = ???
+}
+```
+
+If one references `foo` via `[[foo]]`, then the Scaladoc will complain and offer both
+alternatives. Fixing this means elaborating the signature _enough_ so that it becomes unambiguous.
+There are a few things to be aware of in general:
+
+* You must not use a space in the description of the signature: this will cause Scaladoc to
+  think the link has ended and move onto its description.
+* You must fully qualify any types you are using: assume that you have written your program without
+  any import statements!
+
+Then, to disambiguate between objects and types, append `$` to designate a term name
+and `!` for a type name. Term names include members which are not types, such as `val`, `def`, and
+`object` definitions. For example:
+ - `[[scala.collection.immutable.List!.apply class List's apply method]]` and
+ - `[[scala.collection.immutable.List$.apply object List's apply method]]`
+
+When dealing with ambiguous overloads, however, it gets a bit more complex:
+
+* You must finish the signature, complete or otherwise, with a `*`, which serves as a wildcard
+  that allows you to cut off the signature when it is umambiguous.
+* You must specify the names of the arguments and they must be _exactly_ as written in the
+  function definition:
+  - `[[bar.foo(Int)*]]` is **illegal** (no name)
+  - `[[bar.foo(y:Int)*]]` is **illegal** (wrong name)
+  - `[[bar.foo(x: Int)*]]` is **illegal** (space! Scaladoc sees this as `bar.foo(x:`)
+  - `[[bar.foo(x:Int):Boolean]]` is **illegal** (no `*`)
+  - `[[bar.foo(x:Int)*]]` is **legal** and unambiguous
+  - `[[bar.foo(x:Int*]]` is **legal**, the `Int` is enough to disambiguate so no closing paren needed
+* The enclosing scope (package/class/object etc) of the method must use `.`, but within the arguments
+  and return type `\.` must be used instead to fully qualify types:
+  - `[[bar.foo(x:ListBuffer[Int],y:String)*]]` is **illegal** (no qualification on `ListBuffer`)
+  - `[[bar.foo(x:scala.collection.mutable.ListBuffer[Int],y:String)*]]` is **illegal** (non-escaped dots!)
+  - `[[bar\.foo(x:scala\.collection\.mutable\.ListBuffer[Int],y:String)*]]` is **illegal** (must not escape dots in the prefix)
+  - `[[bar.foo(x:scala\.collection\.mutable\.ListBuffer[Int],y:String)*]]` is **legal**
+  - `[[bar.foo(x:scala\.collection\.mutable\.ListBuffer[Int]*]]` is **legal**, the first argument is
+    enough to disambiguate.
+* When generics are involved, additional square brackets may be used to avoid the
+  signature accidentally closing the link. Essentially, the number of leading left brackets
+  determines the number of right brackets required to complete the link:
+  - `[[baz(x:List[List[A]])*]]` is **illegal** (it is read as `baz(x:List[List[A`)
+  - `[[[baz(x:List[List[A]])*]]]` is **legal** (the `]]` is no longer a terminator, `]]]` is)
+
+### Known Limitations
+  * `#` syntax does not seem to be supported for parameters and return types.
+  * Spaces cannot be escaped with `\ `, so `implicit` parameters seem not to be supported either.
+
 ## More details on writing Scaladoc
 
 Further information on the formatting and style recommendations can be found in
