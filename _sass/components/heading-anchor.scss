@@ -1,0 +1,12 @@
+// HEADING ANCHOR
+//------------------------------------------------
+//------------------------------------------------
+
+.heading-anchor {
+    visibility: hidden;
+    padding-left: 0.5em;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
