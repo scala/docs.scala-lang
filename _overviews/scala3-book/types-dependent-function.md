@@ -6,6 +6,8 @@ languages: [ru, zh-cn]
 num: 57
 previous-page: types-structural
 next-page: types-others
+scala3: true
+versionSpecific: true
 ---
 
 A *dependent function type* describes function types, where the result type may depend on the function’s parameter values.
