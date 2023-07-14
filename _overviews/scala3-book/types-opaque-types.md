@@ -6,9 +6,12 @@ languages: [ru, zh-cn]
 num: 55
 previous-page: types-variance
 next-page: types-structural
+scala3: true
+versionSpecific: true
 ---
 
-Scala 3 _Opaque type aliases_ provide type abstractions without any **overhead**.
+_Opaque type aliases_ provide type abstraction without any **overhead**.
+In Scala 2, a similar result could be achieved with [value classes][value-classes].
 
 ## Abstraction Overhead
 
@@ -142,3 +145,4 @@ As illustrated above, opaque types are convenient to use, and integrate very wel
 
 
 [extension]: {% link _overviews/scala3-book/ca-extension-methods.md %}
+[value-classes]: {% link _overviews/core/value-classes.md %}
