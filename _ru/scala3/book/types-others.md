@@ -9,7 +9,7 @@ description: В этом разделе упоминаются другие ра
 language: ru
 num: 58
 previous-page: types-dependent-function
-next-page:
+next-page: ca-contextual-abstractions-intro
 ---
 
 В Scala есть несколько других расширенных типов, которые не показаны в этой книге, в том числе:
