@@ -10,9 +10,8 @@ language: ru
 num: 52
 previous-page: types-intersection
 next-page: types-adts-gadts
+versionSpecific: true
 ---
-
-<span class="tag tag-inline">Только в Scala 3</span>
 
 Используемый для типов `|` оператор создает так называемый _тип объединения_ (_union type_).
 Тип `А | B` представляет значения, которые относятся **либо** к типу `A`, **либо** к типу `B`.

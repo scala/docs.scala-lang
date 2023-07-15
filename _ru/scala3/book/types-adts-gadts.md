@@ -10,6 +10,7 @@ language: ru
 num: 53
 previous-page: types-union
 next-page: types-variance
+versionSpecific: true
 ---
 
 <span class="tag tag-inline">Только в Scala 3</span>
