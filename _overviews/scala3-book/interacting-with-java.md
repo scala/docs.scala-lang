@@ -50,7 +50,9 @@ Given this API that returns `java.util.List[String]`:
 {% tab Java %}
 ```java
 public interface Foo {
-  static java.util.List<String> getStrings();
+  static java.util.List<String> getStrings() {
+    return List.of("a", "b", "c");
+  }
 }
 ```
 {% endtab %}
@@ -87,7 +89,7 @@ def testList() =
 {% endtab %}
 {% endtabs %}
 
-In the above code `scalaSeq` is a wrapper over `javaList` that adapt's it to Scala's `mutable.Seq` collection.
+In the above code `javaList.asScala` creates a wrapper that adapts a `java.util.List` to Scala's `mutable.Seq` collection.
 
 
 ## How to use Java `Optional` in Scala
@@ -102,13 +104,15 @@ To demonstrate this, here’s a Java API that returns an `Optional[String]` valu
 {% tab Java %}
 ```java
 public interface Bar {
-  static java.util.Optional<String> optionalString();
+  static java.util.Optional<String> optionalString() {
+    return Optional.of("hello");
+  }
 }
 ```
 {% endtab %}
 {% endtabs %}
 
-First import the `scala.jdk.OptionConverters` object, and then use the `toScala` method to convert the `Optional` value to a Scala `Option`:
+First import all members from the `scala.jdk.OptionConverters` object, and then use the `toScala` method to convert the `Optional` value to a Scala `Option`:
 
 {% tabs bar-usage class=tabs-scala-version %}
 {% tab 'Scala 2' %}
@@ -158,7 +162,7 @@ public interface Running {
 {% endtabs %}
 
 you can create a `Dog` class in Scala just as though you were using traits.
-All you have to do is implement the `speak` and `wag` methods:
+Because `run` has a default implementation, you only need to implement the `speak` and `wag` methods:
 
 {% tabs animal-usage class=tabs-scala-version %}
 {% tab 'Scala 2' %}
@@ -191,6 +195,7 @@ def useJavaInterfaceInScala =
 {% endtab %}
 {% endtabs %}
 
+Also notice that in Scala, Java methods defined with empty parameter lists can be called either as in Java, `.wag()`, or you can choose to not use parentheses `.wag`.
 
 ## How to use Scala collections in Java
 
@@ -202,14 +207,14 @@ For example, suppose that a Scala API returns a `List[String]` like this:
 {% tab 'Scala 2' %}
 ```scala
 object Baz {
-  val strings: List[String]
+  val strings: List[String] = List("a", "b", "c")
 }
 ```
 {% endtab %}
 {% tab 'Scala 3' %}
 ```scala
 object Baz:
-  val strings: List[String]
+  val strings: List[String] = List("a", "b", "c")
 ```
 {% endtab %}
 {% endtabs %}
@@ -247,14 +252,14 @@ For example, suppose that a Scala API returns an `Option[String]` like this:
 {% tab 'Scala 2' %}
 ```scala
 object Qux {
-  val optString: Option[String]
+  val optString: Option[String] = Option("hello")
 }
 ```
 {% endtab %}
 {% tab 'Scala 3' %}
 ```scala
 object Qux:
-  val optString: Option[String]
+  val optString: Option[String] = Option("hello")
 ```
 {% endtab %}
 {% endtabs %}
