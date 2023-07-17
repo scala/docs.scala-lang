@@ -11,7 +11,7 @@ scala2: true
 versionSpecific: true
 ---
 
-In Scala 3, a similar result can be achieved with [opaque types][opaques].
+In Scala 3, value classes are still supported for compatibility reasons but the recommended way to achieve the same result is to use [opaque types][opaques].
 
 ## Introduction
 
