@@ -473,6 +473,8 @@ code fences have been updated to also include the result of evaluating the Scala
 Another approach consists in embedding fragments of Scala source files that are part of a module which
 is compiled by your build. For instance, given the following test in file `src/test/ch/epfl/scala/Usage.scala`:
 
+{% tabs usage-definition class=tabs-scala-version %}
+{% tab 'Scala 2' %}
 ~~~ scala
 package ch.epfl.scala
 
@@ -489,6 +491,25 @@ object Usage extends Scalaprops {
 
 }
 ~~~
+{% endtab %}
+{% tab 'Scala 3' %}
+~~~ scala
+package ch.epfl.scala
+
+import scalaprops.{Property, Scalaprops}
+
+object Usage extends Scalaprops:
+
+  val testDoNothing =
+// #do-nothing
+    Property.forAll: (x: Int) =>
+      Example.doNothing(x) == x
+// #do-nothing
+
+end Usage
+~~~
+{% endtab %}
+{% endtabs %}
 
 You can embed the fragment surrounded by the `#do-nothing` identifiers with the `@@snip` Paradox directive,
 as shown in the `src/documentation/reference.md` file:
