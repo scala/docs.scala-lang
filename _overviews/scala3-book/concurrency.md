@@ -117,10 +117,10 @@ Therefore, when you work with the result of a future, you use the usual `Try`-ha
 ### Using `map` with futures
 
 `Future` has a `map` method, which you use just like the `map` method on collections.
-This is what the result looks like when you call `map` right after creating the variable `f`:
+This is what the result looks like when you call `map` right after creating the variable `a`:
 
 ```scala
-scala> val a = eventualInt.map(_ * 2)
+scala> val a = Future(longRunningAlgorithm()).map(_ * 2)
 a: scala.concurrent.Future[Int] = Future(<not completed>)
 ```
 
