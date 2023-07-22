@@ -141,7 +141,7 @@ In addition to higher-order functions like `map`, you can also use callback meth
 One commonly used callback method is `onComplete`, which takes a *partial function* in which you handle the `Success` and `Failure` cases:
 
 ```scala
-eventualInt.onComplete {
+Future(longRunningAlgorithm()).onComplete {
   case Success(value) => println(s"Got the callback, value = $value")
   case Failure(e) => e.printStackTrace
 }
