@@ -117,10 +117,10 @@ Therefore, when you work with the result of a future, you use the usual `Try`-ha
 ### Using `map` with futures
 
 `Future` has a `map` method, which you use just like the `map` method on collections.
-This is what the result looks like when you call `map` right after creating the variable `f`:
+This is what the result looks like when you call `map` right after creating the variable `a`:
 
 ```scala
-scala> val a = eventualInt.map(_ * 2)
+scala> val a = Future(longRunningAlgorithm()).map(_ * 2)
 a: scala.concurrent.Future[Int] = Future(<not completed>)
 ```
 
@@ -141,7 +141,7 @@ In addition to higher-order functions like `map`, you can also use callback meth
 One commonly used callback method is `onComplete`, which takes a *partial function* in which you handle the `Success` and `Failure` cases:
 
 ```scala
-eventualInt.onComplete {
+Future(longRunningAlgorithm()).onComplete {
   case Success(value) => println(s"Got the callback, value = $value")
   case Failure(e) => e.printStackTrace
 }
