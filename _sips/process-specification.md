@@ -48,7 +48,7 @@ from an idea to the inclusion in the language.
 - SIP Reviewers: a subset of Committee Members assigned by the Chairperson to
   review in detail a particular SIP. The same person cannot be both a SIP Author
   and a SIP Reviewer for the same SIP.
-- SIP Manager: one of the SIP Reviewers who is responsible for the all the
+- SIP Manager: one of the SIP Reviewers who is responsible for all the
   communications related to the SIP, throughout its entire life-cycle. This includes requesting a vote on the SIP from the whole Committee, presenting the SIP to the Committee at the plenary meetings, merging or closing the corresponding PR, reporting to the community on the vote outcome, and announcing when it is available for testing.
 
 ## Stages
