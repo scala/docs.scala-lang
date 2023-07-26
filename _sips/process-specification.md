@@ -229,7 +229,7 @@ tools of the ecosystem is maintained in [this document][tooling ecosystem].
 
 An implementation will be reviewed by the compiler team, and once the
 implementation is deemed good enough, it can ship as an Experimental feature in
-the following practical release of the compiler. At that point, the SIP Manager posts a follow-up comment on the Pre-SIP discussion to invite the community to test the feature and provide feedback.
+the next release of the compiler where it's practical to do so. At that point, the SIP Manager posts a follow-up comment on the Pre-SIP discussion to invite the community to test the feature and provide feedback.
 
 The implementers may hit challenges that were not foreseen by the Committee. 
 Early users may also provide feedback based on practical experience with the 
