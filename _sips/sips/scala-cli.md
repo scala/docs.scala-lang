@@ -624,48 +624,25 @@ As a part of this SIP we propose to introduce Using Directives, a special commen
 
 Using directives can be place on only top of the file (above imports, package definition etx.) and can be proceed only by plain comments (e.g. to comment out an using directive)
 
-Comments containing directives needs to start by `>`, for example:
+Comments containing directives needs to start by `//>`, for example:
 
 ```
-//> using Scala 3
-/*> using 
-  Scala 3
-  option "-Xfatal-warning"
-*/
+//> using scala 3
+//> using platform scala-js
+//> using options -Xasync
 ```
 
 We propose following sytax for Using Directives (within special comments described above):
 
 ```
-UsingDirective ::= "using" (Setting | Settings)
-Settings ::= "{" Setting { ";" Setting } [";"] "}"
-Setting ::= Ident [Values | Settings]
-Ident ::= ScalaIdent { “.” ScalaIdent }
-Values ::= Value { "," Value} [","]
-Value ::= stringLiteral | ["-"] numericLiteral | true | false
+UsingDirective ::= "using" Setting
+Setting ::= Ident ( Value | Values )
+Ident ::= ScalaIdent { "." ScalaIdent }
+Values ::= Value { " " [","] Values }
+Value ::= Ident | stringLiteral | numericLiteral | true | false
 ```
 
 Where:
-
-- A Settings block is similar to the standard Scala code block. Braces and indentation syntax is allowed. e.g.:
-
-
-```
-someSettings { setting1 value 1; setting2; }
-
-// or
-
-someSettings {
-  setting1
-  setting2
-}
-
-// or
-
-someSettings:
-  setting1
-  setting2
-```
 
 - Ident is the standard Scala identifier or list of identifiers separated by dots:
 
@@ -680,9 +657,6 @@ foo.bar
 - String literals and numeric literals are similar to Scala.
 - No value after the identifier is treated as true value: `using scalaSettings.fatalWarnings`
 - Specifying a setting with the same path more than once and specifying the same setting with a list of values are equivalent
-- A path created using dot-separated idents is semantically equivalent to a path created by nesting idents:
-`foo.bar` is equivalent to `foo { bar }`
-
 
 The list of proposed directives split into MUST have and SHOULD have groups:
 
