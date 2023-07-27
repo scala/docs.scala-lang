@@ -263,7 +263,7 @@ The current committee members are:
 - Chris Andrews ([@chrisandrews-ms](https://github.com/chrisandrews-ms)), Morgan Stanley
 - Gabriele Petronella ([@gabro](https://github.com/gabro)), buildo
 - Guillaume Martres ([@smarter](https://github.com/smarter)), EPFL
-- Iulian Dragos ([@dragos](https://github.com/dragos)), Databricks
+- Iulian Dragos ([@dragos](https://github.com/dragos)), Gradle Inc
 - Lukas Rytz ([@lrytz](https://github.com/lrytz)), Lightbend
 - Martin Odersky ([@odersky](https://github.com/odersky)), EPFL
 - Oron Port ([@soronpo](https://github.com/soronpo)), DFiant Inc
