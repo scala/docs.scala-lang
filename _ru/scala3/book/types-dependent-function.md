@@ -10,6 +10,7 @@ language: ru
 num: 57
 previous-page: types-structural
 next-page: types-others
+versionSpecific: true
 ---
 
 _Зависимый тип функции_ (_dependent function type_) описывает типы функций,

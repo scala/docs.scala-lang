@@ -10,9 +10,12 @@ language: ru
 num: 55
 previous-page: types-variance
 next-page: types-structural
+versionSpecific: true
 ---
 
-В Scala 3 _непрозрачные псевдонимы типов_ (_opaque type aliases_) обеспечивают абстракции типов без каких-либо **накладных расходов**.
+_Непрозрачные псевдонимы типов_ (_opaque type aliases_) обеспечивают абстракцию типов без каких-либо **накладных расходов**. 
+
+В Scala 2 аналогичный результат можно получить с помощью [классов значений][value-classes].
 
 ## Накладные расходы на абстракцию
 
@@ -172,3 +175,4 @@ val d: Double = log2 // ERROR: Found Logarithm required Double
 Как показано выше, непрозрачные типы удобны в использовании и очень хорошо интегрируются с [функцией методов расширения][extension].
 
 [extension]: {% link _overviews/scala3-book/ca-extension-methods.md %}
+[value-classes]: {% link _overviews/core/value-classes.md %}
