@@ -11,7 +11,7 @@ previous-page: operators
 _Вызов параметров по имени_ - это когда значение параметра вычисляется только в момент вызова параметра. Этот способ противоположен _вызову по значению_. Чтоб вызов параметра был по имени, необходимо просто указать `=>` перед его типом.
 
 {% tabs by-name-parameters_1 %}
-{% tab 'Scala 2 and 3' for=by-name-parameters_1 %}
+{% tab 'Scala 2 и 3' for=by-name-parameters_1 %}
 
 ```scala mdoc
 def calculate(input: => Int) = input * 37
