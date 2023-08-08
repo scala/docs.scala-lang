@@ -66,6 +66,34 @@
   .tag-inline {
     float: none;
   }
+
+  h1,
+  h3,
+  h4,
+  h5,
+  h6 {
+    .heading-anchor {
+      color: $base-font-color;
+    }
+
+    &:hover {
+      .heading-anchor {
+        visibility: visible;
+      }
+    }
+  }
+
+  h2 {
+    .heading-anchor {
+      color: $brand-tertiary;
+    }
+
+    &:hover {
+      .heading-anchor {
+        visibility: visible;
+      }
+    }
+  }
 }
 
 a.new-version-notice {

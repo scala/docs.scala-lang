@@ -18,7 +18,12 @@ includeCollectionTOC: true
 						{% else if page.scala2 %}
 							{% assign versionSpecificLang = 'scala2' %}
 						{% endif %}
-						{% include version-specific-notice.html language=versionSpecificLang %}
+					    {% if page.language %}
+					        {% assign pageLanguage = page.language %}
+					    {% else %}
+					        {% assign pageLanguage = 'en' %}
+					    {% endif %}
+						{% include version-specific-notice.html language=versionSpecificLang page-language=pageLanguage %}
 					{% endif %}
 					<noscript>
 						<blockquote>

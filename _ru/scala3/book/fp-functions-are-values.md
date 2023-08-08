@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: В этом разделе рассматривается использование функций в качестве значений в функциональном программировании.
 language: ru
-num: 44
+num: 45
 previous-page: fp-pure-functions
 next-page: fp-functional-error-handling
 ---

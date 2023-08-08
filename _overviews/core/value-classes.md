@@ -7,9 +7,11 @@ partof: value-classes
 languages: [ja, zh-cn]
 
 permalink: /overviews/core/:title.html
+scala2: true
+versionSpecific: true
 ---
 
-**Mark Harrah**
+In Scala 3, value classes are still supported for compatibility reasons but the recommended way to achieve the same result is to use [opaque types][opaques].
 
 ## Introduction
 
@@ -212,7 +214,7 @@ Note that local classes, traits, and objects are not allowed either, as in the f
         ...
       }
     }
-    
+
     Local.scala:3: error: implementation restriction: nested class is not allowed in value class
       class Local
             ^
@@ -272,3 +274,5 @@ but this is allowed because the enclosing object is top-level:
     object Outer {
       class Inner(val x: Int) extends AnyVal
     }
+
+[opaques]: {% link _overviews/scala3-book/types-opaque-types.md %}

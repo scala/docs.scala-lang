@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: На этой странице показано, как использовать анонимные функции в Scala, включая примеры с функциями map и filter класса List.
 language: ru
-num: 28
+num: 29
 previous-page: fun-intro
 next-page: fun-function-variables
 ---

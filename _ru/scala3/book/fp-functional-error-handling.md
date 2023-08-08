@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: В этом разделе представлено введение в функциональную обработку ошибок в Scala 3.
 language: ru
-num: 45
+num: 46
 previous-page: fp-functions-are-values
 next-page: fp-summary
 ---

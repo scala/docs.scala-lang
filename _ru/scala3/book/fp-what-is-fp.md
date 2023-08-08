@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: Этот раздел дает ответ на вопрос, что такое функциональное программирование?
 language: ru
-num: 41
+num: 42
 previous-page: fp-intro
 next-page: fp-immutable-values
 ---

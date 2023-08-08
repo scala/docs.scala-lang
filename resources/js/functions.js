@@ -662,3 +662,15 @@ $(document).ready(function () {
     $('#contributors').html(contributorsHtml);
   });
 });
+
+$(document).ready(function() {
+  const icon = '<i class="fa fa-link fa-2xs" aria-hidden="true"></i>'
+  const anchor = '<a class="heading-anchor" aria-hidden="true"></a>'
+
+  $('.content-primary.documentation').find('h1, h2, h3, h4, h5, h6').each(function() {
+    const id = $(this).attr('id');
+    if (id) {
+      $(this).append($(anchor).attr('href', '#' + id).html(icon));
+    }
+  });
+});

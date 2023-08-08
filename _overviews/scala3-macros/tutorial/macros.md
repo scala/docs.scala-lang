@@ -72,7 +72,7 @@ On the other hand, a macro executes user-written code that generates the code th
 Technically, compiling the inlined code `${ inspectCode('x)  }` calls the method `inspectCode` _at compile time_ (through Java reflection), and the method `inspectCode` then executes as normal code.
 
 To be able to execute `inspectCode`, we need to compile its source code first.
-As a technicaly consequence, we cannot define and use a macro in the **same class/file**.
+As a technical consequence, we cannot define and use a macro in the **same class/file**.
 However, it is possible to have the macro definition and its call in the **same project** as long as the implementation of the macro can be compiled first.
 
 > ##### Suspended Files

@@ -7,12 +7,11 @@ overview-name: "Scala 3 — Book"
 type: section
 description: В этом разделе представлены объединение типов в Scala 3.
 language: ru
-num: 51
+num: 52
 previous-page: types-intersection
-next-page:
+next-page: types-adts-gadts
+versionSpecific: true
 ---
-
-<span class="tag tag-inline">Только в Scala 3</span>
 
 Используемый для типов `|` оператор создает так называемый _тип объединения_ (_union type_).
 Тип `А | B` представляет значения, которые относятся **либо** к типу `A`, **либо** к типу `B`.

@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: В этом разделе рассматривается использование чистых функций в функциональном программировании.
 language: ru
-num: 43
+num: 44
 previous-page: fp-immutable-values
 next-page: fp-functions-are-values
 ---

@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: В этой главе представлено введение в доступные инструменты моделирования предметной области в Scala 3, включая классы, трейты, перечисления и многое другое.
 language: ru
-num: 20
+num: 21
 previous-page: domain-modeling-intro
 next-page: domain-modeling-oop
 ---

@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: chapter
 description: В этой главе представлены методы в Scala 3.
 language: ru
-num: 23
+num: 24
 previous-page: domain-modeling-fp
 next-page: methods-most
 ---
