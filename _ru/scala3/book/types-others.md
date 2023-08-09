@@ -10,6 +10,7 @@ language: ru
 num: 58
 previous-page: types-dependent-function
 next-page: ca-contextual-abstractions-intro
+versionSpecific: true
 ---
 
 В Scala есть несколько других расширенных типов, которые не показаны в этой книге, в том числе:
@@ -22,6 +23,6 @@ next-page: ca-contextual-abstractions-intro
 - Типы уточнения
 - Вид полиморфизма
 
-Дополнительные сведения об этих типах см. в [Справочной документации][reference].
+Дополнительные сведения об этих типах см. в [Справочной документации Scala 3][reference].
 
 [reference]: {{ site.scala3ref }}/overview.html

@@ -10,7 +10,13 @@ language: ru
 num: 56
 previous-page: types-opaque-types
 next-page: types-dependent-function
+versionSpecific: true
 ---
+
+_Scala 2 содержит более слабую форму структурных типов, основанную на Java reflection, 
+достигаемую с помощью `import scala.language.reflectiveCalls`_. 
+
+## Введение
 
 Некоторые варианты использования, такие как моделирование доступа к базе данных,
 более удобны в динамически типизированных языках, чем в статически типизированных языках.
