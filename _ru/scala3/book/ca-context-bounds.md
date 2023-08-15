@@ -9,7 +9,7 @@ description: В этой главе представлены контекстн�
 language: ru
 num: 62
 previous-page: ca-context-parameters
-next-page:
+next-page: ca-given-imports
 ---
 
 Во многих ситуациях имя [контекстного параметра]({% link _overviews/scala3-book/ca-context-parameters.md %}#context-parameters)

@@ -2,7 +2,7 @@
 title: Given Imports
 type: section
 description: This page demonstrates how 'given' import statements work in Scala 3.
-languages: [zh-cn]
+languages: [ru, zh-cn]
 num: 63
 previous-page: ca-context-bounds
 next-page: ca-type-classes
