@@ -93,7 +93,7 @@ runs the **Scala Compiler Academy** project to onboard and educate new people in
 One of the Compiler Academy
 projects is an Issue Spree – an event that takes place every 3 weeks where people fix Scala 3 compiler issues
 in pair programming sessions while learning the compiler together. You can apply for the Spree participation
-by [filling the form](https://forms.gle/DfoSuHFm3T6MA3L59).
+by [filling this form]([https://forms.gle/DfoSuHFm3T6MA3L59](https://docs.google.com/forms/d/e/1FAIpQLSdhr5Y7QG9VGTGaPn5uS5v3Gz7VtnM5PW-vseZ9OpjseEiwYQ/viewform)).
 
 Before you begin, you can learn more about the Scala 3 compiler
 from the following links:
