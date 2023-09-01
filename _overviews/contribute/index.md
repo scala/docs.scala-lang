@@ -41,7 +41,7 @@ spree_resources:
     link: "https://github.com/scalacenter/sprees"
   - title: "Upcoming conferences"
     description: "See upcoming Scala conferences where you can meet open source maintainers."
-    icon: "fa-regular fa-calendar-check"
+    icon: "fa fa-calendar-check"
     link: "https://www.scala-lang.org/events/"
 
 scala_resources:
