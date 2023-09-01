@@ -50,6 +50,7 @@ At a high level, Scala shares these *similarities* with Python:
 Also at a high level, the _differences_ between Python and Scala are:
 
 - Python is dynamically typed, and Scala is statically typed
+  - Though it's dynamically typed, Python supports "gradual typing" with type hints, which are checked by static type checkers, like `mypy`
   - Though it’s statically typed, Scala features like type inference make it feel like a dynamic language
 - Python is interpreted, and Scala code is compiled to _.class_ files, and runs on the Java Virtual Machine (JVM)
 - In addition to running on the JVM, the [Scala.js](https://www.scala-js.org) project lets you use Scala as a JavaScript replacement
@@ -68,6 +69,7 @@ This section looks at the similarities you’ll see between Python and Scala whe
 - The syntax for defining methods is similar
 - Both have lists, dictionaries (maps), sets, and tuples
 - Both have comprehensions for mapping and filtering
+- Both have terrific IDE support
 - With Scala 3’s [toplevel definitions][toplevel] you can put method, field, and other definitions anywhere
   - One difference is that Python can operate without even declaring a single method, while Scala 3 can’t do _everything_ at the toplevel; for instance, a [main method][main-method] (`@main def`) is required to start a Scala application
 
@@ -83,7 +85,6 @@ Also at a programming level, these are some of the differences you’ll see ever
   - The syntax that’s used to define functions that are passed into methods is the same syntax that’s used to define anonymous functions
 - Scala variables and parameters are defined with the `val` (immutable) or `var` (mutable) keywords
 - Scala idioms prefer immutable data structures
-- Scala has terrific IDE support with IntelliJ IDEA and Microsoft VS Code
 - Comments: Python uses `#` for comments; Scala uses the C, C++, and Java style: `//`, `/*...*/`, and `/**...*/`
 - Naming conventions: The Python standard is to use underscores like `my_list`; Scala uses `myList`
 - Scala is statically typed, so you declare types for method parameters, method return values, and in other places
@@ -95,7 +96,7 @@ Also at a programming level, these are some of the differences you’ll see ever
 - Scala has state-of-the-art open source functional programming libraries (see the [“Awesome Scala” list](https://github.com/lauris/awesome-scala))
 - You can create your own “control structures” and DSLs, thanks to features like objects, by-name parameters, infix notation, optional parentheses, extension methods, higher-order functions, and more
 - Scala code can run in the JVM and even be compiled to native images (using [Scala Native](https://github.com/scala-native/scala-native) and [GraalVM](https://www.graalvm.org)) for high performance
-- Many other goodies: case classes, companion classes and objects, macros, [union][union-types] and [intersection][intersection-types] types, [toplevel definitions][toplevel], numeric literals, multiple parameter lists, and more
+- Many other goodies: companion classes and objects, macros, numeric literals, multiple parameter lists, type-level programming, and more
 
 ### Features compared with examples
 
@@ -240,6 +241,53 @@ x += 1
 
 However, the rule of thumb in Scala is to always use `val` unless the variable specifically needs to be mutated.
 
+## FP style records
+
+Scala case classes are similar to Python frozen dataclasses.
+
+### Constructor definition:
+
+<table>
+  <tbody>
+    <tr>
+      <td class="python-block">
+        <code>from dataclasses import dataclass, replace
+        <br>
+        <br>@dataclass(frozen=True)
+        <br>class Person:
+        <br>&nbsp; name: str
+        <br>&nbsp; age: int</code>
+      </td>
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>case class Person(name: String, age: Int)</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### Create and use an instance:
+
+<table>
+  <tbody>
+    <tr>
+      <td class="python-block">
+        <code>p = Person("Alice", 42)
+        <br>p.name&nbsp;&nbsp; # Alice
+        <br>p2 = replace(p, age=43)</code>
+      </td>
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>val p = Person("Alice", 42)
+        <br>p.name&nbsp;&nbsp; // Alice
+        <br>val p2 = p.copy(age = 43)</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ## OOP style classes and methods
 
 This section provides comparisons of features related to OOP-style classes and methods.
@@ -333,7 +381,7 @@ This section provides comparisons of features related to OOP-style classes and m
 ## Interfaces, traits, and inheritance
 
 If you’re familiar with Java 8 and newer, Scala traits are similar to those Java interfaces.
-Traits are used all the time in Scala, while Python interfaces and abstract classes are used much less often.
+Traits are used all the time in Scala, while Python interfaces (Protocols) and abstract classes are used much less often.
 Therefore, rather than attempt to compare the two, this example shows how to use Scala traits to build a small solution to a simulated math problem:
 
 ```scala
@@ -1010,7 +1058,7 @@ If you’re used to using these methods with lambda expressions in Python, you�
 To demonstrate this functionality, here are two sample lists:
 
 ```scala
-numbers = (1,2,3)           // python
+numbers = [1,2,3]           // python
 val numbers = List(1,2,3)   // scala
 ```
 
@@ -1110,7 +1158,8 @@ Those lists are used in the following table, that shows how to apply mapping and
 ### Scala collections methods
 
 Scala collections classes have over 100 functional methods to simplify your code.
-In addition to `map`, `filter`, and `reduce`, other commonly-used methods are listed below.
+In Python, some of these functions are available in the `itertools` module.
+In addition to `map`, `filter`, and `reduce`, other commonly-used methods in Scala are listed below.
 In those method examples:
 
 - `c` refers to a collection
@@ -1296,12 +1345,10 @@ Follow the links below for more details:
 
 - Most concepts related to [contextual abstractions][contextual], such as [extension methods][extension-methods], [type classes][type-classes], implicit values
 - Scala allows multiple parameter lists, which enables features like partially-applied functions, and the ability to create your own DSLs
-- Case classes, which are extremely useful for functional programming and pattern matching
 - The ability to create your own control structures and DSLs
-- Pattern matching and `match` expressions
 - [Multiversal equality][multiversal]: the ability to control at compile time what equality comparisons make sense
 - Infix methods
-- Macros and metaprogramming
+- Macros
 
 ## Scala and virtual environments
 
