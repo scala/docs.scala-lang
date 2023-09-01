@@ -96,7 +96,7 @@ Also at a programming level, these are some of the differences you’ll see ever
 - Scala has state-of-the-art open source functional programming libraries (see the [“Awesome Scala” list](https://github.com/lauris/awesome-scala))
 - You can create your own “control structures” and DSLs, thanks to features like objects, by-name parameters, infix notation, optional parentheses, extension methods, higher-order functions, and more
 - Scala code can run in the JVM and even be compiled to native images (using [Scala Native](https://github.com/scala-native/scala-native) and [GraalVM](https://www.graalvm.org)) for high performance
-- Many other goodies: companion classes and objects, macros, numeric literals, multiple parameter lists, type-level programming, and more
+- Many other goodies: companion classes and objects, macros, numeric literals, multiple parameter lists, [intersection][intersection-types] types, type-level programming, and more
 
 ### Features compared with examples
 
