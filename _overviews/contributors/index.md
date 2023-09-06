@@ -360,7 +360,7 @@ If you have written a library, you probably want it to be usable from several Sc
 Define the versions you want to support in the `crossScalaVersions` setting, in your `build.sbt` file:
 
 ~~~ scala
-crossScalaVersions := Seq("3.3.0", "2.13.11", "2.12.18")
+crossScalaVersions := Seq("3.3.0", "2.13.12", "2.12.18")
 scalaVersion := crossScalaVersions.value.head
 ~~~
 

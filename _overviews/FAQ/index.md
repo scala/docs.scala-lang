@@ -120,7 +120,7 @@ with only minor supplements.  That's why `versionString` and
 `versionNumberString` report that Scala 2 is in use:
 
 ```
-Welcome to Scala 3.2.0 (17.0.3, Java OpenJDK 64-Bit Server VM).
+Welcome to Scala 3.3.0 (17.0.3, Java OpenJDK 64-Bit Server VM).
 Type in expressions for evaluation. Or try :help.
 
 scala> util.Properties.versionNumberString
