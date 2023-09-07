@@ -2,8 +2,8 @@
 title: Scala 3 Migration Mode
 type: chapter
 description: This section describes the migration mode of the Scala 3 compiler 
-num: 8
-previous-page: scala3-migrate
+num: 7
+previous-page: tooling-tour
 next-page: tutorial-intro
 ---
 
@@ -22,7 +22,6 @@ where possible standard options include:
 
 ...
 -explain           Explain errors in more detail.
--explain-types     Explain type errors in more detail.
 ...
 -rewrite           When used in conjunction with a `...-migration` source version, rewrites sources to migrate to new version.
 ...
@@ -45,7 +44,7 @@ Once your code compiles in the migration mode, almost all warnings can be resolv
 To do so you just need to compile again, this time with the `-source:3.0-migration` and the `-rewrite` options.
 
 > Beware that the compiler will modify the code! It is intended to be safe.
-> However you may like to commit the initial state so that you can print the diff applied by the compiler and revert it if necessary.
+> However you may want to commit the initial state so that you can print the diff applied by the compiler and revert it if necessary.
 
 > #### Good to know
 > - The rewrites are not applied if the code compiles in error.

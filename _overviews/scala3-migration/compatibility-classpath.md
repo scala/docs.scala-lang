@@ -24,15 +24,16 @@ The Scala 3 unpickler has been extensively tested in the community build for man
 
 ![Scala 3 module depending on a Scala 2.13 artifact](/resources/images/scala3-migration/compatibility-3-to-213.svg)
 
-As an sbt build it can be illustrated by (sbt 1.5.0 or higher is required):
+As an sbt build, it looks like this:
 
 ```scala
+// build.sbt (sbt 1.5 or higher)
 lazy val foo = project.in(file("foo"))
-  .settings(scalaVersion := "3.0.0")
+  .settings(scalaVersion := "3.3.0")
   .dependsOn(bar)
 
 lazy val bar = project.in(file("bar"))
-  .settings(scalaVersion := "2.13.6")
+  .settings(scalaVersion := "2.13.11")
 ```
 
 Or, in case bar is a published Scala 2.13 library, we can have:
@@ -40,7 +41,7 @@ Or, in case bar is a published Scala 2.13 library, we can have:
 ```scala
 lazy val foo = project.in(file("foo"))
   .settings(
-    scalaVersion := "3.0.0",
+    scalaVersion := "3.3.0",
     libraryDependencies += ("org.bar" %% "bar" % "1.0.0").cross(CrossVersion.for3Use2_13)
   )
 ```
@@ -56,13 +57,11 @@ Let's note that the standard library is automatically provided by the build tool
 
 ## The Scala 2.13 TASTy Reader
 
-The second piece of good news is that the Scala 2.13 TASTy reader, which enables consuming Scala 3 libraries has been shipped since Scala 2.13.4.
-
-> The TASTy reader is very new. That's why it is  only available under the `-Ytasty-reader` flag.
+The second piece of good news is that Scala 2.13 can consume Scala 3 libraries with `-Ytasty-reader`.
 
 ### Supported Features
 
-The TASTy reader supports all the traditional language features as well as the following brand-new features:
+The TASTy reader supports all the traditional language features as well as the following Scala 3 features:
 - [Enumerations]({{ site.scala3ref }}/enums/enums.html)
 - [Intersection Types]({{ site.scala3ref }}/new-types/intersection-types.html)
 - [Opaque Type Aliases]({{ site.scala3ref }}/other-new-features/opaques.html)
@@ -71,11 +70,11 @@ The TASTy reader supports all the traditional language features as well as the f
 - [Open Classes]({{ site.scala3ref }}/other-new-features/open-classes.html) (and inheritance of super traits)
 - [Export Clauses]({{ site.scala3ref }}/other-new-features/export.html)
 
-We have limited support on:
+It partially supports:
 - [Top-Level Definitions]({{ site.scala3ref }}/dropped-features/package-objects.html)
 - [Extension Methods]({{ site.scala3ref }}/contextual/extension-methods.html)
 
-More exotic features are not supported:
+It does not support the more advanced features:
 - [Context Functions]({{ site.scala3ref }}/contextual/context-functions.html)
 - [Polymorphic Function Types]({{ site.scala3ref }}/new-types/polymorphic-function-types.html)
 - [Trait Parameters]({{ site.scala3ref }}/other-new-features/trait-parameters.html)
@@ -94,18 +93,19 @@ By enabling the TASTy reader with `-Ytasty-reader`, a Scala 2.13 module can depe
 
 ![Scala 2 module depending on a Scala 3 artifact](/resources/images/scala3-migration/compatibility-213-to-3.svg)
 
-As an sbt build it can be illustrated by:
+As an sbt build, it looks like this:
 
 ```scala
+// build.sbt (sbt 1.5 or higher)
 lazy val foo = project.in.file("foo")
   .settings(
-    scalaVersion := "2.13.6",
+    scalaVersion := "2.13.11",
     scalacOptions += "-Ytasty-reader"
   )
   .dependsOn(bar)
 
 lazy val bar = project.in(file("bar"))
-  .settings(scalaVersion := "3.0.0")
+  .settings(scalaVersion := "3.3.0")
 ```
 
 Or, in case `bar` is a published Scala 3 library:
@@ -113,7 +113,7 @@ Or, in case `bar` is a published Scala 3 library:
 ```scala
 lazy val foo = project.in.file("foo")
   .settings(
-    scalaVersion := "2.13.6",
+    scalaVersion := "2.13.11",
     scalacOptions += "-Ytasty-reader",
     libraryDependencies += ("org.bar" %% "bar" % "1.0.0").cross(CrossVersion.for2_13Use3)
   )
@@ -136,8 +136,6 @@ This is permitted as long as all libraries are resolved to a single binary versi
 The inverted pattern, with a 2.13 module in the middle, is also possible.
 
 > #### Disclaimer for library maintainers
-> 
-> Using the interoperability between Scala 2.13 and Scala 3 in a published library is generally not safe for your end-users.
 > 
 > Unless you know exactly what you are doing, it is discouraged to publish a Scala 3 library that depends on a Scala 2.13 library (the scala-library being excluded) or vice versa.
 > The reason is to prevent library users from ending up with two conflicting versions `foo_2.13` and `foo_3` of the same foo library in their classpath, this problem being unsolvable in some cases.
