@@ -21,6 +21,8 @@
   links:
     - title: Community
       url: "http://scala-lang.org/community/"
+    - title: Governance
+      url: "http://scala-lang.org/community/index.html#governance"
     - title: Mailing Lists
       url: "http://scala-lang.org/community/index.html#mailing-lists"
     - title: Chat Rooms & More
