@@ -43,16 +43,16 @@ This is crucial to avoid bugs that could happen when fixing the incompatibilitie
 Configuring cross-building in sbt is as short as:
 
 ```scala
-scalaVersion := "3.3.0"
-crossScalaVersions ++= Seq("2.13.11", "3.3.0")
+scalaVersion := "3.3.1"
+crossScalaVersions ++= Seq("2.13.11", "3.3.1")
 ```
 
 This configuration means:
-- The default version is `3.3.0`.
+- The default version is `3.3.1`.
 - 2.13.11 can be loaded by running the `++2.13.11` command.
-- 3.3.0 can be loaded by running the `++3.3.0` command.
+- 3.3.1 can be loaded by running the `++3.3.1` command.
 
-Beware that the `reload` command will always load the default version---here it is 3.3.0.
+Beware that the `reload` command will always load the default version---here it is 3.3.1.
 
 ## 4. Prepare the dependencies
 
@@ -138,8 +138,8 @@ Also you should disable `-Xfatal-warnings` to take full advantage of the migrati
 It is now time to try compiling in Scala 3:
 
 {% highlight text %}
-sbt:example> ++3.3.0
-[info] Setting Scala version to 3.3.0 on 1 project.
+sbt:example> ++3.3.1
+[info] Setting Scala version to 3.3.1 on 1 project.
 ...
 sbt:example> example / compile
 ...
@@ -186,7 +186,7 @@ Only the migration warnings are remaining.
 You can patch them automatically by compiling with the `-source:3.0-migration -rewrite` options.
 
 {% highlight text %}
-sbt:example> ++3.3.0
+sbt:example> ++3.3.1
 sbt:example> set example / scalacOptions += "-rewrite"
 sbt:example> example / compile
 ...
@@ -210,7 +210,7 @@ sbt:example> ++2.13.11
 sbt:example> example / test
 ...
 [success]
-sbt:example> ++3.3.0
+sbt:example> ++3.3.1
 sbt:example> example / test
 ...
 [success]

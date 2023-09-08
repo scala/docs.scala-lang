@@ -29,7 +29,7 @@ As an sbt build, it looks like this:
 ```scala
 // build.sbt (sbt 1.5 or higher)
 lazy val foo = project.in(file("foo"))
-  .settings(scalaVersion := "3.3.0")
+  .settings(scalaVersion := "3.3.1")
   .dependsOn(bar)
 
 lazy val bar = project.in(file("bar"))
@@ -41,7 +41,7 @@ Or, in case bar is a published Scala 2.13 library, we can have:
 ```scala
 lazy val foo = project.in(file("foo"))
   .settings(
-    scalaVersion := "3.3.0",
+    scalaVersion := "3.3.1",
     libraryDependencies += ("org.bar" %% "bar" % "1.0.0").cross(CrossVersion.for3Use2_13)
   )
 ```
@@ -105,7 +105,7 @@ lazy val foo = project.in.file("foo")
   .dependsOn(bar)
 
 lazy val bar = project.in(file("bar"))
-  .settings(scalaVersion := "3.3.0")
+  .settings(scalaVersion := "3.3.1")
 ```
 
 Or, in case `bar` is a published Scala 3 library:

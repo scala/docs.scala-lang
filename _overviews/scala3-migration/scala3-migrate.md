@@ -399,7 +399,7 @@ sbt:main> migrateTypes main
 [info] 1 remaining candidate
 [info] Found 1 required patch in src/main/scala/example/TypeIncompat.scala
 [info] Compiling to Scala 3 with -source:3.0-migration -rewrite
-[info] compiling 1 Scala source to /home/piquerez/github/scalacenter/scala3-migration-example/target/scala-3.3.0/classes ...
+[info] compiling 1 Scala source to /home/piquerez/github/scalacenter/scala3-migration-example/target/scala-3.3.1/classes ...
 [info] 
 [info] Migrating types in main / Test
 [info] 
@@ -412,7 +412,7 @@ sbt:main> migrateTypes main
 [info] Compiling to Scala 3 with -source:3.0-migration -rewrite
 [info] 
 [info] You can safely upgrade main to Scala 3:
-[info] <span style="color:orange">scalaVersion := "3.3.0"</span>
+[info] <span style="color:orange">scalaVersion := "3.3.1"</span>
 [success] Total time: 18 s, completed Aug 31, 2023 11:26:45 AM
 [info] Defining scalaVersion
 [info] The new value will be used by Compile / bspBuildTarget, Compile / dependencyTreeCrossProjectId and 68 others.
@@ -430,7 +430,7 @@ Congratulations! Your project can now compile to Scala 3.
 
 ## What to do next ?
 
-If you project contains only one module, you can set `scalaVersion := 3.3.0`.
+If you project contains only one module, you can set `scalaVersion := 3.3.1`.
 
 If you have more than one module, you can start again from [3. Migrate the dependencies](#3-migrate-the-dependencies) with another module.
 

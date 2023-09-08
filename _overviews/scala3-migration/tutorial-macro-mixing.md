@@ -100,7 +100,7 @@ However, in many cases you will have to move the Scala 2.13 macro implementation
 
 lazy val example = project.in(file("example"))
   .settings(
-    scalaVersion := "3.3.0"
+    scalaVersion := "3.3.1"
   )
   .dependsOn(`example-compat`)
 
@@ -150,8 +150,8 @@ Since we want to execute the tests in Scala 2.13 and Scala 3, we create a cross-
 // build.sbt
 lazy val `example-test` = project.in(file("example-test"))
   .settings(
-    scalaVersion := "3.3.0",
-    crossScalaVersions := Seq("3.3.0", "2.13.11"),
+    scalaVersion := "3.3.1",
+    crossScalaVersions := Seq("3.3.1", "2.13.11"),
     scalacOptions ++= {
       CrossVersion.partialVersion(scalaVersion.value) match {
         case Some((2, 13)) => Seq("-Ytasty-reader")
@@ -191,7 +191,7 @@ location.MacrosSpec:
   + location
 [info] Passed: Total 1, Failed 0, Errors 0, Passed 1
 [success]
-sbt:example> ++3.3.0
+sbt:example> ++3.3.1
 sbt:example> example-test / test
 location.MacrosSpec:
   + location
