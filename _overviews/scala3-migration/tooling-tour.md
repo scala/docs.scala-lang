@@ -62,7 +62,7 @@ libraryDependency += ("org.bar" %% "bar" % "1.0.0").cross(CrossVersion.for2_13Us
 
 ### Maven
 
-The Scala Maven plugin supports Scala 3 since [4.5.1]().
+The Scala Maven plugin supports Scala 3 since 4.5.1.
 
 ## Code editors and IDEs
 
