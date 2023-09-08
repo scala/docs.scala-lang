@@ -33,7 +33,7 @@ Add `sbt-scala3-migrate` in the `project/plugins.sbt` file of your sbt project.
 
 ``` scala
 // project/plugins.sbt
-addSbtPlugin("ch.epfl.scala" % "sbt-scala3-migrate" % "0.6.0")
+addSbtPlugin("ch.epfl.scala" % "sbt-scala3-migrate" % "0.6.1")
 ```
 
 <div><p>The latest published version is  <a href="https://index.scala-lang.org/scalacenter/scala3-migrate/sbt-scala3-migrate">
