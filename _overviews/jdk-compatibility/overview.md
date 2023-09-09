@@ -12,7 +12,7 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 
 | JDK version | Minimum Scala versions                                       |
 |:-----------:|:-------------------------------------------------------------|
-| 21 (ea)     | 3.3.1 (soon), 2.13.11, 2.12.18                               |
+| 21 (ea)     | 3.3.1, 2.13.11, 2.12.18                                      |
 | 20          | 3.3.0, 2.13.11, 2.12.18                                      |
 | 19          | 3.2.0, 2.13.9, 2.12.16                                       |
 | 18          | 3.1.3, 2.13.7, 2.12.15                                       |
@@ -101,13 +101,11 @@ Support for JDK 20 was included in Scala 3.3.0, 2.13.11, and 2.12.18.
 
 ## JDK 21 compatibility notes
 
-Early access builds of JDK 21 are already available. JDK 21 will
+Early access builds of JDK 21 are available. JDK 21 will
 be an LTS release.
 
 Initial support for JDK 21 has been merged and is already available in
-Scala 2.13.11 and 2.12.18 and in nightly builds of Scala 3.
-
-The support will be included in the forthcoming Scala 3.3.1 release.
+Scala 3.3.1, 2.13.11, and 2.12.18.
 
 ## GraalVM Native Image compatibility notes
 
