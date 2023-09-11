@@ -65,7 +65,8 @@ $(document).ready(function() {
 // Highlight
 $(document).ready(function() {
   hljs.configure({
-    languages: ["scala", "bash"]
+    languages: ["scala", "bash"],
+    noHighlightRe: /^hljs-skip$/i
   })
   hljs.registerLanguage("scala", highlightDotty);
   hljs.highlightAll();

@@ -14,7 +14,7 @@ Therefore it is not possible for the Scala 3 compiler to expand any Scala 2.13 m
 
 In contrast, Scala 3 introduces a new principled approach of metaprogramming that is designed for stability.
 Scala 3 macros, and inline methods in general, will be compatible with future versions of the Scala 3 compiler.
-While this is an uncontested improvement, it also means that all Scala 2.13 macros have to be rewritten from the ground up, by using the new metaprogramming features.
+While this is an uncontested improvement, it also means that all Scala 2.13 macros have to be rewritten from the ground up, using the new metaprogramming features.
 
 ## Macro Dependencies
 
@@ -54,16 +54,16 @@ They are comprised of:
 
 Before getting deep into reimplementing a macro you should ask yourself:
 - Can I use `inline` and the `scala.compiletime` operations to reimplement my logic?
-- Can I use the simpler and safer expression based macros?
+- Can I use the simpler and safer expression-based macros?
 - Do I really need to access the AST?
 - Can I use a [match type]({{ site.scala3ref }}/new-types/match-types.html) as return type?
 
-You can learn all the new metaprogramming concepts by reading the [Macro Tutorial][scala3-macros].
+You can learn all the new metaprogramming concepts by reading the [Macros in Scala 3][scala3-macros] tutorial.
 
 ## Cross-building a Macro Library
 
 You have written a wonderful macro library and you would like it to be available in Scala 2.13 and Scala 3.
-There are two different approaches, the traditional cross-building technique and the more recent mixing macro technique.
+There are two different approaches, the traditional cross-building technique and the more experimental mixing macro technique.
 You can learn about them by reading these tutorials:
 - [Cross-Building a Macro Library](tutorial-macro-cross-building.html)
 - [Mixing Scala 2.13 and Scala 3 Macros](tutorial-macro-mixing.html)

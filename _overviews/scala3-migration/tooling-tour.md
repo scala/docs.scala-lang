@@ -4,7 +4,7 @@ type: chapter
 description: This chapter is a tour of the migration tooling ecosystem 
 num: 6
 previous-page: compatibility-metaprogramming
-next-page: scala3-migrate
+next-page: tooling-migration-mode
 ---
 
 ## The Scala Compilers
@@ -42,9 +42,9 @@ Once your code is compiled in Scala 3 you can convert it to the new and optional
 > The `sbt-dotty` plugin was needed in sbt 1.4 to get support for Scala 3.
 > It is not useful anymore since sbt 1.5.
 
-sbt 1.5 supports Scala 3 out-of-the-box.
+sbt supports Scala 3 out-of-the-box.
 All common tasks and settings are intended to work the same.
-Many plugins should also work exactly the same.
+Many sbt plugins should also work exactly the same.
 
 To help with the migration, sbt 1.5 introduces new Scala 3 specific cross versions:
 
@@ -62,27 +62,24 @@ libraryDependency += ("org.bar" %% "bar" % "1.0.0").cross(CrossVersion.for2_13Us
 
 ### Maven
 
-Scala 3 support for Maven will soon land in the [scala-maven-plugin](https://github.com/davidB/scala-maven-plugin).
+The Scala Maven plugin supports Scala 3 since 4.5.1.
 
 ## Code editors and IDEs
 
 ### Metals
 
-[Metals](https://scalameta.org/metals/) is a Scala language server that works with VS Code, Vim, Emacs, Sublime Text, and other editors.
-
-Scala 3 is already very well supported by Metals.
-Some minor adjustments for the new syntax changes and new features are coming. 
+[Metals](https://scalameta.org/metals/) is the Scala extension for VS Code.
+It also works with Vim, Emacs, Sublime Text, and other editors.
 
 ### IntelliJ IDEA
 
-The Scala plugin for IntelliJ includes preliminary support for Scala 3.
-Full-fledged support is being worked on by the team at JetBrains.
+The [Scala plugin for IntelliJ](https://plugins.jetbrains.com/plugin/1347-scala) supports Scala 3.
 
 ## Formatting Tools
 
 ### Scalafmt
 
-[Scalafmt](https://scalameta.org/scalafmt/) v3.0.0-RC3 supports both Scala 2.13 and Scala 3.
+[Scalafmt](https://scalameta.org/scalafmt/) supports Scala 2.13 and Scala 3 since v3.0.0.
 
 To enable Scala 3 formatting you must set the `runner.dialect = scala3` in your `.scalafmt.conf` file.
 
@@ -97,13 +94,13 @@ fileOverride {
 }
 ```
 
+Scalafmt can also enforce the new Scala 3 syntax with the [Scala 3 rewrites](https://scalameta.org/scalafmt/docs/configuration.html#scala3-rewrites).
+
 ## Migration Tools
 
 ### Scalafix
 
 [Scalafix](https://scalacenter.github.io/scalafix/) is a refactoring tool for Scala.
-At the time of writing, it only runs on Scala 2.13.
-But it can be useful to prepare the code before jumping to Scala 3.
 
 The [Incompatibility Table](incompatibility-table.html) shows which incompatibility can be fixed by an existing Scalafix rule.
 So far the relevant rules are:
@@ -117,21 +114,17 @@ So far the relevant rules are:
 You can apply these rules in sbt using the `sbt-scalafix` plugin.
 They are also used internally in `sbt-scala3-migrate` described below.
 
-### The Scala 3 Migrate Plugin
+### The Scala 3 Migration Plugin for sbt
 
 [Scala 3 Migrate](https://github.com/scalacenter/scala3-migrate) is an sbt plugin that can assist you during the migration to Scala 3.
 
-It proposes an incremental approach that can be described as follows:
-- Migrate the library dependencies:
-  For every library dependency it checks, if there are available versions for Scala 3.
-- Migrate the Scala compiler options (`scalacOptions`):
-  Some Scala 2 compiler options have been removed or renamed, others remain the same. 
-  This step helps you adapt the compiler options of your project.
-- Migrate the syntax:
-  This step relies on Scalafix and existing rules to fix the deprecated syntax.
-- Migrate the code by expliciting the types:
-  Scala 3 has a new type inference algorithm that may infer slightly different types than the Scala 2 inference.
-  This last step explicits a minimum set of types so that the project can be compiled with Scala 3 without altering its runtime behavior.
+It proposes an incremental approach, based on four sbt commands:
+- `migrateDependencies` helps you update the list of `libraryDependencies`
+- `migrateScalacOptions` helps you update the list of `scalacOptions`
+- `migrateSyntax` fixes a number of syntax incompatibilities between Scala 2.13 and Scala 3 
+- `migrateTypes` tries to code compile your code to Scala 3 by infering types and resolving implicits where needed.
+
+The detailed instructions on how to use Scala 3 Migrate can be found [here](scala3-migrate.html).
 
 ## Scaladex
 
