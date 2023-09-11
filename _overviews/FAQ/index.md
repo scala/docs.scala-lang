@@ -316,14 +316,14 @@ setting in a multi-project build.
 
 For example, if you add this to your `build.sbt`:
 
-    scalaVersion := "2.13.11"
+    scalaVersion := "2.13.12"
 
 that's a "bare" setting, and you might expect it to apply build-wide.
 But it doesn't. _It only applies to the root project._
 
 In many cases one should instead write:
 
-    ThisBuild / scalaVersion := "2.13.11"
+    ThisBuild / scalaVersion := "2.13.12"
 
 Other possibilities include:
 
