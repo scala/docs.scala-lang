@@ -1,11 +1,11 @@
 #!/bin/bash
 set -eux
 
-cs launch --scala-version 2.13.11 org.scalameta::mdoc:2.3.3 -- \
+cs launch --scala-version 2.13.12 org.scalameta::mdoc:2.3.3 -- \
   --in . \
   --out /tmp/mdoc-out/ \
   --classpath \
-  $(cs fetch --scala-version 2.13.11 -p \
+  $(cs fetch --scala-version 2.13.12 -p \
     com.chuusai::shapeless:2.3.10 \
     org.scala-lang::toolkit:0.1.7 \
     org.scala-lang::toolkit-test:0.1.7 \
