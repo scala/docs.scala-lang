@@ -2,15 +2,21 @@
 title: Structural Types
 type: section
 description: This section introduces and demonstrates structural types in Scala 3.
-languages: [zh-cn]
-num: 55
+languages: [ru, zh-cn]
+num: 56
 previous-page: types-opaque-types
 next-page: types-dependent-function
+scala3: true
+versionSpecific: true
 ---
 
 {% comment %}
 NOTE: It would be nice to simplify this more.
 {% endcomment %}
+
+_Scala 2 has a weaker form of structural types based on Java reflection, achieved with `import scala.language.reflectiveCalls`_.
+
+## Introduction
 
 Some use cases, such as modeling database access, are more awkward in statically typed languages than in dynamically typed languages.
 With dynamically typed languages, it’s natural to model a row as a record or object, and to select entries with simple dot notation, e.g. `row.columnName`.

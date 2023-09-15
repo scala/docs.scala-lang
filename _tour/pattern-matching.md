@@ -44,7 +44,7 @@ x match
 ```
 {% endtab %}
 {% endtabs %}
-The `val x` above is a random integer between 0 and 10. `x` becomes the left operand of the `match` operator and on the right is an expression with four cases. The last case `_` is a "catch all" case for any other possible `Int` values. Cases are also called _alternatives_.
+The `val x` above is a random integer between 0 and 9. `x` becomes the left operand of the `match` operator and on the right is an expression with four cases. The last case `_` is a "catch all" case for any other possible `Int` values. Cases are also called _alternatives_.
 
 Match expressions have a value.
 {% tabs pattern-matching-2 class=tabs-scala-version %}
@@ -300,4 +300,4 @@ Scala also allows the definition of patterns independently of case classes, usin
 
 ## More resources
 
-* More details on match expressions in the [Scala Book](/overviews/scala-book/match-expressions.html)
+* More details on match expressions in the [Scala Book](/scala3/book/control-structures.html#match-expressions)

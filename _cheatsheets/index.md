@@ -331,7 +331,7 @@ breakable {
   var y = x
   val readonly = 5
   private var secret = 1
-  def this = this(42)
+  def this() = this(42)
 }</code></pre></td>
       <td>Constructor is class body.<br />Declare a public member.<br />Declare a gettable but not settable member.<br />Declare a private member.<br />Alternative constructor.</td>
     </tr>

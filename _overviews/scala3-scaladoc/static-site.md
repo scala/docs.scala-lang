@@ -97,6 +97,35 @@ Predefined properties:
 - **hasFrame** when set to `false` page will not include default layout (navigation, breadcrumbs, etc.) but only token HTML wrapper to provide metadata and resources (js and css files). **This setting is not exported to the template engine.**
 - **layout** - predefined layout to use, see below. **This setting is not exported to the template engine.**
 
+Redirection properties:
+
+In addition to the predefined properties, Scaladoc also supports redirection properties, which allow you to redirect from one page to another. This can be useful when you move a page to a new location but want to keep the old URL working.
+
+- **redirectFrom** - Specifies the URL from which you want to redirect. By using the `redirectFrom` property, Scaladoc generates an empty page at the specified URL, which includes a browser-based redirection to the new location.
+
+Example:
+
+```
+---
+redirectFrom: /absolute/path/to/old/url.html
+---
+```
+
+In the above example, if you move the page from `/absolute/path/to/old/url.html` to a new location, you can use `redirectFrom` to ensure that the old URL still redirects to the new location.
+
+Please note that the `redirectFrom` property was inspired by the Jekyll plugin called [`jekyll-redirect-from`](https://github.com/jekyll/jekyll-redirect-from) .
+
+- **redirectTo** - Specifies the URL to which you want to redirect. This property is useful when you want to redirect to an external page or when you can't use `redirectFrom`.
+
+Example:
+
+```
+---
+redirectTo: https://docs.scala-lang.org/
+---
+```
+
+In the above example, the page will be redirected to `https://docs.scala-lang.org/`.
 
 ## Using existing Templates and Layouts
 
@@ -114,6 +143,7 @@ layout: main
 With a simple main template like this:
 
 {% raw %}
+
 ```html
 <html>
     <head>
@@ -142,6 +172,7 @@ Layouts must be placed in a `_layouts` directory in the site root:
 ## Assets
 
 In order to render assets along with static site, they need to be placed in the `_assets` directory in the site root:
+
 ```
 ├── _assets
 │   └── images
@@ -149,6 +180,7 @@ In order to render assets along with static site, they need to be placed in the 
 └── _docs
     └── getting-started.md
 ```
+
 To reference the asset on a page, one needs to create a link relative to the `_assets` directory
 
 ```
@@ -173,24 +205,27 @@ subsection:
           page: usage/sbt-projects.html
           hidden: false
 ```
+
 The root element needs to be a `subsection`.
 Nesting subsections will result in a tree-like structure of navigation.
 
 `subsection` properties are:
- - `title` - Optional string - A default title of the subsection. 
+
+- `title` - Optional string - A default title of the subsection.
   Front-matter titles have higher priorities.
- - `index` - Optional string - A path to index page of a subsection. The path is relative to the `_docs` directory.
- - `directory` - Optional string - A name of the directory that will contain the subsection in the generated site.
+- `index` - Optional string - A path to index page of a subsection. The path is relative to the `_docs` directory.
+- `directory` - Optional string - A name of the directory that will contain the subsection in the generated site.
   By default, the directory name is the subsection name converted to kebab case.
- - `subsection` - Array of `subsection` or `page`.
+- `subsection` - Array of `subsection` or `page`.
 
  Either `index` or `subsection` must be defined. The subsection defined with `index` and without `subsection` will contain pages and directories loaded recursively from the directory of the index page.
 
 `page` properties are:
- - `title` - Optional string - A default title of the page. 
+
+- `title` - Optional string - A default title of the page.
   Front-matter titles have higher priorities.
- - `page` - String - A path to the page, relative to the `_docs` directory.
- - `hidden` - Optional boolean - A flag that indicates whether the page should be visible in the navigation sidebar. By default, it is set to `false`.
+- `page` - String - A path to the page, relative to the `_docs` directory.
+- `hidden` - Optional boolean - A flag that indicates whether the page should be visible in the navigation sidebar. By default, it is set to `false`.
 
 **Note**: All the paths in the YAML configuration file are relative to `<static-root>/_docs`.
 
@@ -213,10 +248,13 @@ If the title is specified multiple times, the priority is as follows (from highe
 Note that if you skip the `index` file in your tree structure or you don't specify the `title` in the frontmatter, there will be given a generic name `index`. The same applies when using `sidebar.yml` but not specifying `title` nor `index`, just a subsection. Again, a generic `index` name will appear.
 
 ## Blog
+
 Blog feature is described in [a separate document]({% link _overviews/scala3-scaladoc/blog.md %})
 
 ## Advanced configuration
+
 ### Full structure of site root
+
 ```
 .
 └── <site-root>/
@@ -235,6 +273,7 @@ Blog feature is described in [a separate document]({% link _overviews/scala3-sca
         │   └── ...
         └── ...
 ```
+
 It results in a static site containing documents as well as a blog. It also contains custom layouts and assets. The structure of the rendered documentation can be based on the file system but it can also be overridden by YAML configuration.
 
 ### Mapping directory structure
@@ -242,6 +281,7 @@ It results in a static site containing documents as well as a blog. It also cont
 Using the YAML configuration file, we can define how the source directory structure should be transformed into an outputs directory structure.
 
 Take a look at the following subsection definition:
+
 ```yaml
 - title: Some other subsection
   index: abc/index.html
@@ -250,7 +290,8 @@ Take a look at the following subsection definition:
     - page: abc2/page1.md
     - page: foo/page2.md
 ```
+
 This subsection shows the ability of YAML configuration to map the directory structure.
 Even though the index page and all defined children are in different directories, they will be rendered in `custom-directory`.
-The source page `abc/index.html` will generate a page `custom-directory/index.html`, the source page `abc2/page1.md` will generate a page `custom-directory/page1.html`, 
+The source page `abc/index.html` will generate a page `custom-directory/index.html`, the source page `abc2/page1.md` will generate a page `custom-directory/page1.html`,
 and the source page `foo/page2.md` will generate a page `custom-directory/page2.html`.

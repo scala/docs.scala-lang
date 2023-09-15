@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: На этой странице показано, как создавать и использовать функции высшего порядка в Scala.
 language: ru
-num: 31
+num: 32
 previous-page: fun-eta-expansion
 next-page: fun-write-map-function
 ---

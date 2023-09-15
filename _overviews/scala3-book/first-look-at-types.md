@@ -5,7 +5,7 @@ description: This page provides a brief introduction to Scala's built-in data ty
 languages: [ru, zh-cn]
 num: 17
 previous-page: taste-summary
-next-page: control-structures
+next-page: string-interpolation
 ---
 
 
@@ -21,8 +21,7 @@ The diagram below illustrates a subset of the type hierarchy.
 `Any` is the supertype of all types, also called the **top type**.
 It defines certain universal methods such as `equals`, `hashCode`, and `toString`.
 
-The top-type `Any` has a subtype [`Matchable`][matchable], which is used to mark all types that we can perform pattern matching on.
-It is important to guarantee a property call _"parametricity"_.
+The top-type `Any` has a subtype [`Matchable`][matchable], which is used to mark all types that we can perform pattern matching on. It is important to guarantee a property call _"parametricity"_.
 We will not go into details here, but in summary, it means that we cannot pattern match on values of type `Any`, but only on values that are a subtype of `Matchable`.
 The [reference documentation][matchable] contains more information about `Matchable`.
 
@@ -168,89 +167,10 @@ Those data types and their ranges are:
 | Char      | 16-bit unsigned Unicode character (0 to 2^16-1, inclusive)<br/>0 to 65,535                       |
 | String    | a sequence of `Char`                                                                             |
 
-## `BigInt` and `BigDecimal`
+## Strings
 
-When you need really large numbers, use the `BigInt` and `BigDecimal` types:
-
-{% tabs type-bigint %}
-{% tab 'Scala 2 and 3' for=type-bigint %}
-```scala
-val a = BigInt(1_234_567_890_987_654_321L)
-val b = BigDecimal(123_456.789)
-```
-{% endtab %}
-{% endtabs %}
-
-Where `Double` and `Float` are approximate decimal numbers, `BigDecimal` is used for precise arithmetic, such as when working with currency.
-
-A great thing about `BigInt` and `BigDecimal` is that they support all the operators you’re used to using with numeric types:
-
-{% tabs type-bigint2 %}
-{% tab 'Scala 2 and 3' for=type-bigint2 %}
-```scala
-val b = BigInt(1234567890)   // scala.math.BigInt = 1234567890
-val c = b + b                // scala.math.BigInt = 2469135780
-val d = b * b                // scala.math.BigInt = 1524157875019052100
-```
-{% endtab %}
-{% endtabs %}
-
-## Two notes about strings
-
-Scala strings are similar to Java strings, but they have two great additional features:
-
-- They support string interpolation
-- It’s easy to create multiline strings
-
-### String interpolation
-
-String interpolation provides a very readable way to use variables inside strings.
-For instance, given these three variables:
-
-{% tabs string-inside1 %}
-{% tab 'Scala 2 and 3' for=string-inside1 %}
-```scala
-val firstName = "John"
-val mi = 'C'
-val lastName = "Doe"
-```
-{% endtab %}
-{% endtabs %}
-
-You can combine those variables in a string like this:
-
-{% tabs string-inside2 %}
-{% tab 'Scala 2 and 3' for=string-inside2 %}
-```scala
-println(s"Name: $firstName $mi $lastName")   // "Name: John C Doe"
-```
-{% endtab %}
-{% endtabs %}
-
-Just precede the string with the letter `s`, and then put a `$` symbol before your variable names inside the string.
-
-To enclose potentially larger expressions inside a string, put them in curly braces:
-
-{% tabs string-inside3 %}
-{% tab 'Scala 2 and 3' for=string-inside3 %}
-```scala
-println(s"2 + 2 = ${2 + 2}")   // prints "2 + 2 = 4"
-val x = -1
-println(s"x.abs = ${x.abs}")   // prints "x.abs = 1"
-```
-{% endtab %}
-{% endtabs %}
-
-#### Other interpolators
-
-The `s` that you place before the string is just one possible interpolator.
-If you use an `f` instead of an `s`, you can use `printf`-style formatting syntax in the string.
-Furthermore, a string interpolator is a just special method, and it is possible to define your own.
-For instance, some database libraries define the very powerful `sql` interpolator.
-
-### Multiline strings
-
-Multiline strings are created by including the string inside three double-quotes:
+Scala strings are similar to Java strings though unlike Java (at least before Java 15),
+it's easy to create multiline strings with triple quotes:
 
 {% tabs string-mlines1 %}
 {% tab 'Scala 2 and 3' for=string-mlines1 %}
@@ -294,6 +214,36 @@ Now all of the lines are left-justified inside the string:
 "The essence of Scala:
 Fusion of functional and object-oriented
 programming in a typed setting."
+```
+{% endtab %}
+{% endtabs %}
+
+Scala strings also support powerful string interpolation methods, which we'll talk about
+in the [next chapter][string-interpolation].
+
+## `BigInt` and `BigDecimal`
+
+When you need really large numbers, use the `BigInt` and `BigDecimal` types:
+
+{% tabs type-bigint %}
+{% tab 'Scala 2 and 3' for=type-bigint %}
+```scala
+val a = BigInt(1_234_567_890_987_654_321L)
+val b = BigDecimal(123_456.789)
+```
+{% endtab %}
+{% endtabs %}
+
+Where `Double` and `Float` are approximate decimal numbers, `BigDecimal` is used for precise arithmetic, such as when working with currency.
+
+A great thing about `BigInt` and `BigDecimal` is that they support all the operators you’re used to using with numeric types:
+
+{% tabs type-bigint2 %}
+{% tab 'Scala 2 and 3' for=type-bigint2 %}
+```scala
+val b = BigInt(1234567890)   // scala.math.BigInt = 1234567890
+val c = b + b                // scala.math.BigInt = 2469135780
+val d = b * b                // scala.math.BigInt = 1524157875019052100
 ```
 {% endtab %}
 {% endtabs %}
@@ -347,7 +297,7 @@ Alternatives to `null` are discussed in the [Functional Programming chapter][fp]
 
 [reference]: {{ site.scala3ref }}/overview.html
 [matchable]: {{ site.scala3ref }}/other-new-features/matchable.html
-[interpolation]: {% link _overviews/core/string-interpolation.md %}
 [fp]: {% link _overviews/scala3-book/fp-intro.md %}
+[string-interpolation]: {% link _overviews/scala3-book/string-interpolation.md %}
 [option-api]: https://scala-lang.org/api/3.x/scala/Option.html
 [safe-null]: {{ site.scala3ref }}/experimental/explicit-nulls.html

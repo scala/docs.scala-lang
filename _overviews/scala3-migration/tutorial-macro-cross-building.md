@@ -24,7 +24,7 @@ In order to exemplify this tutorial, we will consider the minimal macro library 
 lazy val example = project
   .in(file("example"))
   .settings(
-    scalaVersion := "2.13.6",
+    scalaVersion := "2.13.11",
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaVersion.value
     )
@@ -73,7 +73,7 @@ The main idea is to build the artifact twice and to publish two releases:
 You can add Scala 3 to the list of `crossScalaVersions` of your project:
 
 ```scala
-crossScalaVersions := Seq("2.13.6", "3.0.0")
+crossScalaVersions := Seq("2.13.11", "3.3.1")
 ```
 
 The `scala-reflect` dependency won't be useful in Scala 3.
@@ -91,15 +91,15 @@ libraryDependencies ++= {
 }
 ```
 
-After reloading sbt, you can switch to the Scala 3 context by running `++3.0.0`.
-At any point you can go back to the Scala 2.13 context by running `++2.13.6`.
+After reloading sbt, you can switch to the Scala 3 context by running `++3.3.1`.
+At any point you can go back to the Scala 2.13 context by running `++2.13.11`.
 
 ## 2. Rearrange the code in version-specific source directories
 
 If you try to compile with Scala 3 you should see some errors of the same kind as:
 
 {% highlight text %}
-sbt:example> ++3.0.0
+sbt:example> ++3.3.1
 sbt:example> example / compile
 [error] -- Error: /example/src/main/scala/location/Location.scala:15:35 
 [error] 15 |    val location = typeOf[Location]
@@ -222,13 +222,13 @@ class MacrosSpec extends munit.FunSuite {
 You should now be able to run the tests in both versions.
 
 {% highlight text %}
-sbt:example> ++2.13.6
+sbt:example> ++2.13.11
 sbt:example> example / test
 location.MacrosSpec:
   + location
 [info] Passed: Total 1, Failed 0, Errors 0, Passed 1
 [success]
-sbt:example> ++3.0.0
+sbt:example> ++3.3.1
 sbt:example> example / test
 location.MacrosSpec:
   + location

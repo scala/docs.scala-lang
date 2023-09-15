@@ -31,7 +31,7 @@ Scala 导入成员的方法也类似于 Java，并且更灵活。
 通过在 Scala 文件的顶部声明一个或多个包名称来创建包。
 例如，当您的域名是 _acme.com_ 并且您正在使用名为 _myapp_ 的应用程序中的 _model_ 包中工作时，您的包声明如下所示：
 
-{% tabs packaging-imports-1 %}
+{% tabs packaging-imports-0 %}
 {% tab 'Scala 2 and 3' %}
 ```scala
 package com.acme.myapp.model
@@ -466,7 +466,7 @@ import _root_.accounts.*
 ```scala
 object A:
   class TC
-  given tc as TC
+  given tc: TC
   def f(using TC) = ???
 
 object B:
@@ -531,10 +531,10 @@ import A.{given T1, ..., given Tn}
 {% tab 'Scala 3 only' %}
 ```scala
 object Instances:
-  given intOrd as Ordering[Int]
-  given listOrd[T: Ordering] as Ordering[List[T]]
-  given ec as ExecutionContext = ...
-  given im as Monoid[Int]
+  given intOrd: Ordering[Int]
+  given listOrd[T: Ordering]: Ordering[List[T]]
+  given ec: ExecutionContext = ...
+  given im: Monoid[Int]
 ```
 {% endtab %}
 {% endtabs %}
@@ -574,14 +574,14 @@ object MonthConversions:
     def convert(a: A): String
 
   given intMonthConverter: MonthConverter[Int] with
-    def convert(i: Int): String = 
+    def convert(i: Int): String =
       i match
         case 1 =>  "January"
         case 2 =>  "February"
         // more cases here ...
 
   given stringMonthConverter: MonthConverter[String] with
-    def convert(s: String): String = 
+    def convert(s: String): String =
       s match
         case "jan" => "January"
         case "feb" => "February"

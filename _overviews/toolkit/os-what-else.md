@@ -13,6 +13,7 @@ next-page: json-intro
 - creating, moving, copying, removing files and folders,
 - reading filesystem metadata and permissions,
 - spawning subprocesses,
-- watching changes in folders.
+- watching changes in folders,
+- interoperating with `java.io.File` and `java.nio.Path`.
 
 See also Chapter 7 of Li Haoyi's book [_Hands-On Scala Programming_](https://www.handsonscala.com). (Li Haoyi is the author of OS-Lib.)

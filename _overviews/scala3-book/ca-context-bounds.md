@@ -2,8 +2,8 @@
 title: Context Bounds
 type: section
 description: This page demonstrates Context Bounds in Scala.
-languages: [zh-cn]
-num: 61
+languages: [ru, zh-cn]
+num: 62
 previous-page: ca-context-parameters
 next-page: ca-given-imports
 ---

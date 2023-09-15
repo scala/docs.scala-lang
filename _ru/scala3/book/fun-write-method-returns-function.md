@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: На этой странице показано, как создавать методы, возвращающие функции, в Scala.
 language: ru
-num: 33
+num: 34
 previous-page: fun-write-map-function
 next-page: fun-summary
 ---

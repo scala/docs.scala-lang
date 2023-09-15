@@ -1,7 +1,6 @@
 ---
 title: SIP-48 - Precise Type Modifier
-status: under-review
+status: withdrawn
 pull-request-number: 48
-stage: design
 
 ---

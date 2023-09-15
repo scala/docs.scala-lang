@@ -4,8 +4,19 @@
 
 <div class="documentation">
   {% for link in include.links %}
+
+  <!-- check if link starts with '#' -->
+  {% assign first_char = link.link | slice: 0 %}
+  {% if first_char == '#' %}
+  {% assign is_url = false %}
+  {% else %}
+  {% assign is_url = true %}
+  {% endif %}
+
   <a href="{% if link.link contains '://' %}{{link.link}}{% else %}{{site.baseurl}}{{link.link}}{% endif %}"
-    class="doc-item doc-item-link">
+    class="doc-item doc-item-link"
+    {% if is_url %}target="_blank" rel="noopener noreferrer"{% endif %}
+  >
     <div class="doc-item-header">
       <i class="{{link.icon}}"></i>
       <h4>{{link.title}}</h4>

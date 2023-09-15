@@ -3,7 +3,7 @@ title: Higher-Order Functions
 type: section
 description: This page demonstrates how to create and use higher-order functions in Scala.
 languages: [ru, zh-cn]
-num: 31
+num: 32
 previous-page: fun-eta-expansion
 next-page: fun-write-map-function
 ---
@@ -91,7 +91,7 @@ To create a method that takes a function parameter, all you have to do is:
 1. In your method’s parameter list, define the signature of the function you want to accept
 2. Use that function inside your method
 
-To demonstrate this, here’s a method that that takes an input parameter named `f`, where `f` is a function:
+To demonstrate this, here’s a method that takes an input parameter named `f`, where `f` is a function:
 
 {% tabs sayHello-definition %}
 {% tab 'Scala 2 and 3' %}

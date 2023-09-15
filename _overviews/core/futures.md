@@ -101,7 +101,7 @@ By default, the `ExecutionContext.global` sets the parallelism level of its unde
 ([Runtime.availableProcessors](https://docs.oracle.com/javase/7/docs/api/java/lang/Runtime.html#availableProcessors%28%29)).
 This configuration can be overridden by setting one (or more) of the following VM attributes:
 
-  * scala.concurrent.context.minThreads - defaults to `Runtime.availableProcessors`
+  * scala.concurrent.context.minThreads - defaults to `1`
   * scala.concurrent.context.numThreads - can be a number or a multiplier (N) in the form 'xN' ;  defaults to `Runtime.availableProcessors`
   * scala.concurrent.context.maxThreads - defaults to `Runtime.availableProcessors`
 

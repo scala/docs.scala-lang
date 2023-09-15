@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: chapter
 description: В этой главе представлено введение в типы и систему типов Scala 3.
 language: ru
-num: 47
+num: 48
 previous-page: fp-summary
 next-page: types-inferred
 ---

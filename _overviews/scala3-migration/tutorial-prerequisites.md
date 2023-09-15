@@ -2,9 +2,9 @@
 title: Prerequisites
 type: section
 description: This section details the prerequisites of migration to Scala 3
-num: 10
+num: 9
 previous-page: tutorial-intro
-next-page: tutorial-sbt
+next-page: scala3-migrate
 ---
 
 The migration to Scala 3 is made easier thanks to the interoperability between Scala 2.13 and Scala 3, as described in the [Compatibility Reference](compatibility-intro.html) page.

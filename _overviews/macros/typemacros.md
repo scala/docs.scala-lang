@@ -12,7 +12,7 @@ permalink: /overviews/macros/:title.html
 
 Type macros used to be available in previous versions of ["Macro Paradise"](paradise.html),
 but are not supported anymore in macro paradise 2.0.
-Visit [the paradise 2.0 announcement](https://scalamacros.org/news/2013/08/05/macro-paradise-2.0.0-snapshot.html)
+Visit [the paradise 2.0 announcement](https://github.com/scalamacros/scalamacros.github.com/blob/5904f7ef88a439c668204b4bf262835e89fb13cb/news/_posts/2013-08-05-macro-paradise-2.0.0-snapshot.html)
 for an explanation and suggested migration strategy.
 
 ## Intuition
