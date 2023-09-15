@@ -14,7 +14,7 @@ permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
 
-在许多情况下，[上下文参数]({% link _overviews/scala3-book/ca-context-parameters.md %}#context-parameters) 的名称不必明确提及，因为它仅由编译器在其他上下文参数的合成参数中使用。
+在许多情况下，[上下文参数]({% link _overviews/scala3-book/ca-context-parameters.md %}#context-parameters) 的名称不必显式提及，因为它仅在编译器为其他上下文参数合成实参的时候用到。
 在这种情况下，您不必定义参数名称，只需提供参数类型即可。
 
 ## 背景
