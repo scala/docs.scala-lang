@@ -36,7 +36,7 @@ def maxElement[A](as: List[A])(using ord: Ord[A]): A =
 {% endtab %}
 {% endtabs %}
 
-`maxElement` 方法把一个 `Ord[A]` 类的 _上下文参数_ 当作参数只传给 `max` 方法。
+上面这个 `maxElement` 方法只接受一个类型为 `Ord[A]` 的 _上下文参数_ 并将其作为实参传给 `max` 方法。
 
 为了完整起见，以下是 `max` 和 `Ord` 的定义（请注意，在实践中我们会在 `List` 上使用现有的方法 `max`，
 但我们为了说明目的而编造了这个例子）：
