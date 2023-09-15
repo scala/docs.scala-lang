@@ -72,7 +72,7 @@ println(rover == fido)   // compiler error
 There are two ways to enable this comparison using the Scala 3 `CanEqual` type class.
 For simple cases like this, your class can *derive* the `CanEqual` class:
 
-4% tabs multiequ04 %}
+{% tabs multiequ04 %}
 {% tab 'Scala 3 Only' %}
 ```scala
 // Option 1
