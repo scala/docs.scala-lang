@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: В этой главе представлено введение в моделирование предметной области с использованием ООП в Scala 3.
 language: ru
-num: 21
+num: 22
 previous-page: domain-modeling-tools
 next-page: domain-modeling-fp
 ---

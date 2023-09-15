@@ -105,7 +105,7 @@ Implicit Function Types (https://dotty.epfl.ch/docs/reference/instances/implicit
 
 [Type Lambdas](https://dotty.epfl.ch/docs/reference/new-types/type-lambdas.html)
 
-[Type Checking](https://dotty.epfl.ch/docs/reference/changed-features/type-checking.html)
+Type Checking
 
 [Type Inference](https://dotty.epfl.ch/docs/reference/changed-features/type-inference.html)
 

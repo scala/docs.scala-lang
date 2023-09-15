@@ -10,18 +10,46 @@ previous-page: higher-order-functions
 
 В Scala возможно объявление метода вкладывать в тело другого метода. Это реализовано в следующем примере, в котором метод `factorial` используется для вычисления факториала заданного числа:
 
-```scala mdoc
- def factorial(x: Int): Int = {
-    def fact(x: Int, accumulator: Int): Int = {
-      if (x <= 1) accumulator
-      else fact(x - 1, x * accumulator)
-    }  
-    fact(x, 1)
- }
+{% tabs Nested_functions_definition class=tabs-scala-version %}
 
- println("Factorial of 2: " + factorial(2))
- println("Factorial of 3: " + factorial(3))
+{% tab 'Scala 2' for=Nested_functions_definition %}
+
+```scala mdoc
+def factorial(x: Int): Int = {
+  def fact(x: Int, accumulator: Int): Int = {
+    if (x <= 1) accumulator
+    else fact(x - 1, x * accumulator)
+  }
+  fact(x, 1)
+}
+
+println("Factorial of 2: " + factorial(2))
+println("Factorial of 3: " + factorial(3))
 ```
+
+{% endtab %}
+
+{% tab 'Scala 3' for=Nested_functions_definition %}
+
+```scala
+def factorial(x: Int): Int =
+  def fact(x: Int, accumulator: Int): Int =
+    if x <= 1 then accumulator
+    else fact(x - 1, x * accumulator)
+  fact(x, 1)
+
+println("Factorial of 2: " + factorial(2))
+println("Factorial of 3: " + factorial(3))
+
+```
+
+{% endtab %}
+
+{% endtabs %}
+
+{% tabs Nested_functions_result %}
+
+{% tab 'Scala 2 и 3' for=Nested_functions_result %}
 
 Результат выполнения программы:
 
@@ -29,3 +57,7 @@ previous-page: higher-order-functions
 Factorial of 2: 2
 Factorial of 3: 6
 ```
+
+{% endtab %}
+
+{% endtabs %}

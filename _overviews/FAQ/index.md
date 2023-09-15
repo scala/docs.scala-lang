@@ -120,14 +120,18 @@ with only minor supplements.  That's why `versionString` and
 `versionNumberString` report that Scala 2 is in use:
 
 ```
-Welcome to Scala 3.2.0 (17.0.3, Java OpenJDK 64-Bit Server VM).
+Welcome to Scala 3.3.1 (17.0.3, Java OpenJDK 64-Bit Server VM).
 Type in expressions for evaluation. Or try :help.
 
 scala> util.Properties.versionNumberString
 val res0: String = 2.13.10
 ```
 
-Note that Scala 3 offers
+Note that even the latest Scala 3 version might not use the very
+latest Scala 2 standard library, since the 3 and 2 release schedules
+aren't coordinated.
+
+So how do you ask for the Scala 3 version number? Scala 3 offers
 `dotty.tools.dotc.config.Properties.versionNumberString`, but only if
 you have scala3-compiler on the classpath. So that works in the Scala 3
 REPL, but won't work in typical Scala 3 application code.
@@ -312,14 +316,14 @@ setting in a multi-project build.
 
 For example, if you add this to your `build.sbt`:
 
-    scalaVersion := "2.13.10"
+    scalaVersion := "2.13.12"
 
 that's a "bare" setting, and you might expect it to apply build-wide.
 But it doesn't. _It only applies to the root project._
 
 In many cases one should instead write:
 
-    ThisBuild / scalaVersion := "2.13.10"
+    ThisBuild / scalaVersion := "2.13.12"
 
 Other possibilities include:
 

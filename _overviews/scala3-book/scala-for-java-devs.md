@@ -3,7 +3,7 @@ title: Scala for Java Developers
 type: chapter
 description: This page is for Java developers who are interested in learning about Scala 3.
 languages: [zh-cn]
-num: 72
+num: 73
 previous-page: interacting-with-java
 next-page: scala-for-javascript-devs
 ---

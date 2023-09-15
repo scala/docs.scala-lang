@@ -2,8 +2,8 @@
 title: Intersection Types
 type: section
 description: This section introduces and demonstrates intersection types in Scala 3.
-languages: [zh-cn]
-num: 50
+languages: [ru, zh-cn]
+num: 51
 previous-page: types-generics
 next-page: types-union
 ---

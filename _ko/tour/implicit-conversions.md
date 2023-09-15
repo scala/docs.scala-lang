@@ -43,8 +43,8 @@ previous-page: implicit-parameters
 ```scala mdoc
 import scala.language.implicitConversions
 
-implicit def int2Integer(x: Int) =
-  java.lang.Integer.valueOf(x)
+implicit def int2Integer(x: Int): Integer =
+  Integer.valueOf(x)
 ```
 
 암시적 변환이 무분별하게 사용될 경우 잠재적인 위험을 가질 수 있기 때문에, 컴파일러는 암시적 변환의 선언을 컴파일할 시 이를 경고한다.

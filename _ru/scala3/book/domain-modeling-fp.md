@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: В этой главе представлено введение в моделирование предметной области с использованием ФП в Scala 3.
 language: ru
-num: 22
+num: 23
 previous-page: domain-modeling-oop
 next-page: methods-intro
 ---

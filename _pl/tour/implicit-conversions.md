@@ -43,8 +43,8 @@ Przykładowo, kiedy wywołujemy metodę Javy, która wymaga typu `java.lang.Inte
 ```scala mdoc
 import scala.language.implicitConversions
 
-implicit def int2Integer(x: Int) =
-  java.lang.Integer.valueOf(x)
+implicit def int2Integer(x: Int): Integer =
+  Integer.valueOf(x)
 ```
 
 Aby zdefiniować własne konwersje niejawne, należy zaimportować `scala.language.implicitConversions` (albo uruchomić kompilator z opcją `-language:implicitConversions`). Ta funkcjonalność musi być włączona jawnie ze względu na problemy, jakie mogą się wiązać z ich nadmiernym stosowaniem.

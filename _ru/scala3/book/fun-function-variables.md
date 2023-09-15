@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: На этой странице показано, как использовать параметры функции в Scala.
 language: ru
-num: 29
+num: 30
 previous-page: fun-anonymous-functions
 next-page: fun-eta-expansion
 ---

@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: chapter
 description: На этой странице представлено введение в общие классы коллекций и их методы в Scala 3.
 language: ru
-num: 36
+num: 37
 previous-page: packaging-imports
 next-page: collections-classes
 ---

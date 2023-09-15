@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: chapter
 description: В этой главе показано, как можно моделировать предметную область с помощью Scala 3.
 language: ru
-num: 19
+num: 20
 previous-page: control-structures
 next-page: domain-modeling-tools
 ---

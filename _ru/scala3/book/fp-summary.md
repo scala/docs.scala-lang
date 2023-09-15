@@ -7,7 +7,7 @@ overview-name: "Scala 3 — Book"
 type: section
 description: Этот раздел суммирует предыдущие разделы функционального программирования.
 language: ru
-num: 46
+num: 47
 previous-page: fp-functional-error-handling
 next-page: types-introduction
 ---

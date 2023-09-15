@@ -146,8 +146,8 @@ and [sbt-pgp](https://www.scala-sbt.org/sbt-pgp/) plugins to publish your artifa
 dependencies to your `project/plugins.sbt` file:
 
 ~~~ scala
-addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "3.9.7")
-addSbtPlugin("com.jsuereth" % "sbt-pgp" % "2.1.1")
+addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "3.9.21")
+addSbtPlugin("com.github.sbt" % "sbt-pgp" % "2.2.1")
 ~~~
 
 And make sure your build fulfills the [Sonatype requirements](https://central.sonatype.org/publish/requirements)
@@ -189,7 +189,7 @@ Last, we recommend using the [sbt-dynver](https://github.com/dwijnand/sbt-dynver
 of your releases. Add the following dependency to your `project/plugins.sbt` file:
 
 ~~~ scala
-addSbtPlugin("com.dwijnand" % "sbt-dynver" % "4.1.1")
+addSbtPlugin("com.github.sbt" % "sbt-dynver" % "5.0.1")
 ~~~
 
 And make sure your build does **not** define the `version` setting.
@@ -233,6 +233,15 @@ The release process described above has some drawbacks:
 Continuous publication addresses these issues by delegating the publication process to the CI server. It works as
 follows: any contributor with write access to the repository can cut a release by pushing a Git tag, the CI server
 first checks that the tests pass and then runs the publication commands.
+
+We achieve this by replacing the plugins `sbt-pgp`, `sbt-sonatype`, and `sbt-dynver` with `sbt-ci-release`, in the file `project/plugins.sbt`:
+
+{% highlight diff %}
+- addSbtPlugin("com.github.sbt" % "sbt-pgp" % "2.2.1")
+- addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "3.9.21")
+- addSbtPlugin("com.github.sbt" % "sbt-dynver" % "5.0.1")
++ addSbtPlugin("com.github.sbt" % "sbt-ci-release" % "1.5.12")
+{% endhighlight %}
 
 The remaining sections show how to setup GitHub Actions for continuous publication on Sonatype. You can find instructions
 for Travis CI in the [sbt-ci-release](https://github.com/olafurpg/sbt-ci-release) plugin documentation.
@@ -298,14 +307,14 @@ gpg --armor --export %LONG_ID%
 
 #### Publish From the CI Server
 
-On GitHub Actions, you can define a workflow to publish the library when a tag is pushed:
+On GitHub Actions, you can define a workflow to publish the library when a tag starting with “v” is pushed:
 
-~~~ yaml
+{% highlight yaml %}
+{% raw %}
 # .github/workflows/publish.yml
 name: Continuous publication
 on:
   push:
-    branches: ['**']
     tags: [v*]
 
 jobs:
@@ -326,7 +335,8 @@ jobs:
           PGP_SECRET: ${{ secrets.PGP_SECRET }}
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
-~~~
+{% endraw %}
+{% endhighlight %}
 
 The `env` statement exposes the secrets you defined earlier to the publication process through
 environment variables.
@@ -340,15 +350,17 @@ $ git tag v0.2.0
 $ git push origin v0.2.0
 ~~~
 
+This will trigger the workflow, which will ultimately invoke `sbt ci-release`, which will perform a `publishSigned` followed by a `sonatypeRelease`.
+
 ## Cross-Publish
 
-If you have written a library, you probably want it to be usable from several Scala major versions (e.g., 2.11.x,
-2.12.x, 2.13.x, etc.).
+If you have written a library, you probably want it to be usable from several Scala major versions (e.g.,
+2.12.x, 2.13.x, 3.x, etc.).
 
 Define the versions you want to support in the `crossScalaVersions` setting, in your `build.sbt` file:
 
 ~~~ scala
-crossScalaVersions := Seq("2.13.6", "2.12.14")
+crossScalaVersions := Seq("3.3.0", "2.13.12", "2.12.18")
 scalaVersion := crossScalaVersions.value.head
 ~~~
 
@@ -381,19 +393,17 @@ most other documentation generators, which are based on Ruby, Node.js or Python)
 To install Paradox and sbt-site, add the following lines to your `project/plugins.sbt` file:
 
 ~~~ scala
-addSbtPlugin("com.typesafe.sbt" % "sbt-site" % "1.4.1")
-addSbtPlugin("com.lightbend.paradox" % "sbt-paradox" % "0.9.2")
+addSbtPlugin("com.github.sbt" % "sbt-site-paradox" % "1.5.0")
 ~~~
 
 And then add the following configuration to your `build.sbt` file:
 
 {% highlight scala %}
-enablePlugins(ParadoxPlugin, ParadoxSitePlugin)
+enablePlugins(ParadoxSitePlugin, SitePreviewPlugin)
 Paradox / sourceDirectory := sourceDirectory.value / "documentation"
 {% endhighlight %}
 
-The `ParadoxPlugin` is responsible for generating the website, and the `ParadoxSitePlugin` provides
-integration with `sbt-site`.
+The `ParadoxSitePlugin` provides a task `makeSite` that generates a website using [Paradox](https://developer.lightbend.com/docs/paradox/current/), and the `SitePreviewPlugin` provides handy tasks when working on the website content, to preview the result in your browser.
 The second line is optional, it defines the location of the website source files. In our case, in
 `src/documentation`.
 
@@ -402,6 +412,7 @@ uses the library name as title, shows a short sentence describing the purpose of
 snippet for adding the library to a build definition:
 
 {% highlight markdown %}
+{% raw %}
 # Library Example
 
 A library that does nothing.
@@ -420,6 +431,7 @@ libraryDependencies += "ch.epfl.scala" %% "library-example" % "$project.version$
 * [Getting Started](getting-started.md)
 * [Reference](reference.md)
 @@@
+{% endraw %}
 {% endhighlight %}
 
 Note that in our case we rely on a variable substitution mechanism to inject the correct version number
@@ -461,6 +473,8 @@ code fences have been updated to also include the result of evaluating the Scala
 Another approach consists in embedding fragments of Scala source files that are part of a module which
 is compiled by your build. For instance, given the following test in file `src/test/ch/epfl/scala/Usage.scala`:
 
+{% tabs usage-definition class=tabs-scala-version %}
+{% tab 'Scala 2' %}
 ~~~ scala
 package ch.epfl.scala
 
@@ -477,16 +491,37 @@ object Usage extends Scalaprops {
 
 }
 ~~~
+{% endtab %}
+{% tab 'Scala 3' %}
+~~~ scala
+package ch.epfl.scala
+
+import scalaprops.{Property, Scalaprops}
+
+object Usage extends Scalaprops:
+
+  val testDoNothing =
+// #do-nothing
+    Property.forAll: (x: Int) =>
+      Example.doNothing(x) == x
+// #do-nothing
+
+end Usage
+~~~
+{% endtab %}
+{% endtabs %}
 
 You can embed the fragment surrounded by the `#do-nothing` identifiers with the `@@snip` Paradox directive,
 as shown in the `src/documentation/reference.md` file:
 
 {% highlight markdown %}
+{% raw %}
 # Reference
 
 The `doNothing` function takes anything as parameter and returns it unchanged:
 
 @@snip [Usage.scala]($root$/src/test/scala/ch/epfl/scala/Usage.scala) { #do-nothing }
+{% endraw %}
 {% endhighlight %}
 
 The resulting documentation looks like the following:
@@ -523,7 +558,7 @@ The `@scaladoc` directive will produce a link to the `/api/ch/epfl/scala/Example
 Add the `sbt-ghpages` plugin to your `project/plugins.sbt`:
 
 ~~~ scala
-addSbtPlugin("com.typesafe.sbt" % "sbt-ghpages" % "0.6.3")
+addSbtPlugin("com.github.sbt" % "sbt-ghpages" % "0.8.0")
 ~~~
 
 And add the following configuration to your `build.sbt`:
@@ -559,7 +594,7 @@ can browse it at [https://scalacenter.github.io/library-example/](https://scalac
 You can extend `.github/workflows/publish.yml` to automatically publish documentation to GitHub pages.
 To do so, add another job:
 
-```yml
+```yaml
 # .github/workflows/publish.yml
 name: Continuous publication
 
@@ -651,7 +686,7 @@ break this versioning policy. Add the `sbt-mima-plugin` to your build with the f
 `project/plugins.sbt` file:
 
 ~~~ scala
-addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "0.9.2")
+addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "1.1.2")
 ~~~
 
 Configure it as follows, in `build.sbt`:

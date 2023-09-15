@@ -43,7 +43,7 @@ Value class只能继承universal traits，但其自身不能再被继承。所�
       def toHexString: String = java.lang.Integer.toHexString(self)
     }
 
-在运行时，表达式3.toHexString 被优化并等价于静态对象的方法调用 （RichInt$.MODULE$.extension$toHexString(3)），而不是创建一个新实例对象，再调用其方法。
+在运行时，表达式3.toHexString 被优化并等价于静态对象的方法调用 （RichInt$.MODULE$.toHexString$extension(3)），而不是创建一个新实例对象，再调用其方法。
 
 ## 正确性
 

@@ -2,10 +2,12 @@
 title: Other Types
 type: section
 description: This section mentions other advanced types in Scala 3.
-languages: [zh-cn]
-num: 57
+languages: [ru, zh-cn]
+num: 58
 previous-page: types-dependent-function
 next-page: ca-contextual-abstractions-intro
+scala3: true
+versionSpecific: true
 ---
 
 
@@ -19,7 +21,7 @@ Scala has several other advanced types that are not shown in this book, includin
 - Refinement types
 - Kind polymorphism
 
-For more details on these types, see the [Reference documentation][reference].
+For more details on these types, see the [Scala 3 Reference documentation][reference].
 
 
 

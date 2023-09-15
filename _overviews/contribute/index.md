@@ -3,32 +3,46 @@ title: Becoming a Scala OSS Contributor
 num: 1
 
 explore_resources:
-  - title: Who Can Contribute?
+  - title: Who can contribute?
     description: "Open source is for everyone! If you are reading this you are already a contributor..."
     icon: "fa fa-hand-sparkles"
     link: "#who-can-contribute-to-open-source"
-  - title: Why Should I Contribute?
+  - title: Why should I contribute?
     description: "Giving back to the community has many benefits..."
     icon: "fa fa-circle-question"
     link: "#why-should-i-contribute-to-open-source"
-  - title: How Can I Contribute?
+  - title: How can I contribute?
     description: "From friendly documentation to coding a bug-fix, there is lots to do..."
     icon: "fa fa-clipboard-list"
     link: "#how-can-i-contribute-to-open-source"
-  - title: Where Should I Contribute?
+  - title: Where should I contribute?
     description: "If you are already using OSS, or are curious about projects, you can begin right away..."
     icon: "fa fa-check-to-slot"
     link: "#how-do-i-choose-where-to-contribute"
 
 compiler_resources:
-  - title: "Scala 3 Contributing Guide"
-    description: "Guide to the Scala 3 Compiler and fixing an issue"
-    icon: "fa fa-code-merge"
-    link: /scala3/guides/contribution/contribution-intro.html
-  - title: "Compiler Academy Videos"
-    description: "In-depth tours of the Scala 3 compiler's internals"
+  - title: "Join the Compiler Issue Spree"
+    description: "A tri-weekly event where you can get mentored on the compiler. Register for participation here."
+    icon: "fa fa-clipboard-user"
+    link: https://docs.google.com/forms/d/e/1FAIpQLSdhr5Y7QG9VGTGaPn5uS5v3Gz7VtnM5PW-vseZ9OpjseEiwYQ/viewform
+  - title: "Compiler Academy videos"
+    description: "In-depth tours of the Scala 3 compiler's internals, aimed to help you get started."
     icon: "fa fa-circle-play"
     link: https://www.youtube.com/channel/UCIH0OgqE54-KEvYDg4LRhKQ
+  - title: "Scala 3 contributing guide"
+    description: "Guide to the Scala 3 Compiler and fixing an issue"
+    icon: "fa fa-code-merge"
+    link: https://dotty.epfl.ch/docs/contributing/index.html
+
+spree_resources:
+  - title: "Scala open source sprees"
+    description: "Learn about the next upcoming community spree"
+    icon: "fa fa-hand-holding-heart"
+    link: "https://github.com/scalacenter/sprees"
+  - title: "Upcoming conferences"
+    description: "See upcoming Scala conferences where you can meet open source maintainers."
+    icon: "fa fa-calendar-check"
+    link: "https://www.scala-lang.org/events/"
 
 scala_resources:
   - title: Documentation
@@ -84,29 +98,36 @@ open-source ecosystem. We have answered some common questions for you below:
 
 {% include inner-documentation-sections.html links=page.explore_resources %}
 
-## Ways to Start Today
+## Ways to start today
 
-### The Scala Compiler Academy
+### Join the nearest open source spree
 
-The [Scala Center](https://scala.epfl.ch)
-runs the **Scala Compiler Academy** project to onboard and educate new people in the Scala 3 compiler.
-One of the Compiler Academy
-projects is an Issue Spree – an event that takes place every 3 weeks where people fix Scala 3 compiler issues
-in pair programming sessions while learning the compiler together. You can apply for the Spree participation
-by [filling the form](https://forms.gle/DfoSuHFm3T6MA3L59).
+The [Scala Center](https://scala.epfl.ch) hosts open source sprees, colocated with other Scala events.
+In the spree, regular project maintainers will mentor you to create your first contribution to the project.
 
-Before you begin, you can learn more about the Scala 3 compiler
-from the following links:
+{% include inner-documentation-sections.html links=page.spree_resources %}
+
+### So you want to improve the Scala 3 compiler...
+
+The [Scala 3 compiler](https://github.com/lampepfl/dotty) is an open source project.
+If you are curious about contributing but don't know how to begin, the [Scala Center](https://scala.epfl.ch)
+runs the **Scala Compiler Academy** project to onboard and educate new people to the project. You can join the regular
+**Issue Spree**, watch in-depth videos, and read the contributing guide:
 
 {% include inner-documentation-sections.html links=page.compiler_resources %}
 
-### So You Want To Write A Library...
+#### Which areas are perfect for newcomers?
+- Adding new linting options, which help enforce cleaner code.
+- Improving the clarity of error messages, so that the user understands better what went wrong.
+- Add IDE quick-fix actions to error messages, e.g. PR [lampepfl/dotty#18314](https://github.com/lampepfl/dotty/pull/18314).
+
+### So you want to write a library...
 
 Read these guides if you are a maintainer of a library, or are thinking of starting a new project:
 
 {% include inner-documentation-sections.html links=page.library_resources %}
 
-### Want to Improve Scala Itself?
+### Want to improve Scala itself?
 The Scala programming language is an open source project with a very
 diverse community, where people from all over the world contribute their work,
 with everyone benefiting from friendly help and advice, and
@@ -115,7 +136,7 @@ kindly helping others in return.
 Read on to learn how to join the Scala community and help
 everyone make things better.
 
-## Contributing to the Scala Project
+## Contributing to the Scala project
 
 **What Can I Do?**
 That depends on what you want to contribute. Below are some getting started resources for different contribution domains. Please read all the documentation and follow all the links from the topic pages below before attempting to contribute, as many of the questions you have will already be answered.
@@ -139,12 +160,12 @@ When contributing, please follow:
 * The [Scala Code of Conduct](https://scala-lang.org/conduct/)
 * The [Inclusive Language Guide][inclusive-language-guide]
 
-### Community Tickets
+### Community tickets
 
 All issues can be found in the [Scala bug tracker](https://github.com/scala/bug), or the [Scala 3 issue tracker](https://github.com/lampepfl/dotty/issues). Most issues are labeled
 to make it easier to find issues you are interested in.
 
-### Tools and Libraries
+### Tools and libraries
 
 The Scala ecosystem includes a great many diverse open-source projects
 with their own maintainers and community of contributors.  Helping out
@@ -154,7 +175,7 @@ other projects, see the
 [Libraries and Tools section](https://scala-lang.org/community/#community-libraries-and-tools)
 on our Community page.
 
-### Scala Community Build
+### Scala community build
 
 The Scala community build enables the Scala compiler team
 to build and test a corpus of
@@ -171,7 +192,7 @@ open-source Scala library or tool, please visit the
 for guidelines on what projects are suitable for the community build
 and how projects can be added.
 
-## Your Questions, Answered
+## Your questions, answered
 
 {% capture backButton %}
 <p>
@@ -182,7 +203,7 @@ and how projects can be added.
 </p>
 {% endcapture %}
 
-### Who Can Contribute To Open Source?
+### Who can contribute to open source?
 {{backButton}}
 - **Everyone:** No matter your skills or background, non-technical or otherwise, there is always
   [some way](#how-can-i-contribute-to-open-source) you can contribute to a project.
@@ -194,7 +215,7 @@ and how projects can be added.
 - **Got a cool idea?** Perhaps you have gained confidence in your skills and are looking to give back to the community,
   start a new project that fills that perfect niche, or maybe is the life-changing tool everyone never knew they needed.
 
-### Why Should I Contribute to Open Source?
+### Why should I contribute to open source?
 {{backButton}}
 - **The world is built on OSS:**
   Open Source Software (OSS) libraries are the flesh on top of the bone structure of the core language itself.
@@ -212,7 +233,7 @@ and how projects can be added.
 
 The above benefits are something good to achieve regardless of your level of experience.
 
-### How Can I Contribute to Open Source?
+### How can I contribute to open source?
 {{backButton}}
 - **Documentation:** Often it is outdated, incomplete, or with mistakes. If you see a way to improve the
   documentation for a project you are using, you should consider if the project is accepting contributions,
@@ -242,7 +263,7 @@ The above benefits are something good to achieve regardless of your level of exp
   [Library Author's Guide](https://docs.scala-lang.org/overviews/contributors/index.html) is an
   excellent resource on how to get started.
 
-### How Do I Choose Where To Contribute?
+### How do I choose where to contribute?
 {{backButton}}
 - **Ask yourself, what am I using?** The best project to contribute to is the one that you are using yourself.
   Take an inventory of your work and hobby projects: what OSS libraries do they use? Have you ever encountered bugs in

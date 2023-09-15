@@ -44,8 +44,8 @@ Por exemplo, ao chamar um método Java que espera um `java.lang.Integer`, você 
 ```scala mdoc
 import scala.language.implicitConversions
 
-implicit def int2Integer(x: Int) =
-  java.lang.Integer.valueOf(x)
+implicit def int2Integer(x: Int): Integer =
+  Integer.valueOf(x)
 ```
 
 Para definir suas próprias conversões implícitas, primeiro você deve importar `scala.language.implicitConversions` (ou invocar o compilador com a opção `-language: implicitConversions`). Tal recurso deve ser explicitamente habilitado porque pode se tornar complexo se usado indiscriminadamente.
