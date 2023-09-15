@@ -97,7 +97,7 @@ def maxElement[A](as: List[A])(using Ord[A]): A =
 
 鉴于此背景，_上下文绑定_ 是一种简写语法，用于表达“依赖于类型参数的上下文参数”模式。
 
-使用上下文绑定，`maximum` 方法可以这样写：
+使用上下文绑定，`maxElement` 方法可以这样写：
 
 {% tabs context-bounds-max-rewritten %}
 {% tab 'Scala 2 and 3' %}
