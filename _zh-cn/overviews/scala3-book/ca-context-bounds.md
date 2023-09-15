@@ -68,7 +68,7 @@ def max[A](a1: A, a2: A)(using ord: Ord[A]): A =
 {% endtab %}
 {% endtabs %}
 
-`max` 方法用了类 `Ord[A]` 的上下文参数, 就像 `maxElement` 方法。
+`max` 方法用了类型为 `Ord[A]` 的上下文参数, 就像 `maxElement` 方法一样。
 
 ## 省略上下文参数
 
