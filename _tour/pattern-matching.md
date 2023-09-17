@@ -285,7 +285,7 @@ On the flip side, exhaustivity checking requires you to define all the subtypes
 of the base type in the same file as the base type (otherwise, the compiler
 would not know what are all the possible cases). For instance, if you try
 to define a new type of `Notification` outside of the file that defines
-the `sealed trait Notfication`, it will produce a compilation error:
+the `sealed trait Notification`, it will produce a compilation error:
 
 ~~~
 case class Telepathy(message: String) extends Notification
