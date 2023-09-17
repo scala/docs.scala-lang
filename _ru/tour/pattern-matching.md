@@ -317,7 +317,7 @@ It would fail on pattern case: VoiceRecording(_, _)
 С другой стороны, проверка полноты требует, чтобы вы определили все подтипы базового типа в том же файле,
 что и базовый тип (иначе бы компилятор не знал все возможные варианты).
 Например, если вы попытаетесь определить новый тип `Notification` вне файла,
-который определяет `sealed trait Notfication`, это приведет к ошибке компиляции:
+который определяет `sealed trait Notification`, это приведет к ошибке компиляции:
 
 ```
 case class Telepathy(message: String) extends Notification
