@@ -9,7 +9,7 @@ description: В этой главе демонстрируется создан�
 language: ru
 num: 64
 previous-page: ca-given-imports
-next-page:
+next-page: ca-multiversal-equality
 ---
 
 Класс типов (_type class_) — это абстрактный параметризованный тип,
