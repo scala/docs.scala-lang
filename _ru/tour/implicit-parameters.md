@@ -1,6 +1,6 @@
 ---
 layout: tour
-title: Неявные Параметры
+title: Контекстные параметры, также известные, как неявные параметры
 partof: scala-tour
 num: 26
 language: ru
@@ -8,61 +8,104 @@ next-page: implicit-conversions
 previous-page: self-types
 ---
 
-Метод может иметь список _неявных_ параметров, помеченный ключевым словом _implicit_ в начале списка параметров. Если параметры в этом списке не передаются как обычно, то Scala будет искать, где можно получить неявное значение требуемого типа, и если найдет, то передаст его автоматически.
+Метод может иметь список _контекстных параметров_ (_contextual parameters_),
+также называемых _неявными параметрами_ (_implicit parameters_) или, точнее, _имплицитами_ (_implicits_).
+Списки параметров, начинающиеся с ключевого слова `using` (или `implicit` в Scala 2), задают контекстные параметры.
+Если сторона вызова явно не предоставляет аргументы для таких параметров,
+Scala будет искать неявно доступные `given` (или `implicit` в Scala 2) значения правильного типа.
+Если можно найти подходящие значения, то они автоматически передаются.
+
+Лучше всего вначале показать это на небольшом примере.
+Мы определяем интерфейс `Comparator[A]`, который может сравнивать элементы типа `A`,
+и предоставляем две реализации для `Int`-ов и `String`-ов.
+Затем мы определяем метод `max[A](x: A, y: A)`, который возвращает больший из двух аргументов.
+Так как `x` и `y` имеют абстрактный тип, в общем случае мы не знаем, как их сравнивать, но можем запросить соответствующий компаратор.
+Поскольку обычно для любого заданного типа существует канонический компаратор `A`,
+то мы можем объявить их как _заданные_ (_given_) или _неявно_ (_implicitly_) доступные.
+
+{% tabs implicits-comparator class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=implicits-comparator %}
+
+```scala mdoc
+trait Comparator[A] {
+  def compare(x: A, y: A): Int
+}
+
+object Comparator {
+  implicit object IntComparator extends Comparator[Int] {
+    def compare(x: Int, y: Int): Int = Integer.compare(x, y)
+  }
+
+  implicit object StringComparator extends Comparator[String] {
+    def compare(x: String, y: String): Int = x.compareTo(y)
+  }
+}
+
+def max[A](x: A, y: A)(implicit comparator: Comparator[A]): A =
+  if (comparator.compare(x, y) >= 0) x
+  else y
+
+println(max(10, 6))             // 10
+println(max("hello", "world"))  // world
+```
+
+```scala mdoc:fail
+// не компилируется:
+println(max(false, true))
+//         ^
+//     error: could not find implicit value for parameter comparator: Comparator[Boolean]
+```
+
+Параметр `comparator` автоматически заполняется значением `Comparator.IntComparator` для `max(10, 6)`
+и `Comparator.StringComparator` для `max("hello", "world")`.
+Поскольку нельзя найти неявный `Comparator[Boolean]`, вызов `max(false, true)` не компилируется.
+
+{% endtab %}
+
+{% tab 'Scala 3' for=implicits-comparator %}
+
+```scala
+trait Comparator[A]:
+def compare(x: A, y: A): Int
+
+object Comparator:
+given Comparator[Int] with
+def compare(x: Int, y: Int): Int = Integer.compare(x, y)
+
+given Comparator[String] with
+def compare(x: String, y: String): Int = x.compareTo(y)
+end Comparator
+
+def max[A](x: A, y: A)(using comparator: Comparator[A]): A =
+  if comparator.compare(x, y) >= 0 then x
+  else y
+
+println(max(10, 6))             // 10
+println(max("hello", "world"))  // world
+```
+
+```scala
+// не компилируется:
+println(max(false, true))
+-- Error: ----------------------------------------------------------------------
+1 |println(max(false, true))
+  |                        ^
+  |no given instance of type Comparator[Boolean] was found for parameter comparator of method max
+```
+
+Параметр `comparator` автоматически заполняется значением `given Comparator[Int]` для `max(10, 6)`
+и `given Comparator[String]` для `max("hello", "world")`.
+Поскольку нельзя найти `given Comparator[Boolean]`, вызов `max(false, true)` не компилируется.
+
+{% endtab %}
+
+{% endtabs %}
 
 Места, где Scala будет искать эти параметры, делятся на две категории:
 
-* Скала сначала будет искать неявные параметры, доступ к которым можно получить напрямую (без префикса) в месте вызова метода в котором запрошены неявные параметры.
-* Затем он ищет членов, помеченных как implicit во всех объектах компаньонах, связанных с типом неявного параметра.
+- Вначале Scala будет искать `given` параметры, доступ к которым можно получить напрямую (без префикса) в месте вызова `max`.
+- Затем он ищет членов, помеченных как given/implicit во всех объектах компаньонах,
+  связанных с типом неявного параметра (например: `object Comparator` для типа-кандидата `Comparator[Int]`).
 
 Более подробное руководство, о том где scala ищет неявные значения можно найти в [FAQ](/tutorials/FAQ/finding-implicits.html)
-
-В следующем примере мы определяем метод `sum`, который вычисляет сумму элементов списка, используя операции `add` и `unit` моноида. Обратите внимание, что неявные значения не могут находится выше уровнем.
-
-```scala mdoc
-abstract class Monoid[A] {
-  def add(x: A, y: A): A
-  def unit: A
-}
-
-object ImplicitTest {
-  implicit val stringMonoid: Monoid[String] = new Monoid[String] {
-    def add(x: String, y: String): String = x concat y
-    def unit: String = ""
-  }
-  
-  implicit val intMonoid: Monoid[Int] = new Monoid[Int] {
-    def add(x: Int, y: Int): Int = x + y
-    def unit: Int = 0
-  }
-  
-  def sum[A](xs: List[A])(implicit m: Monoid[A]): A =
-    if (xs.isEmpty) m.unit
-    else m.add(xs.head, sum(xs.tail))
-    
-  def main(args: Array[String]): Unit = {
-    println(sum(List(1, 2, 3)))       // использует intMonoid неявно
-    println(sum(List("a", "b", "c"))) // использует stringMonoid неявно
-  }
-}
-```
-
-`Monoid` определяет здесь операцию под названием `add`, которая сочетает два элемента типа `A` и возвращает сумму типа `A`, операция `unit` позволяет вернуть отдельный (специфичный) элемент типа `A`. 
-
-Чтобы показать, как работают неявные параметры, сначала определим моноиды `stringMonoid` и `intMonoid` для строк и целых чисел, соответственно. Ключевое слово `implicit` указывает на то, что этот объект может быть использован неявно.
-
-Метод `sum` принимает `List[A]` и возвращает `A`, который берет начальное `A` из `unit` и объединяет каждое следующее `A` в списке используя `add` метод. Указание параметра `m` в качестве неявного параметра подразумевает, что `xs` параметр будет обеспечен тогда, когда при вызове параметра метода Scala сможет найти неявный `Monoid[A]` чтоб его передать в качестве параметра `m`.
-
-В нашем `main` методе мы вызываем `sum` дважды и предоставляем только `xs` параметр. Теперь Scala будет искать неявное значение в указанных ранее областях видимости. Первый вызов `sum` проходит с использованием `List[Int]` в качестве `xs`, это означает, что элемент `A` имеет тип `Int`. Неявный список параметров с `m` опущен, поэтому Scala будет искать неявное значение типа `Monoid[Int]`. Первое правило поиска гласит
-
-> Скала сначала будет искать неявные параметры, доступ к которым можно получить напрямую (без префикса) в месте вызова метода в котором запрошены неявные параметры.
-
-`intMonoid` - это задание неявного значения, доступ к которому можно получить непосредственно в `main`. Оно имеет подходящий тип, поэтому передается методу `sum` автоматически.
-
-Второй вызов `sum` проходит используя `List[String]`, что означает, что `A` - это `String`. Неявный поиск будет идти так же, как и в случае с `Int`, но на этот раз будет найден `stringMonoid`, и передан автоматически в качестве `m`.
-
-Программа выведет на экран
-```
-6
-abc
-```
