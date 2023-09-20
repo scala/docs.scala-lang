@@ -9,7 +9,7 @@
       url: "/scala3/guides/migration/compatibility-intro.html"
     - title: New Features for Scaladoc
       url: "/scala3/scaladoc.html"
-    - title: Videos and Talks 
+    - title: Videos and Talks
       url: "/scala3/talks.html"
 - title: Learn
   url: "#"
@@ -48,8 +48,10 @@
       url: "/books.html"
     - title: Scala FAQ
       url: "/tutorials/FAQ/index.html"
-    - title: Scala Language Specification
+    - title: Scala 2 Language Specification
       url: http://scala-lang.org/files/archive/spec/2.13/
+    - title: Scala 3 Language Specification
+      url: http://scala-lang.org/files/archive/spec/3.4/
     - title: Scala 3 Language Reference
       url: "https://docs.scala-lang.org/scala3/reference"
     - title: Scala Contribution Guide
