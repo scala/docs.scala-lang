@@ -65,10 +65,14 @@ sections:
         description: "Answers to frequently-asked questions about Scala."
         icon: "fa fa-question-circle"
         link: /tutorials/FAQ/index.html
-      - title: "Language Spec"
-        description: "Scala's formal language specification."
+      - title: "Language Spec v2.x"
+        description: "Scala 2's formal language specification."
         icon: "fa fa-book"
         link: https://scala-lang.org/files/archive/spec/2.13/
+      - title: "Language Spec v3.x"
+        description: "Scala 3's formal language specification."
+        icon: "fa fa-book"
+        link: https://scala-lang.org/files/archive/spec/3.4/
       - title: "Scala 3 Language Reference"
         description: "The Scala 3 language reference."
         icon: "fa fa-book"
