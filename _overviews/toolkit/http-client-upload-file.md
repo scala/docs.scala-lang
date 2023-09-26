@@ -49,8 +49,8 @@ If the web server can receive multiple files at once, you can use a multipart bo
 ```scala
 import sttp.client4.quick._
 
-val file1 = (os.pwd / "avatar1.png").toNIO
-val file2 = (os.pwd / "avatar2.png").toNIO
+val file1 = (os.pwd / "avatar1.png").toNIO.toFile()
+val file2 = (os.pwd / "avatar2.png").toNIO.toFile()
 val response = quickRequest
   .post(uri"https://example.com/")
   .multipartBody(
@@ -64,8 +64,8 @@ val response = quickRequest
 ```scala
 import sttp.client4.quick.*
 
-val file1 = (os.pwd / "avatar1.png").toNIO
-val file2 = (os.pwd / "avatar2.png").toNIO
+val file1 = (os.pwd / "avatar1.png").toNIO.toFile()
+val file2 = (os.pwd / "avatar2.png").toNIO.toFile()
 val response = quickRequest
   .post(uri"https://example.com/")
   .multipartBody(
