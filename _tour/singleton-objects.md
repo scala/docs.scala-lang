@@ -104,8 +104,7 @@ An object with the same name as a class is called a _companion object_. Converse
 
 {% tab 'Scala 2' for=companion-object-circle %}
 ```scala
-import scala.math.Pi
-import scala.math.pow
+import scala.math.{Pi, pow}
 
 case class Circle(radius: Double) {
   import Circle._
