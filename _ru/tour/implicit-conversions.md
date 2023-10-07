@@ -25,7 +25,7 @@ previous-page: implicit-parameters
 {% endtab %}
 {% tab 'Scala 3' %}
 
-В Scala 3 неявное преобразование из типа `S` в тип `T` определяется [экземпляром `given`]({% link _tour/implicit-parameters.md %}), который имеет тип `scala.Conversion[S, T]`.
+В Scala 3 неявное преобразование из типа `S` в тип `T` определяется [экземпляром `given`](implicit-parameters.html), который имеет тип `scala.Conversion[S, T]`.
 Для совместимости со Scala 2 их также можно определить неявным методом (подробнее читайте во вкладке Scala 2).
 
 {% endtab %}
@@ -47,6 +47,6 @@ previous-page: implicit-parameters
 В этом случае `String` не имеет члена `<`, поэтому вставляется неявное преобразование `Predef.augmentString("foo") < "bar"`
 (`scala.Predef` автоматически импортируется во все программы Scala).
 
-Дополнительная литература: [Неявные преобразования (в книге Scala)]({% link _overviews/scala3-book/ca-implicit-conversions.md %}).
+Дополнительная литература: [Неявные преобразования (в книге Scala)](/ru/scala3/book/ca-implicit-conversions.html).
 
 [exts]: /ru/scala3/book/ca-extension-methods.html
