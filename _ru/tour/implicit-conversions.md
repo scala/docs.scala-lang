@@ -19,7 +19,7 @@ previous-page: implicit-parameters
 {% tab 'Scala 2' %}
 
 В Scala 2 неявное преобразование из типа `S` в тип `T` определяется либо [неявным классом]({% link _overviews/core/implicit-classes.md %}) `T`
-с одним параметром типа `S`, [неявным значением]({% link _tour/implicit-parameters.md %}), которое имеет тип функции `S => T`,
+с одним параметром типа `S`, [неявным значением](implicit-parameters.html), которое имеет тип функции `S => T`,
 либо неявным методом, преобразуемым в значение этого типа.
 
 {% endtab %}
@@ -49,4 +49,4 @@ previous-page: implicit-parameters
 
 Дополнительная литература: [Неявные преобразования (в книге Scala)]({% link _overviews/scala3-book/ca-implicit-conversions.md %}).
 
-[exts]: {% link _overviews/scala3-book/ca-extension-methods.md %}
+[exts]: /ru/scala3/book/ca-extension-methods.html

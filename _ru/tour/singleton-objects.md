@@ -226,4 +226,4 @@ scalaCenterEmail match
 
 ## Дополнительные ресурсы
 
-- Узнайте больше об объектах компаньонах в [Scala Book](/scala3/book/domain-modeling-tools.html#companion-objects)
+- Узнайте больше об объектах компаньонах в [Scala Book](/ru/scala3/book/domain-modeling-tools.html#сопутствующие-объекты)
