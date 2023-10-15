@@ -19,7 +19,11 @@ sections:
       - title: "Книга по Scala 3"
         description: "Изучайте Scala используя серию коротких уроков."
         icon: "fa fa-book-open"
-        link: /scala3/book/introduction.html
+        link: /ru/scala3/book/introduction.html
+      - title: "Набор инструментов Scala"
+        description: "Отправка HTTP-запросов, запись файлов, запуск программ, обработка JSON..."
+        icon: "fa fa-toolbox"
+        link: /toolkit/introduction.html
       - title: Онлайн Курсы, Упражнения и Блоги
         description: "Обучающие курсы по Scala от новичка до продвинутого уровня."
         icon: "fa fa-cloud"
@@ -55,10 +59,14 @@ sections:
         description: "Список по наиболее часто задаваемым вопросам с ответами по функционалу Scala."
         icon: "fa fa-question-circle"
         link: /tutorials/FAQ/index.html
-      - title: "Спецификация"
-        description: "Официальная спецификация языка Scala."
+      - title: "Спецификация v2.x"
+        description: "Официальная спецификация языка Scala 2."
         icon: "fa fa-book"
         link: https://scala-lang.org/files/archive/spec/2.13/
+      - title: "Спецификация v3.x"
+        description: "Официальная спецификация языка Scala 3."
+        icon: "fa fa-book"
+        link: https://scala-lang.org/files/archive/spec/3.4/
       - title: "Справочник по языку Scala 3"
         description: "Справочник по языку Scala 3."
         icon: "fa fa-book"
@@ -73,15 +81,15 @@ sections:
       - title: "Новое в Scala 3"
         description: "Обзор новой функциональности в Scala 3."
         icon: "fa fa-star"
-        link: /scala3/new-in-scala3.html
+        link: /ru/scala3/new-in-scala3.html
       - title: "Новая функциональность Scaladoc для Scala 3"
         description: "Ключевые особенности новой функциональности Scaladoc."
         icon: "fa fa-star"
-        link: /scala3/scaladoc.html
+        link: /ru/scala3/scaladoc.html
       - title: "Выступления"
         description: "Доступные онлайн выступления о Scala 3."
         icon: "fa fa-play-circle"
-        link: /scala3/talks.html
+        link: /ru/scala3/talks.html
 
   - title: "Развитие Scala"
     links:
