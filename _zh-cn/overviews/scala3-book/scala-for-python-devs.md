@@ -58,7 +58,7 @@ TODO: We should probably go through this document and add links to our other det
   - 虽然它是静态类型的，但 Scala 的类型推断等特性让它感觉像是一门动态语言
 - Python 被解释，Scala 代码被编译成 _.class_ 文件，并在 Java 虚拟机 (JVM) 上运行
 - 除了在 JVM 上运行之外，[Scala.js](https://www.scala-js.org) 项目允许您使用 Scala 作为 JavaScript 替代品
-- [Scala Native](https://scala-native.readthedocs.io/en/v0.3.9-docs) 项目可让您编写“系统”级代码，并编译为本机可执行文件
+- [Scala Native](https://scala-native.org/) 项目可让您编写“系统”级代码，并编译为本机可执行文件
 - Scala 中的一切都是一个_表达式_：像 `if` 语句、`for` 循环、`match` 表达式，甚至 `try`/`catch` 表达式都有返回值
 - Scala 习惯默认不变性：鼓励您使用不可变变量和不可变集合
 - Scala 对[并发和并行编程][concurrency]有很好的支持

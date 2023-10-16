@@ -101,7 +101,7 @@ addSbtPlugin("org.scala-js" % "sbt-scalajs" % "1.5.0")
 
 ### Scala Native
 
-Scala 3 is now supported in Scala Native starting with [v0.4.3](https://scala-native.readthedocs.io/en/latest/changelog/0.4.3.html)
+Scala 3 is supported in [Scala Native](https://scala-native.org/) since v0.4.3.
 
 The minimal version of Scala 3 supported by Scala Native is 3.1.0, due to fatal blockers in Scala 3.0.x
 
