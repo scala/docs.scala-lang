@@ -54,7 +54,7 @@ Also at a high level, the _differences_ between Python and Scala are:
   - Though it’s statically typed, Scala features like type inference make it feel like a dynamic language
 - Python is interpreted, and Scala code is compiled to _.class_ files, and runs on the Java Virtual Machine (JVM)
 - In addition to running on the JVM, the [Scala.js](https://www.scala-js.org) project lets you use Scala as a JavaScript replacement
-- The [Scala Native](https://scala-native.readthedocs.io/en/v0.3.9-docs) project lets you write “systems” level code, and compiles to native executables
+- The [Scala Native](https://scala-native.org/) project lets you write “systems” level code, and compiles to native executables
 - Everything in Scala is an _expression_: constructs like `if` statements, `for` loops, `match` expressions, and even `try`/`catch` expressions all have return values
 - Scala idioms favor immutability by default: you’re encouraged to use immutable variables and immutable collections
 - Scala has excellent support for [concurrent and parallel programming][concurrency]

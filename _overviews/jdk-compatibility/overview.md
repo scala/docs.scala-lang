@@ -4,7 +4,7 @@ title: JDK Compatibility
 permalink: /overviews/jdk-compatibility/overview.html
 ---
 
-Scala's primary platform is the Java Virtual Machine (JVM). (Other supported platforms: [Scala.js](https://www.scala-js.org/), [Scala Native](https://scala-native.readthedocs.io/).)
+Scala's primary platform is the Java Virtual Machine (JVM). (Other supported platforms: [Scala.js](https://www.scala-js.org/), [Scala Native](https://scala-native.org/).)
 
 Sometimes new JVM and JDK (Java Development Kit) versions require us to update Scala to remain compatible.
 

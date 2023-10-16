@@ -51,7 +51,7 @@ Also at a high level, some of the differences between JavaScript and Scala are:
 - As a pure OOP language and a pure FP language, Scala encourages a fusion of OOP and FP, with functions for the logic and immutable objects for modularity
 - Scala has state of the art, third-party, open source functional programming libraries
 - Everything in Scala is an _expression_: constructs like `if` statements, `for` loops, `match` expressions, and even `try`/`catch` expressions all have return values
-- The [Scala Native](https://scala-native.readthedocs.io/en/v0.3.9-docs) project lets you write “systems” level code, and also compiles to native executables
+- The [Scala Native](https://scala-native.org/) project lets you write “systems” level code, and also compiles to native executables
 
 ### Programming level differences
 
