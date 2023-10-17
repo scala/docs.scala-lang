@@ -12,6 +12,7 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 
 | JDK version | Minimum Scala versions                                       |
 |:-----------:|:-------------------------------------------------------------|
+| 22 (ea)     | 3.3.2? (forthcoming), 2.13.12 (forthcoming), 2.12.19 (forthcoming) |
 | 21 (LTS)    | 3.3.1, 2.13.11, 2.12.18                                      |
 | 20          | 3.3.0, 2.13.11, 2.12.18                                      |
 | 19          | 3.2.0, 2.13.9, 2.12.16                                       |
@@ -22,7 +23,7 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 
 **Using latest patch version of Scala is always recommended**
 
-Even when a version combination isn't listed as supported, most features may still work.
+Even when a version combination isn't listed as supported, most features might still work.
 
 In general, Scala works on JDK 11+, including GraalVM, but may not take special advantage of features that were added after JDK 8. See [below](#jdk-11-compatibility-notes).
 
@@ -92,6 +93,16 @@ The Scala test suite and Scala 2.13 community build are green on JDK 21.
 For sbt users, sbt 1.9.0 is the first version to support JDK 21.
 
 For possible Scala issues, see the [jdk11](https://github.com/scala/bug/labels/jdk11), [jdk17](https://github.com/scala/bug/labels/jdk17), and [jdk21](https://github.com/scala/bug/labels/jdk21) labels in the Scala 2 bug tracker.
+
+## JDK 22 compatibility notes
+
+Early access builds of JDK 22 are available. JDK 22 will be non-LTS.
+
+We are working on adding JDK 22 support to the 2.12.x, 2.13.x, and
+3.3.x release series.
+
+<!-- Initial support for JDK 22 has been merged and is now available in
+Scala 3.3.2, 2.13.12, and 2.12.19. -->
 
 ## GraalVM Native Image compatibility notes
 
