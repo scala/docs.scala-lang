@@ -10,12 +10,10 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 
 ## Scala compatibility table
 
-| JDK version | Minimum Scala versions                                       |
+| JDK         | Minimum Scala versions                                       |
 |:-----------:|:-------------------------------------------------------------|
 | 21 (LTS)    | 3.3.1, 2.13.11, 2.12.18                                      |
 | 20          | 3.3.0, 2.13.11, 2.12.18                                      |
-| 19          | 3.2.0, 2.13.9, 2.12.16                                       |
-| 18          | 3.1.3, 2.13.7, 2.12.15                                       |
 | 17 (LTS)    | 3.0.0, 2.13.6, 2.12.15                                       |
 | 11 (LTS)    | 3.0.0, 2.13.0, 2.12.4, 2.11.12                               |
 | 8 (LTS)     | 3.0.0, 2.13.0, 2.12.0, 2.11.0                                |
@@ -28,21 +26,20 @@ Lightbend offers [commercial support](https://www.lightbend.com/lightbend-platfo
 
 ## Build tool compatibility table
 
-| JDK version | sbt             |
-|:-----------:|:----------------|
-| 21 (LTS)    | 1.9.0           |
-| 20          | 1.9.0           |
-| 19          | 1.7.0           |
-| 18          | 1.6.0           |
-| 17 (LTS)    | 1.6.0           |
-| 11 (LTS)    | 1.0.3           |
-| 8 (LTS)     | 1.0.0           |
+Minimum working versions:
+
+| JDK         | sbt             | mill       |
+|:-----------:|:---------------:|:-----------|
+| 21 (LTS)    | 1.9.0           | 0.11.5     |
+| 20          | 1.9.0           | 0.11.0     |
+| 17 (LTS)    | 1.6.0           | 0.7.0      |
+| 11 (LTS)    | 1.1.0           | 0.1.5      |
+| 8 (LTS)     | 1.0.0           | 0.1.0      |
 
 Even when a version combination isn't listed as supported, most features might still work.
 
-Using a different build tool, not [sbt](https://www.scala-sbt.org)?
-We'd happily accept pull requests adding additional columns to this
-table.
+Using a different build tool, such as Gradle or Maven? We invite pull
+requests adding additional columns to this table.
 
 ## Running versus compiling
 
@@ -79,8 +76,6 @@ The Scala test suite and Scala community build are green on JDK 11.
 In general, Scala works on JDK 11+, including GraalVM, but may not take special advantage of features that were added after JDK 8.
 
 For example, the Scala compiler does not enforce the restrictions of the Java Platform Module System, which means that code that typechecks may incur linkage errors at runtime. Scala 2.13.x will eventually provide [rudimentary support](https://github.com/scala/scala/pull/7218) for this (perhaps only in nightlies built on JDK 11).
-
-For sbt users, JDK 11 support requires minimum sbt version 1.1.0.  sbt 1.3.9 or newer is recommended.  (If you are still on the 0.13.x series, use 0.13.18.)
 
 To track progress on JDK 11 related issues in Scala, watch:
 
