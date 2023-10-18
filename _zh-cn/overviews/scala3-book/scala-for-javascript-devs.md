@@ -54,7 +54,7 @@ permalink: "/zh-cn/scala3/book/:title.html"
 - 作为一种纯 OOP 语言和纯 FP 语言，Scala 鼓励 OOP 和 FP 的融合，具有用于逻辑的函数和用于模块化的不可变对象
 - Scala 拥有最先进的第三方开源函数式编程库
 - Scala 中的一切都是一个_表达式_：像 `if` 语句、`for` 循环、`match` 表达式，甚至 `try`/`catch` 表达式都有返回值
-- [Scala Native](https://scala-native.readthedocs.io/en/v0.3.9-docs) 项目让您可以编写“系统”级代码，也可以编译为本机可执行文件
+- [Scala Native](https://scala-native.org/) 项目让您可以编写“系统”级代码，也可以编译为本机可执行文件
 
 ### 编程层次差异
 
