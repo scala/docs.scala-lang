@@ -14,15 +14,18 @@ Minimum Scala versions:
 
 | JDK         | 3        | 2.13      | 2.12      | 2.11       |
 |:-----------:|:--------:|:---------:|:---------:|:----------:|
+| 22 (ea)     | 3.3.2*   | 2.13.12*  | 2.12.19*  |            |
 | 21 (LTS)    | 3.3.1    | 2.13.11   | 2.12.18   |            |
 | 20          | 3.3.0    | 2.13.11   | 2.12.18   |            |
 | 17 (LTS)    | 3.0.0    | 2.13.6    | 2.12.15   |            |
 | 11 (LTS)    | 3.0.0    | 2.13.0    | 2.12.4    | 2.11.12    |
 | 8 (LTS)     | 3.0.0    | 2.13.0    | 2.12.0    | 2.11.0     |
 
-Using latest patch version of Scala is always recommended.
+* = forthcoming; support available in [nightly builds](https://stackoverflow.com/q/40622878/86485)
 
 Even when a version combination isn't listed as supported, most features might still work.
+
+Using latest patch version of Scala is always recommended.
 
 Lightbend offers [commercial support](https://www.lightbend.com/lightbend-platform-subscription) for Scala 2. The linked page includes contact information for inquiring about supported and recommended versions.
 
@@ -107,6 +110,16 @@ The Scala test suite and Scala 2.13 community build are green on JDK 21.
 For sbt users, sbt 1.9.0 is the first version to support JDK 21.
 
 For possible Scala issues, see the [jdk11](https://github.com/scala/bug/labels/jdk11), [jdk17](https://github.com/scala/bug/labels/jdk17), and [jdk21](https://github.com/scala/bug/labels/jdk21) labels in the Scala 2 bug tracker.
+
+## JDK 22 compatibility notes
+
+Early access builds of JDK 22 are available. JDK 22 will be non-LTS.
+
+We are working on adding JDK 22 support to the 2.12.x, 2.13.x, and
+3.3.x release series.
+
+<!-- Initial support for JDK 22 has been merged and is now available in
+Scala 3.3.2, 2.13.12, and 2.12.19. -->
 
 ## GraalVM Native Image compatibility notes
 
