@@ -129,4 +129,4 @@ foo(10, 10)
 
 ## Дополнительные ресурсы
 
-- Другие примеры "For comprehension" доступны [в книге Scala](/scala3/book/control-structures.html#for-expressions)
+- Другие примеры "For comprehension" доступны [в книге Scala](/ru/scala3/book/control-structures.html#выражение-for)

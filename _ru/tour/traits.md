@@ -175,5 +175,5 @@ animals.foreach(pet => println(pet.name))  // выведет "Harry" и "Sally"
 
 ## Дополнительные ресурсы
 
-- Узнайте больше о трейтах в [Scala Book](/scala3/book/domain-modeling-tools.html#traits)
-- Использование трейтов для определения [Enum](/scala3/book/domain-modeling-fp.html#modeling-the-data)
+- Узнайте больше о трейтах в [Scala Book](/ru/scala3/book/domain-modeling-tools.html#трейты)
+- Использование трейтов для определения [Enum](/ru/scala3/book/domain-modeling-fp.html#моделирование-данных)
