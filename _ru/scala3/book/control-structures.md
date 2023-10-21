@@ -334,9 +334,9 @@ i = 2, j = b, k = 1
 i = 2, j = b, k = 6
 ````
 
-### "Стражники"
+### "Ограничители"
 
-Циклы `for` также могут содержать операторы `if`, известные как _стражники_ (_guards_):
+Циклы `for` также могут содержать операторы `if`, известные как _ограничители_ (_guards_):
 
 {% tabs control-structures-14 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-14 %}
