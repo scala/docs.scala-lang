@@ -21,7 +21,7 @@ Minimum Scala versions:
 | 11 (LTS)    | 3.0.0    | 2.13.0    | 2.12.4    | 2.11.12    |
 | 8 (LTS)     | 3.0.0    | 2.13.0    | 2.12.0    | 2.11.0     |
 
-* = forthcoming; support available in [nightly builds](https://stackoverflow.com/q/40622878/86485)
+\* = forthcoming; support available in [nightly builds](https://stackoverflow.com/q/40622878/86485)
 
 Even when a version combination isn't listed as supported, most features might still work.
 
