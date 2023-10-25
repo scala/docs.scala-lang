@@ -76,7 +76,7 @@ def renderWidget(items: List[String])(using c: Config): String = ???
 {% endtab %}
 {% endtabs %}
 
-通过在 Scala 3  中使用关键字 `using`，或在 Scala 2 中使用 `implicit` 开始参数部分，我们告诉编译器它应该在调用处自动找到具有正确类型的参数。
+通过在 Scala 3  中使用关键字 `using`，或在 Scala 2 的参数前面添加`implicit`，我们告诉编译器它应该在调用处自动找到具有正确类型的参数。
 因此，Scala 编译器执行**术语推断**。
 
 在我们对 `renderWidget(List("cart"))` 的调用中，Scala 编译器将看到作用域（`c`）中有一个类型为 `Config` 的术语，并自动将其提供给 `renderWidget`。
