@@ -3,7 +3,7 @@ title: 工具
 type: section
 description: This chapter provides an introduction to the available domain modeling tools in Scala 3, including classes, traits, enums, and more.
 language: zh-cn
-num: 20
+num: 21
 previous-page: domain-modeling-intro
 next-page: domain-modeling-oop
 

@@ -3,7 +3,7 @@ title: 总结
 type: section
 description: This page provides a summary of the Collections chapter.
 language: zh-cn
-num: 39
+num: 40
 previous-page: collections-methods
 next-page: fp-intro
 

@@ -3,7 +3,7 @@ title: 纯函数
 type: section
 description: This section looks at the use of pure functions in functional programming.
 language: zh-cn
-num: 43
+num: 44
 previous-page: fp-immutable-values
 next-page: fp-functions-are-values
 

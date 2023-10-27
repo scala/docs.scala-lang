@@ -3,7 +3,7 @@ title: 函数式错误处理
 type: section
 description: This section provides an introduction to functional error handling in Scala 3.
 language: zh-cn
-num: 45
+num: 46
 previous-page: fp-functions-are-values
 next-page: fp-summary
 

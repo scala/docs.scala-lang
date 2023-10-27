@@ -3,7 +3,7 @@ title: 方法特性
 type: section
 description: This section introduces Scala 3 methods, including main methods, extension methods, and more.
 language: zh-cn
-num: 24
+num: 25
 previous-page: methods-intro
 next-page: methods-main-methods
 
