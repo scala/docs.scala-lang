@@ -36,7 +36,7 @@ println(s"$name is $age years old")   // "James is 30 years old"
 
 把 `s` 放在字符串前，只是 Scala 提供的插值的一种可能。
 
-Scala 内置三种字符串插值方法： `s`, `f` 和 raw`.
+Scala 内置三种字符串插值方法： `s`, `f` 和 `raw`.
 进一步，字符串插值器只是一种特殊的方法，所以你也可以定义自己的插值器。例如，
 有些数据库的函数库定义了 `sql` 插值器，这个插值器可以返回数据库查询。
 
@@ -140,7 +140,7 @@ println(f"$name%s is $height%2.2f meters tall")  // "James is 1.90 meters tall"
 `f` 插值器是类型安全的。如果你尝试把一个双精度数传递给一个只能处理整数的格式化字符串，编译器会发出一个错误信息。
 例如：
 
-{% tabs f-inspector-error class=tabs-scala-version %}
+{% tabs f-interpolator-error class=tabs-scala-version %}
 
 {% tab 'Scala 2' for=f-interpolator-error %}
 ```scala
