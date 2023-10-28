@@ -5,8 +5,8 @@ redirect_from:
   - /documentation/books.html
 ---
 
-More and more books being published about Scala every year. Here, you can find
-just a small selection of the many available titles.
+More books about Scala are published every year. This is
+only a selection of the available titles.
 
 <br>
 
