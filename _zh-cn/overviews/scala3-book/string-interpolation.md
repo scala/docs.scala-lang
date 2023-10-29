@@ -261,7 +261,7 @@ implicit class PointHelper(val sc: StringContext) extends AnyVal {
 ```
 
 **注意：** 在 Scala 2.x 中重要的一点是继承自 `AnyVal` ，从而防止运行时对每个插值器进行实例化。
-更多内容见 [值类]({% link _overviews/core/value-classes.md %}) 文档。
+更多内容见 [值类][value-classes] 文档。
 
 {% endtab %}
 
@@ -352,5 +352,5 @@ p"${x/5}, $x"   // Point(2.4, 12.0)
 `$"identifier"` 表达，还有更多其它的。
 
 [java-format-docs]: https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Formatter.html#detail
-[值类]: {% link _overviews/core/value-classes.md %}
+[value-classes]: {% link _overviews/core/value-classes.md %}
 [sip-11]: {% link _sips/sips/string-interpolation.md %}
