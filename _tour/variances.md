@@ -180,7 +180,7 @@ catSerializer.serialize(Cat("Felix"))
 abstract class Serializer[-A]:
   def serialize(a: A): String
 
-val animalSerializer: Serializer[Animal] = Serializer[Animal]():
+val animalSerializer: Serializer[Animal] = new Serializer[Animal]():
   def serialize(animal: Animal): String = s"""{ "name": "${animal.name}" }"""
 
 val catSerializer: Serializer[Cat] = animalSerializer
