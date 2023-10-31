@@ -28,7 +28,7 @@ The Scala compiler has included an inliner since version 2.0. Closure eliminatio
 
 The optimizer was re-written for Scala 2.12 to become more reliable and powerful – and to side-step the spelling issue by calling the new flag `-opt`. This post describes how to use the optimizer in Scala 2.12 and 2.13: what it does, how it works, and what are its limitations.
 
-The options were simplified for 2.13.9, as described here. The [earlier version](https://www.lightbend.com/blog/scala-inliner-optimizer) of this article uses the traditional forms, which are still supported.
+The options were simplified for 2.13.9. This page uses the simplified forms.
 
 ## Motivation
 
