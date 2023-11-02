@@ -64,7 +64,7 @@ class Graph {
   class Node {
     var connectedNodes: List[Graph#Node] = Nil
     def connectTo(node: Graph#Node): Unit = {
-      if (!connectedNodes.exists(node.equals)) {
+      if (!connectedNodes.exists(node)) {
         connectedNodes = node :: connectedNodes
       }
     }
