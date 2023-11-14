@@ -196,6 +196,19 @@ be written using the `_` syntax.
 
 See also [SLS 6.23.2](https://scala-lang.org/files/archive/spec/2.13/06-expressions.html#placeholder-syntax-for-anonymous-functions).
 
+### Why doesn't my dotted expression work?
+
+When methods have type parameters, the compiler makes a best effort to infer them
+if they are not supplied explicitly in a method application.
+Type parameter inference is improved in Scala 3.
+
+```
+scala> List("ab").toSet.head.head
+                             ^
+       error: value head is not a member of type parameter B
+```
+For more context, see [this section of the tour](https://docs.scala-lang.org/tour/multiple-parameter-lists.html#drive-type-inference).
+
 ### Can I chain or nest implicit conversions?
 
 Not really, but you can [make it work](https://stackoverflow.com/a/5332804).
