@@ -9,7 +9,7 @@ description: В этой главе рассматриваются два шир
 language: ru
 num: 69
 previous-page: concurrency
-next-page:
+next-page: tools-sbt
 ---
 
 В этой главе представлены два способа написания и запуска программ в Scala:
