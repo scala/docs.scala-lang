@@ -1,6 +1,7 @@
 ---
 title: Online Resources
 layout: singlepage-overview
+languages: [ru]
 redirect_from:
   - /documentation/books.html
 ---
