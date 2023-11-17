@@ -1,6 +1,7 @@
 ---
 title: Online Courses (MOOCs) from The Scala Center
 layout: singlepage-overview
+languages: [ru]
 testimonials:
   - /resources/images/online-courses/testimonial000.jpg
   - /resources/images/online-courses/testimonial001.jpg
