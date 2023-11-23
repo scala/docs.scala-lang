@@ -14,7 +14,7 @@ Minimum Scala versions:
 
 | JDK         | 3        | 2.13      | 2.12      | 2.11       |
 |:-----------:|:--------:|:---------:|:---------:|:----------:|
-| 22 (ea)     | 3.3.2*   | 2.13.12*  | 2.12.19*  |            |
+| 22 (ea)     | 3.3.2*   | 2.13.12   | 2.12.19*  |            |
 | 21 (LTS)    | 3.3.1    | 2.13.11   | 2.12.18   |            |
 | 20          | 3.3.0    | 2.13.11   | 2.12.18   |            |
 | 17 (LTS)    | 3.0.0    | 2.13.6    | 2.12.15   |            |
@@ -115,11 +115,11 @@ For possible Scala issues, see the [jdk11](https://github.com/scala/bug/labels/j
 
 Early access builds of JDK 22 are available. JDK 22 will be non-LTS.
 
-We are working on adding JDK 22 support to the 2.12.x, 2.13.x, and
-3.3.x release series.
+Initial support for JDK 22 has been merged and is now available in
+Scala 2.13.12.
 
-<!-- Initial support for JDK 22 has been merged and is now available in
-Scala 3.3.2, 2.13.12, and 2.12.19. -->
+We are working on adding JDK 22 support to the 2.12.x and 3.3.x
+release series. (Support may be available in nightly builds.)
 
 ## GraalVM Native Image compatibility notes
 
