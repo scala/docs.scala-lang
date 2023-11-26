@@ -32,7 +32,7 @@ The name of the project. To provide compatibility with Scala2 aliases with `-doc
 The current version of your project that appears in a top left corner. To provide compatibility with Scala2 aliases with `-doc-version`
 
 ##### -project-logo
-The logo of your project that appears in a top left corner. To provide compatibility with Scala2 aliases with `-doc-logo`
+The logo of your project that appears in a top left corner. A separate logo for the dark theme can be provided with the suffix `_dark`. If the logo is, for example, `mylogo.png`, then `mylogo_dark.png` is assumed for the dark theme. To provide compatibility with Scala2 aliases with `-doc-logo`
 
 ##### -project-footer
 The string message that appears in a footer section. To provide compatibility with Scala2 aliases with `-doc-footer`
