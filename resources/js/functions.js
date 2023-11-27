@@ -282,6 +282,10 @@ $(document).ready(function() {
       autoId: true,
       numerate: false
     });
+    const target = $('#sidebar-toc .active');
+    if (target.length) {
+      $('#sidebar-toc').scrollTop(target.offset().top);
+    };
   }
 });
 
