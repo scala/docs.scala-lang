@@ -28,6 +28,7 @@
 .inner-toc {
   max-height: 60vh;
   overflow-y: auto;
+  position: relative;
 
   @include bp(large) {
     max-height: none;

@@ -284,7 +284,7 @@ $(document).ready(function() {
     });
     const target = $('#sidebar-toc .active');
     if (target.length) {
-      $('#sidebar-toc').scrollTop(target.offset().top);
+      $('#sidebar-toc').animate({scrollTop: target.position().top}, 200);
     };
   }
 });
