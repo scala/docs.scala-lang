@@ -15,11 +15,6 @@
     display: none;
   }
 
-  // disable floating for the book, since the TOC can become very large
-  &.book {
-    position: relative;
-  }
-
   .contents {
     font-weight: 700;
   }
@@ -31,10 +26,6 @@
   position: relative;
 
   @include bp(large) {
-    max-height: none;
-  }
-
-  &.book {
     max-height: none;
   }
 }

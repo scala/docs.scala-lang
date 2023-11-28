@@ -284,7 +284,7 @@ $(document).ready(function() {
     });
     const target = $('#sidebar-toc .active');
     if (target.length) {
-      const marginTop = 10;
+      const marginTop = $('#sidebar-toc').find('.type-chapter').length ? 15 : 10;
       $('#sidebar-toc').animate({scrollTop: target.position().top - marginTop}, 200);
     };
   }
