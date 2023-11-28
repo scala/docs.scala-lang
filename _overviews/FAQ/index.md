@@ -210,7 +210,7 @@ Type inference is greatly improved in Scala 3. If Scala 2 doesn't compile your c
 
 Sometimes, using multiple parameter lists helps inference, as explained in [this section of the language tour](https://docs.scala-lang.org/tour/multiple-parameter-lists.html#drive-type-inference).
 
-For paradigmatic questions about type inference involving `toSet`, see the discussions on [this ticket](https://github.com/scala/bug/issues/7743) and a related [Q&A](https://stackoverflow.com/questions/5544536/in-scala-2-type-inference-fails-on-set-made-with-toset).
+For common questions about type inference involving `toSet`, see the discussions on [this ticket](https://github.com/scala/bug/issues/7743) and a related [Q&A](https://stackoverflow.com/questions/5544536/in-scala-2-type-inference-fails-on-set-made-with-toset).
 
 ### Can I chain or nest implicit conversions?
 
