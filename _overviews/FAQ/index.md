@@ -196,6 +196,22 @@ be written using the `_` syntax.
 
 See also [SLS 6.23.2](https://scala-lang.org/files/archive/spec/2.13/06-expressions.html#placeholder-syntax-for-anonymous-functions).
 
+### Why couldn't Scala infer the correct type in my code?
+
+It is difficult to generalize about type inference, because various features of the language
+affect how your code is construed. There may be several ways to rewrite your code to make
+the types fall out naturally.
+
+The most straightforward workaround is to supply explicit types in your code.
+
+That may involve specifying an explicit type to a definition, or a type argument to a method.
+
+Type inference is greatly improved in Scala 3. If Scala 2 doesn't compile your code, it's worth trying with Scala 3.
+
+Sometimes, using multiple parameter lists helps inference, as explained in [this section of the language tour](https://docs.scala-lang.org/tour/multiple-parameter-lists.html#drive-type-inference).
+
+For common questions about type inference involving `toSet`, see the discussions on [this ticket](https://github.com/scala/bug/issues/7743) and a related [Q&A](https://stackoverflow.com/questions/5544536/in-scala-2-type-inference-fails-on-set-made-with-toset).
+
 ### Can I chain or nest implicit conversions?
 
 Not really, but you can [make it work](https://stackoverflow.com/a/5332804).
