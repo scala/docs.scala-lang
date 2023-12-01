@@ -282,6 +282,11 @@ $(document).ready(function() {
       autoId: true,
       numerate: false
     });
+    const target = $('#sidebar-toc .active');
+    if (target.length) {
+      const marginTop = $('#sidebar-toc .type-chapter').length ? 15 : 10;
+      $('#sidebar-toc').animate({scrollTop: target.position().top - marginTop}, 200);
+    };
   }
 });
 
