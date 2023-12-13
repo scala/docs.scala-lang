@@ -11,7 +11,7 @@ The redesign of [contextual abstractions]({{ site.scala3ref }}/contextual) bring
 
 |Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|Runtime Incompatibiltiy|
 |--- |--- |--- |--- |--- |
-|[Type of implicit def](#type-of-implicit-definition)|||[✅](https://github.com/ohze/scala-rewrites#fixexplicittypesexplicitimplicittypes)||
+|[Type of implicit def](#type-of-implicit-definition)|||[✅](https://scalacenter.github.io/scalafix/docs/rules/ExplicitResultTypes.html)||
 |[Implicit views](#implicit-views)||||**Possible**|
 |[View bounds](#view-bounds)|Deprecation||||
 |[Ambiguous conversion on `A` and `=> A`](#ambiguous-conversion-on-a-and--a)|||||
@@ -21,7 +21,7 @@ The redesign of [contextual abstractions]({{ site.scala3ref }}/contextual) bring
 The type of implicit definitions (`val` or `def`) needs to be given explicitly in Scala 3.
 They cannot be inferred anymore.
 
-The Scalafix rule named `ExplicitImplicitTypes` in [ohze/scala-rewrites](https://github.com/ohze/scala-rewrites#fixexplicittypesexplicitimplicittypes) repository can write the missing type annotations automatically.
+The Scalafix rule named [ExplicitResultTypes](https://scalacenter.github.io/scalafix/docs/rules/ExplicitResultTypes.html) can write the missing type annotations automatically.
 
 ## Implicit Views
 

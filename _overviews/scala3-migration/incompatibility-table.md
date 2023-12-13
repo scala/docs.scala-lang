@@ -37,7 +37,7 @@ Some of the old syntax is not supported anymore.
 |--- |--- |--- |--- |
 |[Restricted keywords](incompat-syntactic.html#restricted-keywords)||✅||
 |[Procedure syntax](incompat-syntactic.html#procedure-syntax)|Deprecation|✅|[✅](https://scalacenter.github.io/scalafix/docs/rules/ProcedureSyntax.html)|
-|[Parentheses around lambda parameter](incompat-syntactic.html#parentheses-around-lambda-parameter)||✅|[✅](https://github.com/ohze/scala-rewrites/tree/dotty/#fixscala213parensaroundlambda)|
+|[Parentheses around lambda parameter](incompat-syntactic.html#parentheses-around-lambda-parameter)||✅||
 |[Open brace indentation for passing an argument](incompat-syntactic.html#open-brace-indentation-for-passing-an-argument)||✅||
 |[Wrong indentation](incompat-syntactic.html#wrong-indentation)||||
 |[`_` as a type parameter](incompat-syntactic.html#_-as-a-type-parameter)||||
@@ -63,7 +63,7 @@ The redesign of [contextual abstractions]({{ site.scala3ref }}/contextual) bring
 
 |Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|Runtime Incompatibility|
 |--- |--- |--- |--- |--- |
-|[Type of implicit def](incompat-contextual-abstractions.html#type-of-implicit-definition)|||[✅](https://github.com/ohze/scala-rewrites#fixexplicittypesexplicitimplicittypes)||
+|[Type of implicit def](incompat-contextual-abstractions.html#type-of-implicit-definition)|||[✅](https://scalacenter.github.io/scalafix/docs/rules/ExplicitResultTypes.html)||
 |[Implicit views](incompat-contextual-abstractions.html#implicit-views)||||**Possible**|
 |[View bounds](incompat-contextual-abstractions.html#view-bounds)|Deprecation||||
 |[Ambiguous conversion on `A` and `=> A`](incompat-contextual-abstractions.html#ambiguous-conversion-on-a-and--a)|||||
