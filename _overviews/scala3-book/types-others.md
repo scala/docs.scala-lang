@@ -21,7 +21,8 @@ Scala has several other advanced types that are not shown in this book, includin
 - Refinement types
 - Kind polymorphism
 
-For more details on these types, see the [Scala 3 Reference documentation][reference].
+For more details on most of these types, see the [Scala 3 Reference documentation][reference].
+For more details on singleton types and refinement types, see the Scala 3 [specification of types](https://scala-lang.org/files/archive/spec/3.4/03-types.html).
 
 
 
