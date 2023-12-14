@@ -337,11 +337,11 @@ This command runs a number of Scalafix rules to patch some discarded syntax.
 
 The list of applied Scalafix rules are: 
 - [ProcedureSyntax](https://scalacenter.github.io/scalafix/docs/rules/ProcedureSyntax.html)
-- [fix.scala213.ConstructorProcedureSyntax](https://github.com/ohze/scala-rewrites/tree/dotty/#fixscala213constructorproceduresyntax)
 - [fix.scala213.ExplicitNullaryEtaExpansion](https://github.com/lightbend-labs/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/ExplicitNullaryEtaExpansion.scala)
-- [fix.scala213.ParensAroundLambda](https://github.com/ohze/scala-rewrites/tree/dotty/#fixscala213parensaroundlambda)
+- [migrate.ParensAroundLambda](https://github.com/scalacenter/scala3-migrate/blob/ebb4a4087ed11899b9010f4c75eb365532694c0a/scalafix/rules/src/main/scala/migrate/ParensAroundParam.scala#L9)
 - [fix.scala213.ExplicitNonNullaryApply](https://github.com/lightbend-labs/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/ExplicitNullaryEtaExpansion.scala)
 - [fix.scala213.Any2StringAdd](https://github.com/lightbend-labs/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/Any2StringAdd.scala)
+- [ExplicitResultTypes](https://scalacenter.github.io/scalafix/docs/rules/ExplicitResultTypes.html)
 
 For more information about the syntax changes between Scala 2.13 and Scala 3, you can refer to [the Incompatibility Table](incompatibility-table.html).
 
