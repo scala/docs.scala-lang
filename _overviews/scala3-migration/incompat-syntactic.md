@@ -18,7 +18,8 @@ It is worth noting that most of the changes can be automatically handled during 
 |--- |--- |--- |--- |
 |[Restricted keywords](#restricted-keywords)||✅||
 |[Procedure syntax](#procedure-syntax)|Deprecation|✅|[✅](https://scalacenter.github.io/scalafix/docs/rules/ProcedureSyntax.html)|
-|[Parentheses around lambda parameter](#parentheses-around-lambda-parameter)||✅|||✅||
+|[Parentheses around lambda parameter](#parentheses-around-lambda-parameter)||✅||
+|[Open brace indentation for passing an argument](#open-brace-indentation-for-passing-an-argument)||✅||
 |[Wrong indentation](#wrong-indentation)||||
 |[`_` as a type parameter](#_-as-a-type-parameter)||||
 |[`+` and `-` as type parameters](#-and---as-type-parameters)||||
