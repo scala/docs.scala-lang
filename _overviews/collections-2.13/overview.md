@@ -16,7 +16,7 @@ Scala collections systematically distinguish between mutable and
 immutable collections. A _mutable_ collection can be updated, reduced or
 extended in place. This means you can change, add, or remove elements
 of a collection as a side effect. _Immutable_ collections, by
-contrast, never change. You have still operations that simulate
+contrast, never change. You still have operations that simulate
 additions, removals, or updates, but those operations will in each
 case return a new collection and leave the old collection unchanged.
 
@@ -36,7 +36,7 @@ always yield a collection with the same elements.
 
 A collection in package `scala.collection.mutable` is known to have
 some operations that change the collection in place. So dealing with
-mutable collection means you need to understand which code changes
+a mutable collection means you need to understand which code changes
 which collection when.
 
 A collection in package `scala.collection` can be either mutable or
