@@ -23,6 +23,7 @@ It is worth noting that most of the changes can be automatically handled during 
 |[Wrong indentation](#wrong-indentation)||||
 |[`_` as a type parameter](#_-as-a-type-parameter)||||
 |[`+` and `-` as type parameters](#-and---as-type-parameters)||||
+|[Unicode escapes](incompat-syntactic.html#unicode-escapes)||||
 
 ## Restricted Keywords
 
@@ -237,3 +238,13 @@ The solution is to choose another valid identifier, for instance `T`.
 
 However, `+` and `-` still are valid type identifiers in general.
 You can write `type +`.
+
+## Unicode escapes
+
+Unicode escapes of the form `\u0061` are no longer natively supported in any position by the compiler.
+
+Instead, they processed like other escapes in string literals.
+This means, in particular, that they are not processed in "triple-quoted" strings or by the `raw` interpolator.
+
+In Scala 2, a deprecation is issued, but under `-Xsource:3cross`, the behavior is the same as Scala 3.
+

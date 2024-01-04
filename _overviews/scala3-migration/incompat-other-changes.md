@@ -166,6 +166,33 @@ fooCtr.tupled((2, false))
 ~~~
 {% endtab %}
 {% endtabs %}
+
+To assist migration, the compiler will insert the call to `apply` as needed:
+{% tabs scala-3-companion_3 %}
+{% tab 'Scala 3 Only' %}
+~~~ scala
+case class C(i: Int)
+List(42).map(C)
+case class D(i: Int, j: Int)
+List(42->27).map(D)
+~~~
+{% endtab %}
+{% endtabs %}
+
+In Scala 2.13.13, this behavior is enabled under `-Xsource:3cross`.
+That is, case companions that do not extend `Function` can be used as if they did,
+or equivalently, as though `apply` were inserted. However, since Scala 2 does not
+adapt `apply` for the tupled case, `tupled` is supported directly.
+{% tabs scala-3-companion_4 %}
+{% tab 'Scala 2 Only' %}
+~~~ scala
+case class C(i: Int); object C
+List(42).map(C)
+case class D(i: Int, j: Int); object D
+List(42->27).map(D.tupled)
+~~~
+{% endtab %}
+{% endtabs %}
 ## Explicit Call to `unapply`
 
 In Scala, case classes have an auto-generated extractor method, called `unapply` in their companion object.

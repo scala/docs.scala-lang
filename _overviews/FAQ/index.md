@@ -139,6 +139,14 @@ REPL, but won't work in typical Scala 3 application code.
 For an alternative way to detect the Scala 3 version, see
 [this gist](https://gist.github.com/romanowski/de14691cab7340134e197419bc48919a).
 
+### I want to use Scala 3 but now a bunch of stuff just broke in my project. What's up with that?
+
+There is a [guide for migration](https://docs.scala-lang.org/scala3/guides/migration/compatibility-intro.html)
+that includes a [table of incompatibilities](https://docs.scala-lang.org/scala3/guides/migration/incompatibility-table.html).
+Incompatibilities are largely due to dropping old features and introducing new ones,
+rather than subtle changes in existing features.
+The migration guide provides strategies for either migrating to new syntax or maintaining cross-compatibility.
+
 ### Why is my (abstract or overridden) `val` null?
 
 <!-- this is left over from a previous version of the FAQ.

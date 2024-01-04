@@ -42,6 +42,7 @@ Some of the old syntax is not supported anymore.
 |[Wrong indentation](incompat-syntactic.html#wrong-indentation)||||
 |[`_` as a type parameter](incompat-syntactic.html#_-as-a-type-parameter)||||
 |[`+` and `-` as type parameters](incompat-syntactic.html#-and---as-type-parameters)||||
+|[Unicode escapes](incompat-syntactic.html#unicode-escapes)||||
 
 ### Dropped Features
 
