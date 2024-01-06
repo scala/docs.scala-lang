@@ -141,13 +141,45 @@ For an alternative way to detect the Scala 3 version, see
 
 ### Why is my (abstract or overridden) `val` null?
 
-<!-- this is left over from a previous version of the FAQ.
-so, grandfathering this in, but I suggest we not host any further FAQ
+<!-- This question is the original "one-question FAQ".
+For many years, the only question people had about the OOP-FP language
+was why does OOP break initialization?
+So, grandfathering this in, but I suggest we not host any further FAQ
 answers here, I think it's better to provide only short answers and
 links. if something needs more space to explain, there should be
 official documentation that addresses it, not just an FAQ answer -->
 
 See [this]({{ site.baseurl }}/tutorials/FAQ/initialization-order.html).
+
+### OK but why is my function literal null? and other things in my enclosing object?
+
+Objects are initialized lazily, and a nested object `A.B` may be referenced without forcing
+the initialization of `A`, the enclosing top-level object.
+
+Furthermore, certain implementation details become visible due to initialization effects. As a brief example:
+
+    class Super(val x: () => Int)
+
+    object Demo {
+      object A extends Super(() => 42)
+      println(A)
+    }
+
+    object Main extends App {
+      val x = Demo.A
+    }
+
+`Demo` is not initialized in Scala 2, but is forced in Scala 3 because
+the function literal is implemented as a static member; the initializer prints `null` in that case.
+
+A workaround is to make the constructor arg explicitly a static member of the companion class of `Demo`:
+
+    @annotation.static val f = () => 42
+    object A extends Super(f)
+
+Wait, doesn't that just call into the static implementation in the module? How does it avoid class initialization?
+
+I dunno, man, good luck with that.
 
 ### Which type of collection should I choose?
 
