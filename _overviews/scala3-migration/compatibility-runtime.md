@@ -23,6 +23,6 @@ It makes the migration from Scala 2.13 to Scala 3 very safe in terms of run-time
 
 At first sight the run-time characteristics of a Scala program is neither better nor worse in Scala 3 compare to Scala 2.13.
 However some new features will help you optimize your program:
-- [Opaque Type Aliases](http://dotty.epfl.ch/docs/reference/other-new-features/opaques.html)
-- [Inline Methods](http://dotty.epfl.ch/docs/reference/metaprogramming/inline.html)
-- [@threadUnsafe annotation](http://dotty.epfl.ch/docs/reference/other-new-features/threadUnsafe-annotation.html)
+- [Opaque Type Aliases](https://docs.scala-lang.org/scala3/reference/other-new-features/opaques.html)
+- [Inline Methods](https://docs.scala-lang.org/scala3/reference/metaprogramming/inline.html)
+- [@threadUnsafe annotation](https://docs.scala-lang.org/scala3/reference/other-new-features/threadUnsafe-annotation.html)
