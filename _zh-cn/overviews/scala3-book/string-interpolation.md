@@ -12,7 +12,7 @@ redirect_from:
 partof: scala3-book
 overview-name: "Scala 3 — Book"
 layout: multipage-overview
-permalink: "/zh-cn/scala3/book/:title.html"
+permalink: "/scala3/book/:title.html"
 ---
 
 ## 介绍
