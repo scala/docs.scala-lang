@@ -7,7 +7,7 @@ num: 18
 previous-page: first-look-at-types
 next-page: control-structures
 redirect_from:
-  - /zh-cn/overviews/core/string-interpolation.html
+  - /overviews/core/string-interpolation.html
 
 partof: scala3-book
 overview-name: "Scala 3 — Book"

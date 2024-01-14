@@ -4,7 +4,7 @@ type: section
 description: This section looks at the use of functions as values in functional programming.
 language: zh-cn
 num: 45
-previors-page: fp-pure-functions
+previous-page: fp-pure-functions
 next-page: fp-functional-error-handling
 
 partof: scala3-book
