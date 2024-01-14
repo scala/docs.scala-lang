@@ -58,7 +58,7 @@ represent different kinds of Java annotation arguments:
 ## Names
 
 Names are simple wrappers for strings.
-[Name](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Names$NameApi.html)
+[Name](https://www.scala-lang.org/api/2.x/scala-reflect/scala/reflect/api/Names$NameApi.html)
 has two subtypes `TermName` and `TypeName` which distinguish names of terms (like
 objects or members) and types (like classes, traits, and type members). A term
 and a type of the same name can co-exist in the same object. In other words,
@@ -104,19 +104,19 @@ There are both
 Some names, such as "package", exist both as a type name and a term name.
 Standard names are made available through the `termNames` and `typeNames` members of
 class `Universe`. For a complete specification of all standard names, see the
-[API documentation](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/StandardNames.html).
+[API documentation](https://www.scala-lang.org/api/2.x/scala-reflect/scala/reflect/api/StandardNames.html).
 
 ## Scopes
 
 A scope object generally maps names to symbols available in a corresponding
 lexical scope. Scopes can be nested. The base type exposed in the reflection
 API, however, only exposes a minimal interface, representing a scope as an
-iterable of [Symbol](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Symbols$Symbol.html)s.
+iterable of [Symbol](https://www.scala-lang.org/api/2.x/scala-reflect/scala/reflect/api/Symbols$Symbol.html)s.
 
 Additional functionality is exposed in *member scopes* that are returned by
 `members` and `decls` defined in
-[scala.reflect.api.Types#TypeApi](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Types$TypeApi.html).
-[scala.reflect.api.Scopes#MemberScope](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Scopes$MemberScope.html)
+[scala.reflect.api.Types#TypeApi](https://www.scala-lang.org/api/2.x/scala-reflect/scala/reflect/api/Types$TypeApi.html).
+[scala.reflect.api.Scopes#MemberScope](https://www.scala-lang.org/api/2.x/scala-reflect/scala/reflect/api/Scopes$MemberScope.html)
 supports the `sorted` method, which sorts members *in declaration order*.
 
 The following example returns a list of the symbols of all final members
@@ -129,7 +129,7 @@ of the `List` class, in declaration order:
 
 In addition to type `scala.reflect.api.Trees#Tree`, the base type of abstract
 syntax trees, typed trees can also be represented as instances of type
-[`scala.reflect.api.Exprs#Expr`](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Exprs$Expr.html).
+[`scala.reflect.api.Exprs#Expr`](https://www.scala-lang.org/api/2.x/scala-reflect/scala/reflect/api/Exprs$Expr.html).
 An `Expr` wraps
 an abstract syntax tree and an internal type tag to provide access to the type
 of the tree. `Expr`s are mainly used to simply and conveniently create typed
@@ -189,9 +189,9 @@ expressions are compile-time constants (see [section 6.24 of the Scala language 
 
 2. String literals - represented as instances of the string.
 
-3. References to classes, typically constructed with [scala.Predef#classOf](https://www.scala-lang.org/api/current/index.html#scala.Predef$@classOf[T]:Class[T]) - represented as [types](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Types$Type.html).
+3. References to classes, typically constructed with [scala.Predef#classOf](https://www.scala-lang.org/api/current/index.html#scala.Predef$@classOf[T]:Class[T]) - represented as [types](https://www.scala-lang.org/api/2.x/scala-reflect/scala/reflect/api/Types$Type.html).
 
-4. References to Java enumeration values - represented as [symbols](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Symbols$Symbol.html).
+4. References to Java enumeration values - represented as [symbols](https://www.scala-lang.org/api/2.x/scala-reflect/scala/reflect/api/Symbols$Symbol.html).
 
 Constant expressions are used to represent
 
@@ -287,8 +287,8 @@ Example:
 ## Printers
 
 Utilities for nicely printing
-[`Trees`](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Trees.html) and
-[`Types`](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Types.html).
+[`Trees`](https://www.scala-lang.org/api/2.x/scala-reflect/scala/reflect/api/Trees.html) and
+[`Types`](https://www.scala-lang.org/api/2.x/scala-reflect/scala/reflect/api/Types.html).
 
 ### Printing Trees
 
@@ -408,7 +408,7 @@ additionally shows the unique identifiers of symbols, as well as their kind
 ## Positions
 
 Positions (instances of the
-[Position](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Position.html) trait)
+[Position](https://www.scala-lang.org/api/2.x/scala-reflect/scala/reflect/api/Position.html) trait)
 are used to track the origin of symbols and tree nodes. They are commonly used when
 displaying warnings and errors, to indicate the incorrect point in the
 program. Positions indicate a column and line in a source file (the offset

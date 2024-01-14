@@ -129,10 +129,8 @@ The subcommand that MAY be included in the specification of the new `scala` comm
  - update: Update scala-cli - only works when installed by the installation script
 
 Last section of this proposal is the list of options that each sub-command MUST HAVE and SHOULD HAVE for each sub-commands that MUST or SHOULD be included in the specification of the new `scala` command. The options that are specific to the implementation (MAY have) as well as options for implementation specific sub-commands (MAY have) are included in [full specification](https://romanowski.github.io/scala-cli/docs/reference/scala-command/runner-specification).
- 
 
-
-Scala CLI can also be configured with ["using directives"](https://scala-cli.virtuslab.org/docs/guides/using-directives) - a comment-based configuration syntax that should be placed at the top of Scala files. This allows for self-containing examples within one file since most of the configuration can be provided either from the command line or via using directives (command line has precedence). This is a game changer for use cases like scripting, reproduction, or within the academic scope.
+Scala CLI can also be configured with ["using directives"](https://scala-cli.virtuslab.org/docs/guides/introduction/using-directives) - a comment-based configuration syntax that should be placed at the top of Scala files. This allows for self-containing examples within one file since most of the configuration can be provided either from the command line or via using directives (command line has precedence). This is a game changer for use cases like scripting, reproduction, or within the academic scope.
 
 We have described the motivation, syntax and implementation basis in the [dedicated pre-SIP](https://contributors.scala-lang.org/t/pre-sip-using-directives/5700). Currently, we recommend to write using directives as comments, so making them part of the language specification is not necessary at this stage. Moreover, the new `scala` command could ignore using directives in the initial version, however we strongly suggest to include comment-based using directives from the start. 
 
@@ -149,7 +147,7 @@ Adopting Scala CLI as the new `scala` command, as is, will change some of the be
 
 ### Other concerns
 
-Scala CLI brings [using directives](https://scala-cli.virtuslab.org/docs/guides/using-directives) and  [conventions to mark the test files](https://scala-cli.virtuslab.org/docs/commands/test#test-sources). We suggest to accept both accepted as a part of this SIP but we are ready to open dedicated SIPs for both (we have opened a [pre-SIP for using directives](https://contributors.scala-lang.org/t/pre-sip-using-directives/5700/15))
+Scala CLI brings [using directives](https://scala-cli.virtuslab.org/docs/guides/introduction/using-directives) and  [conventions to mark the test files](https://scala-cli.virtuslab.org/docs/commands/test#test-sources). We suggest to accept both accepted as a part of this SIP but we are ready to open dedicated SIPs for both (we have opened a [pre-SIP for using directives](https://contributors.scala-lang.org/t/pre-sip-using-directives/5700/15))
 
 Scala CLI is an ambitious project and may seem hard to maintain in the long-run.
 

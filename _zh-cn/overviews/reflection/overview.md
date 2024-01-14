@@ -279,7 +279,7 @@ Scala反射实现了允许在编译阶段就对程序进行修改的一种元编
 `Universe`是Scala反射的切入点。
 
 `universe`提供了使用反射所关联的很多核心概念，比如`Types`，`Trees`，以及`Annotations`。
-更多细节请参阅指南中[Universes](https://docs.scala-lang.org/overviews/reflection/environment-universes-mirrors.html)部分，或者看`scala.reflect.api`包的[Universes API文档](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Universe.html)。
+更多细节请参阅指南中[Universes](https://docs.scala-lang.org/overviews/reflection/environment-universes-mirrors.html)部分，或者看`scala.reflect.api`包的[Universes API文档](https://www.scala-lang.org/api/2.x/scala-reflect/scala/reflect/api/Universe.html)。
 
 本指南中提供了大多数情况下Scala反射要用到的部分，一般在使用运行时反射的场景下，直接导入所有`universe`成员去用即可：
 
@@ -293,4 +293,4 @@ import scala.reflect.runtime.universe._
 反射所能提供的信息都是通过镜像去访问的。
 根据不同的类型信息或不同的反射操作，必须要使用不同类型的镜像。
 
-更多细节请参阅指南中[Mirros](https://docs.scala-lang.org/overviews/reflection/environment-universes-mirrors.html)部分，或者看`scala.reflect.api`包的[Mirrors API文档](https://www.scala-lang.org/api/current/scala-reflect/scala/reflect/api/Mirrors.html)。
+更多细节请参阅指南中[Mirros](https://docs.scala-lang.org/overviews/reflection/environment-universes-mirrors.html)部分，或者看`scala.reflect.api`包的[Mirrors API文档](https://www.scala-lang.org/api/2.x/scala-reflect/scala/reflect/api/Mirrors.html)。
