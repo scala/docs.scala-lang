@@ -2,12 +2,12 @@
 title: 字符串插值
 type: chapter
 description: This page provides more information about creating strings and using 字符串插值.
-languages: zh-cn
+language: zh-cn
 num: 18
 previous-page: first-look-at-types
 next-page: control-structures
 redirect_from:
-  - /overviews/core/string-interpolation.html
+  - /zh-cn/overviews/core/string-interpolation.html
 
 partof: scala3-book
 overview-name: "Scala 3 — Book"
