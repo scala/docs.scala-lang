@@ -84,10 +84,10 @@ is an ordered sequence of elements equally spaced apart. A parallel range is
 created in a similar way as the sequential
 [Range](https://www.scala-lang.org/api/{{ site.scala-212-version }}/scala/collection/immutable/Range.html):
 
-    scala> 1 to 3 par
+    scala> (1 to 3).par
     res0: scala.collection.parallel.immutable.ParRange = ParRange(1, 2, 3)
 
-    scala> 15 to 5 by -2 par
+    scala> (15 to 5 by -2).par
     res1: scala.collection.parallel.immutable.ParRange = ParRange(15, 13, 11, 9, 7, 5)
 
 Just as sequential ranges have no builders, parallel ranges have no
@@ -146,7 +146,7 @@ and
     scala> val phs = scala.collection.parallel.immutable.ParHashSet(1 until 1000: _*)
     phs: scala.collection.parallel.immutable.ParHashSet[Int] = ParSet(645, 892, 69, 809, 629, 365, 138, 760, 101, 479,...
 
-    scala> phs map { x => x * x } sum
+    scala> phs.map(x => x * x).sum
     res0: Int = 332833500
 
 Similar to parallel hash tables, parallel hash trie
