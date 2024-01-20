@@ -1,7 +1,7 @@
 ---
 title: SIP-58 - Named Tuples
-status: submitted
+status: under-review
 pull-request-number: 72
-stage: pre-sip
+stage: design
 
 ---
