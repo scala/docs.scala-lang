@@ -3,7 +3,7 @@ title: Given 导入
 type: section
 description: This page demonstrates how 'given' import statements work in Scala 3.
 language: zh-cn
-num: 62
+num: 63
 previous-page: ca-context-bounds
 next-page: ca-type-classes
 

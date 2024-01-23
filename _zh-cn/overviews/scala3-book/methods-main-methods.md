@@ -3,7 +3,7 @@ title: main 方法
 type: section
 description: This page describes how 'main' methods and the '@main' annotation work in Scala 3.
 language: zh-cn
-num: 25
+num: 26
 previous-page: methods-most
 next-page: methods-summary
 

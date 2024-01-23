@@ -3,7 +3,7 @@ title: worksheet
 type: section
 description: This section looks at worksheets, an alternative to Scala projects.
 language: zh-cn
-num: 70
+num: 71
 previous-page: tools-sbt
 next-page: interacting-with-java
 
