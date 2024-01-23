@@ -254,8 +254,7 @@ alice match
 
 Later in time, you can amend the original case class definition to, say, add an optional `address` field. You
  * add a new field `address` and a custom `withAddress` method,
- * update the public `apply` method in the companion object to initialize all the fields,
- * tell MiMa to [ignore](https://github.com/lightbend/mima#filtering-binary-incompatibilities) changes to the class constructor. This step is necessary because MiMa does not yet ignore changes in private class constructor signatures (see [#738](https://github.com/lightbend/mima/issues/738)).
+ * update the public `apply` method in the companion object to initialize all the fields
 
 {% tabs case_class_compat_4 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
