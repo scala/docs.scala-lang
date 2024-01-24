@@ -3,7 +3,7 @@ title: 方法
 type: chapter
 description: This section introduces methods in Scala 3.
 language: zh-cn
-num: 23
+num: 24
 previous-page: domain-modeling-fp
 next-page: methods-most
 

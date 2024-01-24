@@ -5,7 +5,7 @@ description: This page provides a brief introduction to Scala's built-in data ty
 language: zh-cn
 num: 17
 previous-page: taste-summary
-next-page: control-structures
+next-page: string-interpolation
 
 partof: scala3-book
 overview-name: "Scala 3 — Book"

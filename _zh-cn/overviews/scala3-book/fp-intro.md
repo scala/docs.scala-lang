@@ -3,7 +3,7 @@ title: 函数式编程
 type: chapter
 description: This chapter provides an introduction to functional programming in Scala 3.
 language: zh-cn
-num: 40
+num: 41
 previous-page: collections-summary
 next-page: fp-what-is-fp
 
