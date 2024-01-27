@@ -499,8 +499,8 @@ Scala不遵循JavaBeans标准，因此我们在这里展示的Java代码
         <br>
         <br>// mix in the traits as DavidBanner
         <br>// is created
-        <br>val hulk = new DavidBanner with Big,
-        <br>&nbsp; Angry, Green</code>
+        <br>val hulk = new DavidBanner with Big with Angry with Green
+        </code>
       </td>
     </tr>
   </tbody>
