@@ -1,6 +1,7 @@
 ---
 layout: landing-page
 language: zh-cn
+
 title: 学习 Scala
 namespace: root
 discourse: true
@@ -25,8 +26,12 @@ sections:
         description: "通过一系列小课程来学习 Scala。"
         icon: "fa fa-book"
         link: /zh-cn/scala3/book/introduction.html
+      - title: "Scala 工具箱"
+        description: "发送 HTTP 请求，写文件，运行进程，解析 JSON... "
+        icon: "fa fa-toolbox"
+        link: /toolkit/introduction.html
       - title: "在线课程"
-        description: "新手和有经验的程序员在 moocs 学习 Scala。"
+        description: "新手和有经验的程序员在 MOOCS 学习 Scala。"
         icon: "fa fa-cloud"
         link: /online-courses.html
       - title: 书籍
@@ -60,10 +65,14 @@ sections:
         description: "Scala 语言特性的常见问题及答案。"
         icon: "fa fa-question-circle"
         link: /tutorials/FAQ/index.html
-      - title: "语言规范"
-        description: "语言规范"
+      - title: "语言规范 v2.x"
+        description: "Scala 2 正式的语言规范。"
         icon: "fa fa-book"
-        link: https://scala-lang.org/files/archive/spec/2.12/
+        link: https://scala-lang.org/files/archive/spec/2.13/
+      - title: "语言规范 v3.x"
+        description: "Scala 3 正式的语言规范。"
+        icon: "fa fa-book"
+        link: https://scala-lang.org/files/archive/spec/3.4/
       - title: "Scala 3 语言参考"
         description: "Scala 3 语言参考"
         icon: "fa fa-book"
