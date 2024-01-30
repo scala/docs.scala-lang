@@ -15,7 +15,7 @@ permalink: "/zh-cn/scala3/book/:title.html"
 
 
 Scala 允许您以面向对象编程 (OOP) 风格、函数式编程 (FP) 风格以及混合风格编写代码——结合使用这两种方法。
-[正如 Martin Odersky 所说](https://twitter.com/alexelcu/status/996408359514525696)，Scala 的本质是在类型化设置中融合了函数式编程和面向对象编程：
+正如 Scala 的创建者 Martin Odersky 所说，Scala 的本质是在类型化设置中融合了函数式编程和面向对象编程：
 
 - 逻辑函数
 - 模块化的对象
