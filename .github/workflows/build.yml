@@ -11,7 +11,7 @@ jobs:
           ruby-version: 3.0.5
           bundler-cache: true
       - name: Set up coursier
-        uses: coursier/setup-action@v1.3.4
+        uses: coursier/setup-action@v1.3.5
         with:
           jvm: adopt:11
       - name: Run mdoc
