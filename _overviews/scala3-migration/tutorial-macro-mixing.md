@@ -2,7 +2,7 @@
 title: Mixing Scala 2.13 and Scala 3 Macros
 type: section
 description: This section shows how to mix Scala 2.13 and Scala 3 macros in a single artifact
-num: 13
+num: 14
 previous-page: tutorial-macro-mixing
 next-page: tooling-syntax-rewriting
 ---

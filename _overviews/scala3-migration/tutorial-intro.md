@@ -2,7 +2,7 @@
 title: Migration Tutorial
 type: chapter
 description: This chapter contains the tutorials for porting a Scala 2.13 project to Scala 3 
-num: 8
+num: 9
 previous-page: tooling-migration-mode
 next-page: tutorial-prerequisites
 ---

@@ -4,7 +4,7 @@ type: chapter
 description: This chapter is a tour of the migration tooling ecosystem 
 num: 6
 previous-page: compatibility-metaprogramming
-next-page: tooling-migration-mode
+next-page: tooling-scala2-xsource3
 ---
 
 ## The Scala Compilers
@@ -13,12 +13,10 @@ The migration has been carefully prepared beforehand in each of the two compiler
 
 ### The Scala 2.13 Compiler
 
-The Scala 2.13 compiler supports `-Xsource:3`, an option that enables some Scala 3 syntax and behavior:
-- Most deprecated syntax generates an error.
-- Infix operators can start a line in the middle of a multiline expression.
-- Implicit search and overload resolution follow Scala 3 handling of contravariance when checking specificity.
+The Scala 2.13 compiler supports `-Xsource:3`, an option that enables migration warnings and certain Scala 3 syntax and behavior.
 
-The `-Xsource:3` option is intended to encourage early migration.
+The [Scala 2 with -Xsource:3](tooling-scala2-xsource3.html) page explains the flag in detail.
+
 
 ### The Scala 3 Compiler
 
