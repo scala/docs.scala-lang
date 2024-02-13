@@ -1,9 +1,7 @@
 ---
 title: 领域建模
-type: chapter
 description: This chapter provides an introduction to domain modeling in Scala 3.
-language: zh-cn
-num: 19
+num: 20 
 previous-page: control-structures
 next-page: domain-modeling-tools
 

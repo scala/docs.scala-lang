@@ -262,7 +262,7 @@ modo: `new Complex(1.5, 2.3)`. La classe ha due metodi, `re` e `im` che
 danno l’accesso rispettivamente alla parte reale e a quella immaginaria
 del numero complesso.
 
-Da notare che il tipo di ritorno dei due metodi non è specificato esplicitamante.
+Da notare che il tipo di ritorno dei due metodi non è specificato esplicitamente.
 Sarà il compilatore che lo dedurrà automaticamente osservando la parte a destra
 del segno uguale dei metodi e deducendo che per entrambi si tratta di
 valori di tipo `Double`.
@@ -419,7 +419,7 @@ detto in Scala non è difficile:
     }
 
 Questa funzione di valutazione lavora effettuando un *pattern matching*
-sull’albero `t`. Intuitivamente il significato della definizione precendente
+sull’albero `t`. Intuitivamente il significato della definizione precedente
 dovrebbe esser chiaro:
 
 1.  prima controlla se l’albero `t` è un `Sum`; se lo è, esegue il bind del
@@ -557,7 +557,7 @@ dichiarazione di un trait:
     }
 
 Questa definizione crea un nuovo tipo chiamato `Ord` che ha lo stesso
-ruolo dell’interfaccia `Comparable` in Java e, fornisce l’implementazione
+ruolo dell’interfaccia `Comparable` in Java e fornisce l’implementazione
 di default di tre predicati in termini del quarto astraendone uno.
 I predicati di uguaglianza e disuguaglianza non sono presenti in questa
 dichiarazione poichè sono presenti di default in tutti gli oggetti.
@@ -646,7 +646,7 @@ restrittivo.
 I programmatori Java hanno fatto ricorso all’uso di `Object`, che è il
 super-tipo di tutti gli oggetti. Questa soluzione è in ogni caso ben lontana
 dall’esser ideale perché non funziona per i tipi base (`int`, `long`, `float`,
-ecc.) ed implica che molto type casts dinamico deve esser fatto dal
+ecc.) ed implica che molto type cast dinamico deve esser fatto dal
 programmatore.
 
 Scala rende possibile la definizione delle classi generiche (e metodi) per

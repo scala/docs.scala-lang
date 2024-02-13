@@ -113,5 +113,5 @@ If you want to have a little fun with this, change one or more of the tests so t
 
 For more information about sbt and ScalaTest, see the following resources:
 
-- [The main sbt documentation](http://www.scala-sbt.org/documentation.html)
-- [The ScalaTest documentation](http://www.scalatest.org/user_guide)
+- [The main sbt documentation](https://www.scala-sbt.org/1.x/docs/)
+- [The ScalaTest documentation](https://www.scalatest.org/user_guide)

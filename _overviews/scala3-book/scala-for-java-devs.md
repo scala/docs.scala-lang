@@ -513,8 +513,8 @@ These interfaces and traits have concrete, implemented methods (default methods)
         <br>
         <br>// mix in the traits as DavidBanner
         <br>// is created
-        <br>val hulk = new DavidBanner with Big,
-        <br>&nbsp; Angry, Green</code>
+        <br>val hulk = new DavidBanner with Big with Angry with Green
+        </code>
       </td>
     </tr>
   </tbody>

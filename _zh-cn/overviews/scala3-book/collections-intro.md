@@ -3,7 +3,7 @@ title: Scala 集合
 type: chapter
 description: This page provides and introduction to the common collections classes and their methods in Scala 3.
 language: zh-cn
-num: 36
+num: 37
 previous-page: packaging-imports
 next-page: collections-classes
 

@@ -124,9 +124,7 @@ If everything works, and you see the app’s screen on your device, type `adb lo
 * [Log Viewer for Android Studio and IntelliJ](https://plugins.jetbrains.com/plugin/10015-log-viewer)
 * [Logcat plugin for VSCode](https://marketplace.visualstudio.com/items?itemName=abhiagr.logcat)
 
-Here's a [screenshot](https://github.com/makingthematrix/scalaonandroid/blob/main/helloscala/helloscala.png) of what the app looks like when you open it. 
-
-And [from here](https://drive.google.com/file/d/1SV5waXjyEYSSlo-mfj28WF34mcMFxoG7/view?usp=sharing) you can download the already compiled APK.
+Here's a [screenshot](https://github.com/makingthematrix/scalaonandroid/blob/main/helloscala/helloscala.png) of what the app looks like when you open it.
 
 ## Next Steps and Other Useful Reading
 

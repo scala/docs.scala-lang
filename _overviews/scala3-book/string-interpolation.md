@@ -2,7 +2,7 @@
 title: String Interpolation
 type: chapter
 description: This page provides more information about creating strings and using string interpolation.
-languages: [ru]
+languages: [ru, zh-cn]
 num: 18
 previous-page: first-look-at-types
 next-page: control-structures

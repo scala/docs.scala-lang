@@ -3,7 +3,7 @@ title: 向 Java 开发者介绍Scala
 type: chapter
 description: This page is for Java developers who are interested in learning about Scala 3.
 language: zh-cn
-num: 72
+num: 73
 previous-page: interacting-with-java
 next-page: scala-for-javascript-devs
 
@@ -499,8 +499,8 @@ Scala不遵循JavaBeans标准，因此我们在这里展示的Java代码
         <br>
         <br>// mix in the traits as DavidBanner
         <br>// is created
-        <br>val hulk = new DavidBanner with Big,
-        <br>&nbsp; Angry, Green</code>
+        <br>val hulk = new DavidBanner with Big with Angry with Green
+        </code>
       </td>
     </tr>
   </tbody>

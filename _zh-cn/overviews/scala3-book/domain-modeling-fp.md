@@ -3,7 +3,7 @@ title: 函数式领域建模
 type: section
 description: This chapter provides an introduction to FP domain modeling with Scala 3.
 language: zh-cn
-num: 22
+num: 23
 previous-page: domain-modeling-oop
 next-page: methods-intro
 

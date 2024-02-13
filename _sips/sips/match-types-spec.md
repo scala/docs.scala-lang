@@ -1,8 +1,8 @@
 ---
 layout: sip
 permalink: /sips/:title.html
-stage: implementation
-status: waiting-for-implementation
+stage: completed
+status: accepted
 title: SIP-56 - Proper Specification for Match Types
 ---
 
