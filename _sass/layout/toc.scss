@@ -11,10 +11,6 @@
     position: relative;
   }
 
-  @include bp(medium) {
-    display: none;
-  }
-
   .contents {
     font-weight: 700;
   }
