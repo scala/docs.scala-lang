@@ -63,7 +63,10 @@ You can learn all the new metaprogramming concepts by reading the [Macros in Sca
 ## Cross-building a Macro Library
 
 You have written a wonderful macro library and you would like it to be available in Scala 2.13 and Scala 3.
-There are two different approaches, the traditional cross-building technique and the more experimental mixing macro technique.
+There are two different approaches, the traditional cross-building technique and the more flexible macro mixing technique.
+
+The benefit of macro mixing is that consumers who take advantage of the `-Ytasty-reader` option can still use your macros.
+
 You can learn about them by reading these tutorials:
 - [Cross-Building a Macro Library](tutorial-macro-cross-building.html)
 - [Mixing Scala 2.13 and Scala 3 Macros](tutorial-macro-mixing.html)
