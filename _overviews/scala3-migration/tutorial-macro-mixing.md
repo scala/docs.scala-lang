@@ -7,10 +7,10 @@ previous-page: tutorial-macro-mixing
 next-page: tooling-syntax-rewriting
 ---
 
-This tutorial shows how to mix Scala 2.13 and Scala 3 macros in a single artifact.
+This tutorial shows how to mix Scala 2.13 and Scala 3 macros in a single artifact.  There are two main benefits of this:
 
-It can be used to create a new Scala 3 macro library and make it available for Scala 2.13 users.
-It can also be used to port an existing Scala 2.13 macro library to Scala 3, although it is probably easier to cross-build.
+1. Making a new or existing scala 3 macro library available for Scala 2.13 users without having to provide a separate 2.13 version
+2. Allowing multi-project builds to be upgraded module by module, even where macro libraries are used.
 
 ## Introduction
 
