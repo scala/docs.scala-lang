@@ -23,7 +23,7 @@
             <li class="navigation-menu-item">
               {% capture translatedPageId %}/{{page.language}}{{navItem.url | remove_first: '.html' }}{% endcapture %}
               {% assign navItemTranslated = site.documents | where: 'id', translatedPageId | first %}
-              <a href="{% if navItemTranslated.url %}{{navItemTranslated.url}}{% elsif navItem.url contains '://' or navItem.url == '#' %}{{navItem.url}}{% else %}{{site.baseurl}}{{navItem.url}}{% endif %}" id="{{ navItem.title | downcase | strip }}" {% if page.url contains navItem.url %}class="active"{% endif %}>{{navItem.title}}</a>
+              <a href="{% if navItemTranslated.url %}{{navItemTranslated.url}}{% elsif navItem.url contains '://' or navItem.url == '#' %}{{navItem.url}}{% else %}{{site.baseurl}}{{navItem.url}}{% endif %}" id="{{ navItem.title | downcase | strip | remove: ' ' }}" {% if page.url contains navItem.url %}class="active"{% endif %}>{{navItem.title}}</a>
                 {% if navItem.submenu %}
                 <ul class="navigation-dropdown">
                 {% for subItem in navItem.submenu %}
@@ -42,7 +42,7 @@
     <nav class="doc-navigation-submenus">
       {% for navItem in navdata %}
         {% if navItem.submenu %}
-          <ul class="navigation-submenu" id="{{ navItem.title | downcase | strip }}" style="display: none;">
+          <ul class="navigation-submenu" id="{{ navItem.title | downcase | strip | remove: ' ' }}" style="display: none;">
             {% for subItem in navItem.submenu %}
               <li>
                 <a href="{% if subItem.url contains '://' %}{{subItem.url}}{% else %}{{site.baseurl}}{{subItem.url}}{% endif %}">{{ subItem.title }}</a>
