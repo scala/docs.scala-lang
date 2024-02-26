@@ -13,6 +13,7 @@ layout: multipage-overview
 permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
+<h5>编写<span class="tag tag-inline">仅Scala 3 适用</span>的一行程序</h5>
 
 Scala 3 提供了一种定义可以从命令行调用的程序的新方法：在方法中添加 `@main` 注释会将其变成可执行程序的入口点：
 
@@ -26,16 +27,10 @@ Scala 3 提供了一种定义可以从命令行调用的程序的新方法：在
 {% endtab %}
 {% endtabs %}
 
-只需将该行代码保存在一个名为 *Hello.scala* 的文件中——文件名不必与方法名匹配——并使用 `scalac` 编译它：
+只需将该行代码保存在一个名为 *Hello.scala* 的文件中——文件名不必与方法名匹配——并使用 `scala` 运行它：
 
 ```bash
-$ scalac Hello.scala
-```
-
-然后用 `scala` 运行它：
-
-```bash
-$ scala hello
+$ scala Hello.scala
 Hello, world
 ```
 
@@ -81,8 +76,8 @@ $ scala happyBirthday 23 Lisa Peter
 Happy 23rd Birthday, Lisa and Peter!
 ```
 
-如图所示，`@main` 方法可以有任意数量的参数。
-对于每个参数类型，必须是 `scala.util.CommandLineParser.FromString` 类型类的一个 [given实例]({% link _overviews/scala3-book/ca-context-parameters.md %})，它将参数 `String` 转换为所需的参数类型。
+如上所示，`@main` 方法可以有任意数量的参数。
+对于每个参数类型，必须是 `scala.util.CommandLineParser.FromString` 类型类的一个 [given实例]({% link _zh-cn/overviews/scala3-book/ca-context-parameters.md %})，它将参数 `String` 转换为所需的参数类型。
 同样如图所示，主方法的参数列表可以以重复参数结尾，例如 `String*`，它接受命令行中给出的所有剩余参数。
 
 从 `@main` 方法实现的程序检查命令行上是否有足够的参数来填充所有参数，以及参数字符串是否可以转换为所需的类型。
@@ -95,6 +90,36 @@ Illegal command line after first argument: more arguments expected
 $ scala happyBirthday sixty Fred
 Illegal command line: java.lang.NumberFormatException: For input string: "sixty"
 ```
+
+## 用户自定义的类型作为参数
+
+正如上面指出的，编译器为参数类型寻找 `scala.util.CommandLineParser.FromString` 类型类 的given 实例。
+例如，我们自定义了一个 `Color`类型，并希望当以参数使用。你可以像以下代码这样使用：
+As mentioned up above, the compiler looks for a given instance of the
+`scala.util.CommandLineParser.FromString` typeclass for the type of the
+argument. For example, let's say you have a custom `Color` type that you want to
+use as a parameter. You would do this like you see below:
+
+{% tabs method_3 %}
+{% tab 'Scala 3 Only' for=method_3 %}
+
+```scala
+enum Color:
+  case Red, Green, Blue
+
+given ComamndLineParser.FromString[Color] with
+  def fromString(value: String): Color = Color.valueOf(value)
+
+@main def run(color: Color): Unit =
+  println(s"The color is ${color.toString}")
+```
+
+{% endtab %}
+{% endtabs %}
+
+这像你在程序中用的自己的用户类型一样，也像你使用从其它库的类型一样。
+This works the same for your own user types in your program as well as types you
+might be using from another library.
 
 ## 细节
 
