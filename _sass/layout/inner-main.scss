@@ -43,6 +43,10 @@
         order: 1;
         margin-bottom: 30px;
       }
+
+      @include bp(medium) {
+        order: 3; // move TOC to the bottom on mobile
+      }
     }
 
     .content-nav-blog {
