@@ -95,10 +95,6 @@ Illegal command line: java.lang.NumberFormatException: For input string: "sixty"
 
 正如上面指出的，编译器为参数类型寻找 `scala.util.CommandLineParser.FromString` 类型类 的given 实例。
 例如，我们自定义了一个 `Color`类型，并希望当以参数使用。你可以像以下代码这样使用：
-As mentioned up above, the compiler looks for a given instance of the
-`scala.util.CommandLineParser.FromString` typeclass for the type of the
-argument. For example, let's say you have a custom `Color` type that you want to
-use as a parameter. You would do this like you see below:
 
 {% tabs method_3 %}
 {% tab 'Scala 3 Only' for=method_3 %}
@@ -117,9 +113,7 @@ given ComamndLineParser.FromString[Color] with
 {% endtab %}
 {% endtabs %}
 
-这像你在程序中用的自己的用户类型一样，也像你使用从其它库的类型一样。
-This works the same for your own user types in your program as well as types you
-might be using from another library.
+这对于您程序中的自定义类型以及可能使用的其他库中的类型，都是一样的。
 
 ## 细节
 
