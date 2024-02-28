@@ -2,7 +2,7 @@
 title: Syntactic Changes
 type: section
 description: This chapter details all the incompatibilities caused by syntactic changes
-num: 16
+num: 17
 previous-page: incompatibility-table
 next-page: incompat-dropped-features
 ---
