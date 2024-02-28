@@ -8,16 +8,19 @@ next-page: tooling-migration-mode
 ---
 
 The Scala 2.13 compiler issues helpful migration warnings with the `-Xsource:3` flag.
-Before moving to the Scala 3 compiler, it's recommended to enable this flag in Scala 2 and address the new warnings.
-In addition to new warnings, the flag enables certain benign Scala 3 syntaxes such as `import p.*`.
 
-This page explains the details behind the flag, an overview is shown using `scalac -Xsource:help`.
+Before moving to the Scala 3 compiler, it's recommended to enable this flag in Scala 2 and address the new warnings.
+
+There is also a variant, `-Xsource:3-cross`; see below.
+
+This page explains the details behind the flags. An overview is shown using `scalac -Xsource:help`.
 
 ## Migration vs cross-building
 
 With Scala 2.13.13 and newer, the `-Xsource:3` flag comes in two variants:
 
   - `Xsource:3` enables warnings relevant for migrating a codebase to Scala 3.
+    In addition to new warnings, the flag enables certain benign Scala 3 syntaxes such as `import p.*`.
   - `Xsource:3-cross` is useful for projects that cross-build between Scala 2 and 3 for a longer period of time.
     For certain language constructs that trigger a warning with `-Xsource:3`, the behavior changes to match Scala 3.
 
@@ -37,7 +40,7 @@ See also `scalac -quickfix:help`.
 
 ## Enabled Scala 3 syntax
 
-The `-Xsource:3` flag enables the following Scala 3 syntax in Scala 2:
+The `-Xsource:3` flag enables the following Scala 3 syntaxes in Scala 2:
 
   - `import p.*`
   - `import p.m as n`
@@ -45,7 +48,6 @@ The `-Xsource:3` flag enables the following Scala 3 syntax in Scala 2:
   - `case C(xs*)` as an alias for `case C(xs @ _*)`
   - `A & B` type intersection as an alias for `A with B`
   - Selecting a method `x.f` performs an eta-expansion (`x.f _`), even without an expected type
-
 
 ## Scala 3 migration warnings in detail
 
