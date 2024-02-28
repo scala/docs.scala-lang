@@ -11,7 +11,7 @@ The Scala 2.13 compiler issues helpful migration warnings with the `-Xsource:3` 
 
 Before moving to the Scala 3 compiler, it's recommended to enable this flag in Scala 2 and address the new warnings.
 
-There is also a variant, `-Xsource:3-cross`; see below.
+There is also a variant, `-Xsource:3-cross`; see below. **Note: Enabling `-Xsource:3-cross` in Scala 2.13.13 breaks binary compatibility, follow [scala/bug#12961](https://github.com/scala/bug/issues/12961) for details.**
 
 This page explains the details behind the flags. An overview is shown using `scalac -Xsource:help`.
 
@@ -59,7 +59,33 @@ scala> object O { implicit val s = "" }
        error: Implicit definition must have explicit type (inferred String) [quickfixable]
 {% endhighlight %}
 
-The following table explains warnings where where the behavior changes between `-Xsource:3` and `-Xsource:3-cross`.
+The next paragraphs explain where the behavior changes between `-Xsource:3` and `-Xsource:3-cross`.
+
+### Changes affecting binary encoding
+
+As of Scala 2.13.13, there are 3 changes under `-Xsource:3-cross` that affect binary encoding of classfiles. For all of these changes a fatal warning is issued under `-Xsource:3`.
+
+  1. The constructor modifiers of case classes (`case class C private[p] (x: Int)`) are copied to the synthetic `apply` and `copy` methods.
+  1. The synthetic companion objects of case classes no longer extend `FunctionN`.
+  1. Overriding methods without an explicit return type inherit the return type from the parent (instead of using the inferred type of the method body).
+
+For projects that are already cross-building between Scala 2 and Scala 3 with existing releases for both, enabling `-Xsource:3-cross` breaks binary compatibility. For example, if a library defines
+
+{% highlight scala %}
+trait A { def f: Object }
+class B extends A { def f = "hi" }
+{% endhighlight %}
+
+  - enabling `-Xsource:3-cross` breaks binary compatibility on Scala 2.13: existing releases have `A.f: String`, the new version will have `A.f: Object`
+  - adding an explicit result type `A.f: String` breaks binary compatibility on Scala 3: existing releases have `A.f: Object`
+
+It is possible to work around this using version-dependent source files, see [scala/scala-xml#675](https://github.com/scala/scala-xml/pull/675) as an example.
+
+Working around the case companion `FunctionN` parent change is currently difficult (Scala 2.13.13), a solution is being discussed at [scala/bug#12961](https://github.com/scala/bug/issues/12961).
+
+### Changes in language semantics
+
+The following table shows cases where `-Xsource:3-cross` adopts language feature semantics from Scala 3.
 
 | Feature | `-Xsource:3` | `-Xsource:3-cross` |
 |--- |--- |--- |
@@ -67,8 +93,6 @@ The following table explains warnings where where the behavior changes between `
 | Unicode escapes in triple-quoted strings and raw interpolations (`"""\u0061"""`) | fatal warning, escape is processed | escape is not processed |
 | Leading infix operators continue the previous line <sup>1</sup> | fatal warning, second line is a separate expression | operation continues the previous line |
 | Desugaring of string interpolators using `StringContext` | fatal warning if the interpolation references a `StringContext` in scope different from `scala.StringContext` | desugaring always uses `scala.StringContext` |
-| Modifiers of `apply` and `copy` methods of case classes with non-public constructors: `case class C private[p] (x: Int)` | fatal warning about the generated `apply` and `copy` being public | `apply` and `copy` inherit the access modifiers from the constructor |
-| Inferred type of an overriding member <sup>2</sup> | fatal warning, the type of `B.f` is `String` | the type of `B.f` is `Object` |
 | An implicit for type `p.A` is found in the package prefix `p` | fatal warning | the package prefix `p` is no longer part of the implicit search scope |
 
 Example 1:
@@ -77,11 +101,4 @@ Example 1:
   def f =
     1
     + 2
-{% endhighlight %}
-
-Example 2:
-
-{% highlight text %}
-trait A { def f: Object }
-class B extends A { def f = "hi" }
 {% endhighlight %}
