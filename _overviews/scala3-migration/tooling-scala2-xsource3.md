@@ -9,7 +9,7 @@ next-page: tooling-migration-mode
 
 The Scala 2.13 compiler issues helpful migration warnings with the `-Xsource:3` flag.
 Before moving to the Scala 3 compiler, it's recommended to enable this flag in Scala 2 and address the new warnings.
-In addition to new warnigns, the flag enables certain benign Scala 3 syntax such as `import p.*`.
+In addition to new warnings, the flag enables certain benign Scala 3 syntaxes such as `import p.*`.
 
 This page explains the details behind the flag, an overview is shown using `scalac -Xsource:help`.
 
