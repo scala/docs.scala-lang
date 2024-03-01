@@ -236,7 +236,7 @@ for i <- ints do println(i)
 {% endtabs %}
 
 
-The code `i <- ints` is referred to as a _generator_.
+The code `i <- ints` is referred to as a _generator_. In any generator `p <- e`, the expression `e` can generate zero or many bindings to the pattern `p`.
 
 This is what the result looks like in the Scala REPL:
 

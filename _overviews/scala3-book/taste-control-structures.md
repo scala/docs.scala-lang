@@ -92,7 +92,8 @@ val ints = List(1, 2, 3, 4, 5)
 for (i <- ints) println(i)
 ```
 
-> The code `i <- ints` is referred to as a _generator_, and the code that follows the closing parentheses of the generator is the _body_ of the loop.
+> The code `i <- ints` is referred to as a _generator_. In any generator `p <- e`, the expression `e` can generate zero or many bindings to the pattern `p`.
+> The code that follows the closing parentheses of the generator is the _body_ of the loop.
 
 {% endtab %}
 
