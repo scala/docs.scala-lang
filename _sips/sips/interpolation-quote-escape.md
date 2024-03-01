@@ -129,4 +129,4 @@ proposals.
 [^4]: https://github.com/scala/bug/issues/6476#issuecomment-292412577 "@retronym said: +1 to s"$"". Because it doesn't compile today, we don't risk changing the meaning of existing programs."
 [^5]: https://github.com/Scala/Scala/pull/6953/files#diff-0023b3bfa053fb16603156b785efa7ad ""
 [^6]: https://github.com/Scala/Scala/pull/4308 "SI-6476 Accept escaped quotes in interp strings"
-[^7]: https://github.com/lampepfl/dotty/pull/7486 "PR in dotty"
+[^7]: https://github.com/scala/scala3/pull/7486 "PR in scala3"

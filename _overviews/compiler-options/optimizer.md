@@ -55,7 +55,7 @@ However, even when staying within these constraints, some changes performed by t
 - Inlined methods disappear from call stacks.
 
   - This can lead to unexpected behaviors when using a debugger.
-  - Related: line numbers (stored in bytecode) are discarded when a method is inlined into a different classfile, which also impacts debugging experience. (This [could be improved](https://github.com/scala/scala-dev/issues/3) and is expected to [progress](https://github.com/lampepfl/dotty/pull/11492).)
+  - Related: line numbers (stored in bytecode) are discarded when a method is inlined into a different classfile, which also impacts debugging experience. (This [could be improved](https://github.com/scala/scala-dev/issues/3) and is expected to [progress](https://github.com/scala/scala3/pull/11492).)
 
 - Inlining a method can delay class loading of the class where the method is defined.
 

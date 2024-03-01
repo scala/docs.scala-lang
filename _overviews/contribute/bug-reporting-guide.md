@@ -3,7 +3,7 @@ title: Bug Reporting Guide
 num: 8
 ---
 
-The Scala compiler and standard library bug tracker is located at [https://github.com/scala/bug](https://github.com/scala/bug), and for Scala 3, it is located at [github.com/lampepfl/dotty](https://github.com/lampepfl/dotty/issues). Before you submit a bug make sure that it is certainly a bug by following instructions
+The Scala compiler and standard library bug tracker is located at [https://github.com/scala/bug](https://github.com/scala/bug), and for Scala 3, it is located at [github.com/scala/scala3](https://github.com/scala/scala3/issues). Before you submit a bug make sure that it is certainly a bug by following instructions
 in [Is it a Bug?](#is-it-a-bug).
 
 ## Is it a Bug?

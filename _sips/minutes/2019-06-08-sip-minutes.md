@@ -28,7 +28,7 @@ apart from the other implicits changes
 
 ### Auto-tupling
 
-Implemented but not merged: [https://github.com/lampepfl/dotty/pull/4311](https://github.com/lampepfl/dotty/pull/4311)
+Implemented but not merged: [https://github.com/scala/scala3/pull/4311](https://github.com/scala/scala3/pull/4311)
 
 The problem is when using infix (e.g. an operator method) there's confusion between a 1-argument tuple2 method
 and a 2-argument method, of which there are a few in the standard library.
@@ -96,7 +96,7 @@ Adriaan: Also let's not forget the big Scaladoc impact, can't copy because of th
 
 ### Polymorphic function types
 
-Merged but not documented: [https://github.com/lampepfl/dotty/pull/4672](https://github.com/lampepfl/dotty/pull/4672)
+Merged but not documented: [https://github.com/scala/scala3/pull/4672](https://github.com/scala/scala3/pull/4672)
 
 Presented by Guillaume.
 

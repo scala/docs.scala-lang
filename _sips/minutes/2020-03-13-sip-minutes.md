@@ -285,8 +285,8 @@ Martin:
 - Used widely in compiler codebase for 6 months
   - Does find is necessary to have vertical bars in editor for indentation
 - Examples at:
-  - https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/semanticdb/ExtractSemanticDB.scala
-  - https://github.com/lampepfl/dotty/blob/master/compiler/src/dotty/tools/dotc/typer/Nullables.scala
+  - https://github.com/scala/scala3/blob/main/compiler/src/dotty/tools/dotc/semanticdb/ExtractSemanticDB.scala
+  - https://github.com/scala/scala3/blob/main/compiler/src/dotty/tools/dotc/typer/Nullables.scala
 - `then` in if expression was harder to get used to
 
 Guillaume:
@@ -424,7 +424,7 @@ Sébastien:
 - Asks if the new rules allow to add an implicit definition of a priority in-between two other definitions while preserving binary compatability?
 
 Martin, in response:
-- Shows a [demo](https://github.com/lampepfl/dotty/blob/master/tests/run/implied-priority.scala) of how to insert a new implicit in between existing definitions.
+- Shows a [demo](https://github.com/scala/scala3/blob/main/tests/run/implied-priority.scala) of how to insert a new implicit in between existing definitions.
 - The new scheme of priorities is more simple to grow than before because inheritance is fragile
 
 Sébastien is satisfied with the demo, is fine either way to add to 3.0 or later. Someone should champion it.

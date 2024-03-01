@@ -164,7 +164,7 @@ proposal or study it further.
 
 **Conclusion**: The Committee asks Dale to explicitly summarize the potential
 conflicts with tuple syntax, review the initial [HList proposal in
-Dotty](https://github.com/lampepfl/dotty/issues/964) to figure out potential
+Dotty](https://github.com/scala/scala3/issues/964) to figure out potential
 conflicts with his proposal. Eugene also proposes Dale to consider whether the
 Committee can salvage non-controversial parts of this proposal and reduce this
 SIP just to them, as well as discussing the utility of having two ways of doing

@@ -321,7 +321,7 @@ tool you are using.  For sbt, add it to `.jvmopts`.
 If the stack overflow doesn't go away no matter how much stack you
 give the compiler, then it's a compiler bug. Please report it on the
 [Scala 2 bug tracker](https://github.com/scala/bug/issues) or [Scala 3
-bug tracker](https://github.com/lampepfl/dotty/issues), but check
+bug tracker](https://github.com/scala/scala3/issues), but check
 first if it's a duplicate of an existing ticket.
 
 ### I set a setting in sbt but nothing happened. Why?

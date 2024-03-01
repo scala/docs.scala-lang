@@ -81,7 +81,7 @@ extension [T](arr: IArray[T]) def span(p: T => Boolean): (IArray[T], IArray[T]) 
 Для отримання додаткової інформації дивіться [Посібники](/scala3/guides/scaladoc/search-engine.html)
 
 Зауважте, що ця функція все ще знаходиться на стадії розробки, тому вона може зазнати значних змін.
-Якщо ви зіткнулися з помилкою або маєте ідею щодо покращення, не соромтеся створювати проблему на [Inkuire](https://github.com/VirtusLab/Inkuire/issues/new) або [dotty](https://github.com/lampepfl/dotty/issues/new).
+Якщо ви зіткнулися з помилкою або маєте ідею щодо покращення, не соромтеся створювати проблему на [Inkuire](https://github.com/VirtusLab/Inkuire/issues/new) або [dotty](https://github.com/scala/scala3/issues/new).
 
 [scaladoc-docstrings]: {% link _overviews/scala3-scaladoc/docstrings.md %}
 [static-documentation]: {% link _overviews/scala3-scaladoc/static-site.md %}

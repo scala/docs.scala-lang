@@ -28,7 +28,7 @@ own pull requests.
 <div class="container">
   <div class="row">
      <div class="span4 doc-block">
-       <h4><a href="https://github.com/scala/scala/pulls">lampepfl/dotty</a></h4>
+       <h4><a href="https://github.com/scala/scala3/pulls">scala/scala3</a></h4>
        <p>Scala 3 bug fixes and changes in the language, core libs and included tools.</p>
      </div>
      <div class="span4 doc-block">

@@ -167,7 +167,7 @@ As discussed above, we may want to consider generalizing class parameter lists a
 
 ## Related work
 * Pre-SIP: [https://contributors.scala-lang.org/t/clause-interweaving-allowing-def-f-t-x-t-u-y-u/5525](https://contributors.scala-lang.org/t/clause-interweaving-allowing-def-f-t-x-t-u-y-u/5525)
-* An implementation of the proposal is available as a pull request at [https://github.com/lampepfl/dotty/pull/14019](https://github.com/lampepfl/dotty/pull/14019)
+* An implementation of the proposal is available as a pull request at [https://github.com/scala/scala3/pull/14019](https://github.com/scala/scala3/pull/14019)
 
 ## FAQ
 Currently empty.

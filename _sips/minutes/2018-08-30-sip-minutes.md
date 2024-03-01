@@ -68,7 +68,7 @@ Decision / voting / postponing the discussion
 
 **Miles Sabin**  summarised discussion on Contributors thread.
 - Focuses on the Contributors discussion rather than on the proposal itself
-- Underlines a lack of motivation in the light of a separate issue from [Dotty: Weak eta-expansion](https://github.com/lampepfl/dotty/issues/2570)
+- Underlines a lack of motivation in the light of a separate issue from [Dotty: Weak eta-expansion](https://github.com/scala/scala3/issues/2570)
 - Concludes that this proposal should be aligned with eta-extension issue
 
 Summary:
@@ -77,9 +77,9 @@ References
 
 + [Scala Contributors thread](https://contributors.scala-lang.org/t/proposal-to-remove-auto-application-from-the-language/2145).
 
-+ [Dotty issue: Weak eta-expansion](https://github.com/lampepfl/dotty/issues/2570).
++ [Dotty issue: Weak eta-expansion](https://github.com/scala/scala3/issues/2570).
 
-+ [Martin's comment on the issue above](https://github.com/lampepfl/dotty/issues/2570#issuecomment-306202339).
++ [Martin's comment on the issue above](https://github.com/scala/scala3/issues/2570#issuecomment-306202339).
 
 Comments
 

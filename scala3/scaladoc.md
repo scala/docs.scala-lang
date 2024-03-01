@@ -79,7 +79,7 @@ This feature is provided by the [Inkuire](https://github.com/VirtusLab/Inkuire) 
 For more information see [Guides](/scala3/guides/scaladoc/search-engine.html)
 
 Note that this feature is still in development, so it can be subject to considerable change.
-If you encounter a bug or have an idea for improvement, don't hesitate to create an issue on [Inkuire](https://github.com/VirtusLab/Inkuire/issues/new) or [dotty](https://github.com/lampepfl/dotty/issues/new).
+If you encounter a bug or have an idea for improvement, don't hesitate to create an issue on [Inkuire](https://github.com/VirtusLab/Inkuire/issues/new) or [scala3](https://github.com/scala/scala3/issues/new).
 
 [scaladoc-docstrings]: {% link _overviews/scala3-scaladoc/docstrings.md %}
 [static-documentation]: {% link _overviews/scala3-scaladoc/static-site.md %}
