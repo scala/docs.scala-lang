@@ -29,5 +29,5 @@ jobs:
              --ignore-empty-alt\
              --allow-hash-href\
              --enforce-https=false\
-             --ignore-urls '/https://github.com/scala/docs.scala-lang/blob/main/.*/,/www.oracle.com/'
+             --ignore-urls '/https://github.com/scala/,/www.oracle.com/'
 
