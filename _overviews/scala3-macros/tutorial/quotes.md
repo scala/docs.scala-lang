@@ -156,11 +156,11 @@ given ToExpr[Boolean] with {
 given ToExpr[StringContext] with {
   def apply(stringContext: StringContext)(using Quotes) =
     val parts = Varargs(stringContext.parts.map(Expr(_)))
-    '{ StringContext($parts: _*) }
+    '{ StringContext($parts*) }
 }
 ```
 The `Varargs` constructor just creates an `Expr[Seq[T]]` which we can efficiently splice as a varargs.
-In general, any sequence can be spliced with `$mySeq: _*` to splice it as a varargs.
+In general, any sequence can be spliced with `$mySeq*` to splice it as a varargs.
 
 ## Quoted patterns
 Quotes can also be used to check if an expression is equivalent to another or to deconstruct an expression into its parts.
@@ -352,7 +352,7 @@ Types represented with `Type[T]` can be matched on using the patten `case '[...]
 inline def mirrorFields[T]: List[String] = ${mirrorFieldsImpl[T]}
 
 def mirrorFieldsImpl[T: Type](using Quotes): Expr[List[String]] =
-  
+
   def rec[A : Type]: List[String] = Type.of[A] match
     case '[field *: fields] =>
       Type.show[field] :: rec[fields]
@@ -408,8 +408,8 @@ given FromExpr[Boolean] with {
 
 given FromExpr[StringContext] with {
   def unapply(x: Expr[StringContext])(using Quotes): Option[StringContext] = x match {
-    case '{ new StringContext(${Varargs(Exprs(args))}: _*) } => Some(StringContext(args: _*))
-    case '{     StringContext(${Varargs(Exprs(args))}: _*) } => Some(StringContext(args: _*))
+    case '{ new StringContext(${Varargs(Exprs(args))}*) } => Some(StringContext(args*))
+    case '{     StringContext(${Varargs(Exprs(args))}*) } => Some(StringContext(args*))
     case _ => None
   }
 }
