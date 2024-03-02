@@ -24,5 +24,7 @@ versionSpecific: true
 - Вид полиморфизма
 
 Дополнительные сведения об этих типах см. в [Справочной документации Scala 3][reference].
+Для singleton типов см. раздел [literal types](https://scala-lang.org/files/archive/spec/3.4/03-types.html#literal-types)
+спецификации Scala 3, а для уточненных типов — раздел [refined types](https://scala-lang.org/files/archive/spec/3.4/03-types.html).
 
 [reference]: {{ site.scala3ref }}/overview.html
