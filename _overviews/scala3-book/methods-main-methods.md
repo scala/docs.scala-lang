@@ -123,8 +123,8 @@ The Scala compiler generates a program from an `@main` method `f` as follows:
 
 For instance, the `happyBirthday` method above generates additional code equivalent to the following class:
 
-{% tabs method_3 %}
-{% tab 'Scala 3 Only' for=method_3 %}
+{% tabs method_4 %}
+{% tab 'Scala 3 Only' for=method_4 %}
 
 ```scala
 final class happyBirthday {
@@ -158,7 +158,7 @@ The previous functionality of `App`, which relied on the “magic” `DelayedIni
 
 If programs need to cross-build between Scala 2 and Scala 3, it’s recommended to use an `object` with an explicit `main` method and a single `Array[String]` argument instead:
 
-{% tabs method_4 %}
+{% tabs method_5 %}
 {% tab 'Scala 2 and 3' %}
 
 ```scala
