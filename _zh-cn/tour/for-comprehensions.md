@@ -35,7 +35,8 @@ twentySomethings.foreach(name => println(name))  // prints Travis Dennis
 ```scala mdoc
 def foo(n: Int, v: Int) =
    for (i <- 0 until n;
-        j <- i until n if i + j == v)
+        j <- i until n 
+        if i + j == v)
    yield (i, j)
 
 foo(10, 10) foreach {
@@ -48,10 +49,9 @@ foo(10, 10) foreach {
 ```scala
 (0, 0) (0, 1) (0, 2) (0, 3) (0, 4) (0, 5) (0, 6) (0, 7) (0, 8) (0, 9) (1, 0) ...
 ```
-
 注意 for 表达式并不局限于使用列表。任何数据类型只要支持 `withFilter`，`map`，和 `flatMap` 操作（不同数据类型可能支持不同的操作）都可以用来做序列推导。
 
-你可以在使用 for 表达式时省略 `yield` 语句。此时会返回 `Unit`。当你想要执行一些副作用的时候这很有用。下面的例子输出和上面相同的结果，但是没有使用 `yield`：
+你可以在使用 for 表达式时省略 `yield` 语句，此时会返回 `Unit`，当你想要执行一些副作用的时候这很有用。此外可以把过滤器子句合并到生成器子句中。下面的例子输出和上面相同的结果，但是没有使用 `yield`：
 
 ```scala mdoc:nest
 def foo(n: Int, v: Int) =
