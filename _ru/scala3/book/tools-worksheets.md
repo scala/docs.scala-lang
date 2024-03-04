@@ -9,7 +9,7 @@ description: В этом разделе рассматриваются рабо�
 language: ru
 num: 71
 previous-page: tools-sbt
-next-page:
+next-page: interacting-with-java
 ---
 
 Worksheet - это файл Scala, который вычисляется при сохранении,
