@@ -72,11 +72,6 @@ $(document).ready(function() {
   hljs.highlightAll();
 });
 
-// Show Blog
-$(".hide").click(function() {
-  $(".new-on-the-blog").hide();
-});
-
 // Documentation menu dropdown toggle
 $(document).ready(function() { // DOM ready
   // If a link has a dropdown, add sub menu toggle.
@@ -435,9 +430,8 @@ $(document).ready(function() {
    *  that when the page is refreshed, the same tab will be selected.
    *  On page load, selects the tab corresponding to stored value.
    */
-  function setupTabs(tabs, namespace, defaultValue) {
-    const PreferenceStorage = Storage('org.scala-lang.docs.preferences');
-    const preferredValue = PreferenceStorage.getPreference(namespace, defaultValue);
+  function setupTabs(tabs, namespace, defaultValue, storage) {
+    const preferredValue = storage.getPreference(namespace, defaultValue);
 
     activateTab(tabs, preferredValue)
 
@@ -448,7 +442,7 @@ $(document).ready(function() {
         const parent = $(this).parent();
         const newValue = $(this).data('target');
 
-        PreferenceStorage.setPreference(namespace, newValue, oldValue => {
+        storage.setPreference(namespace, newValue, _ => {
           // when we set a new scalaVersion, find scalaVersionTabs except current one
           // and activate those tabs.
           activateTab(tabs.not(parent), newValue);
@@ -459,15 +453,46 @@ $(document).ready(function() {
     });
   }
 
-  if (storageAvailable('localStorage')) {
+  function setupAlertCancel(alert, storage) {
+    const messageId = alert.data('message_id');
+    let onHide = () => {};
+    if (messageId) {
+      const key = `alert.${messageId}`;
+      const isHidden = storage.getPreference(key, 'show') === 'hidden';
+      if (isHidden) {
+        alert.hide();
+      }
+      onHide = () => storage.setPreference(key, 'hidden', _ => {});
+    }
+
+
+    alert.find('.hide').click(function() {
+      alert.hide(), onHide();
+    });
+  }
+
+  function setupAllTabs(storage) {
     var scalaVersionTabs = $(".tabsection.tabs-scala-version");
     if (scalaVersionTabs.length) {
-      setupTabs(scalaVersionTabs, "scalaVersion", "scala-3");
+      setupTabs(scalaVersionTabs, "scalaVersion", "scala-3", storage);
     }
     var buildToolTabs = $(".tabsection.tabs-build-tool");
     if (buildToolTabs.length) {
-      setupTabs(buildToolTabs, "buildTool", "scala-cli");
+      setupTabs(buildToolTabs, "buildTool", "scala-cli", storage);
     }
+  }
+
+  function setupAllAlertCancels(storage) {
+    var alertBanners = $(".new-on-the-blog.alert-warning");
+    if (alertBanners.length) {
+      setupAlertCancel(alertBanners, storage);
+    }
+  }
+
+  if (storageAvailable('localStorage')) {
+    const PreferenceStorage = Storage('org.scala-lang.docs.preferences');
+    setupAllTabs(PreferenceStorage);
+    setupAllAlertCancels(PreferenceStorage);
   }
 
 });

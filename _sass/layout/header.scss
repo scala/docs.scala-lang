@@ -18,6 +18,23 @@
           padding: 10px 40px;
         }
 
+      &.alert-warning {
+        background: $warning-bg;
+        color: $warning-text;
+
+        a {
+          color: $warning-link;
+          font-weight: bold;
+          text-decoration: underline;
+
+          &:active,
+          &:focus,
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+
       span {
         position: absolute;
         right: 20px;
