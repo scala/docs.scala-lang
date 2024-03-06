@@ -39,7 +39,7 @@ the knot" implicitly.
 
 ### Implementation status
 
-Byname implicits have been implemented in [Dotty](https://github.com/lampepfl/dotty/issues/1998)
+Byname implicits have been implemented in [Dotty](https://github.com/scala/scala3/issues/1998)
 with an earlier iteration of the divergence checking algorithm described below. A full
 implementation of this proposal exists as a [pull request](https://github.com/scala/scala/pull/6050)
 relative to the 2.13.x branch of the Lightbend Scala compiler and it is scheduled to be included in
@@ -851,7 +851,7 @@ object Test {
 
 because the path `foo` in `foo.Out` is not stable. Full parity with shapeless's `Lazy` would require
 lazy (rather than byname) implicit parameters (see [this Dotty
-ticket](https://github.com/lampepfl/dotty/issues/3005) for further discussion) and is orthogonal to
+ticket](https://github.com/scala/scala3/issues/3005) for further discussion) and is orthogonal to
 this SIP in that they would drop out of support for lazy parameters more generally, as described in
 [this Scala ticket](https://github.com/scala/bug/issues/240).
 

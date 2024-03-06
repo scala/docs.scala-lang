@@ -404,7 +404,7 @@ import implied
 
 Martin: there's a PR, not yet merged, that refines this rule considerably compared to what's on the Dotty feature page?
 
-It's [https://github.com/lampepfl/dotty/pull/6041](https://github.com/lampepfl/dotty/pull/6041) -- it has the new impl as well as the changes to the web page.
+It's [https://github.com/scala/scala3/pull/6041](https://github.com/scala/scala3/pull/6041) -- it has the new impl as well as the changes to the web page.
 
 Martin: we now have a custom error message so if something fails but changing import to import implied would fix it, the compiler will tell you.
 
@@ -508,7 +508,7 @@ What's the metaprogramming status?
 
 Martin: quote and splice are stable, but don't support pattern matching yet. TASTY reflection is not complete yet and is still undergoing revisions based on use cases that are being tried.
 
-No one has done any meaningful whitebox macros yet in the new system, but the door is now open. (<-- not sure if I should include this in the notes without understanding in what context we want to allow whitebox macros?) This only got merged "last week". The relevant PR is [https://github.com/lampepfl/dotty/pull/5846](https://github.com/lampepfl/dotty/pull/5846) "The main motivation for moving staging to typer is to support whitebox macros" but it's still very early days, no one has tried to actually use this.
+No one has done any meaningful whitebox macros yet in the new system, but the door is now open. (<-- not sure if I should include this in the notes without understanding in what context we want to allow whitebox macros?) This only got merged "last week". The relevant PR is [https://github.com/scala/scala3/pull/5846](https://github.com/scala/scala3/pull/5846) "The main motivation for moving staging to typer is to support whitebox macros" but it's still very early days, no one has tried to actually use this.
 
 # **Kind polymorphism**
 
@@ -554,7 +554,7 @@ Questions about the magic automatic extends clauses, how does the compiler know,
 
 "Generally, all covariant type parameters of the enum class are minimized in a compiler-generated extends clause whereas all contravariant type parameters are maximized", says the doc
 
-There was some discussion of the details of the rules for type parameters -- this then erupted into a full-on debate. e.g. isn't it weird that if you add an extends clause, suddenly T isn't in scope any more? see [https://github.com/lampepfl/dotty/pull/6095](https://github.com/lampepfl/dotty/pull/6095)
+There was some discussion of the details of the rules for type parameters -- this then erupted into a full-on debate. e.g. isn't it weird that if you add an extends clause, suddenly T isn't in scope any more? see [https://github.com/scala/scala3/pull/6095](https://github.com/scala/scala3/pull/6095)
 
 conclusion: Martin: I'll try to update the rules to reflect the behavior of the compiler.
 

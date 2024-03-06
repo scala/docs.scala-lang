@@ -61,8 +61,8 @@ language: ru
 ## Справочник по языку Scala 3
 [Справочник по Scala 3]({{ site.scala3ref }}) содержит формальное представление и подробную техническую информацию о различных возможностях языка.
 
-- [Исходники](https://github.com/lampepfl/dotty/tree/main/docs/_docs)
-- [Вопросы](https://github.com/lampepfl/dotty/issues)
+- [Исходники](https://github.com/scala/scala3/tree/main/docs/_docs)
+- [Вопросы](https://github.com/scala/scala3/issues)
 
 
 [scala3-book]: {% link _overviews/scala3-book/introduction.md %}

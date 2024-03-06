@@ -54,7 +54,7 @@ scala_resources:
     icon: fa fa-bug
     link: /contribute/guide.html
   - title: Code Reviews
-    description: "Review pull requests against scala/scala, lampepfl/dotty, scala/scala-lang, scala/docs.scala-lang, and others."
+    description: "Review pull requests against scala/scala, scala/scala3, scala/scala-lang, scala/docs.scala-lang, and others."
     icon: fa fa-eye
     link: /contribute/codereviews.html
   - title: Core Libraries
@@ -109,7 +109,7 @@ In the spree, regular project maintainers will mentor you to create your first c
 
 ### So you want to improve the Scala 3 compiler...
 
-The [Scala 3 compiler](https://github.com/lampepfl/dotty) is an open source project.
+The [Scala 3 compiler](https://github.com/scala/scala3) is an open source project.
 If you are curious about contributing but don't know how to begin, the [Scala Center](https://scala.epfl.ch)
 runs the **Scala Compiler Academy** project to onboard and educate new people to the project. You can join the regular
 **Issue Spree**, watch in-depth videos, and read the contributing guide:
@@ -119,7 +119,7 @@ runs the **Scala Compiler Academy** project to onboard and educate new people to
 #### Which areas are perfect for newcomers?
 - Adding new linting options, which help enforce cleaner code.
 - Improving the clarity of error messages, so that the user understands better what went wrong.
-- Add IDE quick-fix actions to error messages, e.g. PR [lampepfl/dotty#18314](https://github.com/lampepfl/dotty/pull/18314).
+- Add IDE quick-fix actions to error messages, e.g. PR [scala/scala3#18314](https://github.com/scala/scala3/pull/18314).
 
 ### So you want to write a library...
 
@@ -162,7 +162,7 @@ When contributing, please follow:
 
 ### Community tickets
 
-All issues can be found in the [Scala bug tracker](https://github.com/scala/bug), or the [Scala 3 issue tracker](https://github.com/lampepfl/dotty/issues). Most issues are labeled
+All issues can be found in the [Scala bug tracker](https://github.com/scala/bug), or the [Scala 3 issue tracker](https://github.com/scala/scala3/issues). Most issues are labeled
 to make it easier to find issues you are interested in.
 
 ### Tools and libraries

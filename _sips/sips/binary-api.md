@@ -32,7 +32,7 @@ Currently, the compiler automatically generates accessors for references to priv
 * Changing the implementation of an inline definition can be a binary incompatible change
 * Removing final from a class is a binary incompatible change
 
-You can find more details in [https://github.com/lampepfl/dotty/issues/16983](https://github.com/lampepfl/dotty/issues/16983)
+You can find more details in [https://github.com/scala/scala3/issues/16983](https://github.com/scala/scala3/issues/16983)
 
 ### Avoid duplication of inline accessors
 
@@ -248,7 +248,7 @@ Using references to `@publicInBinary` in inline code can cause binary incompatib
 ### Add a `@binaryAccessor`
 This annotation would generate an stable accessor. This annotation could be used on `private` definition. It would also mitigate [migration costs](https://gist.github.com/nicolasstucki/003f7293941836b08a0d53dbcb913e3c) for library authors that have published unstable accessors.
 
-* Implementation https://github.com/lampepfl/dotty/pull/16992
+* Implementation https://github.com/scala/scala3/pull/16992
 
 
 ### Make all `private[C]` part of the binary API
@@ -267,9 +267,9 @@ The drawback of this approach is that that we would need to force users to keep 
 
 ## Related work
 
-* Initial discussions: [https://github.com/lampepfl/dotty/issues/16983](https://github.com/lampepfl/dotty/issues/16983)
-* Initial proof of concept (outdated): [https://github.com/lampepfl/dotty/pull/16992](https://github.com/lampepfl/dotty/pull/16992)
-* Single annotation proof of concept: [https://github.com/lampepfl/dotty/pull/18402](https://github.com/lampepfl/dotty/pull/18402)
+* Initial discussions: [https://github.com/scala/scala3/issues/16983](https://github.com/scala/scala3/issues/16983)
+* Initial proof of concept (outdated): [https://github.com/scala/scala3/pull/16992](https://github.com/scala/scala3/pull/16992)
+* Single annotation proof of concept: [https://github.com/scala/scala3/pull/18402](https://github.com/scala/scala3/pull/18402)
 * Community migration analysis: [Gist](https://gist.github.com/nicolasstucki/003f7293941836b08a0d53dbcb913e3c)
 * Kotlin: [PublishedApi](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-published-api/) plays the same role as `@publicInBinary`
   but its interaction with (inline definitions)[https://kotlinlang.org/docs/inline-functions.html#restrictions-for-public-api-inline-functions]

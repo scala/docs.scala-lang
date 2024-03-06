@@ -12,7 +12,7 @@ This chapter lists the configuration options that can be used when calling scala
 ## Parity with scaladoc for Scala 2
 
 Scaladoc has been rewritten from scratch and some of the features turned out to be useless in the new context.
-If you want to know what is current state of compatibility with scaladoc old flags, you can visit this issue for tracking [progress](https://github.com/lampepfl/dotty/issues/11907).
+If you want to know what is current state of compatibility with scaladoc old flags, you can visit this issue for tracking [progress](https://github.com/scala/scala3/issues/11907).
 
 ## Providing settings
 
@@ -49,7 +49,7 @@ Revision (branch or ref) used to build project. Useful with sourcelinks to preve
 Source links provide a mapping between file in documentation and code repository.
 
 Example source links is:
-`-source-links:docs=github://lampepfl/dotty/master#docs`
+`-source-links:docs=github://scala/scala3/main#docs`
 
 Accepted formats:
 
@@ -87,7 +87,7 @@ A mapping is of the form `<regex>::[scaladoc3|scaladoc|javadoc]::<path>`. You ca
 
 Links to social sites. For example:
 
-`-social-links:github::https://github.com/lampepfl/dotty,discord::https://discord.com/invite/scala,twitter::https://twitter.com/scala_lang`
+`-social-links:github::https://github.com/scala/scala3,discord::https://discord.com/invite/scala,twitter::https://twitter.com/scala_lang`
 
 Valid values are of the form: `[github|twitter|gitter|discord]::link`. Scaladoc also supports `custom::link::white_icon_name::black_icon_name`. In this case icons must be present in `images/` directory.
 

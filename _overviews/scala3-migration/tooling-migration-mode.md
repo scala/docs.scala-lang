@@ -11,7 +11,7 @@ The Scala 3 compiler provides some helpful utilities to ease the migration.
 
 Try running `scalac` to have a glimpse of those utilities:
 
-> `scalac` is the executable of the Scala compiler, it can be downloaded from [Github](https://github.com/lampepfl/dotty/releases/).
+> `scalac` is the executable of the Scala compiler, it can be downloaded from [Github](https://github.com/scala/scala3/releases/).
 > 
 > It can also be installed using Coursier with `cs install scala3-compiler`, in which case `scalac` is aliased `scala3-compiler`.
 

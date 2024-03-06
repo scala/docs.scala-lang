@@ -14,7 +14,7 @@ Scala 3 being based on stronger theoretical foundations, these unsoundness bugs 
 ## Unsoundness Fixes in Variance checks
 
 In Scala 2, default parameters and inner-classes are not subject to variance checks.
-It is unsound and might cause runtime failures, as demonstrated by this [test](https://github.com/lampepfl/dotty/blob/10526a7d0aa8910729b6036ee51942e05b71abf6/tests/neg/variances.scala) in the Scala 3 repository.
+It is unsound and might cause runtime failures, as demonstrated by this [test](https://github.com/scala/scala3/blob/10526a7d0aa8910729b6036ee51942e05b71abf6/tests/neg/variances.scala) in the Scala 3 repository.
 
 The Scala 3 compiler does not permit this anymore.
 

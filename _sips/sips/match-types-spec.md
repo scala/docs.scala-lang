@@ -95,7 +95,7 @@ It is however not possible to guarantee that property for *all* cases, since the
 #### Preamble
 
 Some of the concepts mentioned here are defined in the existing Scala 3 specification draft.
-That draft can be found in the dotty repository at https://github.com/lampepfl/dotty/tree/main/docs/_spec.
+That draft can be found in the dotty repository at https://github.com/scala/scala3/tree/main/docs/_spec.
 It is not rendered anywhere yet, though.
 
 Here are some of the relevant concepts that are perhaps lesser-known:
@@ -573,7 +573,7 @@ Notable prior work related to this proposal includes:
 - [Current reference page for Scala 3 match types](https://dotty.epfl.ch/docs/reference/new-types/match-types.html)
 - [Abstractions for Type-Level Programming](https://infoscience.epfl.ch/record/294024), Olivier Blanvillain, Chapter 4 (Match Types)
 - ["Pre-Sip" discussion in the Contributors forum](https://contributors.scala-lang.org/t/pre-sip-proper-specification-for-match-types/6265) (submitted at the same time as this SIP document)
-- [PR with the proposed implementation](https://github.com/lampepfl/dotty/pull/18262)
+- [PR with the proposed implementation](https://github.com/scala/scala3/pull/18262)
 
 ## FAQ
 

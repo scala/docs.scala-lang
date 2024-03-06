@@ -39,7 +39,7 @@ package objects for important packages (these often get overlooked for documenta
 and are a good place for API overviews).
 
 If you find an issue, please log it in the [Scala bug tracker](https://github.com/scala/bug),
-(or else the [Scala 3 issue tracker](https://github.com/lampepfl/dotty/issues) for Scala 3 library additions)
+(or else the [Scala 3 issue tracker](https://github.com/scala/scala3/issues) for Scala 3 library additions)
 **after making sure it is not already logged as an issue**. To help with
 disambiguation, please use the following format for issue title:
 
