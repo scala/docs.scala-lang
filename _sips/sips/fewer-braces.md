@@ -131,7 +131,7 @@ If there would be code using these idioms, it can be rewritten quite simply to a
 
 ### Tooling
 
-Since this affects parsing, the scalameta parser and any other parser used in an IDE will also need to be updated. The necessary changes to the Scala 3 parser were made here: https://github.com/scala/scala3/pull/15273/commits. The commit that embodies the core change set is here: https://github.com/scala/scala3/pull/15273/commits/421bdd660b0456c2ff1ae386f032c41bb1e0212a.
+Since this affects parsing, the scalameta parser and any other parser used in an IDE will also need to be updated. The necessary changes to the Scala 3 parser were made here: https://github.com/lampepfl/dotty/pull/15273/commits. The commit that embodies the core change set is here: https://github.com/lampepfl/dotty/pull/15273/commits/421bdd660b0456c2ff1ae386f032c41bb1e0212a.
 
 ### Handling Edge Cases
 
@@ -288,7 +288,7 @@ This is a tradeoff between conciseness and consistency. In the interest of minim
 
  - Doc page for proposed change: https://dotty.epfl.ch/docs/reference/other-new-features/indentation.html#variant-indentation-marker--for-arguments
 
- - Merged PR implementing the proposal under experimental flag: https://github.com/scala/scala3/pull/15273/commits/421bdd660b0456c2ff1ae386f032c41bb1e0212a
+ - Merged PR implementing the proposal under experimental flag: https://github.com/lampepfl/dotty/pull/15273/commits/421bdd660b0456c2ff1ae386f032c41bb1e0212a
 
  - Latest discussion on contributors (there were several before when we discussed indentation in general): https://contributors.scala-lang.org/t/make-fewerbraces-available-outside-snapshot-releases/5024/166
 

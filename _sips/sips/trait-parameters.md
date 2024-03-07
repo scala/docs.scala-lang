@@ -69,4 +69,4 @@ the evaluation order would be `e1`, initializer of `T`, `e2`, initializer of `V`
 
 ## See Also ##
 
-[Dotty Issue #640](https://github.com/scala/scala3/issues/640)
+[Dotty Issue #640](https://github.com/lampepfl/dotty/issues/640)

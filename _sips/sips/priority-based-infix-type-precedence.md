@@ -137,7 +137,7 @@ However, it is very unlikely that such interaction would occur.
 
 **Related Issues**
 
-* [Dotty Issue #1961](https://github.com/scala/scala3/issues/1961)
+* [Dotty Issue #1961](https://github.com/lampepfl/dotty/issues/1961)
 
 
 ## Backward Compatibility

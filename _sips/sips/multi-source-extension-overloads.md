@@ -226,7 +226,7 @@ A number of alternatives were mentioned in [the Contributors thread](https://con
 ## Related work
 
 - [Contributors thread acting as de facto Pre-SIP](https://contributors.scala-lang.org/t/change-shadowing-mechanism-of-extension-methods-for-on-par-implicit-class-behavior/5831)
-- [Pull Request in dotty](https://github.com/scala/scala3/pull/17050) to support it under an experimental import
+- [Pull Request in dotty](https://github.com/lampepfl/dotty/pull/17050) to support it under an experimental import
 
 ## FAQ
 
