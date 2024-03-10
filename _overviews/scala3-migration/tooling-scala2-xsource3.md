@@ -17,22 +17,29 @@ This page explains the details behind the flags. An overview is shown using `sca
 
 ## Migration vs cross-building
 
-With Scala 2.13.13 and newer, the `-Xsource:3` flag comes in two variants:
+With Scala 2.13.14 and newer, the `-Xsource:3` flag comes in three variants:
 
-  - `Xsource:3` enables warnings relevant for migrating a codebase to Scala 3.
+  - `Xsource:3-migration` enables warnings relevant for migrating a codebase to Scala 3.
     In addition to new warnings, the flag enables certain benign Scala 3 syntaxes such as `import p.*`.
-  - `Xsource:3-cross` is useful for projects that cross-build between Scala 2 and 3 for a longer period of time.
-    For certain language constructs that trigger a warning with `-Xsource:3`, the behavior changes to match Scala 3.
+    As a convenience, `Xsource:3` is an alias.
+  - `Xsource:3-cross` is useful for projects that cross-build between Scala 2 and 3.
+    Certain language constructs have been backported from Scala 3 in order to improve compatibility.
+  - `Xsource:3-compat` restricts `3-cross` to binary compatible features. Other binary incompatible
+    features can be added using `-Ysource-options`.
 
 Details about individual warnings are listed below on this page.
 
-## Fatal warnings and quick fixes
+## Warnings as errors, and quick fixes
 
-By default, Scala 3 migration warnings emitted by Scala 2.13 are fatal, i.e., they are reported as errors.
-This can be changed using `-Wconf`, for example `-Wconf:cat=scala3-migration:w` changes them to be reported as warnings.
-Alternatively, `-Xmigration` has the same effect.
+By default, Scala 3 migration warnings emitted by Scala 2.13 are reported as errors,
+using the default configuration, `-Wconf:cat=scala3-migration:e`.
+That ensures that migration messaging is more visible.
+Diagnostics can be emitted as warnings by specifying `-Wconf:cat=scala3-migration:w`.
+Typically, emitting warnings instead of errors will cause more diagnostics to be reported,
+so that can be either informative or noisy.
 
-The [`@nowarn` annotation](https://www.scala-lang.org/api/current/scala/annotation/nowarn.html) can be used to suppress individual warnings, which also works with fatal warnings enabled.
+The [`@nowarn` annotation](https://www.scala-lang.org/api/current/scala/annotation/nowarn.html) can be used to suppress individual warnings.
+Diagnostics are suppressed before they are promoted to errors, so the annotation works whatever the `-Wconf`.
 
 The Scala 2.13 compiler implements quick fixes for many Scala 3 migration warnings.
 Quick fixes are displayed in Metals-based IDEs (not yet in IntelliJ), and they can be applied directly to the source code using the `-quickfix` flag, for example `-quickfix:cat=scala3-migration`.
@@ -82,6 +89,8 @@ class B extends A { def f = "hi" }
 It is possible to work around this using version-dependent source files, see [scala/scala-xml#675](https://github.com/scala/scala-xml/pull/675) as an example.
 
 Working around the case companion `FunctionN` parent change is currently difficult (Scala 2.13.13), a solution is being discussed at [scala/bug#12961](https://github.com/scala/bug/issues/12961).
+
+Binary incompatible features can be used selectively under `-Xsource:3-compat` and `-Ysource-options` where the features can be enumerated.
 
 ### Changes in language semantics
 
