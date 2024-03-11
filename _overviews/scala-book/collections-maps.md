@@ -55,7 +55,7 @@ scala> val ucMap = m.transform((k,v) => v.toUpperCase)
 ucMap: scala.collection.immutable.Map[Int,String] = Map(1 -> A, 2 -> B, 3 -> C, 4 -> D)
 
 // how to filter a Map by its keys
-scala> val twoAndThree = m.view.filterKeys(Set(2,3)).toMap
+scala> val twoAndThree = m.filterKeys(Set(2,3))
 twoAndThree: scala.collection.immutable.Map[Int,String] = Map(2 -> b, 3 -> c)
 
 // how to take the first two elements from a Map
