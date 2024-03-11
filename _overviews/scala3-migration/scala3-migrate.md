@@ -2,7 +2,7 @@
 title: Porting an sbt Project (using sbt-scala3-migrate)
 type: section
 description: This section shows how to use scala3-migrate to migrate a project
-num: 10
+num: 11
 previous-page: tutorial-prerequisites
 next-page: tutorial-sbt
 ---
@@ -17,12 +17,13 @@ It consists of four sbt commands:
 Each one of these commands is described in details below.
 
 > #### Requirements
-> - Scala 2.13, preferred 2.13.11
+> - Scala 2.13, preferred 2.13.13
 > - sbt 1.5 or higher
 > - **Disclaimer:** This tool cannot migrate libraries containing macros.
 >
 > #### Recommendation
-> Before the migration, add `-Xsource:3` to your scalac options to enable some Scala 3 syntax and behavior.
+> Before the migration, add `-Xsource:3` to your scalac options to enable Scala 3 migration warnings in the Scala 2 compiler.
+> See the page [Scala 2 with -Xsource:3](tooling-scala2-xsource3.html) for more details.
 
 In this tutorial, we will migrate the project in [scalacenter/scala3-migration-example](https://github.com/scalacenter/scala3-migration-example).
 To learn about the migration, and train yourself, you can clone this repository and follow the tutorial steps.

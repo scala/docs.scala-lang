@@ -52,7 +52,7 @@ In the example above, this Scaladoc comment is associated with the method square
 
 Scaladoc comments can go before fields, methods, classes, traits, objects.
 For now, scaladoc doesn't support straightforward solution to document packages. There is a dedicated github
-[issue](https://github.com/lampepfl/dotty/issues/11284), where you can check the current status of the problem.
+[issue](https://github.com/scala/scala3/issues/11284), where you can check the current status of the problem.
 
 For class primary constructors which in Scala coincide with the definition of the class itself, a @constructor tag is used to target a comment to be put on the primary constructor documentation rather than the class overview.
 

@@ -2,7 +2,7 @@
 title: Porting an sbt Project (by hand)
 type: section
 description: This section shows how to port an sbt project
-num: 11
+num: 12
 previous-page: scala3-migrate
 next-page: tutorial-macro-cross-building
 ---

@@ -8,20 +8,22 @@ redirect_from:
 
 ## Latest releases
 
-* Scala 3.3.1 LTS
-  * [Library API](https://www.scala-lang.org/api/3.3.1/)
-* Scala 2.13.12
-  * [Library API](https://www.scala-lang.org/api/2.13.12/)
-  * [Compiler API](https://www.scala-lang.org/api/2.13.12/scala-compiler/scala/)
-  * [Reflection API](https://www.scala-lang.org/api/2.13.12/scala-reflect/scala/reflect/)
-* Scala 2.12.18
-  * [Library API](https://www.scala-lang.org/api/2.12.18/)
-  * [Compiler API](https://www.scala-lang.org/api/2.12.18/scala-compiler/scala/)
-  * [Reflection API](https://www.scala-lang.org/api/2.12.18/scala-reflect/scala/reflect/)
+* Scala 3.4.0
+  * [Library API](https://www.scala-lang.org/api/3.4.0/)
+* Scala 3.3.3 LTS
+  * [Library API](https://www.scala-lang.org/api/3.3.3/)
+* Scala 2.13.13
+  * [Library API](https://www.scala-lang.org/api/2.13.13/)
+  * [Compiler API](https://www.scala-lang.org/api/2.13.13/scala-compiler/scala/)
+  * [Reflection API](https://www.scala-lang.org/api/2.13.13/scala-reflect/scala/reflect/)
+* Scala 2.12.19
+  * [Library API](https://www.scala-lang.org/api/2.12.19/)
+  * [Compiler API](https://www.scala-lang.org/api/2.12.19/scala-compiler/scala/)
+  * [Reflection API](https://www.scala-lang.org/api/2.12.19/scala-reflect/scala/reflect/)
   * Scala Modules
-    * [XML API](https://www.scala-lang.org/api/2.12.18/scala-xml/scala/xml/)
-    * [Parser Combinators API](https://www.scala-lang.org/api/2.12.18/scala-parser-combinators/scala/util/parsing/)
-    * [Swing API](https://www.scala-lang.org/api/2.12.18/scala-swing/scala/swing/)
+    * [XML API](https://www.scala-lang.org/api/2.12.19/scala-xml/scala/xml/)
+    * [Parser Combinators API](https://www.scala-lang.org/api/2.12.19/scala-parser-combinators/scala/util/parsing/)
+    * [Swing API](https://www.scala-lang.org/api/2.12.19/scala-swing/scala/swing/)
 * Scala 2.11.12
   * [Library API](https://www.scala-lang.org/api/2.11.12/)
   * [Compiler API](https://www.scala-lang.org/api/2.11.12/scala-compiler/)
@@ -62,6 +64,8 @@ https://scala-ci.typesafe.com/artifactory/scala-integration/org/scala-lang/
 
 ## Previous releases
 
+* Scala 3.3.1 LTS
+  * [Library API](https://www.scala-lang.org/api/3.3.1/)
 * Scala 3.3.0 LTS
   * [Library API](https://www.scala-lang.org/api/3.3.0/)
 * Scala 3.2.2
@@ -84,6 +88,10 @@ https://scala-ci.typesafe.com/artifactory/scala-integration/org/scala-lang/
   * [Library API](https://www.scala-lang.org/api/3.0.1/)
 * Scala 3.0.0
   * [Library API](https://www.scala-lang.org/api/3.0.0/)
+* Scala 2.13.12
+  * [Library API](https://www.scala-lang.org/api/2.13.12/)
+  * [Compiler API](https://www.scala-lang.org/api/2.13.12/scala-compiler/scala/)
+  * [Reflection API](https://www.scala-lang.org/api/2.13.12/scala-reflect/scala/reflect/)
 * Scala 2.13.11
   * [Library API](https://www.scala-lang.org/api/2.13.11/)
   * [Compiler API](https://www.scala-lang.org/api/2.13.11/scala-compiler/scala/)
@@ -132,6 +140,14 @@ https://scala-ci.typesafe.com/artifactory/scala-integration/org/scala-lang/
   * [Library API](https://www.scala-lang.org/api/2.13.0/)
   * [Compiler API](https://www.scala-lang.org/api/2.13.0/scala-compiler/scala/)
   * [Reflection API](https://www.scala-lang.org/api/2.13.0/scala-reflect/scala/reflect/)
+* Scala 2.12.18
+  * [Library API](https://www.scala-lang.org/api/2.12.18/)
+  * [Compiler API](https://www.scala-lang.org/api/2.12.18/scala-compiler/scala/)
+  * [Reflection API](https://www.scala-lang.org/api/2.12.18/scala-reflect/scala/reflect/)
+  * Scala Modules
+    * [XML API](https://www.scala-lang.org/api/2.12.18/scala-xml/scala/xml/)
+    * [Parser Combinators API](https://www.scala-lang.org/api/2.12.18/scala-parser-combinators/scala/util/parsing/)
+    * [Swing API](https://www.scala-lang.org/api/2.12.18/scala-swing/scala/swing/)
 * Scala 2.12.17
   * [Library API](https://www.scala-lang.org/api/2.12.17/)
   * [Compiler API](https://www.scala-lang.org/api/2.12.17/scala-compiler/scala/)

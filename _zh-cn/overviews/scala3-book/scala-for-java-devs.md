@@ -942,8 +942,8 @@ val a = Array("a", "b")
 
 这个追溯到 Java 的 `String[]`:
 
-```scala
-String[] a = ["a", "b"];
+```java
+String[] a = {"a", "b"};
 ```
 
 但是，Scala `Array` 还具有您期望在 Scala 集合中使用的所有函数方法，包括 `map` 和 `filter`：

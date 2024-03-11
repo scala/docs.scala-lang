@@ -120,11 +120,11 @@ with only minor supplements.  That's why `versionString` and
 `versionNumberString` report that Scala 2 is in use:
 
 ```
-Welcome to Scala 3.3.1 (17.0.3, Java OpenJDK 64-Bit Server VM).
+Welcome to Scala 3.3.2 (17.0.3, Java OpenJDK 64-Bit Server VM).
 Type in expressions for evaluation. Or try :help.
 
 scala> util.Properties.versionNumberString
-val res0: String = 2.13.10
+val res0: String = 2.13.12
 ```
 
 Note that even the latest Scala 3 version might not use the very
@@ -321,7 +321,7 @@ tool you are using.  For sbt, add it to `.jvmopts`.
 If the stack overflow doesn't go away no matter how much stack you
 give the compiler, then it's a compiler bug. Please report it on the
 [Scala 2 bug tracker](https://github.com/scala/bug/issues) or [Scala 3
-bug tracker](https://github.com/lampepfl/dotty/issues), but check
+bug tracker](https://github.com/scala/scala3/issues), but check
 first if it's a duplicate of an existing ticket.
 
 ### I set a setting in sbt but nothing happened. Why?
@@ -332,14 +332,14 @@ setting in a multi-project build.
 
 For example, if you add this to your `build.sbt`:
 
-    scalaVersion := "2.13.12"
+    scalaVersion := "2.13.13"
 
 that's a "bare" setting, and you might expect it to apply build-wide.
 But it doesn't. _It only applies to the root project._
 
 In many cases one should instead write:
 
-    ThisBuild / scalaVersion := "2.13.12"
+    ThisBuild / scalaVersion := "2.13.13"
 
 Other possibilities include:
 

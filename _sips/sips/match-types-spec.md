@@ -253,8 +253,9 @@ At the top level, `variance = 1` and `scrutIsWidenedAbstract = false`.
 * If `P` is a `TypeWithoutCapture`:
   * Do nothing (always succeed).
 * If `P` is a `WildcardCapture` `ti = _`:
-  * If `X` is of the form `_ >: L <: H`, instantiate `ti := H` (anything between `L` and `H` would work here),
-  * Otherwise, instantiate `ti := X`.
+  * Instantiate `ti` so that the subtype test in Step (2) above always succeeds:
+    * If `X` is of the form `_ >: L <: H`, instantiate `ti := H` (resp. `L`, `X`) if `variance = 1` (resp. `-1`, `0`).
+    * Otherwise, instantiate `ti := X`.
 * If `P` is a `TypeCapture` `ti`:
   * If `X` is of the form `_ >: L <: H`,
     * If `scrutIsWidenedAbstract` is `true`, fail as not specific.

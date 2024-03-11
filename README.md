@@ -4,11 +4,15 @@
 
 This repository contains the source for the Scala documentation website, as well as the source for "Scala Improvement Process" (SIP) documents.
 
+## Dependencies ##
+
+This site uses a Jekyll, a Ruby framework. You'll need Ruby and Bundler installed; see [Jekyll installation instructions](https://jekyllrb.com/docs/installation/) for the details.
+
 ## Quickstart ##
 
 To build and view the site locally:
 
-    gem install --user-install bundler jekyll
+    bundle install
     bundle exec jekyll serve -I
 
 ([Trouble on MacOS?](https://github.com/scala/docs.scala-lang/issues/1150))
@@ -52,10 +56,6 @@ This document gives an overview of the type of documentation contained within th
 Small changes, or corrected typos will generally be pulled in right away. Large changes, like the addition of new documents, or the rewriting of
 existing documents will be thoroughly reviewed-- please keep in mind that, generally, new documents must be very well-polished, complete, and maintained
 in order to be accepted.
-
-## Dependencies ##
-
-This site uses a Jekyll, a Ruby framework. You'll need Ruby and Bundler installed; see [Jekyll installation instructions](https://jekyllrb.com/docs/installation/) for the details.
 
 ## Building & Viewing ##
 

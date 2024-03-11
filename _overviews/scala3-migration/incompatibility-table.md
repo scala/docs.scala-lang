@@ -2,7 +2,7 @@
 title: Incompatibility Table
 type: chapter
 description: This chapter list all the known incompatibilities between Scala 2.13 and Scala 3 
-num: 15
+num: 16
 previous-page: tooling-syntax-rewriting
 next-page: incompat-syntactic
 ---

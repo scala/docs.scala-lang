@@ -3,7 +3,7 @@ title: Bug Reporting Guide
 num: 8
 ---
 
-The Scala compiler and standard library bug tracker is located at [https://github.com/scala/bug](https://github.com/scala/bug), and for Scala 3, it is located at [github.com/lampepfl/dotty](https://github.com/lampepfl/dotty/issues). Before you submit a bug make sure that it is certainly a bug by following instructions
+The Scala compiler and standard library bug tracker is located at [https://github.com/scala/bug](https://github.com/scala/bug), and for Scala 3, it is located at [github.com/scala/scala3](https://github.com/scala/scala3/issues). Before you submit a bug make sure that it is certainly a bug by following instructions
 in [Is it a Bug?](#is-it-a-bug).
 
 ## Is it a Bug?
@@ -65,7 +65,7 @@ If you cannot find your issue in the issue tracker, create a new bug. The detail
 
 Please make sure to fill in as many fields as possible. Make sure you've indicated the following:
 
- 1. **Exact Scala version** that you are using. For example, `2.13.12` or `3.3.0`. If the bug happens in multiple versions indicate all of them.
+ 1. **Exact Scala version** that you are using. For example, `2.13.13` or `3.3.2`. If the bug happens in multiple versions indicate all of them.
  2. **The component** that is affected by the bug. For example, the Standard Library, Scaladoc, etc.
  3. **Labels** related to your issue. For example, if you think your issue is related to the typechecker, and if you have successfully minimized your issue, label your bug as "typechecker" and "minimized". Issue tracker will suggest names for existing labels as you type them so try not to create duplicates.
  4. **Running environment**. Are you running on Linux? Windows? What JVM version are you using?

@@ -84,7 +84,7 @@ $ tree
 $ sbt run
 ```
 
-您应该会看到如下所示的输出，包括程序中的 “Hello, world”：
+您应该会看到如下所示的输出，包括程序中的 `"Hello, world"`：
 
 ```bash
 $ sbt run
@@ -215,7 +215,7 @@ scalaVersion := "{{ site.scala-3-version }}"
 @main def helloWorld = println("Hello, world")
 ```
 
-该代码定义了一个 Scala 3 “main” 方法，该方法在运行时打印 “Hello, world”。
+该代码定义了一个 Scala 3 “main” 方法，该方法在运行时打印 `"Hello, world"`。
 
 现在，使用 `sbt run` 命令编译并运行您的项目：
 
@@ -298,7 +298,7 @@ scala-3-project-template
 > $ sbt new scala/scala3-cross.g8
 > ~~~
 
-在 [sbt 文档](https://www.scala-sbt.org/1.x/docs/sbt-new-and-Templates.html#sbt+new+) 中了解有关 `sbt new` 和项目模板的更多信息和+模板。
+在 [sbt 文档](https://www.scala-sbt.org/1.x/docs/sbt-new-and-Templates.html#sbt+new+) 中了解有关 `sbt new` 和项目模板的更多信息。
 
 ### Scala 的其他构建工具
 
@@ -312,7 +312,7 @@ scala-3-project-template
 #### Coursier 
 
 在相关说明中，[Coursier](https://get-coursier.io/docs/overview) 是一个“依赖解析器”，在功能上类似于 Maven 和 Ivy。
-它是用 Scala 从头开始​​编写的，“包含函数式编程原则”，并且可以并行下载工件以实现快速下载。
+它是用 Scala 从头开始编写的，“包含函数式编程原则”，并且可以并行下载工件以实现快速下载。
 sbt 使用它来处理大多数依赖关系解析，并且作为一个命令行工具，它可以用于在您的系统上轻松安装 sbt、Java 和 Scala 等工具，如我们的 [Getting Started][getting_started] 页面所示。
 
 来自 `launch` 网页的这个示例显示了 `cs launch` 命令可用于从依赖项启动应用程序：
@@ -347,8 +347,7 @@ $ mkdir project
 
 ### 2) 创建 build.properties 和 build.sbt 文件
 
-接下来，在项目的 _project/_ 子目录中创建一个 _build.properties_ 文件
-用这条线：
+接下来，把下面这行代码用于在项目的 _project/_ 子目录中创建一个 _build.properties_ 文件：
 
 ```text
 sbt.version=1.5.4
@@ -449,7 +448,7 @@ end MathUtilsTests
 此代码演示了 ScalaTest `AnyFunSuite` 方法。
 几个重要的点：
 
-- 你的测试类应该扩展 `AnyFunSuite`
+- 你的测试类应该继承 `AnyFunSuite`
 - 如图所示，您可以通过为每个 `test` 指定一个唯一的名称来创建测试
 - 在每个测试结束时，您应该调用 `assert` 来测试条件是否已满足
 - 当你知道你想写一个测试，但你现在不想写它时，将测试创建为“待定”，语法如上例所示

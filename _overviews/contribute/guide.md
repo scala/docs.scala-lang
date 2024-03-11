@@ -34,7 +34,7 @@ unencumbered by copyrights or patents.
 
 ### Bug-fix Check List
 > Originally these steps cover the [Scala 2 compiler](https://github.com/scala/scala), but they also are relevant to
-> the [Scala 3 compiler](https://github.com/lampepfl/dotty).
+> the [Scala 3 compiler](https://github.com/scala/scala3).
 
 This is the impatient developer's checklist for the steps to submit a bug-fix pull request to the Scala project. For more information, description and justification for the steps, follow the links in that step. Further specific instructions for the release of Scala you are targeting can be found in the `CONTRIBUTING.md` file for that [GitHub branch](https://github.com/scala/scala)
 

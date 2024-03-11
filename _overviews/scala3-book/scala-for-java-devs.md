@@ -978,8 +978,8 @@ val a = Array("a", "b")
 
 as being backed by this Java `String[]`:
 
-```scala
-String[] a = ["a", "b"];
+```java
+String[] a = {"a", "b"};
 ```
 
 However, a Scala `Array` also has all of the functional methods you expect in a Scala collection, including `map` and `filter`:

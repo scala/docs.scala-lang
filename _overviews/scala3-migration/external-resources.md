@@ -2,7 +2,7 @@
 title: External Resources
 type: chapter
 description: This section lists external resources about the migration to Scala 3.
-num: 28
+num: 29
 previous-page: plugin-kind-projector
 next-page:
 ---

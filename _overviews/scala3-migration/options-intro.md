@@ -2,7 +2,7 @@
 title: Compiler Options
 type: chapter
 description: This chapter shows the difference between Scala 2.13 and Scala 3 compiler options
-num: 22
+num: 23
 previous-page: incompat-type-inference
 next-page: options-lookup
 ---

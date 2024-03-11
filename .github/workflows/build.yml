@@ -4,14 +4,14 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0.5
           bundler-cache: true
       - name: Set up coursier
-        uses: coursier/setup-action@v1.2.0-M2
+        uses: coursier/setup-action@v1.3.5
         with:
           jvm: adopt:11
       - name: Run mdoc
@@ -29,5 +29,5 @@ jobs:
              --ignore-empty-alt\
              --allow-hash-href\
              --enforce-https=false\
-             --ignore-urls '/https://github.com/scala/docs.scala-lang/blob/main/.*/,/www.oracle.com/'
+             --ignore-urls '/https://github.com/scala/,/www.oracle.com/'
 

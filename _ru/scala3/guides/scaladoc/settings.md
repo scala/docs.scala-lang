@@ -13,7 +13,7 @@ previous-page: snippet-compiler
 ## Изменения scaladoc по сравнению со Scala 2
 
 Scaladoc был переписан с нуля, и некоторые функции оказались бесполезными в новом контексте.
-Текущее состояние совместимости со старыми флагами scaladoc можно увидеть [здесь](https://github.com/lampepfl/dotty/issues/11907).
+Текущее состояние совместимости со старыми флагами scaladoc можно увидеть [здесь](https://github.com/scala/scala3/issues/11907).
 
 ## Указание настроек
 
@@ -40,6 +40,8 @@ Compile / doc / scalacOptions ++= Seq("-project", "my-project"),
 ##### -project-logo
 
 Логотип проекта, который появляется в верхнем левом углу.
+Для темной темы можно выделить отдельный логотип с суффиксом `_dark`.
+Например, если есть логотип `mylogo.png`, то для темной темы предполагается `mylogo_dark.png`.
 Чтобы обеспечить совместимость с псевдонимами Scala2 с `-doc-logo`
 
 ##### -project-footer
@@ -63,7 +65,7 @@ Compile / doc / scalacOptions ++= Seq("-project", "my-project"),
 Ссылки на источники обеспечивают сопоставление между файлом в документации и репозиторием кода.
 
 Примеры исходных ссылок:
-`-source-links:docs=github://lampepfl/dotty/master#docs`
+`-source-links:docs=github://scala/scala3/main#docs`
 
 Принимаемые форматы:
 
@@ -99,7 +101,7 @@ Compile / doc / scalacOptions ++= Seq("-project", "my-project"),
 
 Ссылки на социальные сети. Например:
 
-`-social-links:github::https://github.com/lampepfl/dotty,discord::https://discord.com/invite/scala,twitter::https://twitter.com/scala_lang`
+`-social-links:github::https://github.com/scala/scala3,discord::https://discord.com/invite/scala,twitter::https://twitter.com/scala_lang`
 
 Допустимые значения имеют вид: `[github|twitter|gitter|discord]::link`.
 Scaladoc также поддерживает `custom::link::white_icon_name::black_icon_name`.

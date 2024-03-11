@@ -55,8 +55,8 @@ Scala 3 コンパイラとライブラリへの貢献と内部に関する包括
 ## Scala 3 Language Reference
 The [Dotty reference]({{ site.scala3ref }}/overview.html) は Scala 3 になる予定である。これにはさまざまな言語仕様に関する公式のプレゼンテーションや技術的情報が含まれている。
 
-- [Sources](https://github.com/lampepfl/dotty/tree/main/docs/_docs)
-- [Issues](https://github.com/lampepfl/dotty/issues)
+- [Sources](https://github.com/scala/scala3/tree/main/docs/_docs)
+- [Issues](https://github.com/scala/scala3/issues)
 
 
 [scala3-book]: {% link _overviews/scala3-book/introduction.md %}

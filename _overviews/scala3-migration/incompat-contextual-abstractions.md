@@ -2,7 +2,7 @@
 title: Contextual Abstractions
 type: section
 description: This chapter details all incompatibilities caused by the redesign of contextual abstractions
-num: 18
+num: 19
 previous-page: incompat-dropped-features
 next-page: incompat-other-changes
 ---

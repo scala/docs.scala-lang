@@ -352,8 +352,7 @@ val scalaList: Seq[Integer] = JavaClass.getJavaList().asScala.toSeq
 正如您将在本页的第三部分中所看到的那样，已经有诸如此类的 Scala 库和框架被编写出来用于支撑高流量网站以及分析庞大的数据集：
 
 1. [Play Framework](https://www.playframework.com) 是一种用于创建高度可扩展应用程序的轻量级、无状态、对开发者及Web友好的架构
-2. [Lagom](https://www.lagomframework.com) 是一种微服务框架，可帮助您分解遗留的单体应用并构建、测试和部署整个响应式微服务系统
-3. [Apache Spark](https://spark.apache.org) 是一种面向大规模数据处理的统一分析引擎，内置流、SQL、机器学习和图形处理等模块
+2. [Apache Spark](https://spark.apache.org) 是一种面向大规模数据处理的统一分析引擎，内置流、SQL、机器学习和图形处理等模块
 
 [Awesome Scala 列表](https://github.com/lauris/awesome-scala)展示了开发人员为构建 Scala 应用程序而创建的许多其他开源工具。
 
@@ -471,7 +470,6 @@ Scala 拥有一个充满活力的生态系统，有满足各种需求的库和�
 - [Finatra](https://twitter.github.io/finatra) 是基于 TwitterServer 和 Finagle 构建的 Scala 服务
 - [Scala.js](https://www.scala-js.org) 是 JavaScript 的强类型替代品，它提供了一种更安全的方式以构建稳健的前端 Web 应用程序
 - [ScalaJs-React](https://github.com/japgolly/scalajs-react) 将 Facebook 的 React 库整合至 Scala.js，并努力使其尽可能类型安全和 Scala 友好
-- [Lagom](https://www.lagomframework.com) 是一种微服务框架，可帮助您分解遗留的单体应用并构建、测试和部署整个响应式微服务系统
 
 HTTP(S) 库：
 

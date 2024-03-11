@@ -2,15 +2,17 @@
 title: Mixing Scala 2.13 and Scala 3 Macros
 type: section
 description: This section shows how to mix Scala 2.13 and Scala 3 macros in a single artifact
-num: 13
+num: 14
 previous-page: tutorial-macro-mixing
 next-page: tooling-syntax-rewriting
 ---
 
-This tutorial shows how to mix Scala 2.13 and Scala 3 macros in a single artifact.
+This tutorial shows how to mix Scala 2.13 and Scala 3 macros in a single artifact.  This means that consumers can use '-Ytasty-reader' from Scala 2.13 code that uses your macros.
 
-It can be used to create a new Scala 3 macro library and make it available for Scala 2.13 users.
-It can also be used to port an existing Scala 2.13 macro library to Scala 3, although it is probably easier to cross-build.
+There are two main benefits of this:
+
+1. Making a new or existing scala 3 macro library available for Scala 2.13 users without having to provide a separate 2.13 version
+2. Allowing your macros to be usable in multi-project builds that are being upgraded module by module.
 
 ## Introduction
 

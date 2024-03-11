@@ -2,7 +2,7 @@
 title: Other Changed Features
 type: section
 description: This chapter details all incompatibilities caused by changed features
-num: 19
+num: 20
 previous-page: incompat-contextual-abstractions
 next-page: incompat-type-checker
 ---
@@ -124,7 +124,7 @@ class C extends B // In Scala 3, Error: class C needs to be abstract, since def 
 {% endtab %}
 {% endtabs %}
 
-This behavior was decided in [Dotty issue #4770](https://github.com/lampepfl/dotty/issues/4770).
+This behavior was decided in [Dotty issue #4770](https://github.com/scala/scala3/issues/4770).
 
 An easy fix is simply to remove the abstract def, since in practice it had no effect in Scala 2.
 
@@ -264,7 +264,7 @@ val pojo = new Pojo()
 
 A type of the form `=> T` cannot be used as an argument to a type parameter anymore.
 
-This decision is explained in [this comment](https://github.com/lampepfl/dotty/blob/0f1a23e008148f76fd0a1c2991b991e1dad600e8/compiler/src/dotty/tools/dotc/core/ConstraintHandling.scala#L144-L152) of the Scala 3 source code.
+This decision is explained in [this comment](https://github.com/scala/scala3/blob/0f1a23e008148f76fd0a1c2991b991e1dad600e8/compiler/src/dotty/tools/dotc/core/ConstraintHandling.scala#L144-L152) of the Scala 3 source code.
 
 For instance, it is not allowed to pass a function of type `Int => (=> Int) => Int` to the `uncurried` method since it would assign `=> Int` to the type parameter `T2`. 
 

@@ -86,6 +86,33 @@ $ scala happyBirthday sixty Fred
 Illegal command line: java.lang.NumberFormatException: For input string: "sixty"
 ```
 
+## User-defined types as parameters
+
+As mentioned up above, the compiler looks for a given instance of the
+`scala.util.CommandLineParser.FromString` typeclass for the type of the
+argument. For example, let's say you have a custom `Color` type that you want to
+use as a parameter. You would do this like you see below:
+
+{% tabs method_3 %}
+{% tab 'Scala 3 Only' for=method_3 %}
+
+```scala
+enum Color:
+  case Red, Green, Blue
+
+given ComamndLineParser.FromString[Color] with
+  def fromString(value: String): Color = Color.valueOf(value)
+
+@main def run(color: Color): Unit =
+  println(s"The color is ${color.toString}")
+```
+
+{% endtab %}
+{% endtabs %}
+
+This works the same for your own user types in your program as well as types you
+might be using from another library.
+
 ## The details
 
 The Scala compiler generates a program from an `@main` method `f` as follows:
@@ -96,8 +123,8 @@ The Scala compiler generates a program from an `@main` method `f` as follows:
 
 For instance, the `happyBirthday` method above generates additional code equivalent to the following class:
 
-{% tabs method_3 %}
-{% tab 'Scala 3 Only' for=method_3 %}
+{% tabs method_4 %}
+{% tab 'Scala 3 Only' for=method_4 %}
 
 ```scala
 final class happyBirthday {
@@ -131,7 +158,7 @@ The previous functionality of `App`, which relied on the “magic” `DelayedIni
 
 If programs need to cross-build between Scala 2 and Scala 3, it’s recommended to use an `object` with an explicit `main` method and a single `Array[String]` argument instead:
 
-{% tabs method_4 %}
+{% tabs method_5 %}
 {% tab 'Scala 2 and 3' %}
 
 ```scala
