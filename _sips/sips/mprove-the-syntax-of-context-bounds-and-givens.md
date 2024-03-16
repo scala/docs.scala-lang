@@ -1,7 +1,7 @@
 ---
 title: 'SIP-64: Improve the Syntax of Context Bounds and Givens'
-status: submitted
+status: under-review
 pull-request-number: 81
-stage: pre-sip
+stage: design
 
 ---

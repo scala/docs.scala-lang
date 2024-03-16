@@ -1,7 +1,7 @@
 ---
 title: SIP-63 - Scala 3 Macro Annotations
-status: submitted
+status: under-review
 pull-request-number: 80
-stage: pre-sip
+stage: design
 
 ---
