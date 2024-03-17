@@ -384,7 +384,7 @@ Note that in order to print the string, we used the predefined method
 #### Anonymous functions
 
 In Scala, lambda expressions are known as anonymous functions.
-They are useful when a function so short it is perhaps unneccesary
+They are useful when a function is so short it is perhaps unneccesary
 to give them a name.
 
 Here is a revised version of the timer
