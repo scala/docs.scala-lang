@@ -100,7 +100,7 @@ use as a parameter. You would do this like you see below:
 enum Color:
   case Red, Green, Blue
 
-given ComamndLineParser.FromString[Color] with
+given CommandLineParser.FromString[Color] with
   def fromString(value: String): Color = Color.valueOf(value)
 
 @main def run(color: Color): Unit =
