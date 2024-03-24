@@ -164,7 +164,7 @@ If not, don’t worry, they’re explained in more detail in the [Domain Modelin
 ### Classes
 
 Scala _classes_ are used in OOP-style programming.
-Here’s an example of a class that models a “person.” In OOP fields are typically mutable, so `firstName` and `lastName` are both declared as `var` parameters:
+Here’s an example of a class that models a “person.” In OOP, fields are typically mutable, so `firstName` and `lastName` are both declared as `var` parameters:
 
 {% tabs class_1 class=tabs-scala-version %}
 {% tab 'Scala 2' for=class_1 %}
