@@ -21,8 +21,8 @@ case class Password(hash: Hash)
 
 def help(id: Username | Password) =
   val user = id match
-    case Username(name) => lookupName(name)
-    case Password(hash) => lookupPassword(hash)
+    case Username => lookupName(id)
+    case Password => lookupPassword(id)
   // more code here ...
 ```
 We implement the method `help` by distinguishing between the two alternatives using pattern matching.
