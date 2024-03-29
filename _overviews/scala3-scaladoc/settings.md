@@ -172,13 +172,17 @@ Which means:
 - all snippets in files under directory `my/path/f` should fail during compilation
 - all other snippets should compile successfully
 
-#### -scastie-configuration
+##### -scastie-configuration
 
 Define the additional sbt configuration for your Scastie snippets. For example, when you import external libraries into your snippets, you need to add the related dependencies.
 
 ```
 "-scastie-configuration", """libraryDependencies += "org.apache.commons" % "commons-lang3" % "3.12.0""""
 ```
+
+##### -dynamic-side-menu
+
+Generate the side menu (the tree-like overview of the project structure on the left-hand side) dynamically in the browser using JavaScript instead of embedding it in every HTML file. This can greatly reduce outputted HTML file sizes. Recommended for projects with 1000+ pages. For more info see [issue 18543](https://github.com/lampepfl/dotty/issues/18543).
 
 ##### -Ysnippet-compiler-debug
 
