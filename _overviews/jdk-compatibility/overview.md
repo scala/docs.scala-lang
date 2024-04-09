@@ -125,7 +125,7 @@ For possible Scala issues, see the [jdk11](https://github.com/scala/bug/labels/j
 
 Early access builds of JDK 23 are available. JDK 23 will be non-LTS.
 
-We are working on adding JDK 22 support to Scala 3 and Scala 2.
+We are working on adding JDK 23 support to Scala 3 and Scala 2.
 (Support may be available in nightly builds.)
 
 For possible Scala issues, see the [jdk11](https://github.com/scala/bug/labels/jdk11), [jdk17](https://github.com/scala/bug/labels/jdk17), and [jdk21](https://github.com/scala/bug/labels/jdk21) labels in the Scala 2 bug tracker.
