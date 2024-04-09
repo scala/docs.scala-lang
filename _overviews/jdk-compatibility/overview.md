@@ -15,7 +15,7 @@ Minimum Scala versions:
 | JDK         | 3        | 2.13      | 2.12      | 2.11       |
 |:-----------:|:--------:|:---------:|:---------:|:----------:|
 | 23 (ea)     | 3.3.5*   | 2.13.14*  | 2.12.20*  |            |
-| 22          | 3.3.4*   | 2.13.12   | 2.12.19   |            |
+| 22          | 3.3.4*   | 2.13.13   | 2.12.19   |            |
 | 21 (LTS)    | 3.3.1    | 2.13.11   | 2.12.18   |            |
 | 17 (LTS)    | 3.0.0    | 2.13.6    | 2.12.15   |            |
 | 11 (LTS)    | 3.0.0    | 2.13.0    | 2.12.4    | 2.11.12    |
@@ -114,7 +114,7 @@ For possible Scala issues, see the [jdk11](https://github.com/scala/bug/labels/j
 
 JDK 22 is non-LTS.
 
-Scala 2.13.12+ and 2.12.19+ support JDK 22.
+Scala 2.13.13+ and 2.12.19+ support JDK 22.
 
 We are working on adding JDK 22 support to the 3.3.x release
 series. (Support may be available in nightly builds.)
