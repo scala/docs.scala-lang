@@ -114,7 +114,7 @@ For possible Scala issues, see the [jdk11](https://github.com/scala/bug/labels/j
 Early access builds of JDK 22 are available. JDK 22 will be non-LTS.
 
 Initial support for JDK 22 has been merged and is now available in
-Scala 2.13.12 and 2.12.19.
+Scala 2.13.13 and 2.12.19.
 
 We are working on adding JDK 22 support to the 3.3.x release
 series. (Support may be available in nightly builds.)
