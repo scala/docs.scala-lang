@@ -17,7 +17,7 @@ A diferencia de Java, todos los valores en Scala son objetos (incluyendo valores
 ## Jerarquía de clases en Scala ##
 
 La superclase de todas las clases, `scala.Any`, tiene dos subclases directas, `scala.AnyVal` y `scala.AnyRef` que representan dos mundos de clases muy distintos: clases para valores y clases para referencias. Todas las clases para valores están predefinidas; se corresponden con los tipos primitivos de los lenguajes tipo Java. Todas las otras clases definen tipos referenciables. Las clases definidas por el usuario son definidas como tipos referenciables por defecto, es decir, siempre (indirectamente) extienden de `scala.AnyRef`. Toda clase definida por usuario en Scala extiende implicitamente el trait `scala.ScalaObject`. Clases pertenecientes a la infraestructura en la cual Scala esté corriendo (ejemplo, el ambiente de ejecución de Java) no extienden de `scala.ScalaObject`. Si Scala es usado en el contexto de un ambiente de ejecución de Java, entonces `scala.AnyRef` corresponde a `java.lang.Object`.
-Por favor note que el diagrama superior también muestra conversiones implícitas llamadas viestas entre las clases para valores.
+Por favor note que el diagrama superior también muestra conversiones implícitas llamadas vistas entre las clases para valores.
 
 Aquí se muestra un ejemplo que demuestra que tanto valores numéricos, de caracteres, buleanos y funciones son objetos, tal como cualquier otro objeto:
 
