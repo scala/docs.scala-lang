@@ -19,6 +19,7 @@ En la invocación de métodos y funciones se puede usar el nombre de las variabl
       // Imprime "John Smith"
       imprimirNombre(nombre = "John", apellido = "Smith")
       // Imprime "John Smith"
+      imprimirNombre(apellido = "Smith", nombre = "John")
       // Imprime "John Smith"
 
 Note que una vez que se utilizan parámetros nombrados en la llamada, el orden no importa, mientras todos los parámetros sean nombrados. Esta característica funciona bien en conjunción con valores de parámetros por defecto:
