@@ -404,7 +404,8 @@ Let us assume a call to `logged` on a concrete instance of `PrintLogger`:
 ```scala
 logged(new PrintLogger, "🥧")
 // inlined as
-val logger: PrintLogger = new PrintLogger
+val logger = new PrintLogger
+val x = "🥧"
 logger.log(x)
 ```
 After inlining, the call to `log` is de-virtualized and known to be on `PrintLogger`.
