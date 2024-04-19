@@ -106,10 +106,10 @@ it is recommended to either specify them explicitly or fix them to the grouped f
 | Leading infix operators continue the previous line <sup>1</sup> (`leading-infix`) | fatal warning, second line is a separate expression | operation continues the previous line |
 | Desugaring of string interpolators using `StringContext` (`string-context-scope`) | fatal warning if the interpolation references a `StringContext` in scope different from `scala.StringContext` | desugaring always uses `scala.StringContext` |
 | An implicit for type `p.A` is found in the package prefix `p` (`package-prefix-implicits`) | fatal warning | the package prefix `p` is no longer part of the implicit search scope |
-| (`implicit-resolution`) | fatal warning | use Scala-3-style downwards comparisons for implicit search and overloading resolution |
-| (`case-apply-copy-access`) | warning | constructor modifiers are used for apply / copy methods of case classes |
-| (`case-companion-function`) | warning | synthetic case companion objects no longer extend FunctionN |
-| (`infer-override`) | warning | inferred type of member uses type of overridden member |
+| Specificity during implicit search (`implicit-resolution`) | fatal warning | use Scala-3-style downwards comparisons for implicit search and overloading resolution |
+| Modifiers of synthetic methods (`case-apply-copy-access`) | fatal warning | constructor modifiers are used for apply / copy methods of case classes |
+| Companions are Functions (`case-companion-function`) | fatal warning at use site | synthetic case companion objects no longer extend FunctionN, but are adapted at use site with warning |
+| Override type inference (`infer-override`) | fatal warning | inferred type of member uses type of overridden member |
 
 Example 1:
 
