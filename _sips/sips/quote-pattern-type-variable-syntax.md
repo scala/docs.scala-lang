@@ -1,8 +1,8 @@
 ---
 layout: sip
 permalink: /sips/:title.html
-stage: implementation
-status: waiting-for-implementation
+stage: completed
+status: shipped
 title: SIP-53 - Quote pattern explicit type variable syntax
 ---
 
@@ -13,6 +13,8 @@ title: SIP-53 - Quote pattern explicit type variable syntax
 | Date          | Version            |
 |---------------|--------------------|
 | Feb 28th 2022 | Initial Draft      |
+| Oct 6th 2022 | [Stabilize implementation](https://github.com/scala/scala3/pull/18574) |
+| Feb 29th 2023 | Available in [Scala 3.4.0](https://www.scala-lang.org/blog/2024/02/29/scala-3.4.0-and-3.3.3-released.html) |
 
 ## Summary
 
@@ -137,5 +139,7 @@ TASTy only contains explicit type variable definitions, and this encoding would 
 
 * Proof of concept of type variable syntax: [https://github.com/lampepfl/dotty/pull/16910](https://github.com/lampepfl/dotty/pull/16910)
 * Proof of concept of backticks (only interested in the first bullet point): [https://github.com/lampepfl/dotty/pull/16935](https://github.com/lampepfl/dotty/pull/16935)
+* Implementation: [https://github.com/scala/scala3/pull/17362](https://github.com/scala/scala3/pull/17362)
+* Stabilized implementation: [https://github.com/scala/scala3/pull/18574](https://github.com/scala/scala3/pull/18574)
 
 <!-- ## FAQ -->

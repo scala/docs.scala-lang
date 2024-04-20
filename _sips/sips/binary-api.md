@@ -2,7 +2,7 @@
 layout: sip
 permalink: /sips/:title.html
 stage: implementation
-status: waiting-for-implementation
+status: under-review
 title: SIP-52 - Binary APIs
 ---
 
@@ -16,6 +16,7 @@ title: SIP-52 - Binary APIs
 | Aug 16 2023   | Single Annotation      |
 | Aug 24 2023   | Change Annotation Name |
 | Jan 09 2024   | Change Overload Rules  |
+| Feb 29 2024   | Experimental in [Scala 3.4.0](https://www.scala-lang.org/blog/2024/02/29/scala-3.4.0-and-3.3.3-released.html)  |
 
 ## Summary
 
