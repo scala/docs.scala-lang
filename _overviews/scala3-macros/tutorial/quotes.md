@@ -270,7 +270,7 @@ But what about the cases where we want more flexibility (eg. we know the subset 
 
 #### Iterative deconstruction of a function expression
 
-Let's imagine we need a macro that collects names of methods used in an expression of type `FieldName => FieldName`, for a definition of `FieldName` that looks like this:
+Let's imagine we need a macro that collects names of methods used in an expression of type `FieldName => FieldName`, for a definition of `FieldName`:
 
 ```scala
 trait FieldName:
@@ -299,7 +299,7 @@ def collectUsedMethods(func: Expr[FieldName => FieldName])(using Quotes): List[S
   recurse(func, Nil)
 ```
 
-For more details on how patterns like `$body(arg)` work please refer to docs section on [the HOAS pattern](https://dotty.epfl.ch/docs/reference/metaprogramming/macros.html#hoas-patterns-1).
+For more details on how patterns like `$body(arg)` work please refer to a docs section on [the HOAS pattern](https://dotty.epfl.ch/docs/reference/metaprogramming/macros.html#hoas-patterns-1).
 
 If we were to use this on an expression like this one:
 ```scala
