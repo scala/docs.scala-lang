@@ -120,7 +120,7 @@ with only minor supplements.  That's why `versionString` and
 `versionNumberString` report that Scala 2 is in use:
 
 ```
-Welcome to Scala 3.3.2 (17.0.3, Java OpenJDK 64-Bit Server VM).
+Welcome to Scala 3.3.3 (17.0.3, Java OpenJDK 64-Bit Server VM).
 Type in expressions for evaluation. Or try :help.
 
 scala> util.Properties.versionNumberString
@@ -332,14 +332,14 @@ setting in a multi-project build.
 
 For example, if you add this to your `build.sbt`:
 
-    scalaVersion := "2.13.13"
+    scalaVersion := "2.13.14"
 
 that's a "bare" setting, and you might expect it to apply build-wide.
 But it doesn't. _It only applies to the root project._
 
 In many cases one should instead write:
 
-    ThisBuild / scalaVersion := "2.13.13"
+    ThisBuild / scalaVersion := "2.13.14"
 
 Other possibilities include:
 
