@@ -11,32 +11,31 @@ The Scala 2.13 compiler issues helpful migration warnings with the `-Xsource:3` 
 
 Before moving to the Scala 3 compiler, it's recommended to enable this flag in Scala 2 and address the new warnings.
 
-There is also a variant, `-Xsource:3-cross`; see below. **Note: Enabling `-Xsource:3-cross` in Scala 2.13.13 breaks binary compatibility, follow [scala/bug#12961](https://github.com/scala/bug/issues/12961) for details.**
-
-This page explains the details behind the flags. An overview is shown using `scalac -Xsource:help`.
+Usage information is shown with `scalac -Xsource:help`.
 
 ## Migration vs cross-building
 
-With Scala 2.13.13 and newer, the `-Xsource:3` flag comes in two variants:
+With Scala 2.13.14 and newer, the `-Xsource:3` flag supports two scenarios:
 
   - `Xsource:3` enables warnings relevant for migrating a codebase to Scala 3.
     In addition to new warnings, the flag enables certain benign Scala 3 syntaxes such as `import p.*`.
-  - `Xsource:3-cross` is useful for projects that cross-build between Scala 2 and 3 for a longer period of time.
-    For certain language constructs that trigger a warning with `-Xsource:3`, the behavior changes to match Scala 3.
+  - Adding the `-Xsource-features:<features>` flag is useful to reduce the maintenance burden of projects that cross-build between Scala 2 and 3.
+    Certain language constructs have been backported from Scala 3 in order to improve compatibility.
+    Instead of warning about a behavior change in Scala 3, it adopts the new behavior.
 
-Details about individual warnings are listed below on this page.
+## Warnings as errors, and quick fixes
 
-## Fatal warnings and quick fixes
+By default, Scala 3 migration warnings emitted by Scala 2.13 are reported as errors, using the default configuration, `-Wconf:cat=scala3-migration:e`.
+This ensures that migration messaging is more visible.
+Diagnostics can be emitted as warnings by specifying `-Wconf:cat=scala3-migration:w`.
+Typically, emitting warnings instead of errors will cause more diagnostics to be reported.
 
-By default, Scala 3 migration warnings emitted by Scala 2.13 are fatal, i.e., they are reported as errors.
-This can be changed using `-Wconf`, for example `-Wconf:cat=scala3-migration:w` changes them to be reported as warnings.
-Alternatively, `-Xmigration` has the same effect.
-
-The [`@nowarn` annotation](https://www.scala-lang.org/api/current/scala/annotation/nowarn.html) can be used to suppress individual warnings, which also works with fatal warnings enabled.
+The [`@nowarn` annotation](https://www.scala-lang.org/api/current/scala/annotation/nowarn.html) can be used in program sources to suppress individual warnings.
+Diagnostics are suppressed before they are promoted to errors, so that `@nowarn` takes precedence over `-Wconf` and `-Werror`.
 
 The Scala 2.13 compiler implements quick fixes for many Scala 3 migration warnings.
-Quick fixes are displayed in Metals-based IDEs (not yet in IntelliJ), and they can be applied directly to the source code using the `-quickfix` flag, for example `-quickfix:cat=scala3-migration`.
-See also `scalac -quickfix:help`.
+Quick fixes are displayed in Metals-based IDEs (not yet in IntelliJ), or they can be applied directly to the source code using the `-quickfix` flag, for example `-quickfix:cat=scala3-migration`.
+See also `scala -quickfix:help`.
 
 ## Enabled Scala 3 syntax
 
@@ -51,54 +50,88 @@ The `-Xsource:3` flag enables the following Scala 3 syntaxes in Scala 2:
 
 ## Scala 3 migration warnings in detail
 
-Many Scala 3 migration warnings are easy to understand and identical under `-Xsource:3` and `-Xsource:3-cross`, e.g., for implicit definitions without an explicit type:
+Many Scala 3 migration warnings are easy to understand, e.g., for implicit definitions without an explicit type:
 
-{% highlight text %}
+{% highlight scala %}
 scala> object O { implicit val s = "" }
                                ^
        error: Implicit definition must have explicit type (inferred String) [quickfixable]
 {% endhighlight %}
 
-The next paragraphs explain where the behavior changes between `-Xsource:3` and `-Xsource:3-cross`.
+## Enabling Scala 3 features with `-Xsource-features`
+
+Certain Scala 3 language changes have been backported and can be enabled using `-Xsource-features`; usage and available features are shown with `-Xsource-features:help`.
+
+When enabling a feature, the corresponding migration warning is no longer issued.
+
+{% highlight scala %}
+scala> raw"\u0061"
+           ^
+       warning: Unicode escapes in raw interpolations are deprecated; use literal characters instead
+val res0: String = a
+
+scala> :setting -Xsource:3
+
+scala> raw"\u0061"
+           ^
+       error: Unicode escapes in raw interpolations are ignored in Scala 3 (or with -Xsource-features:unicode-escapes-raw); use literal characters instead
+       Scala 3 migration messages are errors under -Xsource:3. Use -Wconf / @nowarn to filter them or add -Xmigration to demote them to warnings.
+       Applicable -Wconf / @nowarn filters for this fatal warning: msg=<part of the message>, cat=scala3-migration, site=res1
+
+scala> :setting -Xsource-features:unicode-escapes-raw
+
+scala> raw"\u0061"
+val res1: String = \u0061
+{% endhighlight %}
+
+For every such language feature, a migration warning is issued under plain `-Xsource:3`.
+Enabling the feature silences the warning and adopts the changed behavior.
+To avoid silent language changes when upgrading to a new Scala 2.13 version, it is recommended to enable features explicitly or use a group (e.g., `-Xsource-features:v2.13.14`).
+
+`-Xsource:3-cross` is a shorthand for `-Xsource:3 -Xsource-features:_`.
+
+### Changes in language semantics
+
+The following table shows backported Scala 3 language semantics available in `-Xsource-features` / `-Xsource:3-cross`.
+
+| Feature flag | `-Xsource:3` behavior | `-Xsource-features` / `-Xsource:3-cross` behavior |
+|--- |--- |--- |
+| `any2stringadd`: `(x: Any) + ""` is deprecated | deprecation warning | does not compile, implicit `any2stringadd` is not inferred |
+| `unicode-escapes-raw`: unicode escapes in triple-quoted strings and raw interpolations (`"""\u0061"""`) | fatal warning, escape is processed | escape is not processed |
+| `leading-infix`: leading infix operators continue the previous line <sup>1</sup> | fatal warning, second line is a separate expression | operation continues the previous line |
+| `string-context-scope`: desugaring of string interpolators using `StringContext` | fatal warning if the interpolation references a `StringContext` in scope different from `scala.StringContext` | desugaring always uses `scala.StringContext` |
+| `package-prefix-implicits`: an implicit for type `p.A` is found in the package prefix `p` | fatal warning | the package prefix `p` is no longer part of the implicit search scope |
+| `implicit-resolution`: specificity during implicit search | fatal warning | use Scala-3-style [downwards comparisons](https://github.com/scala/scala/pull/6037) for implicit search and overloading resolution |
+| `case-apply-copy-access`: modifiers of synthetic methods | fatal warning | constructor modifiers are used for apply / copy methods of case classes |
+| `case-companion-function`: companions are Functions | fatal warning at use site | synthetic case companion objects no longer extend FunctionN, but are adapted at use site with warning |
+| `infer-override`: override type inference | fatal warning | inferred type of member uses type of overridden member |
+
+Example 1:
+
+{% highlight scala %}
+  def f =
+    1
+    + 2
+{% endhighlight %}
 
 ### Changes affecting binary encoding
 
-As of Scala 2.13.13, there are 3 changes under `-Xsource:3-cross` that affect binary encoding of classfiles. For all of these changes a fatal warning is issued under `-Xsource:3`.
+As of Scala 2.13.14, there are 3 changes in `-Xsource-features` that affect binary encoding of classfiles:
 
-  1. The constructor modifiers of case classes (`case class C private[p] (x: Int)`) are copied to the synthetic `apply` and `copy` methods.
-  1. The synthetic companion objects of case classes no longer extend `FunctionN`.
-  1. Overriding methods without an explicit return type inherit the return type from the parent (instead of using the inferred type of the method body).
+  1. `case-apply-copy-access`: the constructor modifiers of case classes (`case class C private[p] (x: Int)`) are copied to the synthetic `apply` and `copy` methods.
+  1. `case-companion-function`: the synthetic companion objects of case classes no longer extend `FunctionN`.
+  1. `infer-override`: overriding methods without an explicit return type inherit the return type from the parent (instead of using the inferred type of the method body).
 
-For projects that are already cross-building between Scala 2 and Scala 3 with existing releases for both, enabling `-Xsource:3-cross` breaks binary compatibility. For example, if a library defines
+For projects that are already cross-building between Scala 2 and 3 with existing releases for both, enabling these changes breaks binary compatibility (make sure to use [MiMa to detect such changes](https://github.com/lightbend/mima)). For example, if a library defines
 
 {% highlight scala %}
 trait A { def f: Object }
 class B extends A { def f = "hi" }
 {% endhighlight %}
 
-  - enabling `-Xsource:3-cross` breaks binary compatibility on Scala 2.13: existing releases have `A.f: String`, the new version will have `A.f: Object`
+  - enabling `-Xsource-features:infer-override` breaks binary compatibility on Scala 2.13: existing releases have `A.f: String`, the new version will have `A.f: Object`
   - adding an explicit result type `A.f: String` breaks binary compatibility on Scala 3: existing releases have `A.f: Object`
 
 It is possible to work around this using version-dependent source files, see [scala/scala-xml#675](https://github.com/scala/scala-xml/pull/675) as an example.
 
-Working around the case companion `FunctionN` parent change is currently difficult (Scala 2.13.13), a solution is being discussed at [scala/bug#12961](https://github.com/scala/bug/issues/12961).
-
-### Changes in language semantics
-
-The following table shows cases where `-Xsource:3-cross` adopts language feature semantics from Scala 3.
-
-| Feature | `-Xsource:3` | `-Xsource:3-cross` |
-|--- |--- |--- |
-| `(x: Any) + ""` is deprecated | deprecation warning | does not compile, implicit `any2stringadd` is not inferred |
-| Unicode escapes in triple-quoted strings and raw interpolations (`"""\u0061"""`) | fatal warning, escape is processed | escape is not processed |
-| Leading infix operators continue the previous line <sup>1</sup> | fatal warning, second line is a separate expression | operation continues the previous line |
-| Desugaring of string interpolators using `StringContext` | fatal warning if the interpolation references a `StringContext` in scope different from `scala.StringContext` | desugaring always uses `scala.StringContext` |
-| An implicit for type `p.A` is found in the package prefix `p` | fatal warning | the package prefix `p` is no longer part of the implicit search scope |
-
-Example 1:
-
-{% highlight text %}
-  def f =
-    1
-    + 2
-{% endhighlight %}
+Instead of implementing such workarounds, it might be easier not to enable changes affecting binary encoding (`-Xsource-features:v2.13.14,-case-apply-copy-access,-case-companion-function,-infer-override`).
