@@ -290,7 +290,7 @@ Note, that `matches` only performs a limited amount of normalization and while f
 ### Arbitrary Expressions
 
 Last but not least, it is possible to create an `Expr[T]` from arbitary Scala code by enclosing it in [quotes][quotes].
-For example, `'{ ${expr}; true }` will generate an `Expr[Int]` equivalent to `Expr.block(List(expr), Expr(true))`.
+For example, `'{ ${expr}; true }` will generate an `Expr[Boolean]` equivalent to `Expr.block(List(expr), Expr(true))`.
 The subsequent section on [Quoted Code][quotes] presents quotes in more detail.
 
 [contributing]: {% link scala3/contribute-to-docs.md %}
