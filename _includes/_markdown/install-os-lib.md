@@ -15,11 +15,8 @@ Alternatively, you can require just a specific version of OS-Lib:
 {% tab 'sbt' %}
 In your `build.sbt`, you can add a dependency on the toolkit:
 ```scala
-lazy val example = project.in(file("example"))
-  .settings(
-    scalaVersion := "3.2.2",
-    libraryDependencies += "org.scala-lang" %% "toolkit" % "0.1.7"
-  )
+scalaVersion := "3.2.2"
+libraryDependencies += "org.scala-lang" %% "toolkit" % "0.1.7"
 ```
 Alternatively, you can require just a specific version of OS-Lib:
 ```scala
