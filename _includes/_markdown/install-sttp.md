@@ -9,7 +9,7 @@ You can require the entire toolkit in a single line:
 
 Alternatively, you can require just a specific version of sttp:
 ```scala
-//> using dep com.softwaremill.sttp.client4::core:4.0.0-M1
+//> using dep com.softwaremill.sttp.client4::core:4.0.0-M6
 ```
 {% endtab %}
 {% tab 'sbt' %}
@@ -24,7 +24,7 @@ lazy val example = project.in(file("example"))
 
 Alternatively, you can require just a specific version of sttp:
 ```scala
-libraryDependencies += "com.softwaremill.sttp.client4" %% "core" % "4.0.0-M1"
+libraryDependencies += "com.softwaremill.sttp.client4" %% "core" % "4.0.0-M6"
 ```
 {% endtab %}
 {% tab 'Mill' %}
@@ -40,7 +40,7 @@ object example extends ScalaModule {
 ```
 Alternatively, you can require just a specific version of sttp:
 ```scala
-ivy"com.softwaremill.sttp.client4::core:4.0.0-M1"
+ivy"com.softwaremill.sttp.client4::core:4.0.0-M6"
 ```
 {% endtab %}
 {% endtabs %}
