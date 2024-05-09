@@ -938,10 +938,10 @@ val nums = List(1, 2, 3)
     <tr>
       <td class="scala-block">
         <code>// preferred
-        <br>for i &lt;- ints do println(i)
+        <br>for i &lt;- nums do println(i)
         <br>
         <br>// also available
-        <br>for (i &lt;- ints) println(i)</code>
+        <br>for (i &lt;- nums) println(i)</code>
       </td>
     </tr>
   </tbody>
