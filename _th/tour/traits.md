@@ -137,7 +137,7 @@ iterator.next()  // returns 1
 >  // parameter `pet` มี type เป็น trait `Pet`
 >  def getPetName(pet: Pet): String = pet.name
 >
-> getPetName(dog)
+>  getPetName(dog)
 > ```
 >
 > ถ้าอิงจากตัวอย่างจาก code block ด้านล่าง เราจะเห็นได้ว่า code ด้านบน\
