@@ -44,7 +44,7 @@ trait Iterator[A] {
 
 {% tab 'Scala 3' for=trait-iterator-definition %}
 
-```scala
+```scala 3
 trait Iterator[A]:
   def hasNext: Boolean
   def next(): A
@@ -92,7 +92,7 @@ iterator.next()  // returns 1
 
 {% tab 'Scala 3' for=trait-intiterator-definition %}
 
-```scala
+```scala 3
 trait Iterator[A]:
   def hasNext: Boolean
   def next(): A
@@ -135,9 +135,7 @@ iterator.next()  // returns 1
 >  val dog = new Dog("Harry") // คลาส `Dog` เป็น subtype ของ trait `Pet`
 >
 >  // parameter `pet` มี type เป็น trait `Pet`
->  def getPetName(pet: Pet): String {
->    return pet.name
->  }
+>  def getPetName(pet: Pet): String = pet.name
 >
 > getPetName(dog)
 > ```
@@ -173,7 +171,7 @@ animals.foreach(pet => println(pet.name))  // แสดงค่า Harry Sally
 
 {% tab 'Scala 3' for=trait-pet-example %}
 
-```scala
+```scala 3
 import scala.collection.mutable.ArrayBuffer
 
 trait Pet:
