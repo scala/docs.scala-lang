@@ -123,10 +123,10 @@ iterator.next()  // returns 1
 
 ## Subtyping
 
-เมื่อจำเป็นต้องใช้ trait นั้นๆ เราสามารถใช้ subtype (คลาสใดๆ ที่ extend มาจาก trait) แทนได้
+เมื่อจำเป็นต้องใช้ trait ใดๆ เราสามารถใช้ subtype (คลาสใดก็ตาม ที่ extend มาจาก trait นั้นๆ) แทนได้
 
 > **Note by Thai translator:**\
-> "เมื่อจำเป็นต้องใช้ trait นั้นๆ" ในที่นี้ น่าจะหมายถึงเรามีการระบุไว้ว่า parameter ที่ได้ระบุ type เป็น trait\
+> "เมื่อจำเป็นต้องใช้ trait ใดๆ" ในที่นี้ น่าจะหมายถึงเรามีการระบุไว้ว่า parameter ที่ได้ระบุ type เป็น trait\
 > ดังนั้นเราสามารถใช้ *subtype ใดๆ ที่ implement จาก trait นั้นๆ ได้*
 >
 > ลองพิจารณา code นี้
@@ -134,6 +134,7 @@ iterator.next()  // returns 1
 > ```scala
 >  val dog = new Dog("Harry") // คลาส `Dog` เป็น subtype ของ trait `Pet`
 >
+>  // parameter `pet` มี type เป็น trait `Pet`
 >  def getPetName(pet: Pet): String {
 >    return pet.name
 >  }
