@@ -11,8 +11,9 @@ next-page: tuples
 previous-page: classes
 ---
 
-Trait ใช้เพื่อแชร์ interface และ field ระหว่างคลาส มันจะคล้ายกับ interface ใน Java 8
-คลาส และ object สามารถ extend trait ได้ แต่ trait ไม่สามารถสร้างเป็น object ได้ ดังนั้น trait จึงไม่สามารถมี parameter เช่นเดียวกับคลาส
+Trait ใช้เพื่อแชร์ interface และ field ระหว่างคลาส โดยที่ trait จะคล้ายกับ interface ใน Java 8\
+คลาส และ object สามารถ extend trait ได้ แต่เราไม่สามารถสร้าง object จาก trait ได้\
+ดังนั้น trait จึงไม่สามารถมี parameter เช่นเดียวกับที่คลาสมี
 
 ## การกำหนด trait
 
@@ -117,11 +118,32 @@ iterator.next()  // returns 1
 
 {% endtabs %}
 
-คลาส `IntIterator` นี้รับค่า parameter `to` เพื่อกำหนดค่าสูงสุด (upper bound) โดยที่คลาส `IntIterator` ได้ extend จาก `Iterator[Int]` ดังนั้น method `next` จะต้อง return ค่าเป็น Int
+คลาส `IntIterator` นี้รับค่า parameter `to` เพื่อกำหนดค่าสูงสุด (upper bound) โดยที่คลาส `IntIterator` ได้ extend จาก `Iterator[Int]`\
+ดังนั้น method `next` จะต้อง return ค่าเป็น Int
 
 ## Subtyping
 
-ในเมื่อ trait ที่ให้มานั้น required, subtype ของ trait สามารถถูกใช้แทนที่ได้
+เมื่อจำเป็นต้องใช้ trait นั้นๆ เราสามารถใช้ subtype (คลาสใดๆ ที่ extend มาจาก trait) แทนได้
+
+> **Note by Thai translator:**\
+> "เมื่อจำเป็นต้องใช้ trait นั้นๆ" ในที่นี้ น่าจะหมายถึงเรามีการระบุไว้ว่า parameter ที่ได้ระบุ type เป็น trait\
+> ดังนั้นเราสามารถใช้ *subtype ใดๆ ที่ implement จาก trait นั้นๆ ได้*
+>
+> ลองพิจารณา code นี้
+>
+> ```scala
+>  val dog = new Dog("Harry") // คลาส `Dog` เป็น subtype ของ trait `Pet`
+>
+>  def getPetName(pet: Pet): String {
+>    return pet.name
+>  }
+>
+> getPetName(dog)
+> ```
+>
+> ถ้าอิงจากตัวอย่างจาก code block ด้านล่าง เราจะเห็นได้ว่า code ด้านบน\
+> เราส่งตัวแปร `dog` ซึ่งเป็น instance ของคลาส `Dog`\
+> โดยที่คลาส `Dog` ก็เป็น subtype ของ trait `Pet` อีกทีหนึ่ง
 
 {% tabs trait-pet-example class=tabs-scala-version %}
 
@@ -172,5 +194,5 @@ animals.foreach(pet => println(pet.name))  // แสดงค่า Harry Sally
 
 {% endtabs %}
 
-`trait Pet` มี abstract field `name` ซึ่ง implement ด้วย Cat และ Dog ใน constructor ของมัน
-ในบรรทัดสุดท้าย เราเรียกใช้ `pet.name` ซึ่งใน subtype ใดๆ ของ trait `Pet` (ในที่นี้คือ `Cat`, และ `Dog`) ได้ implement field `name` ไว้แล้ว
+`trait Pet` มี abstract field `name` ซึ่ง implement ไว้ใน constructor ของคลาส `Cat` และ `Dog`\
+ในบรรทัดสุดท้าย เราเรียกใช้ `pet.name` ซึ่งได้มีการ implement `name` ไว้ใน subtype ใดๆ ของ trait `Pet` แล้ว
