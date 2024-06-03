@@ -44,7 +44,7 @@ trait Iterator[A] {
 
 {% tab 'Scala 3' for=trait-iterator-definition %}
 
-```scala 3
+```scala
 trait Iterator[A]:
   def hasNext: Boolean
   def next(): A
@@ -92,7 +92,7 @@ iterator.next()  // returns 1
 
 {% tab 'Scala 3' for=trait-intiterator-definition %}
 
-```scala 3
+```scala
 trait Iterator[A]:
   def hasNext: Boolean
   def next(): A
@@ -171,7 +171,7 @@ animals.foreach(pet => println(pet.name))  // แสดงค่า Harry Sally
 
 {% tab 'Scala 3' for=trait-pet-example %}
 
-```scala 3
+```scala
 import scala.collection.mutable.ArrayBuffer
 
 trait Pet:
