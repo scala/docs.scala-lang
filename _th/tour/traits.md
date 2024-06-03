@@ -141,7 +141,7 @@ iterator.next()  // returns 1
 > ```
 >
 > ถ้าอิงจากตัวอย่างจาก code block ด้านล่าง เราจะเห็นได้ว่า code ด้านบน\
-> เราส่งตัวแปร `dog` ซึ่งเป็น instance ของคลาส `Dog`\
+> เราส่งตัวแปร `dog` ซึ่งเป็น instance ของคลาส `Dog` ไปให้ function `getPetName`\
 > โดยที่คลาส `Dog` ก็เป็น subtype ของ trait `Pet` อีกทีหนึ่ง
 
 {% tabs trait-pet-example class=tabs-scala-version %}
