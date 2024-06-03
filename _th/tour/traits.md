@@ -127,7 +127,7 @@ iterator.next()  // returns 1
 
 > ***Note by Thai translator:***\
 > "เมื่อจำเป็นต้องใช้ trait ใดๆ" ในที่นี้ น่าจะหมายถึงเรามีการระบุไว้ว่า parameter ที่ได้ระบุ type เป็น trait\
-> ดังนั้นเราสามารถใช้ *subtype ใดๆ ที่ implement จาก trait นั้นๆ ได้*
+> ดังนั้นเราสามารถใช้ **subtype ใดๆ ที่ implement จาก trait นั้นๆ ได้**
 >
 > **ลองพิจารณา code นี้:**
 >
