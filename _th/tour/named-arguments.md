@@ -38,7 +38,8 @@ named argument นั้นมีประโยชน์เมื่อ paramet
 แต่ถ้า argument ไม่ได้อยู่ในลำดับของ parameter ใน function จากซ้ายไปขวา แล้ว argument ที่เหลือจะต้องระบุชื่อทั้งหมด
 
 ในตัวอย่างข้างล่างนี้ named argument ทำให้เราสามารถเว้น parameter `middle` ได้\
-แต่ในกรณีที่เกิด error เนื่องจาก argument ตัวแรกอยู่นอกลำดับของ parameter (ตัวแรกไม่ใช่ parameter `first`)\
+แต่ในกรณีที่เกิด `error: positional after named argument`\
+เนื่องจาก argument ตัวแรกไม่ได้เรียงตามลำดับของ parameter (ตัวแรกไม่ใช่ parameter `first` และ argument ตัวที่ 2 เป็นต้นไปก็ไม่ได้ระบุชื่อด้วย)\
 ดังนั้น เราจะต้องระบุชื่อ argument ตั้งแต่ตัวที่ 2 เป็นต้นไป
 
 {% tabs named-arguments-when-error %}
