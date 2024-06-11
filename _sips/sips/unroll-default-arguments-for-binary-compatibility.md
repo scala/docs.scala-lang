@@ -1,7 +1,7 @@
 ---
 title: SIP-61 - Unroll Default Arguments for Binary Compatibility
-status: under-review
+status: waiting-for-implementation
 pull-request-number: 78
-stage: design
+stage: implementation
 
 ---
