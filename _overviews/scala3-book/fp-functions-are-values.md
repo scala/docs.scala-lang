@@ -20,7 +20,7 @@ You’ve seen this in multiple places in this book, whenever methods like `map` 
 ```scala
 val nums = (1 to 10).toList
 
-val doubles = nums.map(_ * 2)           // double each value
+val double = nums.map(_ * 2)            // double each value
 val lessThanFive = nums.filter(_ < 5)   // List(1,2,3,4)
 ```
 {% endtab %}
