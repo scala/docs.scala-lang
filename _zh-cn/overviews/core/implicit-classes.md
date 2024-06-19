@@ -61,7 +61,7 @@ Scala 2.10引入了一种叫做隐式类的新特性。隐式类指的是用impl
 
 2. 构造函数只能携带一个非隐式参数。
 ````
-    implicit class RichDate(date: java.util.Date) // 正确！
+    implicit class RichDate(date: java.time.LocalDate) // 正确！
     implicit class Indexer[T](collecton: Seq[T], index: Int) // 错误！
     implicit class Indexer[T](collecton: Seq[T])(implicit index: Index) // 正确！
 ````
