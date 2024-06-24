@@ -67,9 +67,9 @@ object Macros:
 
   private def locationImpl(using quotes: Quotes): Expr[Location] =
     import quotes.reflect.Position
-    val file = Expr(Position.ofMacroExpansion.sourceFile.jpath.toString)
+    val path = Expr(Position.ofMacroExpansion.sourceFile.path)
     val line = Expr(Position.ofMacroExpansion.startLine + 1)
-    '{new Location($file, $line)}
+    '{new Location($path, $line)}
 ```
 {% endtab %}
 {% endtabs %}
