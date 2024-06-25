@@ -146,7 +146,7 @@ public class MyJavaClass extends TheirClass ...
 {% endtab %}
 {% endtabs %}
 
-An annotation application in Scala looks like a constructor invocation, for instantiating a Java annotation one has to use named arguments:
+An annotation application in Scala looks like a constructor invocation, but to instantiate a Java annotation one has to use named arguments:
 
 {% tabs annotations_7 %}
 {% tab 'Scala 2 and 3' for=annotations_7 %}

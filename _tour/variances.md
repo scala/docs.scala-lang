@@ -112,7 +112,7 @@ From this, we have to conclude that `Box[Cat]` and `Box[Animal]` can't have a su
 
 The problem we ran in to above, is that because we could put a Dog in an Animal Box, a Cat Box can't be an Animal Box.
 
-But what if we couldn't put a Dog in the box? Then we could just get our Cat back out and that's not a problem, so than it could follow the subtyping relationship. It turns out, that's indeed something we can do.
+But what if we couldn't put a Dog in the box? Then, we could just get our Cat back out without a problem, and it would adhere to the subtyping relationship. It turns out that that's possible to do.
 
 {% tabs covariance_1 class=tabs-scala-version %}
 {% tab 'Scala 2' for=covariance_1 %}

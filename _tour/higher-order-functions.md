@@ -16,7 +16,7 @@ The terminology can get a bit confusing at this point, and we use the phrase
 "higher order function" for both methods and functions that take functions as parameters
 or that return a function.
 
-In a pure Object Oriented world a good practice is to avoid exposing methods parameterized with functions that might leak object's internal state. Leaking internal state might break the invariants of the object itself thus violating encapsulation.
+In a pure Object Oriented world, a good practice is to avoid exposing methods parameterised with functions that might leak an object's internal state. Leaking internal state might break the invariants of the object itself, thus violating encapsulation.
 
 One of the most common examples is the higher-order
 function `map` which is available for collections in Scala.
@@ -51,7 +51,7 @@ val newSalaries = salaries.map(x => x * 2) // List(40000, 140000, 80000)
 {% endtabs %}
 
 Notice how `x` is not declared as an Int in the above example. That's because the
-compiler can infer the type based on the type of function map expects (see [Currying](/tour/multiple-parameter-lists.html)). An even more idiomatic way to write the same piece of code would be:
+compiler can infer the type based on the type of function `map` expects (see [Currying](/tour/multiple-parameter-lists.html)). An even more idiomatic way to write the same piece of code would be:
 
 {% tabs map_example_3 %}
 
@@ -187,7 +187,7 @@ object SalaryRaiser:
 The new method, `promotion`, takes the salaries plus a function of type `Double => Double`
 (i.e. a function that takes a Double and returns a Double) and returns the product.
 
-Methods and functions usually express behaviours or data transformations, therefore having functions that compose based on other functions can help building generic mechanisms. Those generic operations defer to lock down the entire operation behaviour giving clients a way to control or further customize parts of the operation itself.
+Methods and functions usually express behaviours or data transformations. Therefore, having functions that compose based on other functions can allow us to build more generic mechanisms. Such generic operations avoid completely locking down their behaviour in order to give clients a way to control or further customize parts of those operations.
 
 ## Functions that return functions
 
