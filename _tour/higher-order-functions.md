@@ -187,7 +187,7 @@ object SalaryRaiser:
 The new method, `promotion`, takes the salaries plus a function of type `Double => Double`
 (i.e. a function that takes a Double and returns a Double) and returns the product.
 
-Methods and functions usually express behaviours or data transformations, therefore having functions that compose based on other functions can help building generic mechanisms. Those generic operations defer to lock down the entire operation behaviour giving clients a way to control or further customize parts of the operation itself.
+Methods and functions usually express behaviours or data transformations. Therefore, having functions that compose based on other functions can allow us to build more generic mechanisms. Such generic operations avoid completely locking down their behaviour in order to give clients a way to control or further customize parts of those operations.
 
 ## Functions that return functions
 
