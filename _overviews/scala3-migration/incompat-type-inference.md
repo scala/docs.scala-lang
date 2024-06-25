@@ -81,7 +81,9 @@ val foo = new {
 {% endtab %}
 {% endtabs %}
 
-However the Scala 3 compiler does not infer structural types by default, and so infers type `Object` for `foo`, rather than `{ def bar: Unit }` as in Scala 2.13, so the following structural selection fail to compile:
+However the Scala 3 compiler does not infer structural types by default.
+It infers the type `Object` for `foo` instead of `{ def bar: Unit }`.
+Therefore, the following structural selection fails to compile:
 
 {% tabs use_structural %}
 {% tab 'Scala 3 Only' %}
