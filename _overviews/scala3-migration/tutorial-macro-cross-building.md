@@ -101,11 +101,11 @@ If you try to compile with Scala 3 you should see some errors of the same kind a
 {% highlight text %}
 sbt:example> ++3.3.1
 sbt:example> example / compile
-[error] -- Error: /example/src/main/scala/location/Location.scala:15:35 
+[error] -- Error: /example/src/main/scala/location/Location.scala:15:35
 [error] 15 |    val location = typeOf[Location]
 [error]    |                                   ^
 [error]    |                              No TypeTag available for location.Location
-[error] -- Error: /example/src/main/scala/location/Location.scala:18:4 
+[error] -- Error: /example/src/main/scala/location/Location.scala:18:4
 [error] 18 |    q"new $location($path, $line)"
 [error]    |    ^
 [error]    |Scala 2 macro cannot be used in Dotty. See https://dotty.epfl.ch/docs/reference/dropped-features/macros.html
@@ -165,7 +165,7 @@ They must have the exact same signature than their Scala 2.13 counterparts.
 package location
 
 object Macros:
-  def location: Location = ???
+  inline def location: Location = ???
 ```
 {% endtab %}
 {% endtabs %}
@@ -191,7 +191,7 @@ object Macros:
   private def locationImpl(using quotes: Quotes): Expr[Location] =
     import quotes.reflect.Position
     val pos = Position.ofMacroExpansion
-    val file = Expr(pos.sourceFile.jpath.toString)
+    val file = Expr(pos.sourceFile.path.toString)
     val line = Expr(pos.startLine + 1)
     '{new Location($file, $line)}
 ```
