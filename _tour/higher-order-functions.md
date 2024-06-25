@@ -51,7 +51,7 @@ val newSalaries = salaries.map(x => x * 2) // List(40000, 140000, 80000)
 {% endtabs %}
 
 Notice how `x` is not declared as an Int in the above example. That's because the
-compiler can infer the type based on the type of function map expects (see [Currying](/tour/multiple-parameter-lists.html)). An even more idiomatic way to write the same piece of code would be:
+compiler can infer the type based on the type of function `map` expects (see [Currying](/tour/multiple-parameter-lists.html)). An even more idiomatic way to write the same piece of code would be:
 
 {% tabs map_example_3 %}
 
