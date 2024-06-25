@@ -33,7 +33,7 @@ methods and variables.
 
 Any definitions placed at the top level of a package are considered members of the package itself.
 
-> In Scala 2 top-level method, type and variable definitions had to be wrapped in a **package object**.
+> In Scala 2, top-level method, type and variable definitions had to be wrapped in a **package object**.
 > These are still usable in Scala 3 for backwards compatibility. You can see how they work by switching tabs.
 
 {% endtab %}
