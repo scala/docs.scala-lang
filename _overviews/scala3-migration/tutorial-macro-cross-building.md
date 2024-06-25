@@ -24,10 +24,11 @@ In order to exemplify this tutorial, we will consider the minimal macro library 
 lazy val example = project
   .in(file("example"))
   .settings(
-    scalaVersion := "2.13.11",
+    scalaVersion := "2.13.14",
     libraryDependencies ++= Seq(
-      "org.scala-lang" % "scala-reflect" % scalaVersion.value
-    )
+      "org.scala-lang" % "scala-reflect" % scalaVersion.value,
+      "org.scalameta" %% "munit" % "1.0.0" % Test,
+    ),
   )
 ```
 
@@ -45,7 +46,7 @@ case class Location(path: String, line: Int)
 object Macros {
   def location: Location = macro locationImpl
 
-  private def locationImpl(c: Context): c.Tree =  {
+  def locationImpl(c: Context): c.Tree =  {
     import c.universe._
     val location = typeOf[Location]
     val line = Literal(Constant(c.enclosingPosition.line))
@@ -73,11 +74,11 @@ The main idea is to build the artifact twice and to publish two releases:
 You can add Scala 3 to the list of `crossScalaVersions` of your project:
 
 ```scala
-crossScalaVersions := Seq("2.13.11", "3.3.1")
+crossScalaVersions := Seq("2.13.14", "3.3.3")
 ```
 
 The `scala-reflect` dependency won't be useful in Scala 3.
-Remove it conditionally with something like:
+Add it conditionally under Scala 2 with something like:
 
 ```scala
 // build.sbt
@@ -91,15 +92,15 @@ libraryDependencies ++= {
 }
 ```
 
-After reloading sbt, you can switch to the Scala 3 context by running `++3.3.1`.
-At any point you can go back to the Scala 2.13 context by running `++2.13.11`.
+After reloading sbt, you can switch to the Scala 3 context by running `++3.3.3`.
+At any point you can go back to the Scala 2.13 context by running `++2.13.14`.
 
 ## 2. Rearrange the code in version-specific source directories
 
 If you try to compile with Scala 3 you should see some errors of the same kind as:
 
 {% highlight text %}
-sbt:example> ++3.3.1
+sbt:example> ++3.3.3
 sbt:example> example / compile
 [error] -- Error: /example/src/main/scala/location/Location.scala:15:35 
 [error] 15 |    val location = typeOf[Location]
@@ -143,7 +144,7 @@ import scala.language.experimental.macros
 object Macros {
   def location: Location = macro locationImpl
 
-  private def locationImpl(c: Context): c.Tree =  {
+  def locationImpl(c: Context): c.Tree =  {
     import c.universe._
     val location = typeOf[Location]
     val line = Literal(Constant(c.enclosingPosition.line))
@@ -156,7 +157,7 @@ object Macros {
 {% endtabs %}
 
 Now we can initialize each of our Scala 3 macro definitions in the `src/main/scala-3` folder.
-They must have the exact same signature than their Scala 2.13 counterparts.
+They must have the exact same signature as their Scala 2.13 counterparts.
 
 {% tabs scala-3-location_1 %}
 {% tab 'Scala 3 Only' %}
@@ -191,9 +192,9 @@ object Macros:
   private def locationImpl(using quotes: Quotes): Expr[Location] =
     import quotes.reflect.Position
     val pos = Position.ofMacroExpansion
-    val file = Expr(pos.sourceFile.jpath.toString)
+    val path = Expr(pos.sourceFile.path)
     val line = Expr(pos.startLine + 1)
-    '{new Location($file, $line)}
+    '{new Location($path, $line)}
 ```
 {% endtab %}
 {% endtabs %}
@@ -222,13 +223,13 @@ class MacrosSpec extends munit.FunSuite {
 You should now be able to run the tests in both versions.
 
 {% highlight text %}
-sbt:example> ++2.13.11
+sbt:example> ++2.13.14
 sbt:example> example / test
 location.MacrosSpec:
   + location
 [info] Passed: Total 1, Failed 0, Errors 0, Passed 1
 [success]
-sbt:example> ++3.3.1
+sbt:example> ++3.3.3
 sbt:example> example / test
 location.MacrosSpec:
   + location
