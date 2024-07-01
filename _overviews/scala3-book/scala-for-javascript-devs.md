@@ -970,7 +970,7 @@ val nums = List(1, 2, 3)
       <td class="scala-block">
         <code>// preferred
         <br>for i &lt;- nums do
-        <br>&nbsp; val i = i * 2
+        <br>&nbsp; val j = i * 2
         <br>&nbsp; println(j)
         <br>
         <br>// also available
