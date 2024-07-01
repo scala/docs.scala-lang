@@ -260,7 +260,7 @@
       type: "String"
       arg: "release"
       default:
-    description: "Compile for a specific version of the Java platform. Supported targets: 6, 7, 8, 9"
+    description: "Compile for a specific version of the Java platform. Supported targets: 8, 11, or any higher version listed at https://docs.scala-lang.org/overviews/jdk-compatibility/overview.html"
     abbreviations:
     - "--release"
   - option: "-sourcepath"
