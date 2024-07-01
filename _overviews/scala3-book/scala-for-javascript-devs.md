@@ -992,7 +992,7 @@ val nums = List(1, 2, 3)
         <code>let str = &quot;ab&quot;;
         <br>for (let i = 1; i &lt; 3; i++) {
         <br>&nbsp; for (var j = 0; j &lt; str.length; j++) {
-        <br>&nbsp;&nbsp;&nbsp; for (let k = 1; k &lt; 11; k++) {
+        <br>&nbsp;&nbsp;&nbsp; for (let k = 1; k &lt; 11; k += 5) {
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; let c = str.charAt(j);
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; console.log(`i: ${i} j: ${c} k: ${k}`);
         <br>&nbsp;&nbsp;&nbsp; }
