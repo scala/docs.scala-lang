@@ -103,7 +103,7 @@ Two often used implementations of buffers are `ListBuffer` and `ArrayBuffer`.  A
 | ------                   | ------                                                           |
 |  **Additions:**          |                                                                  |
 |  `buf.append(x)`<br>or `buf += x`              |Appends element `x` to buffer, and returns `buf` itself as result.|
-|  `buf.appendAll(xs)`<br>or`buf ++= xs`         |Appends all elements in `xs` to buffer.|
+|  `buf.appendAll(xs)`<br>or `buf ++= xs`        |Appends all elements in `xs` to buffer.|
 |  `buf.prepend(x)`<br>or `x +=: buf`            |Prepends element `x` to buffer.|
 |  `buf.prependAll(xs)`<br>or `xs ++=: buf`      |Prepends all elements in `xs` to buffer.|
 |  `buf.insert(i, x)`      |Inserts element `x` at index `i` in buffer.|
