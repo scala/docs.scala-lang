@@ -44,12 +44,12 @@ def maxElement[A](as: List[A])(using ord: Ord[A]): A =
 {% tabs context-bounds-max-ord class=tabs-scala-version %}
 {% tab 'Scala 2' %}
 ```scala
-/** Defines how to compare values of type `A` */
+// Defines how to compare values of type `A`
 trait Ord[A] {
   def greaterThan(a1: A, a2: A): Boolean
 }
 
-/** Returns the maximum of two values */
+// Returns the maximum of two values
 def max[A](a1: A, a2: A)(implicit ord: Ord[A]): A =
   if (ord.greaterThan(a1, a2)) a1 else a2
 ```
@@ -57,11 +57,11 @@ def max[A](a1: A, a2: A)(implicit ord: Ord[A]): A =
 
 {% tab 'Scala 3' %}
 ```scala
-/** Defines how to compare values of type `A` */
+// Defines how to compare values of type `A`
 trait Ord[A]:
   def greaterThan(a1: A, a2: A): Boolean
 
-/** Returns the maximum of two values */
+// Returns the maximum of two values
 def max[A](a1: A, a2: A)(using ord: Ord[A]): A =
   if ord.greaterThan(a1, a2) then a1 else a2
 ```
