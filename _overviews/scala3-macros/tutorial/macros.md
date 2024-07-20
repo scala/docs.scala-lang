@@ -154,7 +154,7 @@ We will provide the custom error message by calling `errorAndAbort` on the `repo
 def powerCode(
   x: Expr[Double],
   n: Expr[Int]
-)(using Quotes): Expr[Double] =
+)(using quotes: Quotes): Expr[Double] =
   import quotes.reflect.report
   (x.value, n.value) match
     case (Some(base), Some(exponent)) =>
