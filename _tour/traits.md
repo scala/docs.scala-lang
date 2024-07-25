@@ -98,7 +98,7 @@ class IntIterator(to: Int) extends Iterator[Int]:
       0
 end IntIterator
 
-val iterator = new IntIterator(10)
+val iterator = IntIterator(10)
 iterator.next()  // returns 0
 iterator.next()  // returns 1
 ```
