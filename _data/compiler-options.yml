@@ -469,10 +469,6 @@
     schema:
       type: "Boolean"
     description: "Don't perform exhaustivity/unreachability analysis. Also, ignore @switch annotation."
-  - option: "-Xno-uescape"
-    schema:
-      type: "Boolean"
-    description: "Disable handling of \\u unicode escapes."
   - option: "-Xnojline"
     schema:
       type: "Boolean"
