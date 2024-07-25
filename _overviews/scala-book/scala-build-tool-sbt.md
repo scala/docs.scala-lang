@@ -161,5 +161,4 @@ Here’s a list of other build tools you can use to build Scala projects:
 - [Ant](http://ant.apache.org/)
 - [Gradle](https://gradle.org/)
 - [Maven](https://maven.apache.org/)
-- [Fury](https://github.com/propensive/fury)
 - [Mill](https://com-lihaoyi.github.io/mill/)
