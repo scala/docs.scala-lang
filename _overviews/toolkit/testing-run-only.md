@@ -22,7 +22,7 @@ scala-cli test example --test-only example.MyTests
 {% tab 'sbt' %}
 To run a single `example.MyTests` suite in sbt, use the `testOnly` task:
 ```
-sbt:example> example/testOnly example.MyTests
+sbt:example> testOnly example.MyTests
 ```
 {% endtab %}
 {% tab 'Mill' %}
