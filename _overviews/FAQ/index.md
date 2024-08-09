@@ -273,6 +273,15 @@ for multiple reasons, most notoriously
 For an in-depth treatment of types vs. classes, see the blog post
 ["There are more types than classes"](https://typelevel.org/blog/2017/02/13/more-types-than-classes.html).
 
+### Should I declare my parameterless method with or without parentheses?
+
+In other words, should one write `def foo()` or just `def foo`?
+
+Answer: by convention, the former is used to indicate that a method
+has side effects.
+
+For more details, see the Scala Style Guide, [here](https://docs.scala-lang.org/style/naming-conventions.html#parentheses).
+
 ### How can a method in a superclass return a value of the “current” type?
 
 First, note that using `this.type` won't work. People often try that,
