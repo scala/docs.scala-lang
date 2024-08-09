@@ -24,4 +24,4 @@ permalink: "/zh-cn/scala3/book/:title.html"
 > 或者，您可以使用 [Scastie](https://scastie.scala-lang.org) 在 Web 浏览器中运行这些示例，这是一个完全在线的编辑器和 Scala 的代码运行器。
 
 [reference]: {{ site.scala3ref }}/overview.html
-[get-started]: {% link _overviews/getting-started/index.md %}
+[get-started]: {% link _overviews/getting-started/install-scala.md %}
