@@ -16,13 +16,14 @@ Alternatively, you can require just a specific version of MUnit:
 {% tab 'sbt' %}
 In your build.sbt file, you can add the dependency on toolkit-test:
 ```scala
-lazy val example = project.in(file("example"))
+lazy val example = project.in(file("."))
   .settings(
     scalaVersion := "3.3.3",
     libraryDependencies += "org.scala-lang" %% "toolkit-test" % "0.1.7" % Test
   )
 ```
-Here the `Test` configuration means that the dependency is only used by the source files in `example/src/test`.
+
+Here the `Test` configuration means that the dependency is only used by the source files in `src/test`.
 
 Alternatively, you can require just a specific version of MUnit:
 ```scala
