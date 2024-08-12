@@ -273,7 +273,7 @@ normal `::`) between the organization and the artifact name,
 to declare your dependency.
 
 For more information about plugin usage in Mill, please refer to the
-[Mill documentation](http://mill-build.org/mill/Scala_Module_Config.html#_scala_compiler_plugins).
+[Mill documentation for Scala compiler plugins](https://mill-build.org/mill/Scala_Module_Config.html#_scala_compiler_plugins).
 
 ## Developing compiler plugins with an IDE
 
