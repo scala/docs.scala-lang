@@ -163,7 +163,7 @@
       url: "core/binary-compatibility-for-library-authors.html"
     - title: Nightly Versions of Scala
       description: "We regularly publish 'nightlies' of both Scala 2 and 3 so that users can preview and test the contents of upcoming releases. Here's how to find and use these versions."
-      url: "core/nightly-builds.html"
+      url: "core/nightlies.html"
 
 - category: "Tools"
   description: "Reference material on core Scala tools like the Scala REPL and Scaladoc generation."
