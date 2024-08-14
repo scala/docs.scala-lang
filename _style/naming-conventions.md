@@ -195,44 +195,36 @@ getter and setter. For example:
 
 ### Parentheses
 
-Unlike Ruby, Scala attaches significance to whether or not a method is
-*declared* with parentheses (only applicable to methods of
-[arity](https://en.wikipedia.org/wiki/Arity)-0). For example:
+Scala allows a parameterless, zero-[arity](https://en.wikipedia.org/wiki/Arity)
+method to be declared with an empty parameter list:
 
     def foo1() = ...
 
+or with no parameter lists at all:
+
     def foo2 = ...
 
-These are different methods at compile-time. While `foo1` can be called
-with or without the parentheses, `foo2` *may not* be called *with*
-parentheses.
+By convention, parentheses are used to indicate that a method has
+side effects, such as altering the receiver.
 
-Thus, it is actually quite important that proper guidelines be observed
-regarding when it is appropriate to declare a method without parentheses
-and when it is not.
+On the other hand, the absence of parentheses indicates that a
+method is like an accessor: it returns a value without altering the
+receiver, and on the same receiver in the same state, it always
+returns the same answer.
 
-Methods which act as accessors of any sort (either encapsulating a field
-or a logical property) should be declared *without* parentheses except
-if they have side effects. While Ruby and Lift use a `!` to indicate
-this, the usage of parens is preferred (please note that fluid APIs and
-internal domain-specific languages have a tendency to break the
-guidelines given below for the sake of syntax. Such exceptions should
-not be considered a violation so much as a time when these rules do not
-apply. In a DSL, syntax should be paramount over convention).
+The callsite should follow the declaration; if declared with
+parentheses, call with parentheses.
 
-Further, the callsite should follow the declaration; if declared with
-parentheses, call with parentheses. While there is temptation to save a
-few characters, if you follow this guideline, your code will be *much*
-more readable and maintainable.
+These conventions are followed in the Scala standard library and
+you should follow them in your own code as well.
 
-    // doesn't change state, call as birthdate
-    def birthdate = firstName
+Additional notes:
 
-    // updates our internal state, call as age()
-    def age() = {
-      _age = updateAge(birthdate)
-      _age
-    }
+* Scala 3 errors if you leave out the parentheses at the call site. Scala 2 merely warns.
+* Scala 3 and 2 both error if the call site has parentheses where the definition doesn't.
+* Java-defined methods are exempt from this distinction and may be called either way.
+* If a method _does_ take parameters, there isn't any convention for indicating whether it also has side effects.
+* Creating an object isn't considered a side effect. So for example, Scala collections have an `iterator` method with no parens. Yes, you get a new iterator each time. And yes, iterators are mutable. But every fresh iterator is the same until it has been altered by calling a side-effecting method such as `Iterator#next()`, which _is_ declared with parentheses. See this [2018 design discussion](https://github.com/scala/collection-strawman/issues/520).
 
 ### Symbolic Method Names
 
