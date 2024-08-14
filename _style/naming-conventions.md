@@ -205,7 +205,7 @@ or with no parameter lists at all:
     def foo2 = ...
 
 By convention, parentheses are used to indicate that a method has
-side effects.
+side effects, such as altering the receiver.
 
 On the other hand, the absence of parentheses indicates that a
 method is like an accessor: it returns a value without altering the
