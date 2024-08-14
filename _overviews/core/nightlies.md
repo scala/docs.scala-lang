@@ -4,15 +4,15 @@ title: Nightly Versions of Scala
 permalink: /overviews/core/:title.html
 ---
 
-We regularly publish nightly builds of both Scala 2 and 3 so that users can preview and test the contents of upcoming releases.
+We regularly publish nightly versions of both Scala 2 and 3 so that users can preview and test the contents of upcoming releases.
 
-We informally call them "nightly" builds, but technically it's a misnomer. A so-called “nightly” is built for every merged PR.
+We informally call them "nightly" versions, but technically it's a misnomer. A so-called “nightly” is built for every merged PR.
 
 Here's how to find and use these versions.
 
 ## Scala 3
 
-Scala 3 nightly builds are published to Maven Central. If you know the full version number of the nightly you want to use, you can use it just like any other Scala 3 version.
+Scala 3 nightly versions are published to Maven Central. If you know the full version number of the nightly you want to use, you can use it just like any other Scala 3 version.
 
 One quick way to get that version number is to visit https://dotty.epfl.ch and look in the upper left corner.
 
@@ -35,7 +35,7 @@ See this [scala-cli doc page](https://scala-cli.virtuslab.org/docs/commands/comp
 
 ## Scala 2.13 or 2.12
 
-Scala 3 nightly builds are published to a special resolver. You'll need to add that resolver to your build configuration in order to use these versions.
+Scala 3 nightly versions are published to a special resolver. Unless you are using scala-cli, you'll need to add that resolver to your build configuration in order to use these versions.
 
 ### quick version (sbt)
 
@@ -65,7 +65,7 @@ The default command is `repl`, but all the other scala-cli subcommands such as `
 
 We no longer publish `-SNAPSHOT` versions of Scala 2.
 
-But the team does publish nightly builds, each with its own fixed version number. The version number of a nightly looks like e.g. `2.13.1-bin-abcd123`. (`-bin-` signals binary compatibility to sbt; all 2.13.x releases since 2.13.0 are binary compatible with each other.)
+But the team does publish nightly versions, each with its own fixed version number. The version number of a nightly looks like e.g. `2.13.1-bin-abcd123`. (`-bin-` signals binary compatibility to sbt; all 2.13.x releases since 2.13.0 are binary compatible with each other.)
 
 To tell sbt to use one of these nightlies, you need to do three things.
 
@@ -78,7 +78,7 @@ Second, specify the Scala version:
 
     scalaVersion := "2.13.1-bin-abcd123"
 
-But that isn't a real version number. Manually substitute a version number containing the 7-character SHA of the last commit in the [scala/scala repository](https://github.com/scala/scala) for which a nightly build was published.  Look at https://travis-ci.org/scala/scala/branches and you'll see the SHA in the upper right corner of the 2.13.x (or 2.12.x) section.
+But that isn't a real version number. Manually substitute a version number containing the 7-character SHA of the last commit in the [scala/scala repository](https://github.com/scala/scala) for which a nightly version was published.  Look at https://travis-ci.org/scala/scala/branches and you'll see the SHA in the upper right corner of the 2.13.x (or 2.12.x) section.
 
 As soon as 2.13.1 is released, the version number in the nightly will bump to 2.13.2, and so on.
 

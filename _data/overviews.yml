@@ -162,7 +162,7 @@
       icon: puzzle-piece
       url: "core/binary-compatibility-for-library-authors.html"
     - title: Nightly Versions of Scala
-      description: "We regularly publish 'nightlies' of both Scala 2 and 3 so that users can preview and test the contents of upcoming releases. Here's how to find and use these versions."
+      description: "We regularly publish 'nightlies' of both Scala 3 and Scala 2 so that users can preview and test the contents of upcoming releases. Here's how to find and use these versions."
       url: "core/nightlies.html"
 
 - category: "Tools"
