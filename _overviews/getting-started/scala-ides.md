@@ -15,8 +15,6 @@ keywords:
 - Metals
 ---
 
-By Maciej Gorywoda
-
 ## Introduction
 
 Theoretically, you can write Scala code even in a notepad and compile and run the code from the terminal. When you do it, the compiler will tell you if it encounters any problems and suggest changes. You can apply that feedback in the notepad and try again.
