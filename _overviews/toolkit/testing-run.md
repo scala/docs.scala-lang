@@ -27,7 +27,7 @@ scala-cli test example
 {% tab 'sbt' %}
 In the sbt shell, the following command runs all the tests of the project `example`:
 ```
-sbt:example> example/test
+sbt:example> test
 # MyTests:
 #   + sum of two integers 0.006s
 # [info] Passed: Total 1, Failed 0, Errors 0, Passed 1
@@ -74,7 +74,7 @@ test("failing test") {
 ```
 # MyTests:
 #   + sum of two integers 0.008s
-# ==> X MyTests.failing test  0.015s munit.ComparisonFailException: ./example/MyTests.test.scala:13
+# ==> X MyTests.failing test  0.015s munit.ComparisonFailException: ./MyTests.test.scala:13
 # 12:    val expected = 4
 # 13:    assertEquals(obtained, expected)
 # 14:  }
