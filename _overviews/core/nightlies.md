@@ -35,7 +35,7 @@ See this [scala-cli doc page](https://scala-cli.virtuslab.org/docs/commands/comp
 
 ## Scala 2.13 or 2.12
 
-Scala 3 nightly versions are published to a special resolver. Unless you are using scala-cli, you'll need to add that resolver to your build configuration in order to use these versions.
+Scala 2 nightly versions are published to a special resolver. Unless you are using scala-cli, you'll need to add that resolver to your build configuration in order to use these versions.
 
 ### quick version (sbt)
 
