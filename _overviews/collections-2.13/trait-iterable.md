@@ -133,7 +133,7 @@ res7: List[Int] = List(3, 4, 5)
 | `xs.count(p)`	    	                       |The number of elements in `xs` that satisfy the predicate `p`.|
 | **Folds:** 		                             |						     |
 | `xs.foldLeft(z)(op)`	                     |Apply binary operation `op` between successive elements of `xs`, going left to right and starting with `z`.|
-| `xs.foldRight(z)(op)`	                    |Apply binary operation `op` between successive elements of `xs`, going right to left and ending with `z`.|
+| `xs.foldRight(z)(op)`	                    |Apply binary operation `op` between successive elements of `xs`, going right to left and starting with `z`.|
 | `xs.reduceLeft(op)`	                      |Apply binary operation `op` between successive elements of non-empty collection `xs`, going left to right.|
 | `xs.reduceRight(op)`	                     |Apply binary operation `op` between successive elements of non-empty collection `xs`, going right to left.|
 | **Specific Folds:**                       |						     |
