@@ -1,8 +1,8 @@
 ---
 layout: sip
 permalink: /sips/:title.html
-stage: design
-status: submitted
+stage: implementation
+status: waiting-for-implementation
 title: SIP-62 - For comprehension improvements
 ---
 
