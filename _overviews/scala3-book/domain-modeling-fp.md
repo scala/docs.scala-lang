@@ -777,7 +777,7 @@ extension (p: Pizza)
     p.copy(crustType = ct)
 ```
 In the above code, we define the different methods on pizzas as _extension methods_.
-With `extension (p: Pizza)` we say that we want to make the methods available on instances of `Pizza`. The reciever
+With `extension (p: Pizza)` we say that we want to make the methods available on instances of `Pizza`. The receiver
 in this case is `p`.
 
 {% endtab %}
