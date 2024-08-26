@@ -20,7 +20,7 @@ with names corresponding to names of fields in the form and set the form method 
 object MyApp extends cask.MainRoutes {
 
   @cask.get("/form")
-  def getForm(): String = {
+  def getForm(): cask.Response = {
     val html =
       """<!doctype html>
         |<html>
@@ -51,7 +51,7 @@ object MyApp extends cask.MainRoutes {
 object MyApp extends cask.MainRoutes:
   
   @cask.get("/form")
-  def getForm(): String =
+  def getForm(): cask.Response =
     val html =
       """<!doctype html>
         |<html>
@@ -163,7 +163,7 @@ object MyApp extends cask.MainRoutes:
 {% endtab %}
 {% endtabs %}
 
-In this example the JSON is merely converted to `String`, check the [*uPickle tutorial*](/toolkit/json-introduction.html) for more information
+In this example the JSON is merely converted to `String`, check the [*uPickle tutorial*](/toolkit/json-intro.html) for more information
 on what can be done with `ujson.Value` type.
 
 Send a POST request.

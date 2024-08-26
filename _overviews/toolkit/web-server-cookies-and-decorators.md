@@ -3,7 +3,7 @@ title: How to use cookies and decorators?
 type: section
 description: Using cookies and decorators with Cask
 num: 36
-previous-page: web-server-query-websockets
+previous-page: web-server-websockets
 next-page: 
 ---
 
