@@ -11,15 +11,8 @@ next-page: web-server-websockets
 
 ## Handling form-encoded input
 
-Similarly to path segments and query parameters, form fields are read by using endpoint method arguments. Use `cask.postForm`
-annotation and set the HTML form method to `post`.
-
-In this example we create a form asking for name and surname of a user and then redirect to a greeting page. Notice the
-use of `cask.Response`. The default returned content type is `text/plain`, set it to `text/html` in order for browser to display
-the form correctly.
-
-The `formMethod` endpoint reads the form data using `name` and `surname` parameters. The names of parameters must
-be identical to the field names of the form.
+To create an endpoint that handles the data provided in an HTML form, use `cask.postForm` annotation, give the endpoint method arguments
+with names corresponding to names of fields in the form and set the form method to `post`.
 
 {% tabs web-server-input-1 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
@@ -27,7 +20,7 @@ be identical to the field names of the form.
 object MyApp extends cask.MainRoutes {
 
   @cask.get("/form")
-  def getForm() = {
+  def getForm(): String = {
     val html =
       """<!doctype html>
         |<html>
@@ -46,7 +39,7 @@ object MyApp extends cask.MainRoutes {
   }
 
   @cask.postForm("/form")
-  def formEndpoint(name: String, surname: String) =
+  def formEndpoint(name: String, surname: String): String =
     "Hello " + name + " " + surname
 
   initialize()
@@ -58,7 +51,7 @@ object MyApp extends cask.MainRoutes {
 object MyApp extends cask.MainRoutes:
   
   @cask.get("/form")
-  def getForm() =
+  def getForm(): String =
     val html =
       """<!doctype html>
         |<html>
@@ -76,7 +69,7 @@ object MyApp extends cask.MainRoutes:
     cask.Response(data = html, headers = Seq("Content-Type" -> "text/html"))
 
   @cask.postForm("/form")
-  def formEndpoint(name: String, surname: String) =
+  def formEndpoint(name: String, surname: String): String =
     "Hello " + name + " " + surname
 
   initialize()
@@ -84,11 +77,17 @@ object MyApp extends cask.MainRoutes:
 {% endtab %}
 {% endtabs %}
 
+In this example we create a form asking for name and surname of a user and then redirect the user to a greeting page. Notice the
+use of `cask.Response`. The default returned content type in case of `String` returning endpoint method is `text/plain`,
+set it to `text/html` in order for browser to display the form correctly.
+
+The `formEndpoint` endpoint reads the form data using `name` and `surname` parameters. The names of parameters must
+be identical to the field names of the form.
+
 ## Handling JSON-encoded input
 
-JSON fields are handled in the same way as form fields, except that `cask.PostJson` annotation is used. The topmost fields
-will be read into the endpoint method arguments and if any of them is missing or has an incorrect type, an error message
-will be returned with 400 response code.
+JSON fields are handled in the same way as form fields, except that `cask.PostJson` annotation is used. The fields
+will be read into the endpoint method arguments.
 
 {% tabs web-server-input-2 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
@@ -96,7 +95,7 @@ will be returned with 400 response code.
 object MyApp extends cask.MainRoutes {
   
   @cask.postJson("/json")
-  def jsonEndpoint(name: String, surname: String) =
+  def jsonEndpoint(name: String, surname: String): String =
     "Hello " + name + " " + surname
 
   initialize()
@@ -107,8 +106,8 @@ object MyApp extends cask.MainRoutes {
 ```scala
 object MyApp extends cask.MainRoutes:
 
-  @cask.postJson("/json")
-  def jsonEndpoint(name: String, surname: String) = 
+@cask.postJson("/json")
+  def jsonEndpoint(name: String, surname: String): String =
     "Hello " + name + " " + surname
   
   initialize()
@@ -129,7 +128,12 @@ The response will be:
 Hello John Smith
 ```
 
-Deserialization is handled by uPickle JSON library. To deserialize an object, use `ujson.Value` type.
+The endpoint will accept JSONs that have only the fields with names specified as the endpoint method arguments. If there
+are more fields than expected, some fields are missing or have an incorrect data type, an error message
+will be returned with 400 response code.
+
+To handle the case when the fields of the JSON are not known in advance, you can use argument with the `ujson.Value` type
+from uPickle library.
 
 {% tabs web-server-input-3 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
@@ -137,7 +141,7 @@ Deserialization is handled by uPickle JSON library. To deserialize an object, us
 object MyApp extends cask.MainRoutes {
 
   @cask.postJson("/json")
-  def jsonEndpoint(value: ujson.Value) =
+  def jsonEndpoint(value: ujson.Value): String =
     value.toString
 
   initialize()
@@ -150,7 +154,7 @@ object MyApp extends cask.MainRoutes {
 object MyApp extends cask.MainRoutes:
 
   @cask.postJson("/json")
-  def jsonEndpoint(value: ujson.Value) = 
+  def jsonEndpoint(value: ujson.Value): String = 
     value.toString
 
   initialize()
@@ -159,6 +163,9 @@ object MyApp extends cask.MainRoutes:
 {% endtab %}
 {% endtabs %}
 
+In this example the JSON is merely converted to `String`, check the [*uPickle tutorial*](/toolkit/json-introduction.html) for more information
+on what can be done with `ujson.Value` type.
+
 Send a POST request.
 ```shell
 curl --header "Content-Type: application/json" \
@@ -166,7 +173,7 @@ curl --header "Content-Type: application/json" \
   http://localhost:8080/json2
 ```
 
-Server will respond with:
+The server will respond with:
 ```
 "{\"name\":\"John\",\"surname\":\"Smith\"}"
 ```
@@ -174,12 +181,12 @@ Server will respond with:
 ## Handling JSON-encoded output
 
 Cask endpoint can return JSON objects returned by uPickle library functions. Cask will automatically handle the `ujson.Value`
-type and set the `Content-Type application/json` header.
+type and set the `Content-Type` header to `application/json`.
 
-In this example we use a simple `TimeData` case class to send information about the time zone and current time in a chosen
-location. To serialize a case class into JSON you need to define a serializer in its companion object.
+In this example `TimeData` case class stores the information about the time zone and current time in a chosen
+location. To serialize a case class into JSON, use type class derivation or define the serializer in its companion object in case of Scala 2.
 
-{% tabs web-server-input-3 class=tabs-scala-version %}
+{% tabs web-server-input-4 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
 ```scala
 object MyApp extends cask.MainRoutes {
@@ -195,7 +202,7 @@ object MyApp extends cask.MainRoutes {
   }
 
   @cask.get("/time_json/:city")
-  def timeJSON(city: String) = {
+  def timeJSON(city: String): ujson.Value = {
     val timezone = getZoneIdForCity(city)
     val time = timezone match {
       case Some(zoneId) => s"Current date is: ${ZonedDateTime.now().withZoneSameInstant(zoneId)}"
@@ -210,20 +217,18 @@ object MyApp extends cask.MainRoutes {
 ```scala
 object MyApp extends cask.MainRoutes {
   import upickle.default.{ReadWriter, macroRW, writeJs}
-  case class TimeData(timezone: Option[String], time: String)
-  object TimeData:
-    given rw: ReadWriter[TimeData]= macroRW
+  case class TimeData(timezone: Option[String], time: String) derives ReadWriter
 
   private def getZoneIdForCity(city: String): Option[ZoneId] =
     import scala.jdk.CollectionConverters.*
     ZoneId.getAvailableZoneIds.asScala.find(_.endsWith("/" + city)).map(ZoneId.of)
   
   @cask.get("/time_json/:city")
-  def timeJSON(city: String) = {
+  def timeJSON(city: String): ujson.Value = {
     val timezone = getZoneIdForCity(city)
     val time = timezone match
-        case Some(zoneId)=> s"Current date is: ${ZonedDateTime.now().withZoneSameInstant(zoneId)}"
-        case None => s"Couldn't find time zone for city $city"
+      case Some(zoneId)=> s"Current date is: ${ZonedDateTime.now().withZoneSameInstant(zoneId)}"
+      case None => s"Couldn't find time zone for city $city"
     writeJs(TimeData(timezone.map(_.toString), time))
   }
 }

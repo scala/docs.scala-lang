@@ -9,22 +9,25 @@ next-page: web-server-dynamic
 
 {% include markdown.html path="_markdown/install-cask.md" %}
 
-## Writing an endpoint
+## Serving a static file
 
-To create a static file serving endpoint first we need to prepare the project structure.
+An endpoint is a specific URL where a particular webpage can be accessed. In Cask an endpoint is a function returning the
+webpage data together with an annotation describing the URL it's available at.
 
-Create an example HTML file named `hello.html` with following contents.
+To create a static file serving endpoint we need two things: an HTML file with the page content and a function that
+points out to the location of the file.
+
+Create a minimal HTML file named `hello.html` with following contents.
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hello World</title>
-</head>
-<body>
-<h1>Hello world</h1>
-</body>
+<!doctype html>
+<html>
+    <head>
+        <title>Hello World</title>
+    </head>
+    <body>
+        <h1>Hello world</h1>
+    </body>
 </html>
 ```
 
@@ -34,14 +37,12 @@ Place it in the `resources` directory.
 {% tab 'Scala CLI' %}
 ```
 example
-├── Example.sc
+├── Example.scala
 └── resources
      └── hello.html
 ```
 {% endtab %}
 {% tab 'sbt' %}
-
-For instance, the following is the file structure of a project `example`:
 ```
 example
 └──src
@@ -49,33 +50,29 @@ example
         ├── resources
         │   └── hello.html
         └── scala
-            └── MyApp.scala
+            └── Example.scala
 ```
 {% endtab %}
 {% tab 'Mill' %}
-For instance, the following is the file structure of an example project:
 ```
 example
 ├── src
-│    └── MyApp.scala
+│    └── Example.scala
 └── resources
      └── hello.html
 ```
 {% endtab %}
 {% endtabs %}
 
-The `@cask.staticFiles` annotation tells the server to match the part of path coming after what is specified in the
-annotation itself and find a matching file in the directory defined by the endpoint function. 
-
-In this example the directory with static files is `src/main/resources` and the URL path under which files are available is 
-`/static`. Thus, the `hello.html` page is available under `/static/hello.html`.
+The `@cask.staticFiles` annotation specifies at which path the webpage will be available. The endpoint function returns
+the location in which the file can be found.
 
 {% tabs web-server-static-2 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
 ```scala
-object MyApp extends cask.MainRoutes {
+object Example extends cask.MainRoutes {
   @cask.staticFiles("/static")
-  def staticEndpoint() = "src/main/resources"
+  def staticEndpoint(): String = "src/main/resources" // or "resources" if not using SBT
 
   initialize()
 }
@@ -83,25 +80,36 @@ object MyApp extends cask.MainRoutes {
 {% endtab %}
 {% tab 'Scala 3' %}
 ```scala
-object MyApp extends cask.MainRoutes:
+object Example extends cask.MainRoutes:
   @cask.staticFiles("/static")
-  def staticEndpoint() = "src/main/resources"
+  def staticEndpoint(): String = "src/main/resources" // or "resources" if not using SBT
 
   initialize()
 ```
 {% endtab %}
 {% endtabs %}
 
-As the file is placed in the resources directory, you can achieve the same effect using `@cask.staticResources`. In
-this case the path is set to `"."`, as the `hello.html` file is available directly in the resources directory, as opposed
-to being present in a nested directory.
+In the example above, `@cask.staticFiles` instructs the server to look for files accessed at `/static` path in the 
+`src/main/resources` directory. Cask will match any subpath coming after `/static` and append it to the directory path.
+If you access the `/static/hello.html` file, it will serve the file available at `src/main/resources/hello.html`.
+The directory path can be any path available to the server, relative or not. If the requested file cannot be found in the
+specified location, a 404 response with an error message will be returned instead.
+
+The `Example` object inherits from `cask.MainRoutes` class, providing the main function starting the server. The `initialize()`
+method call initializes the server routes, i.e. the association between URL paths and the code that handles them.
+
+### Using the resources directory
+
+The `@cask.staticResources` annotation works in the same way as `@cask.staticFiles` used above with the difference that
+the path returned by the endpoint method describes the location of files _inside_ the resources directory. Since the
+previous example conveniently used the resources directory, it can be simplified with `@cask.staticResources`.
 
 {% tabs web-server-static-3 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
 ```scala
-object MyApp extends cask.MainRoutes {
+object Example extends cask.MainRoutes {
   @cask.staticResources("/static")
-  def staticEndpoint() = "."
+  def staticEndpoint(): String = "."
 
   initialize()
 }
@@ -109,14 +117,19 @@ object MyApp extends cask.MainRoutes {
 {% endtab %}
 {% tab 'Scala 3' %}
 ```scala
-object MyApp extends cask.MainRoutes:
+object Example extends cask.MainRoutes:
   @cask.staticResources("/static")
-  def staticEndpoint() = "."
+  def staticEndpoint(): String = "."
 
   initialize()
 ```
 {% endtab %}
 {% endtabs %}
+
+In the endpoint method the location is set to `"."`, telling the server that the files are available directly in the
+resources directory. In general, you can use any nested location within the resources directory, for instance you could opt
+for placing your HTML files in `static` directory inside the resources directory or use different directories to sort out
+files used by different endpoints.
 
 ## Running the example
 
@@ -126,7 +139,7 @@ Run the example with the build tool of your choice.
 {% tab 'Scala CLI' %}
 In the terminal, the following command will start the server:
 ```
-scala-cli run Example.sc
+scala-cli run Example.scala
 ```
 {% endtab %}
 {% tab 'sbt' %}

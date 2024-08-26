@@ -9,7 +9,7 @@ next-page: web-server-cookies-and-decorators
 
 {% include markdown.html path="_markdown/install-cask.md" %}
 
-You can create a WebSockets endpoint by using the `@cask.websocket` annotation. The endpoint method can return either a
+You can create a WebSocket endpoint by using the `@cask.websocket` annotation. The endpoint method can return either a
 `cask.WsHandler` instance defining how the communication should take place, or a `cask.Response`, which rejects the 
 attempt of forming a WebSocket connection.
 
@@ -57,7 +57,7 @@ event handler is executed when server pushes a message to the browser and `ws.on
 Create an endpoint for serving static files using `@cask.staticResources` annotation and the endpoint for handling
 the WebSocket connection.
 
-{% tabs web-server-query-1 class=tabs-scala-version %}
+{% tabs web-server-websocket-1 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
 ```scala
 @cask.staticResources("/static")

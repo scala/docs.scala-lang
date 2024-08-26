@@ -9,11 +9,9 @@ next-page: web-server-query-parameters
 
 {% include markdown.html path="_markdown/install-cask.md" %}
 
-## Basic example
+## Serving dynamically generated content
 
-To create an endpoint returning dynamically generated content, use `@cask.get` annotation.
-
-For example, create an endpoint that returns the current date and time.
+You can create an endpoint returning dynamically generated content with `@cask.get` annotation.
 
 {% tabs web-server-dynamic-1 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
@@ -22,7 +20,7 @@ import java.time.ZonedDateTime
 
 object MyApp extends cask.MainRoutes {
   @cask.get("/time")
-  def dynamic() = s"Current date is: ${ZonedDateTime.now()}"
+  def dynamic(): String = s"Current date is: ${ZonedDateTime.now()}"
 
   initialize()
 }
@@ -34,21 +32,29 @@ import java.time.ZonedDateTime
 
 object MyApp extends cask.MainRoutes:
   @cask.get("/time")
-  def dynamic() = s"Current date is: ${ZonedDateTime.now()}"
+  def dynamic(): String = s"Current date is: ${ZonedDateTime.now()}"
 
   initialize()
 ```
 {% endtab %}
 {% endtabs %}
 
+The example above creates an endpoint returning the current date and time available at `/time`. The exact response will be 
+recreated every time you refresh the webpage.
 
-Run the example the same way as before (assuming you use the same project structure).
+Since the endpoint method has `String` output type, the result will be sent with `text/plain` [content type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type).
+If you want an HTML output being interpreted by the browser, you else need to set the `Content-Type` header manually
+or [use the Scalatags templating library](/toolkit/web-server-dynamic.html#using-html-templates), supported by Cask.
+
+### Running the example
+
+Run the example the same way as before, assuming you use the same project structure as described in [the static file tutorial](/toolkit/web-server-static.html).
 
 {% tabs web-server-dynamic-2 class=tabs-build-tool %}
 {% tab 'Scala CLI' %}
 In the terminal, the following command will start the server:
 ```
-scala-cli run Example.sc
+scala-cli run Example.scala
 ```
 {% endtab %}
 {% tab 'sbt' %}
@@ -65,8 +71,7 @@ In the terminal, the following command will start the server:
 {% endtab %}
 {% endtabs %}
 
-Access the endpoint at [http://localhost:8080/time](http://localhost:8080/time). You should see a result similar to the
-one below.
+Access [the endpoint](http://localhost:8080/time). You should see a result similar to the one below.
 
 ```
 Current date is: 2024-07-22T09:07:05.752534+02:00[Europe/Warsaw]
@@ -74,8 +79,9 @@ Current date is: 2024-07-22T09:07:05.752534+02:00[Europe/Warsaw]
 
 ## Using path segments
 
-You can use path segments to specify the returned data more precisely. Building on the example above, add the `:city`
-segment to get the current time in a city of choice.
+Cask gives you the ability to access segments of the URL path withing the endpoint function.
+Building on the example above, you can add a segment to specify that the endpoint should return the date and time
+in a given city.
 
 {% tabs web-server-dynamic-3 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
@@ -90,7 +96,7 @@ object MyApp extends cask.MainRoutes {
   }
 
   @cask.get("/time/:city")
-  def dynamicWithCity(city: String) = {
+  def dynamicWithCity(city: String): String = {
     getZoneIdForCity(city) match {
       case Some(zoneId) => s"Current date is: ${ZonedDateTime.now().withZoneSameInstant(zoneId)}"
       case None => s"Couldn't find time zone for city $city"
@@ -112,7 +118,7 @@ object MyApp extends cask.MainRoutes:
     ZoneId.getAvailableZoneIds.asScala.find(_.endsWith("/" + city)).map(ZoneId.of)
   
   @cask.get("/time/:city")
-  def dynamicWithCity(city: String) =
+  def dynamicWithCity(city: String): String =
     getZoneIdForCity(city) match
       case Some(zoneId) => s"Current date is: ${ZonedDateTime.now().withZoneSameInstant(zoneId)}"
       case None => s"Couldn't find time zone for city $city"
@@ -122,23 +128,22 @@ object MyApp extends cask.MainRoutes:
 {% endtab %}
 {% endtabs %}
 
-Accessing the endpoint at [http://localhost:8080/time/Paris](http://localhost:8080/time/Paris) will result with:
+In the example above, the `:city` segment in `/time/:city` is available through the `city` argument of the endpoint method.
+The name of the argument must be identical to the segment name. The `getZoneIdForCity` helper method find the timezone for
+a given city and then the current date and time is translated to that timezone.
+
+Accessing [the endpoint](http://localhost:8080/time/Paris) (notice the `Paris` segment in the URL) will result with:
 ```
 Current date is: 2024-07-22T09:08:33.806259+02:00[Europe/Paris]
 ```
 
-and at [http://localhost:8080/time/Tokyo](http://localhost:8080/time/Tokyo) you will see:
-```
-Current date is: 2024-07-22T16:08:41.137563+09:00[Asia/Tokyo]
-```
-
-Cask endpoints can handle either fixed or arbitrary number of path segments. Please consult the 
-[documentation](https://com-lihaoyi.github.io/cask/index.html#variable-routes) for more details.
+You can use more than one path segment in an endpoint by adding more arguments to the endpoint method. It's also possible to use paths
+with an unspecified number of segments (for example `/path/foo/bar/baz/`) by giving the endpoint method an argument with `cask.RemainingPathSegments` type.
+Consult the [documentation](https://com-lihaoyi.github.io/cask/index.html#variable-routes) for more details.
 
 ## Using HTML templates
 
-You can combine Cask code with a templating library like [Scalatags](https://com-lihaoyi.github.io/scalatags/) to
-build an HTML response.
+To create an HTML response, you can combine Cask code with the [Scalatags](https://com-lihaoyi.github.io/scalatags/) templating library.
 
 Import the Scalatags library:
 
@@ -163,9 +168,10 @@ ivy"com.lihaoyi::scalatags::0.13.1"
 {% endtab %}
 {% endtabs %}
 
-Now the example above can be rewritten to use a template. Cask will build a response out of the `doctype` automatically.
+Now the example above can be rewritten to use a template. Cask will build a response out of the `doctype` automatically,
+setting the `Content-Type` header to `text/html`.
 
-{% tabs web-server-dynamic-3 class=tabs-scala-version %}
+{% tabs web-server-dynamic-5 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
 ```scala
 import java.time.{ZoneId, ZonedDateTime}
@@ -179,7 +185,7 @@ object MyApp extends cask.MainRoutes {
   }
   
   @cask.get("/time/:city")
-  def dynamicWithCity(city: String) = {
+  def dynamicWithCity(city: String): doctype = {
     val text = getZoneIdForCity(city) match {
       case Some(zoneId) => s"Current date is: ${ZonedDateTime.now().withZoneSameInstant(zoneId)}"
       case None => s"Couldn't find time zone for city $city"
@@ -188,7 +194,7 @@ object MyApp extends cask.MainRoutes {
     doctype("html")(
       html(
         body(
-          h1(text)
+          p(text)
         )
       )
     )
@@ -210,14 +216,14 @@ object MyApp extends cask.MainRoutes:
     ZoneId.getAvailableZoneIds.asScala.find(_.endsWith("/" + city)).map(ZoneId.of)
 
   @cask.get("/time/:city")
-  def dynamicWithCity(city: String) =
+  def dynamicWithCity(city: String): doctype =
     val text = getZoneIdForCity(city) match
-        case Some(zoneId) => s"Current date is: ${ZonedDateTime.now().withZoneSameInstant(zoneId)}"
-        case None => s"Couldn't find time zone for city $city"
+      case Some(zoneId) => s"Current date is: ${ZonedDateTime.now().withZoneSameInstant(zoneId)}"
+      case None => s"Couldn't find time zone for city $city"
     doctype("html")(
       html(
         body(
-          h1(text)
+          p(text)
         )
       )
     )
@@ -226,3 +232,6 @@ object MyApp extends cask.MainRoutes:
 ```
 {% endtab %}
 {% endtabs %}
+
+Here we get the text of response and wrap it in a Scalatags template. Notice that the return type changed from `String`
+to `doctype`. 
