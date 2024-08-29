@@ -39,11 +39,11 @@ object MyApp extends cask.MainRoutes:
 {% endtab %}
 {% endtabs %}
 
-The example above creates an endpoint returning the current date and time available at `/time`. The exact response will be 
+The example above creates an endpoint, returning the current date and time available at `/time`. The exact response will be 
 recreated every time you refresh the webpage.
 
-Since the endpoint method has `String` output type, the result will be sent with `text/plain` [content type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type).
-If you want an HTML output being interpreted by the browser, you else need to set the `Content-Type` header manually
+Since the endpoint method has the `String` output type, the result will be sent with `text/plain` [content type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type).
+If you want an HTML output to be interpreted by the browser, you will need to set the `Content-Type` header manually
 or [use the Scalatags templating library](/toolkit/web-server-dynamic.html#using-html-templates), supported by Cask.
 
 ### Running the example
@@ -71,7 +71,7 @@ In the terminal, the following command will start the server:
 {% endtab %}
 {% endtabs %}
 
-Access [the endpoint](http://localhost:8080/time). You should see a result similar to the one below.
+Access the endpoint at [http://localhost:8080/time](http://localhost:8080/time). You should see a result similar to the one below.
 
 ```
 Current date is: 2024-07-22T09:07:05.752534+02:00[Europe/Warsaw]
@@ -79,7 +79,7 @@ Current date is: 2024-07-22T09:07:05.752534+02:00[Europe/Warsaw]
 
 ## Using path segments
 
-Cask gives you the ability to access segments of the URL path withing the endpoint function.
+Cask gives you the ability to access segments of the URL path within the endpoint function.
 Building on the example above, you can add a segment to specify that the endpoint should return the date and time
 in a given city.
 
@@ -129,10 +129,10 @@ object MyApp extends cask.MainRoutes:
 {% endtabs %}
 
 In the example above, the `:city` segment in `/time/:city` is available through the `city` argument of the endpoint method.
-The name of the argument must be identical to the segment name. The `getZoneIdForCity` helper method find the timezone for
-a given city and then the current date and time is translated to that timezone.
+The name of the argument must be identical to the segment name. The `getZoneIdForCity` helper method finds the timezone for
+a given city, and then the current date and time are translated to that timezone.
 
-Accessing [the endpoint](http://localhost:8080/time/Paris) (notice the `Paris` segment in the URL) will result with:
+Accessing the endpoint at[http://localhost:8080/time/Paris](http://localhost:8080/time/Paris) will result in:
 ```
 Current date is: 2024-07-22T09:08:33.806259+02:00[Europe/Paris]
 ```
@@ -233,5 +233,5 @@ object MyApp extends cask.MainRoutes:
 {% endtab %}
 {% endtabs %}
 
-Here we get the text of response and wrap it in a Scalatags template. Notice that the return type changed from `String`
+Here we get the text of the response and wrap it in a Scalatags template. Notice that the return type changed from `String`
 to `doctype`. 

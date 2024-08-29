@@ -10,11 +10,11 @@ next-page: web-server-input
 {% include markdown.html path="_markdown/install-cask.md" %}
 
 Query parameters are the key-value pairs coming after the question mark in a URL. They can be used for filtering, 
-sorting or limiting the results provided by the server. For example, in `<host>/time?city=Paris` URL, the `city` part
-is the name of a parameter and `Paris` is its value. Cask allows for reading the query parameters by defining an endpoint
+sorting or limiting the results provided by the server. For example, in the `<host>/time?city=Paris` URL, the `city` part
+is the name of a parameter, and `Paris` is its value. Cask allows for reading the query parameters by defining an endpoint
 method with arguments matching the names of the expected parameters and not matching any of the URL segments.
 
-In this example the `city` parameter will be optional, which you specify in Cask by giving the argument `Option` type and 
+In this example, the `city` parameter will be optional, which you specify in Cask by giving the argument `Option` type and 
 `None` default value. If not provided, the time for the current timezone will be returned.
 
 {% tabs web-server-query-1 class=tabs-scala-version %}
@@ -67,7 +67,7 @@ object MyApp extends cask.MainRoutes:
 {% endtab %}
 {% endtabs %}
 
-Run the example as before and access the [endpoint](http://localhost:8080/time?city=Paris) (notice the `?city=Paris` part of the URL).
+Run the example as before and access the endpoint at [http://localhost:8080/time?city=Paris](http://localhost:8080/time?city=Paris).
 You should get a result similar to the following one.
 ```
 Current date is: 2024-07-22T10:08:18.218736+02:00[Europe/Paris]

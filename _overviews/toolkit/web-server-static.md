@@ -11,13 +11,13 @@ next-page: web-server-dynamic
 
 ## Serving a static file
 
-An endpoint is a specific URL where a particular webpage can be accessed. In Cask an endpoint is a function returning the
+An endpoint is a specific URL where a particular webpage can be accessed. In Cask, an endpoint is a function returning the
 webpage data together with an annotation describing the URL it's available at.
 
-To create a static file serving endpoint we need two things: an HTML file with the page content and a function that
-points out to the location of the file.
+To create a static file serving endpoint, we need two things: an HTML file with the page content and a function that
+points out the location of the file.
 
-Create a minimal HTML file named `hello.html` with following contents.
+Create a minimal HTML file named `hello.html` with the following contents.
 
 ```html
 <!doctype html>
@@ -89,18 +89,18 @@ object Example extends cask.MainRoutes:
 {% endtab %}
 {% endtabs %}
 
-In the example above, `@cask.staticFiles` instructs the server to look for files accessed at `/static` path in the 
+In the example above, `@cask.staticFiles` instructs the server to look for files accessed at the `/static` path in the 
 `src/main/resources` directory. Cask will match any subpath coming after `/static` and append it to the directory path.
 If you access the `/static/hello.html` file, it will serve the file available at `src/main/resources/hello.html`.
 The directory path can be any path available to the server, relative or not. If the requested file cannot be found in the
 specified location, a 404 response with an error message will be returned instead.
 
-The `Example` object inherits from `cask.MainRoutes` class, providing the main function starting the server. The `initialize()`
-method call initializes the server routes, i.e. the association between URL paths and the code that handles them.
+The `Example` object inherits from the `cask.MainRoutes` class, providing the main function that starts the server. The `initialize()`
+method call initializes the server routes, i.e., the association between URL paths and the code that handles them.
 
 ### Using the resources directory
 
-The `@cask.staticResources` annotation works in the same way as `@cask.staticFiles` used above with the difference that
+The `@cask.staticResources` annotation works in the same way as the `@cask.staticFiles` used above, with the difference that
 the path returned by the endpoint method describes the location of files _inside_ the resources directory. Since the
 previous example conveniently used the resources directory, it can be simplified with `@cask.staticResources`.
 
@@ -126,9 +126,9 @@ object Example extends cask.MainRoutes:
 {% endtab %}
 {% endtabs %}
 
-In the endpoint method the location is set to `"."`, telling the server that the files are available directly in the
+In the endpoint method, the location is set to `"."`, telling the server that the files are available directly in the
 resources directory. In general, you can use any nested location within the resources directory, for instance you could opt
-for placing your HTML files in `static` directory inside the resources directory or use different directories to sort out
+for placing your HTML files in the `static` directory inside the resources directory or using different directories to sort out
 files used by different endpoints.
 
 ## Running the example

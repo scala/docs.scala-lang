@@ -11,18 +11,18 @@ next-page:
 
 ## Using cookies
 
-Cookies are saved by adding them to the `cookies` parameter of `cask.Response` constructor. 
+Cookies are saved by adding them to the `cookies` parameter of the `cask.Response` constructor. 
 
-In this example we are building a rudimentary authentication service. The `getLogin` method provides a form where
-username and password can be inputted. The `postLogin` reads the credentials and if they match the expected ones, a session
-identifier is generated, saved in the application state and sends back a cookie with the identifier.
+In this example, we are building a rudimentary authentication service. The `getLogin` method provides a form where
+username and password can be inputted. The `postLogin` reads the credentials and, if they match the expected ones, a session
+identifier is generated, saved in the application state, and sends back a cookie with the identifier.
 
-Cookies can be read either with a method parameter with `cask.Cookie` type or by accessing `cask.Request` directly.
-If using the former method, names of parameters have to match the names of cookies. If a cookie with matching name is not
-found, an error response will be returned. In the `checkLogin` function the former method is used, as the cookie is not
-present before user logs in.
+Cookies can be read either with a method parameter of `cask.Cookie` type or by accessing `cask.Request` directly.
+If using the former method, the names of parameters have to match the names of cookies. If a cookie with a matching name is not
+found, an error response will be returned. In the `checkLogin` function, the former method is used, as the cookie is not
+present before the user logs in.
 
-To delete a cookie set its `expires` parameter to an instant in the past, for example `Instant.EPOCH`. 
+To delete a cookie, set its `expires` parameter to an instant in the past, for example `Instant.EPOCH`. 
 
 {% tabs web-server-cookies-1 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
@@ -144,7 +144,7 @@ object MyApp extends cask.MainRoutes:
 Decorators can be used for extending endpoints functionality with validation or new parameters. They are defined by extending
 `cask.RawDecorator` class and then used as annotations.
 
-In this example, the `loggedIn` decorator is used for checking if user is logged in before accessing the `/decorated`
+In this example, the `loggedIn` decorator is used to check if the user is logged in before accessing the `/decorated`
 endpoint.
 
 The decorator class can pass additional arguments to the decorated endpoint using a map. The passed arguments are available

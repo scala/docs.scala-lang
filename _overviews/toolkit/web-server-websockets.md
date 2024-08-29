@@ -11,11 +11,11 @@ next-page: web-server-cookies-and-decorators
 
 You can create a WebSocket endpoint by using the `@cask.websocket` annotation. The endpoint method can return either a
 `cask.WsHandler` instance defining how the communication should take place, or a `cask.Response`, which rejects the 
-attempt of forming a WebSocket connection.
+attempt at forming a WebSocket connection.
 
-The connection can also be closed by sending `cask.Ws.close()` message through the WebSocket channel.
+The connection can also be closed by sending a `cask.Ws.close()` message through the WebSocket channel.
 
-Create an HTML file named `websockets.html` with the following content and place it in `resources ` directory.
+Create an HTML file named `websockets.html` with the following content and place it in the `resources ` directory.
 
 ```html
 <!DOCTYPE html>
@@ -52,9 +52,9 @@ Create an HTML file named `websockets.html` with the following content and place
 ```
 
 The JavaScript code opens a WebSocket connection using the `ws://localhost:8080/websocket` endpoint. The `ws.onmessage`
-event handler is executed when server pushes a message to the browser and `ws.onclose` when the connection is closed. 
+event handler is executed when the server pushes a message to the browser and `ws.onclose` when the connection is closed. 
 
-Create an endpoint for serving static files using `@cask.staticResources` annotation and the endpoint for handling
+Create an endpoint for serving static files using the `@cask.staticResources` annotation and an endpoint for handling
 the WebSocket connection.
 
 {% tabs web-server-websocket-1 class=tabs-scala-version %}
@@ -109,5 +109,5 @@ def websocket(): cask.WsHandler =
 {% endtabs %}
 
 In the `cask.WsHandler` we define a `cask.WsActor` which reacts to events (of `cask.util.Ws.Event` type) and uses
-WebSocket channel to send messages. In this example we receive a name of city and return the current time there. If server
+WebSocket channel to send messages. In this example, we receive the name of a city and return the current time there. If server
 receives an empty message, the connection is closed.

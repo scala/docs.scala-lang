@@ -163,8 +163,8 @@ object MyApp extends cask.MainRoutes:
 {% endtab %}
 {% endtabs %}
 
-In this example the JSON is merely converted to `String`, check the [*uPickle tutorial*](/toolkit/json-intro.html) for more information
-on what can be done with `ujson.Value` type.
+In this example the JSON is merely converted to `String`. Check the [*uPickle tutorial*](/toolkit/json-intro.html) for more information
+on what can be done with the `ujson.Value` type.
 
 Send a POST request.
 ```shell
@@ -180,11 +180,11 @@ The server will respond with:
 
 ## Handling JSON-encoded output
 
-Cask endpoint can return JSON objects returned by uPickle library functions. Cask will automatically handle the `ujson.Value`
+Cask endpoints can return JSON objects returned by uPickle library functions. Cask will automatically handle the `ujson.Value`
 type and set the `Content-Type` header to `application/json`.
 
-In this example `TimeData` case class stores the information about the time zone and current time in a chosen
-location. To serialize a case class into JSON, use type class derivation or define the serializer in its companion object in case of Scala 2.
+In this example, the `TimeData` case class stores the information about the time zone and current time in a chosen
+location. To serialize a case class into JSON, use type class derivation or define the serializer in its companion object in the case of Scala 2.
 
 {% tabs web-server-input-4 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
@@ -216,7 +216,7 @@ object MyApp extends cask.MainRoutes {
 {% tab 'Scala 3' %}
 ```scala
 object MyApp extends cask.MainRoutes {
-  import upickle.default.{ReadWriter, macroRW, writeJs}
+  import upickle.default.{ReadWriter, writeJs}
   case class TimeData(timezone: Option[String], time: String) derives ReadWriter
 
   private def getZoneIdForCity(city: String): Option[ZoneId] =
