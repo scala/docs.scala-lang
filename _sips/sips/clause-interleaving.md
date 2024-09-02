@@ -1,8 +1,8 @@
 ---
 layout: sip
 title: SIP-47 - Clause Interleaving
-stage: implementation
-status: under-review
+stage: completed
+status: accepted
 permalink: /sips/:title.html
 ---
 

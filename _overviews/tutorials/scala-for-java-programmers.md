@@ -649,7 +649,7 @@ they can be used to define the type of the trees for our example:
 ```scala
 abstract class Tree
 object Tree {
-  case class Sum(l: Tree, r: Tree) extends Tree
+  case class Sum(left: Tree, right: Tree) extends Tree
   case class Var(n: String) extends Tree
   case class Const(v: Int) extends Tree
 }
@@ -682,7 +682,7 @@ but also to implement ADTs. Here is how they can be used to define the type
 of the trees for our example:
 ```scala
 enum Tree:
-  case Sum(l: Tree, r: Tree)
+  case Sum(left: Tree, right: Tree)
   case Var(n: String)
   case Const(v: Int)
 ```
@@ -750,7 +750,7 @@ Scala as follows, using a pattern match on a tree value `t`:
 import Tree._
 
 def eval(t: Tree, ev: Environment): Int = t match {
-  case Sum(l, r) => eval(l, ev) + eval(r, ev)
+  case Sum(left, right) => eval(left, ev) + eval(right, ev)
   case Var(n)    => ev(n)
   case Const(v)  => v
 }
@@ -762,7 +762,7 @@ def eval(t: Tree, ev: Environment): Int = t match {
 import Tree.*
 
 def eval(t: Tree, ev: Environment): Int = t match
-  case Sum(l, r) => eval(l, ev) + eval(r, ev)
+  case Sum(left, right) => eval(left, ev) + eval(right, ev)
   case Var(n)    => ev(n)
   case Const(v)  => v
 ```
@@ -773,12 +773,12 @@ def eval(t: Tree, ev: Environment): Int = t match
 You can understand the precise meaning of the pattern match as follows:
 
 1. it first checks if the tree `t` is a `Sum`, and if it
-   is, it binds the left sub-tree to a new variable called `l` and
-   the right sub-tree to a variable called `r`, and then proceeds
+   is, it binds the left sub-tree to a new variable called `left` and
+   the right sub-tree to a variable called `right`, and then proceeds
    with the evaluation of the expression following the arrow; this
    expression can (and does) make use of the variables bound by the
-   pattern appearing on the left of the arrow, i.e., `l` and
-   `r`,
+   pattern appearing on the left of the arrow, i.e., `left` and
+   `right`,
 2. if the first check does not succeed, that is, if the tree is not
    a `Sum`, it goes on and checks if `t` is a `Var`; if
    it is, it binds the name contained in the `Var` node to a
@@ -841,7 +841,7 @@ obtain the following definition:
 import Tree._
 
 def derive(t: Tree, v: String): Tree = t match {
-  case Sum(l, r)        => Sum(derive(l, v), derive(r, v))
+  case Sum(left, right)        => Sum(derive(left, v), derive(right, v))
   case Var(n) if v == n => Const(1)
   case _                => Const(0)
 }
@@ -853,7 +853,7 @@ def derive(t: Tree, v: String): Tree = t match {
 import Tree.*
 
 def derive(t: Tree, v: String): Tree = t match
-  case Sum(l, r)        => Sum(derive(l, v), derive(r, v))
+  case Sum(left, right)        => Sum(derive(left, v), derive(right, v))
   case Var(n) if v == n => Const(1)
   case _                => Const(0)
 ```

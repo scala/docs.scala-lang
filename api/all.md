@@ -8,8 +8,8 @@ redirect_from:
 
 ## Latest releases
 
-* Scala 3.4.2
-  * [Library API](https://www.scala-lang.org/api/3.4.2/)
+* Scala 3.5.0
+  * [Library API](https://www.scala-lang.org/api/3.5.0/)
 * Scala 3.3.3 LTS
   * [Library API](https://www.scala-lang.org/api/3.3.3/)
 * Scala 2.13.14
@@ -64,6 +64,10 @@ https://scala-ci.typesafe.com/artifactory/scala-integration/org/scala-lang/
 
 ## Previous releases
 
+* Scala 3.4.3
+  * [Library API](https://www.scala-lang.org/api/3.4.3/)
+* Scala 3.4.2
+  * [Library API](https://www.scala-lang.org/api/3.4.2/)
 * Scala 3.4.1
   * [Library API](https://www.scala-lang.org/api/3.4.1/)
 * Scala 3.4.0

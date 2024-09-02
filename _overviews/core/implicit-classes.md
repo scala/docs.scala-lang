@@ -77,7 +77,7 @@ Implicit classes have the following restrictions:
 **2. They may only take one non-implicit argument in their constructor.**
 
 
-    implicit class RichDate(date: java.util.Date) // OK!
+    implicit class RichDate(date: java.time.LocalDate) // OK!
     implicit class Indexer[T](collection: Seq[T], index: Int) // BAD!
     implicit class Indexer[T](collection: Seq[T])(implicit index: Index) // OK!
 

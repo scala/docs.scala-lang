@@ -208,7 +208,7 @@ sure to indicate the actual method names:
        *  @return a new Person instance with the age determined by the
        *          birthdate and current date.
        */
-      def apply(name: String, birthDate: java.util.Date) = {}
+      def apply(name: String, birthDate: java.time.LocalDate) = {}
     }
 
 If your object holds implicit conversions, provide an example in the

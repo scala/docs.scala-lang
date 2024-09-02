@@ -111,8 +111,7 @@ Along with managing JVMs, `cs setup` also installs useful command-line tools:
 | Commands | Description |
 |----------|-------------|
 | `scalac` | the Scala compiler |
-| `scala` | the Scala REPL and script runner |
-| `scala-cli`| [Scala CLI](https://scala-cli.virtuslab.org), interactive toolkit for Scala |
+| `scala`, `scala-cli` | [Scala CLI](https://scala-cli.virtuslab.org), interactive toolkit for Scala |
 | `sbt`, `sbtn` | The [sbt](https://www.scala-sbt.org/) build tool |
 | `amm` | [Ammonite](https://ammonite.io/) is an enhanced REPL |
 | `scalafmt` | [Scalafmt](https://scalameta.org/scalafmt/) is the Scala code formatter |
