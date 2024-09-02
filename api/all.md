@@ -152,7 +152,7 @@ https://scala-ci.typesafe.com/artifactory/scala-integration/org/scala-lang/
   * [Library API](https://www.scala-lang.org/api/2.13.0/)
   * [Compiler API](https://www.scala-lang.org/api/2.13.0/scala-compiler/scala/)
   * [Reflection API](https://www.scala-lang.org/api/2.13.0/scala-reflect/scala/reflect/)
-* Scala 2.12.20
+* Scala 2.12.19
   * [Library API](https://www.scala-lang.org/api/2.12.19/)
   * [Compiler API](https://www.scala-lang.org/api/2.12.19/scala-compiler/scala/)
   * [Reflection API](https://www.scala-lang.org/api/2.12.19/scala-reflect/scala/reflect/)
