@@ -19,7 +19,7 @@ title: マクロパラダイス
 マクロパラダイス (Macro paradise) とは Scala の複数のバージョンをサポートするコンパイラプラグインで、一般向けにリリースされている <code>scalac</code> と共に正しく動作するように設計されている。
 これによって、将来の Scala に取り込まれるよりもいち早く最新のマクロ機能を使えるようになっている。
 [サポートされている機能とバージョンの一覧](/ja/overviews/macros/roadmap.html))に関してはロードマップページを、
-動作の保証に関しては[マクロパラダイスのアナウンスメント](https://scalamacros.org/news/2013/08/07/roadmap-for-macro-paradise.html)を参照してほしい。
+動作の保証に関しては[マクロパラダイスのアナウンスメント](hxxps://scalamacros.org/news/2013/08/07/roadmap-for-macro-paradise.html)を参照してほしい。
 
     ~/210x $ scalac -Xplugin:paradise_*.jar -Xshow-phases
         phase name  id  description
