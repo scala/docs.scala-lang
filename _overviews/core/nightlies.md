@@ -43,9 +43,9 @@ Scala 2 nightly versions are published to a special resolver. Unless you are usi
       "https://scala-ci.typesafe.com/artifactory/scala-integration/"
     scalaVersion := "2.13.15-bin-abcd123"
 
-for a 2.12 nightly, substitute e.g. `2.12.20` for `2.13.15`; in either case, it's the version number of the _next_ release on that branch
+For a 2.12 nightly, substitute e.g. `2.12.20` for `2.13.15`; in either case, it's the version number of the _next_ release on that branch.
 
-for `abcd123`, manually substitute the first 7 characters of the SHA of the latest green build [on the 2.13.x or 2.12.x branch on Travis-CI](https://app.travis-ci.com/github/scala/scala/branches).
+For `abcd123`, substitute the first 7 characters of the SHA of the latest commit to the [2.13.x branch](https://github.com/scala/scala/commits/2.13.x) or [2.12.x branch](https://github.com/scala/scala/commits/2.12.x) that has a green checkmark. (Clicking the checkmark will show a CI job name with the whole version in its name.)
 
 A quick way to find out the full version number of a current nightly is to use [scala-cli](https://scala-cli.virtuslab.org), as follows.
 
