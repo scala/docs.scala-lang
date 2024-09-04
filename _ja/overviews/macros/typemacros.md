@@ -9,7 +9,7 @@ title: 型マクロ
 **Eugene Yokota 訳**
 
 型マクロ (type macro) は[マクロパラダイス](/ja/overviews/macros/paradise.html)の以前のバージョンから利用可能だったが、マクロパラダイス 2.0 ではサポートされなくなった。
-[the paradise 2.0 announcement](https://scalamacros.org/news/2013/08/05/macro-paradise-2.0.0-snapshot.html) に説明と移行のための戦略が書かれている。
+[the paradise 2.0 announcement](hxxps://scalamacros.org/news/2013/08/05/macro-paradise-2.0.0-snapshot.html) に説明と移行のための戦略が書かれている。
 
 ## 直観
 
