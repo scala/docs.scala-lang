@@ -6,8 +6,6 @@ permalink: /overviews/core/:title.html
 
 We regularly publish nightly versions of both Scala 2 and 3 so that users can preview and test the contents of upcoming releases.
 
-We informally call them "nightly" versions, but technically it's a misnomer. A so-called “nightly” is built for every merged PR.
-
 Here's how to find and use these versions.
 
 ## Scala 3
@@ -34,6 +32,8 @@ The default command is `repl`, but all the other scala-cli subcommands such as `
 See this [scala-cli doc page](https://scala-cli.virtuslab.org/docs/commands/compile#scala-nightlies) for details.
 
 ## Scala 2.13 or 2.12
+
+We informally refer to Scala 2 “nightly” versions, but technically it's a misnomer. A so-called “nightly” is built for every merged PR.
 
 Scala 2 nightly versions are published to a special resolver. Unless you are using scala-cli, you'll need to add that resolver to your build configuration in order to use these versions.
 
