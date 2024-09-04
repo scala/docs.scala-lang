@@ -4,7 +4,7 @@ title: Nightly Versions of Scala
 permalink: /overviews/core/:title.html
 ---
 
-We regularly publish nightly versions of both Scala 2 and 3 so that users can preview and test the contents of upcoming releases.
+We regularly publish nightly versions of both Scala 3 and 2 so that users can preview and test the contents of upcoming releases.
 
 Here's how to find and use these versions.
 
