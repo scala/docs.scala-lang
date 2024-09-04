@@ -150,7 +150,7 @@ object `Conversions`:
 import scala.language.implicitConversions
 
 object Conversions {
-  implicit def fromStringToUser(name: String): User = (name: String) => User(name)
+  implicit def fromStringToUser(name: String): User = User(name)
 }
 ~~~
 {% endtab %}
