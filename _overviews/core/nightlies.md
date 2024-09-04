@@ -16,7 +16,7 @@ One quick way to get that version number is to visit [https://dotty.epfl.ch](htt
 
 Another way is to scrape Maven Central, as shown in this script: [https://raw.githubusercontent.com/VirtusLab/community-build3/master/scripts/lastVersionNightly.sc](https://raw.githubusercontent.com/VirtusLab/community-build3/master/scripts/lastVersionNightly.sc)
 
-A third way is to use [scala-cli](https://scala-cli.virtuslab.org), as follows.
+A third way is to use [scala-cli](https://scala-cli.virtuslab.org), as follows. (Since Scala 3.5.0, the `scala` command runs `scala-cli`.)
 
 ### scala-cli
 
