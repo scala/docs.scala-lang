@@ -51,7 +51,7 @@ Install it on your system with the following instructions.
 {% tab macOS for=install-cs-setup-tabs %}
 Run the following command in your terminal, following the on-screen instructions:
 {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-brew %}
-{% altDetails cs-setup-macos-nobrew  "Alternatively for Apple Silicon, or if you don't use Homebrew:" %}
+{% altDetails cs-setup-macos-nobrew  "Alternatively, if you don't use Homebrew:" %}
   On the Apple Silicon (M1, M2, …) architecture:
   {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-arm64 %}
   Otherwise, on the x86-64 architecture:
@@ -111,8 +111,7 @@ Along with managing JVMs, `cs setup` also installs useful command-line tools:
 | Commands | Description |
 |----------|-------------|
 | `scalac` | the Scala compiler |
-| `scala` | the Scala REPL and script runner |
-| `scala-cli`| [Scala CLI](https://scala-cli.virtuslab.org), interactive toolkit for Scala |
+| `scala`, `scala-cli` | [Scala CLI](https://scala-cli.virtuslab.org), interactive toolkit for Scala |
 | `sbt`, `sbtn` | The [sbt](https://www.scala-sbt.org/) build tool |
 | `amm` | [Ammonite](https://ammonite.io/) is an enhanced REPL |
 | `scalafmt` | [Scalafmt](https://scalameta.org/scalafmt/) is the Scala code formatter |

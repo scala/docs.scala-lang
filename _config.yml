@@ -16,8 +16,8 @@ keywords:
 - Guide
 
 scala-version: 2.13.14
-scala-212-version: 2.12.19
-scala-3-version: 3.4.2
+scala-212-version: 2.12.20
+scala-3-version: 3.5.0
 
 collections:
   style:
