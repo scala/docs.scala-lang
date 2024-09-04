@@ -78,7 +78,7 @@ Second, specify the Scala version:
 
     scalaVersion := "2.13.1-bin-abcd123"
 
-But that isn't a real version number. Manually substitute a version number containing the 7-character SHA of the last commit in the [scala/scala repository](https://github.com/scala/scala) for which a nightly version was published.  Look at https://travis-ci.org/scala/scala/branches and you'll see the SHA in the upper right corner of the 2.13.x (or 2.12.x) section.
+But that isn't a real version number. Manually substitute a version number containing the 7-character SHA of the last commit in the [scala/scala repository](https://github.com/scala/scala) for which a nightly version was published.  Look at [https://travis-ci.org/scala/scala/branches](https://travis-ci.org/scala/scala/branches) and you'll see the SHA in the upper right corner of the 2.13.x (or 2.12.x) section.
 
 As soon as 2.13.1 is released, the version number in the nightly will bump to 2.13.2, and so on.
 
