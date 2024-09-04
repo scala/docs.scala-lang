@@ -17,7 +17,7 @@ sections:
       - title: "Getting Started"
         description: "Install Scala on your computer and start writing some Scala code!"
         icon: "fa fa-rocket"
-        link: /getting-started.html
+        link: /getting-started/install-scala.html
       - title: "Tour of Scala"
         description: "Bite-sized introductions to core language features."
         icon: "fa fa-flag"

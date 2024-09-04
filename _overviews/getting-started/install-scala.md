@@ -183,8 +183,7 @@ and in the official sbt [documentation](https://www.scala-sbt.org/1.x/docs/index
 
 ### With an IDE
 
-You can skip the rest of this page and go directly to [Building a Scala Project with IntelliJ and sbt](/getting-started/intellij-track/building-a-scala-project-with-intellij-and-sbt.html)
-
+You can read a short summary of Scala IDEs on [a dedicated page](/getting-started/scala-ides.html)
 
 ## Open hello-world project
 

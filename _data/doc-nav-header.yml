@@ -1,5 +1,10 @@
 - title: Getting Started
-  url: "/getting-started/index.html"
+  url: "#"
+  submenu:
+    - title: Install Scala
+      url: "/getting-started/install-scala.html"
+    - title: Scala IDEs
+      url: "/getting-started/scala-ides.html"
 - title: Scala 3
   url: "#"
   submenu:
