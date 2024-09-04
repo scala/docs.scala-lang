@@ -12,7 +12,7 @@ Here's how to find and use these versions.
 
 Scala 3 nightly versions are published to Maven Central. If you know the full version number of the nightly you want to use, you can use it just like any other Scala 3 version.
 
-One quick way to get that version number is to visit https://dotty.epfl.ch and look in the upper left corner.
+One quick way to get that version number is to visit [https://dotty.epfl.ch](https://dotty.epfl.ch) and look in the upper left corner.
 
 Another way is to scrape Maven Central, as shown in this script: https://raw.githubusercontent.com/VirtusLab/community-build3/master/scripts/lastVersionNightly.sc
 
