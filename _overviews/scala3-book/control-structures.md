@@ -810,6 +810,53 @@ speak(Person("Bam Bam"))   // "Bam Bam says, Bam bam!"
 {% endtab %}
 {% endtabs %}
 
+#### Binding matched patterns to variables
+
+You can bind the matched pattern to a variable to use type-specific behavior.
+
+{% tabs pattern-binding class=tabs-scala-version %}
+{% tab 'Scala 2' for=pattern-binding %}
+```scala
+trait Animal {
+  val name: String
+}
+case class Cat(name: String) extends Animal {
+  def meow: String = "Meow"
+}
+case class Dog(name: String) extends Animal {
+  def bark: String = "Bark"
+}
+
+def speak(animal: Animal) = animal match {
+  case c @ Cat(name) if name == "Felix" => println(s"$name says, ${c.meow}!")
+  case d @ Dog(name) if name == "Rex" => println(s"$name says, ${d.bark}!")
+  case _ => println("I don't know you!")
+}
+
+speak(Cat("Felix")) // "Felix says, Meow!"
+speak(Dog("Rex"))   // "Rex says, Bark!"
+```
+{% endtab %}
+{% tab 'Scala 3' for=pattern-binding %}
+```scala
+trait Animal:
+  val name: String
+case class Cat(name: String) extends Animal:
+  def meow: String = "Meow"
+case class Dog(name: String) extends Animal:
+  def bark: String = "Bark"
+
+def speak(animal: Animal) = animal match
+  case c @ Cat(name) if name == "Felix" => println(s"$name says, ${c.meow}!")
+  case d @ Dog(name) if name == "Rex" => println(s"$name says, ${d.bark}!")
+  case _ => println("I don't know you!")
+
+speak(Cat("Felix")) // "Felix says, Meow!"
+speak(Dog("Rex"))   // "Rex says, Bark!"
+```
+{% endtab %}
+{% endtabs %}
+
 ### Using a `match` expression as the body of a method
 
 Because `match` expressions return a value, they can be used as the body of a method.

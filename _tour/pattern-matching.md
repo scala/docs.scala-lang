@@ -236,6 +236,43 @@ def goIdle(device: Device): String = device match
 
 `def goIdle` has a different behavior depending on the type of `Device`. This is useful when the case needs to call a method on the pattern. It is a convention to use the first letter of the type as the case identifier (`p` and `c` in this case).
 
+## Binding matched patterns to variables
+You can use variable binding to get type-dependent behavior while simultaneously extracting fields from the matched pattern.
+
+{% tabs pattern-matching-variable-binding class=tabs-scala-version %}
+{% tab 'Scala 2' for=pattern-matching-variable-binding %}
+```scala mdoc
+sealed trait Device
+case class Phone(model: String) extends Device {
+  def screenOff = "Turning screen off"
+}
+case class Computer(model: String) extends Device {
+  def screenSaverOn = "Turning screen saver on..."
+}
+
+def goIdle(device: Device): String = device match {
+  case p @ Phone(model) => s"$model: ${p.screenOff}" 
+  case c @ Computer(model) => s"$model: ${c.screenSaverOn}"
+}
+```
+{% endtab %}
+{% tab 'Scala 3' for=pattern-matching-variable-binding %}
+```scala
+sealed trait Device
+case class Phone(model: String) extends Device:
+  def screenOff = "Turning screen off"
+
+case class Computer(model: String) extends Device:
+  def screenSaverOn = "Turning screen saver on..."
+
+
+def goIdle(device: Device): String = device match
+  case p @ Phone(model) => s"$model: ${p.screenOff}"
+  case c @ Computer(model) => s"$model: ${c.screenSaverOn}"
+```
+{% endtab %}
+{% endtabs %}
+
 ## Sealed types
 
 You may have noticed that in the examples above the base types are qualified
