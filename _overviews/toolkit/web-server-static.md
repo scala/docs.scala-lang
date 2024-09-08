@@ -143,9 +143,9 @@ scala-cli run Example.scala
 ```
 {% endtab %}
 {% tab 'sbt' %}
-In the sbt shell, the following command will start the server:
+In the terminal, the following command will start the server:
 ```
-sbt:example> example/run
+sbt example/run
 ```
 {% endtab %}
 {% tab 'Mill' %}

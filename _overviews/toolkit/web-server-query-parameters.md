@@ -22,7 +22,7 @@ In this example, the `city` parameter will be optional, which you specify in Cas
 ```scala
 import java.time.{ZoneId, ZonedDateTime}
 
-object MyApp extends cask.MainRoutes {
+object Example extends cask.MainRoutes {
 
   private def getZoneIdForCity(city: String): Option[ZoneId] = {
     import scala.jdk.CollectionConverters._
@@ -48,19 +48,19 @@ object MyApp extends cask.MainRoutes {
 ```scala
 import java.time.{ZoneId, ZonedDateTime}
 
-object MyApp extends cask.MainRoutes:
+object Example extends cask.MainRoutes:
 
   private def getZoneIdForCity(city: String): Option[ZoneId] =
     import scala.jdk.CollectionConverters.*
     ZoneId.getAvailableZoneIds.asScala.find(_.endsWith("/" + city)).map(ZoneId.of)
 
-    @cask.get("/time")
-    def dynamicWithParam(city: Option[String] = None): String =
-      city match
-        case Some(value) => getZoneIdForCity(value) match
-          case Some(zoneId) => s"Current date is: ${ZonedDateTime.now().withZoneSameInstant(zoneId)}"
-          case None => s"Couldn't find time zone for city $value"
-        case None => s"Current date is: ${ZonedDateTime.now()}"
+  @cask.get("/time")
+  def dynamicWithParam(city: Option[String] = None): String =
+    city match
+      case Some(value) => getZoneIdForCity(value) match
+        case Some(zoneId) => s"Current date is: ${ZonedDateTime.now().withZoneSameInstant(zoneId)}"
+        case None => s"Couldn't find time zone for city $value"
+      case None => s"Current date is: ${ZonedDateTime.now()}"
 
   initialize()
 ```

@@ -18,7 +18,7 @@ You can create an endpoint returning dynamically generated content with `@cask.g
 ```scala
 import java.time.ZonedDateTime
 
-object MyApp extends cask.MainRoutes {
+object Example extends cask.MainRoutes {
   @cask.get("/time")
   def dynamic(): String = s"Current date is: ${ZonedDateTime.now()}"
 
@@ -30,7 +30,7 @@ object MyApp extends cask.MainRoutes {
 ```scala
 import java.time.ZonedDateTime
 
-object MyApp extends cask.MainRoutes:
+object Example extends cask.MainRoutes:
   @cask.get("/time")
   def dynamic(): String = s"Current date is: ${ZonedDateTime.now()}"
 
@@ -58,9 +58,9 @@ scala-cli run Example.scala
 ```
 {% endtab %}
 {% tab 'sbt' %}
-In the sbt shell, the following command will start the server:
+In the terminal, the following command will start the server:
 ```
-sbt:example> example/run
+sbt example/run
 ```
 {% endtab %}
 {% tab 'Mill' %}
@@ -88,7 +88,7 @@ in a given city.
 ```scala
 import java.time.{ZoneId, ZonedDateTime}
 
-object MyApp extends cask.MainRoutes {
+object Example extends cask.MainRoutes {
 
   private def getZoneIdForCity(city: String): Option[ZoneId] = {
     import scala.jdk.CollectionConverters._
@@ -111,7 +111,7 @@ object MyApp extends cask.MainRoutes {
 ```scala
 import java.time.{ZoneId, ZonedDateTime}
 
-object MyApp extends cask.MainRoutes:
+object Example extends cask.MainRoutes:
 
   private def getZoneIdForCity(city: String): Option[ZoneId] =
     import scala.jdk.CollectionConverters.*
@@ -177,7 +177,7 @@ setting the `Content-Type` header to `text/html`.
 import java.time.{ZoneId, ZonedDateTime}
 import scalatags.Text.all._
 
-object MyApp extends cask.MainRoutes {
+object Example extends cask.MainRoutes {
 
   private def getZoneIdForCity(city: String): Option[ZoneId] = {
     import scala.jdk.CollectionConverters._
@@ -209,7 +209,7 @@ object MyApp extends cask.MainRoutes {
 import java.time.{ZoneId, ZonedDateTime}
 import scalatags.Text.all.*
 
-object MyApp extends cask.MainRoutes:
+object Example extends cask.MainRoutes:
 
   private def getZoneIdForCity(city: String): Option[ZoneId] =
     import scala.jdk.CollectionConverters.*

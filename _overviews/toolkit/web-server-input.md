@@ -17,10 +17,10 @@ with names corresponding to names of fields in the form and set the form method 
 {% tabs web-server-input-1 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
 ```scala
-object MyApp extends cask.MainRoutes {
+object Example extends cask.MainRoutes {
 
   @cask.get("/form")
-  def getForm(): cask.Response = {
+  def getForm(): cask.Response[String] = {
     val html =
       """<!doctype html>
         |<html>
@@ -48,10 +48,10 @@ object MyApp extends cask.MainRoutes {
 {% endtab %}
 {% tab 'Scala 3' %}
 ```scala
-object MyApp extends cask.MainRoutes:
+object Example extends cask.MainRoutes:
   
   @cask.get("/form")
-  def getForm(): cask.Response =
+  def getForm(): cask.Response[String] =
     val html =
       """<!doctype html>
         |<html>
@@ -78,8 +78,8 @@ object MyApp extends cask.MainRoutes:
 {% endtabs %}
 
 In this example we create a form asking for name and surname of a user and then redirect the user to a greeting page. Notice the
-use of `cask.Response`. The default returned content type in case of `String` returning endpoint method is `text/plain`,
-set it to `text/html` in order for browser to display the form correctly.
+use of `cask.Response`. The `cask.Response` type allows user to set the status code, headers and cookies. The default
+content type in case of `String` returning endpoint method is `text/plain`, set it to `text/html` in order for browser to display the form correctly.
 
 The `formEndpoint` endpoint reads the form data using `name` and `surname` parameters. The names of parameters must
 be identical to the field names of the form.
@@ -92,7 +92,7 @@ will be read into the endpoint method arguments.
 {% tabs web-server-input-2 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
 ```scala
-object MyApp extends cask.MainRoutes {
+object Example extends cask.MainRoutes {
   
   @cask.postJson("/json")
   def jsonEndpoint(name: String, surname: String): String =
@@ -104,9 +104,9 @@ object MyApp extends cask.MainRoutes {
 {% endtab %}
 {% tab 'Scala 3' %}
 ```scala
-object MyApp extends cask.MainRoutes:
+object Example extends cask.MainRoutes:
 
-@cask.postJson("/json")
+  @cask.postJson("/json")
   def jsonEndpoint(name: String, surname: String): String =
     "Hello " + name + " " + surname
   
@@ -138,7 +138,7 @@ from uPickle library.
 {% tabs web-server-input-3 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
 ```scala
-object MyApp extends cask.MainRoutes {
+object Example extends cask.MainRoutes {
 
   @cask.postJson("/json")
   def jsonEndpoint(value: ujson.Value): String =
@@ -151,7 +151,7 @@ object MyApp extends cask.MainRoutes {
 {% endtab %}
 {% tab 'Scala 3' %}
 ```scala
-object MyApp extends cask.MainRoutes:
+object Example extends cask.MainRoutes:
 
   @cask.postJson("/json")
   def jsonEndpoint(value: ujson.Value): String = 
@@ -189,7 +189,9 @@ location. To serialize a case class into JSON, use type class derivation or defi
 {% tabs web-server-input-4 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
 ```scala
-object MyApp extends cask.MainRoutes {
+import java.time.{ZoneId, ZonedDateTime}
+
+object Example extends cask.MainRoutes {
   import upickle.default.{ReadWriter, macroRW, writeJs}
   case class TimeData(timezone: Option[String], time: String)
   object TimeData {
@@ -210,12 +212,16 @@ object MyApp extends cask.MainRoutes {
     }
     writeJs(TimeData(timezone.map(_.toString), time))
   }
+
+  initialize()
 }
 ```
 {% endtab %}
 {% tab 'Scala 3' %}
 ```scala
-object MyApp extends cask.MainRoutes {
+import java.time.{ZoneId, ZonedDateTime}
+
+object Example extends cask.MainRoutes:
   import upickle.default.{ReadWriter, writeJs}
   case class TimeData(timezone: Option[String], time: String) derives ReadWriter
 
@@ -224,14 +230,14 @@ object MyApp extends cask.MainRoutes {
     ZoneId.getAvailableZoneIds.asScala.find(_.endsWith("/" + city)).map(ZoneId.of)
   
   @cask.get("/time_json/:city")
-  def timeJSON(city: String): ujson.Value = {
+  def timeJSON(city: String): ujson.Value =
     val timezone = getZoneIdForCity(city)
     val time = timezone match
       case Some(zoneId)=> s"Current date is: ${ZonedDateTime.now().withZoneSameInstant(zoneId)}"
       case None => s"Couldn't find time zone for city $city"
     writeJs(TimeData(timezone.map(_.toString), time))
-  }
-}
+
+  initialize()
 ```
 {% endtab %}
 {% endtabs %}

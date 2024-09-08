@@ -69,7 +69,7 @@ private def getZoneIdForCity(city: String): Option[ZoneId] = {
 }
 
 @cask.websocket("/websocket")
-def websocket(): cask.WsHandler =
+def websocket(): cask.WsHandler = {
   cask.WsHandler { channel =>
     cask.WsActor {
       case cask.Ws.Text("") => channel.send(cask.Ws.Close())
@@ -81,6 +81,9 @@ def websocket(): cask.WsHandler =
         channel.send(cask.Ws.Text(text))
     }
   }
+}
+
+initialize()
 ```
 {% endtab %}
 {% tab 'Scala 3' %}
@@ -104,6 +107,8 @@ def websocket(): cask.WsHandler =
         channel.send(cask.Ws.Text(text))
     }
   }
+
+initialize()
 ```
 {% endtab %}
 {% endtabs %}

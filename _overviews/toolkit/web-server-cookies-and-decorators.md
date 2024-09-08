@@ -31,12 +31,12 @@ To delete a cookie, set its `expires` parameter to an instant in the past, for e
 import java.util.UUID
 import java.util.concurrent.ConcurrentHashMap
 
-object MyApp extends cask.MainRoutes {
+object Example extends cask.MainRoutes {
 
   val sessionIds = ConcurrentHashMap.newKeySet[String]()
 
   @cask.get("/login")
-  def getLogin() = {
+  def getLogin(): cask.Response[String] = {
     val html =
       """<!doctype html>
         |<html>
@@ -55,7 +55,7 @@ object MyApp extends cask.MainRoutes {
   }
 
   @cask.postForm("/login")
-  def postLogin(name: String, password: String) = {
+  def postLogin(name: String, password: String): cask.Response[String] = {
     if (name == "user" && password == "password") {
       val sessionId = UUID.randomUUID().toString
       sessionIds.add(sessionId)
@@ -66,7 +66,7 @@ object MyApp extends cask.MainRoutes {
   }
 
   @cask.get("/check")
-  def checkLogin(request: cask.Request) = {
+  def checkLogin(request: cask.Request): String = {
     val sessionId = request.cookies.get("sessionId")
     if (sessionId.exists(cookie => sessionIds.contains(cookie.value))) {
       "You are logged in"
@@ -90,12 +90,12 @@ object MyApp extends cask.MainRoutes {
 import java.util.UUID
 import java.util.concurrent.ConcurrentHashMap
 
-object MyApp extends cask.MainRoutes:
+object Example extends cask.MainRoutes:
 
   val sessionIds = ConcurrentHashMap.newKeySet[String]()
 
   @cask.get("/login")
-  def getLogin() =
+  def getLogin(): cask.Response[String] =
     val html =
       """<!doctype html>
         |<html>
@@ -113,24 +113,24 @@ object MyApp extends cask.MainRoutes:
     cask.Response(data = html, headers = Seq("Content-Type" -> "text/html"))
 
   @cask.postForm("/login")
-  def postLogin(name: String, password: String) =
-    if name == "user" && password == "password":
+  def postLogin(name: String, password: String): cask.Response[String] =
+    if name == "user" && password == "password" then
         val sessionId = UUID.randomUUID().toString
         sessionIds.add(sessionId)
         cask.Response(data = "Success!", cookies = Seq(cask.Cookie("sessionId", sessionId)))
     else
       cask.Response(data = "Authentication failed", statusCode = 401)
 
-    @cask.get("/check")
-    def checkLogin(request: cask.Request) =
-        val sessionId = request.cookies.get("sessionId")
-        if sessionId.exists(cookie => sessionIds.contains(cookie.value)):
-          "You are logged in"
-        else
-          "You are not logged in"
+  @cask.get("/check")
+  def checkLogin(request: cask.Request): String =
+    val sessionId = request.cookies.get("sessionId")
+    if sessionId.exists(cookie => sessionIds.contains(cookie.value)) then
+      "You are logged in"
+    else
+      "You are not logged in"
 
   @cask.get("/logout")
-  def logout(sessionId: cask.Cookie) = 
+  def logout(sessionId: cask.Cookie): cask.Response[String] = 
     sessionIds.remove(sessionId.value)
     cask.Response(data = "Successfully logged out!", cookies = Seq(cask.Cookie("sessionId", "", expires = Instant.EPOCH)))
 
@@ -154,7 +154,7 @@ through the last argument group. Here we are passing the session identifier to a
 {% tab 'Scala 2' %}
 ```scala
 class loggedIn extends cask.RawDecorator {
-  override def wrapFunction(ctx: cask.Request, delegate: Delegate) = {
+  override def wrapFunction(ctx: cask.Request, delegate: Delegate): Result[Raw] = {
     ctx.cookies.get("sessionId") match {
       case Some(cookie) if sessionIds.contains(cookie.value) => delegate(Map("sessionId" -> cookie.value))
       case _ => cask.router.Result.Success(cask.model.Response("You aren't logged in", 403))
@@ -164,7 +164,7 @@ class loggedIn extends cask.RawDecorator {
 
 @loggedIn()
 @cask.get("/decorated")
-def decorated()(sessionId: String) = {
+def decorated()(sessionId: String): String = {
   s"You are logged in with id: $sessionId"
 }
 ```
@@ -172,7 +172,7 @@ def decorated()(sessionId: String) = {
 {% tab 'Scala 3' %}
 ```scala
 class loggedIn extends cask.RawDecorator:
-  override def wrapFunction(ctx: cask.Request, delegate: Delegate) =
+  override def wrapFunction(ctx: cask.Request, delegate: Delegate): Result[Raw] =
     ctx.cookies.get("sessionId") match
       case Some(cookie) if sessionIds.contains(cookie.value) =>
         delegate(Map("sessionId" -> cookie.value))
@@ -182,7 +182,7 @@ class loggedIn extends cask.RawDecorator:
 
 @loggedIn()
 @cask.get("/decorated")
-def decorated()(sessionId: String) = s"You are logged in with id: $sessionId"
+def decorated()(sessionId: String): String = s"You are logged in with id: $sessionId"
 ```
 {% endtab %}
 {% endtabs %}
