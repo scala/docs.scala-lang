@@ -242,15 +242,7 @@ You can use variable binding to get type-dependent behavior while simultaneously
 {% tabs pattern-matching-variable-binding class=tabs-scala-version %}
 {% tab 'Scala 2' for=pattern-matching-variable-binding %}
 ```scala mdoc
-sealed trait Device
-case class Phone(model: String) extends Device {
-  def screenOff = "Turning screen off"
-}
-case class Computer(model: String) extends Device {
-  def screenSaverOn = "Turning screen saver on..."
-}
-
-def goIdle(device: Device): String = device match {
+def goIdleWithModel(device: Device): String = device match {
   case p @ Phone(model) => s"$model: ${p.screenOff}" 
   case c @ Computer(model) => s"$model: ${c.screenSaverOn}"
 }
@@ -258,15 +250,7 @@ def goIdle(device: Device): String = device match {
 {% endtab %}
 {% tab 'Scala 3' for=pattern-matching-variable-binding %}
 ```scala
-sealed trait Device
-case class Phone(model: String) extends Device:
-  def screenOff = "Turning screen off"
-
-case class Computer(model: String) extends Device:
-  def screenSaverOn = "Turning screen saver on..."
-
-
-def goIdle(device: Device): String = device match
+def goIdleWithModel(device: Device): String = device match
   case p @ Phone(model) => s"$model: ${p.screenOff}"
   case c @ Computer(model) => s"$model: ${c.screenSaverOn}"
 ```
