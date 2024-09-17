@@ -147,16 +147,16 @@ To install them manually:
 
 ## Using the Scala CLI
 
-Create a file named `hello.scala` with following code:
+Create a file named `hello.scala` with the following code:
 ```scala
 @main
 def hello(): Unit =
   println("Hello, World!")
 ```
 
-You can define a method with `def` keyword and mark it as a "main" method with the `@main` annotation, designating it as
+You can define a method with the `def` keyword and mark it as a "main" method with the `@main` annotation, designating it as
 the entry point in program execution. The method's type is `Unit`, which means it does not return a value. `Unit`
-can be thought of as an analogue to `void` keyword found in other languages. The `println` method will print the `"Hello, World!"`
+can be thought of as an analogue to the `void` keyword found in other languages. The `println` method will print the `"Hello, World!"`
 string to standard output.
 
 To run the program, execute `scala run hello.scala` command. The file will be compiled and executed, with console output
@@ -177,9 +177,9 @@ def hello(name: String): Unit =
   println(s"Hello, $name!")
 ```
 
-The `name` argument is expected to be provided when executing the program and if it's not found, the execution will fail.
+The `name` argument is expected to be provided when executing the program, and if it's not found, the execution will fail.
 The `println` method receives an interpolated string, as indicated by the `s` letter preceding its content. `$name` will be substituted by
-the content of `name` argument.
+the content of the `name` argument.
 
 To pass the arguments when executing the program, put them after `--`:
 ```
@@ -189,13 +189,13 @@ Compiled project (Scala 3.5.0, JVM (20))
 Hello, Gabriel!
 ```
 
-You can read more about [main methods](/scala3/book/methods-main-methods.html) and [string interpolation]((/scala3/book/string-interpolation.html)) in the Scala Book.
+You can read more about [main methods](/scala3/book/methods-main-methods.html) and [string interpolation](/scala3/book/string-interpolation.html) in the Scala Book.
 
 ### Adding dependencies
 
-Let's write a program that will count the files and directories present in its working directory. While in Scala you have full access to Java API for
+Let's write a program that will count the files and directories present in its working directory. While in Scala you have full access to the Java API for
 filesystem interaction, the [os-lib](https://github.com/com-lihaoyi/os-lib) library by Li Haoyi is much more convenient to use. A dependency on the library can
-be added with `//> using` directive. Put the following code in `counter.scala`.
+be added with the `//> using` directive. Put the following code in `counter.scala`.
 ```scala
 //> using dep "com.lihaoyi::os-lib:0.10.7"
 
@@ -205,8 +205,8 @@ def countFiles(): Unit =
     println(paths.length)
 ```
 
-In the code above, the `os.pwd` returns current working directory, which then is passed to `os.list`, which returns a sequence
-of paths directly within the directory passed as argument. `val` is used to declare an immutable value, in this example storing the
+In the code above, the `os.pwd` returns the current working directory, which is then passed to `os.list`, which returns a sequence
+of paths directly within the directory passed as an argument. `val` is used to declare an immutable value, in this example storing the
 sequence of paths.
 
 Execute the program. The dependency will be automatically downloaded. The execution should result in a similar output:
@@ -220,8 +220,8 @@ The printed number should be 4: `hello.scala`, `counter.scala` and two hidden di
 `.bsp` containing information about project used by IDEs, and `.scala-build` containing the results of compilation.
 
 As it turns out, the `os-lib` library is a part of Scala Toolkit, a collection of libraries recommended for tasks like testing,
-operating system interaction or handling JSONs. You can read more about libraries included in the toolkit [here](/toolkit/introduction.html).
-To include the toolkit libraries, use `//> using toolkit default` directive:
+operating system interaction or handling JSONs. You can read more about the libraries included in the toolkit [here](/toolkit/introduction.html).
+To include the toolkit libraries, use the `//> using toolkit default` directive:
 ```scala
 //> using toolkit default
 
@@ -231,12 +231,12 @@ def countFiles(): Unit =
     println(paths.length)
 ```
 
-This program is identical to the one above with the only difference being that other toolkit libraries will also be available to use
-and their downloaded versions, instead of being specified by hand, will be the newest ones included in toolkit.
+This program is identical to the one above, with the only difference being that other toolkit libraries will also be available to use
+and their downloaded versions, instead of being specified by hand, will be the newest ones included in the toolkit.
 
 ### Using REPL
 
-You can execute code interactively using REPL provided by `scala` command. Execute `scala` in console without any arguments.
+You can execute code interactively using REPL provided by the `scala` command. Execute `scala` in console without any arguments.
 ```
 $ scala
 Welcome to Scala 3.5.0 (20-ea, Java OpenJDK 64-Bit Server VM).

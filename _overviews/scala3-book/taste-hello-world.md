@@ -54,7 +54,7 @@ $ scala run hello.scala
 ```
 
 When you run the command for the first time, two hidden directories will be created: `.bsp` and `.scala-build`. The first
-one contains the [Build Server Protocol](https://build-server-protocol.github.io/) information for IDEs, the second one contains the results
+one contains the [Build Server Protocol](https://build-server-protocol.github.io/) information for IDEs, and the second one contains the results
 of compilation.
 
 The command should produce similar output:
