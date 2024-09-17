@@ -166,43 +166,43 @@ command (the greater-than sign `>` represents the shell prompt
 and should not be typed):
 
 ```shell
-> scala-cli run HelloWorld.scala
+> scala run HelloWorld.scala
 ```
 
 The program will be automatically compiled (with compiled classes somewhere in the newly created `.scala-build` directory)
 and executed, producing a similar output:
 ```
-Compiling project (Scala 3.4.2, JVM (20))
-Compiled project (Scala 3.4.2, JVM (20))
+Compiling project (Scala 3.5.0, JVM (20))
+Compiled project (Scala 3.5.0, JVM (20))
 Hello, World!
 ```
 
 #### Compiling From the Command Line
 
-To compile the example, we use `scala-cli compile` command, which will invoke the Scala compiler, `scalac`. `scalac`
+To compile the example, we use `scala compile` command, which will invoke the Scala compiler, `scalac`. `scalac`
 works like most compilers: it takes a source file as argument, maybe
 some options, and produces one or several output files. The outputs
 it produces are standard Java class files.
 
 ```shell
-> scala-cli compile HelloWorld.scala -d .
+> scala compile HelloWorld.scala -d .
 ```
 
-This will generate a few class files in the current directory (`-d .` option sets the compilation output directory). One of
+This will generate a few class files in the current directory (`-d` option sets the compilation output directory). One of
 them will be called `HelloWorld.class`, and contains a class
-which can be directly executed using the `scala-cli` command, as the
+which can be directly executed using the `scala` command, as the
 following section shows.
 
 #### Running From the Command Line
 
-Once compiled, the program can be run using the `scala-cli run` command.
+Once compiled, the program can be run using the `scala run` command.
 Its usage is very similar to the `java` command used to run Java
 programs, and accepts similar options. The above example can be
 executed using the following command, which produces the expected
 output:
 
 ```shell
-> scala-cli run --main-class HelloWorld -classpath . 
+> scala run --main-class HelloWorld -classpath . 
 Hello, World!
 ```
 

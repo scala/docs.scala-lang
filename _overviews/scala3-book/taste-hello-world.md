@@ -47,10 +47,10 @@ object hello {
 {% endtabs %}
 <!-- End tabs -->
 
-Next, compile and run the code with `scala-cli`:
+Next, compile and run the code with `scala`:
 
 ```bash
-$ scala-cli run hello.scala
+$ scala run hello.scala
 ```
 
 When you run the command for the first time, two hidden directories will be created: `.bsp` and `.scala-build`. The first
@@ -59,8 +59,8 @@ of compilation.
 
 The command should produce similar output:
 ```
-Compiling project (Scala 3.4.2, JVM (20))
-Compiled project (Scala 3.4.2, JVM (20))
+Compiling project (Scala 3.5.0, JVM (20))
+Compiled project (Scala 3.5.0, JVM (20))
 Hello, World!
 ```
 
@@ -126,13 +126,13 @@ use the `+` operator on strings to join `"Hello, "` with `name` and `"!"`, makin
 
 > You can learn more about using `val` by reading [Variables and Data Types](/scala3/book/taste-vars-data-types.html).
 
-Then run the code with `scala-cli`. This time the program will pause after asking for your name,
+Then run the code with `scala`. This time the program will pause after asking for your name,
 and wait until you type a name and press return on the keyboard, looking like this:
 
 ```bash
-$ scala-cli run helloInteractive.scala
-Compiling project (Scala 3.4.2, JVM (20))
-Compiled project (Scala 3.4.2, JVM (20))
+$ scala run helloInteractive.scala
+Compiling project (Scala 3.5.0, JVM (20))
+Compiled project (Scala 3.5.0, JVM (20))
 Please enter your name:
 ▌
 ```
@@ -140,9 +140,9 @@ Please enter your name:
 When you enter your name at the prompt, the final interaction should look like this:
 
 ```bash
-$ scala-cli run helloInteractive.scala
-Compiling project (Scala 3.4.2, JVM (20))
-Compiled project (Scala 3.4.2, JVM (20))
+$ scala run helloInteractive.scala
+Compiling project (Scala 3.5.0, JVM (20))
+Compiled project (Scala 3.5.0, JVM (20))
 Please enter your name:
 Alvin Alexander
 Hello, Alvin Alexander!

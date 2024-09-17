@@ -145,7 +145,7 @@ To install them manually:
    or [AdoptOpenJDK 8/11](https://adoptopenjdk.net/). Refer to [JDK Compatibility](/overviews/jdk-compatibility/overview.html) for Scala/Java compatibility detail.
 1. Install [sbt](https://www.scala-sbt.org/download.html)
 
-## Using the scala-cli command
+## Using the Scala CLI
 
 Create a file named `hello.scala` with following code:
 ```scala
@@ -156,15 +156,15 @@ def hello(): Unit =
 
 You can define a method with `def` keyword and mark it as a "main" method with the `@main` annotation, designating it as
 the entry point in program execution. The method's type is `Unit`, which means it does not return a value. `Unit`
-can be thought of as an analogue to `void` keyword found in other languages. The `println` method will print the `"Hello World!"`
+can be thought of as an analogue to `void` keyword found in other languages. The `println` method will print the `"Hello, World!"`
 string to standard output.
 
-To run the program, execute `scala-cli run hello.scala` command. The file will be compiled and executed, with console output
+To run the program, execute `scala run hello.scala` command. The file will be compiled and executed, with console output
 similar to following:
 ```
-$ scala-cli run hello.scala             
-Compiling project (Scala 3.4.2, JVM (20))
-Compiled project (Scala 3.4.2, JVM (20))
+$ scala run hello.scala             
+Compiling project (Scala 3.5.0, JVM (20))
+Compiled project (Scala 3.5.0, JVM (20))
 Hello, World!
 ```
 
@@ -183,9 +183,9 @@ the content of `name` argument.
 
 To pass the arguments when executing the program, put them after `--`:
 ```
-$ scala-cli run hello.scala -- Gabriel          
-Compiling project (Scala 3.4.2, JVM (20))
-Compiled project (Scala 3.4.2, JVM (20))
+$ scala run hello.scala -- Gabriel          
+Compiling project (Scala 3.5.0, JVM (20))
+Compiled project (Scala 3.5.0, JVM (20))
 Hello, Gabriel!
 ```
 
@@ -211,15 +211,15 @@ sequence of paths.
 
 Execute the program. The dependency will be automatically downloaded. The execution should result in a similar output:
 ```
-$ scala-cli run counter.scala       
-Compiling project (Scala 3.4.2, JVM (20))
-Compiled project (Scala 3.4.2, JVM (20))
+$ scala run counter.scala       
+Compiling project (Scala 3.5.0, JVM (20))
+Compiled project (Scala 3.5.0, JVM (20))
 4
 ```
 The printed number should be 4: `hello.scala`, `counter.scala` and two hidden directories created automatically when a program is executed:
 `.bsp` containing information about project used by IDEs, and `.scala-build` containing the results of compilation.
 
-As it turns out, the `os-lib` library is part of Scala Toolkit, a collection of libraries recommended for tasks like testing,
+As it turns out, the `os-lib` library is a part of Scala Toolkit, a collection of libraries recommended for tasks like testing,
 operating system interaction or handling JSONs. You can read more about libraries included in the toolkit [here](/toolkit/introduction.html).
 To include the toolkit libraries, use `//> using toolkit default` directive:
 ```scala
@@ -234,12 +234,12 @@ def countFiles(): Unit =
 This program is identical to the one above with the only difference being that other toolkit libraries will also be available to use
 and their downloaded versions, instead of being specified by hand, will be the newest ones included in toolkit.
 
-### Using scala-cli REPL
+### Using REPL
 
-You can execute code interactively using REPL provided by `scala-cli` command. Execute `scala-cli` in console without any arguments.
+You can execute code interactively using REPL provided by `scala` command. Execute `scala` in console without any arguments.
 ```
-$ scala-cli
-Welcome to Scala 3.4.2 (20-ea, Java OpenJDK 64-Bit Server VM).
+$ scala
+Welcome to Scala 3.5.0 (20-ea, Java OpenJDK 64-Bit Server VM).
 Type in expressions for evaluation. Or try :help.
                                                                                                                                                                             
 scala> 
