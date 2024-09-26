@@ -51,7 +51,7 @@ Hacking Scala begins with creating a branch for your work item. To develop Scala
 and [GitHub](https://github.com/). This section of the guide provides a short walkthrough, but if you are new to Git,
 it probably makes sense to familiarize yourself with Git first. We recommend
 
-* the [Git Pro](https://git-scm.com/book/en/) online book.
+* the [Git Pro](https://git-scm.com/book/en/v2) online book.
 * the help page on [Forking a Git Repository](https://help.github.com/articles/fork-a-repo).
 * this great training tool [LearnGitBranching](https://pcottle.github.io/learnGitBranching/). One-hour hands-on training helps more than 1000 hours reading.
 
@@ -96,7 +96,7 @@ Since in our example, we're going to fix an existing bug
     16:39 ~/Projects/scala (master)$ git checkout -b ticket/6725
     Switched to a new branch 'ticket/6725'
 
-If you are new to Git and branching, read the [Branching Chapter](https://git-scm.com/book/en/Git-Branching) in the Git Pro book.
+If you are new to Git and branching, read the [Branching Chapter](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell) in the Git Pro book.
 
 ### Build
 
@@ -333,11 +333,11 @@ Let's go into each of these points in more detail.
 
 ### Commit
 
-The [Git Basics](https://git-scm.com/book/en/Git-Basics) chapter in the Git online book covers most of the basic workflow during this stage.
+The [Git Basics](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository) chapter in the Git online book covers most of the basic workflow during this stage.
 There are two things you should know here:
 
 1. Commit messages are often the only way to understand the intentions of authors of code written a few years ago. Thus, writing a quality is of utmost importance. The more context you provide for the change you've introduced, the larger the chance that some future maintainer understand your intentions. Consult [the pull request policies](https://github.com/scala/scala/blob/2.12.x/CONTRIBUTING.md) for more information about the desired style of your commits.
-2. Keeping Scala's git history clean is also important. Therefore we won't accept pull requests for bug fixes that have more than one commit. For features, it is okay to have several commits, but all tests need to pass after every single commit. To clean up your commit structure, you want to [rewrite history](https://git-scm.com/book/en/Git-Branching-Rebasing) using `git rebase` so that your commits are against the latest revision of `master`.
+2. Keeping Scala's git history clean is also important. Therefore we won't accept pull requests for bug fixes that have more than one commit. For features, it is okay to have several commits, but all tests need to pass after every single commit. To clean up your commit structure, you want to [rewrite history](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) using `git rebase` so that your commits are against the latest revision of `master`.
 
 Once you are satisfied with your work, synced with `master` and cleaned up your commits you are ready to submit a patch to the central Scala repository. Before proceeding make sure you have pushed all of your local changes to your fork on GitHub.
 
