@@ -11,7 +11,7 @@ next-page: web-server-websockets
 
 ## Handling form-encoded input
 
-To create an endpoint that handles the data provided in an HTML form, use `cask.postForm` annotation, give the endpoint method arguments
+To create an endpoint that handles the data provided in an HTML form, use the `@cask.postForm` annotation. Add arguments to the endpoint method
 with names corresponding to names of fields in the form and set the form method to `post`.
 
 {% tabs web-server-input-1 class=tabs-scala-version %}
@@ -78,15 +78,15 @@ object Example extends cask.MainRoutes:
 {% endtabs %}
 
 In this example we create a form asking for name and surname of a user and then redirect the user to a greeting page. Notice the
-use of `cask.Response`. The `cask.Response` type allows user to set the status code, headers and cookies. The default
-content type in case of `String` returning endpoint method is `text/plain`, set it to `text/html` in order for browser to display the form correctly.
+use of `cask.Response`. The `cask.Response` type allows the user to set the status code, headers and cookies. The default
+content type for an endpoint method returning a `String` is `text/plain`. Set it to `text/html` in order for the browser to display the form correctly.
 
-The `formEndpoint` endpoint reads the form data using `name` and `surname` parameters. The names of parameters must
+The `formEndpoint` endpoint reads the form data using the `name` and `surname` parameters. The names of parameters must
 be identical to the field names of the form.
 
 ## Handling JSON-encoded input
 
-JSON fields are handled in the same way as form fields, except that `cask.PostJson` annotation is used. The fields
+JSON fields are handled in the same way as form fields, except that we use the `@cask.PostJson` annotation. The fields
 will be read into the endpoint method arguments.
 
 {% tabs web-server-input-2 class=tabs-scala-version %}
@@ -130,9 +130,9 @@ Hello John Smith
 
 The endpoint will accept JSONs that have only the fields with names specified as the endpoint method arguments. If there
 are more fields than expected, some fields are missing or have an incorrect data type, an error message
-will be returned with 400 response code.
+will be returned with the response code 400.
 
-To handle the case when the fields of the JSON are not known in advance, you can use argument with the `ujson.Value` type
+To handle the case when the fields of the JSON are not known in advance, you can use an argument with the `ujson.Value` type,
 from uPickle library.
 
 {% tabs web-server-input-3 class=tabs-scala-version %}

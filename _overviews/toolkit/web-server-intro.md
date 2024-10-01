@@ -13,9 +13,9 @@ Its main focus is on the ease of use, which makes it ideal for newcomers, at the
 frameworks provide, like asynchronicity.
 
 To define an endpoint it's enough to annotate a function with an annotation specifying the request path.
-Cask allows for building the response manually using tools Cask library provides, specifying the content, headers,
-status code, etc. An endpoint function can also just return a string, a [uPickle](https://com-lihaoyi.github.io/upickle/) JSON type, or a [Scalatags](https://com-lihaoyi.github.io/scalatags/)
-template and Cask will automatically create a response, setting all the necessary headers.
+Cask allows for building the response manually using tools that the library provides, specifying the content, headers,
+status code, etc. An endpoint function can also return a string, a [uPickle](https://com-lihaoyi.github.io/upickle/) JSON type, or a [Scalatags](https://com-lihaoyi.github.io/scalatags/)
+template. In that case, Cask will automatically create a response with the appropriate headers.
 
 Cask comes bundled with the uPickle library for handling JSONs, supports WebSockets and allows for extending endpoints with
 decorators, which can be used to handle authentication or rate limiting.

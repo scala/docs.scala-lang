@@ -3,7 +3,7 @@
 {% tabs cask-install class=tabs-build-tool %}
 
 {% tab 'Scala CLI' %}
-You can declare dependency on Cask with `using` directive:
+You can declare a dependency on Cask with the following `using` directive:
 ```scala
 //> using dep "com.lihaoyi::cask::0.9.2"
 ```

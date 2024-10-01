@@ -11,7 +11,7 @@ next-page: web-server-query-parameters
 
 ## Serving dynamically generated content
 
-You can create an endpoint returning dynamically generated content with `@cask.get` annotation.
+You can create an endpoint returning dynamically generated content with the `@cask.get` annotation.
 
 {% tabs web-server-dynamic-1 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
@@ -39,10 +39,10 @@ object Example extends cask.MainRoutes:
 {% endtab %}
 {% endtabs %}
 
-The example above creates an endpoint, returning the current date and time available at `/time`. The exact response will be 
+The example above creates an endpoint that returns the current date and time available at `/time`. The exact response will be 
 recreated every time you refresh the webpage.
 
-Since the endpoint method has the `String` output type, the result will be sent with `text/plain` [content type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type).
+Since the endpoint method has the `String` output type, the result will be sent with the `text/plain` [content type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type).
 If you want an HTML output to be interpreted by the browser, you will need to set the `Content-Type` header manually
 or [use the Scalatags templating library](/toolkit/web-server-dynamic.html#using-html-templates), supported by Cask.
 
@@ -132,7 +132,7 @@ In the example above, the `:city` segment in `/time/:city` is available through 
 The name of the argument must be identical to the segment name. The `getZoneIdForCity` helper method finds the timezone for
 a given city, and then the current date and time are translated to that timezone.
 
-Accessing the endpoint at[http://localhost:8080/time/Paris](http://localhost:8080/time/Paris) will result in:
+Accessing the endpoint at [http://localhost:8080/time/Paris](http://localhost:8080/time/Paris) will result in:
 ```
 Current date is: 2024-07-22T09:08:33.806259+02:00[Europe/Paris]
 ```
@@ -143,7 +143,7 @@ Consult the [documentation](https://com-lihaoyi.github.io/cask/index.html#variab
 
 ## Using HTML templates
 
-To create an HTML response, you can combine Cask code with the [Scalatags](https://com-lihaoyi.github.io/scalatags/) templating library.
+To create an HTML response, you can combine Cask with the [Scalatags](https://com-lihaoyi.github.io/scalatags/) templating library.
 
 Import the Scalatags library:
 

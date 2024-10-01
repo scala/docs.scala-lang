@@ -9,8 +9,8 @@ next-page: web-server-cookies-and-decorators
 
 {% include markdown.html path="_markdown/install-cask.md" %}
 
-You can create a WebSocket endpoint by using the `@cask.websocket` annotation. The endpoint method can return either a
-`cask.WsHandler` instance defining how the communication should take place, or a `cask.Response`, which rejects the 
+You can create a WebSocket endpoint with the `@cask.websocket` annotation. The endpoint method should return a
+`cask.WsHandler` instance defining how the communication should take place. It can also return a `cask.Response`, which rejects the
 attempt at forming a WebSocket connection.
 
 The connection can also be closed by sending a `cask.Ws.close()` message through the WebSocket channel.
@@ -113,6 +113,6 @@ initialize()
 {% endtab %}
 {% endtabs %}
 
-In the `cask.WsHandler` we define a `cask.WsActor` which reacts to events (of `cask.util.Ws.Event` type) and uses
-WebSocket channel to send messages. In this example, we receive the name of a city and return the current time there. If server
+In the `cask.WsHandler` we define a `cask.WsActor`. It reacts to events (of type `cask.util.Ws.Event`) and uses the
+WebSocket channel to send messages. In this example, we receive the name of a city and return the current time there. If the server
 receives an empty message, the connection is closed.

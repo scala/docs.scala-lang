@@ -14,8 +14,8 @@ sorting or limiting the results provided by the server. For example, in the `<ho
 is the name of a parameter, and `Paris` is its value. Cask allows for reading the query parameters by defining an endpoint
 method with arguments matching the names of the expected parameters and not matching any of the URL segments.
 
-In this example, the `city` parameter will be optional, which you specify in Cask by giving the argument `Option` type and 
-`None` default value. If not provided, the time for the current timezone will be returned.
+In this example, we give an `Option` type and the default value `None` to the `city` parameter. This tells Cask that it is optional.
+If not provided, the time for the current timezone will be returned.
 
 {% tabs web-server-query-1 class=tabs-scala-version %}
 {% tab 'Scala 2' %}

@@ -12,10 +12,10 @@ next-page: web-server-dynamic
 ## Serving a static file
 
 An endpoint is a specific URL where a particular webpage can be accessed. In Cask, an endpoint is a function returning the
-webpage data together with an annotation describing the URL it's available at.
+webpage data, together with an annotation describing its URL.
 
-To create a static file serving endpoint, we need two things: an HTML file with the page content and a function that
-points out the location of the file.
+To create an endpoint serving static files, we need two things: an HTML file with the page content and a function that
+points to that file.
 
 Create a minimal HTML file named `hello.html` with the following contents.
 
@@ -65,7 +65,7 @@ example
 {% endtabs %}
 
 The `@cask.staticFiles` annotation specifies at which path the webpage will be available. The endpoint function returns
-the location in which the file can be found.
+the location of the file.
 
 {% tabs web-server-static-2 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
@@ -93,9 +93,9 @@ In the example above, `@cask.staticFiles` instructs the server to look for files
 `src/main/resources` directory. Cask will match any subpath coming after `/static` and append it to the directory path.
 If you access the `/static/hello.html` file, it will serve the file available at `src/main/resources/hello.html`.
 The directory path can be any path available to the server, relative or not. If the requested file cannot be found in the
-specified location, a 404 response with an error message will be returned instead.
+specified location, the server will return a 404 response with an error message.
 
-The `Example` object inherits from the `cask.MainRoutes` class, providing the main function that starts the server. The `initialize()`
+The `Example` object inherits from the `cask.MainRoutes` class. It provides the main function that starts the server. The `initialize()`
 method call initializes the server routes, i.e., the association between URL paths and the code that handles them.
 
 ### Using the resources directory
@@ -127,7 +127,7 @@ object Example extends cask.MainRoutes:
 {% endtabs %}
 
 In the endpoint method, the location is set to `"."`, telling the server that the files are available directly in the
-resources directory. In general, you can use any nested location within the resources directory, for instance you could opt
+resources directory. In general, you can use any nested location within the resources directory. For instance, you could opt
 for placing your HTML files in the `static` directory inside the resources directory or using different directories to sort out
 files used by different endpoints.
 
