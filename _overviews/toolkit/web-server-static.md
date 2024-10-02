@@ -139,7 +139,7 @@ Run the example with the build tool of your choice.
 {% tab 'Scala CLI' %}
 In the terminal, the following command will start the server:
 ```
-scala-cli run Example.scala
+scala run Example.scala
 ```
 {% endtab %}
 {% tab 'sbt' %}
