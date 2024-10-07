@@ -25,7 +25,7 @@ Scala 3 offers a new way to define programs that can be invoked from the command
 To run this program, save the line of code in a file named as e.g. *Hello.scala*---the filename doesn’t have to match the method name---and run it with `scala`:
 
 ```bash
-$ scala Hello.scala
+$ scala run Hello.scala
 Hello, World
 ```
 
@@ -64,10 +64,10 @@ For example, given this `@main` method that takes an `Int`, a `String`, and a va
 {% endtab %}
 {% endtabs %}
 
-When you compile that code, it creates a main program named `happyBirthday` that’s called like this:
+Pass the arguments after `--`:
 
 ```
-$ scala happyBirthday 23 Lisa Peter
+$ scala run happyBirthday.scala -- 23 Lisa Peter
 Happy 23rd Birthday, Lisa and Peter!
 ```
 
@@ -79,10 +79,10 @@ The program implemented from an `@main` method checks that there are enough argu
 If a check fails, the program is terminated with an error message:
 
 ```
-$ scala happyBirthday 22
+$ scala run happyBirthday.scala -- 22
 Illegal command line after first argument: more arguments expected
 
-$ scala happyBirthday sixty Fred
+$ scala run happyBirthday.scala -- sixty Fred
 Illegal command line: java.lang.NumberFormatException: For input string: "sixty"
 ```
 
@@ -176,11 +176,9 @@ object happyBirthday {
 {% endtab %}
 {% endtabs %}
 
-If you place that code in a file named *happyBirthday.scala*, you can then compile it with `scalac` and run it with `scala`, as shown previously:
+If you place that code in a file named *happyBirthday.scala*, you can then compile and run it with `scala`, as shown previously:
 
 ```bash
-$ scalac happyBirthday.scala
-
-$ scala happyBirthday 23 Lisa Peter
+$ scala run happyBirthday.scala -- 23 Lisa Peter
 Happy 23rd Birthday, Lisa and Peter!
 ```
