@@ -170,10 +170,10 @@ and should not be typed):
 ```
 
 The program will be automatically compiled (with compiled classes somewhere in the newly created `.scala-build` directory)
-and executed, producing a similar output:
+and executed, producing an output similar to:
 ```
-Compiling project (Scala 3.5.0, JVM (20))
-Compiled project (Scala 3.5.0, JVM (20))
+Compiling project (Scala {{site.scala-3-version}}, JVM (20))
+Compiled project (Scala {{site.scala-3-version}}, JVM (20))
 Hello, World!
 ```
 

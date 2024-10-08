@@ -90,7 +90,8 @@ newcomer_resources:
 Проверьте корректность установки с помощью команды `scala -version`, которая должна вывести:
 ```bash
 $ scala -version
-Scala code runner version {{site.scala-3-version}} -- Copyright 2002-2022, LAMP/EPFL
+Scala code runner version: 1.4.3
+Scala version (default): {{site.scala-3-version}}
 ```
 Если сообщение не выдано, возможно, необходимо перезайти в терминал (или перезагрузиться), 
 чтобы изменения вступили в силу.

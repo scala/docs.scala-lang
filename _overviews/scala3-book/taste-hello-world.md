@@ -53,14 +53,10 @@ Next, compile and run the code with `scala`:
 $ scala run hello.scala
 ```
 
-When you run the command for the first time, two hidden directories will be created: `.bsp` and `.scala-build`. The first
-one contains the [Build Server Protocol](https://build-server-protocol.github.io/) information for IDEs, and the second one contains the results
-of compilation.
-
-The command should produce similar output:
+The command should produce an output similar to:
 ```
-Compiling project (Scala 3.5.0, JVM (20))
-Compiled project (Scala 3.5.0, JVM (20))
+Compiling project (Scala {{site.scala-3-version}}, JVM (20))
+Compiled project (Scala {{site.scala-3-version}}, JVM (20))
 Hello, World!
 ```
 
@@ -131,8 +127,8 @@ and wait until you type a name and press return on the keyboard, looking like th
 
 ```bash
 $ scala run helloInteractive.scala
-Compiling project (Scala 3.5.0, JVM (20))
-Compiled project (Scala 3.5.0, JVM (20))
+Compiling project (Scala {{site.scala-3-version}}, JVM (20))
+Compiled project (Scala {{site.scala-3-version}}, JVM (20))
 Please enter your name:
 ▌
 ```
@@ -141,8 +137,8 @@ When you enter your name at the prompt, the final interaction should look like t
 
 ```bash
 $ scala run helloInteractive.scala
-Compiling project (Scala 3.5.0, JVM (20))
-Compiled project (Scala 3.5.0, JVM (20))
+Compiling project (Scala {{site.scala-3-version}}, JVM (20))
+Compiled project (Scala {{site.scala-3-version}}, JVM (20))
 Please enter your name:
 Alvin Alexander
 Hello, Alvin Alexander!

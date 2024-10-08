@@ -8,8 +8,8 @@ redirect_from:
 
 ## Latest releases
 
-* Scala 3.4.2
-  * [Library API](https://www.scala-lang.org/api/3.4.2/)
+* Scala {{site.scala-3-version}}
+  * [Library API](https://www.scala-lang.org/api/{{site.scala-3-version}}/)
 * Scala 3.3.3 LTS
   * [Library API](https://www.scala-lang.org/api/3.3.3/)
 * Scala 2.13.14

@@ -100,7 +100,8 @@ Run the following command in your terminal, following the on-screen instructions
 Check your setup with the command `scala -version`, which should output:
 ```bash
 $ scala -version
-Scala code runner version {{site.scala-3-version}} -- Copyright 2002-2022, LAMP/EPFL
+Scala code runner version: 1.4.3
+Scala version (default): {{site.scala-3-version}}
 ```
 {% endaltDetails %}
 <!-- end Alternative Detail -->
@@ -147,8 +148,10 @@ To install them manually:
 
 ## Using the Scala CLI
 
-Create a file named `hello.scala` with the following code:
+In a directory of your choice, which we will call `<project-dir>`, create a file named `hello.scala` with the following code:
 ```scala
+//> using scala {{site.scala-3-version}}
+
 @main
 def hello(): Unit =
   println("Hello, World!")
@@ -159,19 +162,21 @@ the entry point in program execution. The method's type is `Unit`, which means i
 can be thought of as an analogue to the `void` keyword found in other languages. The `println` method will print the `"Hello, World!"`
 string to standard output.
 
-To run the program, execute `scala run hello.scala` command. The file will be compiled and executed, with console output
+To run the program, execute `scala run hello.scala` command from a terminal, within the `<project-dir>` directory. The file will be compiled and executed, with console output
 similar to following:
 ```
 $ scala run hello.scala             
-Compiling project (Scala 3.5.0, JVM (20))
-Compiled project (Scala 3.5.0, JVM (20))
+Compiling project (Scala {{site.scala-3-version}}, JVM (20))
+Compiled project (Scala {{site.scala-3-version}}, JVM (20))
 Hello, World!
 ```
 
 ### Handling command-line arguments
 
-Let's rewrite the `hello.scala` file so that the program greets the person running it.
+Rewrite the `hello.scala` file so that the program greets the person running it.
 ```scala
+//> using scala {{site.scala-3-version}}
+
 @main
 def hello(name: String): Unit =
   println(s"Hello, $name!")
@@ -184,8 +189,8 @@ the content of the `name` argument.
 To pass the arguments when executing the program, put them after `--`:
 ```
 $ scala run hello.scala -- Gabriel          
-Compiling project (Scala 3.5.0, JVM (20))
-Compiled project (Scala 3.5.0, JVM (20))
+Compiling project (Scala {{site.scala-3-version}}, JVM (20))
+Compiled project (Scala {{site.scala-3-version}}, JVM (20))
 Hello, Gabriel!
 ```
 
@@ -193,27 +198,28 @@ You can read more about [main methods](/scala3/book/methods-main-methods.html) a
 
 ### Adding dependencies
 
-Let's write a program that will count the files and directories present in its working directory. While in Scala you have full access to the Java API for
-filesystem interaction, the [os-lib](https://github.com/com-lihaoyi/os-lib) library by Li Haoyi is much more convenient to use. A dependency on the library can
-be added with the `//> using` directive. Put the following code in `counter.scala`.
+We now write a program that will count the files and directories present in its working directory.
+We use the [os-lib](https://github.com/com-lihaoyi/os-lib) library from the [Scala toolkit](toolkit/introduction.html)
+for that purpose. A dependency on the library can be added with the `//> using` directive. Put the following code in `counter.scala`.
 ```scala
+//> using scala {{site.scala-3-version}}
 //> using dep "com.lihaoyi::os-lib:0.10.7"
 
 @main
 def countFiles(): Unit =
-    val paths = os.list(os.pwd)
-    println(paths.length)
+  val paths = os.list(os.pwd)
+  println(paths.length)
 ```
 
-In the code above, the `os.pwd` returns the current working directory, which is then passed to `os.list`, which returns a sequence
-of paths directly within the directory passed as an argument. `val` is used to declare an immutable value, in this example storing the
+In the code above, `os.pwd` returns the current working directory. We pass it to `os.list`, which returns a sequence
+of paths directly within the directory passed as an argument. We use a `val` to declare an immutable value, in this example storing the
 sequence of paths.
 
 Execute the program. The dependency will be automatically downloaded. The execution should result in a similar output:
 ```
 $ scala run counter.scala       
-Compiling project (Scala 3.5.0, JVM (20))
-Compiled project (Scala 3.5.0, JVM (20))
+Compiling project (Scala {{site.scala-3-version}}, JVM (20))
+Compiled project (Scala {{site.scala-3-version}}, JVM (20))
 4
 ```
 The printed number should be 4: `hello.scala`, `counter.scala` and two hidden directories created automatically when a program is executed:
@@ -223,23 +229,23 @@ As it turns out, the `os-lib` library is a part of Scala Toolkit, a collection o
 operating system interaction or handling JSONs. You can read more about the libraries included in the toolkit [here](/toolkit/introduction.html).
 To include the toolkit libraries, use the `//> using toolkit default` directive:
 ```scala
-//> using toolkit default
+//> using scala {{site.scala-3-version}}
+//> using toolkit 0.5.0
 
 @main
 def countFiles(): Unit =
-    val paths = os.list(os.pwd)
-    println(paths.length)
+  val paths = os.list(os.pwd)
+  println(paths.length)
 ```
 
-This program is identical to the one above, with the only difference being that other toolkit libraries will also be available to use
-and their downloaded versions, instead of being specified by hand, will be the newest ones included in the toolkit.
+This program is identical to the one above. However, other toolkit libraries will also be available to use, should you need them.
 
-### Using REPL
+### Using the REPL
 
-You can execute code interactively using REPL provided by the `scala` command. Execute `scala` in console without any arguments.
+You can execute code interactively using the REPL provided by the `scala` command. Execute `scala` in the console without any arguments.
 ```
 $ scala
-Welcome to Scala 3.5.0 (20-ea, Java OpenJDK 64-Bit Server VM).
+Welcome to Scala {{site.scala-3-version}} (20-ea, Java OpenJDK 64-Bit Server VM).
 Type in expressions for evaluation. Or try :help.
                                                                                                                                                                             
 scala> 
@@ -279,9 +285,6 @@ sbt and an IDE using the tutorials below. If you want to familiarize yourself wi
 * [The Tour of Scala](/tour/tour-of-scala.html) for bite-sized introductions to Scala's features.
 * [Learning Resources](/learn.html), which includes online interactive tutorials and courses.
 * [Our list of some popular Scala books](/books.html).
-* [The migration guide](/scala3/guides/migration/compatibility-intro.html) helps you to migrate your existing Scala 2 code base to Scala 3.
-
-The [Scala CLI documentation](https://scala-cli.virtuslab.org/) describes the available sub-commands and how to integrate the tool with an IDE of choice.
 
 ## Create a "Hello World" project with sbt
 
