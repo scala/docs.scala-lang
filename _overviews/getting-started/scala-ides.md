@@ -4,7 +4,7 @@ title: Scala IDEs
 
 partof: scala-ides
 
-permalink: /tutorials/:title.html
+permalink: /getting-started/:title.html
 
 keywords:
 - Scala
