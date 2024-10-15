@@ -34,7 +34,7 @@ The `s` that you place before the string is just one possible interpolator that 
 provides.
 
 Scala provides three string interpolation methods out of the box:  `s`, `f` and `raw`.
-Further, a string interpolator is a just special method so it is possible to define your
+Further, a string interpolator is just a special method, so it is possible to define your
 own. For instance, some database libraries define a `sql` interpolator that returns a
 database query.
 
