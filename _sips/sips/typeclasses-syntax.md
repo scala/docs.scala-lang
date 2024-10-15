@@ -95,7 +95,7 @@ Aggregate context bounds like `A : X : Y` are not obvious to read, and it become
 to import clauses. Example:
 
 ```scala
-  trait:
+  trait A:
     def showMax[X : {Ordering, Show}](x: X, y: X): String
   class B extends A:
     def showMax[X : {Ordering as ordering, Show as show}](x: X, y: X): String =
