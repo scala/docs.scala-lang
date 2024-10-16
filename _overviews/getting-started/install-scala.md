@@ -198,7 +198,7 @@ You can read more about [main methods](/scala3/book/methods-main-methods.html) a
 ### Adding dependencies
 
 We now write a program that will count the files and directories present in its working directory.
-We use the [os-lib](https://github.com/com-lihaoyi/os-lib) library from the [Scala toolkit](toolkit/introduction.html)
+We use the [os-lib](https://github.com/com-lihaoyi/os-lib) library from the [Scala toolkit](/toolkit/introduction.html)
 for that purpose. A dependency on the library can be added with the `//> using` directive. Put the following code in `counter.scala`.
 ```scala
 //> using scala {{site.scala-3-version}}
