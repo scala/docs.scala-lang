@@ -268,12 +268,12 @@ object foo extends ScalaModule {
 ```
 
 Please notice, that compiler plugins are typically bound to the full
-version of the compiler, hence you have to use the `:::` (instead of 
-normal `::`) between the organization and the artifact name, 
+version of the compiler, hence you have to use the `:::` (instead of
+normal `::`) between the organization and the artifact name,
 to declare your dependency.
 
 For more information about plugin usage in Mill, please refer to the
-[Mill documentation](https://com-lihaoyi.github.io/mill/mill/Configuring_Mill.html#_scala_compiler_plugins).
+[Mill documentation for Scala compiler plugins](https://mill-build.org/mill/Scala_Module_Config.html#_scala_compiler_plugins).
 
 ## Developing compiler plugins with an IDE
 

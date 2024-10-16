@@ -161,6 +161,9 @@
       description: "A diverse and comprehensive set of libraries is important to any productive software ecosystem. While it is easy to develop and distribute Scala libraries, good library authorship goes beyond just writing code and publishing it. In this guide, we cover the important topic of Binary Compatibility."
       icon: puzzle-piece
       url: "core/binary-compatibility-for-library-authors.html"
+    - title: Nightly Versions of Scala
+      description: "We regularly publish 'nightlies' of both Scala 3 and Scala 2 so that users can preview and test the contents of upcoming releases. Here's how to find and use these versions."
+      url: "core/nightlies.html"
 
 - category: "Tools"
   description: "Reference material on core Scala tools like the Scala REPL and Scaladoc generation."

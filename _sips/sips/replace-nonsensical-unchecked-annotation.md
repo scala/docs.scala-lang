@@ -2,7 +2,7 @@
 layout: sip
 permalink: /sips/:title.html
 stage: implementation
-status: waiting-for-implementation
+status: under-review
 presip-thread: https://contributors.scala-lang.org/t/pre-sip-replace-non-sensical-unchecked-annotations/6342
 title: SIP-57 - Replace non-sensical @unchecked annotations
 ---

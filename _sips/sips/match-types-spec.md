@@ -286,8 +286,18 @@ At the top level, `variance = 1` and `scrutIsWidenedAbstract = false`.
       * If `q` is a skolem type `∃α:X`, fail as not specific.
       * Otherwise, compute `matchPattern(ti, q.Y, 0, scrutIsWidenedAbstract)`.
     * Otherwise, the underlying type definition of `q.Y` is of the form `= U`:
-      * If `q` is a skolem type `∃α:X` and `U` refers to `α`, fail as not specific.
-      * Otherwise, compute `matchPattern(ti, U, 0, scrutIsWidenedAbstract)`.
+      * If `q` is not a skolem type `∃α:X`, compute `matchPattern(ti, U, 0, scrutIsWidenedAbstract)`.
+      * Otherwise, let `U' = dropSkolem(U)` be computed as follow:
+        * `dropSkolem(q)` is undefined.
+        * `dropSkolem(p.T) = p'.T` where `p' = dropSkolem(p)` if the latter is defined. Otherwise:
+          * If the underlying type of `p.T` is of the form `= V`, then `dropSkolem(V)`.
+          * Otherwise `dropSkolem(p.T)` is undefined.
+        * `dropSkolem(p.x) = p'.x` where `p' = dropSkolem(p)` if the latter is defined. Otherwise:
+          * If the dealiased underlying type of `p.x` is a singleton type `r.y`, then `dropSkolem(r.y)`.
+          * Otherwise `dropSkolem(p.x)` is undefined.
+        * For all other types `Y`, `dropSkolem(Y)` is the type formed by replacing each component `Z` of `Y` by `dropSkolem(Z)`.
+      * If `U'` is undefined, fail as not specific.
+      * Otherwise, compute `matchPattern(ti, U', 0, scrutIsWidenedAbstract)`.
   * If `T` is a concrete type alias to a type lambda:
     * Let `P'` be the beta-reduction of `P`.
     * Compute `matchPattern(P', X, variance, scrutIsWidenedAbstract)`.

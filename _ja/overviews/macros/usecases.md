@@ -20,7 +20,7 @@ Scala の商用ユーザと研究ユーザの両方がマクロを利用して�
 ここ EPFL においても我々はマクロを活用して研究を行っている。Lightbend 社もマクロを数々のプロジェクトに採用している。
 マクロはコミュニティー内でも人気があり、既にいくつかの興味深い応用が現れている。
 
-最近行われた講演の ["What Are Macros Good For?"](https://scalamacros.org/paperstalks/2014-02-04-WhatAreMacrosGoodFor.pdf) では Scala 2.10 ユーザのマクロの利用方法を説明し、システム化した。講演の大筋はマクロはコード生成、静的な検査、および DSL に有効であるということで、これを研究や産業からの例を交えながら説明した。
+最近行われた講演の ["What Are Macros Good For?"](https://github.com/scalamacros/scalamacros.github.com/blob/5904f7ef88a439c668204b4bf262835e89fb13cb/paperstalks/2014-02-04-WhatAreMacrosGoodFor.pdf) では Scala 2.10 ユーザのマクロの利用方法を説明し、システム化した。講演の大筋はマクロはコード生成、静的な検査、および DSL に有効であるということで、これを研究や産業からの例を交えながら説明した。
 
-Scala'13 ワークショップにおいて ["Scala Macros: Let Our Powers Combine!"](https://scalamacros.org/paperstalks/2013-04-22-LetOurPowersCombine.pdf) という論文を発表した。これは Scala 2.10 における最先端のマクロ論をより学問的な視点から説明した。
+Scala'13 ワークショップにおいて ["Scala Macros: Let Our Powers Combine!"](https://github.com/scalamacros/scalamacros.github.com/blob/5904f7ef88a439c668204b4bf262835e89fb13cb/paperstalks/2013-04-22-LetOurPowersCombine.pdf) という論文を発表した。これは Scala 2.10 における最先端のマクロ論をより学問的な視点から説明した。
 この論文では Scala のリッチな構文と静的な型がマクロと相乗することを示し、また既存の言語機能をマクロによって新しい方法で活用できることを考察する。

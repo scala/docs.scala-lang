@@ -273,6 +273,15 @@ for multiple reasons, most notoriously
 For an in-depth treatment of types vs. classes, see the blog post
 ["There are more types than classes"](https://typelevel.org/blog/2017/02/13/more-types-than-classes.html).
 
+### Should I declare my parameterless method with or without parentheses?
+
+In other words, should one write `def foo()` or just `def foo`?
+
+Answer: by convention, the former is used to indicate that a method
+has side effects.
+
+For more details, see the Scala Style Guide, [here](https://docs.scala-lang.org/style/naming-conventions.html#parentheses).
+
 ### How can a method in a superclass return a value of the “current” type?
 
 First, note that using `this.type` won't work. People often try that,
@@ -332,14 +341,14 @@ setting in a multi-project build.
 
 For example, if you add this to your `build.sbt`:
 
-    scalaVersion := "2.13.14"
+    scalaVersion := "2.13.15"
 
 that's a "bare" setting, and you might expect it to apply build-wide.
 But it doesn't. _It only applies to the root project._
 
 In many cases one should instead write:
 
-    ThisBuild / scalaVersion := "2.13.14"
+    ThisBuild / scalaVersion := "2.13.15"
 
 Other possibilities include:
 

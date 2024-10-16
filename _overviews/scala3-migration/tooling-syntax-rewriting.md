@@ -52,7 +52,7 @@ Each of the first four options corresponds to a specific syntax:
 | Syntax | Compiler Option |
 |-|-|
 | Significant Indentation | `-indent` |
-| Classical Braces | `-noindent` |
+| Classical Braces | `-no-indent` |
 
 
 As we will see in further detail these options can be used in combination with the `-rewrite` option to automate the conversion to a particular syntax.
