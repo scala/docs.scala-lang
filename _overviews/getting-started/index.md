@@ -227,7 +227,7 @@ The printed number should be 4: `hello.scala`, `counter.scala` and two hidden di
 
 As it turns out, the `os-lib` library is a part of Scala Toolkit, a collection of libraries recommended for tasks like testing,
 operating system interaction or handling JSONs. You can read more about the libraries included in the toolkit [here](/toolkit/introduction.html).
-To include the toolkit libraries, use the `//> using toolkit default` directive:
+To include the toolkit libraries, use the `//> using toolkit 0.5.0` directive:
 ```scala
 //> using scala {{site.scala-3-version}}
 //> using toolkit 0.5.0
