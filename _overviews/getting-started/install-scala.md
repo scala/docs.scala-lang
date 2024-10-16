@@ -137,13 +137,13 @@ For more information about `cs`, read
 ### ...or manually
 
 You only need two tools to compile, run, test, and package a Scala project: Java 8 or 11,
-and sbt.
+and Scala CLI.
 To install them manually:
 
 1. if you don't have Java 8 or 11 installed, download
    Java from [Oracle Java 8](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html), [Oracle Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html),
    or [AdoptOpenJDK 8/11](https://adoptopenjdk.net/). Refer to [JDK Compatibility](/overviews/jdk-compatibility/overview.html) for Scala/Java compatibility detail.
-1. Install [sbt](https://www.scala-sbt.org/download.html)
+1. Install [Scala CLI](https://scala-cli.virtuslab.org/install)
 
 ## Using the Scala CLI
 
