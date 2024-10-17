@@ -164,7 +164,7 @@ string to standard output.
 To run the program, execute `scala run hello.scala` command from a terminal, within the `<project-dir>` directory. The file will be compiled and executed, with console output
 similar to following:
 ```
-$ scala run hello.scala             
+$ scala run hello.scala
 Compiling project (Scala {{site.scala-3-version}}, JVM (20))
 Compiled project (Scala {{site.scala-3-version}}, JVM (20))
 Hello, World!
@@ -187,7 +187,7 @@ the content of the `name` argument.
 
 To pass the arguments when executing the program, put them after `--`:
 ```
-$ scala run hello.scala -- Gabriel          
+$ scala run hello.scala -- Gabriel
 Compiling project (Scala {{site.scala-3-version}}, JVM (20))
 Compiled project (Scala {{site.scala-3-version}}, JVM (20))
 Hello, Gabriel!
@@ -216,7 +216,7 @@ sequence of paths.
 
 Execute the program. The dependency will be automatically downloaded. The execution should result in a similar output:
 ```
-$ scala run counter.scala       
+$ scala run counter.scala
 Compiling project (Scala {{site.scala-3-version}}, JVM (20))
 Compiled project (Scala {{site.scala-3-version}}, JVM (20))
 4
@@ -246,127 +246,100 @@ You can execute code interactively using the REPL provided by the `scala` comman
 $ scala
 Welcome to Scala {{site.scala-3-version}} (20-ea, Java OpenJDK 64-Bit Server VM).
 Type in expressions for evaluation. Or try :help.
-                                                                                                                                                                            
-scala> 
+
+scala>
 ```
 
 Write a line of code to be executed and press enter.
 ```
 scala> println("Hello, World!")
 Hello, World!
-                                                                                                                                                                            
-scala> 
+
+scala>
 ```
 
 The result will be printed immediately after executing the line. You can declare values:
 ```
 scala> val i = 1
 val i: Int = 1
-                                                                                                                                                                            
-scala> 
+
+scala>
 ```
 
 A new value of type `Int` has been created. If you provide an expression that can be evaluated, its result will be stored in an automatically created value.
 ```
 scala> i + 3
 val res0: Int = 4
-                                                                                                                                                                            
-scala> 
+
+scala>
 ```
 You can exit the REPL with `:exit`.
 
-### Next steps
+## Using an IDE
 
-Now that you have tasted a little bit of Scala, you can either explore the language itself, or learn how to set up a project using the
-sbt and an IDE using the tutorials below. If you want to familiarize yourself with the language more, consider checking out:
+> You can read a short summary of Scala IDEs on [a dedicated page](/getting-started/scala-ides.html).
+
+Let's use an IDE to open the code we wrote above. The most popular ones are [IntelliJ](https://www.jetbrains.com/idea/) and
+[VSCode](https://scalameta.org/metals/docs/editors/vscode).
+They both offer rich IDE features, but you can still use [many other editors](https://scalameta.org/metals/docs/editors/overview.html).
+
+### Prepare the project
+
+First, remove all the using directives, and put them in a single file `project.scala` in the `<project-dir>` directory.
+This makes it easier to import as a project in an IDE:
+
+```scala
+//> using scala {{site.scala-3-version}}
+//> using toolkit 0.5.0
+```
+
+> Optionally, you can re-initialise the necessary IDE files from within the `<project-dir>` directory with the command `scala setup-ide .`, but these files will already exist if you have previously run the project with the Scala CLI `run` command.
+
+### Using IntelliJ
+
+1. Download and install [IntelliJ Community Edition](https://www.jetbrains.com/help/idea/installation-guide.html)
+1. Install the Scala plugin by following [the instructions on how to install IntelliJ plugins](https://www.jetbrains.com/help/idea/discover-intellij-idea-for-scala.html)
+1. Open the `<project-dir>` directory, which should be imported automatically as a BSP project.
+
+### Using VSCode with Metals
+
+1. Download [VSCode](https://code.visualstudio.com/Download)
+1. Install the Metals extension from [the Marketplace](https://marketplace.visualstudio.com/items?itemName=scalameta.metals)
+1. Next, open the `<project-dir>` directory in VSCode. Metals should activate and begin importing the project automatically.
+
+### Play with the source code
+
+View these three files in your IDE:
+
+- _project.scala_
+- _hello.scala_
+- _counter.scala_
+
+You should notice the benefits of an IDE, such as syntax highlighting, and smart code interactions.
+For example you can place the cursor over any part of the code, such as `os.pwd` in _counter.scala_ and documentation for the method will appear.
+
+When you run your project in the next step, the configuration in _project.scala_ will be used to run the code in the other source files.
+
+### Run the code
+
+If you’re comfortable using your IDE, you can run the code in _counter.scala_ from your IDE.
+Attached to the `countFiles` method should be a prompt button. Click it to run the method. This should run without issue.
+The `hello` method in _hello.scala_ needs arguments however, so will require extra configuration via the IDE to provide the argument.
+
+Otherwise, you can run either application from the IDE's built-in terminal as described in above sections.
+
+## Next steps
+
+Now that you have tasted a little bit of Scala, you can further explore the language itself, consider checking out:
 
 * [The Scala Book](/scala3/book/introduction.html) (see the Scala 2 version [here](/overviews/scala-book/introduction.html)), which provides a set of short lessons introducing Scala’s main features.
 * [The Tour of Scala](/tour/tour-of-scala.html) for bite-sized introductions to Scala's features.
 * [Learning Resources](/learn.html), which includes online interactive tutorials and courses.
 * [Our list of some popular Scala books](/books.html).
 
-## Create a "Hello World" project with sbt
-
-Once you have installed sbt, you are ready to create a Scala project, which
-is explained in the following sections.
-
-To create a project, you can either use the command line or an IDE.
-If you are familiar with the command line, we recommend that approach.
-
-### Using the command line
-
-sbt is a build tool for Scala. sbt compiles, runs,
-and tests your Scala code. (It can also publish libraries and do many other tasks.)
-
-To create a new Scala project with sbt:
-
-1. `cd` to an empty folder.
-1. Run the command `sbt new scala/scala3.g8` to create a Scala 3 project, or `sbt new scala/hello-world.g8` to create a Scala 2 project.
-   This pulls a project template from GitHub.
-   It will also create a `target` folder, which you can ignore.
-1. When prompted, name the application `hello-world`. This will
-   create a project called "hello-world".
-1. Let's take a look at what just got generated:
-
-```
-- hello-world
-    - project (sbt uses this for its own files)
-        - build.properties
-    - build.sbt (sbt's build definition file)
-    - src
-        - main
-            - scala (all of your Scala code goes here)
-                - Main.scala (Entry point of program) <-- this is all we need for now
-```
-
-More documentation about sbt can be found in the [Scala Book](/scala3/book/tools-sbt.html) (see [here](/overviews/scala-book/scala-build-tool-sbt.html) for the Scala 2 version)
-and in the official sbt [documentation](https://www.scala-sbt.org/1.x/docs/index.html)
-
-### With an IDE
-
-You can read a short summary of Scala IDEs on [a dedicated page](/getting-started/scala-ides.html)
-
-## Open hello-world project
-
-Let's use an IDE to open the project. The most popular ones are [IntelliJ](https://www.jetbrains.com/idea/) and
-[VSCode](https://scalameta.org/metals/docs/editors/vscode).
-They both offer rich IDE features, but you can still use [many other editors](https://scalameta.org/metals/docs/editors/overview.html).
-
-### Using IntelliJ
-
-1. Download and install [IntelliJ Community Edition](https://www.jetbrains.com/help/idea/installation-guide.html)
-1. Install the Scala plugin by following [the instructions on how to install IntelliJ plugins](https://www.jetbrains.com/help/idea/discover-intellij-idea-for-scala.html)
-1. Open the `build.sbt` file then choose *Open as a project*
-
-### Using VSCode with metals
-
-1. Download [VSCode](https://code.visualstudio.com/Download)
-1. Install the Metals extension from [the Marketplace](https://marketplace.visualstudio.com/items?itemName=scalameta.metals)
-1. Next, open the directory containing a `build.sbt` file (this should be the directory `hello-world` if you followed the previous instructions). When prompted to do so, select *Import build*.
-
-### Play with the source code
-
-View these two files in your IDE:
-
-- _build.sbt_
-- _src/main/scala/Main.scala_
-
-When you run your project in the next step, the configuration in _build.sbt_ will be used to run the code in _src/main/scala/Main.scala_.
-
-## Run Hello World
-
-If you’re comfortable using your IDE, you can run the code in _Main.scala_ from your IDE.
-
-Otherwise, you can run the application from a terminal with these steps:
-
-1. `cd` into `hello-world`.
-1. Run `sbt`. This opens up the sbt console.
-1. Type `~run`. The `~` is optional and causes sbt to re-run on every file save,
-   allowing for a fast edit/run/debug cycle. sbt will also generate a `target` directory
-   which you can ignore.
-
-When you’re finished experimenting with this project, press `[Enter]` to interrupt the `run` command.
-Then type `exit` or press `[Ctrl+D]` to exit sbt and return to your command line prompt.
+There are also other tutorials for other build-tools you can use with Scala:
+* [Getting Started with Scala and sbt](/getting-started/sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html)
+* [Using Scala and Maven](/tutorials/scala-with-maven.html)
 
 ## Getting Help
 There are a multitude of mailing lists and real-time chat rooms in case you want to quickly connect with other Scala users. Check out our [community](https://scala-lang.org/community/) page for a list of these resources, and for where to reach out for help.
