@@ -65,7 +65,7 @@ In short, the only officially sanctioned place is the \#jobs channel
 
 ### Who's behind Scala?
 
-This is answered [on the community page](https://www.scala-lang.org/community/#whos-behind-scala).
+This is answered [on the Governance page](https://www.scala-lang.org/governance/).
 
 ### Can I use the Scala logo?
 
