@@ -253,10 +253,13 @@ accept given parameters and
 [polymorphic functions]({{ site.scala3ref }}/new-types/polymorphic-function-types.html)
 have type parameters.
 
-Most code uses methods most of the time,
-unless a function value is actually needed. With
-[eta-expansion](https://stackoverflow.com/questions/39445018/what-is-the-eta-expansion-in-scala),
-a method can be converted as a function when needed.
+It's standard to use methods most of the time,
+except when function value is actually needed.
+[Eta-expansion](https://stackoverflow.com/questions/39445018/what-is-the-eta-expansion-in-scala),
+converts methods to functions when needed.
+For example, a method such as `map` expects a function,
+but even if you `def square` as shown above, you can
+still `xs.map(square)`.
 
 ### What's the difference between types and classes?
 
