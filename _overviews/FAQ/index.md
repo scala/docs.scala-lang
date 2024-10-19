@@ -73,6 +73,10 @@ See [scala/scala-lang#1040](https://github.com/scala/scala-lang/issues/1040).
 
 ## Technical questions
 
+### What IDEs are available for Scala?
+
+See [this doc page](https://docs.scala-lang.org/getting-started/scala-ides.html).
+
 ### What compiler flags are recommended?
 
 The list of available options is
