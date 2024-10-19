@@ -258,7 +258,7 @@ accept given parameters and
 have type parameters.
 
 It's standard to use methods most of the time,
-except when function value is actually needed.
+except when a function value is actually needed.
 [Eta-expansion](https://stackoverflow.com/questions/39445018/what-is-the-eta-expansion-in-scala),
 converts methods to functions when needed.
 For example, a method such as `map` expects a function,
