@@ -248,18 +248,22 @@ differ from a function value such as:
 
     val square: Int => Int = x => x * x
 
-For Scala 2, there is a [complete answer on Stack Overflow](https://stackoverflow.com/a/2530007/4111404)
+For **Scala 2**, there is a [complete answer on Stack Overflow](https://stackoverflow.com/a/2530007/4111404)
 and a [summary with practical differences](https://tpolecat.github.io/2014/06/09/methods-functions.html).
 
-Note that in **Scala 3** the differences are fewer;
-for example, they will be able to
-[accept implicit parameters]({{ site.scala3ref }}/contextual/context-functions.html)
-as well as [type parameters]({{ site.scala3ref }}/new-types/polymorphic-function-types.html).
+In **Scala 3**, the differences are fewer.
+[Context functions]({{ site.scala3ref }}/contextual/context-functions.html)
+accept given parameters and
+[polymorphic functions]({{ site.scala3ref }}/new-types/polymorphic-function-types.html)
+have type parameters.
 
-Nevertheless, it is still recommended to use methods most of the time,
-unless you absolutely need a function. And, thanks to
-[eta-expansion](https://stackoverflow.com/questions/39445018/what-is-the-eta-expansion-in-scala)
-you rarely would need to define a function rather than a method.
+It's standard to use methods most of the time,
+except when function value is actually needed.
+[Eta-expansion](https://stackoverflow.com/questions/39445018/what-is-the-eta-expansion-in-scala),
+converts methods to functions when needed.
+For example, a method such as `map` expects a function,
+but even if you `def square` as shown above, you can
+still `xs.map(square)`.
 
 ### What's the difference between types and classes?
 
