@@ -373,7 +373,7 @@ Those constructors can be called like this:
 
 ```scala
 val s1 = new Student("Mary", "123")
-val s2 = new Student("Mary", "123", LocalDate.now)
+val s2 = new Student("Mary", "123", LocalDate.now())
 val s3 = new Student("Mary", "123", 456)
 ```
 
@@ -383,7 +383,7 @@ val s3 = new Student("Mary", "123", 456)
 
 ```scala
 val s1 = Student("Mary", "123")
-val s2 = Student("Mary", "123", LocalDate.now)
+val s2 = Student("Mary", "123", LocalDate.now())
 val s3 = Student("Mary", "123", 456)
 ```
 
