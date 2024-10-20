@@ -21,7 +21,7 @@ That being said, there are a few good things to know before you read this book.
 
 ## Installing Scala
 
-First, to run the examples in this book you’ll need to install Scala on your computer. See our general [Getting Started]({{site.baseurl}}/getting-started/index.html) page for details on how to use Scala (a) in an IDE and (b) from the command line.
+First, to run the examples in this book you’ll need to install Scala on your computer. See our general [Getting Started]({{site.baseurl}}/getting-started/install-scala.html) page for details on how to use Scala (a) in an IDE and (b) from the command line.
 
 
 
