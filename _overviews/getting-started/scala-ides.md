@@ -15,13 +15,11 @@ keywords:
 - Metals
 ---
 
-## Introduction
+It's of course possible to write Scala code in any editor and compile and run the code from the command line. But most developers prefer to use an IDE (Integrated Development Environment), especially for coding anything beyond simple exercises.
 
-Theoretically, you can write Scala code even in a notepad and compile and run the code from the terminal. When you do it, the compiler will tell you if it encounters any problems and suggest changes. You can apply that feedback in the notepad and try again.
+The following IDEs are available for Scala:
 
-However, this way of software development will quickly prove to be unusable when you start coding anything more complicated than simple exercises. For larger projects, we highly recommend that you use one of the following IDEs (Integrated Development Environments):
-
-# IntelliJ IDEA + Scala Plugin
+## IntelliJ IDEA + Scala plugin
 
 [https://jetbrains.com/scala](https://jetbrains.com/scala)
 
@@ -33,11 +31,25 @@ IntelliJ IDEA and Scala Plugin will assist you in virtually every part of a Scal
 
 For more information, check out our tutorial [Getting Started with Scala in IntelliJ](/getting-started/intellij-track/building-a-scala-project-with-intellij-and-sbt.html)
 
-# Visual Studio Code + Metals
+## Visual Studio Code + Metals
 
 [https://scalameta.org/metals](https://scalameta.org/metals)
 
 ![](../../resources/images/getting-started/VSCodeMetals.png)
 
-Visual Studio Code, commonly called VS Code, is a source code editor developed by Microsoft. Similar to how IntelliJ IDEA requires IntelliJ Scala Plugin to support Scala, you can get support for Scala in VS Code by installing an extension: Metals by Scalameta. In contrast to IntelliJ IDEA + Scala Plugin, VS Code + Metals is is aimed at people who like to get feedback and code intelligence straight from the compiler, which enables them to also try out experimental Scala features. Besides, Metals - as an [language server](https://microsoft.github.io/language-server-protocol/) - is also available to use with a variety of other source-code editors, such as Vim, Sublime Text, Zed, Helix and Emacs, which means that you will get a similar experience in any of them.
+Visual Studio Code, commonly called VS Code, is a source code editor from Microsoft. To add Scala support, you install an extension called Metals.
 
+(Why "Metals"? Because the underlying technologies are Scalameta and LSP ([Language Server Protocol](https://microsoft.github.io/language-server-protocol/)), and "Meta" + "LS" equals "Metals".)
+
+In contrast to IntelliJ IDEA + Scala Plugin, VS Code + Metals is aimed at people who like to get feedback and code intelligence straight from the compiler, which enables them to also try out experimental Scala features.
+
+## Your favorite editor + Metals
+
+Metals is most commonly used with VS Code, but it's also available for the following popular editors:
+
+* Emacs
+* Vim
+* Sublime Text
+* Helix
+
+as documented [here](https://scalameta.org/metals/docs/#editor-support).
