@@ -32,6 +32,7 @@ We provide the new location and bio of the profile in a JSON object.
 {% tab 'Scala 2' %}
 ```scala mdoc:compile-only
 import sttp.client4.quick._
+import sttp.client4.upicklejson._
 
 val json = ujson.Obj(
   "location" -> "hometown",
@@ -41,8 +42,7 @@ val json = ujson.Obj(
 val response = quickRequest
   .patch(uri"https://api.github.com/user")
   .auth.bearer(sys.env("GITHUB_TOKEN"))
-  .header("Content-Type", "application/json")
-  .body(ujson.write(json))
+  .body(json)
   .send()
 
 println(response.code)
@@ -55,6 +55,7 @@ println(response.body)
 {% tab 'Scala 3' %}
 ```scala
 import sttp.client4.quick.*
+import sttp.client4.upicklejson.*
 
 val json = ujson.Obj(
   "location" -> "hometown",
@@ -64,8 +65,7 @@ val json = ujson.Obj(
 val response = quickRequest
   .patch(uri"https://api.github.com/user")
   .auth.bearer(sys.env("GITHUB_TOKEN"))
-  .header("Content-Type", "application/json")
-  .body(ujson.write(json))
+  .body(json)
   .send()
 
 println(response.code)
