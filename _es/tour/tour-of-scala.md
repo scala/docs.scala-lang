@@ -37,7 +37,6 @@ El [mecanismo de inferencia de tipos locales](type-inference.html) se encarga de
 
 En la práctica, el desarrollo de aplicaciones específicas para un dominio generalmente requiere de "Lenguajes de dominio específico" (DSL). Scala provee una única combinación de mecanismos del lenguaje que simplifican la creación de construcciones propias del lenguaje en forma de bibliotecas:
 * cualquier método puede ser usado como un operador de [infijo o postfijo](operators.html)
-* [las closures son construidas automáticamente dependiendo del tipo esperado](automatic-closures.html) (tipos objetivo).
 
 El uso conjunto de ambas características facilita la definición de nuevas sentencias sin tener que extender la sintaxis y sin usar facciones de meta-programación como tipo macros.
 

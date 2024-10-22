@@ -6,7 +6,7 @@ partof: scala-tour
 num: 29
 language: ko
 
-next-page: automatic-closures
+next-page: annotations
 previous-page: type-inference
 ---
 

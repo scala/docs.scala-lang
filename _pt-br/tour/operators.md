@@ -4,7 +4,7 @@ title: Operadores
 partof: scala-tour
 
 num: 29
-next-page: automatic-closures
+next-page: annotations
 previous-page: type-inference
 language: pt-br
 ---
