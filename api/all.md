@@ -64,6 +64,8 @@ https://scala-ci.typesafe.com/artifactory/scala-integration/org/scala-lang/
 
 ## Previous releases
 
+* Scala 3.5.1
+  * [Library API](https://www.scala-lang.org/api/3.5.1/)
 * Scala 3.5.0
   * [Library API](https://www.scala-lang.org/api/3.5.0/)
 * Scala 3.4.3
