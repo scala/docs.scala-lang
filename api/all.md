@@ -39,6 +39,11 @@ redirect_from:
 <!--
 ## Prereleases
 
+* Scala 2.13.0-RC3
+  * [Library API](https://www.scala-lang.org/api/2.13.0-RC3/)
+  * [Compiler API](https://www.scala-lang.org/api/2.13.0-RC3/scala-compiler/scala/)
+  * [Reflection API](https://www.scala-lang.org/api/2.13.0-RC3/scala-reflect/scala/reflect/)
+-->
 
 ## Nightly builds
 
