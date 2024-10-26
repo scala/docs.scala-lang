@@ -105,6 +105,7 @@ The following table shows backported Scala 3 language semantics available in `-X
 | `case-apply-copy-access`: modifiers of synthetic methods | fatal warning | constructor modifiers are used for apply / copy methods of case classes |
 | `case-companion-function`: companions are Functions | fatal warning at use site | synthetic case companion objects no longer extend FunctionN, but are adapted at use site with warning |
 | `infer-override`: override type inference | fatal warning | inferred type of member uses type of overridden member |
+| `double-definitions`: definitions differing in empty parens <sup>2</sup> | fatal warning | double definition error |
 
 Example 1:
 
@@ -114,9 +115,17 @@ Example 1:
     + 2
 {% endhighlight %}
 
+Example 2:
+
+{% highlight scala %}
+class C(x: Int) {
+  def x(): Int = x // allowed in Scala 2, double definition error in Scala 3
+}
+{% endhighlight %}
+
 ### Changes affecting binary encoding
 
-As of Scala 2.13.14, there are 3 changes in `-Xsource-features` that affect binary encoding of classfiles:
+As of Scala 2.13.15, there are 3 changes in `-Xsource-features` that affect binary encoding of classfiles:
 
   1. `case-apply-copy-access`: the constructor modifiers of case classes (`case class C private[p] (x: Int)`) are copied to the synthetic `apply` and `copy` methods.
   1. `case-companion-function`: the synthetic companion objects of case classes no longer extend `FunctionN`.

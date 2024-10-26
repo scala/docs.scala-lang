@@ -51,8 +51,8 @@ Immutable maps support in addition operations to add and remove mappings by retu
 | **Additions and Updates:**|                                                |
 |  `ms.updated(k, v)`<br>or `ms + (k -> v)`  |The map containing all mappings of `ms` as well as the mapping `k -> v` from key `k` to value `v`.|
 | **Removals:**             |                                                |
-|  `ms.remove(k)`<br>or `ms - k`             |The map containing all mappings of `ms` except for any mapping of key `k`.|
-|  `ms.removeAll(ks)`<br>or `ms -- ks`       |The map containing all mappings of `ms` except for any mapping with a key in `ks`.|
+|  `ms.removed(k)`<br>or `ms - k`             |The map containing all mappings of `ms` except for any mapping of key `k`.|
+|  `ms.removedAll(ks)`<br>or `ms -- ks`       |The map containing all mappings of `ms` except for any mapping with a key in `ks`.|
 
 Mutable maps support in addition the operations summarized in the following table.
 

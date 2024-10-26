@@ -15,9 +15,9 @@ keywords:
 - Document
 - Guide
 
-scala-version: 2.13.14
+scala-version: 2.13.15
 scala-212-version: 2.12.20
-scala-3-version: 3.5.1
+scala-3-version: 3.5.2
 
 collections:
   style:

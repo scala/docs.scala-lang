@@ -22,6 +22,10 @@ toolkit-index:
     description: Sending HTTP requests and uploading files with sttp.
     icon: "fa fa-globe"
     link: /toolkit/http-client-intro.html
+  - title: Web servers
+    description: Building web servers with Cask.
+    icon: "fa fa-server"
+    link: /toolkit/web-server-intro.html
 ---
 
 ## What is the Scala Toolkit?

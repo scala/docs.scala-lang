@@ -47,53 +47,23 @@ object hello {
 {% endtabs %}
 <!-- End tabs -->
 
-Next, compile the code with `scalac`:
+Next, compile and run the code with `scala`:
 
 ```bash
-$ scalac hello.scala
+$ scala run hello.scala
 ```
 
-If you’re coming to Scala from Java, `scalac` is just like `javac`, so that command creates several files:
-
-<!-- Display Hello World compiled outputs for each Scala Version -->
-{% tabs hello-world-outputs class=tabs-scala-version %}
-
-{% tab 'Scala 2' for=hello-world-outputs %}
-```bash
-$ ls -1
-hello$.class
-hello.class
-hello.scala
+The command should produce an output similar to:
 ```
-{% endtab %}
-
-{% tab 'Scala 3' for=hello-world-outputs %}
-```bash
-$ ls -1
-hello$package$.class
-hello$package.class
-hello$package.tasty
-hello.scala
-hello.class
-hello.tasty
-```
-{% endtab %}
-
-{% endtabs %}
-<!-- End tabs -->
-
-Like Java, the _.class_ files are bytecode files, and they’re ready to run in the JVM.
-
-Now you can run the `hello` method with the `scala` command:
-
-```bash
-$ scala hello
+Compiling project (Scala {{site.scala-3-version}}, JVM (20))
+Compiled project (Scala {{site.scala-3-version}}, JVM (20))
 Hello, World!
 ```
 
 Assuming that worked, congratulations, you just compiled and ran your first Scala application.
 
 > More information about sbt and other tools that make Scala development easier can be found in the [Scala Tools][scala_tools] chapter.
+> The Scala CLI documentation can be found [here](https://scala-cli.virtuslab.org/).
 
 ## Ask For User Input
 
@@ -152,16 +122,13 @@ use the `+` operator on strings to join `"Hello, "` with `name` and `"!"`, makin
 
 > You can learn more about using `val` by reading [Variables and Data Types](/scala3/book/taste-vars-data-types.html).
 
-Then compile the code with `scalac`:
-
-```bash
-$ scalac helloInteractive.scala
-```
-Then run it with `scala helloInteractive`, this time the program will pause after asking for your name,
+Then run the code with `scala`. This time the program will pause after asking for your name,
 and wait until you type a name and press return on the keyboard, looking like this:
 
 ```bash
-$ scala helloInteractive
+$ scala run helloInteractive.scala
+Compiling project (Scala {{site.scala-3-version}}, JVM (20))
+Compiled project (Scala {{site.scala-3-version}}, JVM (20))
 Please enter your name:
 ▌
 ```
@@ -169,7 +136,9 @@ Please enter your name:
 When you enter your name at the prompt, the final interaction should look like this:
 
 ```bash
-$ scala helloInteractive
+$ scala run helloInteractive.scala
+Compiling project (Scala {{site.scala-3-version}}, JVM (20))
+Compiled project (Scala {{site.scala-3-version}}, JVM (20))
 Please enter your name:
 Alvin Alexander
 Hello, Alvin Alexander!

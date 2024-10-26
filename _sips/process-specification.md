@@ -266,12 +266,11 @@ The current committee members are:
 - Lukas Rytz ([@lrytz](https://github.com/lrytz)), Lightbend
 - Martin Odersky ([@odersky](https://github.com/odersky)), EPFL
 - Oron Port ([@soronpo](https://github.com/soronpo)), DFiant Inc
-- Paweł Marks ([@Kordyjan](https://github.com/Kordyjan)), VirtusLab
 - Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), Scala Center
 
 The current Chairperson is:
 
-- Anatolii Kmetiuk ([@Toli](https://github.com/anatoliykmetyuk)), Scala Center
+- Dimi Racordon ([@kyouko-taiga](https://github.com/kyouko-taiga)), EPFL
 
 The current Secretary is:
 

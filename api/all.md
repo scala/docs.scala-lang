@@ -8,14 +8,14 @@ redirect_from:
 
 ## Latest releases
 
-* Scala 3.5.1
-  * [Library API](https://www.scala-lang.org/api/3.5.1/)
-* Scala 3.3.3 LTS
-  * [Library API](https://www.scala-lang.org/api/3.3.3/)
-* Scala 2.13.14
-  * [Library API](https://www.scala-lang.org/api/2.13.14/)
-  * [Compiler API](https://www.scala-lang.org/api/2.13.14/scala-compiler/scala/)
-  * [Reflection API](https://www.scala-lang.org/api/2.13.14/scala-reflect/scala/reflect/)
+* Scala {{site.scala-3-version}}
+  * [Library API](https://www.scala-lang.org/api/{{site.scala-3-version}}/)
+* Scala 3.3.4 LTS
+  * [Library API](https://www.scala-lang.org/api/3.3.4/)
+* Scala 2.13.15
+  * [Library API](https://www.scala-lang.org/api/2.13.15/)
+  * [Compiler API](https://www.scala-lang.org/api/2.13.15/scala-compiler/scala/)
+  * [Reflection API](https://www.scala-lang.org/api/2.13.15/scala-reflect/scala/reflect/)
 * Scala 2.12.20
   * [Library API](https://www.scala-lang.org/api/2.12.20/)
   * [Compiler API](https://www.scala-lang.org/api/2.12.20/scala-compiler/scala/)
@@ -64,6 +64,8 @@ https://scala-ci.typesafe.com/artifactory/scala-integration/org/scala-lang/
 
 ## Previous releases
 
+* Scala 3.5.1
+  * [Library API](https://www.scala-lang.org/api/3.5.1/)
 * Scala 3.5.0
   * [Library API](https://www.scala-lang.org/api/3.5.0/)
 * Scala 3.4.3
@@ -74,6 +76,8 @@ https://scala-ci.typesafe.com/artifactory/scala-integration/org/scala-lang/
   * [Library API](https://www.scala-lang.org/api/3.4.1/)
 * Scala 3.4.0
   * [Library API](https://www.scala-lang.org/api/3.4.0/)
+* Scala 3.3.3 LTS
+  * [Library API](https://www.scala-lang.org/api/3.3.3/)
 * Scala 3.3.1 LTS
   * [Library API](https://www.scala-lang.org/api/3.3.1/)
 * Scala 3.3.0 LTS
@@ -98,6 +102,10 @@ https://scala-ci.typesafe.com/artifactory/scala-integration/org/scala-lang/
   * [Library API](https://www.scala-lang.org/api/3.0.1/)
 * Scala 3.0.0
   * [Library API](https://www.scala-lang.org/api/3.0.0/)
+* Scala 2.13.14
+  * [Library API](https://www.scala-lang.org/api/2.13.14/)
+  * [Compiler API](https://www.scala-lang.org/api/2.13.14/scala-compiler/scala/)
+  * [Reflection API](https://www.scala-lang.org/api/2.13.14/scala-reflect/scala/reflect/)
 * Scala 2.13.13
   * [Library API](https://www.scala-lang.org/api/2.13.13/)
   * [Compiler API](https://www.scala-lang.org/api/2.13.13/scala-compiler/scala/)
