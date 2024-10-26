@@ -57,6 +57,8 @@ true
 Value types can be cast in the following way:
 <a href="{{ site.baseurl }}/resources/images/tour/type-casting-diagram.svg"><img  style="width:100%" src="{{ site.baseurl }}/resources/images/tour/type-casting-diagram.svg" alt="Scala Type Hierarchy"></a>
 
+Note that `Long` to `Float` conversion is deprecated in new versions of Scala, because of the potential precision lost.
+
 For example:
 
 {% tabs unified-types-2 %}
