@@ -16,10 +16,11 @@ Scala has the control structures you expect to find in a programming language, i
 - `while` loops
 - `try`/`catch`/`finally`
 
-It also has two other powerful constructs that you may not have seen before, depending on your programming background:
+It also has three other powerful constructs that you may not have seen before, depending on your programming background:
 
 - `for` expressions (also known as _`for` comprehensions_)
 - `match` expressions
+- `boundary`/`break` expressions
 
 These are all demonstrated in the following sections.
 
@@ -988,5 +989,179 @@ finally
 {% endtabs %}
 
 Assuming that the `openAndReadAFile` method uses the Java `java.io.*` classes to read a file and doesn't catch its exceptions, attempting to open and read a file can result in both a `FileNotFoundException` and an `IOException`, and those two exceptions are caught in the `catch` block of this example.
+
+## boundary/break
+
+The `boundary`/`break` expression is used to exit a block of code while optionally returning a value. 
+For example, it can be used to break out of a nested loop:
+
+{% tabs control-structures-32 %}
+{% tab 'Scala 3 Only'  %}
+
+```scala
+import scala.util.boundary, boundary.break
+
+val result =
+  boundary:
+    for i <- 1 to 10 do
+      for j <- 1 to 10 do
+        if i == 7 && j == 9 then break("found")
+    "not found"
+
+println(result)
+```
+
+{% endtab %}
+{% endtabs %}
+
+Since `break` uses an exception to control the execution flow, mixing it with `try`/`catch` can lead to unexpected results:
+
+{% tabs control-structures-33 %}
+{% tab 'Scala 3 Only'  %}
+
+```scala
+import scala.util.boundary, boundary.break
+
+val result = boundary:
+    try
+      for i <- 1 to 10 do
+        some_operation(i)
+        if i == 5 then break(i)
+    catch
+      case e: Exception => -1
+
+println(result) // prints -1, not 5
+```
+
+{% endtab %}
+{% endtabs %}
+
+The right way to use it would be to place the `boundary` expression inside the `try` block:
+
+{% tabs control-structures-34 %}
+{% tab 'Scala 3 Only'  %}
+
+```scala
+import scala.util.boundary, boundary.break
+
+val result =
+    try
+      boundary:
+        for i <- 1 to 10 do
+          some_operation(i)
+          if i == 5 then break(i)
+    catch
+      case e: Exception => -1
+
+println(result) // 5
+```
+
+{% endtab %}
+{% endtabs %}
+
+## Custom control structures
+
+The use of Scala 3 quiet syntax, by-name parameters, context parameters  and `boundary`/`break` allows for writing code
+that resembles the built-in control structures and helps with reducing the boilerplate.
+In this example, the `repeat` function wraps a simple `for` loop, and the by-name `action` parameter will be executed `n`
+times for its side effects.
+
+{% tabs control-structures-35 %}
+{% tab 'Scala 3 Only'  %}
+
+```scala
+def repeat(n: Int)(action: => Unit): Unit =
+  for i <- 1 to n do
+    action
+
+repeat(5):
+  println("test")
+```
+
+{% endtab %}
+{% endtabs %}
+
+Here's an example that simulates a `do`-`while` loop by using `boundary`/`break`:
+
+{% tabs control-structures-36 %}
+{% tab 'Scala 3 Only'  %}
+
+```scala
+import scala.util.boundary, boundary.break, boundary.Label
+
+def loop(action: Label[Unit] ?=> Unit): Unit =
+  boundary[Unit]:
+    while true do
+      action
+
+def until(condition: => Boolean)(using Label[Unit]): Unit =
+  if condition then break()
+```
+
+{% endtab %}
+{% endtabs %}
+
+The `loop` function will continue to execute `action` indefinitely, unless the execution breaks out of the internal 
+`while` loop. The `until` function will stop the execution of `loop` if `condition` is met. `break()` needs a context parameter
+of type `Label[Unit]`, denoting which `boundary` it is supposed to break to.
+To use the `loop`/`until` structure, pass the code to be executed as an argument to `loop`, including the `until` check:
+
+{% tabs control-structures-37 %}
+{% tab 'Scala 3 Only'  %}
+
+```scala
+var i = 0
+loop:
+  println(i)
+  i = i + 1
+  until(i == 10)
+```
+
+{% endtab %}
+{% endtabs %}
+
+The following example uses a context parameter to store actions to be executed after a block of code is completed. The
+`with_defer` function defines a scope in which `defer` can be used to defer execution of actions.
+
+{% tabs control-structures-38 %}
+{% tab 'Scala 3 Only'  %}
+
+```scala
+import scala.collection.mutable.ArrayBuffer
+
+class DeferredAction(action: => Unit):
+  def execute = action
+
+def defer(action: => Unit)(using buffer: ArrayBuffer[DeferredAction]) =
+  buffer += new DeferredAction(action)
+
+def with_defer(action: ArrayBuffer[DeferredAction] ?=> Unit) =
+  given deferedActions: ArrayBuffer[DeferredAction] = ArrayBuffer[DeferredAction]()
+  try
+    action
+  finally
+    deferedActions.foreach(_.execute)
+```
+
+{% endtab %}
+{% endtabs %}
+
+To use it, place the code inside the `with_defer` block. Bear in mind that there is no guarantee that a deferred action
+actually executes, for example if another action throws an exception.
+
+{% tabs control-structures-39 %}
+{% tab 'Scala 3 Only'  %}
+
+```scala
+with_defer:
+  defer:
+    println("this will be second")
+  defer:
+    println("this will be printed at the end")
+  println("this will be printed first")
+```
+
+{% endtab %}
+{% endtabs %}
 
 [matchable]: {{ site.scala3ref }}/other-new-features/matchable.html
