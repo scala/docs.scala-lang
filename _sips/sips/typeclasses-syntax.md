@@ -13,7 +13,7 @@ title: SIP-64 - Improve Syntax for Context Bounds and Givens
 | Date          | Version            |
 |---------------|--------------------|
 | March 11, 2024| Initial Draft      |
-| July 18, 2014 | Revised Draft      |
+| July 18, 2024 | Revised Draft      |
 
 ## Summary
 
