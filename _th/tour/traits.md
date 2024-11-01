@@ -9,6 +9,8 @@ language: th
 
 next-page: tuples
 previous-page: classes
+topics: traits
+prerequisite-knowledge: expressions, classes, generics, objects, companion-objects
 ---
 
 Trait ใช้เพื่อแชร์ interface และ field ระหว่างคลาส โดยที่ trait จะคล้ายกับ interface ใน Java 8\
@@ -143,14 +145,6 @@ iterator.next()  // returns 1
 > ถ้าอิงจากตัวอย่างจาก code block ด้านล่าง เราจะเห็นได้ว่า code ด้านบน\
 > เราส่งตัวแปร `dog` ซึ่งเป็น instance ของคลาส `Dog` ไปให้ function `getPetName`\
 > โดยที่คลาส `Dog` ก็เป็น subtype ของ trait `Pet` อีกทีหนึ่ง
-
-{% tabs trait-pet-example class=tabs-scala-version %}
-
-{% tab 'Scala 2' for=trait-pet-example %}
-
-{% tabs trait-pet-example class=tabs-scala-version %}
-
-{% tab 'Scala 2' for=trait-pet-example %}
 
 {% tabs trait-pet-example class=tabs-scala-version %}
 
