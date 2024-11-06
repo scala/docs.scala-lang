@@ -1064,7 +1064,7 @@ Pair<String, Integer> pair =
 
 Triplet<String, Integer, Double> triplet =
   Triplet.with("Eleven", 11, 11.0);
-Quartet<String, Integer, Double,Person> quartet =
+Quartet<String, Integer, Double, Person> quartet =
   Quartet.with("Eleven", 11, 11.0, new Person("Eleven"));
 ```
 
