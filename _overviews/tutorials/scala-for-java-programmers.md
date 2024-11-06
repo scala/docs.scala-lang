@@ -160,38 +160,49 @@ package, so can be accessed from anywhere in a program.
 
 > **Note:** The following assumes you are using Scala on the command line
 
-#### Compiling From the Command Line
-
-To compile the example, we use `scalac`, the Scala compiler. `scalac`
-works like most compilers: it takes a source file as argument, maybe
-some options, and produces one or several output files. The outputs
-it produces are standard Java class files.
-
 If we save the above program in a file called
-`HelloWorld.scala`, we can compile it by issuing the following
+`HelloWorld.scala`, we can run it by issuing the following
 command (the greater-than sign `>` represents the shell prompt
 and should not be typed):
 
 ```shell
-> scalac HelloWorld.scala
+> scala run HelloWorld.scala
 ```
 
-This will generate a few class files in the current directory. One of
+The program will be automatically compiled (with compiled classes somewhere in the newly created `.scala-build` directory)
+and executed, producing an output similar to:
+```
+Compiling project (Scala {{site.scala-3-version}}, JVM (20))
+Compiled project (Scala {{site.scala-3-version}}, JVM (20))
+Hello, World!
+```
+
+#### Compiling From the Command Line
+
+To compile the example, we use `scala compile` command, which will invoke the Scala compiler, `scalac`. `scalac`
+works like most compilers: it takes a source file as argument, maybe
+some options, and produces one or several output files. The outputs
+it produces are standard Java class files.
+
+```shell
+> scala compile HelloWorld.scala -d .
+```
+
+This will generate a few class files in the current directory (`-d` option sets the compilation output directory). One of
 them will be called `HelloWorld.class`, and contains a class
 which can be directly executed using the `scala` command, as the
 following section shows.
 
 #### Running From the Command Line
 
-Once compiled, a Scala program can be run using the `scala` command.
+Once compiled, the program can be run using the `scala run` command.
 Its usage is very similar to the `java` command used to run Java
-programs, and accepts the same options. The above example can be
+programs, and accepts similar options. The above example can be
 executed using the following command, which produces the expected
 output:
 
 ```shell
-> scala -classpath . HelloWorld
-
+> scala run --main-class HelloWorld -classpath . 
 Hello, World!
 ```
 

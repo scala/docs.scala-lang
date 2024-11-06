@@ -13,7 +13,7 @@ title: SIP-64 - Improve Syntax for Context Bounds and Givens
 | Date          | Version            |
 |---------------|--------------------|
 | March 11, 2024| Initial Draft      |
-| July 18, 2014 | Revised Draft      |
+| July 18, 2024 | Revised Draft      |
 
 ## Summary
 
@@ -95,7 +95,7 @@ Aggregate context bounds like `A : X : Y` are not obvious to read, and it become
 to import clauses. Example:
 
 ```scala
-  trait:
+  trait A:
     def showMax[X : {Ordering, Show}](x: X, y: X): String
   class B extends A:
     def showMax[X : {Ordering as ordering, Show as show}](x: X, y: X): String =

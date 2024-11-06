@@ -14,7 +14,7 @@ Minimum Scala versions:
 
 | JDK         | 3        | 2.13      | 2.12      | 2.11       |
 |:-----------:|:--------:|:---------:|:---------:|:----------:|
-| 23 (ea)     | 3.3.5*   | 2.13.15*  | 2.12.20*  |            |
+| 23          | 3.3.5*   | 2.13.15   | 2.12.20   |            |
 | 22          | 3.3.4*   | 2.13.13   | 2.12.19   |            |
 | 21 (LTS)    | 3.3.1    | 2.13.11   | 2.12.18   |            |
 | 17 (LTS)    | 3.0.0    | 2.13.6    | 2.12.15   |            |
@@ -119,16 +119,18 @@ Scala 2.13.13+ and 2.12.19+ support JDK 22.
 We are working on adding JDK 22 support to the 3.3.x release
 series. (Support may be available in nightly builds.)
 
-For possible Scala issues, see the [jdk11](https://github.com/scala/bug/labels/jdk11), [jdk17](https://github.com/scala/bug/labels/jdk17), and [jdk21](https://github.com/scala/bug/labels/jdk21) labels in the Scala 2 bug tracker.
+For possible Scala 2 issues, see the [jdk11](https://github.com/scala/bug/labels/jdk11), [jdk17](https://github.com/scala/bug/labels/jdk17), and [jdk21](https://github.com/scala/bug/labels/jdk21) labels in the Scala 2 bug tracker.
 
 ## JDK 23 compatibility notes
 
-Early access builds of JDK 23 are available. JDK 23 will be non-LTS.
+JDK 23 is non-LTS.
 
-We are working on adding JDK 23 support to Scala 3 and Scala 2.
-(Support may be available in nightly builds.)
+Scala 2.13.15+ and Scala 2.12.20+ support JDK 23.
 
-For possible Scala issues, see the [jdk11](https://github.com/scala/bug/labels/jdk11), [jdk17](https://github.com/scala/bug/labels/jdk17), and [jdk21](https://github.com/scala/bug/labels/jdk21) labels in the Scala 2 bug tracker.
+We are working on adding JDK 23 support to Scala 3.
+(Support may be available in nightly builds and/or release candidates.)
+
+For possible Scala 2 issues, see the [jdk11](https://github.com/scala/bug/labels/jdk11), [jdk17](https://github.com/scala/bug/labels/jdk17), and [jdk21](https://github.com/scala/bug/labels/jdk21) labels in the Scala 2 bug tracker.
 
 ## GraalVM Native Image compatibility notes
 

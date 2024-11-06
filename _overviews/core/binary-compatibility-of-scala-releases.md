@@ -23,7 +23,7 @@ Thus, backward compatibility precludes the removal of (non-private) methods, as 
 For Scala 2, the *minor* version is the *third* number in a version, e.g., 10 in v2.13.10.
 The major version is the second number, which is 13 in our example.
 
-Scala 2 up to 2.13.14 guarantees both backward and forward compatibility across *minor* releases within a single major release.
+Scala 2 up to 2.13.15 guarantees both backward and forward compatibility across *minor* releases within a single major release.
 This is about to change now that [SIP-51 has been accepted](https://docs.scala-lang.org/sips/drop-stdlib-forwards-bin-compat.html), future Scala 2.13 releases may be backward compatible only.
 
 For Scala 3, the minor version is the *second* number in a version, e.g., 2 in v3.2.1.

@@ -338,7 +338,7 @@ You must also add the tutorial to the drop-down list in the navigation bar. To d
 
     ---
     - title: Getting Started
-      url: "/getting-started/index.html"
+      url: "/getting-started/install-scala.html"
     - title: Learn
       ...
     - title: Tutorials

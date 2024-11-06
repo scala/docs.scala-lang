@@ -27,3 +27,10 @@ http-client-request-body.md
 http-client-json.md
 http-client-upload-file.md
 http-client-what-else.md
+web-server-intro.md
+web-server-static.md
+web-server-dynamic.md
+web-server-query-parameters.md
+web-server-input.md
+web-server-websockets.md
+web-server-cookies-and-decorators.md

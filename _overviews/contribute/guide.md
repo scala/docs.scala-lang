@@ -47,7 +47,7 @@ This is the impatient developer's checklist for the steps to submit a bug-fix pu
 5. [Fix the bug, or implement the new small feature][hackers-implement], include new tests (yes, for bug fixes too).
 6. [Test, rinse][hackers-test] and [test some more][partest-guide] until [all the tests pass][hackers-verify].
 7. [Commit your changes][hackers-commit] to your feature branch in your fork. Please choose your commit message based on the [Git Hygiene](https://github.com/scala/scala#user-content-git-hygiene) section of the Scala project README.
-8. If necessary [re-write git history](https://git-scm.com/book/en/Git-Branching-Rebasing) so that [commits are organized by major steps to the fix/feature](
+8. If necessary [re-write git history](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) so that [commits are organized by major steps to the fix/feature](
 https://github.com/scala/scala#git-hygiene). For bug fixes, a single commit is requested, for features several commits may be desirable (but each separate commit must compile and pass all tests)
 9. [Submit a pull request][hackers-submit].
 10. [Work with a reviewer](https://github.com/scala/scala#reviewing) to [get your pull request merged in][hackers-review].

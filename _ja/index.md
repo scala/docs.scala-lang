@@ -14,7 +14,7 @@ sections:
       - title: "入門"
         description: "あなたのコンピューターに Scala をインストールして、Scala コードを書きはじめよう！"
         icon: "fa fa-rocket"
-        link: /ja/getting-started/index.html
+        link: /ja/getting-started/install-scala.html
       - title: "Scala ツアー"
         description: "コア言語機能をひと口大で紹介"
         icon: "fa fa-flag"

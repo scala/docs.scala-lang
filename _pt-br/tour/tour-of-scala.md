@@ -38,7 +38,6 @@ Um [mecanismo de inferência de tipo local](type-inference.html) se encarrega pa
 Na prática, o desenvolvimento de aplicações de um determinado domínio geralmente requer uma linguagem de domínio específico. Scala fornece uma combinação única de mecanismos de linguagem que facilitam a adição suave de novas construções de linguagem na forma de bibliotecas:
 
 * qualquer método pode ser utilizado como um [operador infix ou postfix](operators.html)
-* [closures são construídas automaticamente dependendo do tipo esperado](automatic-closures.html) (tipo alvo).
 
 Uma utilização conjunta de ambos os recursos facilita a definição de novas instruções sem estender a sintaxe e sem usar meta-programação como macros.
 

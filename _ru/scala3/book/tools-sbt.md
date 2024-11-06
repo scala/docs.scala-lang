@@ -485,4 +485,4 @@ sbt:HelloScalaTest> test
 - [The sbt documentation](https://www.scala-sbt.org/1.x/docs/)
 - [The ScalaTest website](https://www.scalatest.org/)
 
-[getting_started]: {{ site.baseurl }}/ru/getting-started/index.html
+[getting_started]: {{ site.baseurl }}/ru/getting-started/install-scala.html
