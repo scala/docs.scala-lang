@@ -1,4 +1,4 @@
-FROM ruby:3.0.5
+FROM ruby:3.1.6
 
 RUN gem install bundler:2.4.21
 
