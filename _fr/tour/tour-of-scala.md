@@ -14,8 +14,8 @@ Ce tour contient une introduction morceaux par morceaux aux fonctionnalités les
 utilisées en Scala. Il est adressé aux novices de Scala.
 
 Ceci est un bref tour du language, non pas un tutoriel complet.
-Si vous recherchez un guide plus détaillé, il est préférable d'opter pour [un livre](/books.html) ou de consulter
-[d'autres ressources](/learn.html).
+Si vous recherchez un guide plus détaillé, il est préférable d'opter pour [un livre](/books.html) ou de suivre
+[un cours en ligne](/online-courses.html).
 
 ## Qu'est-ce que le Scala ?
 Scala est un langage de programmation à multiples paradigmes désigné pour exprimer des motifs de programmation communs de

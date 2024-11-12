@@ -156,7 +156,7 @@ the (legacy) Scala 2 version of our courses here:
 ## Other Online Resources
 
 You can find other online resources contributed by the community on
-[this page]({% link learn.md %}).
+[this page]({% link online-courses.md %}).
 
 [Scala Center]: https://scala.epfl.ch
 [Scala Specialization]: https://www.coursera.org/specializations/scala

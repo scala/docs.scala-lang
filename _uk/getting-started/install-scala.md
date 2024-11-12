@@ -212,7 +212,7 @@ Scala version (default): {{site.scala-3-version}}
 
 * [Книга по Scala](/scala3/book/introduction.html) (версія по Scala 2 [тут](/overviews/scala-book/introduction.html)), яка містить коротких ознайомчих уроків з основних можливостей Scala.
 * [Тур по Scala](/tour/tour-of-scala.html) for bite-sized introductions to Scala's features.
-* [Навчальні ресурси](/learn.html), що містять інтерактивні онлайн путівники та курси.
+* [Навчальні ресурси](/online-courses.html), що містять інтерактивні онлайн путівники та курси.
 * [Наш список деяких популярних книжок по Scala](/books.html).
 * [Посібник з міграції](/scala3/guides/migration/compatibility-intro.html) допомагає перевести ваш наявний проєкт зі Scala 2 на Scala 3.
 

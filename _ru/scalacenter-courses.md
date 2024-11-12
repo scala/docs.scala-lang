@@ -153,7 +153,7 @@ testimonials:
 
 ## Другие онлайн-ресурсы
 
-[На этой странице]({% link learn.md %}) вы можете найти другие онлайн-ресурсы, предоставленные сообществом.
+[На этой странице]({% link online-courses.md %}) вы можете найти другие онлайн-ресурсы, предоставленные сообществом.
 
 [Scala Center]: https://scala.epfl.ch
 [Scala Specialization]: https://www.coursera.org/specializations/scala

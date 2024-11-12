@@ -18,8 +18,8 @@ This tour contains bite-sized introductions to the most frequently used features
 of Scala. It is intended for newcomers to the language.
 
 This is just a brief tour, not a full language tutorial. If
-you want a more detailed guide, consider obtaining [a book](/books.html) or consulting
-[other resources](/learn.html).
+you want a more detailed guide, consider obtaining [a book](/books.html) or taking
+[an online courses](/online-courses.html).
 
 ## What is Scala?
 Scala is a modern multi-paradigm programming language designed to express common programming patterns in a concise, elegant, and type-safe way. It seamlessly integrates features of object-oriented and functional languages.

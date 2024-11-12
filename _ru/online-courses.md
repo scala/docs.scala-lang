@@ -2,6 +2,8 @@
 title: Online ресурсы
 layout: singlepage-overview
 language: ru
+redirect-from:
+  - /learn.html
 ---
 
 ## Попробуй Scala в своем браузере!

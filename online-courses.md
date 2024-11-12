@@ -1,9 +1,10 @@
 ---
-title: Online Resources
+title: Online Courses
 layout: singlepage-overview
 languages: [ru]
 redirect_from:
   - /documentation/books.html
+  - /learn
 ---
 
 ## Try Scala in your browser!
