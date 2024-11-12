@@ -292,14 +292,16 @@ For more details, see the Scala Style Guide, [here](https://docs.scala-lang.org/
 
 ### How can a method in a superclass return a value of the “current” type?
 
-First, note that using `this.type` won't work. People often try that,
-but `this.type` means "the singleton type of this instance", a
-different and too-specific meaning.  Only `this` itself has the
-type `this.type`; other instances do not.
+Using `this.type` will only work if you are returning `this` itself.
+`this.type` means "the singleton type of this instance". Only `this`
+itself has the type `this.type`; other instances of the same class do
+not.
 
-What does work? Possible solutions include F-bounded polymorphism
-_(familiar to Java programmers)_, type members,
-and the [typeclass pattern](http://tpolecat.github.io/2013/10/12/typeclass.html).
+What does work for returning other values of the same type?
+
+Possible solutions include F-bounded polymorphism _(familiar to Java
+programmers)_, type members, and the [typeclass
+pattern](http://tpolecat.github.io/2013/10/12/typeclass.html).
 
 This [blog post](http://tpolecat.github.io/2015/04/29/f-bounds.html)
 argues against F-bounds and in favor of typeclasses;
