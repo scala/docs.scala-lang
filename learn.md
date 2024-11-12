@@ -15,7 +15,7 @@ There are a handful of websites where you can interactively run Scala code in yo
 The [Scala Center](https://scala.epfl.ch) is committed to creating high-quality 
 and freely available online courses for learning Scala and functional 
 programming. The course levels range from beginner to advanced.
-More details on [this page]({% link online-courses.md %}).
+More details on [this page]({% link scalacenter-courses.md %}).
 
 ## Scala Exercises
 

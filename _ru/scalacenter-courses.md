@@ -3,21 +3,21 @@ title: Онлайн курсы (MOOCs) от Scala Center
 layout: singlepage-overview
 language: ru
 testimonials:
-- /resources/images/online-courses/testimonial000.jpg
-- /resources/images/online-courses/testimonial001.jpg
-- /resources/images/online-courses/testimonial002.jpg
-- /resources/images/online-courses/testimonial003.jpg
-- /resources/images/online-courses/testimonial004.jpg
-- /resources/images/online-courses/testimonial005.jpg
-- /resources/images/online-courses/testimonial006.jpg
-- /resources/images/online-courses/testimonial007.jpg
-- /resources/images/online-courses/testimonial008.jpg
-- /resources/images/online-courses/testimonial009.jpg
-- /resources/images/online-courses/testimonial010.jpg
-- /resources/images/online-courses/testimonial011.jpg
-- /resources/images/online-courses/testimonial012.jpg
-- /resources/images/online-courses/testimonial013.jpg
-- /resources/images/online-courses/testimonial014.jpg
+- /resources/images/scalacenter-courses/testimonial000.jpg
+- /resources/images/scalacenter-courses/testimonial001.jpg
+- /resources/images/scalacenter-courses/testimonial002.jpg
+- /resources/images/scalacenter-courses/testimonial003.jpg
+- /resources/images/scalacenter-courses/testimonial004.jpg
+- /resources/images/scalacenter-courses/testimonial005.jpg
+- /resources/images/scalacenter-courses/testimonial006.jpg
+- /resources/images/scalacenter-courses/testimonial007.jpg
+- /resources/images/scalacenter-courses/testimonial008.jpg
+- /resources/images/scalacenter-courses/testimonial009.jpg
+- /resources/images/scalacenter-courses/testimonial010.jpg
+- /resources/images/scalacenter-courses/testimonial011.jpg
+- /resources/images/scalacenter-courses/testimonial012.jpg
+- /resources/images/scalacenter-courses/testimonial013.jpg
+- /resources/images/scalacenter-courses/testimonial014.jpg
 ---
 
 [Scala Center] создает онлайн-курсы (также известные как МООК) различного уровня: от начального до продвинутого.
