@@ -282,4 +282,4 @@ three language features will be described in more detail in separate notes.
 3. David MacIver. Refactoring scala.array. Pre-SIP (Scala Improvement Proposal), October 2008.
 
   [1]: https://www.drmaciver.com/2008/06/scala-arrays
-  [2]: http://web.archive.org/web/20090817050725/http://oldfashionedsoftware.com/2009/08/05/the-mystery-of-the-parameterized-array/
+  [2]: https://oldfashionedsoftware.com/2009/08/05/the-mystery-of-the-parameterized-array
