@@ -44,11 +44,18 @@ It also has hundreds of [free video tutorials](https://youtube.com/rockthejvm) a
 
 ## Other Online Resources
 
+### Tour of Scala
+
+[Tour of Scala](https://tourofscala.com) is an interactive website that introduces the basics of Scala programming through a series of hands-on lessons.
+Each lesson provides code examples and exercises that compiles and runs directly in the browser, making it a quick and accessible way to get started with Scala.
+
+In the [Scala Learning Discord](http://sca.la/learning-community), you can connect with fellow Scala learners and engage with the Tour of Scala community.
+
 ### Scala Exercises
 
-[Scala Exercises](https://www.scala-exercises.org/) is a series of lessons and exercises created by [47 Degrees](https://www.47deg.com/). It's a great way to get a brief introduction to Scala while testing your knowledge along the way.
-
-[Tour of Scala](https://tourofscala.com) gives you an introduction to Scala, step by step, from beginner to expert.
+[Scala Exercises](https://www.scala-exercises.org/) is a series of lessons and exercises created by [47 Degrees](https://www.47deg.com/).
+It's a great way to get a brief introduction to Scala while testing your knowledge along the way.
+It also covers some libraries of the ecosystem such as cats, doobie, scalacheck etc.
 
 ### Dr. Mark C Lewis's lectures from Trinity University
 
@@ -58,9 +65,6 @@ It also has hundreds of [free video tutorials](https://youtube.com/rockthejvm) a
    * [Object-Orientation, Abstraction, and Data Structures Using Scala](https://www.youtube.com/playlist?list=PLLMXbkbDbVt8JLumqKj-3BlHmEXPIfR42)
 
 You can visit his [YouTube channel](https://www.youtube.com/user/DrMarkCLewis/featured) for more videos.
-
-### Scala Learning Community
-[Scala Learning Community on Discord](http://sca.la/learning-community), a growing online community connecting learners with online resources to learn Scala together.
 
 ### allaboutscala
 [allaboutscala](https://allaboutscala.com/) provides detailed tutorials for beginners.
