@@ -37,6 +37,11 @@ This course combines video lessons, written content and hands-on exercise focuse
 
 For more on Scala Center's online courses, visit [this page](https://docs.scala-lang.org/online-courses.html#learning-platforms).
 
+## Rock the JVM courses
+
+[Rock the JVM](https://rockthejvm.com) is a learning platform with free and premium courses on the Scala language, Akka, Cats Effect, ZIO, Apache Spark and other tools in the Scala ecosystem.
+It also has hundreds of [free video tutorials](https://youtube.com/rockthejvm) and [articles](https://blog.rockthejvm.com) on a variety of Scala-related topics.
+
 ## Scala Exercises
 
 [Scala Exercises](https://www.scala-exercises.org/) is a series of lessons and exercises created by [47 Degrees](https://www.47deg.com/). It's a great way to get a brief introduction to Scala while testing your knowledge along the way.
@@ -60,9 +65,6 @@ You can visit his [YouTube channel](https://www.youtube.com/user/DrMarkCLewis/fe
 
 ## DevInsideYou
 [DevInsideYou](https://youtube.com/devinsideyou) is a YouTube channel with hundreds of hours of free Scala content.
-
-## Rock the JVM
-[Rock the JVM](https://rockthejvm.com) is a learning platform with free and premium courses on the Scala language, Akka, Cats Effect, ZIO, Apache Spark and other tools in the Scala ecosystem. It also has hundreds of [free video tutorials](https://youtube.com/rockthejvm) and [articles](https://blog.rockthejvm.com) on a variety of Scala-related topics.
 
 ## Visual Scala Reference
 [Visual Scala Reference](https://superruzafa.github.io/visual-scala-reference/), a guide to visually learn about Scala concepts and functions.
