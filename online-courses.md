@@ -37,10 +37,6 @@ This course combines video lessons, written content and hands-on exercise focuse
 
 For more on Scala Center's online courses, visit [this page](https://docs.scala-lang.org/online-courses.html#learning-platforms).
 
-## Try Scala in your browser!
-
-There are a handful of websites where you can interactively run Scala code in your browser! Have a look at [Scastie](https://scastie.scala-lang.org/).
-
 ## Scala Exercises
 
 [Scala Exercises](https://www.scala-exercises.org/) is a series of lessons and exercises created by [47 Degrees](https://www.47deg.com/). It's a great way to get a brief introduction to Scala while testing your knowledge along the way.
