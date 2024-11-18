@@ -864,7 +864,51 @@ val c = b -- Seq(3, 4)       // HashSet(1, 2)
 
 {% endtabs %}
 
+## Using custom classes with Maps and Sets
 
+To use a custom class with a Map or a Set, override its `equals` and `hashCode` methods. Objects that are equal according
+to the `equals` method must have identical hash codes, but objects with identical hash codes don't necessarily have to
+be equal.
+
+{% tabs using-custom-classes class=tabs-scala-version %}
+
+{% tab 'Scala 2' %}
+```scala
+class Pet(val name: String, val age: Int){
+  override def equals(obj: Any): Boolean = {
+    obj match {
+      case that: Pet => that.name == this.name && that.age == this.age
+      case _ => false
+    }
+  }
+  override def hashCode(): Int = 41 * name.hashCode * age.hashCode
+  override def toString: String = s"Pet($name, $age)"
+}
+val t = new Pet("Rex", 12)
+val t2 = new Pet("Rex", 12)
+val s = Set(t, t)
+println(s) // Set(Pet(Rex, 6))
+```
+{% endtab %}
+
+{% tab 'Scala 3' %}
+```scala
+class Pet(val name: String, val age: Int):
+  override def equals(obj: Any): Boolean =
+    obj match
+      case that: Pet => that.name == this.name && that.age == this.age
+      case _ => false
+  override def hashCode(): Int = 41 * name.hashCode * age.hashCode
+  override def toString: String = s"Pet($name, $age)"
+
+val p1 = new Pet("Rex", 6)
+val p2 = new Pet("Rex", 6)
+val s = Set(t, t)
+println(s) // Set(Pet(Rex, 6))
+```
+{% endtab %}
+
+{% endtabs %}
 
 ## Range
 
