@@ -1150,11 +1150,7 @@ scope of this document.
 ## Genericity
 
 The last characteristic of Scala we will explore in this tutorial is
-genericity. Java programmers should be well aware of the problems
-posed by the lack of genericity in their language, a shortcoming which
-is addressed in Java 1.5.
-
-Genericity is the ability to write code parametrized by types. For
+genericity. Genericity is the ability to write code parametrized by types. For
 example, a programmer writing a library for linked lists faces the
 problem of deciding which type to give to the elements of the list.
 Since this list is meant to be used in many different contexts, it is
