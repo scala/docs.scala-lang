@@ -250,21 +250,21 @@ case ...
 ### Matching types
 
 So far, we assumed that the types within quote patterns would be statically known.
-Quote patterns also allow for generic types and existential types, which we will see in this section.
+Quote patterns also allow for type parameters, which we will see in this section.
 
-#### Generic types in patterns
+#### Type parameters in patterns
 
 Consider the function `exprOfOption` that we have already seen:
 ```scala
 def exprOfOption[T: Type](x: Expr[Option[T]])(using Quotes): Option[Expr[T]] =
   x match
     case '{ Some($x: T) } => Some(x) // x: Expr[T]
-                // ^^^ type ascription with generic type T
+                // ^^^ type ascription with type T
     ...
 ```
 
 Note that this time we have added the `T` explicitly in the pattern, even though it could be inferred.
-By referring to the generic type `T` in the pattern, we are required to have a given `Type[T]` in scope.
+By referring to the type parameter `T` in the pattern, we are required to have a given `Type[T]` in scope.
 This implies that `$x: T` will only match if `x` is of type `Expr[T]`.
 In this particular case, this condition will always be true.
 

@@ -270,7 +270,7 @@ construct another `BitSet` provided the element type of the collection to build
 is `Int`. If this is not the case, the compiler will check the superclasses, and
 fall back to the implicit builder factory defined in
 `mutable.Set`'s companion object. The type of this more general builder
-factory, where `A` is a generic type parameter, is:
+factory, where `A` is a type parameter, is:
 
     CanBuildFrom[Set[_], A, Set[A]]
 
