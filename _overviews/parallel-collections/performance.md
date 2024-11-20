@@ -45,7 +45,7 @@ garbage collections.
 One common cause of a performance deterioration is also boxing and unboxing
 that happens implicitly when passing a primitive type as an argument to a
 generic method. At runtime, primitive types are converted to objects which
-represent them, so that they could be passed to a method with a generic type
+represent them, so that they could be passed to a method with a type
 parameter. This induces extra allocations and is slower, also producing
 additional garbage on the heap.
 

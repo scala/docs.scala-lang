@@ -61,7 +61,7 @@ p: A => Boolean
 {% endtabs %}
 
 means that whatever function you pass in must take the type `A` as an input parameter and return a `Boolean`.
-So if your list is a `List[Int]`, you can replace the generic type `A` with `Int`, and read that signature like this:
+So if your list is a `List[Int]`, you can replace the type parameter `A` with `Int`, and read that signature like this:
 
 {% tabs filter-definition_2 %}
 {% tab 'Scala 2 and 3' %}
