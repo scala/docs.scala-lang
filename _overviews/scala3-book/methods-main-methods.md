@@ -6,9 +6,11 @@ languages: [ru, zh-cn]
 num: 26
 previous-page: methods-most
 next-page: methods-summary
+scala3: true
+versionSpecific: true
 ---
 
-<h5>Writing one line programs <span class="tag tag-inline">Scala 3 Only</span></h5>
+<h5>Writing one line programs</h5>
 
 Scala 3 offers a new way to define programs that can be invoked from the command line: Adding a `@main` annotation to a method turns it into entry point of an executable program:
 
