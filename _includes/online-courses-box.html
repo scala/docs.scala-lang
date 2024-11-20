@@ -1,0 +1,12 @@
+<div class="inner-box">
+  <div class="online-courses-wrapper">
+    <div class="online-courses-image">
+      <a href="{{ include.link }}" >
+        <img src="{{ site.baseurl }}/resources/images/online-courses/{{include.image}}"">
+      </a>
+    </div>
+    <div class="online-courses-content">
+      {% include markdown.html path=include.path %}
+    </div>
+  </div>
+</div>

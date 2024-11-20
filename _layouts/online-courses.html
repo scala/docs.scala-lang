@@ -1,0 +1,29 @@
+---
+layout: root-index-layout
+---
+
+<!-- Main content: Other online resources -->
+<section class="online-courses">
+  <div class="content-primary">
+    <div class="wrap">
+      {% include online-courses-box.html 
+        path="_markdown/courses-coursera.md"
+        image="coursera.png"
+        link="https://www.coursera.org/learn/scala-functional-programming"
+      %}
+      {% include online-courses-box.html
+        path="_markdown/courses-extension-school.md"
+        image="extension-school.png"
+        link="https://www.epfl.ch/education/continuing-education/effective-programming-in-scala/"
+      %}
+      {% include online-courses-box.html
+        path="_markdown/courses-rock-the-jvm.md"
+        image="rock-the-jvm.png"
+        link="https://rockthejvm.com"
+      %}
+      <div class="inner-box">
+        {{content}}
+      </div>
+    </div>
+  </div>
+</section>
