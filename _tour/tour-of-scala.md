@@ -30,8 +30,6 @@ Scala is a pure object-oriented language in the sense that [every value is an ob
 ## Scala is functional ##
 Scala is also a functional language in the sense that [every function is a value](unified-types.html). Scala provides a [lightweight syntax](basics.html#functions) for defining anonymous functions, supports [higher-order functions](higher-order-functions.html), allows functions to be [nested](nested-functions.html), and supports [currying](multiple-parameter-lists.html). Scala's [case classes](case-classes.html) and its built-in support for [pattern matching](pattern-matching.html) provide the functionality of algebraic types, which are used in many functional languages. [Singleton objects](singleton-objects.html) provide a convenient way to group functions that aren't members of a class.
 
-Furthermore, Scala's notion of pattern matching naturally extends to the [processing of XML data](https://github.com/scala/scala-xml/wiki/XML-Processing) with the help of [right-ignoring sequence patterns](regular-expression-patterns.html), by way of general extension via [extractor objects](extractor-objects.html). In this context, [for comprehensions](for-comprehensions.html) are useful for formulating queries. These features make Scala ideal for developing applications like web services.
-
 ## Scala is statically typed ##
 Scala's expressive type system enforces, at compile-time, that abstractions are used in a safe and coherent manner. In particular, the type system supports:
 
