@@ -10,9 +10,7 @@ next-page: collections-methods
 
 
 {% comment %}
-TODO: mention Array, ArrayDeque, ListBuffer, Queue, Stack, StringBuilder?
-LATER: note that methods like `+`, `++`, etc., are aliases for other methods
-LATER: add links to the Scaladoc for the major types shown here
+TODO: note that methods like `+`, `++`, etc., are aliases for other methods
 {% endcomment %}
 
 
@@ -119,7 +117,7 @@ The next several sections briefly demonstrate the `List`, `Vector`, and `ArrayBu
 
 ## `List`
 
-[The List type](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html) is a linear, immutable sequence.
+The [List](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html) type is a linear, immutable sequence.
 This just means that it’s a linked-list that you can’t modify.
 Any time you want to add or remove `List` elements, you create a new `List` from an existing `List`.
 
@@ -488,7 +486,8 @@ Ed
 
 ## ArrayBuffer
 
-Use `ArrayBuffer` when you need a general-purpose, mutable indexed sequence in your Scala applications.
+Use [ArrayBuffer](https://www.scala-lang.org/api/current/scala/collection/mutable/ArrayBuffer.html) when you need
+a general-purpose, mutable indexed sequence in your Scala applications.
 It’s mutable, so you can change its elements, and also resize it.
 Because it’s indexed, random access of elements is fast.
 
@@ -603,7 +602,85 @@ a.update(0, 10)                       // ArrayBuffer(10, 2, 50, 4)
 
 {% endtabs %}
 
+## Array
 
+An [Array](https://www.scala-lang.org/api/current/scala/Array.html) is a mutable and indexed collection representing 
+Java arrays in Scala. It supports `IndexedSeq` operations due to having a `scala.collection.mutable.ArraySeq` 
+implicit conversion, but isn't a part of the collections hierarchy.
+Arrays allow for efficient access and updates of their elements, but cannot be resized.
+
+### Creating an Array
+
+Create an `Array` by specifying its initial elements:
+
+{% tabs array-init %}
+
+{% tab 'Scala 2 and 3' %}
+```scala
+val a = Array(1, 2, 3, 4)
+```
+{% endtab %}
+
+{% endtabs %}
+
+You can create an array of the required size without specifying its elements:
+
+{% tabs array-create %}
+
+{% tab 'Scala 2 and 3' %}
+```scala
+val a = Array.ofDim[Int](10)
+```
+{% endtab %}
+
+{% endtabs %}
+
+The array elements will be set to either the corresponding Java primitive type default value or to `null`.
+
+### Updating Array elements
+
+Update elements in an `Array` by either reassigning the desired element, or use the `update` method:
+
+{% tabs array-update %}
+
+{% tab 'Scala 2 and 3' %}
+```scala
+val a = Array(1, 2, 3, 4)
+a(0) = 10                    // Array(10, 2, 3, 4)
+a.update(1, 20)              // Array(10, 20, 3, 4)
+```
+{% endtab %}
+
+{% endtabs %}
+
+### Adding elements to an Array
+
+Arrays cannot be resized. Adding an element creates a new array and copies the previous elements into it.
+
+{% tabs array-append %}
+
+{% tab 'Scala 2 and 3' %}
+```scala
+val a = Array(1, 2, 3, 4)
+val b = a :+ 5                 // Array(1, 2, 3, 4, 5)
+val c = b :++ Array(6, 7)      // Array(1, 2, 3, 4, 5, 6, 7)
+val d = 0 +: c                 // Array(0, 1, 2, 3, 4, 5, 6, 7)
+val e = Array(-2, -1) ++: d    // Array(-2, -1, 0, 1, 2, 3, 4, 5, 6, 7)
+```
+{% endtab %}
+
+{% endtabs %}
+
+### Differences between Array and ArrayBuffer
+
+Despite having similar names, there are important differences between the two types:
+
+ - `ArrayBuffer` is backed by an `Array` that gets substituted by a larger one when needed. Appending to an 
+   `ArrayBuffer` takes amortized constant time. 
+ - `Array` is represented by a Java array and cannot be resized. Appending to an `Array` creates a new array and takes linear time.
+ - The array backing an `ArrayBuffer` instance has the `Array[AnyRef]` type, corresponding to the `Object[]` Java array.
+   `Array` of a value type, e.g., `Array[Int]` is represented by a Java array of a primitive type, e.g., `int[]`. When
+   using arrays of value types, autoboxing can be avoided, which translates into higher performance.
 
 ## Maps
 
@@ -957,6 +1034,153 @@ val map = (1 to 3).map(e => (e,s"$e")).toMap
 {% endtab %}
 
 {% endtabs %}
+
+
+## Other collections
+
+While the collections listed above are enough to cover most use cases, there are several more specialized types:
+
+### StringBuilder
+
+A [StringBuilder](https://www.scala-lang.org/api/current/scala/collection/mutable/StringBuilder.html) is a mutable,
+indexed sequence used to build strings by concatenating their fragments.
+
+Create a `StringBuilder`, optionally specifying its initial capacity and content.
+
+{% tabs stringbuilder-create %}
+
+{% tab 'Scala 2 and 3' %}
+```scala
+import scala.collection.mutable.StringBuilder
+val a = new StringBuilder(4, "ab")
+```
+{% endtab %}
+
+{% endtabs %}
+
+The `StringBuilder` will have free space to accommodate four characters in addition to the space taken by its initial
+`"ab"` value.
+
+Append strings and characters to build the result. `StringBuilder` allows for updating characters in place.
+
+{% tabs stringbuilder-use %}
+
+{% tab 'Scala 2 and 3' %}
+```scala
+a ++= "cde"
+a += 'f'
+a(0) = 'A'
+```
+{% endtab %}
+
+{% endtabs %}
+
+Use the current result with the `result()` method and clear the builder with `clear()`.
+
+{% tabs stringbuilder-result %}
+
+{% tab 'Scala 2 and 3' %}
+```scala
+val b = a.result() // b: "Abcdef"
+a.clear()
+val c = a.result() // c: ""
+```
+{% endtab %}
+
+{% endtabs %}
+
+### ListBuffer
+
+A [ListBuffer](https://www.scala-lang.org/api/current/scala/collection/mutable/ListBuffer.html) is a mutable, linear
+sequence similar to `ArrayBuffer`, but backed by a list. It provides constant time append
+and prepend operations, while all other operations take linear time.
+
+Create either an empty `ListBuffer` or with initial elements.
+
+{% tabs listbuffer-create %}
+
+{% tab 'Scala 2 and 3' %}
+```scala
+import collection.mutable.ListBuffer
+
+val a = ListBuffer(20, 30, 40)
+val b = ListBuffer.empty[Int]
+```
+{% endtab %}
+
+{% endtabs %}
+
+Append and prepend elements.
+
+{% tabs listbuffer-use %}
+
+{% tab 'Scala 2 and 3' %}
+```scala
+a += 50              // ListBuffer(20, 30, 40, 50)
+a ++= Seq(60, 70)    // ListBuffer(20, 30, 40, 50, 60)
+10 +=: a             // ListBuffer(10, 20, 30, 40, 50, 60)
+```
+{% endtab %}
+
+{% endtabs %}
+
+Convert to an immutable list when it's ready.
+
+{% tabs listbuffer-convert %}
+
+{% tab 'Scala 2 and 3' %}
+```scala
+a.toList             // List(10, 20, 30, 40, 50, 60) 
+```
+{% endtab %}
+
+{% endtabs %}
+
+### Stack
+
+A [Stack](https://www.scala-lang.org/api/current/scala/collection/mutable/Stack.html) is a mutable, last-in-first-out
+collection that allows to efficiently push (prepend) and pop (remove the last) elements.
+
+Create a `Stack`:
+
+{% tabs stack-create %}
+
+{% tab 'Scala 2 and 3' %}
+```scala
+import collection.mutable.Stack
+
+val a = Stack(1, 2)
+val b = Stack()
+```
+{% endtab %}
+
+{% endtabs %}
+
+Push and pop elements from a `Stack`:
+
+{% tabs stack-use %}
+
+{% tab 'Scala 2 and 3' %}
+```scala
+a.push(0)           // Stack(0, 1, 2)
+val elem = a.pop    // elem: 2
+a                   // Stack(0, 1)
+```
+{% endtab %}
+
+{% endtabs %}
+
+### Queue
+
+A `Queue` is a first-in-first-out collection that allows to efficiently enqueue (prepend) and dequeue (remove the first)
+elements. Scala has both [mutable](https://www.scala-lang.org/api/current/scala/collection/mutable/Queue.html)
+and [immutable](https://www.scala-lang.org/api/current/scala/collection/immutable/Queue.html) queue types.
+
+### ArrayDeque
+
+An [ArrayDeque](https://www.scala-lang.org/api/current/scala/collection/mutable/ArrayDeque.html) is a double-ended queue
+that supports amortized constant time `append`, `prepend`, `removeHead` and `removeLast` operations. It's a mutable,
+indexed collection and an alternative for `ArrayBuffer` when prepends are needed.
 
 
 ## More details
