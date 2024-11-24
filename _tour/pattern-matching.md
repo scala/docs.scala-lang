@@ -138,7 +138,7 @@ println(showNotification(someVoiceRecording))  // prints You received a Voice Re
 
 The function `showNotification` takes as a parameter the abstract type `Notification` and matches on the type of `Notification` (i.e. it figures out whether it's an `Email`, `SMS`, or `VoiceRecording`). In the `case Email(sender, title, _)` the fields `sender` and `title` are used in the return value but the `body` field is ignored with `_`.
 
-## Matching on String
+## Matching on string
 
 The `s`-interpolator allows embedding variables in strings and is also useful for pattern matching.
 
