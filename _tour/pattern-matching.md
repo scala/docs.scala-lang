@@ -138,6 +138,36 @@ println(showNotification(someVoiceRecording))  // prints You received a Voice Re
 
 The function `showNotification` takes as a parameter the abstract type `Notification` and matches on the type of `Notification` (i.e. it figures out whether it's an `Email`, `SMS`, or `VoiceRecording`). In the `case Email(sender, title, _)` the fields `sender` and `title` are used in the return value but the `body` field is ignored with `_`.
 
+## Matching on String
+
+The `s`-interpolator allows embedding variables in strings and is also useful for pattern matching.
+
+{% tabs s-interpolator-pattern-matching class=tabs-scala-version %}
+{% tab 'Scala 2' for=s-interpolator-pattern-matching %}
+```scala
+val input: String = "Alice is 25 years old"
+
+input match {
+  case s"$name is $age years old" => s"$name's age is $age"
+  case _ => "No match"
+}
+// Result: "Alice's age is 25"
+```
+{% endtab %}
+{% tab 'Scala 3' for=s-interpolator-pattern-matching %}
+```scala
+val input: String = "Alice is 25 years old"
+
+input match
+  case s"$name is $age years old" => s"$name's age is $age"
+  case _ => "No match"
+// Result: "Alice's age is 25"
+```
+{% endtab %}
+{% endtabs %}
+
+In this example, name and age extract parts of the string based on the pattern. This is helpful for parsing structured text.
+
 ## Pattern guards
 Pattern guards are boolean expressions which are used to make cases more specific. Just add `if <boolean expression>` after the pattern.
 
