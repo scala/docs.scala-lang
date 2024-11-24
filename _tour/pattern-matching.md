@@ -168,6 +168,39 @@ input match
 
 In this example, name and age extract parts of the string based on the pattern. This is helpful for parsing structured text.
 
+We can also use extractor objects for string pattern matching.
+
+{% tabs s-interpolator-pattern-matching-2 class=tabs-scala-version %}
+{% tab 'Scala 2' for=s-interpolator-pattern-matching-2 %}
+```scala
+object Int {
+  def unapply(s: String): Option[Int] = s.toIntOption
+}
+
+val input: String = "Alice is 25 years old"
+
+val (name, age) = input match {
+  case s"$name is ${Int(age)} years old" => (name, age)
+}
+// name: String = Alice
+// age: Int = 25
+```
+{% endtab %}
+{% tab 'Scala 3' for=s-interpolator-pattern-matching-2 %}
+```scala
+object Int:
+  def unapply(s: String): Option[Int] = s.toIntOption
+
+val input: String = "Alice is 25 years old"
+
+val (name, age) = input match
+  case s"$name is ${Int(age)} years old" => (name, age)
+// name: String = Alice
+// age: Int = 25
+```
+{% endtab %}
+{% endtabs %}
+
 ## Pattern guards
 Pattern guards are boolean expressions which are used to make cases more specific. Just add `if <boolean expression>` after the pattern.
 
