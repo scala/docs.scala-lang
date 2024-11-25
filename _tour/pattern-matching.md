@@ -173,14 +173,14 @@ We can also use extractor objects for string pattern matching.
 {% tabs s-interpolator-pattern-matching-2 class=tabs-scala-version %}
 {% tab 'Scala 2' for=s-interpolator-pattern-matching-2 %}
 ```scala
-object Int {
+object Age {
   def unapply(s: String): Option[Int] = s.toIntOption
 }
 
 val input: String = "Alice is 25 years old"
 
 val (name, age) = input match {
-  case s"$name is ${Int(age)} years old" => (name, age)
+  case s"$name is ${Age(age)} years old" => (name, age)
 }
 // name: String = Alice
 // age: Int = 25
@@ -188,13 +188,13 @@ val (name, age) = input match {
 {% endtab %}
 {% tab 'Scala 3' for=s-interpolator-pattern-matching-2 %}
 ```scala
-object Int:
+object Age:
   def unapply(s: String): Option[Int] = s.toIntOption
 
 val input: String = "Alice is 25 years old"
 
 val (name, age) = input match
-  case s"$name is ${Int(age)} years old" => (name, age)
+  case s"$name is ${Age(age)} years old" => (name, age)
 // name: String = Alice
 // age: Int = 25
 ```
