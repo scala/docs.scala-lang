@@ -1,12 +1,9 @@
 ---
 layout: style-guide
 title: Control Structures
-
 partof: style
-overview-name: "Style Guide"
-
+overview-name: Style Guide
 num: 7
-
 previous-page: declarations
 next-page: method-invocation
 ---
