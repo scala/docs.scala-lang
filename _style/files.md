@@ -1,12 +1,9 @@
 ---
 layout: style-guide
 title: Files
-
 partof: style
-overview-name: "Style Guide"
-
+overview-name: Style Guide
 num: 9
-
 previous-page: method-invocation
 next-page: scaladoc
 ---

@@ -1,12 +1,9 @@
 ---
 layout: style-guide
 title: Scaladoc
-
 partof: style
-overview-name: "Style Guide"
-
+overview-name: Style Guide
 num: 10
-
 previous-page: files
 ---
 
