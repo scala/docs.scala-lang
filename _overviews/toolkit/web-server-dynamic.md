@@ -151,7 +151,7 @@ Import the Scalatags library:
 {% tab 'Scala CLI' %}
 Add the Scalatags dependency in `Example.sc` file:
 ```scala
-//> using dep "com.lihaoyi::scalatags::0.13.1"
+//> using dep com.lihaoyi::scalatags::0.13.1
 ```
 {% endtab %}
 {% tab 'sbt' %}

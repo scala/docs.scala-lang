@@ -17,7 +17,7 @@ In your `build.sbt`, you can add a dependency on the toolkit:
 ```scala
 lazy val example = project.in(file("."))
   .settings(
-    scalaVersion := "3.3.3",
+    scalaVersion := "3.3.4",
     libraryDependencies += "org.scala-lang" %% "toolkit" % "0.1.7"
   )
 ```
@@ -30,7 +30,7 @@ libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.9.1"
 In your `build.sc` file, you can add a dependency on the Toolkit:
 ```scala
 object example extends ScalaModule {
-  def scalaVersion = "3.3.3"
+  def scalaVersion = "3.3.4"
   def ivyDeps =
     Agg(
       ivy"org.scala-lang::toolkit:0.1.7"
