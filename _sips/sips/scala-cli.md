@@ -79,9 +79,9 @@ Currently, when reporting a bug in the compiler (or any other Scala-related) rep
 "Using directives", provided by Scala CLI give the ability to include the whole configuration in single file, for example:
 
 ```scala
-//> using platform "native"
-//> using "com.lihaoyi::os-lib:0.7.8"
-//> using options "-Xfatal-warnings"
+//> using platform native
+//> using dep com.lihaoyi::os-lib:0.7.8
+//> using options -Xfatal-warnings
  
 def foo = println("<here comes the buggy warning with Scala Native and os-lib>")
 ```
