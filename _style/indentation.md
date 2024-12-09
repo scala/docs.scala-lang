@@ -18,7 +18,7 @@ indenting like this:
 class Foo {
     def fourspaces = {
         val x = 4
-        ..
+        ...
     }
 }
 ``` 
@@ -29,7 +29,7 @@ class Foo {
 class Foo:
     def fourspaces = 
         val x = 4
-        ..
+        ...
 ```
 {% endtab %}
 {% endtabs %}
@@ -43,7 +43,7 @@ You should indent like this:
 class Foo {
   def twospaces = {
     val x = 2
-    ..
+    ...
   }
 }
 ``` 
@@ -54,7 +54,7 @@ class Foo {
 class Foo:
   def twospaces =
     val x = 2
-    ..
+    ...
 ```
 {% endtab %}
 {% endtabs %}
@@ -108,7 +108,8 @@ foo(
   someVeryLongFieldName,
   andAnotherVeryLongFieldName,
   "this is a string",
-  3.1415)
+  3.1415
+)
 ``` 
 {% endtab %}
 {% endtabs %}
@@ -131,7 +132,8 @@ val myLongFieldNameWithNoRealPoint =
     someVeryLongFieldName,
     andAnotherVeryLongFieldName,
     "this is a string",
-    3.1415)
+    3.1415
+  )
 
 // wrong!
 val myLongFieldNameWithNoRealPoint = foo(someVeryLongFieldName,

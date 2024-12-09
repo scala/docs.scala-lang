@@ -15,16 +15,28 @@ name, nor should there be any space between the method name and the
 argument-delimiters (parentheses). Each argument should be separated by
 a single space *following* the comma (`,`):
 
-    foo(42, bar)
-    target.foo(42, bar)
-    target.foo()
+{% tabs method_invocation_1 %}
+{% tab 'Scala 2 and 3' for=method_invocation_1 %}
+```scala
+foo(42, bar)
+target.foo(42, bar)
+target.foo()
+```
+{% endtab %}
+{% endtabs %}
 
 As of version 2.8, Scala now has support for named parameters. Named
 parameters in a method invocation should be treated as regular
 parameters (spaced accordingly following the comma) with a space on
 either side of the equals sign:
 
-    foo(x = 6, y = 7)
+{% tabs method_invocation_2 %}
+{% tab 'Scala 2 and 3' for=method_invocation_2 %}
+```scala
+foo(x = 6, y = 7)
+```
+{% endtab %}
+{% endtabs %}
 
 While this style does create visual ambiguity with named parameters and
 variable assignment, the alternative (no spacing around the equals sign)
@@ -36,11 +48,17 @@ non-trivial expressions for the actuals.
 Scala allows the omission of parentheses on methods of arity-0 (no
 arguments):
 
-    reply()
+{% tabs method_invocation_3 %}
+{% tab 'Scala 2 and 3' for=method_invocation_3 %}
+```scala
+reply()
 
-    // is the same as
+// is the same as
 
-    reply
+reply
+```
+{% endtab %}
+{% endtabs %}
 
 However, this syntax should *only* be used when the method in question
 has no side-effects (purely-functional). In other words, it would be
@@ -60,39 +78,63 @@ Scala has a special punctuation-free syntax for invoking methods of arity-1
 exceptions for operators and higher-order functions. In these cases it should
 only be used for purely-functional methods (methods with no side-effects).
 
-    // recommended
-    names.mkString(",")
+{% tabs method_invocation_4 %}
+{% tab 'Scala 2 and 3' for=method_invocation_4 %}
+```scala
+// recommended
+names.mkString(",")
 
-    // also sometimes seen; controversial
-    names mkString ","
+// also sometimes seen; controversial
+names mkString ","
 
-    // wrong - has side-effects
-    javaList add item
+// wrong - has side-effects
+javaList add item
+```
+{% endtab %}
+{% endtabs %}
 
 ### Symbolic Methods/Operators
 
 Symbolic methods (operators) should always be invoked using infix notation with
 spaces separating the target, the operator, and the parameter:
 
-    // right!
-    "daniel" + " " + "spiewak"
-    a + b
+{% tabs method_invocation_5 %}
+{% tab 'Scala 2 and 3' for=method_invocation_5 %}
+```scala
+// right!
+"daniel" + " " + "spiewak"
+a + b
 
-    // wrong!
-    "daniel"+" "+"spiewak"
-    a+b
-    a.+(b)
+// wrong!
+"daniel"+" "+"spiewak"
+a+b
+a.+(b)
+```
+{% endtab %}
+{% endtabs %}
 
 For the most part, this idiom follows Java and Haskell syntactic conventions. A
 gray area is short, operator-like methods like `max`, especially if commutative:
 
-    // fairly common
-    a max b
+{% tabs method_invocation_6 %}
+{% tab 'Scala 2 and 3' for=method_invocation_6 %}
+```scala
+// fairly common
+a max b
+```
+{% endtab %}
+{% endtabs %}
 
 Symbolic methods which take more than one parameter are discouraged.
 When they exist, they may still be invoked using infix notation, delimited by spaces:
 
-    foo ** (bar, baz)
+{% tabs method_invocation_7 %}
+{% tab 'Scala 2 and 3' for=method_invocation_7 %}
+```scala
+foo ** (bar, baz)
+```
+{% endtab %}
+{% endtabs %}
 
 Such methods are fairly rare, however, and should normally be avoided during API
 design. For example, the use of the (now deprecated) `/:` and `:\` methods should be avoided in
@@ -103,14 +145,26 @@ preference to their better-known names, `foldLeft` and `foldRight`.
 Invoking higher-order functions may use parens or braces, but in
 either case, use dot notation and omit any space after the method name:
 
-    names.map(_.toUpperCase)
+{% tabs method_invocation_8 %}
+{% tab 'Scala 2 and 3' for=method_invocation_8 %}
+```scala
+names.map(_.toUpperCase)
+```
+{% endtab %}
+{% endtabs %}
 
 These are not recommended:
 
-    // wrong! missing dot
-    names map (_.toUpperCase)
-    // wrong! extra space
-    names.map (_.toUpperCase)
+{% tabs method_invocation_9 %}
+{% tab 'Scala 2 and 3' for=method_invocation_9 %}
+```scala
+// wrong! missing dot
+names map (_.toUpperCase)
+// wrong! extra space
+names.map (_.toUpperCase)
+```
+{% endtab %}
+{% endtabs %}
 
 Experience has shown that these styles make code harder to read,
 especially when multiple such method calls are chained.

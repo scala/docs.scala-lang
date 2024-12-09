@@ -56,7 +56,7 @@ If a class/object/trait extends anything, the same general rule applies,
 put it on one line unless it goes over about 100 characters, and then
 put each item on its own line with
 [trailing commas](https://docs.scala-lang.org/sips/trailing-commas.html#motivation);
-closing parenthesis provides visual separation between constructor arguments and extensions;
+closing parenthesis and indentation provide visual separation between constructor arguments and extensions;
 empty line should be added to further separate extensions from class implementation:
 
 {% tabs declarations_2 class=tabs-scala-version%}
@@ -70,9 +70,9 @@ class Person(
   shoeSize: Int,
   favoriteColor: java.awt.Color,
 ) extends Entity
-  with Logging
-  with Identifiable
-  with Serializable {
+    with Logging
+    with Identifiable
+    with Serializable {
 
   def firstMethod: Foo = …
 }
@@ -88,9 +88,9 @@ class Person(
   shoeSize: Int,
   favoriteColor: java.awt.Color,
 ) extends Entity
-  with Logging
-  with Identifiable
-  with Serializable:
+    with Logging
+    with Identifiable
+    with Serializable:
 
   def firstMethod: Foo = …
 ```
@@ -173,26 +173,6 @@ Local methods or private methods may omit their return type:
 {% tab 'Scala 2 and 3' for=declarations_6 %}
 ```scala
 private def foo(x: Int = 6, y: Int = 7) = x + y
-```
-{% endtab %}
-{% endtabs %}
-
-#### Procedure Syntax
-
-Avoid the (now deprecated) procedure syntax, as it tends to be confusing for very little gain in brevity.
-
-{% tabs declarations_7 %}
-{% tab 'Scala 2 Only' for=declarations_7 %}
-```scala
-// don't do this
-def printBar(bar: Baz) {
-  println(bar)
-}
-
-// write this instead
-def printBar(bar: Bar): Unit = {
-  println(bar)
-}
 ```
 {% endtab %}
 {% endtabs %}
@@ -354,6 +334,7 @@ There are three main reasons you should do this:
 def unless(exp: Boolean)(code: => Unit): Unit = {
   if (!exp) code
 }
+
 unless(x < 5) {
   println("x was not less than five")
 }
@@ -363,12 +344,14 @@ unless(x < 5) {
 ```scala
 def unless(exp: Boolean)(code: => Unit): Unit =
   if (!exp) code
+
 unless(x < 5):
   println("x was not less than five")
 ```
 {% endtab %}
 {% endtabs %}
 
+{:start="2"}
 2.  Implicit Parameters
 
     When using implicit parameters, and you use the `implicit` keyword,
@@ -435,7 +418,7 @@ protected def forResource(
 {% endtab %}
 {% endtabs %}
 
-
+{:start="2"}
 2. Or align the open-paren of the parameter lists, one list per line:
 
 {% tabs declarations_17 class=tabs-scala-version%}

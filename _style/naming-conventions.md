@@ -11,18 +11,36 @@ next-page: types
 Generally speaking, Scala uses "camel case" naming. That is,
 each word is capitalized, except possibly the first word:
 
-    UpperCamelCase
-    lowerCamelCase
+{% tabs camel_case %}
+{% tab 'Scala 2 and 3' for=camel_case %}
+```scala
+UpperCamelCase
+lowerCamelCase
+``` 
+{% endtab %}
+{% endtabs %}
 
 Acronyms should be treated as normal words:
 
-    xHtml
-    maxId
+{% tabs acronyms_1 %}
+{% tab 'Scala 2 and 3' for=acronyms_1 %}
+```scala
+xHtml
+maxId
+``` 
+{% endtab %}
+{% endtabs %}
 
 instead of:
 
-    XHTML
-    maxID
+{% tabs acronyms_2 %}
+{% tab 'Scala 2 and 3' for=acronyms_2 %}
+```scala
+XHTML
+maxID
+``` 
+{% endtab %}
+{% endtabs %}
 
 Underscores in names (`_`) are not actually forbidden by the
 compiler, but are strongly discouraged as they have
@@ -37,7 +55,7 @@ Classes should be named in upper camel case:
 {% tab 'Scala 2 and 3' for=class_names %}
 ```scala
 class MyFairLady
- ``` 
+``` 
 {% endtab %}
 {% endtabs %}
 
@@ -574,7 +592,7 @@ for local names to be very short:
 {% tabs local_names %}
 {% tab 'Scala 2 and 3' for=local_names %}
 ```scala
-    def add(a: Int, b: Int) = a + b
+def add(a: Int, b: Int) = a + b
 ```
 {% endtab %}
 {% endtabs %}

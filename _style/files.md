@@ -8,19 +8,36 @@ previous-page: method-invocation
 next-page: scaladoc
 ---
 
-As a rule, files should contain a *single* logical compilation unit. By
-"logical" I mean a class, trait or object. One exception to this
+As a rule, files should contain a *single* class, trait or object. One exception to this
 guideline is for classes or traits which have companion objects.
 Companion objects should be grouped with their corresponding class or
 trait in the same file. These files should be named according to the
 class, trait or object they contain:
 
-    package com.novell.coolness
+{% tabs files_1 class=tabs-scala-version%}
+{% tab 'Scala 2' for=files_1 %}
+```scala
+package com.novell.coolness
 
-    class Inbox { ... }
+class Inbox { ... }
 
-    // companion object
-    object Inbox { ... }
+// companion object
+object Inbox { ... }
+```
+{% endtab %}
+{% tab 'Scala 3' for=files_1 %}
+```scala
+package com.novell.coolness
+
+class Inbox:
+  ...
+
+// companion object
+object Inbox:
+  ...
+```
+{% endtab %}
+{% endtabs %}
 
 These compilation units should be placed within a file named
 `Inbox.scala` within the `com/novell/coolness` directory. In short, the
@@ -36,11 +53,17 @@ file. One common example is that of a sealed trait and several
 sub-classes (often emulating the ADT language feature available in
 functional languages):
 
-    sealed trait Option[+A]
+{% tabs files_2 %}
+{% tab 'Scala 2 and 3' for=files_2 %}
+```scala
+sealed trait Option[+A]
 
-    case class Some[A](a: A) extends Option[A]
+case class Some[A](a: A) extends Option[A]
 
-    case object None extends Option[Nothing]
+case object None extends Option[Nothing]
+```
+{% endtab %}
+{% endtabs %}
 
 Because of the nature of sealed superclasses (and traits), all subtypes
 *must* be included in the same file. Thus, such a situation definitely
