@@ -41,7 +41,6 @@ This document is intended to outline some basic Scala stylistic guidelines which
   - [Classes](declarations.html#classes)
     - [Ordering Of Class Elements](declarations.html#ordering-of-class-elements)
     - [Methods](declarations.html#methods)
-      - [Procedure Syntax](declarations.html#procedure-syntax)
       - [Modifiers](declarations.html#modifiers)
       - [Body](declarations.html#body)
       - [Multiple Parameter Lists](declarations.html#multiple-parameter-lists)
