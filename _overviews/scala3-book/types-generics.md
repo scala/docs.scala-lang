@@ -3,7 +3,7 @@ title: Generics
 type: section
 description: This section introduces and demonstrates generics in Scala 3.
 languages: [ru, zh-cn]
-num: 50
+num: 51
 previous-page: types-inferred
 next-page: types-intersection
 ---

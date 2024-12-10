@@ -3,7 +3,7 @@ title: Other Types
 type: section
 description: This section mentions other advanced types in Scala 3.
 languages: [ru, zh-cn]
-num: 58
+num: 59
 previous-page: types-dependent-function
 next-page: ca-contextual-abstractions-intro
 scala3: true

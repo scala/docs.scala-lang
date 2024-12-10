@@ -812,7 +812,7 @@ speak(Person("Bam Bam"))   // "Bam Bam says, Bam bam!"
 
 #### Binding matched patterns to variables
 
-You can bind the matched pattern to a variable to use type-specific behavior.
+You can bind the matched pattern to a variable to use type-specific behavior:
 
 {% tabs pattern-binding class=tabs-scala-version %}
 {% tab 'Scala 2' for=pattern-binding %}
@@ -992,10 +992,68 @@ def pattern(x: Matchable): String = x match
 {% endtab %}
 {% endtabs %}
 
-{% comment %}
-TODO: Add in the new Scala 3 syntax shown on this page:
-http://dotty.epfl.ch/docs/reference/changed-features/match-syntax.html
-{% endcomment %}
+You can also write the code on the right side of the `=>` on multiple lines if you think it is easier to read. Here is one example:
+
+{% tabs control-structures-31 class=tabs-scala-version %}
+{% tab 'Scala 2' for=control-structures-31 %}
+```scala
+count match {
+  case 1 =>
+    println("one, a lonely number")
+  case x if x == 2 || x == 3 => 
+    println("two's company, three's a crowd")
+  case x if x > 3 =>
+    println("4+, that's a party")
+  case _ => 
+    println("i'm guessing your number is zero or less")
+}
+```
+{% endtab %}
+{% tab 'Scala 3' for=control-structures-31 %}
+```scala
+count match
+  case 1 => 
+    println("one, a lonely number")
+  case x if x == 2 || x == 3 => 
+    println("two's company, three's a crowd")
+  case x if x > 3 => 
+    println("4+, that's a party")
+  case _ => 
+    println("i'm guessing your number is zero or less")
+```
+{% endtab %}
+{% endtabs %}
+
+In Scala 3, `match` expressions can be chained:
+
+{% tabs 'control-structures-32' %}
+{% tab 'Scala 3 Only' %}
+```scala
+i match
+  case odd: Int if odd % 2 == 1 => "odd"
+  case even: Int if even % 2 == 0 => "even"
+  case _ => "not an integer"
+match
+  case "even" => true
+  case _ => false
+```
+{% endtab %}
+{% endtabs %}
+
+The `match` expression can also follow a period, which simplifies matching on results returned by chained method calls:
+
+{% tabs 'control-structures-33' %}
+{% tab 'Scala 3 Only' %}
+```scala
+List(1, 2, 3)
+  .map(_ * 2)
+  .headOption
+  .match
+    case Some(value) => println(s"The head is: $value")
+    case None => println("The list is empty")
+```
+{% endtab %}
+{% endtabs %}
 
 ## try/catch/finally
 
@@ -1004,8 +1062,8 @@ For consistency, Scala uses the same syntax that `match` expressions use and sup
 
 In the following example, `openAndReadAFile` is a method that does what its name implies: it opens a file and reads the text in it, assigning the result to the mutable variable `text`:
 
-{% tabs control-structures-31 class=tabs-scala-version %}
-{% tab 'Scala 2' for=control-structures-31 %}
+{% tabs control-structures-34 class=tabs-scala-version %}
+{% tab 'Scala 2' for=control-structures-34 %}
 ```scala
 var text = ""
 try {
@@ -1019,7 +1077,7 @@ try {
 }
 ```
 {% endtab %}
-{% tab 'Scala 3' for=control-structures-31 %}
+{% tab 'Scala 3' for=control-structures-34 %}
 ```scala
 var text = ""
 try
