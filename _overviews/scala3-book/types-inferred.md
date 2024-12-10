@@ -3,7 +3,7 @@ title: Inferred Types
 type: section
 description: This section introduces and demonstrates inferred types in Scala 3
 languages: [ru, zh-cn]
-num: 49
+num: 50
 previous-page: types-introduction
 next-page: types-generics
 ---

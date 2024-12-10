@@ -3,7 +3,7 @@ title: Opaque Types
 type: section
 description: This section introduces and demonstrates opaque types in Scala 3.
 languages: [ru, zh-cn]
-num: 55
+num: 56
 previous-page: types-variance
 next-page: types-structural
 scala3: true

@@ -3,7 +3,7 @@ title: Variance
 type: section
 description: This section introduces and demonstrates variance in Scala 3.
 languages: [ru, zh-cn]
-num: 54
+num: 55
 previous-page: types-adts-gadts
 next-page: types-opaque-types
 ---

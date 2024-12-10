@@ -3,7 +3,7 @@ title: Creating a Method That Returns a Function
 type: section
 description: This page demonstrates how to create and use higher-order functions in Scala.
 languages: [ru, zh-cn]
-num: 34
+num: 35
 previous-page: fun-write-map-function
 next-page: fun-summary
 ---
