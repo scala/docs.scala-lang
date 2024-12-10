@@ -1045,9 +1045,12 @@ The `match` expression can also follow a period, which simplifies matching on re
 {% tabs 'control-structures-33' %}
 {% tab 'Scala 3 Only' %}
 ```scala
-List(1, 2, 3).map(_ * 2).headOption.match
-  case Some(value) => println(s"The head is: $value")
-  case None => println("The list is empty")
+List(1, 2, 3)
+  .map(_ * 2)
+  .headOption
+  .match
+    case Some(value) => println(s"The head is: $value")
+    case None => println("The list is empty")
 ```
 {% endtab %}
 {% endtabs %}
