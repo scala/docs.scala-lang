@@ -1040,6 +1040,18 @@ match
 {% endtab %}
 {% endtabs %}
 
+The `match` expression can also follow a period, which simplifies matching on results returned by chained method calls:
+
+{% tabs 'control-structures-33' %}
+{% tab 'Scala 3 Only' %}
+```scala
+List(1, 2, 3).map(_ * 2).headOption.match
+  case Some(value) => println(s"The head is: $value")
+  case None => println("The list is empty")
+```
+{% endtab %}
+{% endtabs %}
+
 ## try/catch/finally
 
 Like Java, Scala has a `try`/`catch`/`finally` construct to let you catch and manage exceptions.
@@ -1047,8 +1059,8 @@ For consistency, Scala uses the same syntax that `match` expressions use and sup
 
 In the following example, `openAndReadAFile` is a method that does what its name implies: it opens a file and reads the text in it, assigning the result to the mutable variable `text`:
 
-{% tabs control-structures-33 class=tabs-scala-version %}
-{% tab 'Scala 2' for=control-structures-33 %}
+{% tabs control-structures-34 class=tabs-scala-version %}
+{% tab 'Scala 2' for=control-structures-34 %}
 ```scala
 var text = ""
 try {
@@ -1062,7 +1074,7 @@ try {
 }
 ```
 {% endtab %}
-{% tab 'Scala 3' for=control-structures-33 %}
+{% tab 'Scala 3' for=control-structures-34 %}
 ```scala
 var text = ""
 try

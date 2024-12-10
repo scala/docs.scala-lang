@@ -2,7 +2,6 @@
 title: Partial Functions
 type: section
 description: This page shows how to use function variables in Scala.
-languages: [ru, zh-cn]
 num: 31
 previous-page: fun-function-variables
 next-page: fun-eta-expansion
