@@ -1,7 +1,7 @@
 ---
 title: Partial Functions
 type: section
-description: This page shows how to use function variables in Scala.
+description: This page shows how to use partial functions in Scala.
 num: 31
 previous-page: fun-function-variables
 next-page: fun-eta-expansion
@@ -22,7 +22,7 @@ val doubledOdds: PartialFunction[Int, Int] = {
 {% endtab %}
 {% endtabs %}
 
-To check if a partial function is for an argument, use the `isDefinedAt` method:
+To check if a partial function is defined for an argument, use the `isDefinedAt` method:
 
 {% tabs fun-partial-2 %}
 {% tab 'Scala 2 and 3' %}

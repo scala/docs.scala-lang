@@ -992,7 +992,7 @@ def pattern(x: Matchable): String = x match
 {% endtab %}
 {% endtabs %}
 
-You can also write the code on the right side of the `=>` on multiple lines if you think is easier to read. Here’s one example:
+You can also write the code on the right side of the `=>` on multiple lines if you think it is easier to read. Here is one example:
 
 {% tabs control-structures-31 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-31 %}
