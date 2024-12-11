@@ -1,12 +1,13 @@
 ---
 layout: style-guide
-title: Scala Style Guide
+title: Introduction
 partof: style
-overview-name: "&nbsp;"
+overview-name: Style Guide
+num: 1
+next-page: indentation
 ---
 
 This document is intended to outline some basic Scala stylistic guidelines which should be followed with more or less fervency. Wherever possible, this guide attempts to detail why a particular style is encouraged and how it relates to other alternatives. As with all style guides, treat this document as a list of rules to be broken. There are certainly times when alternative styles should be preferred over the ones given here.
-
 
 - [Indentation](indentation.html)
   - [Line Wrapping](indentation.html#line-wrapping)
@@ -40,7 +41,6 @@ This document is intended to outline some basic Scala stylistic guidelines which
   - [Classes](declarations.html#classes)
     - [Ordering Of Class Elements](declarations.html#ordering-of-class-elements)
     - [Methods](declarations.html#methods)
-      - [Procedure Syntax](declarations.html#procedure-syntax)
       - [Modifiers](declarations.html#modifiers)
       - [Body](declarations.html#body)
       - [Multiple Parameter Lists](declarations.html#multiple-parameter-lists)
@@ -69,6 +69,4 @@ This document is intended to outline some basic Scala stylistic guidelines which
     - [Traits](scaladoc.html#traits)
   - [Methods and Other Members](scaladoc.html#methods-and-other-members)
 
-### Thanks to ###
-
-[Daniel Spiewak](https://www.codecommit.com/) and [David Copeland](https://www.naildrivin5.com/) for putting this style guide together, and Simon Ochsenreither for converting it to Markdown.
+**Thanks to** [Daniel Spiewak](https://www.codecommit.com/) and [David Copeland](https://www.naildrivin5.com/) for putting this style guide together, and Simon Ochsenreither for converting it to Markdown.
