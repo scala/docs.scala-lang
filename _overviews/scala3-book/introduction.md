@@ -25,9 +25,9 @@ Scala’s syntax, grammar, and features have been re-thought, debated in an open
 The book begins with a whirlwind tour of many of Scala’s features in the [“A Taste of Scala” section][taste].
 After that tour, the sections that follow it provide more details on those language features.
 
-{% comment %}
-We should have a link structure on the whole tour here
-{% endcomment %}
+## A bit of background
+
+Scala was created by [Martin Odersky](https://en.wikipedia.org/wiki/Martin_Odersky), who studied under [Niklaus Wirth](https://en.wikipedia.org/wiki/Niklaus_Wirth), who created Pascal and several other languages. Mr. Odersky is one of the co-designers of Generic Java, and is also known as the “father” of the `javac` compiler.
 
 [reference]: {{ site.scala3ref }}/overview.html
 [taste]: {% link _overviews/scala3-book/taste-intro.md %}
