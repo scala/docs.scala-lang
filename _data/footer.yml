@@ -57,9 +57,11 @@
     - title: GitHub
       url: "https://github.com/scala/scala"
     - title: Mastodon
-      url: https://fosstodon.org/@scala_lang
-    - title: Twitter
-      url: "https://twitter.com/scala_lang"
+      url: "https://fosstodon.org/@scala_lang"
+    - title: Bluesky
+      url: "https://bsky.app/profile/scala-lang.bsky.social"
+    - title: X
+      url: "https://x.com/scala_lang"
     - title: Discord
       url: "https://discord.com/invite/scala"
     - title: LinkedIn

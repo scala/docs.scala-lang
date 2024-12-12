@@ -281,7 +281,7 @@ Scala 是一门面向对象编程（OOP）语言。
 ### 支持 FP 与 OOP 融合
 
 {% comment %}
-NOTE: This text in the first line comes from this slide: https://twitter.com/alexelcu/status/996408359514525696
+NOTE: This text in the first line comes from this slide: https://x.com/alexelcu/status/996408359514525696
 {% endcomment %}
 
 Scala 的本质是函数式编程和面向对象编程的融合：

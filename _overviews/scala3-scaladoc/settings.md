@@ -87,7 +87,7 @@ A mapping is of the form `<regex>::[scaladoc3|scaladoc|javadoc]::<path>`. You ca
 
 Links to social sites. For example:
 
-`-social-links:github::https://github.com/scala/scala3,discord::https://discord.com/invite/scala,twitter::https://twitter.com/scala_lang`
+`-social-links:github::https://github.com/scala/scala3,discord::https://discord.com/invite/scala,twitter::https://x.com/scala_lang`
 
 Valid values are of the form: `[github|twitter|gitter|discord]::link`. Scaladoc also supports `custom::link::white_icon_name::black_icon_name`. In this case icons must be present in `images/` directory.
 

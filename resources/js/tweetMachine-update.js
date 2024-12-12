@@ -133,11 +133,11 @@
 						});
                         // Usernames
 						text = text.replace(/@[A-Za-z0-9_]+/g, function (u) {
-							return '<a href="https://twitter.com/#!/' + u.replace(/^@/, '') + '" target="_blank">' + u + '</a>';
+							return '<a href="https://x.com/#!/' + u.replace(/^@/, '') + '" target="_blank">' + u + '</a>';
 						});
                         // Hashtags
 						text = text.replace(/#[A-Za-z0-9_\-]+/g, function (u) {
-							return '<a href="https://twitter.com/#!/search?q=' + u.replace(/^#/, '%23') + '" target="_blank">' + u + '</a>';
+							return '<a href="https://x.com/#!/search?q=' + u.replace(/^#/, '%23') + '" target="_blank">' + u + '</a>';
 						});
 						return text;
 					},
@@ -160,7 +160,7 @@
 
                         // Set the user screen name
 						var usernameLink = "<a target=\"_blank\" href=\"" 
-                            + "https://twitter.com/" 
+                            + "https://x.com/" 
                             + actualTweet.user.screen_name 
                             + "\">" 
                             + "@" 
@@ -170,7 +170,7 @@
 
                         // Set the username:
                         var userLink = "<a target=\"_blank\" href=\""
-                            + "https://twitter.com/"
+                            + "https://x.com/"
                             + actualTweet.user.screen_name 
                             + "\">" 
                             + actualTweet.user.name 
@@ -178,7 +178,7 @@
                         tweetObj.find('.user').html("" + userLink);
 
                         // Set the timestamp
-                        var dateLink = "<a target=\"_blank\" href=\"" + "https://twitter.com/"
+                        var dateLink = "<a target=\"_blank\" href=\"" + "https://x.com/"
                             + actualTweet.user.screen_name + "/status/"
                             + actualTweet.id_str + "\">"
                             + tweetMachine.relativeTime(actualTweet.created_at)
