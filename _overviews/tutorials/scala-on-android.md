@@ -140,5 +140,5 @@ If you managed to build one of the  example apps and want to code something more
 - Download some other examples from [the “Scala on Android” repository on GitHub](https://github.com/makingthematrix/scalaonandroid). Contact me, if you write an example app of your own and want me to include it.
 - Join us on the official Scala discord — we have a [#scala-android channel](https://discord.gg/UuDawpq7) there.
 - There is also an [#android channel](https://discord.gg/XHMt6Yq4) on the “Learning Scala” discord.
-- Finally, if you have any questions, [you can always find me on Twitter](https://twitter.com/makingthematrix).
+- Finally, if you have any questions, [you can always find me on X](https://x.com/makingthematrix).
 

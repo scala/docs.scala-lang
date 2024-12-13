@@ -17,18 +17,18 @@ versionSpecific: true
 Talks on Scala 3
 ----------------
 - (ScalaDays 2019, Lausanne) [Тур по Scala 3](https://www.youtube.com/watch?v=_Rnrx2lo9cw) 
-  від [Martin Odersky](http://twitter.com/odersky)
+  від [Martin Odersky](http://x.com/odersky)
 
 - (ScalaDays 2016, Berlin) [Попереду дорога Scala](https://www.youtube.com/watch?v=GHzWqJKFCk4) 
-  від [Martin Odersky](http://twitter.com/odersky) 
+  від [Martin Odersky](http://x.com/odersky) 
   [\[слайди\]](http://www.slideshare.net/Odersky/scala-days-nyc-2016)
 
 - (JVMLS 2015) [Compilers are Databases](https://www.youtube.com/watch?v=WxyyJyB_Ssc) 
-  від [Martin Odersky](http://twitter.com/odersky) 
+  від [Martin Odersky](http://x.com/odersky) 
   [\[слайди\]](http://www.slideshare.net/Odersky/compilers-are-databases)
 
 - (Scala World 2015) [Dotty: Досліджуємо майбутнє Scala](https://www.youtube.com/watch?v=aftdOFuVU1o) 
-  від [Dmitry Petrashko](http://twitter.com/darkdimius) 
+  від [Dmitry Petrashko](http://x.com/darkdimius) 
   [\[слайди\]](https://d-d.me/scalaworld2015/#/).
   Розповідь Дмітрія охоплює багато нових функцій, які приносить Dotty, наприклад типи Intersection та Union, покращена ініціалізація lazy val тощо.
   Дмітрій також розповідає внутрішню архітектуру Dotty і, зокрема, високий рівень контекстуальних абстракцій Dotty. Ви 
@@ -43,20 +43,20 @@ Deep Dive with Scala 3
   від [[Guillaume Martres](http://guillaume.martres.me/)](http://guillaume.martres.me/).
 
 - (Mar 21, 2017) [Dotty Internals 1: Trees та Symbols](https://www.youtube.com/watch?v=yYd-zuDd3S8) 
-  від [Dmitry Petrashko](http://twitter.com/darkdimius) 
+  від [Dmitry Petrashko](http://x.com/darkdimius) 
   [\[meeting notes\]](https://dotty.epfl.ch/docs/internals/dotty-internals-1-notes.html).
   Це запис зустрічі EPFL та Waterloo, де були представлені перші нотатки про Dotty: Trees та Symbols.
 
 - (Mar 21, 2017) [Dotty Internals 2: Types](https://www.youtube.com/watch?v=3gmLIYlGbKc) 
-  від [Martin Odersky](http://twitter.com/odersky) та [Dmitry Petrashko](http://twitter.com/darkdimius).
+  від [Martin Odersky](http://x.com/odersky) та [Dmitry Petrashko](http://x.com/darkdimius).
   Це запис зустрічі EPFL та Waterloo, де були представлено як представлені типи всередині Dotty.
 
 - (Jun 15, 2017) [Dotty Internals 3: Denotations](https://youtu.be/9iPA7zMRGKY) 
-  від [Martin Odersky](http://twitter.com/odersky) та [Dmitry Petrashko](http://twitter.com/darkdimius).
+  від [Martin Odersky](http://x.com/odersky) та [Dmitry Petrashko](http://x.com/darkdimius).
   Це запис зустрічі EPFL та Waterloo, де були представлена денотація в Dotty.
 
 - (JVM Language Summit) [Як зробити компілятор Dotty швидким](https://www.youtube.com/watch?v=9xYoSwnSPz0) 
-  від [Dmitry Petrashko](http://twitter.com/darkdimius).
+  від [Dmitry Petrashko](http://x.com/darkdimius).
   Дмітрій дає високорівневий вступ до того, що було зроблено для створення Dotty .
 
 - (Typelevel Summit Oslo, May 2016) [Dotty та типи: поки що історія](https://www.youtube.com/watch?v=YIQjfCKDR5A) 
@@ -66,7 +66,7 @@ Deep Dive with Scala 3
   який здатний робити висновки про безпеку типів для більшої кількості ситуацій ніж scalac.
 
 - (flatMap(Oslo) 2016) [AutoSpecialization в Dotty](https://vimeo.com/165928176) 
-  від [Dmitry Petrashko](http://twitter.com/darkdimius) 
+  від [Dmitry Petrashko](http://x.com/darkdimius) 
   [\[слайди\]](https://d-d.me/talks/flatmap2016/#/).
   Компонувальник Dotty аналізує вашу програму та її залежності, щоб застосувати нову схему спеціалізації. 
   Віна ґрунтується на нашому досвіді з Specialization, Miniboxing та Valhalla Project,
@@ -84,7 +84,7 @@ Deep Dive with Scala 3
   Гійом демонструє високорівневе представлення пайплайну компіляції в Dotty.
 
 - (ScalaDays 2015, Amsterdam) [Як зробити ваші програми на Scala меншими та швидшими за допомогою компонувальника Dotty](https://www.youtube.com/watch?v=xCeI1ArdXM4)
-  від [Dmitry Petrashko](http://twitter.com/darkdimius)
+  від [Dmitry Petrashko](http://x.com/darkdimius)
   [\[слайди\]](https://d-d.me/scaladays2015/#/).
   Дмитрій представляє алгоритм аналізу графу виклик у Dotty та переваги продуктивності, які ми можемо отримати з точки зору кількості методів, 
   розміру байт-коду, розміру коду JVM і кількість об'єктів, виділених в кінці.

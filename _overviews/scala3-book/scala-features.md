@@ -292,7 +292,7 @@ Boxing and unboxing is completely transparent to the user.
 ### Supports FP/OOP fusion
 
 {% comment %}
-NOTE: This text in the first line comes from this slide: https://twitter.com/alexelcu/status/996408359514525696
+NOTE: This text in the first line comes from this slide: https://x.com/alexelcu/status/996408359514525696
 {% endcomment %}
 
 The essence of Scala is the fusion of functional programming and object-oriented programming in a typed setting:
@@ -499,7 +499,7 @@ Some of the more notable libraries are listed below.
 
 - The [Play Framework](https://www.playframework.com) followed the Ruby on Rails model to become a lightweight, stateless, developer-friendly, web-friendly architecture for highly-scalable applications
 - [Scalatra](https://scalatra.org) is a tiny, high-performance, async web framework, inspired by Sinatra
-- [Finatra](https://twitter.github.io/finatra) is Scala services built on TwitterServer and Finagle
+- [Finatra](https://twitter.github.io/finatra) is Scala services built for X
 - [Scala.js](https://www.scala-js.org) is a strongly-typed replacement for JavaScript that provides a safer way to build robust front-end web applications
 - [ScalaJs-React](https://github.com/japgolly/scalajs-react) lifts Facebook’s React library into Scala.js, and endeavours to make it as type-safe and Scala-friendly as possible
 

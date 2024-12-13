@@ -13,11 +13,11 @@ new-version: /scala3/book/scala-features.html
 ---
 
 
-The name *Scala* comes from the word *scalable*, and true to that name, it’s used to power the busiest websites in the world, including Twitter, Netflix, Tumblr, LinkedIn, Foursquare, and many more.
+The name *Scala* comes from the word *scalable*, and true to that name, it’s used to power the busiest websites in the world, including X, Netflix, Tumblr, LinkedIn, Foursquare, and many more.
 
 Here are a few more nuggets about Scala:
 
-- It’s a modern programming language created by [Martin Odersky](https://twitter.com/odersky?lang=en) (the father of `javac`), and influenced by Java, Ruby, Smalltalk, ML, Haskell, Erlang, and others.
+- It’s a modern programming language created by [Martin Odersky](https://x.com/odersky?lang=en) (the father of `javac`), and influenced by Java, Ruby, Smalltalk, ML, Haskell, Erlang, and others.
 - It’s a high-level language.
 - It’s statically typed.
 - It has a sophisticated type inference system.
