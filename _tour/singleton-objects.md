@@ -196,6 +196,14 @@ scalaCenterEmail match
 
 The `object Email` contains a factory `fromString` which creates an `Email` instance from a String. We return it as an `Option[Email]` in case of parsing errors.
 
+A note about `Option`, `Some`, and `None` in the code above:
+* `Option` is a data type which allows for optionality.  It has two cases: `Some` and `None`
+  * `Some` above represents a match: the emailString, when split by a @, returns an array with two components.  This allows creation of a valid instance of class Email.
+  * `None` above represents no match: the emailString, when split by a @, did not return an array with two components.  It could not allow creation of a valid instance of class Email.
+* The `Option` return type can then be used in a match/case:
+  * For a `Some` result, the match knows the returned value is an instance of `Email`, so it can access the inner `username` and `domainName`.
+  * For a `None` result, the match knows the returned value is not an instance of `Email`, so it prints an appropriate error message. 
+  
 Note: If a class or object has a companion, both must be defined in the same file. To define companions in the REPL, either define them on the same line or enter `:paste` mode.
 
 ## Notes for Java programmers ##
