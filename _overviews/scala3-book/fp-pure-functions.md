@@ -13,7 +13,7 @@ Another feature that Scala offers to help you write functional code is the abili
 A _pure function_ can be defined like this:
 
 - A function `f` is pure if, given the same input `x`, it always returns the same output `f(x)`
-- The function’s output depends _only_ on its input variables and its implementation
+- The function’s output depends _only_ on its input variables and its implementation (and in case of a closure, any immutable data that it captures)
 - It only computes the output and does not modify the world around it
 
 This implies:
@@ -57,7 +57,7 @@ Conversely, the following functions are _impure_ because they violate the defini
 
 Impure functions often do one or more of these things:
 
-- Read from hidden state, i.e., they access variables and data not explicitly passed into the function as input parameters
+- Read from hidden mutable state, i.e., they access non-constant variables and data not explicitly passed into the function as input parameters.
 - Write to hidden state
 - Mutate the parameters they’re given, or mutate hidden variables, such as fields in their containing class
 - Perform some sort of I/O with the outside world
@@ -92,6 +92,22 @@ For instance, here’s a pure function that doubles the input value it’s given
 
 {% tab 'Scala 2 and 3' %}
 ```scala
+def double(i: Int): Int = i * 2
+```
+{% endtab %}
+
+{% endtabs %}
+
+The next example is bit more tricky. Here, i is not passed as a parameter, but instead referenced directly from the function body.
+This works in Scala because functions act as closure - they can capture the state around them. As long as that state is *immutable*, the function is still considered pure.
+In this case, the function always returns `6` and each call could be safely replaced with its result.
+This concept of closures and "fixing values" is an important tool in functional programming that you will encounter often as you go forward.
+
+{% tabs fp-pure-function-closure %}
+
+{% tab 'Scala 2 and 3' %}
+```scala
+val i = 3
 def double(i: Int): Int = i * 2
 ```
 {% endtab %}
