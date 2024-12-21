@@ -57,7 +57,7 @@ Conversely, the following functions are _impure_ because they violate the defini
 
 Impure functions often do one or more of these things:
 
-- Read from hidden mutable state, i.e., they access non-constant variables and data not explicitly passed into the function as input parameters.
+- Read from hidden mutable state, i.e., they access non-constant data that was not explicitly passed into the function as input parameters
 - Write to hidden state
 - Mutate the parameters they’re given, or mutate hidden variables, such as fields in their containing class
 - Perform some sort of I/O with the outside world
@@ -98,17 +98,16 @@ def double(i: Int): Int = i * 2
 
 {% endtabs %}
 
-The next example is bit more tricky. Here, i is not passed as a parameter, but instead referenced directly from the function body.
-This works in Scala because functions act as closure - they can capture the state around them. As long as that state is *immutable*, the function is still considered pure.
-In this case, the function always returns `6` and each call could be safely replaced with its result.
-This concept of closures and "fixing values" is an important tool in functional programming that you will encounter often as you go forward.
+The next example is bit more tricky. Here, `i` is not passed as a parameter, but instead referenced directly from the outside.
+This works in Scala because functions act as closures - they can capture the state around them. As long as that state is *immutable*, such a closure is still considered pure.
+In this case, the function always returns `6` and each call can be safely replaced with its result.
 
 {% tabs fp-pure-function-closure %}
 
 {% tab 'Scala 2 and 3' %}
 ```scala
 val i = 3
-def double(i: Int): Int = i * 2
+def double(): Int = i * 2
 ```
 {% endtab %}
 
@@ -145,7 +144,7 @@ If you understand that code, you’ll see that it meets the pure function defini
 
 The first key point of this section is the definition of a pure function:
 
-> A _pure function_ is a function that depends only on its declared inputs and its implementation to produce its output.
+> A _pure function_ is a function that depends only on its declared inputs, captured constants, and its implementation to produce its output.
 > It only computes its output and does not depend on or modify the outside world.
 
 A second key point is that every real-world application interacts with the outside world.
