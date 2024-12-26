@@ -216,7 +216,7 @@ inline def sumNow(inline nums: Int*): Int =
 def sumCode(nums: Expr[Seq[Int]])(using Quotes): Expr[Int] =
   import quotes.reflect.report
   nums match
-    case  Varargs(numberExprs) => // numberExprs: Seq[Expr[Int]]
+    case Varargs(numberExprs) => // numberExprs: Seq[Expr[Int]]
       val numbers: Seq[Int] = numberExprs.map(_.valueOrAbort)
       Expr(numbers.sum)
     case _ => report.errorAndAbort(
