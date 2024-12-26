@@ -56,7 +56,7 @@ It’s intended for programmers who know Python and want to learn about Scala, s
 - JVMでの実行に加えて、[Scala.js](https://www.scala-js.org)によりScalaをJavaScriptの代替として使用することもできます。
 - [Scala Native](https://scala-native.org/)では、「システムレベル」のコードを記述し、ネイティブ実行ファイルにコンパイルできます。
 - Scalaではすべてが _式_ である：`if`文、`for`ループ、`match`式、さらには`try`/`catch`式でさえも、戻り値を持ちます。
-- Scalaのイディオムはデフォルトで不変性を推奨する：不変変数や不変コレクションを使用することが推奨されています。
+- 慣用的に Scala では不変性を基本とする：不変変数や不変コレクションを使用することが推奨されています。
 - Scalaは[並行・並列プログラミング][concurrency]のサポートが優れています。
 
 ### プログラミングレベルでの類似点
