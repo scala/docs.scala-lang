@@ -61,7 +61,7 @@ It’s intended for programmers who know Python and want to learn about Scala, s
 
 ### プログラミングレベルでの類似点
 
-このセクションでは、PythonとScalaでコードを書く際に日常的に見られる類似点を紹介します。
+このセクションでは、実際に Python と Scala でコードを書く際に見られる類似点を紹介します。
 
 - Scalaの型推論により、動的型付け言語のような感覚でコーディングできます。
 - どちらの言語も式の末尾にセミコロンを使用しません。
