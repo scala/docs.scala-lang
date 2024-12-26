@@ -49,7 +49,7 @@ It’s intended for programmers who know Python and want to learn about Scala, s
 
 高レベルで見ると、PythonとScalaの間には以下のような _相違点_ があります：
 
-- Pythonは動的型付けであり、Scalaは静的型付けです。
+- Python は動的型付け言語であり、Scala は静的型付け言語です。
   - Pythonは動的型付けですが、型ヒントによる「段階的型付け」をサポートしており、`mypy`のような静的型チェッカーで検証できます。
   - Scalaは静的型付けですが、型推論のような機能により動的言語のような感覚で書けます。
 - Pythonはインタプリタ型で実行され、Scalaのコードはコンパイルされて _.class_ ファイルになり、Java仮想マシン（JVM）上で動作します。
