@@ -24,8 +24,8 @@ It’s more like thinking, “Python developers will appreciate Scala’s perfor
 TODO: We should probably go through this document and add links to our other detail pages, when time permits.
 {% endcomment %}
 
-This section provides a comparison between the Python and Scala programming languages.
-It’s intended for programmers who know Python and want to learn about Scala, specifically by seeing examples of how Python language features compare to Scala.
+このセクションでは、PythonとScalaのプログラミング言語を比較します。
+Pythonに詳しくて、Scalaについて学びたいと考えているプログラマーを対象としています。具体的には、Pythonの言語機能とScalaの比較例を挙げて説明します。
 
 ## はじめに
 
@@ -378,7 +378,7 @@ Scalaのケース・クラスはPythonのフローズン・データクラスに
 
 ## インターフェース、トレイト、継承
 
-Java 8以降をご存じであれば、ScalaのtraitはJavaのインターフェースに似ていることがお分かりいただけるかと思います。
+Java 8以降に慣れていれば、ScalaのtraitはJavaのインターフェースに良く似ていることに気づくと思います。
 Pythonのインターフェース（プロトコル）や抽象クラスがあまり使われないのに対して、Scalaではトレイトが常に使われています。
 したがって、この例では両者を比較するのではなく、Scalaのトレイトを使って数学のちょっとした問題を解く方法を紹介します：
 
@@ -396,14 +396,14 @@ sm.add(1,1)        // 2
 sm.multiply(2,2)   // 4
 ```
 
-クラスやオブジェクトでtraitを使う方法は他にも[たくさんあります][modeling-intro]、 
+クラスやオブジェクトでtraitを使う方法は他にも[たくさんあります][modeling-intro]。 
 しかし、これは概念を論理的な動作のグループに整理して、完全な解答を作成するために必要に応じてそれらを統合するために、どのように使うことができるかのちょっとしたアイデアを与えてくれます。
 
 ## 制御構文
 
-ここではPythonとScalaの[制御構文][control-structures]を比較する。
-どちらの言語にも `if`/`else`, `while`, `for` ループ、 `try` といった構文がある。
-加えて、Scala には `match` 式がある。
+ここではPythonとScalaの[制御構文][control-structures]を比較します。
+どちらの言語にも `if`/`else`, `while`, `for` ループ、 `try` といった構文があります。
+加えて、Scala には `match` 式があります。
 
 ### `if` 文, 1行
 
@@ -600,7 +600,7 @@ sm.multiply(2,2)   // 4
   </tbody>
 </table>
 
-### 複数の “range” ジェネレーター
+### 複数の “range” ジェネレータ
 
 <table>
   <tbody>
@@ -779,16 +779,16 @@ sm.multiply(2,2)   // 4
   </tbody>
 </table>
 
-Match expressions and pattern matching are a big part of the Scala programming experience, but only a few `match` expression features are shown here. See the [Control Structures][control-structures] page for many more examples.
+マッチ式とパターンマッチは、Scalaプログラミングの大きな要素ですが、ここで紹介しているのは、マッチ式の機能の一部だけです。より多くの例については、[制御構造][control-structures]のページをご覧ください。
 
 ## コレクションクラス
 
-This section compares the [collections classes][collections-classes] that are available in Python and Scala, including lists, dictionaries/maps, sets, and tuples.
+このセクションでは、PythonとScalaで利用可能なコレクションクラス[collections classes][collections-classes]を比較します。リスト、辞書/マップ、セット、タプルなどです。
 
 ### リスト
 
-Where Python has its list, Scala has several different specialized mutable and immutable sequence classes, depending on your needs.
-Because the Python list is mutable, it most directly compares to Scala’s `ArrayBuffer`.
+Pythonにはリストがあるように、Scalaにはニーズに応じて、可変および不可変な列(Seq)のクラスがいくつか用意されています。
+Pythonのリストは変更可能であるため、Scalaの `ArrayBuffer` によく似ています。
 
 ### Pythonリスト &amp; Scalaの列(Seq)
 
@@ -961,11 +961,11 @@ Python の辞書はScala の `Map` クラスのようなものです。
   </tbody>
 </table>
 
-Scala has other specialized `Map` classes for different needs.
+Scalaには、さまざまなニーズに対応する他の専門的な `Map` クラスがあります。
 
 ### 集合
 
-The Python set is similar to the _mutable_ Scala `Set` class.
+Pythonの集合は、_mutable_ Scalaの`Set`クラスに似ています。
 
 #### 集合の作成
 
@@ -1053,7 +1053,7 @@ PythonとScalaには、同じ関数型メソッドがいくつかあります。
 - `filter`
 - `reduce`
 
-Pythonのラムダ式でこれらのメソッドを使うのに慣れていれば、Scalaがコレクション・クラスのメソッドで同じようなアプローチを持っていることがわかるだろう。
+Pythonのラムダ式でこれらのメソッドを使うのに慣れていれば、Scalaがコレクション・クラスのメソッドで同じようなアプローチを持っていることがわかると思います。
 この機能を実証するために、ここに2つのサンプルリストを示します。
 
 ```scala
@@ -1061,7 +1061,7 @@ numbers = [1,2,3]           // python
 val numbers = List(1,2,3)   // scala
 ```
 
-これらのリストは以下の表で使用され、マップ処理とフィルター処理のアルゴリズムを適用する方法を示している。
+これらのリストは以下の表で使用され、マップ処理とフィルター処理のアルゴリズムを適用する方法を示しています。
 
 ### マップ処理の内包表記
 
@@ -1158,7 +1158,7 @@ val numbers = List(1,2,3)   // scala
 
 Scalaのコレクションクラスには100以上の関数メソッドがあり、コードを簡単にすることができます。
 Python では、これらの関数の一部は `itertools` モジュールで利用できます。
-`map`、`filter`、`reduce` に加えて、Scala でよく使われるメソッドを以下に示す。
+`map`、`filter`、`reduce` に加えて、Scala でよく使われるメソッドを以下に示します。
 これらのメソッドの例では
 
 - `c` はコレクションです。
@@ -1350,8 +1350,11 @@ cd myapp
 sbt compile
 ```
 
-以上のコマンドを実行することで、その特定のプロジェクトに必要なすべての依存関係が自動的に解決されます。ダウンロードされた依存関係の場所は、主にビルドツールの実装の詳細であり、ユーザーはこれらのダウンロードされた依存関係と直接やりとりする必要はありません。例えば、sbtの依存関係キャッシュ全体を削除した場合、プロジェクトの次のコンパイル時には、sbtが自動的に必要な依存関係をすべて解決し、ダウンロードし直します。
-これはPythonとは異なります。Pythonではデフォルトで依存関係がシステム全体またはユーザー全体のディレクトリにインストールされるため、プロジェクトごとに独立した環境を取得するには、対応する仮想環境を作成する必要があります。例えば、`venv`モジュールを使用して、特定のプロジェクト用に次のように仮想環境を作成できます。
+以上のコマンドを実行することで、その特定のプロジェクトに必要なすべての依存関係が自動的に解決されます。
+ダウンロードされた依存関係の場所は、主にビルドツールの実装の詳細であり、ユーザーはこれらのダウンロードされた依存関係と直接やりとりする必要はありません。
+例えば、sbtの依存関係キャッシュ全体を削除した場合、プロジェクトの次のコンパイル時には、sbtが自動的に必要な依存関係をすべて解決し、ダウンロードし直します。
+これはPythonとは異なります。Pythonではデフォルトで依存関係がシステム全体またはユーザー全体のディレクトリにインストールされるため、プロジェクトごとに独立した環境を取得するには、対応する仮想環境を作成する必要があります。
+例えば、`venv`モジュールを使用して、特定のプロジェクト用に次のように仮想環境を作成できます。
 
 ```
 cd myapp
