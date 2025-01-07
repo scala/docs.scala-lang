@@ -29,17 +29,17 @@ Using the latest patch version of your chosen Scala version line is always recom
 
 Lightbend offers [commercial support](https://www.lightbend.com/lightbend-platform-subscription) for Scala 2. The linked page includes contact information for inquiring about supported and recommended versions.
 
-## Build tool compatibility table
+## Tooling compatibility table
 
 Minimum working versions:
 
-| JDK         | sbt             | mill       |
-|:-----------:|:---------------:|:-----------|
-| 23          | 1.9.0           | 0.11.8     |
-| 21 (LTS)    | 1.9.0           | 0.11.5     |
-| 17 (LTS)    | 1.6.0           | 0.7.0      |
-| 11 (LTS)    | 1.1.0           | 0.1.5      |
-| 8 (LTS)     | 1.0.0           | 0.1.0      |
+| JDK         | scala-cli  | sbt       | mill       |
+|:-----------:|:----------:|:---------:|:-----------|
+| 23          | 1.4.1      | 1.9.0     | 0.11.8     |
+| 21 (LTS)    | 1.0.0      | 1.9.0     | 0.11.5     |
+| 17 (LTS)    | 1.0.0      | 1.6.0     | 0.7.0      |
+| 11 (LTS)    | 1.0.0      | 1.1.0     | 0.1.5      |
+| 8 (LTS)     | 1.0.0      | 1.0.0     | 0.1.0      |
 
 Even when a version combination isn't listed as supported, most features might still work.
 
