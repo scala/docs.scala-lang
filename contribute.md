@@ -23,4 +23,4 @@ If you're interested in contributing to the Scala project in general, I argue th
 
 ## How Can I Contribute?
 
-Please read: [Add New Guides/Tutorials](/contribute/add-guides.html)
+Please read: [Add New Guides/Tutorials](/_overviews/contribute/add-guides.md)
