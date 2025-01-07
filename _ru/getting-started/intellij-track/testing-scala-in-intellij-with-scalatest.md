@@ -18,7 +18,7 @@ previous-page: /ru/building-a-scala-project-with-intellij-and-sbt
 1. Добавьте зависимость ScalaTest:
     1. Добавьте зависимость ScalaTest в свой файл `build.sbt`:
         ```
-        libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.11" % Test
+        libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19" % Test
         ```
     1. Если вы получили уведомление "build.sbt was changed", выберите **auto-import**.
     1. Эти два действия заставят `sbt` подгрузить библиотеки ScalaTest.
