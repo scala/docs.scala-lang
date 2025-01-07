@@ -43,7 +43,7 @@ The dependency to `"scalatest" %% "scalatest" % "3.0.9"` must be upgraded becaus
 - The `scalatest` API is based on some macro definitions.
 - The `3.0.9` version is not published for Scala 3.
 
-We can upgrade it to version `3.2.7`, which is cross-published in Scala 2.13 and Scala 3.
+We can upgrade it to version `3.2.19`, which is cross-published in Scala 2.13 and Scala 3.
 
 ```scala
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19"
