@@ -173,6 +173,61 @@ trait ComposedService extends GreetingService, TranslationService
 Abstract members in one trait (such as `translate` in `GreetingService`) are automatically matched with concrete members in another trait.
 This not only works with methods as in this example, but also with all the other abstract members mentioned above (that is, types, value definitions, etc.).
 
+### Mixing traits in on the fly
+
+Traits that have concrete methods can be mixed into classes on the fly. Given a class:
+
+{% tabs traits_6 %}
+{% tab 'Scala 2 and 3' %}
+```scala
+class MyService(name: String)
+```
+{% endtab %}
+{% endtabs %}
+
+you can create a `MyService` instance that mixes in the traits when you create it:
+
+{% tabs traits_7 %}
+{% tab 'Scala 2 and 3' %}
+```scala
+val s = new MyService("ComposedService") with GreetingService with TranslationService
+//                                       --------------------------------------------
+```
+{% endtab %}
+{% endtabs %}
+
+The REPL shows that it works:
+
+{% tabs traits_8 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+scala> val s = new MyService("ComposedService") with GreetingService with TranslationService
+     | 
+val s: MyService with GreetingService with TranslationService = $anon$1@4ebd8d2
+
+scala> s.translate("Text")
+val res0: String = ...
+
+scala> s.sayHello
+val res1: String = ...
+```
+{% endtab %}
+{% tab 'Scala 3' %}
+```scala
+scala> val s = new MyService("ComposedService") with GreetingService with TranslationService
+val s: MyService & GreetingService & TranslationService = anon$1@c5a2d5
+                                                                                                                                                                            
+scala> s.translate("Text")
+val res0: String = ...
+                                                                                                                                                                            
+scala> s.sayHello
+val res1: String = ...
+```
+{% endtab %}
+{% endtabs %}
+
+This example works because all the mixed in methods are defined in `GreetingService` and in `TranslationService`. 
+
 ## Classes
 
 Traits are great to modularize components and describe interfaces (required and provided).
