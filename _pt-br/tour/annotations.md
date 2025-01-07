@@ -5,7 +5,7 @@ partof: scala-tour
 
 num: 31
 next-page: packages-and-imports
-previous-page: automatic-closures
+previous-page: operators
 language: pt-br
 ---
 

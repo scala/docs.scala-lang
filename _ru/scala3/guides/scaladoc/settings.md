@@ -101,7 +101,7 @@ Compile / doc / scalacOptions ++= Seq("-project", "my-project"),
 
 Ссылки на социальные сети. Например:
 
-`-social-links:github::https://github.com/scala/scala3,discord::https://discord.com/invite/scala,twitter::https://twitter.com/scala_lang`
+`-social-links:github::https://github.com/scala/scala3,discord::https://discord.com/invite/scala,twitter::https://x.com/scala_lang`
 
 Допустимые значения имеют вид: `[github|twitter|gitter|discord]::link`.
 Scaladoc также поддерживает `custom::link::white_icon_name::black_icon_name`.

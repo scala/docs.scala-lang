@@ -3,11 +3,12 @@ title: Intersection Types
 type: section
 description: This section introduces and demonstrates intersection types in Scala 3.
 languages: [ru, zh-cn]
-num: 51
+num: 52
 previous-page: types-generics
 next-page: types-union
+scala3: true
+versionSpecific: true
 ---
-<span class="tag tag-inline">Scala 3 only</span>
 
 Used on types, the `&` operator creates a so called _intersection type_.
 The type `A & B` represents values that are **both** of the type `A` and of the type `B` at the same time.

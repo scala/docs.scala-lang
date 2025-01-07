@@ -21,13 +21,11 @@
   links:
     - title: Community
       url: "http://scala-lang.org/community/"
-    - title: Governance
-      url: "http://scala-lang.org/community/index.html#governance"
     - title: Scala Ambassadors
       url: "http://scala-lang.org/ambassadors/"
-    - title: Mailing Lists
-      url: "http://scala-lang.org/community/index.html#mailing-lists"
-    - title: Chat Rooms & More
+    - title: Forums
+      url: "http://scala-lang.org/community/index.html#forums"
+    - title: Chat
       url: "http://scala-lang.org/community/index.html#chat-rooms"
     - title: Libraries and Tools
       url: "http://scala-lang.org/community/index.html#community-libraries-and-tools"
@@ -43,16 +41,28 @@
 - title: Scala
   class: scala
   links:
+    - title: Governance
+      url: "http://scala-lang.org/governance/"
     - title: Blog
       url: "http://scala-lang.org/blog/"
     - title: Code of Conduct
       url: "http://scala-lang.org/conduct/"
     - title: License
       url: "http://scala-lang.org/license/"
+    - title: Security Policy
+      url: "http://scala-lang.org/security/"
 - title: Social
   class: social
   links:
     - title: GitHub
       url: "https://github.com/scala/scala"
-    - title: Twitter
-      url: "https://twitter.com/scala_lang"
+    - title: Mastodon
+      url: "https://fosstodon.org/@scala_lang"
+    - title: Bluesky
+      url: "https://bsky.app/profile/scala-lang.org"
+    - title: X
+      url: "https://x.com/scala_lang"
+    - title: Discord
+      url: "https://discord.com/invite/scala"
+    - title: LinkedIn
+      url: "https://www.linkedin.com/company/scala-center/"

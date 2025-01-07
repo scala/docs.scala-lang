@@ -14,7 +14,7 @@ This section introduces the various aspects of how to define and call methods in
 
 Scala methods have many features, including these:
 
-- Generic (type) parameters
+- Type parameters
 - Default parameter values
 - Multiple parameter groups
 - Context-provided parameters
@@ -690,7 +690,7 @@ There’s even more to know about methods, including how to:
 - Handle exceptions
 - Use vararg input parameters
 - Write methods that have multiple parameter groups (partially-applied functions)
-- Create methods that have generic type parameters
+- Create methods that have type parameters
 
 {% comment %}
 Jamie: there really needs better linking here - previously it was to the Scala 3 Reference, which doesnt cover any

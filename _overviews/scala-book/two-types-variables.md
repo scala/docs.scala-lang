@@ -94,8 +94,7 @@ object Hello3 extends App {
 As before:
 
 - Save that code in a file named *Hello3.scala*
-- Compile it with `scalac Hello3.scala`
-- Run it with `scala Hello3`
+- Compile and run it with `scala run Hello3.scala`
 
 
 

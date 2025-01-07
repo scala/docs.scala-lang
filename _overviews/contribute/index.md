@@ -276,7 +276,7 @@ The above benefits are something good to achieve regardless of your level of exp
   be improved. For best results, spend a lot of time with the library to get a feel of what's important
   and what can improve.
 - **Lookout for announcements:** You may want to keep an eye on the Scala Center
-  [LinkedIn](https://www.linkedin.com/company/scala-center/) and [Twitter](https://twitter.com/scala_lang) to stay up-to-date with the possible contribution opportunities. For example, every year, the Scala Center participates
+  [LinkedIn](https://www.linkedin.com/company/scala-center/) and [Bluesky](https://bsky.app/profile/scala-lang.org) or [X](https://x.com/scala_lang) to stay up-to-date with the possible contribution opportunities. For example, every year, the Scala Center participates
   in the Google Summer of Code program where you are paid to work on open source Scala projects over the course
   of summer.
 {{backButton}}

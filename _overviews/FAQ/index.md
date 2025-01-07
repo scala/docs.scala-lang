@@ -65,13 +65,17 @@ In short, the only officially sanctioned place is the \#jobs channel
 
 ### Who's behind Scala?
 
-This is answered [on the community page](https://www.scala-lang.org/community/#whos-behind-scala).
+This is answered [on the Governance page](https://www.scala-lang.org/governance/).
 
 ### Can I use the Scala logo?
 
 See [scala/scala-lang#1040](https://github.com/scala/scala-lang/issues/1040).
 
 ## Technical questions
+
+### What IDEs are available for Scala?
+
+See [this doc page](https://docs.scala-lang.org/getting-started/scala-ides.html).
 
 ### What compiler flags are recommended?
 
@@ -120,11 +124,11 @@ with only minor supplements.  That's why `versionString` and
 `versionNumberString` report that Scala 2 is in use:
 
 ```
-Welcome to Scala 3.3.3 (17.0.3, Java OpenJDK 64-Bit Server VM).
+Welcome to Scala 3.3.4 (17.0.3, Java OpenJDK 64-Bit Server VM).
 Type in expressions for evaluation. Or try :help.
 
 scala> util.Properties.versionNumberString
-val res0: String = 2.13.12
+val res0: String = 2.13.15
 ```
 
 Note that even the latest Scala 3 version might not use the very
@@ -244,18 +248,22 @@ differ from a function value such as:
 
     val square: Int => Int = x => x * x
 
-For Scala 2, there is a [complete answer on Stack Overflow](https://stackoverflow.com/a/2530007/4111404)
+For **Scala 2**, there is a [complete answer on Stack Overflow](https://stackoverflow.com/a/2530007/4111404)
 and a [summary with practical differences](https://tpolecat.github.io/2014/06/09/methods-functions.html).
 
-Note that in **Scala 3** the differences are fewer;
-for example, they will be able to
-[accept implicit parameters]({{ site.scala3ref }}/contextual/context-functions.html)
-as well as [type parameters]({{ site.scala3ref }}/new-types/polymorphic-function-types.html).
+In **Scala 3**, the differences are fewer.
+[Context functions]({{ site.scala3ref }}/contextual/context-functions.html)
+accept given parameters and
+[polymorphic functions]({{ site.scala3ref }}/new-types/polymorphic-function-types.html)
+have type parameters.
 
-Nevertheless, it is still recommended to use methods most of the time,
-unless you absolutely need a function. And, thanks to
-[eta-expansion](https://stackoverflow.com/questions/39445018/what-is-the-eta-expansion-in-scala)
-you rarely would need to define a function rather than a method.
+It's standard to use methods most of the time,
+except when a function value is actually needed.
+[Eta-expansion](https://stackoverflow.com/questions/39445018/what-is-the-eta-expansion-in-scala),
+converts methods to functions when needed.
+For example, a method such as `map` expects a function,
+but even if you `def square` as shown above, you can
+still `xs.map(square)`.
 
 ### What's the difference between types and classes?
 
@@ -284,14 +292,16 @@ For more details, see the Scala Style Guide, [here](https://docs.scala-lang.org/
 
 ### How can a method in a superclass return a value of the “current” type?
 
-First, note that using `this.type` won't work. People often try that,
-but `this.type` means "the singleton type of this instance", a
-different and too-specific meaning.  Only `this` itself has the
-type `this.type`; other instances do not.
+Using `this.type` will only work if you are returning `this` itself.
+`this.type` means "the singleton type of this instance". Only `this`
+itself has the type `this.type`; other instances of the same class do
+not.
 
-What does work? Possible solutions include F-bounded polymorphism
-_(familiar to Java programmers)_, type members,
-and the [typeclass pattern](http://tpolecat.github.io/2013/10/12/typeclass.html).
+What does work for returning other values of the same type?
+
+Possible solutions include F-bounded polymorphism _(familiar to Java
+programmers)_, type members, and the [typeclass
+pattern](http://tpolecat.github.io/2013/10/12/typeclass.html).
 
 This [blog post](http://tpolecat.github.io/2015/04/29/f-bounds.html)
 argues against F-bounds and in favor of typeclasses;

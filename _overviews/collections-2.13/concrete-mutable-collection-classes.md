@@ -16,7 +16,7 @@ You've now seen the most commonly used immutable collection classes that Scala p
 
 ## Array Buffers
 
-An [ArrayBuffer](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/ArrayBuffer.html) buffer holds an array and a size. Most operations on an array buffer have the same speed as for an array, because the operations simply access and modify the underlying array. Additionally, array buffers can have data efficiently added to the end. Appending an item to an array buffer takes amortized constant time. Thus, array buffers are useful for efficiently building up a large collection whenever the new items are always added to the end.
+An [ArrayBuffer](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/mutable/ArrayBuffer.html) holds an array and a size. Most operations on an array buffer have the same speed as for an array, because the operations simply access and modify the underlying array. Additionally, array buffers can have data efficiently added to the end. Appending an item to an array buffer takes amortized constant time. Thus, array buffers are useful for efficiently building up a large collection whenever the new items are always added to the end.
 
 {% tabs ArrayBuffer_1 %}
 {% tab 'Scala 2 and 3' for=ArrayBuffer_1 %}
@@ -148,11 +148,11 @@ res1: scala.collection.mutable.Stack[Int] = Stack(1)
 scala> stack.push(2)
 res0: stack.type = Stack(1, 2)
 scala> stack
-res3: scala.collection.mutable.Stack[Int] = Stack(1, 2)
+res3: scala.collection.mutable.Stack[Int] = Stack(2, 1)
 scala> stack.top
 res8: Int = 2
 scala> stack
-res9: scala.collection.mutable.Stack[Int] = Stack(1, 2)
+res9: scala.collection.mutable.Stack[Int] = Stack(2, 1)
 scala> stack.pop
 res10: Int = 2
 scala> stack
@@ -170,11 +170,11 @@ res1: scala.collection.mutable.Stack[Int] = Stack(1)
 scala> stack.push(2)
 res0: stack.type = Stack(1, 2)
 scala> stack
-res3: scala.collection.mutable.Stack[Int] = Stack(1, 2)
+res3: scala.collection.mutable.Stack[Int] = Stack(2, 1)
 scala> stack.top
 res8: Int = 2
 scala> stack
-res9: scala.collection.mutable.Stack[Int] = Stack(1, 2)
+res9: scala.collection.mutable.Stack[Int] = Stack(2, 1)
 scala> stack.pop
 res10: Int = 2
 scala> stack

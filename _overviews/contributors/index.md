@@ -386,7 +386,7 @@ an sbt-site to GitHub Pages.
 
 ### Create the Documentation Site
 
-In this example we choose to use [Paradox](https://developer.lightbend.com/docs/paradox/current/index.html)
+In this example we choose to use [Paradox](https://github.com/lightbend/paradox)
 because it runs on the JVM and thus doesn't require setting up another VM on your system (in contrast with
 most other documentation generators, which are based on Ruby, Node.js or Python).
 
@@ -403,7 +403,7 @@ enablePlugins(ParadoxSitePlugin, SitePreviewPlugin)
 Paradox / sourceDirectory := sourceDirectory.value / "documentation"
 {% endhighlight %}
 
-The `ParadoxSitePlugin` provides a task `makeSite` that generates a website using [Paradox](https://developer.lightbend.com/docs/paradox/current/), and the `SitePreviewPlugin` provides handy tasks when working on the website content, to preview the result in your browser.
+The `ParadoxSitePlugin` provides a task `makeSite` that generates a website using [Paradox](https://github.com/lightbend/paradox), and the `SitePreviewPlugin` provides handy tasks when working on the website content, to preview the result in your browser.
 The second line is optional, it defines the location of the website source files. In our case, in
 `src/documentation`.
 

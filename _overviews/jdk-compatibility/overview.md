@@ -12,20 +12,20 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 
 Minimum Scala versions:
 
-| JDK         | 3        | 2.13      | 2.12      | 2.11       |
-|:-----------:|:--------:|:---------:|:---------:|:----------:|
-| 23          | 3.3.5*   | 2.13.15   | 2.12.20   |            |
-| 22          | 3.3.4*   | 2.13.13   | 2.12.19   |            |
-| 21 (LTS)    | 3.3.1    | 2.13.11   | 2.12.18   |            |
-| 17 (LTS)    | 3.0.0    | 2.13.6    | 2.12.15   |            |
-| 11 (LTS)    | 3.0.0    | 2.13.0    | 2.12.4    | 2.11.12    |
-| 8 (LTS)     | 3.0.0    | 2.13.0    | 2.12.0    | 2.11.0     |
+| JDK         | 3        | 3 LTS    | 2.13      | 2.12      | 2.11       |
+|:-----------:|:--------:|:--------:|:---------:|:---------:|:----------:|
+| 23          | 3.6.2    | 3.3.5    | 2.13.15   | 2.12.20   |            |
+| 22          | 3.4.0    | 3.3.4    | 2.13.13   | 2.12.19   |            |
+| 21 (LTS)    | 3.4.0    | 3.3.1    | 2.13.11   | 2.12.18   |            |
+| 17 (LTS)    | 3.0.0    | 3.3.0    | 2.13.6    | 2.12.15   |            |
+| 11 (LTS)    | 3.0.0    | 3.3.0    | 2.13.0    | 2.12.4    | 2.11.12    |
+| 8 (LTS)     | 3.0.0    | 3.3.0    | 2.13.0    | 2.12.0    | 2.11.0     |
 
 \* = forthcoming; support available in [nightly builds](https://stackoverflow.com/q/40622878/86485)
 
 Even when a version combination isn't listed as supported, most features might still work.
 
-Using latest patch version of Scala is always recommended.
+Using the latest patch version of your chosen Scala version line is always recommended.
 
 Lightbend offers [commercial support](https://www.lightbend.com/lightbend-platform-subscription) for Scala 2. The linked page includes contact information for inquiring about supported and recommended versions.
 

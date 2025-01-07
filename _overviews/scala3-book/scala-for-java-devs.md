@@ -3,7 +3,7 @@ title: Scala for Java Developers
 type: chapter
 description: This page is for Java developers who are interested in learning about Scala 3.
 languages: [zh-cn]
-num: 73
+num: 74
 previous-page: interacting-with-java
 next-page: scala-for-javascript-devs
 ---
@@ -1064,7 +1064,7 @@ Pair<String, Integer> pair =
 
 Triplet<String, Integer, Double> triplet =
   Triplet.with("Eleven", 11, 11.0);
-Quartet<String, Integer, Double,Person> triplet =
+Quartet<String, Integer, Double, Person> quartet =
   Quartet.with("Eleven", 11, 11.0, new Person("Eleven"));
 ```
 

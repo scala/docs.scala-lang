@@ -1,16 +1,10 @@
 - title: Getting Started
-  url: "/getting-started/index.html"
-- title: Scala 3
   url: "#"
   submenu:
-    - title: What's New?
-      url: "/scala3/new-in-scala3.html"
-    - title: Migrating From Scala 2
-      url: "/scala3/guides/migration/compatibility-intro.html"
-    - title: New Features for Scaladoc
-      url: "/scala3/scaladoc.html"
-    - title: Videos and Talks
-      url: "/scala3/talks.html"
+    - title: Install Scala
+      url: "/getting-started/install-scala.html"
+    - title: Scala IDEs
+      url: "/getting-started/scala-ides.html"
 - title: Learn
   url: "#"
   submenu:
@@ -24,6 +18,17 @@
       url: "/online-courses.html"
     - title: Online Resources
       url: "/learn.html"
+- title: Scala 3 Migration
+  url: "#"
+  submenu:
+    - title: What's New?
+      url: "/scala3/new-in-scala3.html"
+    - title: Migrating From Scala 2
+      url: "/scala3/guides/migration/compatibility-intro.html"
+    - title: New Features for Scaladoc
+      url: "/scala3/scaladoc.html"
+    - title: Videos and Talks
+      url: "/scala3/talks.html"
 - title: Tutorials
   url: "#"
   submenu:

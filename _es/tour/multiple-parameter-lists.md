@@ -6,7 +6,7 @@ partof: scala-tour
 num: 15
 language: es
 
-next-page: automatic-closures
+next-page: operators
 previous-page: nested-functions
 ---
 

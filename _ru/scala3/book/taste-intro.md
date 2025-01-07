@@ -28,4 +28,4 @@ next-page: taste-hello-world
 
 
 [reference]: {{ site.scala3ref }}/overview.html
-[get-started]: {% link _overviews/getting-started/index.md %}
+[get-started]: {% link _overviews/getting-started/install-scala.md %}

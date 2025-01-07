@@ -75,7 +75,7 @@ val cat = new Cat("Sally")
 val animals = ArrayBuffer.empty[Pet]
 animals.append(dog)
 animals.append(cat)
-animals.foreach(pet => println(pet.name))  // พิมพ์ Harry Sally
+animals.foreach(pet => println(pet.name))  // แสดงค่า Harry Sally
 ```
-`trait Pet` มี abstract field `name` ซึ่ง implement โดย Cat และ Dog ใน constructor ของมัน 
+`trait Pet` มี abstract field `name` ซึ่ง implement โดย Cat และ Dog ใน constructor ของมัน
 ในบรรทัดสุดท้าย เราเรียก `pet.name` ซึ่งจะต้องถูก implement แล้วใน subtype ใดๆ ของ trait `Pet`

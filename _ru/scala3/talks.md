@@ -16,13 +16,13 @@ versionSpecific: true
 
 Обсуждения Scala 3
 ----------------
-- (ScalaDays 2019, Lausanne) [Тур по Scala 3](https://www.youtube.com/watch?v=_Rnrx2lo9cw) от [Martin Odersky](http://twitter.com/odersky)
+- (ScalaDays 2019, Lausanne) [Тур по Scala 3](https://www.youtube.com/watch?v=_Rnrx2lo9cw) от [Martin Odersky](http://x.com/odersky)
 
-- (ScalaDays 2016, Berlin) [Развитие Scala](https://www.youtube.com/watch?v=GHzWqJKFCk4) от [Martin Odersky](http://twitter.com/odersky) [\[слайды\]](http://www.slideshare.net/Odersky/scala-days-nyc-2016)
+- (ScalaDays 2016, Berlin) [Развитие Scala](https://www.youtube.com/watch?v=GHzWqJKFCk4) от [Martin Odersky](http://x.com/odersky) [\[слайды\]](http://www.slideshare.net/Odersky/scala-days-nyc-2016)
 
-- (JVMLS 2015) [Компиляторы — это базы данных](https://www.youtube.com/watch?v=WxyyJyB_Ssc) от [Martin Odersky](http://twitter.com/odersky) [\[слайды\]](http://www.slideshare.net/Odersky/compilers-are-databases)
+- (JVMLS 2015) [Компиляторы — это базы данных](https://www.youtube.com/watch?v=WxyyJyB_Ssc) от [Martin Odersky](http://x.com/odersky) [\[слайды\]](http://www.slideshare.net/Odersky/compilers-are-databases)
 
-- (Scala World 2015) [Dotty: изучение будущего Scala](https://www.youtube.com/watch?v=aftdOFuVU1o) от [Dmitry Petrashko](http://twitter.com/darkdimius) [\[слайды\]](https://d-d.me/scalaworld2015/#/).
+- (Scala World 2015) [Dotty: изучение будущего Scala](https://www.youtube.com/watch?v=aftdOFuVU1o) от [Dmitry Petrashko](http://x.com/darkdimius) [\[слайды\]](https://d-d.me/scalaworld2015/#/).
   Дмитрий рассказывает о многих новых функциях, которые предлагает Dotty, таких как типы пересечения и объединения, 
   улучшенная инициализация lazy val и многое другое. Дмитрий также рассказывает о внутреннем устройстве Dotty 
   и, в частности, о высоком уровне контекстных абстракций Dotty. 
@@ -35,17 +35,17 @@ versionSpecific: true
 
 - (ScalaDays 2019, Lausanne) [Scala, ориентированная на будущее: промежуточное представление TASTY](https://www.youtube.com/watch?v=zQFjC3zLYwo) от [Guillaume Martres](http://guillaume.martres.me/).
 
-- (Mar 21, 2017) [Dotty Internals 1: Trees & Symbols](https://www.youtube.com/watch?v=yYd-zuDd3S8) от [Dmitry Petrashko](http://twitter.com/darkdimius) [\[заметки\]](https://dotty.epfl.ch/docs/internals/dotty-internals-1-notes.html).
+- (Mar 21, 2017) [Dotty Internals 1: Trees & Symbols](https://www.youtube.com/watch?v=yYd-zuDd3S8) от [Dmitry Petrashko](http://x.com/darkdimius) [\[заметки\]](https://dotty.epfl.ch/docs/internals/dotty-internals-1-notes.html).
   Это записанная встреча между EPFL и Waterloo, на которой мы представляем первые понятия внутри Dotty: деревья и символы.
 
-- (Mar 21, 2017) [Dotty Internals 2: Types](https://www.youtube.com/watch?v=3gmLIYlGbKc) от [Martin Odersky](http://twitter.com/odersky) и [Dmitry Petrashko](http://twitter.com/darkdimius).
+- (Mar 21, 2017) [Dotty Internals 2: Types](https://www.youtube.com/watch?v=3gmLIYlGbKc) от [Martin Odersky](http://x.com/odersky) и [Dmitry Petrashko](http://x.com/darkdimius).
   Это записанная встреча между EPFL и Waterloo, на которой мы рассказываем, как типы представлены внутри Dotty.
 
-- (Jun 15, 2017) [Dotty Internals 3: Denotations](https://youtu.be/9iPA7zMRGKY) от [Martin Odersky](http://twitter.com/odersky) и [Dmitry Petrashko](http://twitter.com/darkdimius).
+- (Jun 15, 2017) [Dotty Internals 3: Denotations](https://youtu.be/9iPA7zMRGKY) от [Martin Odersky](http://x.com/odersky) и [Dmitry Petrashko](http://x.com/darkdimius).
   Это записанная встреча между EPFL и Waterloo, где мы вводим обозначения в Dotty.
 
-- (JVM Language Summit) [How do we make the Dotty compiler fast](https://www.youtube.com/watch?v=9xYoSwnSPz0) от [Dmitry Petrashko](http://twitter.com/darkdimius).
-  [Dmitry Petrashko](http://twitter.com/darkdimius) в общих чертах рассказывает о том, что было сделано для создания Dotty.
+- (JVM Language Summit) [How do we make the Dotty compiler fast](https://www.youtube.com/watch?v=9xYoSwnSPz0) от [Dmitry Petrashko](http://x.com/darkdimius).
+  [Dmitry Petrashko](http://x.com/darkdimius) в общих чертах рассказывает о том, что было сделано для создания Dotty.
 
 - (Typelevel Summit Oslo, May 2016) [Dotty and types: the story so far](https://www.youtube.com/watch?v=YIQjfCKDR5A) от
   Guillaume Martres [\[слайды\]](http://guillaume.martres.me/talks/typelevel-summit-oslo/).
@@ -53,7 +53,7 @@ versionSpecific: true
   таких как новый алгоритм вывода параметров типа, 
   который может принимать решения о безопасности типов в большем количестве ситуаций, чем scalac.
 
-- (flatMap(Oslo) 2016) [AutoSpecialization in Dotty](https://vimeo.com/165928176) от [Dmitry Petrashko](http://twitter.com/darkdimius) [\[слайды\]](https://d-d.me/talks/flatmap2016/#/).
+- (flatMap(Oslo) 2016) [AutoSpecialization in Dotty](https://vimeo.com/165928176) от [Dmitry Petrashko](http://x.com/darkdimius) [\[слайды\]](https://d-d.me/talks/flatmap2016/#/).
   Dotty Linker анализирует вашу программу и ее зависимости, чтобы применить новую схему специализации.
   Он основан на нашем опыте Specialization, Miniboxing и проекта Valhalla и значительно уменьшает размер создаваемого байт-кода. 
   И, что лучше всего, он всегда включен, выполняется за кулисами без аннотаций и приводит к ускорению более чем в 20 раз. 

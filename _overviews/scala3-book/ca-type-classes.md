@@ -3,7 +3,7 @@ title: Type Classes
 type: section
 description: This page demonstrates how to create and use type classes.
 languages: [ru, zh-cn]
-num: 64
+num: 65
 previous-page: ca-given-imports
 next-page: ca-multiversal-equality
 redirect_from: /scala3/book/types-type-classes.html

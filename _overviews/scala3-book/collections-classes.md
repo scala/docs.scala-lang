@@ -3,7 +3,7 @@ title: Collections Types
 type: section
 description: This page introduces the common Scala 3 collections types and some of their methods.
 languages: [ru, zh-cn]
-num: 38
+num: 39
 previous-page: collections-intro
 next-page: collections-methods
 ---
