@@ -27,7 +27,7 @@ Even when a version combination isn't listed as supported, most features might s
 
 Using the latest patch version of your chosen Scala version line is always recommended.
 
-Lightbend offers [commercial support](https://www.lightbend.com/lightbend-platform-subscription) for Scala 2. The linked page includes contact information for inquiring about supported and recommended versions.
+Akka offers [commercial support](https://akka.io/pricing) for Scala 2. The linked page includes contact information for inquiring about supported and recommended versions.
 
 ## Tooling compatibility table
 
@@ -60,7 +60,7 @@ After Java 8, Oracle introduced the concept of LTS versions of the JDK. These ve
 
 JDK 8, 11, 17, and 21 are LTS versions. (The next LTS version will be 25.)
 
-Scala provides experimental support for running the Scala compiler on non-LTS versions of the JDK. The current LTS versions are normally tested in our CI matrix and by the Scala community build. We may also test non-LTS versions, but any issues found there are considered lower priority, and will not be considered release blockers. (Lightbend may be able to offer faster resolution of issues like this under commercial support.)
+Scala provides experimental support for running the Scala compiler on non-LTS versions of the JDK. The current LTS versions are normally tested in our CI matrix and by the Scala community build. We may also test non-LTS versions, but any issues found there are considered lower priority, and will not be considered release blockers. (The Scala team at Akka may be able to offer faster resolution of issues like this under commercial support.)
 
 As already mentioned, Scala code compiled on JDK 8 should run without problems in later JVMs. We will give higher priority to bugs that break this property. (For example, in 2.13.x we might eventually provide support for JPMS module access checks, to ensure your code won't incur `LinkageErrors` due to module access violations.)
 
