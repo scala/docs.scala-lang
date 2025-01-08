@@ -1,36 +1,63 @@
 ---
 layout: style-guide
 title: Indentation
-
 partof: style
-overview-name: "Style Guide"
-
+overview-name: Style Guide
 num: 2
-
-previous-page: overview
+previous-page: index
 next-page: naming-conventions
 ---
 
 Each level of indentation is 2 spaces. Tabs are not used. Thus, instead of
 indenting like this:
 
-    // wrong!
-    class Foo {
-        def fourspaces = {
-            val x = 4
-            ..
-        }
+{% tabs indentation_wrong class=tabs-scala-version %}
+{% tab 'Scala 2' for=indentation_wrong %}
+```scala
+// wrong!
+class Foo {
+    def fourspaces = {
+        val x = 4
+        ...
     }
+}
+``` 
+{% endtab %}
+{% tab 'Scala 3' for=indentation_wrong %}
+```scala
+// wrong!
+class Foo:
+    def fourspaces = 
+        val x = 4
+        ...
+```
+{% endtab %}
+{% endtabs %}
 
 You should indent like this:
 
-    // right!
-    class Foo {
-      def twospaces = {
-        val x = 2
-        ..
-      }
-    }
+{% tabs indentation_right class=tabs-scala-version %}
+{% tab 'Scala 2' for=indentation_right %}
+```scala
+// right!
+class Foo {
+  def twospaces = {
+    val x = 2
+    ...
+  }
+}
+``` 
+{% endtab %}
+{% tab 'Scala 3' for=indentation_right %}
+```scala
+// right!
+class Foo:
+  def twospaces =
+    val x = 2
+    ...
+```
+{% endtab %}
+{% endtabs %}
 
 The Scala language encourages a startling amount of nested scopes and
 logical blocks (function values and such). Do yourself a favor and don't
@@ -53,9 +80,15 @@ one line, each successive line should be indented two spaces from the
 have an unclosed parenthetical or to end with an infix method in which
 the right parameter is not given:
 
-    val result = 1 + 2 + 3 + 4 + 5 + 6 +
-      7 + 8 + 9 + 10 + 11 + 12 + 13 + 14 +
-      15 + 16 + 17 + 18 + 19 + 20
+{% tabs line_wrapping %}
+{% tab 'Scala 2 and 3' for=line_wrapping %}
+```scala
+val result = 1 + 2 + 3 + 4 + 5 + 6 +
+  7 + 8 + 9 + 10 + 11 + 12 + 13 + 14 +
+  15 + 16 + 17 + 18 + 19 + 20
+``` 
+{% endtab %}
+{% endtabs %}
 
 Without this trailing method, Scala will infer a semi-colon at the end
 of a line which was intended to wrap, throwing off the compilation
@@ -68,11 +101,18 @@ five or more), it is often necessary to wrap the method invocation onto
 multiple lines. In such cases, put each argument on a line by
 itself, indented two spaces from the current indent level:
 
-    foo(
-      someVeryLongFieldName,
-      andAnotherVeryLongFieldName,
-      "this is a string",
-      3.1415)
+{% tabs method_invocation %}
+{% tab 'Scala 2 and 3' for=method_invocation %}
+```scala
+foo(
+  someVeryLongFieldName,
+  andAnotherVeryLongFieldName,
+  "this is a string",
+  3.1415
+)
+``` 
+{% endtab %}
+{% endtabs %}
 
 This way, all parameters line up, but you don't need to re-align them if
 you change the name of the method later on.
@@ -83,19 +123,26 @@ avoided when each parameter would have to be indented more than 50
 spaces to achieve alignment. In such cases, the invocation itself should
 be moved to the next line and indented two spaces:
 
-    // right!
-    val myLongFieldNameWithNoRealPoint =
-      foo(
-        someVeryLongFieldName,
-        andAnotherVeryLongFieldName,
-        "this is a string",
-        3.1415)
+{% tabs method_invocation_2 %}
+{% tab 'Scala 2 and 3' for=method_invocation_2 %}
+```scala
+// right!
+val myLongFieldNameWithNoRealPoint =
+  foo(
+    someVeryLongFieldName,
+    andAnotherVeryLongFieldName,
+    "this is a string",
+    3.1415
+  )
 
-    // wrong!
-    val myLongFieldNameWithNoRealPoint = foo(someVeryLongFieldName,
-                                             andAnotherVeryLongFieldName,
-                                             "this is a string",
-                                             3.1415)
+// wrong!
+val myLongFieldNameWithNoRealPoint = foo(someVeryLongFieldName,
+                                         andAnotherVeryLongFieldName,
+                                         "this is a string",
+                                         3.1415)
+ ``` 
+{% endtab %}
+{% endtabs %}
 
 Better yet, just try to avoid any method which takes more than two or
 three parameters!
