@@ -39,7 +39,7 @@ version := "1.0"
 scalaVersion := "{{site.scala-version}}"
 
 libraryDependencies +=
-    "org.scalatest" %% "scalatest" % "3.2.11" % Test
+    "org.scalatest" %% "scalatest" % "3.2.19" % Test
 
 ```
 
@@ -47,7 +47,7 @@ The first three lines of this file are essentially the same as the first example
 
 ```scala
 libraryDependencies +=
-    "org.scalatest" %% "scalatest" % "3.2.11" % Test
+    "org.scalatest" %% "scalatest" % "3.2.19" % Test
 ```
 
 >The ScalaTest documentation has always been good, and you can always find the up to date information on what those lines should look like on the [Installing ScalaTest](http://www.scalatest.org/install) page.

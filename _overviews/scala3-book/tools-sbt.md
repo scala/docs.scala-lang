@@ -369,7 +369,7 @@ version := "0.1"
 scalaVersion := "{{site.scala-3-version}}"
 
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.2.9" % Test
+  "org.scalatest" %% "scalatest" % "3.2.19" % Test
 )
 ```
 
