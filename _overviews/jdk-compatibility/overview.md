@@ -14,7 +14,7 @@ Minimum Scala versions:
 
 | JDK         | 3        | 3 LTS    | 2.13      | 2.12      | 2.11       |
 |:-----------:|:--------:|:--------:|:---------:|:---------:|:----------:|
-| 24 (ea)     | 3.6.x? 3.7.x?<br>(forthcoming) | 3.3.5?<br>(forthcoming) | 2.13.16<br>(forthcoming) | 2.12.21<br>(forthcoming)   | |
+| 24 (ea)     | 3.6.x? 3.7.x?<br>(forthcoming) | 3.3.5?<br>(forthcoming) | 2.13.16 | 2.12.21<br>(forthcoming)   | |
 | 23          | 3.6.2    | 3.3.5<br>(forthcoming) | 2.13.15   | 2.12.20   |            |
 | 22          | 3.4.0    | 3.3.4    | 2.13.13   | 2.12.19   |            |
 | 21 (LTS)    | 3.4.0    | 3.3.1    | 2.13.11   | 2.12.18   |            |
@@ -135,7 +135,7 @@ For possible Scala 2 issues, see the [jdk11](https://github.com/scala/bug/labels
 
 JDK 24 will be non-LTS.
 
-Scala 2.13.16 (forthcoming) and Scala 2.12.21 (forthcoming) will support JDK 24. We are also working on adding JDK 24 support to Scala 3. (Support may be available in nightly builds and/or release candidates.)
+Scala 2.13.16+ supports, and Scala 2.12.21 (forthcoming) will support, JDK 24. We are also working on adding JDK 24 support to Scala 3. (Support may be available in nightly builds and/or release candidates.)
 
 For possible Scala 2 issues, see the [jdk11](https://github.com/scala/bug/labels/jdk11), [jdk17](https://github.com/scala/bug/labels/jdk17), and [jdk21](https://github.com/scala/bug/labels/jdk21) labels in the Scala 2 bug tracker.
 
