@@ -143,6 +143,8 @@ REPL, but won't work in typical Scala 3 application code.
 For an alternative way to detect the Scala 3 version, see
 [this gist](https://gist.github.com/romanowski/de14691cab7340134e197419bc48919a).
 
+There is a proposal to provide something easier at [scala/scala3#22144](https://github.com/scala/scala3/issues/22144).
+
 ### Why is my (abstract or overridden) `val` null?
 
 <!-- this is left over from a previous version of the FAQ.
