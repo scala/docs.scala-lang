@@ -105,7 +105,7 @@ Await.result(response, Duration.Inf)
 {% endtab %}
 {% endtabs %}
 
-Learn more about WebSockets in [sttp documentation](https://sttp.softwaremill.com/en/latest/websockets.html).
+Learn more about WebSockets in [sttp documentation](https://sttp.softwaremill.com/en/latest/other/websockets.html).
 
 ## More features
 
