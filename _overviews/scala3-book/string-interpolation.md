@@ -28,7 +28,7 @@ println(s"$name is $age years old")   // "James is 30 years old"
 Using string interpolation consists of putting an `s` in front of your string
 quotes, and prefixing any variable names with a `$` symbol.
 
-### Other interpolators
+## String Interpolators
 
 The `s` that you place before the string is just one possible interpolator that Scala
 provides.
@@ -38,7 +38,7 @@ Further, a string interpolator is just a special method, so it is possible to de
 own. For instance, some database libraries define a `sql` interpolator that returns a
 database query.
 
-## The `s` Interpolator (`s`-Strings)
+### The `s` Interpolator (`s`-Strings)
 
 Prepending `s` to any string literal allows the usage of variables directly in the string. You've already seen an example here:
 
@@ -121,7 +121,7 @@ age: 30
 {% endtab %}
 {% endtabs %}
 
-## The `f` Interpolator (`f`-Strings)
+### The `f` Interpolator (`f`-Strings)
 
 Prepending `f` to any string literal allows the creation of simple formatted strings, similar to `printf` in other languages.  When using the `f`
 interpolator, all variable references should be followed by a `printf`-style format string, like `%d`. Let's look at an example:
