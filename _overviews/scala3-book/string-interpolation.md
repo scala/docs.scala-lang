@@ -211,9 +211,21 @@ res1: String = a\nb
 
 The raw interpolator is useful when you want to avoid having expressions like `\n` turn into a return character.
 
-In addition to the three default string interpolators, users can define their own.
+Furthermore, the raw interpolator allows the usage of variables, which are replaced with their value, just as the s interpolator.
+
+{% tabs example-11 %}
+{% tab 'Scala 2 and 3' for=example-11 %}
+```scala
+scala> val foo = 42
+scala> raw"a\n$foo"
+res1: String = a\n42
+```
+{% endtab %}
+{% endtabs %}
 
 ## Advanced Usage
+
+In addition to the three default string interpolators, users can define their own.
 
 The literal `s"Hi $name"` is parsed by Scala as a _processed_ string literal.
 This means that the compiler does some additional work to this literal. The specifics
@@ -224,8 +236,8 @@ here's a quick example to help illustrate how they work.
 
 In Scala, all processed string literals are simple code transformations. Anytime the compiler encounters a processed string literal of the form:
 
-{% tabs example-11 %}
-{% tab 'Scala 2 and 3' for=example-11 %}
+{% tabs example-12 %}
+{% tab 'Scala 2 and 3' for=example-12 %}
 ```scala
 id"string content"
 ```
