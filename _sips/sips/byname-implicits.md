@@ -167,7 +167,7 @@ object Semigroup {
     }
 }
 ```
-  
+
 then we can manually write instances for, for example, tuples of types which have `Semigroup`
 instances,
 
@@ -387,7 +387,7 @@ val showListInt: Show[List[Int]] =
       showUnit
     )
   )
-```  
+```
 
 where at least one argument position between the val definition and the recursive occurrence of
 `showListInt` is byname.
@@ -499,16 +499,16 @@ any _T<sub>j</sub>_, where _i_ < _j_.
 The essence of the algorithm described in the Scala Language Specification is as follows,
 
 > Call the sequence of open implicit types _O_. This is initially empty.
-> 
-> To resolve an implicit of type _T_ given stack of open implicits _O_, 
-> 
+>
+> To resolve an implicit of type _T_ given stack of open implicits _O_,
+>
 > + Identify the definition _d_ which satisfies _T_.
-> 
+>
 > + If the core type of _T_ dominates any element of _O_ then we have observed divergence and we're
 >   done.
-> 
+>
 > + If _d_ has no implicit arguments then the result is the value yielded by _d_.
-> 
+>
 > + Otherwise for each implicit argument _a_ of _d_, resolve _a_ against _O+T_, and the result is the
 >   value yielded by _d_ applied to its resolved arguments.
 
@@ -550,15 +550,15 @@ divergence check across the set of relevant implicit definitions.
 
 This gives us the following,
 
-> To resolve an implicit of type _T_ given stack of open implicits _O_, 
-> 
+> To resolve an implicit of type _T_ given stack of open implicits _O_,
+>
 > + Identify the definition _d_ which satisfies _T_.
-> 
+>
 > + If the core type of _T_ dominates the type _U_ of some element _<d, U>_ of _O_ then we have
 >   observed divergence and we're done.
-> 
+>
 > + If _d_ has no implicit arguments then the result is the value yielded by _d_.
-> 
+>
 > + Otherwise for each implicit argument _a_ of _d_, resolve _a_ against _O+<d, T>_, and the result is
 >   the value yielded by _d_ applied to its resolved arguments.
 
@@ -646,8 +646,8 @@ larger than _U_ despite using only elements that are present in _U_.
 
 This gives us the following,
 
-> To resolve an implicit of type _T_ given stack of open implicits _O_, 
-> 
+> To resolve an implicit of type _T_ given stack of open implicits _O_,
+>
 > + Identify the definition _d_ which satisfies _T_.
 >
 > + if there is an element _e_ of _O_ of the form _<d, T>_ such that at least one element between _e_
@@ -658,7 +658,7 @@ This gives us the following,
 >   observed divergence and we're done.
 >
 > + If _d_ has no implicit arguments then the result is the value yielded by _d_.
-> 
+>
 > + Otherwise for each implicit argument _a_ of _d_, resolve _a_ against _O+<d, T>_, and the result is
 >   the value yielded by _d_ applied to its resolved arguments.
 

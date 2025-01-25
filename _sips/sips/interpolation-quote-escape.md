@@ -38,7 +38,7 @@ escape a `"` character to represent a literal `"` withing a string.
 ## Motivating Example
 
 That the `"` character can't be easily escaped in interpolations has been an
-open issue since at least 2012[^1], and how to deal with this issue is a 
+open issue since at least 2012[^1], and how to deal with this issue is a
 somewhat common SO question[^2][^3]
 
 {% highlight Scala %}

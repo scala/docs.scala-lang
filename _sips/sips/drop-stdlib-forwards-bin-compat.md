@@ -210,7 +210,7 @@ repositories {
 dependencies {
     implementation 'org.scala-lang:scala-library:2.13.8'
     implementation 'com.softwaremill.sttp.client3:core_2.13:3.8.3'
-    implementation 'com.softwaremill.sttp.shared:ws_2.13:1.2.7' 
+    implementation 'com.softwaremill.sttp.shared:ws_2.13:1.2.7'
 }
 $> gradle dependencies --configuration runtimeClasspath
 

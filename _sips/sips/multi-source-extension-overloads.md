@@ -2,7 +2,7 @@
 layout: sip
 permalink: /sips/:title.html
 stage: completed
-status: accepted
+status: shipped
 title: SIP-54 - Multi-Source Extension Overloads
 ---
 

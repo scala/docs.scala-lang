@@ -1,7 +1,7 @@
 ---
 layout: sip
-stage: implementation
-status: under-review
+stage: completed
+status: shipped
 presip-thread: https://contributors.scala-lang.org/t/pre-sip-improve-syntax-for-context-bounds-and-givens/6576/97
 title: SIP-64 - Improve Syntax for Context Bounds and Givens
 ---

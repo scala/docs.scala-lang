@@ -17,7 +17,7 @@ title: SIP-61 - Unroll Default Arguments for Binary Compatibility
 ## Summary
 
 This SIP proposes an `@unroll` annotation lets you add additional parameters
-to method `def`s,`class` construtors, or `case class`es, without breaking binary 
+to method `def`s,`class` construtors, or `case class`es, without breaking binary
 compatibility. `@unroll` works by generating "unrolled" or "telescoping" forwarders:
 
 ```scala
@@ -31,19 +31,19 @@ def foo(s: String, n: Int) = foo(s, n, true, 0)
 
 In contrast to most existing or proposed alternatives that require you to contort your
 code to become binary compatible (see [Major Alternatives](#major-alternatives)),
-`@unroll` allows you to write Scala with vanilla `def`s/`class`es/`case class`es, add 
+`@unroll` allows you to write Scala with vanilla `def`s/`class`es/`case class`es, add
 a single annotation, and your code will maintain binary compatibility as new default
-parameters and fields are added over time. 
+parameters and fields are added over time.
 
-`@unroll`'s only constraints are that: 
+`@unroll`'s only constraints are that:
 
-1. New parameters need to have a default value 
+1. New parameters need to have a default value
 2. New parameters can only be added on the right
 3. The `@unroll`ed methods must be abstract or final
 
 These are both existing industry-wide standard when dealing with data and schema evolution
 (e.g. [Schema evolution in Avro, Protocol Buffers and Thrift — Martin Kleppmann’s blog](https://martin.kleppmann.com/2012/12/05/schema-evolution-in-avro-protocol-buffers-thrift.html)),
-and are also the way the new parameters interact with _source compatibility_ in 
+and are also the way the new parameters interact with _source compatibility_ in
 the Scala language. Thus these constraints should be immediately familiar to any
 experienced programmers, and would be easy to follow without confusion.
 
@@ -53,38 +53,38 @@ Prior Discussion can be found [here](https://contributors.scala-lang.org/t/can-w
 
 Maintaining binary compatibility of Scala libraries as they evolve over time is
 difficult. Although tools like https://github.com/lightbend/mima help _surface_
-issues, actually _resolving_ those issues is a different challenge. 
+issues, actually _resolving_ those issues is a different challenge.
 
-Some kinds of library changes are fundamentally impossible to make compatible, 
-e.g. removing methods or classes. But there is one big class of binary compatibility 
+Some kinds of library changes are fundamentally impossible to make compatible,
+e.g. removing methods or classes. But there is one big class of binary compatibility
 issues that are "spurious": adding default parameters to methods, `class` constructors,
 or `case class`es.
 
 Adding a default parameter is source-compatible, but not binary compatible: a user
-downstream of a library that adds a default parameter does not need to make any 
+downstream of a library that adds a default parameter does not need to make any
 changes to their code, but _does_ need to re-compile it. This is "spurious" because
 there is no _fundamental_ incompatibility here: semantically, a new default parameter
 is meant to be optional! Old code invoking that method without a new default parameter
 is exactly the user intent, and works just fine if the downstream code is re-compiled.
 
-Other languages, such as Python, have the same default parameter language feature but face 
-no such compatibility issues with their use. Even Scala codebases compiled from source 
+Other languages, such as Python, have the same default parameter language feature but face
+no such compatibility issues with their use. Even Scala codebases compiled from source
 do not suffer these restrictions: adding a default parameter to the right side of a parameter
 list is for all intents and purposes backwards compatible in a mono-repo setup.
 The fact that such addition is binary incompatible is purely an implementation restriction
 of Scala's binary artifact format and distribution strategy.
 
 **Binary compatibility is generally more important than Source compatibility**. When
-you hit a source compatibility issue, you can always change the source code you are 
+you hit a source compatibility issue, you can always change the source code you are
 compiling, whether manually or via your build tool. In contrast, when you hit binary
 compatibility issues, it can come in the form of diamond dependencies that would require
 _re-compiling all of your transitive dependencies_, a task that is far more difficult and
 often impractical.
 
-There are many approaches to resolving these "spurious" binary compatibility issues, 
-but most of them involve either tremendous amounts of boilerplate writing 
-binary-compatibility forwarders, giving up on core language features like Case Classes 
-or Default Parameters, or both. Consider the following code snippet 
+There are many approaches to resolving these "spurious" binary compatibility issues,
+but most of them involve either tremendous amounts of boilerplate writing
+binary-compatibility forwarders, giving up on core language features like Case Classes
+or Default Parameters, or both. Consider the following code snippet
 ([link](https://github.com/com-lihaoyi/mainargs/blob/1d04a6bd19aaca401d11fe26da31615a8bc9213c/mainargs/src/Parser.scala))
 from the [com-lihaoyi/mainargs](https://github.com/com-lihaoyi/mainargs) library, which
 duplicates the parameters of `def constructEither` no less than five times in
@@ -159,13 +159,13 @@ parameters are added to `def constructEither`:
 
 Apart from being extremely verbose and full of boilerplate, like any boilerplate this is
 also extremely error-prone. Bugs like [com-lihaoyi/mainargs#106](https://github.com/com-lihaoyi/mainargs/issues/106)
-slip through when a mistake is made in that boilerplate. These bugs are impossible to catch 
-using a normal test suite, as they only appear in the presence of version skew. The above code 
-snippet actually _does_ have such a bug, that the test suite _did not_ catch. See if you can 
-spot it! 
+slip through when a mistake is made in that boilerplate. These bugs are impossible to catch
+using a normal test suite, as they only appear in the presence of version skew. The above code
+snippet actually _does_ have such a bug, that the test suite _did not_ catch. See if you can
+spot it!
 
 Sebastien Doraene's talk [Designing Libraries for Source and Binary Compatibility](https://www.youtube.com/watch?v=2wkEX6MCxJs)
-explores some of the challenges, and discusses the workarounds. 
+explores some of the challenges, and discusses the workarounds.
 
 
 ## Requirements
@@ -183,19 +183,19 @@ Given:
 * The behavior should be binary compatible and semantically indistinguishable from using
   a verion of **Downstream** compiled against the _newer_ version of **Upstream**
 
-**Note:** we do not aim for _Forwards_ compatibility. Using an _older_ 
-version of **Upstream** with a _newer_ version of **Downstream** compiled against a 
+**Note:** we do not aim for _Forwards_ compatibility. Using an _older_
+version of **Upstream** with a _newer_ version of **Downstream** compiled against a
 _newer_ version of **Upstream** is not a use case we want to support. The vast majority
 of OSS software does not promise forwards compatibility, including software such as
 the JVM, so we should just follow suite
 
 ### All Overrides Are Equivalent
 
-All versions of an `@unroll`ed method `def foo` should have the same semantics when called 
+All versions of an `@unroll`ed method `def foo` should have the same semantics when called
 with the same parameters. We must be careful to ensure:
 
 1. All our different method overrides point at the same underlying implementation
-2. Abstract methods are properly implemented, and no method would fail with an 
+2. Abstract methods are properly implemented, and no method would fail with an
    `AbstractMethodError` when called
 3. We properly forward the necessary argument and default parameter values when
    calling the respective implementation.
@@ -257,7 +257,7 @@ object Unrolled{
 }
 ```
 
-This is a source-compatible change, but not binary-compatible: JVM bytecode compiled against an 
+This is a source-compatible change, but not binary-compatible: JVM bytecode compiled against an
 earlier version of the library would be expecting to call `def foo(String, Int)`, but will fail
 because the signature is now `def foo(String, Int, Boolean)` or `def foo(String, Int, Boolean, Long)`.
 On the JVM this will result in a `MethodNotFoundError` at runtime, a common experience for anyone
@@ -265,7 +265,7 @@ who upgrading the versions of their dependencies. Similar concerns are present w
 Scala-Native, albeit the failure happens at link-time rather than run-time
 
 `@unroll` is an annotation that can be applied as follows, to the first "additional" default
-parameter that was added in each published version of the library (in this case, 
+parameter that was added in each published version of the library (in this case,
 `b: Boolean = true` and `l: Long = 0`)
 
 
@@ -292,11 +292,11 @@ object Unrolled{
 ```
 
 As a result, old callers who expect `def foo(String, Int, Boolean)` or `def foo(String, Int, Boolean, Long)`
-can continue to work, even as new parameters are added to `def foo`. The only restriction is that 
+can continue to work, even as new parameters are added to `def foo`. The only restriction is that
 new parameters can only be added on the right, and they must be provided with a default value.
 
 If multiple default parameters are added at once (e.g. `b` and `l` below) you can also
-choose to only `@unroll` the first default parameter of each batch, to avoid generating 
+choose to only `@unroll` the first default parameter of each batch, to avoid generating
 unnecessary forwarders:
 
 ```scala
@@ -312,8 +312,8 @@ parameter list can be unrolled (though it does not need to be the first one). e.
 
 ```scala
 object Unrolled{
-   def foo(s: String, 
-           n: Int = 1, 
+   def foo(s: String,
+           n: Int = 1,
            @unroll b: Boolean = true,
            @unroll l: Long = 0)
           (implicit blah: Blah) = s + n + b + l
@@ -325,8 +325,8 @@ As does this
 ```scala
 object Unrolled{
    def foo(blah: Blah)
-          (s: String, 
-           n: Int = 1, 
+          (s: String,
+           n: Int = 1,
            @unroll b: Boolean = true,
            @unroll l: Long = 0) = s + n + b + l
 }
@@ -336,7 +336,7 @@ object Unrolled{
 
 ### Unrolling `class`es
 
-Class constructors and secondary constructors are treated by `@unroll` just like any 
+Class constructors and secondary constructors are treated by `@unroll` just like any
 other method:
 
 ```scala
@@ -405,10 +405,10 @@ Unrolls to:
 case class Unrolled(s: String, n: Int = 1, @unroll b: Boolean = true, @unroll l: Long = 0L){
    def this(s: String, n: Int) = this(s, n, true, 0L)
    def this(s: String, n: Int, b: Boolean) = this(s, n, b, 0L)
-   
+
    def copy(s: String, n: Int) = copy(s, n, this.b, this.l)
    def copy(s: String, n: Int, b: Boolean) = copy(s, n, b, this.l)
-   
+
    def foo = s + n + b
 }
 object Unrolled{
@@ -419,26 +419,26 @@ object Unrolled{
 
 Notes:
 
-1. `@unroll`ed `case class`es are fully binary and backwards compatible in Scala 3, but not in Scala 2 
+1. `@unroll`ed `case class`es are fully binary and backwards compatible in Scala 3, but not in Scala 2
 
 2. `.unapply` does not need to be duplicated in Scala 3.x, as its signature
    `def unapply(x: Unrolled): Unrolled` does not change when new `case class` fields are
    added.
 
 3. Even in Scala 2.x, where `def unapply(x: Unrolled): Option[TupleN]` is not
-   binary compatible, pattern matching on `case class`es is already binary compatible 
-   to addition of new fields due to 
+   binary compatible, pattern matching on `case class`es is already binary compatible
+   to addition of new fields due to
    [Option-less Pattern Matching](https://docs.scala-lang.org/scala3/reference/changed-features/pattern-matching.html).
-   Thus, only calls to `.tupled` or `.curried` on the `case class` companion `object`, or direct calls 
+   Thus, only calls to `.tupled` or `.curried` on the `case class` companion `object`, or direct calls
    to `.unapply` on an unrolled `case class` in Scala 2.x (shown below)
-   will cause a crash if additional fields were added: 
+   will cause a crash if additional fields were added:
 
 ```scala
 def foo(t: (String, Int)) = println(t)
 Unrolled.unapply(unrolled).map(foo)
 ```
 
-In Scala 3, `@unroll`ing a `case class` also needs to generate a `fromProduct` 
+In Scala 3, `@unroll`ing a `case class` also needs to generate a `fromProduct`
 implementation in the companion object, as shown below:
 
 ```scala
@@ -480,7 +480,7 @@ This is done in two different ways:
 
 ## Limitations
 
-### Only the one parameter list of multi-parameter list methods can be `@unroll`ed. 
+### Only the one parameter list of multi-parameter list methods can be `@unroll`ed.
 
 Unrolling multiple parameter lists would generate a number
 of forwarder methods exponential with regard to the number of parameter lists unrolled,
@@ -499,11 +499,11 @@ compatibility on the JVM works.
 ### `@unroll`ed case classes are only fully binary compatible in Scala 3
 
 
-They are _almost_ binary compatible in Scala 2. Direct calls to `unapply` are binary 
-incompatible, but most common pattern matching of `case class`es goes through a different 
+They are _almost_ binary compatible in Scala 2. Direct calls to `unapply` are binary
+incompatible, but most common pattern matching of `case class`es goes through a different
 code path that _is_ binary compatible. There are also the `AbstractFunctionN` traits, from
 which the companion object inherits `.curried` and `.tupled` members. Luckily, `unapply`
-was made binary compatible in Scala 3, and `AbstractFunctionN`, `.curried`, and `.tupled` 
+was made binary compatible in Scala 3, and `AbstractFunctionN`, `.curried`, and `.tupled`
 were removed
 
 ### While `@unroll`ed `case class`es are *not* fully _source_ compatible
@@ -539,15 +539,15 @@ default parameters over time. In such extreme scenarios, some kind of builder pa
 
 `object` methods and constructors are naturally
 final, but `class` or `trait` methods that are `@unroll`ed need to be explicitly marked `final`.
-It has proved difficult to implement the semantics of `@unroll` in the presence of downstream 
-overrides, `super`, etc. where the downstream overrides can be compiled against by different 
+It has proved difficult to implement the semantics of `@unroll` in the presence of downstream
+overrides, `super`, etc. where the downstream overrides can be compiled against by different
 versions of the upstream code. If we can come up with some implementation that works, we can
 lift this restriction later, but for now I have not managed to do so and so this restriction
 stays.
 
 ### Challenges of Non-Final Methods and Overriding
 
-To elaborate a bit on the issues with non-final methods and overriding, consider the following 
+To elaborate a bit on the issues with non-final methods and overriding, consider the following
 case with four classes, `Upstream`, `Downstream`, `Main1` and `Main2`, each of which is compiled
 against different versions of each other (hence the varying number of parameters for `foo`):
 
@@ -581,14 +581,14 @@ object Main2 { // compiled against Upstream V1
 
 
 The challenge here is: how do we make sure that `Main1` and `Main2`, who call
-`new Downstream().foo`, correctly pick up the version of `def foo` that is 
-provided by `Downstream`? 
+`new Downstream().foo`, correctly pick up the version of `def foo` that is
+provided by `Downstream`?
 
 With the current implementation, the `override def foo` inside `Downstream` would only
 override one of `Upstream`'s synthetic forwarders, but would not override the actual
 primary implementation. As a result, we would see `Main1` calling the implementation
-of `foo` from `Upstream`, while `Main2` calls the implementation of `foo` from 
-`Downstream`. So even though both `Main1` and `Main2` have the same 
+of `foo` from `Upstream`, while `Main2` calls the implementation of `foo` from
+`Downstream`. So even though both `Main1` and `Main2` have the same
 `Upstream` and `Downstream` code on the classpath, they end up calling different
 implementations based on what they were compiled against.
 
@@ -605,7 +605,7 @@ happen according to what version combinations are supported by our definition of
 concern due to the requirement that [All Overrides Are Equivalent](#all-overrides-are-equivalent).
 
 It may be possible to loosen this restriction to also allow abstract methods that
-are implemented only once by a final method. See the section about 
+are implemented only once by a final method. See the section about
 [Abstract Methods](#abstract-methods) for details.
 
 ## Major Alternatives
@@ -626,11 +626,11 @@ takes:
 
 The first major difference between `@unroll` and the above alternatives is that these alternatives
 all introduce something new: some kind of _not-a-case-class_ `class` that is to be used
-when binary compatibility is desired. This _not-a-case-class_ has different syntax from 
+when binary compatibility is desired. This _not-a-case-class_ has different syntax from
 `case class`es, different semantics, different methods, and so on.
 
 In contrast, `@unroll` does not introduce any new language-level or library-level constructs.
-The `@unroll` annotation is purely a compiler-backend concern for maintaining binary 
+The `@unroll` annotation is purely a compiler-backend concern for maintaining binary
 compatibility. At a language level, `@unroll` allows you to keep using normal method `def`s,
 `class`es and `case class`es with exactly the same syntax and semantics you have been using
 all along.
@@ -644,10 +644,10 @@ designing their data types, is inferior to simply using `case class`es all the t
 
 The alternatives linked above all build a
 Java-esque "[inner platform](https://en.wikipedia.org/wiki/Inner-platform_effect)"
-on top of the Scala language, with its own conventions like `.withFoo` methods. 
+on top of the Scala language, with its own conventions like `.withFoo` methods.
 
 In contrast, `@unroll` makes use of the existing Scala language's default parameters
-to achieve the same effect. 
+to achieve the same effect.
 
 If we think Scala is nicer to write then Java due to its language
 features, then `@unroll`'s approach of leveraging those language features is nicer
@@ -662,7 +662,7 @@ things that do not affect typechecking, and `@unroll` fits the bill perfectly.
 ### Evolving Any Class v.s. Evolving Pre-determined Classes
 
 The alternatives given require that the developer has to decide _up front_ whether their
-data type needs to be evolved while maintaining binary compatibility. 
+data type needs to be evolved while maintaining binary compatibility.
 
 In contrast, `@unroll` allows you to evolve any existing `class` or `case class`.
 
@@ -680,7 +680,7 @@ Binary compatility is not just a problem for `case class`es adding new fields: n
 `class` constructors, instance method `def`s, static method `def`s, etc. have default
 parameters added all the time as well.
 
-In contrast, `@unroll` allows the evolution of `def`s and normal `class`es, in addition 
+In contrast, `@unroll` allows the evolution of `def`s and normal `class`es, in addition
 to `case class`es, all using the same approach:
 
 1. `@unroll`ing `case class`es is about _schema evolution_
@@ -690,7 +690,7 @@ to `case class`es, all using the same approach:
 All three cases above have analogous best practices in the broader software engineering
 world: whether you are adding an optional column to a database table, adding an
 optional flag to a command-line tool, are extending an existing protocol with optional
-fields that may need handling by both clients and servers implementing that protocol. 
+fields that may need handling by both clients and servers implementing that protocol.
 
 `@unroll` solves all three problems at once - schema evolution, API evolution, and protocol
 evolution. It does so with the same Scala-level syntax and semantics, with the same requirements
@@ -699,7 +699,7 @@ software engineering community.
 
 ### Abstract Methods
 
-Apart from `final` methods, `@unroll` also supports purely abstract methods. Consider 
+Apart from `final` methods, `@unroll` also supports purely abstract methods. Consider
 the following example with a trait `Unrolled` and an implementation `UnrolledObj`:
 
 ```scala
@@ -729,7 +729,7 @@ object UnrolledObj extends Unrolled{ // version 3
 }
 ```
 
-Note that both the abstract methods from `trait Unrolled` and the concrete methods 
+Note that both the abstract methods from `trait Unrolled` and the concrete methods
 from `object UnrolledObj` generate forwarders when `@unroll`ed, but the forwarders
 are generated _in opposite directions_! Unrolled concrete methods forward from longer
 parameter lists to shorter parameter lists, while unrolled abstract methods forward
@@ -753,7 +753,7 @@ UnrolledObj.foo(String, Int, Boolean)
 UnrolledObj.foo(String, Int, Boolean, Long)
 ```
 
-Because such downstream code cannot know which version of `Unrolled` that `UnrolledObj` 
+Because such downstream code cannot know which version of `Unrolled` that `UnrolledObj`
 was compiled against, we need to ensure all such calls find their way to the correct
 implementation of `def foo`, which may be at any of the above signatures. This "double
 forwarding" strategy ensures that regardless of _which_ version of `.foo` gets called,
@@ -761,20 +761,20 @@ it ends up eventually forwarding to the actual implementation of `foo`, with
 the correct combination of passed arguments and default arguments
 
 ```scala
-UnrolledObj.foo(String, Int) // forwards to UnrolledObj.foo(String, Int, Boolean) 
-UnrolledObj.foo(String, Int, Boolean) // actual implementation 
+UnrolledObj.foo(String, Int) // forwards to UnrolledObj.foo(String, Int, Boolean)
+UnrolledObj.foo(String, Int, Boolean) // actual implementation
 UnrolledObj.foo(String, Int, Boolean, Long) // forwards to UnrolledObj.foo(String, Int, Boolean)
 ```
 
-As is the case for `@unroll`ed methods on `trait`s and `class`es, `@unroll`ed 
+As is the case for `@unroll`ed methods on `trait`s and `class`es, `@unroll`ed
 implementations of an abtract method must be final.
 
 #### Are Reverse Forwarders Really Necessary?
 
-This "double forwarding" strategy is not strictly necessary to support 
+This "double forwarding" strategy is not strictly necessary to support
 [Backwards Compatibility](#backwards-compatibility): the "reverse" forwarders
 generated for abstract methods are only necessary when a downstream callsite
-of `UnrolledObj.foo` is compiled against a newer version of the original 
+of `UnrolledObj.foo` is compiled against a newer version of the original
 `trait Unrolled` than the `object UnrolledObj` was, as shown below:
 
 ```scala
@@ -802,14 +802,14 @@ If we did not have the reverse forwarder from `foo(String, Int, Boolean, Long)` 
 It also will get caught by MiMa as a `ReversedMissingMethodProblem`.
 
 This configuration of version is not allowed given our definition of backwards compatibility:
-that definition assumes that `Unrolled` must be of a greater or equal version than `UnrolledObj`, 
+that definition assumes that `Unrolled` must be of a greater or equal version than `UnrolledObj`,
 which itself must be of a greater or equal version than the final call to `UnrolledObj.foo`. However,
-the reverse forwarders are needed to fulfill our requirement 
+the reverse forwarders are needed to fulfill our requirement
 [All Overrides Are Equivalent](#all-overrides-are-equivalent):
 looking at `trait Unrolled // version 3` and `object UnrolledObj // version 2` in isolation,
 we find that without the reverse forwarders the signature `foo(String, Int, Boolean, Long)`
 is defined but not implemented. Such an un-implemented abstract method is something
-we want to avoid, even if our artifact version constraints mean it should technically 
+we want to avoid, even if our artifact version constraints mean it should technically
 never get called.
 
 ## Minor Alternatives:
@@ -819,7 +819,7 @@ never get called.
 
 Currently, `@unroll` generates a forwarder only for the annotated default parameter;
 if you want to generate multiple forwarders, you need to `@unroll` each one. In the
-vast majority of scenarios, we want to unroll every default parameters we add, and in 
+vast majority of scenarios, we want to unroll every default parameters we add, and in
 many cases default parameters are added one at a time. In this case, an `@unrollAll`
 annotation may be useful, a shorthand for applying `@unroll` to the annotated default
 parameter and every parameter to the right of it:
@@ -858,9 +858,9 @@ def foo(s: Object, n: Int = 1, b: Boolean = true) = s.toString + n + b + l
 def foo(s: String, n: Int = 1, b: Boolean = true) = foo(s, n, b)
 ```
 
-This would follow the precedence of how Java's and Scala's covariant method return 
-type overrides are implemented: when a class overrides a method with a new 
-implementation with a narrower return type, a forwarder method is generated to 
+This would follow the precedence of how Java's and Scala's covariant method return
+type overrides are implemented: when a class overrides a method with a new
+implementation with a narrower return type, a forwarder method is generated to
 allow anyone calling the original signature \to be forwarded to the narrower signature.
 
 This is not currently implemented in `@unroll`, but would be a straightforward addition.
@@ -893,7 +893,7 @@ The first option results in shorter stack traces, while the second option result
 roughly half as much generated bytecode in the method bodies (though it's still `O(n^2)`).
 
 In order to allow `@unroll`ing of [Abstract Methods](#abstract-methods), we had to go with
-the second option. This is because when an abstract method is overriden, it is not necessarily 
+the second option. This is because when an abstract method is overriden, it is not necessarily
 true that the longest override that contains the implementation. Thus we need to forward
 between the different `def foo` overrides one at a time until the override containing the
 implementation is found.

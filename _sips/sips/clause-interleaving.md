@@ -2,7 +2,7 @@
 layout: sip
 title: SIP-47 - Clause Interleaving
 stage: completed
-status: accepted
+status: shipped
 permalink: /sips/:title.html
 ---
 
@@ -71,7 +71,7 @@ This definition provides the expected source API at call site, but it has two is
 
 Another workaround is to return a polymorphic function, for example:
 ~~~scala
-def getOrElse(k:Key): [V >: k.Value] => (default: V) => V = 
+def getOrElse(k:Key): [V >: k.Value] => (default: V) => V =
     [V] => (default: V) => ???
 ~~~
 While again, this provides the expected API at call site, it also has issues:

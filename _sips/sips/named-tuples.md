@@ -1,8 +1,8 @@
 ---
 layout: sip
 permalink: /sips/named-tuples.html
-stage: implementation
-status: under-review
+stage: completed
+status: shipped
 presip-thread: https://contributors.scala-lang.org/t/pre-sip-named-tuples/6403/164
 title: SIP-58 - Named Tuples
 ---

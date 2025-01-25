@@ -54,7 +54,7 @@ There are some clear pain points related to Scala'3 `for`-comprehensions and tho
 
     This complicates the code, even in this simple example.
 2. The simplicity of desugared code
-    
+
     The second pain point is that the desugared code of `for`-comprehensions can often be surprisingly complicated.
 
     e.g.
@@ -92,7 +92,7 @@ There are some clear pain points related to Scala'3 `for`-comprehensions and tho
 This SIP suggests the following changes to `for` comprehensions:
 
 1. Allow `for` comprehensions to start with pure aliases
-  
+
     e.g.
     ```scala
     for
@@ -103,7 +103,7 @@ This SIP suggests the following changes to `for` comprehensions:
     ```
 2. Simpler conditional desugaring of pure aliases. i.e. whenever a series of pure aliases is not immediately followed by an `if`, use a simpler way of desugaring.
 
-    e.g. 
+    e.g.
     ```scala
     for
       a <- doSth(arg)
@@ -250,7 +250,7 @@ A new desugaring rules will be introduced for simple desugaring.
 For any N:
   for (P <- G; P_1 = E_1; ... P_N = E_N; ...)
     ==>
-  G.flatMap (P => for (P_1 = E_1; ... P_N = E_N; ...)) 
+  G.flatMap (P => for (P_1 = E_1; ... P_N = E_N; ...))
 
 And:
 

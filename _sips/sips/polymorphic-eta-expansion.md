@@ -21,7 +21,7 @@ permalink: /sips/:title.html
 - For a first-time reader, a high-level overview of what they should expect to see in the proposal.
 - For returning readers, a quick reminder of what the proposal is about. -->
 
-We propose to extend eta-expansion to polymorphic methods. 
+We propose to extend eta-expansion to polymorphic methods.
 This means automatically transforming polymorphic methods into corresponding polymorphic functions when required, for example:
 
 ~~~ scala
@@ -44,10 +44,10 @@ This section should clearly express the scope of the proposal. It should make it
 
 Regular eta-expansion is so ubiquitous that most users are not aware of it, for them it is intuitive and obvious that methods can be passed where functions are expected.
 
-When manipulating polymorphic methods, we wager that most users find it confusing not to be able to do the same. 
+When manipulating polymorphic methods, we wager that most users find it confusing not to be able to do the same.
 This is the main motivation of this proposal.
 
-It however remains to be demonstrated that such cases appear often enough for time and maintenance to be devoted to fixing it. 
+It however remains to be demonstrated that such cases appear often enough for time and maintenance to be devoted to fixing it.
 To this end, the remainder of this section will show a manufactured example with tuples, as well as real-world examples taken from the [Shapeless-3](https://index.scala-lang.org/typelevel/shapeless-3) and [kittens](https://index.scala-lang.org/typelevel/kittens) libraries.
 
 
@@ -89,7 +89,7 @@ There is however the following case, where a function is very large:
         case (acc, Some(t)) => Some((t, acc._1))
       }
   }
-~~~ 
+~~~
 
 By factoring out the function, it is possible to make the code more readable:
 
@@ -113,7 +113,7 @@ By factoring out the function, it is possible to make the code more readable:
         case (acc, Some(t)) => Some((t, acc._1))
       }
   }
-~~~ 
+~~~
 
 It is natural at this point to want to transform the function into a method, as the syntax for the latter is more familiar, and more readable:
 
@@ -139,7 +139,7 @@ It is natural at this point to want to transform the function into a method, as 
   }
 ~~~
 
-However, this does not compile. 
+However, this does not compile.
 Only monomorphic eta-expansion is applied, leading to the same issue as with our previous `Tuple.map` example.
 
 #### Kittens ([source](https://github.com/typelevel/kittens/blob/e10a03455ac3dd52096a1edf0fe6d4196a8e2cad/core/src/main/scala-3/cats/derived/DerivedTraverse.scala#L44-L48))
@@ -251,7 +251,7 @@ For example, if the syntax of the language is changed, this section should list 
 
 Before we go on, it is important to clarify what we mean by "polymorphic method", we do not mean, as one would expect, "a method taking at least one type parameter clause", but rather "a (potentially partially applied) method whose next clause is a type clause", here is an example to illustrate:
 
-~~~ scala 
+~~~ scala
 extension (x: Int)
   def poly[T](x: T): T = x
 // signature: (Int)[T](T): T
@@ -279,15 +279,15 @@ Note: Polymorphic functions always take term parameters (but `k` can equal zero 
 1. Copies of `T_i`s are created, and replaced in `U_i`s, `L_i`s, `A_i`s and `R`, noted respectively `T'_i`, `U'_i`, `L'_i`, `A'_i` and `R'`.
 
 2. Is the expected type a polymorphic context function ?
-* 1. If yes then `m` is replaced by the following: 
+* 1. If yes then `m` is replaced by the following:
 ~~~ scala
-[T'_1 <: U'_1 >: L'_1, ... , T'_n <: U'_n >: L'_n] 
+[T'_1 <: U'_1 >: L'_1, ... , T'_n <: U'_n >: L'_n]
   => (a_1: A'_1 ..., a_k: A'_k)
   ?=> m[T'_1, ..., T'_n]
 ~~~
-* 2. If no then `m` is replaced by the following: 
+* 2. If no then `m` is replaced by the following:
 ~~~ scala
-[T'_1 <: U'_1 >: L'_1, ... , T'_n <: U'_n >: L'_n] 
+[T'_1 <: U'_1 >: L'_1, ... , T'_n <: U'_n >: L'_n]
   => (a_1: A'_1 ..., a_k: A'_k)
   => m[T'_1, ..., T'_n](a_1, ..., a_k)
 ~~~
@@ -321,7 +321,7 @@ extension [A](x: A)
   def foo[B](y: B) = (x, y)
 
 val voo: [T] => T => [U] => U => (T, U) = foo
-// foo expands to: 
+// foo expands to:
 // [T'] => (t: T') => ( foo[T'](t) with expected type [U] => U => (T', U) )
 // [T'] => (t: T') => [U'] => (u: U') => foo[T'](t)[U'](u)
 ~~~
@@ -384,7 +384,7 @@ Not included in this proposal are:
 * Polymorphic SAM conversion
 * Polymorphic functions from wildcard: `foo[_](_)`
 
-While all of the above could be argued to be valuable, we deem they are out of the scope of this proposal. 
+While all of the above could be argued to be valuable, we deem they are out of the scope of this proposal.
 
 We encourage the creation of follow-up proposals to motivate their inclusion.
 

@@ -49,7 +49,7 @@ Typically, the commands are tokenized and parsed. After a parsing stage we may e
 enum Word
   case Get, North, Go, Pick, Up
   case Item(name: String)
-    
+
   case class Command(words: List[Word])
 ```
 
@@ -64,7 +64,7 @@ matching on a single stable identifier, `North` and the code would look like thi
 
 ~~~ scala
 import Command.*
-    
+
 def loop(cmd: Command): Unit =
   cmd match
     case Command(North :: Nil) => // Code for going north
@@ -107,7 +107,7 @@ def loop(cmd: Cmd): Unit =
       case Command(Get :: Item(name)) => pickUp(name)
 ~~~
 
-Or any number of different encodings. However, all of them are less intuitive and less obvious than the code we tried to write. 
+Or any number of different encodings. However, all of them are less intuitive and less obvious than the code we tried to write.
 
 ## Commentary
 
@@ -147,7 +147,7 @@ type, like so:
 enum Foo:
   case Bar(x: Int)
   case Baz(y: Int)
-    
+
   def fun = this match
     case Bar(z) | Baz(z) => ... // z: Int
 ~~~
@@ -161,11 +161,11 @@ Removing the restriction would also allow recursive alternative patterns:
 enum Foo:
   case Bar(x: Int)
   case Baz(x: Int)
-    
+
 enum Qux:
   case Quux(y: Int)
   case Corge(x: Foo)
-    
+
   def fun = this match
     case Quux(z) |  Corge(Bar(z) | Baz(z)) => ... // z: Int
 ~~~
@@ -177,8 +177,8 @@ We also expect to be able to use an explicit binding using an `@` like this:
 enum Foo:
   case Bar()
   case Baz(bar: Bar)
-    
-  def fun = this match 
+
+  def fun = this match
     case Baz(x) | x @ Bar() => ... // x: Foo.Bar
 ~~~
 
@@ -191,7 +191,7 @@ inferred within within each branch.
 enum Foo:
   case Bar(x: Int)
   case Baz(y: String)
-    
+
   def fun = this match
     case Bar(x) | Baz(x) => // x: Int | String
 ~~~
@@ -203,26 +203,26 @@ the following case to match all instances of `Bar`, regardless of the type of `A
 enum Foo[A]:
   case Bar(a: A)
   case Baz(i: Int) extends Foo[Int]
-    
+
   def fun = this match
-    case Baz(x) | Bar(x) => // x: Int | A 
+    case Baz(x) | Bar(x) => // x: Int | A
 ~~~
 
 ### Given bind variables
 
-It is possible to introduce bindings to the contextual scope within a pattern match branch. 
+It is possible to introduce bindings to the contextual scope within a pattern match branch.
 
 Since most bindings will be anonymous but be referred to within the branches, we expect the _types_ present in the contextual scope for each branch to be the same rather than the _names_.
 
 ~~~ scala
   case class Context()
-  
+
   def run(using ctx: Context): Unit = ???
-  
+
   enum Foo:
     case Bar(ctx: Context)
     case Baz(i: Int, ctx: Context)
-    
+
     def fun = this match
       case Bar(given Context) | Baz(_, given Context) => run // `Context` appears in both branches
 ~~~
@@ -233,7 +233,7 @@ This begs the question of what to do in the case of an explicit `@` binding wher
   enum Foo:
     case Bar(s: String)
     case Baz(i: Int)
-    
+
     def fun = this match
       case Bar(x @ given String) | Baz(x @ given Int) => ???
 ~~~
@@ -254,13 +254,13 @@ However, since untagged unions are part of Scala 3 and the fact that both are re
 
 #### Type ascriptions in alternative branches
 
-Another suggestion is that an _explicit_ type ascription by a user ought to be defined for all branches. For example, in the currently proposed rules, the following code would infer the return type to be `Int | A` even though the user has written the statement `id: Int`. 
+Another suggestion is that an _explicit_ type ascription by a user ought to be defined for all branches. For example, in the currently proposed rules, the following code would infer the return type to be `Int | A` even though the user has written the statement `id: Int`.
 
 ~~~scala
 enum Foo[A]:
   case Bar[A](a: A)
   case Baz[A](a: A)
-  
+
   def test = this match
     case Bar(id: Int) | Baz(id) => id
 ~~~
@@ -295,7 +295,7 @@ If `p_i` is a quoted pattern binding a variable or type variable, the alternativ
 
 Each $`p_n`$ must introduce the same set of bindings, i.e. for each $`n`$, $`\Gamma_n`$ must have the same **named** members $`\Gamma_{n+1}`$ and the set of $`{T_0, ... T_n}`$ must be the same.
 
-If $`X_{n,i}`$, is the type of the binding $`x_i`$ within an alternative $`p_n`$, then the consequent type, $`X_i`$, of the 
+If $`X_{n,i}`$, is the type of the binding $`x_i`$ within an alternative $`p_n`$, then the consequent type, $`X_i`$, of the
 variable $`x_i`$ within the pattern scope, $`\Gamma`$ is the least upper-bound of all the types $`X_{n, i}`$ associated with
 the variable, $`x_i`$ within each branch.
 

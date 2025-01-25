@@ -2,7 +2,7 @@
 layout: sip
 permalink: /sips/:title.html
 stage: completed
-status: accepted
+status: shipped
 title: SIP-46 - Scala CLI as default Scala command
 ---
 
@@ -16,7 +16,7 @@ title: SIP-46 - Scala CLI as default Scala command
 
 ## Summary
 
-We propose to replace current script that is installed as `scala` with Scala CLI - a batteries included tool to interact with Scala. Scala CLI brings all the features that the commands above provide and expand them with incremental compilation, dependency management, packaging and much more. 
+We propose to replace current script that is installed as `scala` with Scala CLI - a batteries included tool to interact with Scala. Scala CLI brings all the features that the commands above provide and expand them with incremental compilation, dependency management, packaging and much more.
 
 Even though Scala CLI could replace `scaladoc` and `scalac` commands as well for now, we do not propose to replace them.
 
@@ -25,30 +25,30 @@ Even though Scala CLI could replace `scaladoc` and `scalac` commands as well for
 
 The current default `scala` script is quite limited since it can only start repl or run pre-compile Scala code.
 
-The current script are lacking basic features such as support for resolving dependencies, incremental compilation or support for outputs other than JVM. This forces any user that wants to do anything more than just basic things to learn and use SBT, Mill or an other build tool and that adds to the complexity of learning Scala. 
+The current script are lacking basic features such as support for resolving dependencies, incremental compilation or support for outputs other than JVM. This forces any user that wants to do anything more than just basic things to learn and use SBT, Mill or an other build tool and that adds to the complexity of learning Scala.
 
-We observe that the current state of tooling in Scala is limiting creativity, with quite a high cost to create e.g. an application or a script with some dependencies that target Node.js. Many Scala developers are not choosing Scala for their personal projects, scripts, or small applications and we believe that the complexity of setting up a build tool is one of the reasons. 
+We observe that the current state of tooling in Scala is limiting creativity, with quite a high cost to create e.g. an application or a script with some dependencies that target Node.js. Many Scala developers are not choosing Scala for their personal projects, scripts, or small applications and we believe that the complexity of setting up a build tool is one of the reasons.
 
 With this proposal our main goal is to turn Scala into a language with "batteries included" that will also respect the community-first aspect of our ecosystem.
 
 ### Why decided to work on Scala CLI rather then improve existing tools like sbt or Mill?
 
 Firstly, Scala CLI is in no way an actual replacement for SBT or Mill - nor was it ever meant to be. We do not call it a build tool, even though it does share some similarities with build tools. It doesn't aim at supporting multi-module
-projects, nor to be extended via a task system. The main advantages of SBT and Mill: multi-module support and plugin ecosystem in the use cases for Scala CLI and scala command can often be disadvantages as it affects performance: configuration needs to be compiled, plugins resolved etc. 
+projects, nor to be extended via a task system. The main advantages of SBT and Mill: multi-module support and plugin ecosystem in the use cases for Scala CLI and scala command can often be disadvantages as it affects performance: configuration needs to be compiled, plugins resolved etc.
 
 Mill and SBT uses turing complete configuration for build so the complexity of build scripts in theory is unlimited. Scala CLI is configuration-only and that limits the complexity what put a hard cap how complex Scala CLI builds can be.
 
-`scala` command should be first and foremost a command line tool. Requirements for a certain project structure or presence configuration files limit SBT and Mill usability certain use cases related to command line. 
+`scala` command should be first and foremost a command line tool. Requirements for a certain project structure or presence configuration files limit SBT and Mill usability certain use cases related to command line.
 
-One of the main requirements for the new `scala` commands was speed, flexibility and focus on command-line use cases. Initially, we were considering improving SBT or Mill as well as building Scala CLI on top one. We have quickly realized that getting Mill or SBT to reply within Milliseconds (for cases where no hard work like compilation is require) would be pretty much out of reach. Mill and SBT's codebases are too big to compile them to native image using GraalVM, not to mention problems with dynamic loading and reflection. Adding flexibility when in comes to input sources (e.g. support for Gists) and making the tool that can accept most of the configuration using simple command-line parameters would involve writhing a lot of glue code. That is why we decided to build the tool from scratch based on existing components like coursier, bloop or scalafmt. 
+One of the main requirements for the new `scala` commands was speed, flexibility and focus on command-line use cases. Initially, we were considering improving SBT or Mill as well as building Scala CLI on top one. We have quickly realized that getting Mill or SBT to reply within Milliseconds (for cases where no hard work like compilation is require) would be pretty much out of reach. Mill and SBT's codebases are too big to compile them to native image using GraalVM, not to mention problems with dynamic loading and reflection. Adding flexibility when in comes to input sources (e.g. support for Gists) and making the tool that can accept most of the configuration using simple command-line parameters would involve writhing a lot of glue code. That is why we decided to build the tool from scratch based on existing components like coursier, bloop or scalafmt.
 
 ## Proposed solution
 
-We propose to gradually replace the current `scala`, `scalac` and `scaladoc` commands by single `scala` command that under the hood will be `scala-cli`. We could also add wrapper scripts for `scalac` and `scaladoc` that will mimic the functionality that will use `scala-cli` under the hood. 
+We propose to gradually replace the current `scala`, `scalac` and `scaladoc` commands by single `scala` command that under the hood will be `scala-cli`. We could also add wrapper scripts for `scalac` and `scaladoc` that will mimic the functionality that will use `scala-cli` under the hood.
 
 The complete set of `scala-cli` features can be found in [its documentation](https://scala-cli.virtuslab.org/docs/overview).
 
-Scala CLI brings many features like testing, packaging, exporting to sbt / Mill or upcoming support for publishing micro-libraries. Initially, we propose to limit the set of features available in the `scala` command by default. Scala CLI is a relatively new project and we should battle-proof some of its features before we commit to support them as part of the official `scala` command. 
+Scala CLI brings many features like testing, packaging, exporting to sbt / Mill or upcoming support for publishing micro-libraries. Initially, we propose to limit the set of features available in the `scala` command by default. Scala CLI is a relatively new project and we should battle-proof some of its features before we commit to support them as part of the official `scala` command.
 
 Scala CLI offers [multiple native ways to be installed](https://scala-cli.virtuslab.org/install#advanced-installation) so most users should find a suitable method. We propose that these packages to become the default `scala` package in most repositories, often replacing existing `scala` packages but the fact how new `scala` command would be installed is not intended to be a part of this SIP.
 
@@ -58,7 +58,7 @@ Let us show a few examples where adopting Scala CLI as `scala` command would be 
 
 **Using REPL with a 3rd-party dependency**
 
-Currently, to start a Scala REPL with a dependency on the class path, users need to resolve this dependency with all its transitive dependencies (coursier can help here) and pass those to the `scala` command using the `--cp` option. Alternatively, one can create an sbt project including a single dependency and use the `sbt console` task. Ammonite gives a better experience with its magic imports. 
+Currently, to start a Scala REPL with a dependency on the class path, users need to resolve this dependency with all its transitive dependencies (coursier can help here) and pass those to the `scala` command using the `--cp` option. Alternatively, one can create an sbt project including a single dependency and use the `sbt console` task. Ammonite gives a better experience with its magic imports.
 
 With Scala CLI, starting a REPL with a given dependency is as simple as running:
 
@@ -82,7 +82,7 @@ Currently, when reporting a bug in the compiler (or any other Scala-related) rep
 //> using platform "native"
 //> using "com.lihaoyi::os-lib:0.7.8"
 //> using options "-Xfatal-warnings"
- 
+
 def foo = println("<here comes the buggy warning with Scala Native and os-lib>")
 ```
 
@@ -132,7 +132,7 @@ Last section of this proposal is the list of options that each sub-command MUST 
 
 Scala CLI can also be configured with ["using directives"](https://scala-cli.virtuslab.org/docs/guides/introduction/using-directives) - a comment-based configuration syntax that should be placed at the top of Scala files. This allows for self-containing examples within one file since most of the configuration can be provided either from the command line or via using directives (command line has precedence). This is a game changer for use cases like scripting, reproduction, or within the academic scope.
 
-We have described the motivation, syntax and implementation basis in the [dedicated pre-SIP](https://contributors.scala-lang.org/t/pre-sip-using-directives/5700). Currently, we recommend to write using directives as comments, so making them part of the language specification is not necessary at this stage. Moreover, the new `scala` command could ignore using directives in the initial version, however we strongly suggest to include comment-based using directives from the start. 
+We have described the motivation, syntax and implementation basis in the [dedicated pre-SIP](https://contributors.scala-lang.org/t/pre-sip-using-directives/5700). Currently, we recommend to write using directives as comments, so making them part of the language specification is not necessary at this stage. Moreover, the new `scala` command could ignore using directives in the initial version, however we strongly suggest to include comment-based using directives from the start.
 
 Last section of this proposal contains a sumamry of Using Directives syntax as well as list of directives that MUST and SHOULD be supported.
 
@@ -158,7 +158,7 @@ The release cadence: should the new `scala` command follow the current release c
 
 ## Alternatives
 
-Scala CLI has many alternatives. The most obvious ones are sbt, Mill, or other build tools. However, these are more complicated than Scala CLI, and what is more important they are not designed as command-line first tools. Ammonite, is another alternative, however it covers only part of the Scala CLI features (REPL and scripting), and lacks many of the Scala CLI features (incremental compilation, Scala version selection, support for Scala.js and Scala Native, just to name a few). 
+Scala CLI has many alternatives. The most obvious ones are sbt, Mill, or other build tools. However, these are more complicated than Scala CLI, and what is more important they are not designed as command-line first tools. Ammonite, is another alternative, however it covers only part of the Scala CLI features (REPL and scripting), and lacks many of the Scala CLI features (incremental compilation, Scala version selection, support for Scala.js and Scala Native, just to name a few).
 
 ## Related work
 
@@ -196,7 +196,7 @@ Scala Runner MUST support following options from Scala Compiler directly:
 - `-X`
 - `-Y`
 
-SHOULD be treated as be Scala compiler options and  be propagated to Scala Compiler. This applies to all commands that uses compiler directly or indirectly. 
+SHOULD be treated as be Scala compiler options and  be propagated to Scala Compiler. This applies to all commands that uses compiler directly or indirectly.
 
 # MUST have commands
 
@@ -219,7 +219,7 @@ Compile Scala code
 - `--js-version`: The Scala.js version
 - `--js-mode`: The Scala.js mode, either `dev` or `release`
 - `--js-module-kind`: The Scala.js module kind: commonjs/common, esmodule/es, nomodule/none
-- `--js-check-ir`: 
+- `--js-check-ir`:
 - `--js-emit-source-maps`: Emit source maps
 - `--js-source-maps-path`: Set the destination path of source maps
 - `--js-dom`: Enable jsdom
@@ -273,7 +273,7 @@ Generate Scaladoc documentation
 - `--js-version`: The Scala.js version
 - `--js-mode`: The Scala.js mode, either `dev` or `release`
 - `--js-module-kind`: The Scala.js module kind: commonjs/common, esmodule/es, nomodule/none
-- `--js-check-ir`: 
+- `--js-check-ir`:
 - `--js-emit-source-maps`: Emit source maps
 - `--js-source-maps-path`: Set the destination path of source maps
 - `--js-dom`: Enable jsdom
@@ -328,7 +328,7 @@ Fire-up a Scala REPL
 - `--js-version`: The Scala.js version
 - `--js-mode`: The Scala.js mode, either `dev` or `release`
 - `--js-module-kind`: The Scala.js module kind: commonjs/common, esmodule/es, nomodule/none
-- `--js-check-ir`: 
+- `--js-check-ir`:
 - `--js-emit-source-maps`: Emit source maps
 - `--js-source-maps-path`: Set the destination path of source maps
 - `--js-dom`: Enable jsdom
@@ -390,7 +390,7 @@ scala-cli MyApp.scala -- first-arg second-arg
 - `--js-version`: The Scala.js version
 - `--js-mode`: The Scala.js mode, either `dev` or `release`
 - `--js-module-kind`: The Scala.js module kind: commonjs/common, esmodule/es, nomodule/none
-- `--js-check-ir`: 
+- `--js-check-ir`:
 - `--js-emit-source-maps`: Emit source maps
 - `--js-source-maps-path`: Set the destination path of source maps
 - `--js-dom`: Enable jsdom
@@ -470,7 +470,7 @@ println("Hello, world)
 - `--js-version`: The Scala.js version
 - `--js-mode`: The Scala.js mode, either `dev` or `release`
 - `--js-module-kind`: The Scala.js module kind: commonjs/common, esmodule/es, nomodule/none
-- `--js-check-ir`: 
+- `--js-check-ir`:
 - `--js-emit-source-maps`: Emit source maps
 - `--js-source-maps-path`: Set the destination path of source maps
 - `--js-dom`: Enable jsdom
@@ -528,7 +528,7 @@ Format Scala code
 - `--js-version`: The Scala.js version
 - `--js-mode`: The Scala.js mode, either `dev` or `release`
 - `--js-module-kind`: The Scala.js module kind: commonjs/common, esmodule/es, nomodule/none
-- `--js-check-ir`: 
+- `--js-check-ir`:
 - `--js-emit-source-maps`: Emit source maps
 - `--js-source-maps-path`: Set the destination path of source maps
 - `--js-dom`: Enable jsdom
@@ -581,7 +581,7 @@ Compile and test Scala code
 - `--js-version`: The Scala.js version
 - `--js-mode`: The Scala.js mode, either `dev` or `release`
 - `--js-module-kind`: The Scala.js module kind: commonjs/common, esmodule/es, nomodule/none
-- `--js-check-ir`: 
+- `--js-check-ir`:
 - `--js-emit-source-maps`: Emit source maps
 - `--js-source-maps-path`: Set the destination path of source maps
 - `--js-dom`: Enable jsdom
@@ -618,7 +618,7 @@ Compile and test Scala code
 # Using Directives
 
 
-As a part of this SIP we propose to introduce Using Directives, a special comments containing configuration. Withing Scala CLI and by extension `scala` command, the command line arguments takes precedence over using directives. 
+As a part of this SIP we propose to introduce Using Directives, a special comments containing configuration. Withing Scala CLI and by extension `scala` command, the command line arguments takes precedence over using directives.
 
 Using directives can be place on only top of the file (above imports, package definition etx.) and can be proceed only by plain comments (e.g. to comment out an using directive)
 

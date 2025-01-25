@@ -121,9 +121,9 @@ A PR for this SIP is available at: [https://github.com/scala/scala/pull/6147](ht
 
 ### Interactions with other language features
 
-#### Star `*` infix type interaction with repeated parameters  
-The [repeated argument symbol `*`](https://www.scala-lang.org/files/archive/spec/2.12/04-basic-declarations-and-definitions.html#repeated-parameters) may create confusion with the infix type `*`. 
-Please note that this feature interaction already exists within the current specification.  
+#### Star `*` infix type interaction with repeated parameters
+The [repeated argument symbol `*`](https://www.scala-lang.org/files/archive/spec/2.12/04-basic-declarations-and-definitions.html#repeated-parameters) may create confusion with the infix type `*`.
+Please note that this feature interaction already exists within the current specification.
 
 ```scala
 trait +[N1, N2]
@@ -141,7 +141,7 @@ However, it is very unlikely that such interaction would occur.
 
 
 ## Backward Compatibility
-Changing infix type associativity and precedence affects code that uses type operations and conforms to the current specification. 
+Changing infix type associativity and precedence affects code that uses type operations and conforms to the current specification.
 
 Note: changing the infix precedence didn't fail any scalac test.
 
