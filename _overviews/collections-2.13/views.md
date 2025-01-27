@@ -34,7 +34,7 @@ def lazyMap[T, U](iter: Iterable[T], f: T => U) = new Iterable[U]:
 {% endtab %}
 {% endtabs %}
 
-Note that `lazyMap` constructs a new `Iterable` without stepping through all elements of the given collection `coll`. The given function `f` is instead applied to the elements of the new collection's `iterator` as they are demanded.
+Note that `lazyMap` constructs a new `Iterable` without stepping through all elements of the given collection `iter`. The given function `f` is instead applied to the elements of the new collection's `iterator` as they are demanded.
 
 Scala collections are by default strict in all their transformers, except for `LazyList`, which implements all its transformer methods lazily. However, there is a systematic way to turn every collection into a lazy one and _vice versa_, which is based on collection views. A _view_ is a special kind of collection that represents some base collection, but implements all transformers lazily.
 
