@@ -47,6 +47,8 @@ Even when a version combination isn't listed as supported, most features might s
 Using a different build tool, such as Gradle or Maven? We invite pull
 requests adding additional columns to this table.
 
+**Next Scala 3 LTS series will drop JDK 8 support** - read more about it in [the blog post](https://www.scala-lang.org/news/next-scala-lts.html).
+
 ## Running versus compiling
 
 JDK 8, 11, 17, and 21 are all reasonable choices both for *compiling* and *running* Scala code.
