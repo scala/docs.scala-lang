@@ -24,6 +24,8 @@ In general, Scala works on JDK 11+, including GraalVM, but it probably won't tak
 
 Lightbend offers [commercial support](https://www.lightbend.com/lightbend-platform-subscription) for Scala 2. The linked page includes contact information for inquiring about supported and recommended versions.
 
+**Next Scala 3 LTS series will drop JDK 8 support** - read more about it in [the blog post](https://www.scala-lang.org/news/next-scala-lts.html).
+
 ## Running versus compiling
 
 JDK 8, 11, and 17 are all reasonable choices both for *compiling* and *running* Scala code.
