@@ -11,7 +11,7 @@ versionSpecific: true
 ---
 
 A *dependent function type* describes function types, where the result type may depend on the function’s parameter values.
-The concept of dependent types, and of dependent function types is more advanced and you would typically only come across it when designing your own libraries or using advanced libraries.
+The concept of dependent types, and of dependent function types, is more advanced and you would typically only come across it when designing your own libraries or using advanced libraries.
 
 ## Dependent Method Types
 Let's consider the following example of a heterogenous database that can store values of different types.
