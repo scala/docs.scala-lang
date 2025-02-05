@@ -1,12 +1,9 @@
 ---
 layout: style-guide
 title: Scaladoc
-
 partof: style
-overview-name: "Style Guide"
-
+overview-name: Style Guide
 num: 10
-
 previous-page: files
 ---
 
@@ -30,39 +27,63 @@ by detailed documentation, in the three common styles of indentation.
 
 Javadoc style:
 
-    /**
-     * Provides a service as described.
-     *
-     * This is further documentation of what we're documenting.
-     * Here are more details about how it works and what it does.
-     */
-    def member: Unit = ()
+{% tabs scaladoc_1 %}
+{% tab 'Scala 2 and 3' for=scaladoc_1 %}
+```scala
+/**
+ * Provides a service as described.
+ *
+ * This is further documentation of what we're documenting.
+ * Here are more details about how it works and what it does.
+ */
+def member: Unit = ()
+```
+{% endtab %}
+{% endtabs %}
 
 Scaladoc style, with gutter asterisks aligned in column two:
 
-    /** Provides a service as described.
-     *
-     *  This is further documentation of what we're documenting.
-     *  Here are more details about how it works and what it does.
-     */
-    def member: Unit = ()
+{% tabs scaladoc_2 %}
+{% tab 'Scala 2 and 3' for=scaladoc_2 %}
+```scala
+/** Provides a service as described.
+ *
+ *  This is further documentation of what we're documenting.
+ *  Here are more details about how it works and what it does.
+ */
+def member: Unit = ()
+```
+{% endtab %}
+{% endtabs %}
 
 Scaladoc style, with gutter asterisks aligned in column three:
 
-    /** Provides a service as described.
-      *
-      * This is further documentation of what we're documenting.
-      * Here are more details about how it works and what it does.
-      */
-    def member: Unit = ()
+{% tabs scaladoc_3 %}
+{% tab 'Scala 2 and 3' for=scaladoc_3 %}
+```scala
+/** Provides a service as described.
+  *
+  * This is further documentation of what we're documenting.
+  * Here are more details about how it works and what it does.
+  */
+def member: Unit = ()
+```
+{% endtab %}
+{% endtabs %}
 
 Because the comment markup is sensitive to whitespace,
 the tool must be able to infer the left margin.
 
 When only a simple, short description is needed, a one-line format can be used:
 
-    /** Does something very simple */
-    def simple: Unit = ()
+{% tabs scaladoc_4 %}
+{% tab 'Scala 2 and 3' for=scaladoc_4 %}
+```scala
+/** Does something very simple */
+def simple: Unit = ()
+```
+{% endtab %}
+{% endtabs %}
 
 Note that, in contrast to the Javadoc convention, the text in
 the Scaladoc styles begins on the first line of the comment.
@@ -116,11 +137,16 @@ Provide Scaladoc for each package. This goes in a file named
 `package.scala` in your package's directory and looks like so (for the
 package `parent.package.name.mypackage`):
 
-    package parent.package.name
+{% tabs scaladoc_5 %}
+{% tab 'Scala 2 and 3' for=scaladoc_5 %}
+```scala
+package parent.package.name
 
-    /** This is the Scaladoc for the package. */
-    package object mypackage {
-    }
+/** This is the Scaladoc for the package. */
+package object mypackage {}
+```
+{% endtab %}
+{% endtabs %}
 
 A package's documentation should first document what sorts of classes
 are part of the package. Secondly, document the general sorts of things
@@ -132,26 +158,32 @@ major classes, with some basic examples of how to use the classes in
 that package. Be sure to reference classes using the square-bracket
 notation:
 
-    package my.package
-    /** Provides classes for dealing with complex numbers.  Also provides
-     *  implicits for converting to and from `Int`.
-     *
-     *  ==Overview==
-     *  The main class to use is [[my.package.complex.Complex]], as so
-     *  {{ "{{{" }}
-     *  scala> val complex = Complex(4,3)
-     *  complex: my.package.complex.Complex = 4 + 3i
-     *  }}}
-     *
-     *  If you include [[my.package.complex.ComplexConversions]], you can
-     *  convert numbers more directly
-     *  {{ "{{{" }}
-     *  scala> import my.package.complex.ComplexConversions._
-     *  scala> val complex = 4 + 3.i
-     *  complex: my.package.complex.Complex = 4 + 3i
-     *  }}}
-     */
-    package complex {}
+{% tabs scaladoc_6 %}
+{% tab 'Scala 2 and 3' for=scaladoc_6 %}
+```scala
+package my.package
+/** Provides classes for dealing with complex numbers.  Also provides
+ *  implicits for converting to and from `Int`.
+ *
+ *  ==Overview==
+ *  The main class to use is [[my.package.complex.Complex]], as so
+ *  {{ "{{{" }}
+ *  scala> val complex = Complex(4,3)
+ *  complex: my.package.complex.Complex = 4 + 3i
+ *  }}}
+ *
+ *  If you include [[my.package.complex.ComplexConversions]], you can
+ *  convert numbers more directly
+ *  {{ "{{{" }}
+ *  scala> import my.package.complex.ComplexConversions._
+ *  scala> val complex = 4 + 3.i
+ *  complex: my.package.complex.Complex = 4 + 3i
+ *  }}}
+ */
+package complex {}
+```
+{% endtab %}
+{% endtabs %}
 
 ## Classes, Objects, and Traits
 
@@ -171,14 +203,19 @@ output.
 If the class should be created using a constructor, document it using
 the `@constructor` syntax:
 
-    /** A person who uses our application.
-     *
-     *  @constructor create a new person with a name and age.
-     *  @param name the person's name
-     *  @param age the person's age in years
-     */
-    class Person(name: String, age: Int) {
-    }
+{% tabs scaladoc_7 %}
+{% tab 'Scala 2 and 3' for=scaladoc_7 %}
+```scala
+/** A person who uses our application.
+ *
+ *  @constructor create a new person with a name and age.
+ *  @param name the person's name
+ *  @param age the person's age in years
+ */
+class Person(name: String, age: Int)
+```
+{% endtab %}
+{% endtabs %}
 
 Depending on the complexity of your class, provide an example of common
 usage.
@@ -192,36 +229,84 @@ such here, deferring the specifics to the Scaladoc for the `apply`
 method(s). If your object *doesn't* use `apply` as a factory method, be
 sure to indicate the actual method names:
 
-    /** Factory for [[mypackage.Person]] instances. */
-    object Person {
-      /** Creates a person with a given name and age.
-       *
-       *  @param name their name
-       *  @param age the age of the person to create
-       */
-      def apply(name: String, age: Int) = {}
+{% tabs scaladoc_8 class=tabs-scala-version%}
+{% tab 'Scala 2' for=scaladoc_8 %}
+```scala
+/** Factory for [[mypackage.Person]] instances. */
+object Person {
+  /** Creates a person with a given name and age.
+   *
+   *  @param name their name
+   *  @param age the age of the person to create
+   */
+  def apply(name: String, age: Int) = { ... }
 
-      /** Creates a person with a given name and birthdate
-       *
-       *  @param name their name
-       *  @param birthDate the person's birthdate
-       *  @return a new Person instance with the age determined by the
-       *          birthdate and current date.
-       */
-      def apply(name: String, birthDate: java.time.LocalDate) = {}
-    }
+  /** Creates a person with a given name and birthdate
+   *
+   *  @param name their name
+   *  @param birthDate the person's birthdate
+   *  @return a new Person instance with the age determined by the
+   *          birthdate and current date.
+   */
+  def apply(name: String, birthDate: java.time.LocalDate) = { ... }
+}
+```
+{% endtab %}
+{% tab 'Scala 3' for=scaladoc_8 %}
+```scala
+/** Factory for [[mypackage.Person]] instances. */
+object Person:
+  /** Creates a person with a given name and age.
+   *
+   *  @param name their name
+   *  @param age the age of the person to create
+   */
+  def apply(name: String, age: Int) =
+    ...
+
+  /** Creates a person with a given name and birthdate
+   *
+   *  @param name their name
+   *  @param birthDate the person's birthdate
+   *  @return a new Person instance with the age determined by the
+   *          birthdate and current date.
+   */
+  def apply(name: String, birthDate: java.time.LocalDate) =
+    ...
+```
+{% endtab %}
+{% endtabs %}
 
 If your object holds implicit conversions, provide an example in the
 Scaladoc:
 
-    /** Implicit conversions and helpers for [[mypackage.Complex]] instances.
-     *
-     *  {{ "{{{" }}
-     *  import ComplexImplicits._
-     *  val c: Complex = 4 + 3.i
-     *  }}}
-     */
-    object ComplexImplicits {}
+{% tabs scaladoc_9 class=tabs-scala-version%}
+{% tab 'Scala 2' for=scaladoc_9 %}
+```scala
+/** Implicit conversions and helpers for [[mypackage.Complex]] instances.
+ *
+ *  {{ "{{{" }}
+ *  import ComplexImplicits._
+ *  val c: Complex = 4 + 3.i
+ *  }}}
+ */
+object ComplexImplicits { ... }
+```
+{% endtab %}
+{% tab 'Scala 3' for=scaladoc_9 %}
+```scala
+/** Implicit conversions and helpers for [[mypackage.Complex]] instances.
+ *
+ *  {{ "{{{" }}
+ *  import ComplexImplicits.*
+ *  val c: Complex = 4 + 3.i
+ *  }}}
+ */
+object ComplexImplicits:
+  ...
+```
+{% endtab %}
+{% endtabs %}
 
 #### Traits
 
