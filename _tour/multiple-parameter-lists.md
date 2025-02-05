@@ -143,12 +143,25 @@ When a method is called with a fewer number of parameter lists, then this will y
 
 For example,
 
-{% tabs foldLeft_partial %}
+{% tabs foldLeft_partial class=tabs-scala-version %}
 
-{% tab 'Scala 2 and 3' for=foldLeft_partial %}
+{% tab 'Scala 2' for=foldLeft_partial %}
 ```scala mdoc:nest
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val numberFunc = numbers.foldLeft(List[Int]()) _
+
+val squares = numberFunc((xs, x) => xs :+ x*x)
+println(squares) // List(1, 4, 9, 16, 25, 36, 49, 64, 81, 100)
+
+val cubes = numberFunc((xs, x) => xs :+ x*x*x)
+println(cubes)  // List(1, 8, 27, 64, 125, 216, 343, 512, 729, 1000)
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=foldLeft_partial %}
+```scala mdoc:nest
+val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+val numberFunc = numbers.foldLeft(List[Int]())
 
 val squares = numberFunc((xs, x) => xs :+ x*x)
 println(squares) // List(1, 4, 9, 16, 25, 36, 49, 64, 81, 100)
