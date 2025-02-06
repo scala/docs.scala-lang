@@ -17,7 +17,7 @@ Scala offers two important features for contextual abstraction:
 ## Context Parameters
 
 When designing a system, often context information like _configuration_ or settings need to be provided to the different components of your system.
-One common way to achieve this is by passing the configuration as additional argument to your methods.
+One common way to achieve this is by passing the configuration as an additional argument (or arguments) to your methods.
 
 In the following example, we define a case class `Config` to model some website configuration and pass it around in the different methods.
 
