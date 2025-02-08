@@ -10,7 +10,7 @@ previous-page: generic-classes
 redirect_from: "/tutorials/tour/variances.html"
 ---
 
-Variance lets you control how type parameters behave with regards to subtyping. Scala supports variance annotations of type parameters of [generic classes](generic-classes.html), to allow them to be covariant, contravariant, or invariant if no annotations are used. The use of variance in the type system allows us to make intuitive connections between complex types.
+Variance lets you control how type parameters behave with regard to subtyping. Scala supports variance annotations of type parameters of [generic classes](generic-classes.html), to allow them to be covariant, contravariant, or invariant if no annotations are used. The use of variance in the type system allows us to make intuitive connections between complex types.
 
 {% tabs variances_1 %}
 {% tab 'Scala 2 and 3' for=variances_1 %}
