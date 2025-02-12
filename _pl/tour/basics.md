@@ -21,9 +21,6 @@ Dzięki Scastie możesz uruchomić Scalę w swojej przeglądarce.
 
 Jest to prosta i niewymagająca żadnej instalacji metoda do eksperymentowania z kodem w Scali.
 
-Wiele przykładów kodu w tym przewodniku jest również zintegrowana ze Scastie,
-dzięki czemu można je wypróbować wciskając po prostu przycisk "Run".
-
 ## Wyrażenia
 
 Wyrażenia są rezultatem ewaluacji fragmentów kodu.

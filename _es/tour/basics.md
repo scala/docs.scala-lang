@@ -21,8 +21,6 @@ Puedes ejecutar Scala en tu navegador con Scastie.
 
 Así, de manera fácil y sin preparación, puedes probar fragmentos de código Scala.
 
-Muchos ejemplos de código en esta documentación están integrados con Scastie, y así puedes probarlos directamente solo con pulsar el botón "Run".
-
 ## Expresiones
 
 Las expresiones son sentencias computables.
