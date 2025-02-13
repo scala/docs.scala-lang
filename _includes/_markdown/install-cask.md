@@ -5,7 +5,7 @@
 {% tab 'Scala CLI' %}
 You can declare a dependency on Cask with the following `using` directive:
 ```scala
-//> using dep com.lihaoyi::cask::0.9.2
+//> using dep com.lihaoyi::cask::0.10.2
 ```
 {% endtab %}
 
@@ -15,7 +15,7 @@ In your `build.sbt`, you can add a dependency on Cask:
 lazy val example = project.in(file("example"))
   .settings(
     scalaVersion := "3.4.2",
-    libraryDependencies += "com.lihaoyi" %% "cask" % "0.9.2",
+    libraryDependencies += "com.lihaoyi" %% "cask" % "0.10.2",
     fork := true
   )
 ```
@@ -25,9 +25,9 @@ lazy val example = project.in(file("example"))
 In your `build.sc`, you can add a dependency on Cask:
 ```scala
 object example extends RootModule with ScalaModule {
-  def scalaVersion = "3.3.4"
+  def scalaVersion = "3.4.2"
   def ivyDeps = Agg(
-    ivy"com.lihaoyi::cask::0.9.2"
+    ivy"com.lihaoyi::cask::0.10.2"
   )
 }
 ```
