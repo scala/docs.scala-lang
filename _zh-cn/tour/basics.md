@@ -22,8 +22,6 @@ previous-page: tour-of-scala
 
 这是一种简单的、零设置的方法来实践Scala的代码片段。
 
-这篇文档中的大部分代码示例与 Scastie 进行了集成，可以通过点击 “Run” 按钮即来直接运行 Scala 代码。
-
 ## 表达式
 
 表达式是可计算的语句。

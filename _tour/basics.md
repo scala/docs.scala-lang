@@ -20,8 +20,6 @@ You can run Scala in your browser with _Scastie_. This is an easy, zero-setup wa
 2. Paste `println("Hello, world!")` in the left pane.
 3. Click __Run__. The output appears in the right pane.
 
-_Scastie_ is integrated with some of the code examples in this documentation; if you see a __Run__ button in a code example below, click it to directly experiment with the code.
-
 ## Expressions
 
 Expressions are computable statements:
