@@ -13,6 +13,10 @@
   padding-bottom: $padding-xlarge;
 
   .inner-box {
+    margin-bottom: 30px;
+    &:last-child {
+      margin-bottom: 0;
+    }
     padding: $padding-medium;
     background: #fff;
     @include border-radius($border-radius-base);

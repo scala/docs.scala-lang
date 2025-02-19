@@ -188,7 +188,7 @@ Une fois que vous avez terminé le tutoriel ce dessus, vous pouvez consulter :
 
 * [The Scala Book](/scala3/book/introduction.html) ([Lien](/overviews/scala-book/introduction.html) vers la version Scala 2), qui fournit un ensemble de courtes leçons et introduit les fonctionnalités principales de Scala.
 * [The Tour of Scala](/tour/tour-of-scala.html) pour une introduction des fonctionnalités Scala.
-* [Learning Resources](/learn.html), qui contient des tutoriels et des cours interactifs.
+* [Learning Courses](/online-courses.html), qui contient des tutoriels et des cours interactifs.
 * [Our list of some popular Scala books](/books.html).
 * [The migration guide](/scala3/guides/migration/compatibility-intro.html) pour vous aider à migrer votre code Scala 2 vers Scala 3.
 

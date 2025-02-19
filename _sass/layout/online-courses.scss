@@ -1,0 +1,45 @@
+.online-courses {
+  margin-bottom: 30px;
+}
+
+.online-courses-wrapper {
+  @include clearfix;
+}
+
+.online-courses-image {
+  @include span-columns(5);
+  @include bp(medium) {
+    @include span-columns(12);
+  }
+
+  img {
+    margin-bottom: 0;
+  }
+}
+
+.online-courses-content {
+  @include span-columns(7);
+  @include bp(medium) {
+    @include span-columns(12);
+  }
+
+  h2 {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  blockquote,
+  p,
+  pre,
+  table,
+  ul {
+    margin-bottom: 8px;
+  }
+
+  ol,
+  ul {
+    li {
+      margin-bottom: 4px;
+    }
+  }
+}

@@ -334,7 +334,7 @@ Now that you have tasted a little bit of Scala, you can further explore the lang
 
 * [The Scala Book](/scala3/book/introduction.html) (see the Scala 2 version [here](/overviews/scala-book/introduction.html)), which provides a set of short lessons introducing Scala’s main features.
 * [The Tour of Scala](/tour/tour-of-scala.html) for bite-sized introductions to Scala's features.
-* [Learning Resources](/learn.html), which includes online interactive tutorials and courses.
+* [Learning Courses](/online-courses.html), which includes online interactive tutorials and courses.
 * [Our list of some popular Scala books](/books.html).
 
 There are also other tutorials for other build-tools you can use with Scala:
