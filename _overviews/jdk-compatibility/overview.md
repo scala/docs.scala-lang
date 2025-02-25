@@ -47,8 +47,6 @@ Even when a version combination isn't listed as supported, most features might s
 Using a different build tool, such as Gradle or Maven? We invite pull
 requests adding additional columns to this table.
 
-**Next Scala 3 LTS series will drop JDK 8 support** - read more about it in [the blog post](https://www.scala-lang.org/news/next-scala-lts.html).
-
 ## Running versus compiling
 
 JDK 8, 11, 17, and 21 are all reasonable choices both for *compiling* and *running* Scala code.
@@ -153,6 +151,8 @@ A few sbt plugins are offering support for GraalVM Native Image compilation:
 
 ## Scala 3
 
->The Scala 3.x series supports JDK 8, as well as 11 and beyond.
+At present, both Scala 3 LTS and Scala Next support JDK 8, as well as 11 and beyond.
 
-As Scala and the JVM continue to evolve, some eventual Scala version may drop support for JDK 8, in order to better take advantage of new JVM features.  It isn't clear yet what the new minimum supported version might become.
+As per [this blog post](https://www.scala-lang.org/news/next-scala-lts.html),
+a forthcoming Scala 3 LTS version will drop JDK 8 support and may drop
+11 as well.  Stay tuned.
