@@ -170,7 +170,7 @@ IDE の使用に慣れている場合は、IDE から _Main.scala_ のコード�
 
 * [The Scala Book](/scala3/book/introduction.html) (Scala 2版は[こちら](/overviews/scala-book/introduction.html))はScalaの主な機能を紹介する短いレッスンのセットを提供します。
 * [The Tour of Scala](/tour/tour-of-scala.html) Scalaの機能を一口サイズで紹介します。
-* [Learning Resources](/learn.html) オンラインのインタラクティブなチュートリアルやコースです。
+* [Learning Courses](/online-courses.html) オンラインのインタラクティブなチュートリアルやコースです。
 * [books](/books.html) 人気のある Scalaの 書籍を紹介します
 * [The migration guide](/scala3/guides/migration/compatibility-intro.html) 既存の Scala 2コードベースを Scala 3に移行する際に役立ちます。
 

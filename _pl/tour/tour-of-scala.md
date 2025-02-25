@@ -12,7 +12,7 @@ next-page: basics
 Ten przewodnik składa się z drobnych wprowadzeń do najczęściej używanych funkcjonalności języka Scala.
 
 Jest to jedynie krótkie wprowadzenie, a nie pełny samouczek.
-Jeżeli szukasz tego drugiego, rozważ jedną z [książek](/books.html) lub [inne zasoby](/learn.html).
+Jeżeli szukasz tego drugiego, rozważ jedną z [książek](/books.html) lub [inne zasoby](/online-courses.html).
 
 ## Czym jest Scala?
 Scala jest nowoczesnym, wieloparadygmatowym językiem programowania zaprojektowanym do wyrażania powszechnych wzorców programistycznych w zwięzłym, eleganckim i bezpiecznie typowanym stylu.
