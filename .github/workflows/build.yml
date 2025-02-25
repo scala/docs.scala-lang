@@ -8,7 +8,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.1.6
+          ruby-version: 3.2.6
           bundler-cache: true
       - name: Set up coursier
         uses: coursier/setup-action@v1.3.5
@@ -28,6 +28,6 @@ jobs:
              --ignore-status-codes "400,401,403,429"\
              --ignore-empty-alt\
              --allow-hash-href\
-             --enforce-https=false\
+             --no-enforce-https\
              --ignore-urls '/https://github.com/scala/,/www.oracle.com/'
 
