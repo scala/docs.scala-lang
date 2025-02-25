@@ -28,6 +28,6 @@ jobs:
              --ignore-status-codes "400,401,403,429"\
              --ignore-empty-alt\
              --allow-hash-href\
-             --enforce-https=false\
+             --no-enforce-https\
              --ignore-urls '/https://github.com/scala/,/www.oracle.com/'
 
