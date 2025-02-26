@@ -720,7 +720,7 @@ Examples:
 4. [Scala Actors Futures][4]
 5. [Scalaz Futures][5]
 
-  [1]: https://download.microsoft.com/download/5/B/9/5B924336-AA5D-4903-95A0-56C6336E32C9/TAP.docx "NETAsync"
+  [1]: https://www.microsoft.com/download/en/details.aspx?id=19957 "NETAsync"
   [2]: https://twitter.github.io/scala_school/finagle.html "Finagle"
   [3]: https://doc.akka.io/docs/akka/current/futures.html "AkkaFutures"
   [4]: https://web.archive.org/web/20140814211520/https://www.scala-lang.org/api/2.9.3/scala/actors/Future.html "SActorsFutures"
