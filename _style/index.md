@@ -59,7 +59,6 @@ This document is intended to outline some basic Scala stylistic guidelines which
     - [Symbolic Methods/Operators](method-invocation.html#symbolic-methodsoperators)
     - [Higher-Order Functions](method-invocation.html#higher-order-functions)
 - [Files](files.html)
-  - [Multi-Unit Files](files.html#multi-unit-files)
 - [Scaladoc](scaladoc.html)
   - [General Style](scaladoc.html#general-style)
   - [Packages](scaladoc.html#packages)
