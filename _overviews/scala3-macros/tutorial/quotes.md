@@ -245,7 +245,67 @@ case ...
 
 ### Matching function expressions
 
-*Coming soon*
+Let's start with the most straightforward example, matching an identity function expression:
+
+```scala
+def matchIdentityFunction[A: Type](func: Expr[A => A])(using Quotes): Unit = 
+  func match 
+    case '{ (arg: A) => arg } => 
+```
+The above matches function expressions that just return their arguments, like:
+
+```scala
+(value: Int) => value
+```
+
+We can also match more complex expressions, like method call chains:
+
+```scala
+def matchMethodCallChain(func: Expr[String => String])(using Quotes) = 
+  func match 
+    case '{ (arg: String) => arg.toLowerCase.strip.trim } =>
+```
+
+But what about the cases where we want more flexibility (eg. we know the subset of methods that will be called but not neccessarily their order)?
+
+#### Iterative deconstruction of a function expression
+
+Let's imagine we need a macro that collects names of methods used in an expression of type `FieldName => FieldName`, for a definition of `FieldName`:
+
+```scala
+trait FieldName:
+  def uppercase: FieldName
+  def lowercase: FieldName
+```
+
+The implementation itself would look like this:
+
+```scala
+def collectUsedMethods(func: Expr[FieldName => FieldName])(using Quotes): List[String] = 
+  def recurse(current: Expr[FieldName => FieldName], acc: List[String])(using Quotes): List[String] = 
+    current match 
+      // $body is the next tree with the '.lowercase' call stripped away
+      case '{ (arg: FieldName) => ($body(arg): FieldName).lowercase } =>
+        recurse(body, "lowercase" :: acc) // body: Expr[FieldName => FieldName]
+
+      // $body is the next tree with the '.uppercase' call stripped away
+      case '{ (arg: FieldName) => ($body(arg): FieldName).uppercase } =>
+        recurse(body, "uppercase" :: acc) // body: Expr[FieldName => FieldName]
+
+      // this matches an identity function, i.e. the end of our loop
+      case '{ (arg: FieldName) => arg } => acc
+  end recurse
+    
+  recurse(func, Nil)
+```
+
+For more details on how patterns like `$body(arg)` work please refer to a docs section on [the HOAS pattern](https://dotty.epfl.ch/docs/reference/metaprogramming/macros.html#hoas-patterns-1).
+
+If we were to use this on an expression like this one:
+```scala
+(name: FieldName) => name.lowercase.uppercase.lowercase
+```
+the result would evaluate to `List("lowercase", "uppercase", "lowercase")`.
 
 ### Matching types
 
