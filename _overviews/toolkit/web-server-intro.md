@@ -3,6 +3,7 @@ title: Building web servers with Cask
 type: chapter
 description: The introduction of the Cask library
 num: 30
+languages: [ru]
 previous-page: http-client-what-else
 next-page: web-server-static
 ---

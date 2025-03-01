@@ -3,6 +3,7 @@ title: Handling JSON with uPickle
 type: chapter
 description: Description of the uPickle library.
 num: 16
+languages: [ru]
 previous-page: os-what-else
 next-page: json-parse
 ---
