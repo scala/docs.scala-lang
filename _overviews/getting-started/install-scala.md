@@ -202,7 +202,7 @@ We use the [os-lib](https://github.com/com-lihaoyi/os-lib) library from the [Sca
 for that purpose. A dependency on the library can be added with the `//> using` directive. Put the following code in `counter.scala`.
 ```scala
 //> using scala {{site.scala-3-version}}
-//> using dep "com.lihaoyi::os-lib:0.10.7"
+//> using dep "com.lihaoyi::os-lib:0.11.4"
 
 @main
 def countFiles(): Unit =
