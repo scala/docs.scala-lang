@@ -24,7 +24,7 @@ compiler_resources:
   - title: "Join the Compiler Issue Spree"
     description: "A tri-weekly event where you can get mentored on the compiler. Register for participation here."
     icon: "fa fa-clipboard-user"
-    link: https://docs.google.com/forms/d/e/1FAIpQLSdhr5Y7QG9VGTGaPn5uS5v3Gz7VtnM5PW-vseZ9OpjseEiwYQ/viewform
+    link: https://airtable.com/app94nwzow5R6W1O6/pagvjIzxYnqTTlhwY
   - title: "Compiler Academy videos"
     description: "In-depth tours of the Scala 3 compiler's internals, aimed to help you get started."
     icon: "fa fa-circle-play"
@@ -112,7 +112,7 @@ In the spree, regular project maintainers will mentor you to create your first c
 The [Scala 3 compiler](https://github.com/scala/scala3) is an open source project.
 If you are curious about contributing but don't know how to begin, the [Scala Center](https://scala.epfl.ch)
 runs the **Scala Compiler Academy** project to onboard and educate new people to the project. You can join the regular
-**Issue Spree**, watch in-depth videos, and read the contributing guide:
+**Compiler Issue Spree**, watch in-depth videos, and read the contributing guide:
 
 {% include inner-documentation-sections.html links=page.compiler_resources %}
 
