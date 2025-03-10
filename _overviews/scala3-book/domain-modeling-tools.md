@@ -97,25 +97,99 @@ p.vocation = "Musician"
 {% endtab %}
 {% endtabs %}
 
-### Fields and methods
+### `val` makes fields read-only
 
-Classes can also have methods and additional fields that are not part of constructors.
-They are defined in the body of the class.
-The body is initialized as part of the default constructor:
+In that first example both fields were defined as `var` fields:
+
+{% tabs class_val_fields_1 %}
+{% tab 'Scala 2 and 3' %}
+```scala
+class Person(var name: String, var vocation: String)
+```
+{% endtab %}
+{% endtabs %}
+
+That makes those fields mutable. You can also define them as `val` fields, which makes them immutable:
+
+{% tabs class_val_fields_2 %}
+{% tab 'Scala 2 and 3' %}
+```scala
+class Person(val name: String, val vocation: String)
+//           ---               ---
+```
+{% endtab %}
+{% endtabs %}
+
+If you now try to change the name of a `Person` instance, you’ll see an error:
+
+{% tabs class_val_fields_3 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+scala> class Person(val name: String, val vocation: String)
+class Person
+
+scala> val p = new Person("Robert Allen Zimmerman", "Harmonica Player")
+val p: Person = Person@1c58d7be
+
+scala> p.name = "Bob Dylan"
+^
+error: reassignment to val
+```
+{% endtab %}
+{% tab 'Scala 3' %}
+```scala
+scala> class Person(val name: String, val vocation: String)
+// defined class Person
+
+scala> val p = Person("Robert Allen Zimmerman", "Harmonica Player")
+val p: Person = Person@779228dc
+
+scala> p.name = "Bob Dylan"
+-- [E052] Type Error: ----------------------------------------------------------
+1 |p.name = "Bob Dylan"
+  |^^^^^^^^^^^^^^^^^^^^
+  |Reassignment to val name
+  |
+  | longer explanation available when compiling with `-explain`
+1 error found
+```
+{% endtab %}
+{% endtabs %}
+
+### Class constructors
+
+In Scala, the primary constructor of a class is a combination of:
+
+- The constructor parameters
+- Methods that are called in the body of the class
+- Statements and expressions that are executed in the body of the class
+
+Defining parameters in the primary constructor automatically creates fields in the class, and fields declared in the body 
+of a Scala class are handled in a manner similar to Java; they are assigned when the class is first instantiated.
+
+This `Person` class demonstrates several of the things you can do inside the body of a class:
 
 {% tabs method class=tabs-scala-version %}
 {% tab 'Scala 2' %}
 
 ```scala
 class Person(var firstName: String, var lastName: String) {
-
   println("initialization begins")
+  // 'public' access by default
   val fullName = firstName + " " + lastName
 
+  // a private field
+  private val HOME = System.getProperty("user.home")
+  
   // a class method
   def printFullName: Unit =
     // access the `fullName` field, which is created above
     println(fullName)
+
+  def printHome: Unit = println(s"HOME = $HOME")
+    
+  // an overridden method
+  override def toString(): String = fullName
 
   printFullName
   println("initialization ends")
@@ -128,14 +202,22 @@ class Person(var firstName: String, var lastName: String) {
 
 ```scala
 class Person(var firstName: String, var lastName: String):
-
   println("initialization begins")
+  // 'public' access by default
   val fullName = firstName + " " + lastName
+
+  // a private field
+  private val HOME = System.getProperty("user.home")
 
   // a class method
   def printFullName: Unit =
     // access the `fullName` field, which is created above
     println(fullName)
+
+  def printHome: Unit = println(s"HOME = $HOME")
+  
+  // an overridden method
+  override def toString(): String = fullName
 
   printFullName
   println("initialization ends")
@@ -153,9 +235,15 @@ scala> val john = new Person("John", "Doe")
 initialization begins
 John Doe
 initialization ends
-val john: Person = Person@55d8f6bb
+val john: Person = John Doe
 
 scala> john.printFullName
+John Doe
+
+scala> john.printHome
+HOME = /Users/al
+
+scala> println(john)
 John Doe
 ````
 {% endtab %}
@@ -165,9 +253,15 @@ scala> val john = Person("John", "Doe")
 initialization begins
 John Doe
 initialization ends
-val john: Person = Person@55d8f6bb
+val john: Person = John Doe
 
 scala> john.printFullName
+John Doe
+
+scala> john.printHome
+HOME = /Users/al
+
+scala> println(john)
 John Doe
 ````
 {% endtab %}
@@ -785,6 +879,83 @@ val d = new IrishSetter("Big Red")   // "Big Red is a Dog"
 val d = IrishSetter("Big Red")   // "Big Red is a Dog"
 ```
 
+{% endtab %}
+{% endtabs %}
+
+### Overriding an implemented method
+
+A class can also override a method that is defined in a trait. Here is an example:
+
+{% tabs traits_6 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+class Cat extends HasLegs with HasTail {
+  val numLegs = 4
+  val tailColor = "Tabby"
+  def walk() = println("I’m not walking")
+  // override 'stop'
+  override def stop() = println("I'm still not walking")
+}
+```
+{% endtab %}
+{% tab 'Scala 3' %}
+```scala
+class Cat extends HasLegs, HasTail:
+  val numLegs = 4
+  val tailColor = "Tabby"
+  def walk() = println("I’m not walking")
+  // override 'stop'
+  override def stop() = println("I'm still not walking")
+```
+{% endtab %}
+{% endtabs %}
+
+The REPL shows how this works:
+
+{% tabs traits_7 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+scala> val c = new Cat
+val c: Cat = Cat@3855b27e
+
+scala> c. walk()
+I’m not walking
+
+scala> c.stop()
+I'm still not walking
+```
+{% endtab %}
+{% tab 'Scala 3' %}
+```scala
+scala> val c = Cat()
+val c: Cat = Cat@539ee811
+                                                                                                                                                                            
+scala> c.walk()
+I’m not walking
+                                                                                                                                                                            
+scala> c.stop()
+I'm still not walking
+```
+{% endtab %}
+{% endtabs %}
+
+You can also override a method when creating an instance of a class:
+
+{% tabs traits_8 class=tabs-scala-version %}
+{% tab 'Scala 2' %}
+```scala
+val c = new Cat {
+  override def walk() = println("Run")
+  override def stop() = println("I will continue to run")
+}
+```
+{% endtab %}
+{% tab 'Scala 3' %}
+```scala
+val c = new Cat:
+  override def walk() = println("Run")
+  override def stop() = println("I will continue to run")
+```
 {% endtab %}
 {% endtabs %}
 
