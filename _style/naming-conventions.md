@@ -356,8 +356,7 @@ for local names to be very short:
 
     def add(a: Int, b: Int) = a + b
 
-This would be bad practice in languages like Java, but it is *good*
-practice in Scala. This convention works because properly-written Scala
+This convention works because properly-written Scala
 methods are quite short, only spanning a single expression and rarely
 going beyond a few lines. Few local names are used (including
 parameters), and so there is no need to contrive long, descriptive
