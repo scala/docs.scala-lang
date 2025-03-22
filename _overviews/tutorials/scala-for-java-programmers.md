@@ -506,7 +506,7 @@ to omit types, and when to specify them explicitly.
 ### Methods without arguments
 
 A small problem of the methods `re` and `im` is that, in
-order to call them, one has to put an empty pair of parenthesis after
+order to call them, one has to put an empty pair of parentheses after
 their name, as the following example shows:
 
 {% tabs method-call-with-args-demo class=tabs-scala-version %}
@@ -811,7 +811,7 @@ code which typically makes use of these named parts.
 
 A programmer familiar with the object-oriented paradigm
 might wonder why define a single function for `eval` outside
-the scope of `Tree`, and not make `eval` and abstract method in
+the scope of `Tree`, and not make `eval` an abstract method in
 `Tree`, providing overrides in each subclass of `Tree`.
 
 We could have done it actually, it is a choice to make, which has
