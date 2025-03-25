@@ -3,6 +3,7 @@ title: Testing with MUnit
 type: chapter
 description: The introduction of the MUnit library
 num: 2
+languages: [ru]
 previous-page: introduction
 next-page: testing-suite
 ---

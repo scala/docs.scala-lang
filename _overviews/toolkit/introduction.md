@@ -3,6 +3,7 @@ title: Introduction
 type: chapter
 description: Introducing the Scala Toolkit tutorials
 num: 1
+languages: [ru]
 previous-page: 
 next-page: testing-intro
 toolkit-index:
