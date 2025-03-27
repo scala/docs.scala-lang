@@ -44,7 +44,7 @@ reasons for wanting to learn Scala.
 Don't sweat the decision too much.  You can't go far wrong either
 way. It isn't that hard to switch later, in either direction.
 
-That said, you should choose Scala 3 unless you have a specific reason
+Regardless, you should choose Scala 3 unless you have a specific reason
 to need 2. Scala 3 is the future, and it's the best version for
 falling in love with the language and everything it has to offer.
 Scala 3 has plenty of books, plenty of libraries, and high quality
