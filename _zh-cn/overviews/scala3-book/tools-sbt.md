@@ -50,7 +50,7 @@ $ mkdir project
 以下内容：
 
 ```text
-sbt.version=1.6.1
+sbt.version=1.10.11
 ```
 
 然后在包含此行的项目根目录中创建一个名为 _build.sbt_ 的文件：
@@ -350,7 +350,7 @@ $ mkdir project
 接下来，把下面这行代码用于在项目的 _project/_ 子目录中创建一个 _build.properties_ 文件：
 
 ```text
-sbt.version=1.5.4
+sbt.version=1.10.11
 ```
 
 接下来，在项目的根目录中创建一个 _build.sbt_ 文件，其中包含以下内容：
