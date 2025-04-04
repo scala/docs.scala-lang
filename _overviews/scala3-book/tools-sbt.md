@@ -48,7 +48,7 @@ Create a file named _build.properties_ in the directory `project`, with
 the following content:
 
 ```text
-sbt.version=1.6.1
+sbt.version=1.10.11
 ```
 
 Then create a file named _build.sbt_ in the project root directory that contains this line:
@@ -358,7 +358,7 @@ Next, create a _build.properties_ file in the _project/_ subdirectory of your pr
 with this line:
 
 ```text
-sbt.version=1.5.4
+sbt.version=1.10.11
 ```
 
 Next, create a _build.sbt_ file in the root directory of your project with these contents:
