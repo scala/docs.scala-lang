@@ -57,8 +57,13 @@ val res = List(1, 2, 3).collect({ case i if i % 2 == 1 => i * 2 }) // List(2, 6)
 
 You can define a default value for arguments not in domain with `applyOrElse`:
 
-{% tabs fun-partial-5 %}
-{% tab 'Scala 2 and 3' %}
+{% tabs fun-partial-5 class=tabs-scala-version%}
+{% tab 'Scala 2' %}
+```scala
+doubledOdds.applyOrElse(4, (i: Int) => i + 1)  // 5
+```
+{% endtab %}
+{% tab 'Scala 3' %}
 ```scala
 doubledOdds.applyOrElse(4, _ + 1)  // 5
 ```
