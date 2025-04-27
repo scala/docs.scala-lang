@@ -21,13 +21,15 @@ Trait ใช้เพื่อแชร์ interface และ field ระห�
 
 วิธีที่ง่ายที่สุดในการกำหนด trait คือการประกาศด้วย keyword `trait` และ indentifier:
 
-{% tabs trait-hair-color %} {% tab 'Scala 2 and 3' for=trait-hair-color %}
+{% tabs trait-hair-color %}
+{% tab 'Scala 2 and 3' for=trait-hair-color %}
 
 ```scala mdoc
 trait HairColor
 ```
 
-{% endtab %} {% endtabs %}
+{% endtab %}
+{% endtabs %}
 
 trait จะมีประโยชน์อย่างยิ่งด้วยการเป็น generic type และเป็น abstract method
 
@@ -56,9 +58,9 @@ trait Iterator[A]:
 
 {% endtabs %}
 
-การขยาย (extend) `trait Iterator[A]` ต้องการ type `A` และ implementation ของ method `hasNext` และ `next`
+การขยาย (extend) `trait Iterator[A]` ต้องมี implementation ของ method `hasNext` และ `next` ของ type `A`
 
-## การใช้ Trait
+## การใช้งาน Trait
 
 ใช้ keyword `extends` เพื่อขยาย trait จากนั้นให้ implement abstract member ใดๆ ของ trait โดยใช้ keyword `override`:
 
@@ -198,3 +200,8 @@ animals.foreach(pet => println(pet.name))  // แสดงค่า Harry Sally
 
 `trait Pet` มี abstract field `name` ซึ่ง implement ไว้ใน constructor ของคลาส `Cat` และ `Dog`\
 ในบรรทัดสุดท้าย เราเรียกใช้ `pet.name` ซึ่งได้มีการ implement `name` ไว้ใน subtype ใดๆ ของ trait `Pet` แล้ว
+
+## แหล่งข้อมูลเพิ่มเติม
+
+* Learn more about traits in the [Scala Book](/scala3/book/domain-modeling-tools.html#traits)
+* Use traits to define [Enum](/scala3/book/domain-modeling-fp.html#modeling-the-data)
