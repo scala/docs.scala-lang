@@ -3,6 +3,7 @@ title: Working with files and processes with OS-Lib
 type: chapter
 description: The introduction of the OS-lib library
 num: 10
+languages: [ru]
 previous-page: testing-what-else
 next-page: os-read-directory
 ---
