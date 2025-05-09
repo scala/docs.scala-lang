@@ -433,7 +433,7 @@ As with expression quote patterns, type variables are represented using lower ca
 
 ## FromExpr
 
-The `Expr.value`, `Expr.valueOrAbort`, and `Expr.unapply` methods uses instances of `FromExpr` to extract the value if possible.
+The `Expr.value`, `Expr.valueOrAbort`, and `Expr.unapply` methods use instances of `FromExpr` to extract the value if possible.
 ```scala
 extension [T](expr: Expr[T]):
   def value(using Quotes)(using fromExpr: FromExpr[T]): Option[T] =
