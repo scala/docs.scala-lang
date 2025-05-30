@@ -3,6 +3,7 @@ title: Sending HTTP requests with sttp
 type: chapter
 description: The introduction of the sttp library
 num: 23
+languages: [ru]
 previous-page: json-what-else
 next-page: http-client-request
 ---
