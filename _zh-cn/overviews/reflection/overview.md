@@ -85,7 +85,7 @@ decls: Iterable[ru.Symbol] = List(constructor List, method companion, method isE
 
 #### 1.1.2 运行时实例化一个类型
 
-通过反射获得的类型，可以通过使用适当的“调用器”镜像调用它们的构造函数来实例化（镜像`mirros`的概念在[后续文档中说明](https://docs.scala-lang.org/overviews/reflection/overview.html#mirrors)）。
+通过反射获得的类型，可以通过使用适当的“调用器”镜像调用它们的构造函数来实例化（镜像`mirrors`的概念在[后续文档中说明](https://docs.scala-lang.org/overviews/reflection/overview.html#mirrors)）。
 让我们通过一个REPL的示例说明：
 
 
@@ -269,7 +269,7 @@ Scala反射实现了允许在编译阶段就对程序进行修改的一种元编
 这个反射环境根据是在运行时环境完成反射任务还是在编译时环境完成反射任务而有所区别。
 这个区别被封装于所谓的`universe`中。
 反射环境的另一个重要方面就是我们可以访问想反射的那组实体，
-这组实体由所谓的镜像`mirros`去确定。
+这组实体由所谓的镜像`mirrors`去确定。
 
 镜像不仅决定反射化操作有哪些实体要被访问到，而且它还提供了反射操作去执行那些实体。
 比如在运行时反射过程中可以调用镜像去操作类中一个方法或构造器。
@@ -293,4 +293,4 @@ import scala.reflect.runtime.universe._
 反射所能提供的信息都是通过镜像去访问的。
 根据不同的类型信息或不同的反射操作，必须要使用不同类型的镜像。
 
-更多细节请参阅指南中[Mirros](https://docs.scala-lang.org/overviews/reflection/environment-universes-mirrors.html)部分，或者看`scala.reflect.api`包的[Mirrors API文档](https://www.scala-lang.org/api/2.x/scala-reflect/scala/reflect/api/Mirrors.html)。
+更多细节请参阅指南中[Mirrors](https://docs.scala-lang.org/overviews/reflection/environment-universes-mirrors.html)部分，或者看`scala.reflect.api`包的[Mirrors API文档](https://www.scala-lang.org/api/2.x/scala-reflect/scala/reflect/api/Mirrors.html)。
