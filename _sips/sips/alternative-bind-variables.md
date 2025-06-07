@@ -317,7 +317,7 @@ The associated [thread](https://contributors.scala-lang.org/t/pre-sip-bind-varia
 ## Implementation
 
 The author has a current in-progress implementation focused on the typer which compiles the examples with the expected types. Interested
- parties are welcome to see the WIP [here](https://github.com/lampepfl/dotty/compare/main...yilinwei:dotty:main).
+ parties are welcome to see the WIP [here](https://github.com/scala/scala3/compare/main...yilinwei:dotty:main).
 
 ### Further work
 

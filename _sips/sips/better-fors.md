@@ -472,9 +472,9 @@ The only Open community build library that failed because of the change to the d
 ## Links
 
 1. Scala contributors discussion thread (pre-SIP): https://contributors.scala-lang.org/t/pre-sip-improve-for-comprehensions-functionality/3509/51
-2. Github issue discussion about for desugaring: https://github.com/lampepfl/dotty/issues/2573
+2. Github issue discussion about for desugaring: https://github.com/scala/scala3/issues/2573
 3. Scala 2 implementation of some of the improvements: https://github.com/oleg-py/better-monadic-for
-4. Implementation of one of the simplifications: https://github.com/lampepfl/dotty/pull/16703
+4. Implementation of one of the simplifications: https://github.com/scala/scala3/pull/16703
 5. Draft implementation branch: https://github.com/dotty-staging/dotty/tree/improved-fors
 6. Minimized issue reproducing the problem with the current desugaring: https://github.com/scala/scala3/issues/21804
 7. (empty :sad:) Contributors thread about better effect loops with for-comprehensions: https://contributors.scala-lang.org/t/pre-sip-sip-62-addition-proposal-better-effect-loops-with-for-comprehensions/6759

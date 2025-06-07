@@ -182,7 +182,7 @@ Define the additional sbt configuration for your Scastie snippets. For example, 
 
 ##### -dynamic-side-menu
 
-Generate the side menu (the tree-like overview of the project structure on the left-hand side) dynamically in the browser using JavaScript instead of embedding it in every HTML file. This can greatly reduce outputted HTML file sizes. Recommended for projects with 1000+ pages. For more info see [issue 18543](https://github.com/lampepfl/dotty/issues/18543).
+Generate the side menu (the tree-like overview of the project structure on the left-hand side) dynamically in the browser using JavaScript instead of embedding it in every HTML file. This can greatly reduce outputted HTML file sizes. Recommended for projects with 1000+ pages. For more info see [issue 18543](https://github.com/scala/scala3/issues/18543).
 
 ##### -Ysnippet-compiler-debug
 
