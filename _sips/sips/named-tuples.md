@@ -382,7 +382,7 @@ This section should list prior work related to the proposal, notably:
 
 - [SIP 43 on Pattern Matching with Named Fields](https://github.com/scala/improvement-proposals/pull/44)
 
-- [Experimental Implementation](https://github.com/lampepfl/dotty/pull/19174)
+- [Experimental Implementation](https://github.com/scala/scala3/pull/19174)
 
 ## FAQ
 

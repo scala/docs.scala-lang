@@ -420,7 +420,7 @@ No other alternatives have been imagined, the similarity between this proposal a
 - If there is already a proof-of-concept implementation, a link to it will be welcome here. -->
 
 * Pre-SIP: https://contributors.scala-lang.org/t/polymorphic-eta-expansion/5516
-* A naive implementation can be found at https://github.com/lampepfl/dotty/pull/14015 (it is more general than this proposal and thus breaks compatibility)
+* A naive implementation can be found at https://github.com/scala/scala3/pull/14015 (it is more general than this proposal and thus breaks compatibility)
 * A compatibility-preserving implementation is in development.
 
 
