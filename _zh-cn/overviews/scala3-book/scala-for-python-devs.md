@@ -1176,7 +1176,7 @@ Scala 集合类有超过 100 种功能方法来简化您的代码。
 | `c.find(p)`    | 返回匹配 `p` 的第一个元素。该元素以 `Option[A]` 的形式返回。 |
 | `c.min`        | 返回集合中的最小元素。 （可以抛出_java.lang.UnsupportedOperationException_。）|
 | `c.max`        | 返回集合中的最大元素。 （可以抛出_java.lang.UnsupportedOperationException_。）|
-| `c slice(from, to)`  | 返回从元素 `from` 开始到元素 `to` 结束的元素间隔。 |
+| `c.slice(from, to)` | 返回从元素 `from` 开始到元素 `to` 结束的元素间隔。 |
 | `c.sum`        | 返回集合中所有元素的总和。 （需要为集合中的元素定义 `Ordering`。） |
 
 以下是一些示例，展示了这些方法如何在列表上工作：

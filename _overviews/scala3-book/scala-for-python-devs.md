@@ -1209,7 +1209,7 @@ Some informational and mathematical methods:
 | `c.find(p)`    | Returns the first element that matches `p`. The element is returned as `Option[A]`. |
 | `c.min`        | Returns the smallest element from the collection. (Can throw _java.lang.UnsupportedOperationException_.) |
 | `c.max`        | Returns the largest element from the collection. (Can throw _java.lang.UnsupportedOperationException_.) |
-|`c slice(from, to)` | Returns the interval of elements beginning at element `from`, and ending at element `to`. |
+| `c.slice(from, to)` | Returns the interval of elements beginning at element `from`, and ending at element `to`. |
 | `c.sum`        | Returns the sum of all elements in the collection. (Requires an `Ordering` be defined for the elements in the collection.) |
 
 Here are a few examples that demonstrate how these methods work on a list:
