@@ -126,7 +126,7 @@ Then run the code with `scala`. This time the program will pause after asking fo
 and wait until you type a name and press return on the keyboard, looking like this:
 
 ```bash
-$ scala run helloInteractive.scala
+$ scala helloInteractive.scala
 Compiling project (Scala {{site.scala-3-version}}, JVM (20))
 Compiled project (Scala {{site.scala-3-version}}, JVM (20))
 Please enter your name:
@@ -136,7 +136,7 @@ Please enter your name:
 When you enter your name at the prompt, the final interaction should look like this:
 
 ```bash
-$ scala run helloInteractive.scala
+$ scala helloInteractive.scala
 Compiling project (Scala {{site.scala-3-version}}, JVM (20))
 Compiled project (Scala {{site.scala-3-version}}, JVM (20))
 Please enter your name:
