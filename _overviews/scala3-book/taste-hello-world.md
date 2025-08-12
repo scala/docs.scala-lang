@@ -50,7 +50,7 @@ object hello {
 Next, compile and run the code with `scala`:
 
 ```bash
-$ scala run hello.scala
+$ scala hello.scala
 ```
 
 The command should produce an output similar to:
