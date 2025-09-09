@@ -17,7 +17,7 @@ In the [Scala Learning Discord](http://sca.la/learning-community), you can conne
 
 ### Scala Exercises
 
-[Scala Exercises](https://www.scala-exercises.org/) is a series of lessons and exercises created by [47 Degrees](https://www.47deg.com/).
+[Scala Exercises](https://www.scala-exercises.org/) is a series of lessons and exercises created by [47 Degrees](https://xebia.com/).
 It's a great way to get a brief introduction to Scala while testing your knowledge along the way.
 It also covers some libraries of the ecosystem such as cats, doobie, scalacheck etc.
 
