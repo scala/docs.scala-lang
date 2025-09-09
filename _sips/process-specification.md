@@ -270,7 +270,7 @@ The current committee members are:
 
 The current Chairperson is:
 
-- Dimi Racordon ([@kyouko-taiga](https://github.com/kyouko-taiga)), EPFL
+- Oliver Bračevac ([@bracevac](https://github.com/bracevac)), EPFL
 
 The current Secretary is:
 
