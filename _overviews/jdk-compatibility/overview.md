@@ -125,6 +125,11 @@ The Scala test suite and Scala 2.13 community build are green on JDK 25.
 The forthcoming Scala 2.13.17 and 2.12.21 releases will support JDK 25.
 Support is already available in [nightlies](https://docs.scala-lang.org/overviews/core/nightlies.html).
 
+For information on timing of the forthcoming releases, see:
+
+* https://contributors.scala-lang.org/t/scala-2-13-17-release-planning/6994
+* https://contributors.scala-lang.org/t/scala-2-12-21-release-planning/6753
+
 <!-- TODO For sbt users, sbt 1.9.0 is the first version to support JDK 21.-->
 
 For possible Scala 2 issues, see the [jdk11](https://github.com/scala/bug/labels/jdk11), [jdk17](https://github.com/scala/bug/labels/jdk17), [jdk21](https://github.com/scala/bug/labels/jdk21), and [jdk25](https://github.com/scala/bug/labels/jdk25) labels in the Scala 2 bug tracker
