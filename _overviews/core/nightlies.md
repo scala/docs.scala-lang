@@ -22,7 +22,7 @@ There are a number of ways to get that version number, as listed below.
 
 We informally refer to Scala 2 “nightly” versions, but technically it's a misnomer. A so-called “nightly” is built for every merged PR in the Scala 2 repo.
 
-Similarly to Scala 3 nightlies, they are available at [https://repo.scala-lang.org/artifactory/maven-nightlies](https://repo.scala-lang.org/artifactory/maven-nightlies).
+Similarly to Scala 3 nightlies, they are available at [https://repo.scala-lang.org](https://repo.scala-lang.org).
 
 ## How to use nightly versions
 
