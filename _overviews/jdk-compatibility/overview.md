@@ -100,7 +100,9 @@ The Scala test suite and Scala community build are green on JDK 17.
 
 For sbt users, sbt 1.6.0-RC1 is the first version to support JDK 17, but in practice sbt 1.5.5 may also work. (It will print a warning on startup about `TrapExit` that you can ignore.)
 
-For possible Scala 2 issues, see the [jdk11](https://github.com/scala/bug/labels/jdk11) and [jdk17](https://github.com/scala/bug/labels/jdk17) labels in the Scala 2 bug tracker.
+For possible Scala 3 issues, see the [area:jdk](https://github.com/scala/scala3/labels/area%3Ajdk) and [compat:java](https://github.com/scala/scala3/labels/compat%3Ajava) labels in [the Scala 3 issue tracker](https://github.com/scala/scala3/issues).
+
+For possible Scala 2 issues, see the [jdk11](https://github.com/scala/bug/labels/jdk11) and [jdk17](https://github.com/scala/bug/labels/jdk17) labels in [the Scala 2 bug tracker](https://github.com/scala/bug/issues).
 
 ## JDK 21 compatibility notes
 
