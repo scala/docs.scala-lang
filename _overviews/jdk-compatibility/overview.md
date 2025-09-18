@@ -134,7 +134,9 @@ For information on timing of the forthcoming releases, see:
 
 <!-- TODO For sbt users, sbt 1.9.0 is the first version to support JDK 21.-->
 
-For possible Scala 2 issues, see the [jdk11](https://github.com/scala/bug/labels/jdk11), [jdk17](https://github.com/scala/bug/labels/jdk17), [jdk21](https://github.com/scala/bug/labels/jdk21), and [jdk25](https://github.com/scala/bug/labels/jdk25) labels in the Scala 2 bug tracker
+For possible Scala 3 issues, see the [area:jdk](https://github.com/scala/scala3/labels/area%3Ajdk) and [compat:java](https://github.com/scala/scala3/labels/compat%3Ajava) labels in [the Scala 3 issue tracker](https://github.com/scala/scala3/issues).
+
+For possible Scala 2 issues, see the [jdk11](https://github.com/scala/bug/labels/jdk11), [jdk17](https://github.com/scala/bug/labels/jdk17), [jdk21](https://github.com/scala/bug/labels/jdk21), and [jdk25](https://github.com/scala/bug/labels/jdk25) labels in [the Scala 2 bug tracker](https://github.com/scala/bug/issues).
 
 ## GraalVM Native Image compatibility notes
 
