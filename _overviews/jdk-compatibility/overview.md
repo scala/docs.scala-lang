@@ -32,20 +32,21 @@ Akka offers [commercial support](https://akka.io/pricing) for Scala 2. The linke
 
 Minimum working versions:
 
-| JDK         | scala-cli  | sbt       | mill       |
-|:-----------:|:----------:|:---------:|:-----------|
-| 23          | 1.4.1      | 1.9.0     | 0.11.8     |
-| 21 (LTS)    | 1.0.0      | 1.9.0     | 0.11.5     |
-| 17 (LTS)    | 1.0.0      | 1.6.0     | 0.7.0      |
-| 11 (LTS)    | 1.0.0      | 1.1.0     | 0.1.5      |
-| 8 (LTS)     | 1.0.0      | 1.0.0     | 0.1.0      |
+| JDK         | scala-cli   | sbt       | mill       |
+|:-----------:|:-----------:|:---------:|:-----------|
+| 25 (LTS)    | forthcoming | 1.9.0     | 1.0.0      |
+| 21 (LTS)    | 1.0.0       | 1.9.0     | 0.11.5     |
+| 17 (LTS)    | 1.0.0       | 1.6.0     | 0.7.0      |
+| 11 (LTS)    | 1.0.0       | 1.1.0     | 0.1.5      |
+| 8 (LTS)     | 1.0.0       | 1.0.0     | 0.1.0      |
 
 Even when a version combination isn't listed as supported, most features might still work.
 
-We will update this table soon to include information about JDK 25. <!-- TODO -->
+The sbt developers have primarily tested on JDK 8, 11, and 17, but 21 and 25 are believed to also work.
 
-Using a different build tool, such as Gradle or Maven? We invite pull
-requests adding additional columns to this table.
+Some tools may print warnings on startup on JDK 25.
+
+Using a different build tool, such as Gradle or Maven? We invite pull requests adding additional columns to this table.
 
 ## Running versus compiling
 
