@@ -142,7 +142,7 @@ enum Nat:
   case Zero
   case Succ(n: Nat)
 ```
-For example the value `Succ(Succ(Zero))` represents the number `2` in an unary encoding.
+For example the value `Succ(Succ(Zero))` represents the number `2` in a unary encoding.
 Lists can be defined in a very similar way:
 
 ```scala
