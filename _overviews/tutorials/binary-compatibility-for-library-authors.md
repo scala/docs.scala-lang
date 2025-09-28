@@ -143,11 +143,11 @@ How can we, as library authors, spare our users of runtime errors and dependency
 
 ## MiMa - Checking binary compatibility against previous library versions 
 
-[MiMa](https://github.com/lightbend/mima) is a tool for diagnosing binary incompatibilities between different library versions.  
+[MiMa](https://github.com/lightbend-labs/mima) is a tool for diagnosing binary incompatibilities between different library versions.  
 It works by comparing the class files of two provided JARs and report any binary incompatibilities found. 
 Both backwards and forwards binary incompatibility can be detected by swapping input order of the JARs.
 
-By incorporating MiMa's [sbt plugin](https://github.com/lightbend/mima#sbt) into your sbt build, you can easily check whether 
+By incorporating MiMa's [sbt plugin](https://github.com/lightbend-labs/mima#sbt) into your sbt build, you can easily check whether 
 you have accidentally introduced binary incompatible changes. Detailed instruction on how to use the sbt plugin can be found in the link.
 
 We strongly encourage every library author to incorporate MiMa into their continuous integration and release workflow.
@@ -255,7 +255,7 @@ alice match
 Later in time, you can amend the original case class definition to, say, add an optional `address` field. You
  * add a new field `address` and a custom `withAddress` method,
  * update the public `apply` method in the companion object to initialize all the fields,
- * tell MiMa to [ignore](https://github.com/lightbend/mima#filtering-binary-incompatibilities) changes to the class constructor. This step is necessary because MiMa does not yet ignore changes in private class constructor signatures (see [#738](https://github.com/lightbend/mima/issues/738)).
+ * tell MiMa to [ignore](https://github.com/lightbend-labs/mima#filtering-binary-incompatibilities) changes to the class constructor. This step is necessary because MiMa does not yet ignore changes in private class constructor signatures (see [#738](https://github.com/lightbend-labs/mima/issues/738)).
 
 {% tabs case_class_compat_4 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
