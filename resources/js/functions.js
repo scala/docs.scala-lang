@@ -705,3 +705,33 @@ $(document).ready(function() {
     }
   });
 });
+
+
+
+$(document).ready(function () {
+  $("pre > code").each(function () {
+    const $code = $(this);
+    // Skip if it's already wrapped in a .code-snippet-area
+    if ($code.closest(".code-snippet-area").length) return;
+
+    const $pre = $code.parent();
+    const $wrapper = $('<div class="code-snippet-area"></div>');
+    const $buttons = $(`
+      <div class="code-snippet-buttons">
+        <button class="copy-button">
+          <i class="far fa-clone"></i>
+        </button>
+      </div>
+    `);
+
+    $pre.wrap($wrapper);
+    $pre.before($buttons);
+  });
+
+  $(document).on("click", ".copy-button", function () {
+    const $button = $(this);
+    const $area = $button.closest(".code-snippet-area");
+    const codeText = $area.find("code").text().trim();
+    navigator.clipboard.writeText(codeText)
+  });
+});
