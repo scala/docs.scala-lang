@@ -12,13 +12,13 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 
 Minimum Scala versions:
 
-| JDK         | 3        | 3 LTS    | 2.13      | 2.12      | 2.11       |
-|:-----------:|:--------:|:--------:|:---------:|:---------:|:----------:|
-| 25 (LTS)    | 3.7.1    | 3.3.6    | 2.13.17   | 2.12.21*  |            |
-| 21 (LTS)    | 3.4.0    | 3.3.1    | 2.13.11   | 2.12.18   |            |
-| 17 (LTS)    | 3.0.0    | 3.3.0    | 2.13.6    | 2.12.15   |            |
-| 11 (LTS)    | 3.0.0    | 3.3.0    | 2.13.0    | 2.12.4    | 2.11.12    |
-| 8 (LTS)     | 3.0.0    | 3.3.0    | 2.13.0    | 2.12.0    | 2.11.0     |
+| JDK         | 3.8*   | 3.4+     | 3.3 LTS  | 2.13      | 2.12      |
+|:-----------:|:------:|:--------:|:--------:|:---------:|:---------:|
+| 25 (LTS)    | 3.8.0* | 3.7.1    | 3.3.6    | 2.13.17   | 2.12.21*  |
+| 21 (LTS)    | 3.8.0* | 3.4.0    | 3.3.1    | 2.13.11   | 2.12.18   |
+| 17 (LTS)    | 3.8.0* | 3.0.0    | 3.3.0    | 2.13.6    | 2.12.15   |
+| 11 (LTS)    |        | 3.0.0    | 3.3.0    | 2.13.0    | 2.12.4    |
+| 8 (LTS)     |        | 3.0.0    | 3.3.0    | 2.13.0    | 2.12.0    |
 
 \* = forthcoming; support available in [nightly builds](https://docs.scala-lang.org/overviews/core/nightlies.html)
 
@@ -34,7 +34,7 @@ Minimum working versions:
 
 | JDK         | scala-cli   | sbt       | mill       |
 |:-----------:|:-----------:|:---------:|:-----------|
-| 25 (LTS)    | forthcoming | 1.9.0     | 1.0.0      |
+| 25 (LTS)    | 1.10.0      | 1.9.0     | 1.0.0      |
 | 21 (LTS)    | 1.0.0       | 1.9.0     | 0.11.5     |
 | 17 (LTS)    | 1.0.0       | 1.6.0     | 0.7.0      |
 | 11 (LTS)    | 1.0.0       | 1.1.0     | 0.1.5      |
@@ -50,11 +50,11 @@ Using a different build tool, such as Gradle or Maven? We invite pull requests a
 
 ## Running versus compiling
 
-JDK 8, 11, 17, 21, and 25 are all reasonable choices both for *compiling* and *running* Scala code.
+JDK 17, 21, and 25 are all good choices both for *compiling* and *running* Scala code.
+
+JDK 8 and 11 are also possible choices. As of 2025, these versions remain in use at some shops, but usage has declined greatly and many projects are dropping support. If you compile on JDK 17+ but want to allow your users to stay on 8, use `--release 8` to avoid using APIs and features that don't exist in 8. Another option is to use a newer JDK for your daily work but do release builds on JDK 8.
 
 Since the JVM is normally backwards compatible, it is usually safe to use a newer JVM for *running* your code than the one it was compiled on, especially if you are not using JVM features designated "experimental" or "unsafe".
-
-JDK 8 remains in use at some shops (as of 2023), but usage is declining and some projects are dropping support. If you compile on JDK 11+ but want to allow your users to stay on 8, additional care is needed to avoid using APIs and features that don't exist in 8. (For this reason, some Scala developers use a newer JDK for their daily work but do release builds on JDK 8.)
 
 As per [this blog post](https://www.scala-lang.org/news/next-scala-lts-jdk.html), Scala 3.8 will have a new minimum JDK version of 17.
 
@@ -74,7 +74,7 @@ In almost every case, you're free to use the JDK and JVM of your choice.
 
 JDK 8 users typically use the Oracle JDK or some flavor of OpenJDK.
 
-Most JDK 11+ users are using OpenJDK, or GraalVM which runs in the context of OpenJDK. GraalVM performs well on the Scala benchmarks, and it benefits from GraalVM runtime and runs faster too.
+Most JDK 17+ users are using OpenJDK, or GraalVM which runs in the context of OpenJDK. GraalVM performs well on the Scala benchmarks, and it benefits from GraalVM runtime and runs faster too.
 
 OpenJDK comes in various flavors, offered by different providers. We typically build and test Scala using [Temurin](https://adoptium.net) or [Zulu](https://www.azul.com/downloads/), but the differences are unlikely to matter to most users.
 
@@ -131,8 +131,6 @@ Support is already available in [nightlies](https://docs.scala-lang.org/overview
 For information on timing of the forthcoming release, see:
 
 * https://contributors.scala-lang.org/t/scala-2-12-21-release-planning/6753
-
-<!-- TODO For sbt users, sbt 1.9.0 is the first version to support JDK 21.-->
 
 For possible Scala 3 issues, see the [area:jdk](https://github.com/scala/scala3/labels/area%3Ajdk) and [compat:java](https://github.com/scala/scala3/labels/compat%3Ajava) labels in [the Scala 3 issue tracker](https://github.com/scala/scala3/issues).
 
