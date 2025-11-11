@@ -152,3 +152,5 @@ At present, both Scala 3.3 LTS and Scala Next support JDK 8, as well as 11 and b
 
 As per [this blog post](https://www.scala-lang.org/news/next-scala-lts-jdk.html),
 Scala 3.8 will have a new minimum JDK version of 17. This can already be tested in Scala 3.8 nightlies.
+
+The next Scala 3 LTS release will be Scala 3.9.
