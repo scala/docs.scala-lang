@@ -10,7 +10,7 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 
 ## Scala 3 compatibility
 
-At present, both Scala 3.3 LTS and Scala 3.4 through 3.7 still support JDK 8 and above.
+Scala 3 versions from 3.3 LTS through Scala 3.7 support JDK 8 and above.
 
 As per [this blog post](https://www.scala-lang.org/news/next-scala-lts-jdk.html),
 Scala 3.8 will have a new minimum JDK version of 17.
