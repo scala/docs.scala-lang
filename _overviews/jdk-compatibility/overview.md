@@ -74,15 +74,13 @@ In almost every case, you're free to use the JDK and JVM of your choice.
 
 JDK 8 users typically use the Oracle JDK or some flavor of OpenJDK.
 
-Most JDK 17+ users are using OpenJDK, or GraalVM which runs in the context of OpenJDK. GraalVM performs well on the Scala benchmarks, and it benefits from GraalVM runtime and runs faster too.
-
 OpenJDK comes in various flavors, offered by different providers. We typically build and test Scala using [Temurin](https://adoptium.net) or [Zulu](https://www.azul.com/downloads/), but the differences are unlikely to matter to most users.
 
 ## JDK 11 compatibility notes
 
 The Scala test suite and Scala community build are green on JDK 11.
 
-In general, Scala works on JDK 11+, including GraalVM, but may not take special advantage of features that were added after JDK 8.
+In general, Scala works on JDK 11+, but may not take special advantage of features that were added after JDK 8.
 
 For example, the Scala compiler does not enforce the restrictions of the Java Platform Module System, which means that code that typechecks may incur linkage errors at runtime. Scala 2.13.x will eventually provide [rudimentary support](https://github.com/scala/scala/pull/7218) for this (perhaps only in nightlies built on JDK 11).
 
