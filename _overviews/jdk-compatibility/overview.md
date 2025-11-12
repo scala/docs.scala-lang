@@ -4,21 +4,46 @@ title: JDK Compatibility
 permalink: /overviews/jdk-compatibility/overview.html
 ---
 
-Scala's primary platform is the Java Virtual Machine (JVM). (Other supported platforms: [Scala.js](https://www.scala-js.org/), [Scala Native](https://scala-native.org/).)
+Scala's primary platform is the Java Virtual Machine (JVM). Other supported platforms are [Scala.js](https://www.scala-js.org/) and [Scala Native](https://scala-native.org/).
 
 Sometimes new JVM and JDK (Java Development Kit) versions require us to update Scala to remain compatible.
 
-## Scala compatibility table
+## Scala 3 compatibility
 
-Minimum Scala versions:
+At present, both Scala 3.3 LTS and Scala 3.7 still support JDK 8 and above.
 
-| JDK         | 3.8*   | 3.4+     | 3.3 LTS  | 2.13      | 2.12      |
-|:-----------:|:------:|:--------:|:--------:|:---------:|:---------:|
-| 25 (LTS)    | 3.8.0* | 3.7.1    | 3.3.6    | 2.13.17   | 2.12.21*  |
-| 21 (LTS)    | 3.8.0* | 3.4.0    | 3.3.1    | 2.13.11   | 2.12.18   |
-| 17 (LTS)    | 3.8.0* | 3.4.0    | 3.3.0    | 2.13.6    | 2.12.15   |
-| 11 (LTS)    |        | 3.4.0    | 3.3.0    | 2.13.0    | 2.12.4    |
-| 8 (LTS)     |        | 3.4.0    | 3.3.0    | 2.13.0    | 2.12.0    |
+As per [this blog post](https://www.scala-lang.org/news/next-scala-lts-jdk.html),
+Scala 3.8 will have a new minimum JDK version of 17.
+
+The next Scala 3 LTS release will be Scala 3.9.
+
+Minimum Scala 3 versions for each JDK:
+
+| JDK         | 3.8*   | 3.4+     | 3.3 LTS  |
+|:-----------:|:------:|:--------:|:--------:|
+| 25 (LTS)    | 3.8.0* | 3.7.1    | 3.3.6    |
+| 21 (LTS)    | 3.8.0* | 3.4.0    | 3.3.1    |
+| 17 (LTS)    | 3.8.0* | 3.4.0    | 3.3.0    |
+| 11 (LTS)    |        | 3.4.0    | 3.3.0    |
+| 8 (LTS)     |        | 3.4.0    | 3.3.0    |
+
+\* = forthcoming; support available in [nightly builds](https://docs.scala-lang.org/overviews/core/nightlies.html)
+
+Even when a version combination isn't listed as supported, most features might still work.
+
+Using the latest patch version of your chosen Scala version line is always recommended.
+
+## Scala 2 compatibility
+
+Minimum Scala 2 versions for each JDK:
+
+| JDK         | 2.13      | 2.12      |
+|:-----------:|:---------:|:---------:|
+| 25 (LTS)    | 2.13.17   | 2.12.21*  |
+| 21 (LTS)    | 2.13.11   | 2.12.18   |
+| 17 (LTS)    | 2.13.6    | 2.12.15   |
+| 11 (LTS)    | 2.13.0    | 2.12.4    |
+| 8 (LTS)     | 2.13.0    | 2.12.0    |
 
 \* = forthcoming; support available in [nightly builds](https://docs.scala-lang.org/overviews/core/nightlies.html)
 
@@ -143,12 +168,3 @@ A few sbt plugins are offering support for GraalVM Native Image compilation:
 
 - [sbt-native-packager](https://www.scala-sbt.org/sbt-native-packager/formats/graalvm-native-image.html)
 - [sbt-native-image](https://github.com/scalameta/sbt-native-image)
-
-## Scala 3
-
-At present, both Scala 3.3 LTS and Scala Next support JDK 8, as well as 11 and beyond.
-
-As per [this blog post](https://www.scala-lang.org/news/next-scala-lts-jdk.html),
-Scala 3.8 will have a new minimum JDK version of 17. This can already be tested in Scala 3.8 nightlies.
-
-The next Scala 3 LTS release will be Scala 3.9.
