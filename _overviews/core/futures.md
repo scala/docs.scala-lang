@@ -1181,7 +1181,7 @@ object Test extends App {
         completion match {
           case Failure(exception) if exception.getCause != null =>
             println(s"  caused by ${exception.getCause}")
-          _ => ()
+          case _ => ()
         }
       }
     } catch {
