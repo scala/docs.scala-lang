@@ -255,7 +255,6 @@ alice match
 Later in time, you can amend the original case class definition to, say, add an optional `address` field. You
  * add a new field `address` and a custom `withAddress` method,
  * update the public `apply` method in the companion object to initialize all the fields,
- * tell MiMa to [ignore](https://github.com/lightbend-labs/mima#filtering-binary-incompatibilities) changes to the class constructor. This step is necessary because MiMa does not yet ignore changes in private class constructor signatures (see [#738](https://github.com/lightbend-labs/mima/issues/738)).
 
 {% tabs case_class_compat_4 class=tabs-scala-version %}
 {% tab 'Scala 2' %}
@@ -283,28 +282,6 @@ object Person:
 ```
 {% endtab %}
 {% endtabs %}
-
-And, in your build definition:
-
-{% tabs case_class_compat_5 %}
-{% tab 'sbt' %}
-~~~ scala
-import com.typesafe.tools.mima.core._
-mimaBinaryIssueFilters += ProblemFilters.exclude[DirectMissingMethodProblem]("Person.this")
-~~~
-{% endtab %}
-{% endtabs %}
-
-Otherwise, MiMa would fail with an error like “method this(java.lang.String,Int)Unit in class Person does not have a correspondent in current version”.
-
-> Note that an alternative solution, instead of adding a MiMa exclusion filter, consists of adding back the previous
-> constructor signatures as secondary constructors:
-> ~~~ scala
-> case class Person private (name: String, age: Int, address: Option[String]):
->   ...
->   // Add back the former primary constructor signature
->   private[Person] def this(name: String, age: Int) = this(name, age, None)
-> ~~~
 
 The original users can use the case class `Person` as before, all the methods that existed before are present unmodified after this change, thus the compatibility with the existing usage is maintained.
 
