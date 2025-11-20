@@ -40,7 +40,7 @@ At a high level, Scala shares these *similarities* with Python:
 - Both have a relatively simple, concise syntax
 - Both support a [functional style of programming][fp-intro]
 - Both are object-oriented programming (OOP) languages
-- Both have comprehensions: Python has list comprehensions and Scala has `for` comprehensions
+- Both have comprehensions: Python has list comprehensions, dict comprehensions and generator expressions and Scala has `for` comprehensions
 - Both languages have support for lambdas and [higher-order functions][hofs]
 - Both can be used with [Apache Spark](https://spark.apache.org) for big data processing
 - Both have a wealth of terrific libraries
@@ -693,6 +693,26 @@ Scala also has `match` expressions.
   </tbody>
 </table>
 
+### Lazily evaluated comprehensions:
+
+<table>
+  <tbody>
+    <tr>
+      <td class="python-block">
+        <code>from itertools import count
+        <br>all_squares = (n**2 for n in count())&nbsp; # generator expression
+        <br># all_squares: &lt;generator object &lt;genexpr&gt; at ...&gt;</code>
+      </td>
+    </tr>
+    <tr>
+      <td class="scala-block">
+        <code>val allSquares = for n &lt;- LazyList.from(0) yield n * n
+        <br>// allSquares: LazyList(&lt;not computed&gt;)</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ### `match` expressions:
 
 <table>
@@ -1209,7 +1229,7 @@ Some informational and mathematical methods:
 | `c.find(p)`    | Returns the first element that matches `p`. The element is returned as `Option[A]`. |
 | `c.min`        | Returns the smallest element from the collection. (Can throw _java.lang.UnsupportedOperationException_.) |
 | `c.max`        | Returns the largest element from the collection. (Can throw _java.lang.UnsupportedOperationException_.) |
-|`c slice(from, to)` | Returns the interval of elements beginning at element `from`, and ending at element `to`. |
+| `c.slice(from, to)` | Returns the interval of elements beginning at element `from`, and ending at element `to`. |
 | `c.sum`        | Returns the sum of all elements in the collection. (Requires an `Ordering` be defined for the elements in the collection.) |
 
 Here are a few examples that demonstrate how these methods work on a list:

@@ -27,7 +27,7 @@ See our [Community page](https://scala-lang.org/community/).
 
 ### What's a good book about Scala?
 
-Our [Books page](https://docs.scala-lang.org/books.html) lists a few
+Our [Books page](https://docs.scala-lang.org/books.html) lists some
 especially popular, well-known books.
 
 We don't have a list of all the Scala books that
@@ -36,6 +36,17 @@ are out there; there are many.
 You can go on the \#scala-users room [on
 Discord](https://discord.com/invite/scala) or another community forum and
 ask for book recommendations. You'll get more helpful
+answers if you provide some information about your background and your
+reasons for wanting to learn Scala.
+
+### What's a good video course about Scala?
+
+Our [Online Courses page](https://docs.scala-lang.org/online-courses.html)
+lists some especially popular, well-known courses.
+
+As with books, you can go on the \#scala-users room [on
+Discord](https://discord.com/invite/scala) or another community forum and
+ask for online course recommendations. You'll get more helpful
 answers if you provide some information about your background and your
 reasons for wanting to learn Scala.
 
@@ -351,14 +362,14 @@ setting in a multi-project build.
 
 For example, if you add this to your `build.sbt`:
 
-    scalaVersion := "2.13.16"
+    scalaVersion := "2.13.17"
 
 that's a "bare" setting, and you might expect it to apply build-wide.
 But it doesn't. _It only applies to the root project._
 
 In many cases one should instead write:
 
-    ThisBuild / scalaVersion := "2.13.16"
+    ThisBuild / scalaVersion := "2.13.17"
 
 Other possibilities include:
 

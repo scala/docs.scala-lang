@@ -143,11 +143,11 @@ How can we, as library authors, spare our users of runtime errors and dependency
 
 ## MiMa - Checking binary compatibility against previous library versions 
 
-[MiMa](https://github.com/lightbend/mima) is a tool for diagnosing binary incompatibilities between different library versions.  
+[MiMa](https://github.com/lightbend-labs/mima) is a tool for diagnosing binary incompatibilities between different library versions.  
 It works by comparing the class files of two provided JARs and report any binary incompatibilities found. 
 Both backwards and forwards binary incompatibility can be detected by swapping input order of the JARs.
 
-By incorporating MiMa's [sbt plugin](https://github.com/lightbend/mima#sbt) into your sbt build, you can easily check whether 
+By incorporating MiMa's [sbt plugin](https://github.com/lightbend-labs/mima#sbt) into your sbt build, you can easily check whether 
 you have accidentally introduced binary incompatible changes. Detailed instruction on how to use the sbt plugin can be found in the link.
 
 We strongly encourage every library author to incorporate MiMa into their continuous integration and release workflow.

@@ -514,7 +514,7 @@ Both JavaScript and Scala let you define anonymous functions, which you can pass
         <br>
         <br>// a function or a method can be passed into another
         <br>// function or method
-        <br>def printA(a: Any, f: log: Any =&gt; Unit) = log(a)
+        <br>def printA(a: Any, log: Any =&gt; Unit) = log(a)
         </code>
       </td>
     </tr>

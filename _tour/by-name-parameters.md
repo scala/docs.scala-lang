@@ -9,6 +9,8 @@ previous-page: operators
 
 redirect_from: "/tutorials/tour/by-name-parameters.html"
 redirect_from: "/tutorials/tour/automatic-closures.html"
+redirect_from: "/tour/by-name-parameters.html"
+redirect_from: "/tour/automatic-closures.html"
 ---
 
 _By-name parameters_ are evaluated every time they are used. They won't be evaluated at all if they are unused. This is similar to replacing the by-name parameters with the passed expressions. They are in contrast to _by-value parameters_. To make a parameter called by-name, simply prepend `=>` to its type.

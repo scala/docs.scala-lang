@@ -53,7 +53,7 @@ In case you take the Scala Specialization, you will end with the Scala Capstone 
 ## Learning Platforms
 
 Currently, all our MOOCs are available on the platform [Coursera](https://coursera.org),
-and some of them are available on [edX](https://edx.org) or the [Extension School](https://extensionschool.ch).
+and some of them are available on [edX](https://edx.org) or the [Extension School](https://www.epfl.ch/education/continuing-education/).
 This section explains the differences between these learning platforms.
 
 On all the platforms the full material is always available online. It includes 
@@ -71,7 +71,7 @@ you access to a certificate of completion that attests your accomplishments.
 Learn more about
 [Coursera certificates](https://learners.coursera.help/hc/en-us/articles/209819053-Get-a-Course-Certificate),
 [edX certificates](https://support.edx.org/hc/en-us/categories/115002269627-Certificates),
-or [Extension School certificates](https://www.extensionschool.ch/faqs#certifying-coursework).
+or [Extension School certificates](https://www.epfl.ch/education/continuing-education/certifications/).
 Note that your subscriptions also supports the work of the [Scala Center], 
 whose mission is to create high-quality educational material.
 
@@ -95,7 +95,7 @@ below that compares the learning platforms:
 ## Effective Programming in Scala
 
 This course is available on [Coursera](https://coursera.org/learn/effective-scala)
-and the [Extension School](https://extensionschool.ch/learn/effective-programming-in-scala).
+and the [Extension School](https://www.epfl.ch/education/continuing-education/effective-programming-in-scala/).
 Please refer to [this section](#learning-platforms) to know the differences 
 between both learning platforms.
 

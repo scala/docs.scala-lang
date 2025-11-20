@@ -404,7 +404,7 @@ For example, given this `Map` of state abbreviations and their full names:
 val states = Map(
   "AK" -> "Alaska",
   "AL" -> "Alabama", 
-  "AR" -> "Arizona"
+  "AZ" -> "Arizona"
 )
 ```
 {% endtab %}
@@ -433,7 +433,7 @@ Here’s what that looks like in the REPL:
 scala> for ((abbrev, fullName) <- states) println(s"$abbrev: $fullName")
 AK: Alaska
 AL: Alabama
-AR: Arizona
+AZ: Arizona
 ```
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-17 %}
@@ -441,7 +441,7 @@ AR: Arizona
 scala> for (abbrev, fullName) <- states do println(s"$abbrev: $fullName")
 AK: Alaska
 AL: Alabama
-AR: Arizona
+AZ: Arizona
 ```
 {% endtab %}
 {% endtabs %}

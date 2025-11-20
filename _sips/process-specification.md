@@ -265,12 +265,13 @@ The current committee members are:
 - Haoyi Li ([@lihaoyi](https://github.com/lihaoyi)), Databricks
 - Lukas Rytz ([@lrytz](https://github.com/lrytz)), Lightbend
 - Martin Odersky ([@odersky](https://github.com/odersky)), EPFL
+- Michał Pałka ([@prolativ](https://github.com/prolativ)), VirtusLab
 - Oron Port ([@soronpo](https://github.com/soronpo)), DFiant Inc
-- Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), Scala Center
+- Sébastien Doeraene ([@sjrd](https://github.com/sjrd)), EPFL
 
 The current Chairperson is:
 
-- Dimi Racordon ([@kyouko-taiga](https://github.com/kyouko-taiga)), EPFL
+- Oliver Bračevac ([@bracevac](https://github.com/bracevac)), EPFL
 
 The current Secretary is:
 

@@ -144,7 +144,7 @@ since the configuration syntax and the error messages it matches are different.
 | 2.13.x | 3.3.x |
 |-|-|
 | `-Xasync` | <i class="fa fa-times fa-lg"></i> |
-| `-Xcheckinit` | `-Ysafe-init` |
+| `-Xcheckinit` | `-Wsafe-init` |
 | `-Xdev` | <i class="fa fa-times fa-lg"></i> |
 | `-Xdisable-assertions` | <i class="fa fa-times fa-lg"></i> |
 | `-Xelide-below` | <i class="fa fa-times fa-lg"></i> |

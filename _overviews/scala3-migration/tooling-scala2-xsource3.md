@@ -46,7 +46,6 @@ The `-Xsource:3` flag enables the following Scala 3 syntaxes in Scala 2:
   - `import p.{given, *}`
   - `case C(xs*)` as an alias for `case C(xs @ _*)`
   - `A & B` type intersection as an alias for `A with B`
-  - Selecting a method `x.f` performs an eta-expansion (`x.f _`), even without an expected type
 
 ## Scala 3 migration warnings in detail
 
@@ -106,6 +105,7 @@ The following table shows backported Scala 3 language semantics available in `-X
 | `case-companion-function`: companions are Functions | fatal warning at use site | synthetic case companion objects no longer extend FunctionN, but are adapted at use site with warning |
 | `infer-override`: override type inference | fatal warning | inferred type of member uses type of overridden member |
 | `double-definitions`: definitions differing in empty parens <sup>2</sup> | fatal warning | double definition error |
+| `eta-expand-always`: `x.f` eta-expands (`x.f _`) even without an expected type | compilation error ("missing argument list") | `x.f` expands to a function value |
 
 Example 1:
 
@@ -125,7 +125,7 @@ class C(x: Int) {
 
 ### Changes affecting binary encoding
 
-As of Scala 2.13.15, there are 3 changes in `-Xsource-features` that affect binary encoding of classfiles:
+As of Scala 2.13.17, there are 3 changes in `-Xsource-features` that affect binary encoding of classfiles:
 
   1. `case-apply-copy-access`: the constructor modifiers of case classes (`case class C private[p] (x: Int)`) are copied to the synthetic `apply` and `copy` methods.
   1. `case-companion-function`: the synthetic companion objects of case classes no longer extend `FunctionN`.

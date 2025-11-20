@@ -20,7 +20,7 @@ redirect-from:
 
 ## Упражнения на языке Scala
 
-[Scala Exercises](https://www.scala-exercises.org/) — это серия уроков и упражнений, созданных [47 Degrees](https://www.47deg.com/).
+[Scala Exercises](https://www.scala-exercises.org/) — это серия уроков и упражнений, созданных [47 Degrees](https://xebia.com/).
 Это отличный способ получить краткое представление о Scala и одновременно проверить свои знания.
 
 [Tour of Scala](https://tourofscala.com) шаг за шагом знакомит вас со Scala, от новичка до эксперта.
