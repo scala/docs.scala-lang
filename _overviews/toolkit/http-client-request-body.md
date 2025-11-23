@@ -18,7 +18,7 @@ To send a POST request with a string body, you can chain `post` and `body` on a 
 import sttp.client4.quick._
 
 val response = quickRequest
-  .post(uri"https://example.com/")
+  .post(uri"https://httpbin.org/post")
   .body("Lorem ipsum")
   .send()
 
@@ -31,7 +31,7 @@ println(response.code)
 import sttp.client4.quick.*
 
 val response = quickRequest
-  .post(uri"https://example.com/")
+  .post(uri"https://httpbin.org/post")
   .body("Lorem ipsum")
   .send()
 
@@ -51,7 +51,7 @@ The `body` method can also take a `Array[Byte]`, a `ByteBuffer` or an `InputStre
 {% tab 'Scala 2 and 3' %}
 ```scala mdoc
 val bytes: Array[Byte] = "john".getBytes
-val request = quickRequest.post(uri"https://example.com/").body(bytes)
+val request = quickRequest.post(uri"https://httpbin.org/post").body(bytes)
 ```
 {% endtab %}
 {% endtabs %}

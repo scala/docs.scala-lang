@@ -55,6 +55,7 @@ import scala.concurrent.{Await, Future}
 import scala.concurrent.ExecutionContext.Implicits.global
 
 import sttp.client4._
+import sttp.client4.ws.async._
 import sttp.ws.WebSocket
 
 val asyncBackend = DefaultFutureBackend()
@@ -83,6 +84,7 @@ import scala.concurrent.{Await, Future}
 import scala.concurrent.ExecutionContext.Implicits.global
 
 import sttp.client4.*
+import sttp.client4.ws.async.*
 import sttp.ws.WebSocket
 
 val asyncBackend = DefaultFutureBackend()
