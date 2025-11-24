@@ -125,7 +125,7 @@ class C(x: Int) {
 
 ### Changes affecting binary encoding
 
-As of Scala 2.13.17, there are 3 changes in `-Xsource-features` that affect binary encoding of classfiles:
+As of Scala 2.13.18, there are 3 changes in `-Xsource-features` that affect binary encoding of classfiles:
 
   1. `case-apply-copy-access`: the constructor modifiers of case classes (`case class C private[p] (x: Int)`) are copied to the synthetic `apply` and `copy` methods.
   1. `case-companion-function`: the synthetic companion objects of case classes no longer extend `FunctionN`.
