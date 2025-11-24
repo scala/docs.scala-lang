@@ -12,10 +12,10 @@ redirect_from:
   * [Library API](https://www.scala-lang.org/api/{{site.scala-3-version}}/)
 * Scala 3.3.7 LTS
   * [Library API](https://www.scala-lang.org/api/3.3.7/)
-* Scala 2.13.17
-  * [Library API](https://www.scala-lang.org/api/2.13.17/)
-  * [Compiler API](https://www.scala-lang.org/api/2.13.17/scala-compiler/scala/)
-  * [Reflection API](https://www.scala-lang.org/api/2.13.17/scala-reflect/scala/reflect/)
+* Scala 2.13.18
+  * [Library API](https://www.scala-lang.org/api/2.13.18/)
+  * [Compiler API](https://www.scala-lang.org/api/2.13.18/scala-compiler/scala/)
+  * [Reflection API](https://www.scala-lang.org/api/2.13.18/scala-reflect/scala/reflect/)
 * Scala 2.12.20
   * [Library API](https://www.scala-lang.org/api/2.12.20/)
   * [Compiler API](https://www.scala-lang.org/api/2.12.20/scala-compiler/scala/)
@@ -124,6 +124,10 @@ https://scala-ci.typesafe.com/artifactory/scala-integration/org/scala-lang/
   * [Library API](https://www.scala-lang.org/api/3.0.1/)
 * Scala 3.0.0
   * [Library API](https://www.scala-lang.org/api/3.0.0/)
+* Scala 2.13.17
+  * [Library API](https://www.scala-lang.org/api/2.13.17/)
+  * [Compiler API](https://www.scala-lang.org/api/2.13.17/scala-compiler/scala/)
+  * [Reflection API](https://www.scala-lang.org/api/2.13.17/scala-reflect/scala/reflect/)
 * Scala 2.13.16
   * [Library API](https://www.scala-lang.org/api/2.13.16/)
   * [Compiler API](https://www.scala-lang.org/api/2.13.16/scala-compiler/scala/)

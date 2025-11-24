@@ -15,7 +15,7 @@ keywords:
 - Document
 - Guide
 
-scala-version: 2.13.17
+scala-version: 2.13.18
 scala-212-version: 2.12.20
 scala-3-version: 3.7.4
 
