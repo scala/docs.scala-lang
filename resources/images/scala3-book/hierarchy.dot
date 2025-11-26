@@ -1,7 +1,7 @@
 digraph unix {
   rankdir = BT;
 	size="6,6";
-	node [color=lightblue2, style=filled, fontname="Consolas"];
+	node [color=lightblue2, style=filled, fontname="Inconsolata"];
 
 
   {rank=same; "AnyVal"; "AnyRef / Object"}

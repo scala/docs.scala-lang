@@ -163,7 +163,7 @@
     dt,
     dd {
         code {
-            font-family: 'Consolas';
+            font-family: 'Inconsolata';
             background-color: #fff;
             color: #859900;
             @include border-radius($border-radius-medium);
@@ -174,7 +174,7 @@
     tr,
     td{
         code {
-            font-family: 'Consolas';
+            font-family: 'Inconsolata';
             font-size: 0.9375rem;
         }
     }
