@@ -13,13 +13,13 @@
 <g id="node1" class="node">
 <title>AnyVal</title>
 <ellipse fill="#b2dfee" stroke="#b2dfee" cx="203" cy="-234" rx="38.19" ry="18"/>
-<text text-anchor="middle" x="203" y="-230.3" font-family="Consolas" font-size="14.00">AnyVal</text>
+<text text-anchor="middle" x="203" y="-230.3" font-family="Inconsolata" font-size="14.00">AnyVal</text>
 </g>
 <!-- Matchable -->
 <g id="node10" class="node">
 <title>Matchable</title>
 <ellipse fill="#b2dfee" stroke="#b2dfee" cx="322" cy="-306" rx="51.99" ry="18"/>
-<text text-anchor="middle" x="322" y="-302.3" font-family="Consolas" font-size="14.00">Matchable</text>
+<text text-anchor="middle" x="322" y="-302.3" font-family="Inconsolata" font-size="14.00">Matchable</text>
 </g>
 <!-- AnyVal&#45;&gt;Matchable -->
 <g id="edge2" class="edge">
@@ -31,7 +31,7 @@
 <g id="node2" class="node">
 <title>AnyRef / Object</title>
 <ellipse fill="#b2dfee" stroke="#b2dfee" cx="487" cy="-234" rx="72.59" ry="18"/>
-<text text-anchor="middle" x="487" y="-230.3" font-family="Consolas" font-size="14.00">AnyRef / Object</text>
+<text text-anchor="middle" x="487" y="-230.3" font-family="Inconsolata" font-size="14.00">AnyRef / Object</text>
 </g>
 <!-- AnyRef / Object&#45;&gt;Matchable -->
 <g id="edge3" class="edge">
@@ -43,7 +43,7 @@
 <g id="node3" class="node">
 <title>Unit</title>
 <ellipse fill="#b2dfee" stroke="#b2dfee" cx="27" cy="-162" rx="27" ry="18"/>
-<text text-anchor="middle" x="27" y="-158.3" font-family="Consolas" font-size="14.00">Unit</text>
+<text text-anchor="middle" x="27" y="-158.3" font-family="Inconsolata" font-size="14.00">Unit</text>
 </g>
 <!-- Unit&#45;&gt;AnyVal -->
 <g id="edge4" class="edge">
@@ -55,7 +55,7 @@
 <g id="node4" class="node">
 <title>Boolean</title>
 <ellipse fill="#b2dfee" stroke="#b2dfee" cx="115" cy="-162" rx="42.79" ry="18"/>
-<text text-anchor="middle" x="115" y="-158.3" font-family="Consolas" font-size="14.00">Boolean</text>
+<text text-anchor="middle" x="115" y="-158.3" font-family="Inconsolata" font-size="14.00">Boolean</text>
 </g>
 <!-- Boolean&#45;&gt;AnyVal -->
 <g id="edge5" class="edge">
@@ -67,7 +67,7 @@
 <g id="node5" class="node">
 <title>Int</title>
 <ellipse fill="#b2dfee" stroke="#b2dfee" cx="203" cy="-162" rx="27" ry="18"/>
-<text text-anchor="middle" x="203" y="-158.3" font-family="Consolas" font-size="14.00">Int</text>
+<text text-anchor="middle" x="203" y="-158.3" font-family="Inconsolata" font-size="14.00">Int</text>
 </g>
 <!-- Int&#45;&gt;AnyVal -->
 <g id="edge6" class="edge">
@@ -79,7 +79,7 @@
 <g id="node6" class="node">
 <title>... (value types)</title>
 <ellipse fill="#b2dfee" stroke="#b2dfee" cx="319" cy="-162" rx="70.69" ry="18"/>
-<text text-anchor="middle" x="319" y="-158.3" font-family="Consolas" font-size="14.00">... (value types)</text>
+<text text-anchor="middle" x="319" y="-158.3" font-family="Inconsolata" font-size="14.00">... (value types)</text>
 </g>
 <!-- ... (value types)&#45;&gt;AnyVal -->
 <g id="edge7" class="edge">
@@ -91,7 +91,7 @@
 <g id="node7" class="node">
 <title>String</title>
 <ellipse fill="#b2dfee" stroke="#b2dfee" cx="442" cy="-162" rx="33.6" ry="18"/>
-<text text-anchor="middle" x="442" y="-158.3" font-family="Consolas" font-size="14.00">String</text>
+<text text-anchor="middle" x="442" y="-158.3" font-family="Inconsolata" font-size="14.00">String</text>
 </g>
 <!-- String&#45;&gt;AnyRef / Object -->
 <g id="edge8" class="edge">
@@ -103,7 +103,7 @@
 <g id="node8" class="node">
 <title>List[Int]</title>
 <ellipse fill="#b2dfee" stroke="#b2dfee" cx="533" cy="-162" rx="38.99" ry="18"/>
-<text text-anchor="middle" x="533" y="-158.3" font-family="Consolas" font-size="14.00">List[Int]</text>
+<text text-anchor="middle" x="533" y="-158.3" font-family="Inconsolata" font-size="14.00">List[Int]</text>
 </g>
 <!-- List[Int]&#45;&gt;AnyRef / Object -->
 <g id="edge9" class="edge">
@@ -115,7 +115,7 @@
 <g id="node9" class="node">
 <title>... (reference types)</title>
 <ellipse fill="#b2dfee" stroke="#b2dfee" cx="677" cy="-162" rx="87.18" ry="18"/>
-<text text-anchor="middle" x="677" y="-158.3" font-family="Consolas" font-size="14.00">... (reference types)</text>
+<text text-anchor="middle" x="677" y="-158.3" font-family="Inconsolata" font-size="14.00">... (reference types)</text>
 </g>
 <!-- ... (reference types)&#45;&gt;AnyRef / Object -->
 <g id="edge10" class="edge">
@@ -127,7 +127,7 @@
 <g id="node11" class="node">
 <title>Any</title>
 <ellipse fill="#b2dfee" stroke="#b2dfee" cx="322" cy="-378" rx="27" ry="18"/>
-<text text-anchor="middle" x="322" y="-374.3" font-family="Consolas" font-size="14.00">Any</text>
+<text text-anchor="middle" x="322" y="-374.3" font-family="Inconsolata" font-size="14.00">Any</text>
 </g>
 <!-- Matchable&#45;&gt;Any -->
 <g id="edge1" class="edge">
@@ -139,7 +139,7 @@
 <g id="node12" class="node">
 <title>Null</title>
 <ellipse fill="#b2dfee" stroke="#b2dfee" cx="487" cy="-90" rx="27" ry="18"/>
-<text text-anchor="middle" x="487" y="-86.3" font-family="Consolas" font-size="14.00">Null</text>
+<text text-anchor="middle" x="487" y="-86.3" font-family="Inconsolata" font-size="14.00">Null</text>
 </g>
 <!-- Null&#45;&gt;String -->
 <g id="edge11" class="edge">
@@ -163,7 +163,7 @@
 <g id="node13" class="node">
 <title>Nothing</title>
 <ellipse fill="#b2dfee" stroke="#b2dfee" cx="203" cy="-18" rx="40.89" ry="18"/>
-<text text-anchor="middle" x="203" y="-14.3" font-family="Consolas" font-size="14.00">Nothing</text>
+<text text-anchor="middle" x="203" y="-14.3" font-family="Inconsolata" font-size="14.00">Nothing</text>
 </g>
 <!-- Nothing&#45;&gt;Unit -->
 <g id="edge15" class="edge">
