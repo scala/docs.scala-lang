@@ -1,0 +1,42 @@
+name: Sync SIPs
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Daily at 6 AM UTC
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch SIPs from improvement-proposals
+        run: |
+          rm -rf _sips/sips
+          mkdir -p _sips/sips
+          git clone --depth 1 --filter=blob:none --sparse https://github.com/scala/improvement-proposals.git /tmp/improvement-proposals
+          cd /tmp/improvement-proposals
+          git sparse-checkout set content
+          cp -r content/* $GITHUB_WORKSPACE/_sips/sips/
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git add _sips/sips
+          if git diff --staged --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Pull Request
+        if: steps.changes.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: "Sync SIPs from scala/improvement-proposals"
+          title: "Sync SIPs from scala/improvement-proposals"
+          body: |
+            Automated sync of SIP content from [scala/improvement-proposals](https://github.com/scala/improvement-proposals).
+          branch: sync-sips
+          delete-branch: true
