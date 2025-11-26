@@ -31,31 +31,9 @@ of the compiler (accepted). Click on a proposal to read its content.
 
 ## Pending SIPs
 
-Proposals that are at the design or implementation stage, and that are actively
-discussed by the committee and the proposals’ authors. Click on a proposal to
-read its content, or the corresponding discussions on GitHub if its design has
-not been accepted yet.
-
-<div class="sip-list">
-  <ul>
-  {% for sip in sips %}
-   {% if sip.stage == "design" or sip.stage == "implementation" %}
-     <li class="no-fragmentation">
-      <strong>
-        <a href="{% if sip.pull-request-number %}https://github.com/scala/improvement-proposals/pull/{{ sip.pull-request-number }}{% else %}{{ sip.url }}{% endif %}">
-          {{ sip.kind | default: 'SIP' }}-{{ sip.number }} - {{ sip.title }}
-        </a>
-      </strong>
-      <div class="tag" style="background-color: {{ sipData[sip.stage].color }}">Stage: {{ sipData[sip.stage].text }}</div>
-      <div class="tag" style="background-color: {{ sipData[sip.status].color }}">Status: {{ sipData[sip.status].text }}</div>
-      {% if sip.recommendation %}
-        <div class="tag" style="background-color: {{ sipData[sip.recommendation].color }}">Recommendation: {{ sipData[sip.recommendation].text }}</div>
-      {% endif %}
-     </li>
-   {% endif %}
-  {% endfor %}
-  </ul>
-</div>
+For proposals that are at the design or implementation stage, and that are actively
+discussed by the committee and the proposals' authors, please
+refer to the [GitHub PR queue](https://github.com/scala/improvement-proposals/pulls?q=is%3Apr+is%3Aopen).
 
 ## Rejected SIPs
 
