@@ -2,8 +2,8 @@
 layout: sip
 number: 62
 permalink: /sips/:title.html
-stage: implementation
-status: under-review
+stage: completed
+status: shipped
 title: For comprehension improvements
 ---
 

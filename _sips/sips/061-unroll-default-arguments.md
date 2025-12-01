@@ -2,8 +2,8 @@
 layout: sip
 number: 61
 permalink: /sips/:title.html
-stage: implementation
-status: under-review
+stage: completed
+status: accepted
 title: Unroll Default Arguments for Binary Compatibility
 ---
 

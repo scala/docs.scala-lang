@@ -25,7 +25,7 @@ of the compiler (accepted). Click on a proposal to read its content.
 <div class="sip-list">
   <ul>
   {% for sip in sips %}
-   {% if sip.stage == "completed" %}
+   {% if sip.stage == "completed" and sip.status == "shipped" %}
      <li class="no-fragmentation">
       <strong><a href="{{ sip.url }}">{{ sip.kind | default: 'SIP' }}-{{ sip.number }} - {{ sip.title }}</a></strong>
       <div class="tag" style="background-color: {{ sipData[sip.status].color }}">{{ sipData[sip.status].text }}</div>
