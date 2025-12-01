@@ -367,4 +367,4 @@ expansion, executing SQL queries, magic `$"identifier"` representations, and man
 
 [java-format-docs]: https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Formatter.html#detail
 [value-class]: {% link _overviews/core/value-classes.md %}
-[sip-11]: {% link _sips/sips/string-interpolation.md %}
+[sip-11]: {% link _sips/sips/011-string-interpolation.md %}
