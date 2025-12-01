@@ -10,6 +10,12 @@ redirect_from:
 {% assign sips = site.sips | sort: 'number' | reverse %}
 {% assign sipData = site.data.sip-data %}
 
+## Pending SIPs
+
+For proposals that are at the design or implementation stage, and that are actively
+discussed by the committee and the proposals' authors, please
+refer to the [GitHub PR queue](https://github.com/scala/improvement-proposals/pulls?q=is%3Apr+is%3Aopen).
+
 ## Completed SIPs
 
 Proposals that have been implemented in the compiler and that are available as a stable
@@ -28,12 +34,6 @@ of the compiler (accepted). Click on a proposal to read its content.
   {% endfor %}
   </ul>
 </div>
-
-## Pending SIPs
-
-For proposals that are at the design or implementation stage, and that are actively
-discussed by the committee and the proposals' authors, please
-refer to the [GitHub PR queue](https://github.com/scala/improvement-proposals/pulls?q=is%3Apr+is%3Aopen).
 
 ## Rejected SIPs
 
