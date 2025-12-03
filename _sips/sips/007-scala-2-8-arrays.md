@@ -2,7 +2,8 @@
 kind: SID
 layout: sip
 number: 7
-permalink: /sips/:title.html
+permalink: /sips/:number
+redirect_from: /sips/:title.html
 redirect_from: /sips/pending/scala-2-8-arrays.html
 stage: completed
 status: shipped

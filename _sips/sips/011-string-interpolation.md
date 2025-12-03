@@ -1,7 +1,8 @@
 ---
 layout: sip
 number: 11
-permalink: /sips/string-interpolation.html
+permalink: /sips/:number
+redirect_from: /sips/string-interpolation.html
 redirect_from: /sips/pending/string-interpolation.html
 stage: completed
 status: shipped

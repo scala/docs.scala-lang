@@ -1,7 +1,8 @@
 ---
 layout: sip
 number: 18
-permalink: /sips/:title.html
+permalink: /sips/:number
+redirect_from: /sips/:title.html
 redirect_from: /sips/pending/modularizing-language-features.html
 stage: completed
 status: shipped

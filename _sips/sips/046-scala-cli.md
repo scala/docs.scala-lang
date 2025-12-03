@@ -1,7 +1,8 @@
 ---
 layout: sip
 number: 46
-permalink: /sips/:title.html
+permalink: /sips/:number
+redirect_from: /sips/:title.html
 stage: completed
 status: shipped
 title: Scala CLI as default Scala command

@@ -1,7 +1,8 @@
 ---
 layout: sip
 number: 38
-permalink: /sips/:title.html
+permalink: /sips/:number
+redirect_from: /sips/:title.html
 redirect_from: /sips/pending/converters-among-optional-functions-partialfunctions-and-extractor-object.html
 stage: completed
 status: shipped

@@ -1,7 +1,8 @@
 ---
 layout: sip
 number: 31
-permalink: /sips/:title.html
+permalink: /sips/:number
+redirect_from: /sips/:title.html
 redirect_from: /sips/pending/byname-implicits.html
 stage: completed
 status: shipped

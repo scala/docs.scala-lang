@@ -1,7 +1,8 @@
 ---
 layout: sip
 number: 13
-permalink: /sips/:title.html
+permalink: /sips/:number
+redirect_from: /sips/:title.html
 redirect_from: /sips/pending/implicit-classes.html
 stage: completed
 status: shipped

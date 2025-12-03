@@ -1,7 +1,8 @@
 ---
 layout: sip
 number: 59
-permalink: /sips/:title.html
+permalink: /sips/:number
+redirect_from: /sips/:title.html
 presip-thread: https://contributors.scala-lang.org/t/pre-sip-multiple-assignments/6425
 stage: implementation
 status: under-review

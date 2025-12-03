@@ -1,7 +1,8 @@
 ---
 layout: sip
 number: 27
-permalink: /sips/:title.html
+permalink: /sips/:number
+redirect_from: /sips/:title.html
 redirect_from: /sips/pending/trailing-commas.html
 stage: completed
 status: shipped

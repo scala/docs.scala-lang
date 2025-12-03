@@ -1,7 +1,8 @@
 ---
 layout: sip
 number: 57
-permalink: /sips/:title.html
+permalink: /sips/:number
+redirect_from: /sips/:title.html
 presip-thread: https://contributors.scala-lang.org/t/pre-sip-replace-non-sensical-unchecked-annotations/6342
 stage: completed
 status: shipped

@@ -1,7 +1,8 @@
 ---
 layout: sip
 number: 39
-permalink: /sips/:title.html
+permalink: /sips/:number
+redirect_from: /sips/:title.html
 redirect_from: /sips/pending/right-associative-by-name-operators.html
 stage: completed
 status: shipped
