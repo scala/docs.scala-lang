@@ -2,7 +2,8 @@
 kind: SID
 layout: sip
 number: 2
-permalink: /sips/:title.html
+permalink: /sips/:number
+redirect_from: /sips/:title.html
 redirect_from: /sips/pending/scala-compiler-phase-plugin-in.html
 stage: completed
 status: shipped

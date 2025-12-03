@@ -2,7 +2,8 @@
 kind: SID
 layout: sip
 number: 5
-permalink: /sips/:title.html
+permalink: /sips/:number
+redirect_from: /sips/:title.html
 redirect_from: /sips/pending/internals-of-scala-annotations.html
 stage: completed
 status: shipped

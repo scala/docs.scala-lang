@@ -1,7 +1,8 @@
 ---
 layout: sip
 number: 62
-permalink: /sips/:title.html
+permalink: /sips/:number
+redirect_from: /sips/:title.html
 stage: completed
 status: shipped
 title: For comprehension improvements

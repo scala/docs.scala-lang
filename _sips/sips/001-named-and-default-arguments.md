@@ -2,7 +2,8 @@
 kind: SID
 layout: sip
 number: 1
-permalink: /sips/:title.html
+permalink: /sips/:number
+redirect_from: /sips/:title.html
 redirect_from: /sips/pending/named-and-default-arguments.html
 stage: completed
 status: shipped

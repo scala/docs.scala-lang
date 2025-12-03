@@ -1,7 +1,8 @@
 ---
 layout: sip
 number: 61
-permalink: /sips/:title.html
+permalink: /sips/:number
+redirect_from: /sips/:title.html
 stage: completed
 status: accepted
 title: Unroll Default Arguments for Binary Compatibility

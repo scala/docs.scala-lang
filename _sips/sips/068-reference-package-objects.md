@@ -1,7 +1,8 @@
 ---
 layout: sip
 number: 68
-permalink: /sips/:title.html
+permalink: /sips/:number
+redirect_from: /sips/:title.html
 stage: completed
 status: accepted
 title: Reference-able Package Objects
