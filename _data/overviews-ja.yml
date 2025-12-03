@@ -89,7 +89,7 @@
         文字列補間は、ユーザーが加工文字列リテラル（processed string literal）に変数参照を直接埋め込めるようにしてくれる。以下例。
           <pre><code>val name = "James"
         println(s"Hello, $name")  // Hello, James</code></pre>
-        上記例では、リテラル <code>s"Hello, $name"</code> は加工文字列リテラルだ。これはコンパイラーがこのリテラルに追加の仕事をしていることを意味する。加工文字列リテラルは <code>"</code> に先行するいくつかの文字で示される。文字列補間は <a href="/sips/string-interpolation.html">SIP-11</a> で導入され、そこには実装の全詳細が含まれる。
+        上記例では、リテラル <code>s"Hello, $name"</code> は加工文字列リテラルだ。これはコンパイラーがこのリテラルに追加の仕事をしていることを意味する。加工文字列リテラルは <code>"</code> に先行するいくつかの文字で示される。文字列補間は <a href="/sips/11">SIP-11</a> で導入され、そこには実装の全詳細が含まれる。
     - title: 暗黙クラス
       by: Josh Suereth
       description: "Scala 2.10 は暗黙クラス（implicit class）と呼ばれる新しい機能を導入した。暗黙クラスは implicit キーワードでマークされたクラスだ。このキーワードはそのクラスがスコープ内にあるとき、そのプライマリコンストラクターが暗黙変換に利用可能にする。"
