@@ -1,9 +1,11 @@
 ---
 layout: sip
 number: 18
-permalink: /sips/:number
-redirect_from: /sips/:title.html
-redirect_from: /sips/pending/modularizing-language-features.html
+permalink: /sips/:number.html
+redirect_from:
+  - /sips/:number
+  - /sips/:title.html
+  - /sips/pending/modularizing-language-features.html
 stage: completed
 status: shipped
 title: Modularizing Language Features

@@ -1,9 +1,11 @@
 ---
 layout: sip
 number: 33
-permalink: /sips/:number
-redirect_from: /sips/:title.html
-redirect_from: /sips/pending/priority-based-infix-type-precedence.html
+permalink: /sips/:number.html
+redirect_from:
+  - /sips/:number
+  - /sips/:title.html
+  - /sips/pending/priority-based-infix-type-precedence.html
 stage: completed
 status: shipped
 title: Priority-based infix type precedence

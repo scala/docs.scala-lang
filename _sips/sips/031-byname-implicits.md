@@ -1,9 +1,11 @@
 ---
 layout: sip
 number: 31
-permalink: /sips/:number
-redirect_from: /sips/:title.html
-redirect_from: /sips/pending/byname-implicits.html
+permalink: /sips/:number.html
+redirect_from:
+  - /sips/:number
+  - /sips/:title.html
+  - /sips/pending/byname-implicits.html
 stage: completed
 status: shipped
 title: Byname implicit arguments

@@ -2,9 +2,11 @@
 kind: SID
 layout: sip
 number: 7
-permalink: /sips/:number
-redirect_from: /sips/:title.html
-redirect_from: /sips/pending/scala-2-8-arrays.html
+permalink: /sips/:number.html
+redirect_from:
+  - /sips/:number
+  - /sips/:title.html
+  - /sips/pending/scala-2-8-arrays.html
 stage: completed
 status: shipped
 title: Scala 2.8 Arrays

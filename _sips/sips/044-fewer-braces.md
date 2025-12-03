@@ -1,8 +1,10 @@
 ---
 layout: sip
 number: 44
-permalink: /sips/:number
-redirect_from: /sips/:title.html
+permalink: /sips/:number.html
+redirect_from:
+  - /sips/:number
+  - /sips/:title.html
 stage: completed
 status: shipped
 title: Fewer Braces
