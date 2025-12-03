@@ -1,9 +1,11 @@
 ---
 layout: sip
 number: 30
-permalink: /sips/:number
-redirect_from: /sips/:title.html
-redirect_from: /sips/pending/static-members.html
+permalink: /sips/:number.html
+redirect_from:
+  - /sips/:number
+  - /sips/:title.html
+  - /sips/pending/static-members.html
 stage: completed
 status: shipped
 title: "@static fields and methods in Scala objects (SI-4581)"

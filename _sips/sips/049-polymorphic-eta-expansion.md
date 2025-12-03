@@ -1,8 +1,10 @@
 ---
 layout: sip
 number: 49
-permalink: /sips/:number
-redirect_from: /sips/:title.html
+permalink: /sips/:number.html
+redirect_from:
+  - /sips/:number
+  - /sips/:title.html
 stage: implementation
 status: waiting-for-implementation
 title: Polymorphic Eta-Expansion

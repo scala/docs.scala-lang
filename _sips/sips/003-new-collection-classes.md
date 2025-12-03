@@ -2,9 +2,11 @@
 kind: SID
 layout: sip
 number: 3
-permalink: /sips/:number
-redirect_from: /sips/:title.html
-redirect_from: /sips/pending/new-collection-classes.html
+permalink: /sips/:number.html
+redirect_from:
+  - /sips/:number
+  - /sips/:title.html
+  - /sips/pending/new-collection-classes.html
 stage: completed
 status: shipped
 title: New Collection classes

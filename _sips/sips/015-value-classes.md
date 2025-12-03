@@ -1,9 +1,11 @@
 ---
 layout: sip
 number: 15
-permalink: /sips/:number
-redirect_from: /sips/:title.html
-redirect_from: /sips/pending/value-classes.html
+permalink: /sips/:number.html
+redirect_from:
+  - /sips/:number
+  - /sips/:title.html
+  - /sips/pending/value-classes.html
 stage: completed
 status: shipped
 title: Value Classes

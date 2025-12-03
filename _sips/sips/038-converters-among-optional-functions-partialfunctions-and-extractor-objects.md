@@ -1,9 +1,11 @@
 ---
 layout: sip
 number: 38
-permalink: /sips/:number
-redirect_from: /sips/:title.html
-redirect_from: /sips/pending/converters-among-optional-functions-partialfunctions-and-extractor-object.html
+permalink: /sips/:number.html
+redirect_from:
+  - /sips/:number
+  - /sips/:title.html
+  - /sips/pending/converters-among-optional-functions-partialfunctions-and-extractor-object.html
 stage: completed
 status: shipped
 title: Converters among optional Functions, PartialFunctions and extractor objects

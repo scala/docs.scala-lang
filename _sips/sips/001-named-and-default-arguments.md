@@ -2,9 +2,11 @@
 kind: SID
 layout: sip
 number: 1
-permalink: /sips/:number
-redirect_from: /sips/:title.html
-redirect_from: /sips/pending/named-and-default-arguments.html
+permalink: /sips/:number.html
+redirect_from:
+  - /sips/:number
+  - /sips/:title.html
+  - /sips/pending/named-and-default-arguments.html
 stage: completed
 status: shipped
 title: Named and Default Arguments

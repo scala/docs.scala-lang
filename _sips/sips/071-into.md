@@ -1,7 +1,9 @@
 ---
 layout: sip
-permalink: /sips/:number
-redirect_from: /sips/into.html
+permalink: /sips/:number.html
+redirect_from:
+  - /sips/:number
+  - /sips/into.html
 stage: completed
 status: shipped
 number: 71

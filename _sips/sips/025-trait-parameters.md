@@ -1,9 +1,11 @@
 ---
 layout: sip
 number: 25
-permalink: /sips/:number
-redirect_from: /sips/:title.html
-redirect_from: /sips/pending/trait-parameters.html
+permalink: /sips/:number.html
+redirect_from:
+  - /sips/:number
+  - /sips/:title.html
+  - /sips/pending/trait-parameters.html
 stage: completed
 status: shipped
 title: Trait Parameters
