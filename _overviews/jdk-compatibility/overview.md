@@ -39,13 +39,13 @@ Minimum Scala 2 versions for each JDK:
 
 | JDK         | 2.13      | 2.12      |
 |:-----------:|:---------:|:---------:|
-| 25 (LTS)    | 2.13.17   | 2.12.21*  |
+| 25 (LTS)    | 2.13.17   | 2.12.21   |
 | 21 (LTS)    | 2.13.11   | 2.12.18   |
 | 17 (LTS)    | 2.13.6    | 2.12.15   |
 | 11 (LTS)    | 2.13.0    | 2.12.4    |
 | 8 (LTS)     | 2.13.0    | 2.12.0    |
 
-\* = forthcoming; support available in [nightly builds](https://docs.scala-lang.org/overviews/core/nightlies.html)
+<!-- \* = forthcoming; support available in [nightly builds](https://docs.scala-lang.org/overviews/core/nightlies.html) -->
 
 Even when a version combination isn't listed as supported, most features might still work.
 
@@ -144,16 +144,9 @@ For possible Scala 2 issues, see the [jdk11](https://github.com/scala/bug/labels
 
 JDK 25 is an LTS release.
 
-Scala 3.3.6+, 3.7.1+ and 2.13.17+ support JDK 25.
+Scala 3.3.6+, 3.7.1+, 2.13.17+ and 2.12.21+ support JDK 25.
 
 The Scala test suite and Scala 2.13 community build are green on JDK 25.
-
-The forthcoming 2.12.21 release will support JDK 25.
-Support is already available in [nightlies](https://docs.scala-lang.org/overviews/core/nightlies.html).
-
-For information on timing of the forthcoming release, see:
-
-* https://contributors.scala-lang.org/t/scala-2-12-21-release-planning/6753
 
 For possible Scala 3 issues, see the [area:jdk](https://github.com/scala/scala3/labels/area%3Ajdk) and [compat:java](https://github.com/scala/scala3/labels/compat%3Ajava) labels in [the Scala 3 issue tracker](https://github.com/scala/scala3/issues).
 

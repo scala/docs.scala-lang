@@ -16,14 +16,14 @@ redirect_from:
   * [Library API](https://www.scala-lang.org/api/2.13.18/)
   * [Compiler API](https://www.scala-lang.org/api/2.13.18/scala-compiler/scala/)
   * [Reflection API](https://www.scala-lang.org/api/2.13.18/scala-reflect/scala/reflect/)
-* Scala 2.12.20
-  * [Library API](https://www.scala-lang.org/api/2.12.20/)
-  * [Compiler API](https://www.scala-lang.org/api/2.12.20/scala-compiler/scala/)
-  * [Reflection API](https://www.scala-lang.org/api/2.12.20/scala-reflect/scala/reflect/)
+* Scala 2.12.21
+  * [Library API](https://www.scala-lang.org/api/2.12.21/)
+  * [Compiler API](https://www.scala-lang.org/api/2.12.21/scala-compiler/scala/)
+  * [Reflection API](https://www.scala-lang.org/api/2.12.21/scala-reflect/scala/reflect/)
   * Scala Modules
-    * [XML API](https://www.scala-lang.org/api/2.12.20/scala-xml/scala/xml/)
-    * [Parser Combinators API](https://www.scala-lang.org/api/2.12.20/scala-parser-combinators/scala/util/parsing/)
-    * [Swing API](https://www.scala-lang.org/api/2.12.20/scala-swing/scala/swing/)
+    * [XML API](https://www.scala-lang.org/api/2.12.21/scala-xml/scala/xml/)
+    * [Parser Combinators API](https://www.scala-lang.org/api/2.12.21/scala-parser-combinators/scala/util/parsing/)
+    * [Swing API](https://www.scala-lang.org/api/2.12.21/scala-swing/scala/swing/)
 * Scala 2.11.12
   * [Library API](https://www.scala-lang.org/api/2.11.12/)
   * [Compiler API](https://www.scala-lang.org/api/2.11.12/scala-compiler/)
@@ -196,6 +196,14 @@ https://scala-ci.typesafe.com/artifactory/scala-integration/org/scala-lang/
   * [Library API](https://www.scala-lang.org/api/2.13.0/)
   * [Compiler API](https://www.scala-lang.org/api/2.13.0/scala-compiler/scala/)
   * [Reflection API](https://www.scala-lang.org/api/2.13.0/scala-reflect/scala/reflect/)
+* Scala 2.12.20
+  * [Library API](https://www.scala-lang.org/api/2.12.20/)
+  * [Compiler API](https://www.scala-lang.org/api/2.12.20/scala-compiler/scala/)
+  * [Reflection API](https://www.scala-lang.org/api/2.12.20/scala-reflect/scala/reflect/)
+  * Scala Modules
+    * [XML API](https://www.scala-lang.org/api/2.12.20/scala-xml/scala/xml/)
+    * [Parser Combinators API](https://www.scala-lang.org/api/2.12.20/scala-parser-combinators/scala/util/parsing/)
+    * [Swing API](https://www.scala-lang.org/api/2.12.20/scala-swing/scala/swing/)
 * Scala 2.12.19
   * [Library API](https://www.scala-lang.org/api/2.12.19/)
   * [Compiler API](https://www.scala-lang.org/api/2.12.19/scala-compiler/scala/)
