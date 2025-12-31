@@ -24,12 +24,13 @@ includeTOC: true
 					  It might be available as an experimental feature in the latest version of the compiler.
 					{% endif %}
 				</p>
-				{% else if page.stage == "completed" %}
+				{% elsif page.stage == "completed" and page.status == "shipped" %}
 				<p>
 					This proposal has been implemented,
-					{% if page.status == "accepted" %}
-					  it will be available in the next minor release of the compiler.
-					{% else if page.status == "shipped" %}
+					{% if page.shipped %}
+					  it has been made available as a <a href="https://scala-lang.org/api/3.x/docs/docs/reference/preview/index.html">preview feature</a> in Scala {{ page.shipped }} and
+					  will be activated by default in the next minor release of the compiler.
+					{% else %}
 					  it is available in the latest version of the compiler.
 					{% endif %}
 				</p>

@@ -353,4 +353,4 @@ p"${x/5}, $x"   // Point(2.4, 12.0)
 
 [java-format-docs]: https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Formatter.html#detail
 [value-classes]: {% link _overviews/core/value-classes.md %}
-[sip-11]: {% link _sips/sips/string-interpolation.md %}
+[sip-11]: {% link _sips/sips/011-string-interpolation.md %}

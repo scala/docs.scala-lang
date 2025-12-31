@@ -20,7 +20,7 @@
           {% else %}
             <div class="supertitle">&nbsp;</div>
           {% endif %}
-          <h1>{{ page.title }}</h1>
+          <h1>{% if page.layout == 'sip' and page.number %}{{ page.kind | default: 'SIP' }}-{{ page.number }} - {% endif %}{{ page.title }}</h1>
         </div>
         <div class="search-container">
           <div class="icon-search">
