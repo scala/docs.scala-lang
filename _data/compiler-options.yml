@@ -1118,9 +1118,15 @@
   - option: "-Wvalue-discard"
     schema:
       type: "Boolean"
-    description: "Warn when non-Unit expression results are unused."
+    description: "Warn when non-Unit expression results are unused. Available in Scala 3."
     abbreviations:
     - "-Ywarn-value-discard"
+  - option: "-Wnonunit-statement"
+    schema:
+      type: "Boolean"
+    description: |
+      "Warn when a statement returns a non-Unit value.
+      Available in Scala 3."
   - option: "-Xlint"
     schema:
       type: "Choice"
