@@ -81,13 +81,8 @@ println(max(10, 6))             // 10
 println(max("hello", "world"))  // world
 ```
 
-```scala
-// does not compile:
+```scala mdoc:fail
 println(max(false, true))
--- Error: ----------------------------------------------------------------------
-1 |println(max(false, true))
-  |                        ^
-  |no given instance of type Comparator[Boolean] was found for parameter comparator of method max
 ```
 
 The `comparator` parameter is automatically filled in with the `given Comparator[Int]` for `max(10, 6)`, and with the `given Comparator[String]` for `max("hello", "world")`.
