@@ -244,7 +244,7 @@ id"string content"
 {% endtab %}
 {% endtabs %}
 
-it transforms it into a method call (`id`) on an instance of [StringContext](https://www.scala-lang.org/api/current/scala/StringContext.html).
+it transforms it into a method call (`id(...)`) on an instance of [StringContext](https://www.scala-lang.org/api/current/scala/StringContext.html).
 This method can also be available on implicit scope.
 To define our own string interpolation, we need to create an implicit class (Scala 2) or an `extension` method (Scala 3) that adds a new method to `StringContext`.
 
@@ -317,7 +317,8 @@ As a result, each of the fragments of the processed String are exposed in the
 `StringContext.parts` member, while any expressions values in the string are passed in
 to the method's `args` parameter.
 
-### Example Implementation
+
+#### Example Implementation
 
 A naive implementation of our Point interpolator method might look something like below,
 though a more sophisticated method may choose to have more precise control over the
@@ -364,6 +365,200 @@ While string interpolators were originally used to create some form of a String,
 of custom interpolators as above can allow for powerful syntactic shorthand, and the
 community has already made swift use of this syntax for things like ANSI terminal color
 expansion, executing SQL queries, magic `$"identifier"` representations, and many others.
+
+### Pattern Matching
+
+It is also possible to use string interpolation in patterns, for both built-in and user-defined interpolators:
+{% tabs example-pat-match %}
+
+{% tab 'Scala 2' for=example-pat-match %}
+```scala
+some_value match {
+  case s"Hello, $name!" => // Executes for Strings which start with "Hello, " and end in "!"
+  case p"$a, 0" => // Executes for example for Points whose second coordinate is 0
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=example-pat-match %}
+```scala
+some_value match
+  case s"Hello, $name!" => // Executes for Strings which start with "Hello, " and end in "!"
+  case p"$a, 0" => // Executes for example for Points whose second coordinate is 0
+```
+{% endtab %}
+
+{% endtabs %}
+
+Note however there are not extractors by default for the `f` and `raw` interpolators, so neither `case f"..."` nor `case raw"..."` will work.
+(Unless a library provided them.)
+
+Anytime the compiler encounters a processed string pattern of the form:
+
+{% tabs example-pattern %}
+{% tab 'Scala 2 and 3' for=example-pattern %}
+```scala
+id"string content"
+```
+{% endtab %}
+{% endtabs %}
+
+it transforms it into a pattern (`id(...)`) on an instance of [StringContext](https://www.scala-lang.org/api/current/scala/StringContext.html).
+To define our own string interpolation, we need to create an implicit class (Scala 2) or a `Conversion` instance (Scala 3) that adds an extractor member to `StringContext`.
+
+As an example, let's assume we have a `Point` class and want to create a custom pattern `p"$a,$b"` that extracts the coordinates of a `Point` object.
+
+{% tabs custom-interpolator-1-pattern %}
+{% tab 'Scala 2 and 3' for=custom-interpolator-1-pattern %}
+```scala
+case class Point(x: Double, y: Double)
+
+val pt: Point = Point(1, 2)
+pt match case p"$a,$b" => a + b // a = 1, b = 2
+```
+{% endtab %}
+{% endtabs %}
+
+We'd create a custom `p`-extractor which extracts two coordinates by first implementing a `StringContext` extension with something like:
+
+{% tabs custom-interpolator-2-pattern class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=custom-interpolator-2-pattern %}
+```scala
+implicit class PointHelper(val sc: StringContext) {
+  object p {
+    def unapply(point: Point): Option[(Double, Double)] = ???
+  }
+}
+```
+
+**Note:** This time it's not possible to extend `AnyVal` since we add an object to it.
+
+{% endtab %}
+
+{% tab 'Scala 3' for=custom-interpolator-2-pattern %}
+```scala
+import scala.language.implicitConversions
+
+given Conversion[StringContext, PointHelper] = sc => PointHelper(sc)
+
+class PointHelper(val sc: StringContext):
+  object p:
+    def unapply(point: Point): Option[(Double, Double)] = ???
+```
+
+{% endtab %}
+
+{% endtabs %}
+
+Once this extension is in scope and the Scala compiler encounters a pattern `p"some string"`, it
+will process `some string` to extract String tokens which lie between embedded patterns in the string.
+
+For example, `point match case p"$a, $b"` would turn into:
+
+{% tabs extension-desugaring-pattern class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=extension-desugaring-pattern %}
+```scala
+val someIdentifier = StringContext("",",","")
+point match case someIdentifier.p(a, b)
+```
+
+Where `someIdentifier` is an identifier guaranteed not to clash with anything in scope, and thus cannot be interracted with.
+
+The implicit class is then used to rewrite it to the following:
+
+```scala
+val someIdentifier = PointHelper(StringContext("",",",""))
+point match case someIdentifier.p(a, b)
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=extension-desugaring-pattern %}
+```scala
+val someIdentifier = StringContext("",",","")
+point match case someIdentifier.p(a, b)
+```
+
+Where `someIdentifier` is an identifier guaranteed not to clash with anything in scope, and thus cannot be interracted with.
+
+Implicit conversion is then used to rewrite it to the following:
+
+```scala
+val someIdentifier = PointHelper(StringContext("",",",""))
+point match case someIdentifier.p(a, b)
+```
+{% endtab %}
+
+{% endtabs %}
+
+As a result, each of the fragments of the processed String are exposed in the
+`StringContext.parts` member, while the extractor `p` is used to extract the variables.
+
+#### Example Implementation
+
+An implementation of our Point string interpolator extractor might look something like below,
+though a more sophisticated implementation may choose to handle more pattern diversitiy (for example `p"0, $b"`)
+and/or stronger exhaustiveness guarantess.
+
+{% tabs implementation-pattern class=tabs-scala-version %}
+
+{% tab 'Scala 2' for=implementation-pattern %}
+```scala
+import scala.language.implicitConversions
+
+case class Point(x: Double, y: Double)
+
+implicit class PointHelper(val sc: StringContext) {
+  object p {
+    def unapply(point: Point): Option[(Double,Double)] = {
+      sc.parts match {
+      
+        // if the pattern is p"$a,$b" or p"$a, $b" return the elements
+        case Seq("", "," | ", ", "") =>
+          Some((point.x, point.y))
+        
+        case _ =>
+          throw IllegalArgumentException("The pattern is not well-formed")
+      }
+    }
+  }
+}
+
+
+Point(2, 3) match {
+//  case p"$x$y" => x + y // IllegalArgumentException: The pattern is not well-formed
+  case p"$x,$y" => x + y
+}
+```
+{% endtab %}
+
+{% tab 'Scala 3' for=implementation-pattern %}
+```scala
+import scala.language.implicitConversions
+
+case class Point(x: Double, y: Double)
+
+given Conversion[StringContext, PointHelper] = sc => PointHelper(sc)
+
+class PointHelper(val sc: StringContext):
+  object p:
+    def unapply(point: Point): Option[(Double,Double)] =
+      sc.parts match
+      
+        // checks if the pattern is p"$a,$b" or p"$a, $b"
+        case Seq("", "," | ", ", "") =>
+          Some((point.x, point.y))
+        
+        case _ =>
+          throw IllegalArgumentException("The pattern was not well-formed")
+
+Point(2, 3) match
+//  case p"$x$y" => x + y // IllegalArgumentException: The pattern was not well-formed
+  case p"$x,$y" => x + y
+```
+{% endtab %}
+{% endtabs %}
 
 [java-format-docs]: https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Formatter.html#detail
 [value-class]: {% link _overviews/core/value-classes.md %}
