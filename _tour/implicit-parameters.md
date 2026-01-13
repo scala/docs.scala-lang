@@ -49,10 +49,8 @@ println(max("hello", "world"))  // world
 ```
 
 ```scala mdoc:fail
-// does not compile:
 println(max(false, true))
-//         ^
-//     error: could not find implicit value for parameter comparator: Comparator[Boolean]
+// error: could not find implicit value for parameter comparator: Comparator[Boolean]
 ```
 
 The `comparator` parameter is automatically filled in with `Comparator.IntComparator` for `max(10, 6)`, and with `Comparator.StringComparator` for `max("hello", "world")`.
@@ -83,6 +81,7 @@ println(max("hello", "world"))  // world
 
 ```scala mdoc:fail
 println(max(false, true))
+// error: could not find implicit value for parameter comparator: Comparator[Boolean]
 ```
 
 The `comparator` parameter is automatically filled in with the `given Comparator[Int]` for `max(10, 6)`, and with the `given Comparator[String]` for `max("hello", "world")`.
