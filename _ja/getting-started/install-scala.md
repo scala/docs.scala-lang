@@ -87,7 +87,7 @@ Java のバージョンは8または11です。
 これらを手動でインストールするには:
 
 1. Java 8または11がインストールされていない場合は、[Oracle Java 8](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html)、[Oracle Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)、または[AdoptOpenJDK 8/11](https://adoptopenjdk.net/)からJavaをダウンロードしてください。Scala と Java の互換性の詳細については、[JDK Compatibility](/overviews/jdk-compatibility/overview.html)を参照してください。
-1. [sbt](https://www.scala-sbt.org/download.html)をインストールしてください。
+1. [sbt](https://www.scala-sbt.org/download/)をインストールしてください。
 
 ## sbt で「Hello World」プロジェクトを作成する
 

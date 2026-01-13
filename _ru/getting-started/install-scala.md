@@ -135,7 +135,7 @@ Java 8 или 11 и sbt.
    [Oracle Java 8](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html), [Oracle Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html),
    или [AdoptOpenJDK 8/11](https://adoptopenjdk.net/).
    Подробную информацию о совместимости Scala/Java см. в разделе [Совместимость с JDK](/overviews/jdk-compatibility/overview.html).
-1. установить [sbt](https://www.scala-sbt.org/download.html)
+1. установить [sbt](https://www.scala-sbt.org/download/)
 
 ## Создание проекта "Hello World" с помощью sbt
 
