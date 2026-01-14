@@ -12,18 +12,18 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 
 Scala 3 versions from 3.3 LTS through Scala 3.7 support JDK 8 and above.
 
-As per [this blog post](https://www.scala-lang.org/news/next-scala-lts-jdk.html),
-Scala 3.8 will have a new minimum JDK version of 17.
+Scala 3 versions starting with 3.8 have a new minimum JDK version of 17,
+as per [this blog post](https://www.scala-lang.org/news/next-scala-lts-jdk.html).
 
 The next Scala 3 LTS release will be Scala 3.9.
 
 Minimum Scala 3 versions for each JDK:
 
-| JDK         | 3.8*   | 3.4+     | 3.3 LTS  |
+| JDK         | 3.8    | 3.4+     | 3.3 LTS  |
 |:-----------:|:------:|:--------:|:--------:|
-| 25 (LTS)    | 3.8.0* | 3.7.1    | 3.3.6    |
-| 21 (LTS)    | 3.8.0* | 3.4.0    | 3.3.1    |
-| 17 (LTS)    | 3.8.0* | 3.4.0    | 3.3.0    |
+| 25 (LTS)    | 3.8.0  | 3.7.1    | 3.3.6    |
+| 21 (LTS)    | 3.8.0  | 3.4.0    | 3.3.1    |
+| 17 (LTS)    | 3.8.0  | 3.4.0    | 3.3.0    |
 | 11 (LTS)    |        | 3.4.0    | 3.3.0    |
 | 8 (LTS)     |        | 3.4.0    | 3.3.0    |
 
@@ -77,11 +77,11 @@ Using a different build tool, such as Gradle or Maven? We invite pull requests a
 
 JDK 17, 21, and 25 are all good choices both for *compiling* and *running* Scala code.
 
-JDK 8 and 11 are also possible choices. As of 2025, these versions remain in use at some shops, but usage has declined greatly and many projects are dropping support. If you compile on JDK 17+ but want to allow your users to stay on 8, use `--release 8` to avoid using APIs and features that don't exist in 8. Another option is to use a newer JDK for your daily work but do release builds on JDK 8.
-
 Since the JVM is normally backwards compatible, it is usually safe to use a newer JVM for *running* your code than the one it was compiled on, especially if you are not using JVM features designated "experimental" or "unsafe".
 
-As per [this blog post](https://www.scala-lang.org/news/next-scala-lts-jdk.html), Scala 3.8 will have a new minimum JDK version of 17.
+JDK 8 and 11 are also possible choices as long as you are willing to restrict yourself to older Scala versions. Scala 3.8 has entirely dropped support for these JDKs, as per [this blog post](https://www.scala-lang.org/news/next-scala-lts-jdk.html).  As of 2026, JDK 8 and 11 remain in use at some shops, but usage has declined greatly and many projects are dropping support.
+
+If you compile on JDK 17+ but want to allow your users to stay on 8, use `--release 8` to avoid using APIs and features that don't exist in 8. Another option is to use a newer JDK for your daily work but do release builds on JDK 8. (The same remarks apply to JDK 11.)
 
 ## Long Term Support (LTS) versions
 
