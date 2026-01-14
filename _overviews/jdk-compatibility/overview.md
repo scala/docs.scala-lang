@@ -27,7 +27,7 @@ Minimum Scala 3 versions for each JDK:
 | 11 (LTS)    |        | 3.4.0    | 3.3.0    |
 | 8 (LTS)     |        | 3.4.0    | 3.3.0    |
 
-\* = forthcoming; support available in [nightly builds](https://docs.scala-lang.org/overviews/core/nightlies.html)
+<!--\* = forthcoming; support available in [nightly builds](https://docs.scala-lang.org/overviews/core/nightlies.html)-->
 
 Even when a version combination isn't listed as supported, most features might still work.
 
