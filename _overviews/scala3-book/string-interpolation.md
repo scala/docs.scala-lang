@@ -374,8 +374,12 @@ It is also possible to use string interpolation in patterns, for both built-in a
 {% tab 'Scala 2' for=example-pat-match %}
 ```scala
 some_value match {
+
+  // built-in interpolator:
   case s"Hello, $name!" => // Executes for Strings which start with "Hello, " and end in "!"
-  case p"$a, 0" => // Executes for example for Points whose second coordinate is 0
+
+  // hypothetical custom interpolator:
+  case p"$a, 0" => // Executes for Points whose second coordinate is 0
 }
 ```
 {% endtab %}
@@ -383,7 +387,11 @@ some_value match {
 {% tab 'Scala 3' for=example-pat-match %}
 ```scala
 some_value match
+
+  // built-in interpolator:
   case s"Hello, $name!" => // Executes for Strings which start with "Hello, " and end in "!"
+
+  // hypothetical custom interpolator:
   case p"$a, 0" => // Executes for example for Points whose second coordinate is 0
 ```
 {% endtab %}
