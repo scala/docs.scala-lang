@@ -2,6 +2,7 @@
 layout: singlepage-overview
 title: Scala Compiler Options
 ---
+
 <style type="text/css">
 .definition-list dd { 
     margin-left: 2em;
@@ -21,11 +22,13 @@ title: Scala Compiler Options
 }
 </style>
 
-
-
 ## Introduction
 
-The Scala compiler `scalac` offers various **compiler options**, or **flags**, that change the compiler's default behavior. Some options just generate more compiler output in the form of diagnostics or warnings, while others change the result of compilation.
+The Scala compiler `scalac` offers various **compiler options**, or **flags**, that change the compiler's default behavior.
+
+This page documents compiler options for both **Scala 2** and **Scala 3**. While many options are shared between versions, some flags are version-specific, and their behavior may differ. Where relevant, options are documented with their supported Scala versions.
+
+Some options just generate more compiler output in the form of diagnostics or warnings, while others change the result of compilation.
 
 The Scala command `scala`, which runs scripts or compiled code, accepts the same options as the `scalac` compiler, plus a few more that determine how to run a program.
 
@@ -40,6 +43,7 @@ The Scala distribution includes a `man` page. If Scala is installed as a system 
 ```bash
 scalac [ <options> ] <source files>
 ```
+
 Boolean flags are specified in the usual way:
 
 `scalac -Werror -Xlint Hello.scala`
@@ -58,9 +62,11 @@ Conventionally, options have a prefix `-V` if they show "verbose" output;
 Several options have historical aliases, such as `-Xfatal-warnings` for `-Werror`.
 
 In Scala 2, default paths can be listed by running a tool in the distribution:
+
 ```
 scala scala.tools.util.PathResolver [ <options> ]
 ```
+
 That can help debug errors in options such as `--classpath`.
 
 ### Use compiler options with sbt
@@ -78,11 +84,13 @@ scalacOptions ++= Seq(          // use ++= to add to existing options
   "-Xlint",                     // exploit "trailing comma" syntax so you can add an option without editing this line
 )                               // for "trailing comma", the closing paren must be on the next line
 ```
+
 The convention is always to append to the setting with `++=` and to supply one option per line.
 
 Normally the last option will have a trailing comma so that `git diff` is a bit cleaner when options are added.
 
 {% for category in site.data.compiler-options %}
+
 <h2>{{ category.category }}</h2>
 {% if category.description %}{{ category.description | markdownify }}{% endif %}
 
@@ -123,7 +131,7 @@ Normally the last option will have a trailing comma so that `git diff` is a bit 
 {% endfor %}  
 </dl>
 
-{% endfor %}  
+{% endfor %}
 
 ### Targeting a version of the JVM
 
@@ -216,4 +224,3 @@ The deprecated option `-target` does not compile against the desired API, but on
 <dt>terminal</dt>
 <dd>the last phase during a compilation run</dd>
 </dl>
-    
