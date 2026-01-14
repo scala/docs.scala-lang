@@ -24,7 +24,7 @@ We’ll start by showing how to use sbt to build your Scala projects, and then w
 You can use several different tools to build your Scala projects, including Ant, Maven, Gradle, Mill, and more.
 But a tool named _sbt_ was the first build tool that was specifically created for Scala.
 
-> To install sbt, see [its download page](https://www.scala-sbt.org/download.html) or our [Getting Started][getting_started] page.
+> To install sbt, see [its download page](https://www.scala-sbt.org/1.x/docs/Setup.html) or our [Getting Started][getting_started] page.
 
 
 

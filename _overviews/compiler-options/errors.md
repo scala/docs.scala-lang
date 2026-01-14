@@ -5,8 +5,12 @@ title: Error Formatting
 
 # Introduction
 
-An advanced mechanism for formatting type errors and inspecting missing
-implicits has been introduced in Scala 2.13.6.
+Scala provides advanced mechanisms for formatting type errors and inspecting
+implicit resolution failures.
+
+These features are available in **Scala 2.13.6 and later**, and are also
+supported in **Scala 3**, where they continue to evolve. Some options may have
+different defaults or slightly different behavior between Scala 2 and Scala 3.
 It is based on the compiler plugin [splain](https://github.com/tek/splain).
 
 This tool abstracts several classes of compiler errors with simple data types
@@ -20,8 +24,8 @@ that allows a user to determine the root cause of an implicit error:
 
 # Basic Configuration
 
-* `-Vimplicits` enables printing of implicit chains
-* `-Vtype-diffs` enables colored diffs for found/required errors
+- `-Vimplicits` enables printing of implicit chains
+- `-Vtype-diffs` enables colored diffs for found/required errors
 
 ## Additional Configuration
 
@@ -56,7 +60,7 @@ The flag has been renamed to `-Vimplicits` and prints a compact list of all invo
 
 ![compact](/resources/img/implicits-compact.jpg)
 
-Here, `!I` stands for *could not find implicit value*, the name of the implicit
+Here, `!I` stands for _could not find implicit value_, the name of the implicit
 parameter is in yellow, and its type in green.
 
 If the parameter `-Vimplicits-verbose-tree` is given, all intermediate implicits will be
