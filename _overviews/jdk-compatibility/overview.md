@@ -13,17 +13,18 @@ Sometimes new JVM and JDK (Java Development Kit) versions require us to update S
 Scala 3 versions from 3.3 LTS through Scala 3.7 support JDK 8 and above.
 
 As per [this blog post](https://www.scala-lang.org/news/next-scala-lts-jdk.html),
-Scala 3.8 will have a new minimum JDK version of 17.
+Scala 3.8 and later versions have a new minimum JDK version of 17.
 
 The next Scala 3 LTS release will be Scala 3.9.
 
 Minimum Scala 3 versions for each JDK:
 
-| JDK         | 3.8*   | 3.4+     | 3.3 LTS  |
+| JDK         | 3.8    | 3.4+     | 3.3 LTS  |
 |:-----------:|:------:|:--------:|:--------:|
-| 25 (LTS)    | 3.8.0* | 3.7.1    | 3.3.6    |
-| 21 (LTS)    | 3.8.0* | 3.4.0    | 3.3.1    |
-| 17 (LTS)    | 3.8.0* | 3.4.0    | 3.3.0    |
+| 26          | 3.8.0  |          | 3.3.8*   |
+| 25 (LTS)    | 3.8.0  | 3.7.1    | 3.3.7    |
+| 21 (LTS)    | 3.8.0  | 3.4.0    | 3.3.1    |
+| 17 (LTS)    | 3.8.0  | 3.4.0    | 3.3.0    |
 | 11 (LTS)    |        | 3.4.0    | 3.3.0    |
 | 8 (LTS)     |        | 3.4.0    | 3.3.0    |
 
