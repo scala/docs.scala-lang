@@ -96,7 +96,7 @@ Pour les installer manuellement :
 1. Si vous n'avez pas Java 8 ou 11 installé, téléchargez
    Java depuis [Oracle Java 8](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html), [Oracle Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html),
    ou [AdoptOpenJDK 8/11](https://adoptopenjdk.net/). Référez-vous à la page [JDK Compatibility](/overviews/jdk-compatibility/overview.html) pour les détails de compatibilité entre Java et Scala.
-1. Installez [sbt](https://www.scala-sbt.org/download.html)
+1. Installez [sbt](https://www.scala-sbt.org/download/)
 
 ## Créer un projet "Hello World" avec sbt
 
