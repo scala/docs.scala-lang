@@ -28,7 +28,7 @@ permalink: "/zh-cn/scala3/book/:title.html"
 您可以使用多种不同的工具来构建您的 Scala 项目，包括 Ant、Maven、Gradle、Mill 等。
 但是名为 _sbt_ 的工具是第一个专门为 Scala 创建的构建工具。
 
-> 要安装 sbt，请参阅 [其下载页面](https://www.scala-sbt.org/download.html) 或我们的 [Getting Started][getting_started] 页面。
+> 要安装 sbt，请参阅 [其下载页面](https://www.scala-sbt.org/download/) 或我们的 [Getting Started][getting_started] 页面。
 
 ### 创建一个 “Hello, world” 项目
 

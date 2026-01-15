@@ -16,7 +16,7 @@ new-version: /scala3/book/tools-sbt.html#building-scala-projects-with-sbt
 
 You can use several different tools to build your Scala projects, including Ant, Maven, Gradle, and more. But a tool named [sbt](http://www.scala-sbt.org) was the first build tool that was specifically created for Scala, and these days it’s supported by [Lightbend](https://www.lightbend.com), the company that was co-founded by Scala creator Martin Odersky that also maintains Akka, the Play web framework, and more.
 
->If you haven’t already installed sbt, here’s a link to [its download page](http://www.scala-sbt.org/download.html).
+>If you haven’t already installed sbt, here’s a link to [its download page](http://www.scala-sbt.org/download/).
 
 
 

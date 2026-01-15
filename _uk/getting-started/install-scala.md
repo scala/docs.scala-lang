@@ -119,7 +119,7 @@ Scala version (default): {{site.scala-3-version}}
 1. Якщо Java 8 або 11 не встановлені, необхідно завантажити
    Java з [Oracle Java 8](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html), [Oracle Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html),
    або [AdoptOpenJDK 8/11](https://adoptopenjdk.net/). Перевірте [сумісність JDK](/overviews/jdk-compatibility/overview.html) для Scala/Java.
-1. Встановіть [sbt](https://www.scala-sbt.org/download.html)
+1. Встановіть [sbt](https://www.scala-sbt.org/download/)
 
 ## Створити проєкт "Hello World" з sbt
 
