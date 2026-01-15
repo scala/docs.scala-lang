@@ -385,7 +385,10 @@ Just like `head`, `tail` also works on strings:
 
 {% endtabs %}
 
-`tail` throws a _java.lang.UnsupportedOperationException_ if the list is empty, so just like `head` and `headOption`, there’s also a `tailOption` method, which is preferred in functional programming.
+`tail` throws a _java.lang.UnsupportedOperationException_ if the list is empty.
+Unlike `headOption`, Scala collections do not provide a `tailOption` method.
+To safely work with the tail of a collection, you can use pattern matching
+or methods such as `drop(1)`.
 
 A list can also be matched, so you can write expressions like this:
 
