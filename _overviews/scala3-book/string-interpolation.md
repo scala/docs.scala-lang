@@ -427,7 +427,7 @@ pt match case p"$a,$b" => a + b // a = 1, b = 2
 {% endtab %}
 {% endtabs %}
 
-We'd create a custom `p`-extractor which extracts two coordinates by first implementing a `StringContext` extension with something like:
+We'd create a custom extractor which extracts two coordinates, and make it act as a member `p` of `StringContext` with something like:
 
 {% tabs custom-interpolator-2-pattern class=tabs-scala-version %}
 
@@ -446,13 +446,11 @@ implicit class PointHelper(val sc: StringContext) {
 
 {% tab 'Scala 3' for=custom-interpolator-2-pattern %}
 ```scala
-import scala.language.implicitConversions
+class PointExtractor(sc: StringContext):
+    def unapply(point: Point): Option[(Double,Double)] = ???
 
-given Conversion[StringContext, PointHelper] = sc => PointHelper(sc)
-
-class PointHelper(val sc: StringContext):
-  object p:
-    def unapply(point: Point): Option[(Double, Double)] = ???
+extension (sc: StringContext)
+  def p = PointExtractor(sc)
 ```
 
 {% endtab %}
@@ -489,13 +487,7 @@ point match case someIdentifier.p(a, b)
 ```
 
 Where `someIdentifier` is an identifier guaranteed not to clash with anything in scope, and thus cannot be interracted with.
-
-Implicit conversion is then used to rewrite it to the following:
-
-```scala
-val someIdentifier = PointHelper(StringContext("",",",""))
-point match case someIdentifier.p(a, b)
-```
+And `p` is provided by our extension methods.
 {% endtab %}
 
 {% endtabs %}
@@ -543,23 +535,21 @@ Point(2, 3) match {
 
 {% tab 'Scala 3' for=implementation-pattern %}
 ```scala
-import scala.language.implicitConversions
-
 case class Point(x: Double, y: Double)
 
-given Conversion[StringContext, PointHelper] = sc => PointHelper(sc)
+extension (sc: StringContext)
+  def p = PointExtractor(sc)
 
-class PointHelper(val sc: StringContext):
-  object p:
-    def unapply(point: Point): Option[(Double,Double)] =
-      sc.parts match
-      
-        // checks if the pattern is p"$a,$b" or p"$a, $b"
-        case Seq("", "," | ", ", "") =>
-          Some((point.x, point.y))
-        
-        case _ =>
-          throw IllegalArgumentException("The pattern was not well-formed")
+class PointExtractor(sc: StringContext):
+  def unapply(point: Point): Option[(Double,Double)] =
+    sc.parts match
+
+      // checks if the pattern is p"$a,$b" or p"$a, $b"
+      case Seq("", "," | ", ", "") =>
+        Some((point.x, point.y))
+
+      case _ =>
+        throw IllegalArgumentException("The pattern was not well-formed")
 
 Point(2, 3) match
 //  case p"$x$y" => x + y // IllegalArgumentException: The pattern was not well-formed
