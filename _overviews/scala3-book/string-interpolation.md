@@ -348,7 +348,7 @@ p"${x/5}, $x"   // Point(2.4, 12.0)
 extension (sc: StringContext)
   def p(args: Double*): Point = {
     // reuse the `s`-interpolator and then split on ','
-    val pts = sc.s(args: _*).split(",", 2).map { _.toDoubleOption.getOrElse(0.0) }
+    val pts = sc.s(args*).split(",", 2).map { _.toDoubleOption.getOrElse(0.0) }
     Point(pts(0), pts(1))
   }
 

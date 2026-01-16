@@ -21,13 +21,14 @@ Minimum Scala 3 versions for each JDK:
 
 | JDK         | 3.8    | 3.4+     | 3.3 LTS  |
 |:-----------:|:------:|:--------:|:--------:|
-| 25 (LTS)    | 3.8.0  | 3.7.1    | 3.3.6    |
+| 26          | 3.8.0  |          | 3.3.8*   |
+| 25 (LTS)    | 3.8.0  | 3.7.1    | 3.3.7    |
 | 21 (LTS)    | 3.8.0  | 3.4.0    | 3.3.1    |
 | 17 (LTS)    | 3.8.0  | 3.4.0    | 3.3.0    |
 | 11 (LTS)    |        | 3.4.0    | 3.3.0    |
 | 8 (LTS)     |        | 3.4.0    | 3.3.0    |
 
-<!--\* = forthcoming; support available in [nightly builds](https://docs.scala-lang.org/overviews/core/nightlies.html)-->
+\* = forthcoming; support available in [nightly builds](https://docs.scala-lang.org/overviews/core/nightlies.html)
 
 Even when a version combination isn't listed as supported, most features might still work.
 
@@ -39,6 +40,7 @@ Minimum Scala 2 versions for each JDK:
 
 | JDK         | 2.13      | 2.12      |
 |:-----------:|:---------:|:---------:|
+| 26          | 2.13.18   | 2.12.21   |
 | 25 (LTS)    | 2.13.17   | 2.12.21   |
 | 21 (LTS)    | 2.13.11   | 2.12.18   |
 | 17 (LTS)    | 2.13.6    | 2.12.15   |
@@ -69,7 +71,7 @@ Even when a version combination isn't listed as supported, most features might s
 
 The sbt developers have primarily tested on JDK 8, 11, and 17, but 21 and 25 are believed to also work.
 
-Some tools may print warnings on startup on JDK 25.
+Some tools may print warnings on startup on JDK 25+.
 
 Using a different build tool, such as Gradle or Maven? We invite pull requests adding additional columns to this table.
 

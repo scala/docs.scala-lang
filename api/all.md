@@ -64,6 +64,8 @@ https://scala-ci.typesafe.com/artifactory/scala-integration/org/scala-lang/
 
 ## Previous releases
 
+* Scala 3.7.4
+  * [Library API](https://www.scala-lang.org/api/3.7.4/)
 * Scala 3.7.3
   * [Library API](https://www.scala-lang.org/api/3.7.3/)
 * Scala 3.7.2
