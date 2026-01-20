@@ -617,7 +617,7 @@ are implemented only once by a final method. See the section about
 The major alternatives to `@unroll` are listed below:
 
 1. [data-class](https://index.scala-lang.org/alexarchambault/data-class)
-2. [SBT Contrabad](https://www.scala-sbt.org/contraband/)
+2. [SBT Contraband](https://www.scala-sbt.org/contraband/)
 3. [Structural Data Structures](https://contributors.scala-lang.org/t/pre-sip-structural-data-structures-that-can-evolve-in-a-binary-compatible-way/5684)
 4. Avoiding language features like `case class`es or default parameters, as suggested by the
    [Binary Compatibility for Library Authors](https://docs.scala-lang.org/overviews/core/binary-compatibility-for-library-authors.html) documentation.
