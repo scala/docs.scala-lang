@@ -1094,4 +1094,73 @@ finally
 
 Assuming that the `openAndReadAFile` method uses the Java `java.io.*` classes to read a file and doesn't catch its exceptions, attempting to open and read a file can result in both a `FileNotFoundException` and an `IOException`, and those two exceptions are caught in the `catch` block of this example.
 
+## Custom Control Structures
+
+Scala allows you to define your own control structures. You can create methods that can be used in a way similar to built-in control structures such as `if`/`then`/`else` or `while` loops. This is primarily achieved using _by-name parameters_.
+
+### Defining your own control structures
+
+A by-name parameter is specified by prepending `=>` to the type, like `body: => Unit`. Unlike a normal by-value parameter, a by-name parameter is not evaluated when the method is called. Instead, it is evaluated every time it is referenced within the method.
+
+This feature allows you to accept a block of code that is run on demand, which is essential for defining control logic.
+
+Here is an example of a simple `repeat` loop that runs a block of code a specified number of times:
+
+{% tabs custom-control-1 %}
+{% tab 'Scala 3' %}
+```scala
+def repeat(n: Int)(body: => Unit): Unit =
+  if n > 0 then
+    body
+    repeat(n - 1)(body)
+
+// usage
+repeat(3) {
+  println("Hello")
+}
+```
+{% endtab %}
+{% endtabs %}
+
+The `body` parameter is evaluated each time `body` is mentioned in the `repeat` method. Because `repeat` is defined with multiple parameter lists, you can use the block syntax `{ ... }` for the second argument, making it look like a language keyword.
+
+### New in Scala 3.3: boundary and break
+
+<blockquote class="help-info">
+<i class="fa fa-info"></i>&nbsp;&nbsp;This feature was introduced in Scala 3.3.
+</blockquote>
+
+Scala 3.3 introduces `boundary` and `break` in the `scala.util` package to provide a clearer, more structured way to handle non-local returns or to "break" out of nested loops and control structures. This replaces the older `scala.util.control.Breaks` and creating methods that throw exceptions for control flow.
+
+To use it, you define a `boundary` block. Inside that block, you can call `break` to effectively return a value from that block immediately.
+
+Here is an example of a method that searches for the first index of a target element in a list of integers:
+
+{% tabs custom-control-2 %}
+{% tab 'Scala 3' %}
+```scala
+import scala.util.boundary, boundary.break
+
+def firstIndex(xs: List[Int], target: Int): Int =
+  boundary:
+    for (x, i) <- xs.zipWithIndex do
+      if x == target then break(i)
+    -1
+
+val xs = List(1, 2, 3, 4, 5)
+val found = firstIndex(xs, 3)   // 2
+val notFound = firstIndex(xs, 99) // -1
+```
+{% endtab %}
+{% endtabs %}
+
+In this example:
+1. `boundary` establishes a scope.
+2. The `for` loop iterates through the list.
+3. If `x == target`, `break(i)` is called. This immediately exits the `boundary` block and returns `i`.
+4. If the loop finishes without breaking, the code after the loop (`-1`) is returned.
+
+This mechanism provides a structured alternative to using exceptions for control flow.
+
+
 [matchable]: {{ site.scala3ref }}/other-new-features/matchable.html
