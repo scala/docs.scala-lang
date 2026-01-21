@@ -486,6 +486,44 @@ Ed
 {% endtabs %}
 
 
+
+## Array
+
+Scala `Array` elements are mutable, indexed, and have a fixed size.
+
+### Creating an Array
+
+Create an `Array` with initial values like this:
+
+{% tabs array-creation %}
+
+{% tab 'Scala 2 and 3' %}
+```scala
+val a = Array(1, 2, 3)
+```
+{% endtab %}
+
+{% endtabs %}
+
+### Accessing and updating elements
+
+Access and update `Array` elements just like an `ArrayBuffer` or `Vector`:
+
+{% tabs array-update %}
+
+{% tab 'Scala 2 and 3' %}
+```scala
+val a = Array(1, 2, 3)
+a(0)                  // 1
+a(0) = 10             // Array(10, 2, 3)
+```
+{% endtab %}
+
+{% endtabs %}
+
+If you need a resizable sequence, consider using `ArrayBuffer` instead.
+
+
 ## ArrayBuffer
 
 Use `ArrayBuffer` when you need a general-purpose, mutable indexed sequence in your Scala applications.
