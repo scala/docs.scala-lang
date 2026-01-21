@@ -83,32 +83,46 @@ important to target Scaladoc to both those unfamiliar with your code and
 experienced users who just need a quick reference. Here are some general
 guidelines:
 
--   Get to the point as quickly as possible. For example, say "returns
-    true if some condition" instead of "if some condition return true".
--   Try to format the first sentence of a method as "Returns XXX", as in
-    "Returns the first element of the List", as opposed to "this method
-    returns" or "get the first" etc. Methods typically **return**
-    things.
--   This same goes for classes; omit "This class does XXX"; just say
-    "Does XXX"
--   Create links to referenced Scala Library classes using the
-    square-bracket syntax, e.g. `[[scala.Option]]`
--   Summarize a method's return value in the `@return` annotation,
-    leaving a longer description for the main Scaladoc.
--   If the documentation of a method is a one line description of what
-    that method returns, do not repeat it with an `@return` annotation.
--   Document what the method *does do* not what the method *should do*.
-    In other words, say "returns the result of applying f to x" rather
-    than "return the result of applying f to x". Subtle, but important.
--   When referring to the instance of the class, use "this XXX", or
-    "this" and not "the XXX". For objects, say "this object".
--   Make code examples consistent with this guide.
--   Use the wiki-style syntax instead of HTML wherever possible.
--   Examples should use either full code listings or the REPL, depending
-    on what is needed (the simplest way to include REPL code is to
-    develop the examples in the REPL and paste it into the Scaladoc).
--   Make liberal use of `@macro` to refer to commonly-repeated values
-    that require special formatting.
+- Get to the point as quickly as possible. For example, say "returns
+  true if some condition" instead of "if some condition return true".
+- Try to format the first sentence of a method as "Returns XXX", as in
+  "Returns the first element of the List", as opposed to "this method
+  returns" or "get the first" etc. Methods typically **return**
+  things.
+- This same goes for classes; omit "This class does XXX"; just say
+  "Does XXX"
+- Create links to referenced Scala Library classes using the
+  square-bracket syntax, e.g. `[[scala.Option]]`.
+
+  **Note:** This only works when Scaladoc is configured with
+  `apiMappings` pointing to the Scala standard library API.
+
+  For example, in sbt:
+
+  ```scala
+  apiMappings += (scalaInstance.value.libraryJar ->
+    url(s"https://www.scala-lang.org/api/${scalaVersion.value}/"))
+  ```
+
+  Without this configuration, links to standard library classes will
+  not resolve.
+
+- Summarize a method's return value in the `@return` annotation,
+  leaving a longer description for the main Scaladoc.
+- If the documentation of a method is a one line description of what
+  that method returns, do not repeat it with an `@return` annotation.
+- Document what the method _does do_ not what the method _should do_.
+  In other words, say "returns the result of applying f to x" rather
+  than "return the result of applying f to x". Subtle, but important.
+- When referring to the instance of the class, use "this XXX", or
+  "this" and not "the XXX". For objects, say "this object".
+- Make code examples consistent with this guide.
+- Use the wiki-style syntax instead of HTML wherever possible.
+- Examples should use either full code listings or the REPL, depending
+  on what is needed (the simplest way to include REPL code is to
+  develop the examples in the REPL and paste it into the Scaladoc).
+- Make liberal use of `@macro` to refer to commonly-repeated values
+  that require special formatting.
 
 ## Packages
 
@@ -186,10 +200,10 @@ usage.
 #### Objects
 
 Since objects can be used for a variety of purposes, it is important to
-document *how* to use the object (e.g. as a factory, for implicit
+document _how_ to use the object (e.g. as a factory, for implicit
 methods). If this object is a factory for other objects, indicate as
 such here, deferring the specifics to the Scaladoc for the `apply`
-method(s). If your object *doesn't* use `apply` as a factory method, be
+method(s). If your object _doesn't_ use `apply` as a factory method, be
 sure to indicate the actual method names:
 
     /** Factory for [[mypackage.Person]] instances. */
