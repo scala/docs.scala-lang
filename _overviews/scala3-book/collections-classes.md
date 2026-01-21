@@ -507,7 +507,7 @@ val a = Array(1, 2, 3)
 
 ### Accessing and updating elements
 
-Access and update `Array` elements just like an `ArrayBuffer` or `Vector`:
+Access and update `Array` elements just like an `ArrayBuffer`:
 
 {% tabs array-update %}
 
