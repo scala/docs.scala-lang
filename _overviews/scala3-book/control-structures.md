@@ -1107,6 +1107,21 @@ This feature allows you to accept a block of code that is run on demand, which i
 Here is an example of a simple `repeat` loop that runs a block of code a specified number of times:
 
 {% tabs custom-control-1 %}
+{% tab 'Scala 2' %}
+```scala
+def repeat(n: Int)(body: => Unit): Unit = {
+  if (n > 0) {
+    body
+    repeat(n - 1)(body)
+  }
+}
+
+// usage
+repeat(3) {
+  println("Hello")
+}
+```
+{% endtab %}
 {% tab 'Scala 3' %}
 ```scala
 def repeat(n: Int)(body: => Unit): Unit =
@@ -1160,7 +1175,7 @@ In this example:
 3. If `x == target`, `break(i)` is called. This immediately exits the `boundary` block and returns `i`.
 4. If the loop finishes without breaking, the code after the loop (`-1`) is returned.
 
-This mechanism provides a structured alternative to using exceptions for control flow.
+This mechanism provides a structured alternative to using exceptions for control flow. Note that the compiler will optimize `boundary` and `break` to simple jumps if possible (for example, when the break doesn't happen within a nested method call), avoiding the overhead of exception handling.
 
 
 [matchable]: {{ site.scala3ref }}/other-new-features/matchable.html
