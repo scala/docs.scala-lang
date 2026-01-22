@@ -1106,7 +1106,8 @@ This feature allows you to accept a block of code that is run on demand, which i
 
 Here is an example of a simple `repeat` loop that runs a block of code a specified number of times:
 
-{% tabs custom-control-1 %}
+{% tabs custom-control-1 class="tabs-scala-version" %}
+
 {% tab 'Scala 2' %}
 ```scala
 def repeat(n: Int)(body: => Unit): Unit = {
