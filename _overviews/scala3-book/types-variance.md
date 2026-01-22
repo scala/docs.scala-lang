@@ -219,7 +219,7 @@ val f: Function[Buyable, Buyable] = b => b
 // OK to return a Buyable where a Item is expected
 val g: Function[Buyable, Item] = f
 
-// OK to provide a Book where a Buyable is expected
+// OK to provide a Buyable where a Book is expected
 val h: Function[Book, Buyable] = f
 ```
 {% endtab %}
