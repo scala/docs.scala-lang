@@ -1119,10 +1119,11 @@ def repeat(n: Int)(body: => Unit): Unit =
 repeat(3) {
   println("Hello")
 }
+```
 {% endtab %}
 
 {% tab 'Scala 2' %}
-
+```scala
 def repeat(n: Int)(body: => Unit): Unit = {
   if (n > 0) {
     body
@@ -1134,10 +1135,10 @@ def repeat(n: Int)(body: => Unit): Unit = {
 repeat(3) {
   println("Hello")
 }
+```
 {% endtab %}
 
 {% endtabs %}
-
 
 The `body` parameter is evaluated each time `body` is mentioned in the `repeat` method. Because `repeat` is defined with multiple parameter lists, you can use the block syntax `{ ... }` for the second argument, making it look like a language keyword.
 
