@@ -369,7 +369,7 @@ expansion, executing SQL queries, magic `$"identifier"` representations, and man
 ### Pattern Matching
 
 It is also possible to use string interpolation in patterns, for both built-in and user-defined interpolators:
-{% tabs example-pat-match %}
+{% tabs example-pat-match class=tabs-scala-version %}
 
 {% tab 'Scala 2' for=example-pat-match %}
 ```scala
