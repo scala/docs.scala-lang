@@ -1108,8 +1108,21 @@ Here is an example of a simple `repeat` loop that runs a block of code a specifi
 
 {% tabs custom-control-1 class="tabs-scala-version" %}
 
-{% tab 'Scala 2' %}
+{% tab 'Scala 3' %}
 ```scala
+def repeat(n: Int)(body: => Unit): Unit =
+  if n > 0 then
+    body
+    repeat(n - 1)(body)
+
+// usage
+repeat(3) {
+  println("Hello")
+}
+{% endtab %}
+
+{% tab 'Scala 2' %}
+
 def repeat(n: Int)(body: => Unit): Unit = {
   if (n > 0) {
     body
@@ -1121,9 +1134,11 @@ def repeat(n: Int)(body: => Unit): Unit = {
 repeat(3) {
   println("Hello")
 }
-```
 {% endtab %}
-{% tab 'Scala 3' %}
+
+{% endtabs %}
+
+
 ```scala
 def repeat(n: Int)(body: => Unit): Unit =
   if n > 0 then
