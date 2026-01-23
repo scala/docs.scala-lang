@@ -1106,23 +1106,8 @@ This feature allows you to accept a block of code that is run on demand, which i
 
 Here is an example of a simple `repeat` loop that runs a block of code a specified number of times:
 
-{% tabs custom-control-1 class="tabs-scala-version" %}
-
-{% tab 'Scala 3' %}
-```scala
-def repeat(n: Int)(body: => Unit): Unit =
-  if n > 0 then
-    body
-    repeat(n - 1)(body)
-
-// usage
-repeat(3) {
-  println("Hello")
-}
-```
-{% endtab %}
-
-{% tab 'Scala 2' %}
+{% tabs custom-control-1 class=tabs-scala-version %}
+{% tab 'Scala 2' for=custom-control-1 %}
 ```scala
 def repeat(n: Int)(body: => Unit): Unit = {
   if (n > 0) {
@@ -1137,7 +1122,19 @@ repeat(3) {
 }
 ```
 {% endtab %}
+{% tab 'Scala 3' for=custom-control-1 %}
+```scala
+def repeat(n: Int)(body: => Unit): Unit =
+  if n > 0 then
+    body
+    repeat(n - 1)(body)
 
+// usage
+repeat(3) {
+  println("Hello")
+}
+```
+{% endtab %}
 {% endtabs %}
 
 The `body` parameter is evaluated each time `body` is mentioned in the `repeat` method. Because `repeat` is defined with multiple parameter lists, you can use the block syntax `{ ... }` for the second argument, making it look like a language keyword.
