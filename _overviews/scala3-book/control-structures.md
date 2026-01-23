@@ -1151,8 +1151,8 @@ To use it, you define a `boundary` block. Inside that block, you can call `break
 
 Here is an example of a method that searches for the first index of a target element in a list of integers:
 
-{% tabs custom-control-2 class=tabs-scala-version %}
-{% tab 'Scala 3' for=custom-control-2 %}
+{% tabs custom-control-2 %}
+{% tab 'Scala 3 Only' %}
 ```scala
 import scala.util.boundary, boundary.break
 
