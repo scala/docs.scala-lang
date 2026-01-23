@@ -1,17 +1,14 @@
 ---
-layout: multipage-overview
-title: Advanced Type Features
-partof: scaladoc
-overview-name: Scaladoc
-num: 4
-permalink: /overviews/scaladoc/advanced-type-features.html
+layout: tour
+title: Higher-Kinded Types
+permalink: /tour/higher-kinded-types.html
 ---
 
-# Advanced Type Features in Scala
+# Higher-Kinded Types
 
-This section introduces some advanced type system features in Scala, including **Higher-Kinded Types (HKT)**, type bounds, and type projections.
+This section introduces Higher-Kinded Types (HKT), an advanced type system feature in Scala, along with related concepts like type bounds and type projections.
 
-## Higher-Kinded Types
+## What are Higher-Kinded Types?
 
 Higher-Kinded Types allow abstracting over type constructors. For example:
 
@@ -33,15 +30,16 @@ val optionFunctor = new Functor[Option] {
 val result = optionFunctor.map(Some(2))(_ * 2) // Some(4)
 ```
 
-## Type Bounds
+## Type Bounds and Typeclasses
 
-Scala supports upper and lower bounds:
+Scala supports upper and lower bounds and commonly uses typeclasses for comparison:
 
 ```scala
-def max[T <: Ordered[T]](x: T, y: T): T = if (x > y) x else y
+def max[T](x: T, y: T)(implicit ord: Ordering[T]): T =
+  if (ord.gt(x, y)) x else y
 ```
 
-Here `T <: Ordered[T]` means `T` must implement `Ordered`.
+Here `Ordering[T]` provides comparison logic for type `T` using a typeclass pattern.
 
 ## Type Projections
 
