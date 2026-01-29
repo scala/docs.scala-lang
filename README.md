@@ -84,6 +84,30 @@ The markdown used in this site uses [kramdown](https://kramdown.gettalong.org/) 
 
 There's a free markdown editor for OSX called [MacDown](https://github.com/MacDownApp/macdown). It's quite convenient to work with, and it generates the translated Markdown in real-time alongside of your editor window, as can be seen here:
 
+## Documentation tooling (mdoc)
+
+This repository uses **mdoc** to build Scala documentation.
+
+mdoc is a documentation tool that allows Scala code to be written directly inside
+Markdown files and evaluated at build time. This ensures that code examples in
+the documentation are always correct and stay in sync with the Scala compiler.
+
+### How mdoc is used in this repository
+
+- Markdown files may contain Scala code blocks
+- During the documentation build, mdoc:
+  - Compiles the Scala code
+  - Evaluates it
+  - Replaces the code blocks with their evaluated output (when applicable)
+
+This makes the documentation:
+- Executable
+- Always up to date
+- Safe from stale examples
+
+For more information, see the official mdoc project:
+https://scalameta.org/mdoc/
+
 ![MacDown Screen Shot](https://raw.githubusercontent.com/MacDownApp/macdown/3e2a2bf101c215c143bf00d9f857965f0ee82487/assets/screenshot.png)
 
 ## License ##
