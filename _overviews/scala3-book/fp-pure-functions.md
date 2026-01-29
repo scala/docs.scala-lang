@@ -13,7 +13,7 @@ Another feature that Scala offers to help you write functional code is the abili
 A _pure function_ can be defined like this:
 
 - A function `f` is pure if, given the same input `x`, it always returns the same output `f(x)`
-- The function’s output depends _only_ on its input variables and its implementation
+- The function’s output depends _only_ on its input variables and its implementation (and in case of a closure, any immutable data that it captures)
 - It only computes the output and does not modify the world around it
 
 This implies:
@@ -57,7 +57,7 @@ Conversely, the following functions are _impure_ because they violate the defini
 
 Impure functions often do one or more of these things:
 
-- Read from hidden state, i.e., they access variables and data not explicitly passed into the function as input parameters
+- Read from hidden mutable state, i.e., they access non-constant data that was not explicitly passed into the function as input parameters
 - Write to hidden state
 - Mutate the parameters they’re given, or mutate hidden variables, such as fields in their containing class
 - Perform some sort of I/O with the outside world
@@ -98,6 +98,21 @@ def double(i: Int): Int = i * 2
 
 {% endtabs %}
 
+The next example is bit more tricky. Here, `i` is not passed as a parameter, but instead referenced directly from the outside.
+This works in Scala because functions act as closures - they can capture the state around them. As long as that state is *immutable*, such a closure is still considered pure.
+In this case, the function always returns `6` and each call can be safely replaced with its result.
+
+{% tabs fp-pure-function-closure %}
+
+{% tab 'Scala 2 and 3' %}
+```scala
+val i = 3
+def double(): Int = i * 2
+```
+{% endtab %}
+
+{% endtabs %}
+
 If you’re comfortable with recursion, here’s a pure function that calculates the sum of a list of integers:
 
 {% tabs fp-pure-recursive-function class=tabs-scala-version %}
@@ -129,7 +144,7 @@ If you understand that code, you’ll see that it meets the pure function defini
 
 The first key point of this section is the definition of a pure function:
 
-> A _pure function_ is a function that depends only on its declared inputs and its implementation to produce its output.
+> A _pure function_ is a function that depends only on its declared inputs, captured constants, and its implementation to produce its output.
 > It only computes its output and does not depend on or modify the outside world.
 
 A second key point is that every real-world application interacts with the outside world.
