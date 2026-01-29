@@ -362,10 +362,10 @@ going beyond a few lines. Few local names are used (including
 parameters), and so there is no need to contrive long, descriptive
 names. This convention substantially improves the brevity of most Scala
 sources. This in turn improves readability, as most expressions fit in
-one line and the arguments to methods have descriptive type names.
+one line and the parameters for methods have descriptive type names.
 
 This convention only applies to parameters of very simple methods (and
 local fields for very simply classes); everything in the public
-interface should be descriptive. Also note that the names of arguments
+interface should be descriptive. Also note that the names of parameters
 are now part of the public API of a class, since users can use named
 parameters in method calls.
