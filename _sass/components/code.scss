@@ -51,11 +51,15 @@
         top: 5px;
 
         button {
-            border: none;
+            // border: none;
             background: #fff;
             font-size: $font-size-medium;
             color: $gray-darker;
             cursor: pointer;
+            border: 1px solid #E5EAEA;
+            border-radius: 3px;
+            margin: 4px;
+            padding: 3px 5px;
         }
     }
 
