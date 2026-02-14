@@ -89,35 +89,35 @@ The Committee came up with the curated list, based on 3 categories, "core", "ess
 
 Please see the [full list here](https://docs.google.com/spreadsheets/d/1GWJUo0U3JbBtrfg5vqgb6H5S6wlU5HnTxebLcHwD1zw/edit?usp=sharing), naming the "core" features as follows:
 
-[Early Initializers](https://dotty.epfl.ch/docs/reference/dropped-features/early-initializers.html)
+[Early Initializers](https://nightly.scala-lang.org/docs/reference/dropped-features/early-initializers.html)
 
-[Trait Parameters](https://dotty.epfl.ch/docs/reference/other-new-features/trait-parameters.html)
+[Trait Parameters](https://nightly.scala-lang.org/docs/reference/other-new-features/trait-parameters.html)
 
-[Intersection Types](https://dotty.epfl.ch/docs/reference/new-types/intersection-types.html)
+[Intersection Types](https://nightly.scala-lang.org/docs/reference/new-types/intersection-types.html)
 
-[Union Types](https://dotty.epfl.ch/docs/reference/new-types/union-types.html)
+[Union Types](https://nightly.scala-lang.org/docs/reference/new-types/union-types.html)
 
-[Dependent Function Types](https://dotty.epfl.ch/docs/reference/new-types/dependent-function-types.html)
+[Dependent Function Types](https://nightly.scala-lang.org/docs/reference/new-types/dependent-function-types.html)
 
-Implicit Function Types (https://dotty.epfl.ch/docs/reference/instances/implicit-function-types.html)
+Implicit Function Types (https://nightly.scala-lang.org/docs/reference/instances/implicit-function-types.html)
 
-[Weak Conformance](https://dotty.epfl.ch/docs/reference/dropped-features/weak-conformance.html)
+[Weak Conformance](https://nightly.scala-lang.org/docs/reference/dropped-features/weak-conformance.html)
 
-[Type Lambdas](https://dotty.epfl.ch/docs/reference/new-types/type-lambdas.html)
+[Type Lambdas](https://nightly.scala-lang.org/docs/reference/new-types/type-lambdas.html)
 
 Type Checking
 
-[Type Inference](https://dotty.epfl.ch/docs/reference/changed-features/type-inference.html)
+[Type Inference](https://nightly.scala-lang.org/docs/reference/changed-features/type-inference.html)
 
-[Implicit Resolution](https://dotty.epfl.ch/docs/reference/changed-features/implicit-resolution.html)
+[Implicit Resolution](https://nightly.scala-lang.org/docs/reference/changed-features/implicit-resolution.html)
 
-[Pattern matching](https://dotty.epfl.ch/docs/reference/changed-features/pattern-matching.html)
+[Pattern matching](https://nightly.scala-lang.org/docs/reference/changed-features/pattern-matching.html)
 
-[Existential Types](https://dotty.epfl.ch/docs/reference/dropped-features/existential-types.html)
+[Existential Types](https://nightly.scala-lang.org/docs/reference/dropped-features/existential-types.html)
 
-[Type Projection](https://dotty.epfl.ch/docs/reference/dropped-features/type-projection.html)
+[Type Projection](https://nightly.scala-lang.org/docs/reference/dropped-features/type-projection.html)
 
-[Class Shadowing](https://dotty.epfl.ch/docs/reference/dropped-features/class-shadowing.html)
+[Class Shadowing](https://nightly.scala-lang.org/docs/reference/dropped-features/class-shadowing.html)
 
 
 
@@ -162,5 +162,5 @@ We acknowledge that language experimentation is necessary for improving the lang
 [Features work progress overview](https://docs.google.com/spreadsheets/d/1GWJUo0U3JbBtrfg5vqgb6H5S6wlU5HnTxebLcHwD1zw/edit?usp=sharing)
 
 For more info please consult the Dotty documentation:
-https://dotty.epfl.ch/docs/reference/overview.html 
+https://nightly.scala-lang.org/docs/reference/overview.html 
 

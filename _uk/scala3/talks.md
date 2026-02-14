@@ -44,7 +44,7 @@ Deep Dive with Scala 3
 
 - (Mar 21, 2017) [Dotty Internals 1: Trees та Symbols](https://www.youtube.com/watch?v=yYd-zuDd3S8) 
   від [Dmitry Petrashko](http://x.com/darkdimius) 
-  [\[meeting notes\]](https://dotty.epfl.ch/docs/internals/dotty-internals-1-notes.html).
+  [\[meeting notes\]](https://nightly.scala-lang.org/docs/internals/dotty-internals-1-notes.html).
   Це запис зустрічі EPFL та Waterloo, де були представлені перші нотатки про Dotty: Trees та Symbols.
 
 - (Mar 21, 2017) [Dotty Internals 2: Types](https://www.youtube.com/watch?v=3gmLIYlGbKc) 

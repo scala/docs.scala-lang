@@ -351,7 +351,7 @@ The main objection to the proposal is the amount of choice the user has in the s
 
 ### Implicit Resolution changes
 
-Martin outines the rules in the [documentation](http://dotty.epfl.ch/docs/reference/changed-features/implicit-resolution.html):
+Martin outines the rules in the [documentation](http://nightly.scala-lang.org/docs/reference/changed-features/implicit-resolution.html):
 
 #### 1) Types must be explicit for implicit vals and results of defs
 - Exception for local block

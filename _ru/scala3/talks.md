@@ -35,7 +35,7 @@ versionSpecific: true
 
 - (ScalaDays 2019, Lausanne) [Scala, ориентированная на будущее: промежуточное представление TASTY](https://www.youtube.com/watch?v=zQFjC3zLYwo) от [Guillaume Martres](http://guillaume.martres.me/).
 
-- (Mar 21, 2017) [Dotty Internals 1: Trees & Symbols](https://www.youtube.com/watch?v=yYd-zuDd3S8) от [Dmitry Petrashko](http://x.com/darkdimius) [\[заметки\]](https://dotty.epfl.ch/docs/internals/dotty-internals-1-notes.html).
+- (Mar 21, 2017) [Dotty Internals 1: Trees & Symbols](https://www.youtube.com/watch?v=yYd-zuDd3S8) от [Dmitry Petrashko](http://x.com/darkdimius) [\[заметки\]](https://nightly.scala-lang.org/docs/internals/dotty-internals-1-notes.html).
   Это записанная встреча между EPFL и Waterloo, на которой мы представляем первые понятия внутри Dotty: деревья и символы.
 
 - (Mar 21, 2017) [Dotty Internals 2: Types](https://www.youtube.com/watch?v=3gmLIYlGbKc) от [Martin Odersky](http://x.com/odersky) и [Dmitry Petrashko](http://x.com/darkdimius).

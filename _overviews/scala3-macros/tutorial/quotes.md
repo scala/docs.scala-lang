@@ -299,7 +299,7 @@ def collectUsedMethods(func: Expr[FieldName => FieldName])(using Quotes): List[S
   recurse(func, Nil)
 ```
 
-For more details on how patterns like `$body(arg)` work please refer to a docs section on [the HOAS pattern](https://dotty.epfl.ch/docs/reference/metaprogramming/macros.html#hoas-patterns-1).
+For more details on how patterns like `$body(arg)` work please refer to a docs section on [the HOAS pattern](https://nightly.scala-lang.org/docs/reference/metaprogramming/macros.html#hoas-patterns-1).
 
 If we were to use this on an expression like this one:
 ```scala

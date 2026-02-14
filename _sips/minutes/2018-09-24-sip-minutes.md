@@ -13,11 +13,11 @@ The following agenda was distributed to attendees:
 | --- | --- | --- |
 | Summary of the Contributors thread [“Proposal to remove XML literals from the language”](https://contributors.scala-lang.org/t/proposal-to-remove-xml-literals-from-the-language/2146) | Sébastien Doeraene | Pending
 | Summary of the Contributors thread [“Proposal to remove the procedure Syntax”](https://contributors.scala-lang.org/t/proposal-to-remove-procedure-syntax/2143) | Josh Suereth | Pending |
-| [Proposal to add Intersection Types to the Language](https://dotty.epfl.ch/docs/reference/new-types/intersection-types.html) | Martin Odersky | Discussion opened until the 25th October 2018, comments welcomed [here](https://contributors.scala-lang.org/t/proposal-to-add-intersection-types-to-the-language/2351) |
-| [Proposal to Add Union Types to the Language](https://dotty.epfl.ch/docs/reference/new-types/union-types.html) | Martin Odersky | Discussion opened until the 25th October 2018, comments welcomed [here](https://contributors.scala-lang.org/t/proposal-to-add-union-types-to-the-language/2352) | 
+| [Proposal to add Intersection Types to the Language](https://nightly.scala-lang.org/docs/reference/new-types/intersection-types.html) | Martin Odersky | Discussion opened until the 25th October 2018, comments welcomed [here](https://contributors.scala-lang.org/t/proposal-to-add-intersection-types-to-the-language/2351) |
+| [Proposal to Add Union Types to the Language](https://nightly.scala-lang.org/docs/reference/new-types/union-types.html) | Martin Odersky | Discussion opened until the 25th October 2018, comments welcomed [here](https://contributors.scala-lang.org/t/proposal-to-add-union-types-to-the-language/2352) | 
 | Proposal to add Implicit Function Types to the Language | Martin Odersky | Discussion opened until the 25th October 2018, comments welcomed [here](https://contributors.scala-lang.org/t/proposal-to-add-implicit-function-types-to-the-language/2353) |
-| [Proposal to add Dependent Function Types to the Language](https://dotty.epfl.ch/docs/reference/new-types/dependent-function-types.html) | Martin Odersky | Discussion opened until the 25th October 2018, comments welcomed [here](https://contributors.scala-lang.org/t/proposal-to-add-dependent-function-types-to-the-language/2354/1) |
-| [Proposal to add Trait Parameters to the Language](https://dotty.epfl.ch/docs/reference/other-new-features/trait-parameters.html) | Martin Odersky | Discussion opened until the 25th October 2018, comments welcomed [here](https://contributors.scala-lang.org/t/proposal-to-add-trait-parameters-to-the-language/2356) |
+| [Proposal to add Dependent Function Types to the Language](https://nightly.scala-lang.org/docs/reference/new-types/dependent-function-types.html) | Martin Odersky | Discussion opened until the 25th October 2018, comments welcomed [here](https://contributors.scala-lang.org/t/proposal-to-add-dependent-function-types-to-the-language/2354/1) |
+| [Proposal to add Trait Parameters to the Language](https://nightly.scala-lang.org/docs/reference/other-new-features/trait-parameters.html) | Martin Odersky | Discussion opened until the 25th October 2018, comments welcomed [here](https://contributors.scala-lang.org/t/proposal-to-add-trait-parameters-to-the-language/2356) |
 
 Jorge Vicente Cantero was the Process Lead and Darja Jovanovic was the secretary.
 
@@ -125,7 +125,7 @@ An overview of the second batch can be found [in this Scala Contributors thread]
 Feedback on these proposals is open until the 25th October 2018, as describe
 in the linked Scala Contributors thread.
 
-#### [Proposal to add Intersection Types](https://dotty.epfl.ch/docs/reference/new-types/intersection-types.html) and [Union Types](https://dotty.epfl.ch/docs/reference/new-types/union-types.html) to the language
+#### [Proposal to add Intersection Types](https://nightly.scala-lang.org/docs/reference/new-types/intersection-types.html) and [Union Types](https://nightly.scala-lang.org/docs/reference/new-types/union-types.html) to the language
 
  ([YouTube time: 20’49’’ - 24'01](https://youtu.be/tEb4UF6RJrM?t=1250))
 
@@ -156,7 +156,7 @@ presence of specialization). [More](https://youtu.be/tEb4UF6RJrM?t=1913)
 
 #### Proposal to add Implicit Function Types to the Language
 
-URL: https://dotty.epfl.ch/docs/reference/instances/implicit-function-types.html
+URL: https://nightly.scala-lang.org/docs/reference/instances/implicit-function-types.html
 
 ([YouTube time: 39’01’’ - 43’11’’](https://youtu.be/tEb4UF6RJrM?t=2341))
 
@@ -182,7 +182,7 @@ definition of scope injection comes more from a typing rules perspective
 rather than the lexical point of view. **Martin** agrees that if there is a
 name clash with implicit function types there is a problem indeed.
 
-#### [Proposal to add Dependent Function Types to the Language](https://dotty.epfl.ch/docs/reference/new-types/dependent-function-types.html)
+#### [Proposal to add Dependent Function Types to the Language](https://nightly.scala-lang.org/docs/reference/new-types/dependent-function-types.html)
  ([YouTube time: 43’11’’ - 44’40’’](https://youtu.be/tEb4UF6RJrM?t=2591))
 
 **Martin** mentions that dependent function types is the last big addition to Scala's type checker. The reason why they are added is because Scala has dependent methods and there is a need for dependent functions (the same rationale has been doing with regards to implicit methods and implicit function types). It's an obvious win because dependent function types allow us to abstract over the idea of implicit methods in functions, so the more we can do the better. Initially he was afraid of the feature because he thought it violated this Scala principle that in the end anything is an instance of a class in some way and it turned out that a new encoding of dependent function types made this initial argument moot. Dependent function types are now encoded as implicit function types with type refinements, so this way it doesn't violate that principle.
@@ -190,7 +190,7 @@ name clash with implicit function types there is a problem indeed.
 and Martin agrees and says that they are looking into that, but maybe not for
 Scala 3.0 (Guillaume Martres is pushing for polymorphic function types).
 
-#### [Proposal to add Trait Parameters to the Language](https://dotty.epfl.ch/docs/reference/other-new-features/trait-parameters.html)
+#### [Proposal to add Trait Parameters to the Language](https://nightly.scala-lang.org/docs/reference/other-new-features/trait-parameters.html)
 
 ([YouTube time: 44’42’’ - end ](https://youtu.be/tEb4UF6RJrM?t=2682)) 
 

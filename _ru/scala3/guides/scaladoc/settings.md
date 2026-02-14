@@ -161,8 +161,8 @@ URL-адрес, указывающий на документ JSON, содерж�
 ```
 {
   "versions": {
-    "3.0.x": "https://dotty.epfl.ch/3.0.x/docs/index.html",
-    "Nightly": "https://dotty.epfl.ch/docs/index.html"
+    "3.0.x": "https://nightly.scala-lang.org/3.0.x/docs/index.html",
+    "Nightly": "https://nightly.scala-lang.org/docs/index.html"
   }
 }
 ```

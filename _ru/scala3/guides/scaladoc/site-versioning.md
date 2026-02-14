@@ -24,8 +24,8 @@ Scaladoc предоставляет удобный способ переключ
 ```
 {
   "versions": {
-    "3.0.x": "https://dotty.epfl.ch/3.0.x/docs/index.html",
-    "Nightly": "https://dotty.epfl.ch/docs/index.html"
+    "3.0.x": "https://nightly.scala-lang.org/3.0.x/docs/index.html",
+    "Nightly": "https://nightly.scala-lang.org/docs/index.html"
   }
 }
 ```
@@ -39,7 +39,7 @@ Scaladoc предоставляет удобный способ переключ
 и каждый scaladoc должен заранее настроить свой URL-адрес, например, в sbt:
 
 ```
-doc / scalacOptions ++= Seq("-versions-dictionary-url", "https://dotty.epfl.ch/versions.json")
+doc / scalacOptions ++= Seq("-versions-dictionary-url", "https://nightly.scala-lang.org/versions.json")
 ```
 
 

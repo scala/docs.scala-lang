@@ -9,7 +9,7 @@ partof: minutes
 
 The meeting took place without a pre-defined agenda, but with the overall goal of reviewing progress and
 updating the status of features in the Scala 3 feature list
-([link](https://dotty.epfl.ch/docs/reference/overview.html)).
+([link](https://nightly.scala-lang.org/docs/reference/overview.html)).
 
 The topics that were discussed were:
 

@@ -272,7 +272,7 @@ get it, please, for 3.0?".  Seth comments how Sébastien comment sounds like "to
 
 ### Review the "main functions" SIP
 
-Docs: <https://dotty.epfl.ch/docs/reference/changed-features/main-functions.html>
+Docs: <https://nightly.scala-lang.org/docs/reference/changed-features/main-functions.html>
 
 Sébastien shares that there are only a few minutes left in the meeting but the gist is that DelayedInit is gone
 (so far) and the obvious question is: what do you do for a simple main method?  The idea for now is to have an

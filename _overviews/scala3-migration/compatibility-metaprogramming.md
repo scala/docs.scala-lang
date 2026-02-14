@@ -25,7 +25,7 @@ When you try to, it simply returns an error.
  -- Error: /src/main/scala/example/Example.scala:10:45 
  10 |  val documentFormat = Json.format[Document]
     |                            ^
-    |Scala 2 macro cannot be used in Scala 3. See https://dotty.epfl.ch/docs/reference/dropped-features/macros.html
+    |Scala 2 macro cannot be used in Scala 3. See https://nightly.scala-lang.org/docs/reference/dropped-features/macros.html
     |To turn this error into a warning, pass -Xignore-scala2-macros to the compiler
 {% endhighlight %}
 
