@@ -270,7 +270,7 @@ trait Greeter {
 }
 ```
 
-เราสามารถขยาย traint ได้ด้วย keyword `extents` และ overrid implementation ด้วย keyword `override`
+เราสามารถขยาย trait ได้ด้วย keyword `extents` และ overrid implementation ด้วย keyword `override`
 
 ```scala mdoc
 class DefaultGreeter extends Greeter
