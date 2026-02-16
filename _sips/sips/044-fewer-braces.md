@@ -39,7 +39,7 @@ It seems very natural to generalize the current class syntax indentation syntax 
 
 ## Proposed solution
 
-The proposed solution is described in detail in https://dotty.epfl.ch/docs/reference/other-new-features/indentation.html#variant-indentation-marker--for-arguments. I inline the relevant sections here:
+The proposed solution is described in detail in https://nightly.scala-lang.org/docs/reference/other-new-features/indentation.html#variant-indentation-marker--for-arguments. I inline the relevant sections here:
 
 First, here is the spec for colons at ends of lines for template bodies. This is part of official Scala 3. I cited it here for context.
 
@@ -290,7 +290,7 @@ This is a tradeoff between conciseness and consistency. In the interest of minim
 
 ## Related work
 
- - Doc page for proposed change: https://dotty.epfl.ch/docs/reference/other-new-features/indentation.html#variant-indentation-marker--for-arguments
+ - Doc page for proposed change: https://nightly.scala-lang.org/docs/reference/other-new-features/indentation.html#variant-indentation-marker--for-arguments
 
  - Merged PR implementing the proposal under experimental flag: https://github.com/lampepfl/dotty/pull/15273/commits/421bdd660b0456c2ff1ae386f032c41bb1e0212a
 

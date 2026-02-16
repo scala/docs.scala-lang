@@ -584,7 +584,7 @@ As far as we know, those use cases have no workaround if we make type member ext
 
 Notable prior work related to this proposal includes:
 
-- [Current reference page for Scala 3 match types](https://dotty.epfl.ch/docs/reference/new-types/match-types.html)
+- [Current reference page for Scala 3 match types](https://nightly.scala-lang.org/docs/reference/new-types/match-types.html)
 - [Abstractions for Type-Level Programming](https://infoscience.epfl.ch/record/294024), Olivier Blanvillain, Chapter 4 (Match Types)
 - ["Pre-Sip" discussion in the Contributors forum](https://contributors.scala-lang.org/t/pre-sip-proper-specification-for-match-types/6265) (submitted at the same time as this SIP document)
 - [PR with the proposed implementation](https://github.com/lampepfl/dotty/pull/18262)
