@@ -45,7 +45,7 @@ List(1, 2, 3).map(times10)     // List(10,20,30)
 ## 方法和函数的区别
 
 {% comment %}
-NOTE: I got the following “method” definition from this page (https://dotty.epfl.ch/docs/reference/changed-features/eta-expansion-spec.html), but I’m not sure it’s 100% accurate now that 方法 can exist outside of classes/traits/objects.
+NOTE: I got the following “method” definition from this page (https://nightly.scala-lang.org/docs/reference/changed-features/eta-expansion-spec.html), but I’m not sure it’s 100% accurate now that 方法 can exist outside of classes/traits/objects.
 I’ve made a few changes to that description that I hope are more accurate and up to date.
 {% endcomment %}
 

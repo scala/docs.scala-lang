@@ -1071,7 +1071,7 @@ def pattern(x: Matchable): String = x match
 
 {% comment %}
 TODO: Add in the new Scala 3 syntax shown on this page:
-http://dotty.epfl.ch/docs/reference/changed-features/match-syntax.html
+http://nightly.scala-lang.org/docs/reference/changed-features/match-syntax.html
 {% endcomment %}
 
 ## try/catch/finally

@@ -110,9 +110,9 @@ The minimal version of Scala 3 supported by Scala Native is 3.1.0, due to fatal 
 A subset of [the Kind Projector](https://github.com/typelevel/kind-projector) syntax is supported by Scala 3 under the `-Ykind-projector` option.
 
 AdditionalLy, we now have the following features that make `kind-projector` not needed in many cases:
-- [Type Lambdas](http://dotty.epfl.ch/docs/reference/new-types/type-lambdas.html)
-- [Polymorphic Functions](http://dotty.epfl.ch/docs/reference/new-types/polymorphic-function-types.html)
-- [Kind Polymorphism](http://dotty.epfl.ch/docs/reference/other-new-features/kind-polymorphism.html)
+- [Type Lambdas](http://nightly.scala-lang.org/docs/reference/new-types/type-lambdas.html)
+- [Polymorphic Functions](http://nightly.scala-lang.org/docs/reference/new-types/polymorphic-function-types.html)
+- [Kind Polymorphism](http://nightly.scala-lang.org/docs/reference/other-new-features/kind-polymorphism.html)
 
 You can learn more about the Kind Projector migration in its [dedicated page](plugin-kind-projector.html).
 

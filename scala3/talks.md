@@ -34,7 +34,7 @@ Deep Dive with Scala 3
 
 - (ScalaDays 2019, Lausanne) [Future-proofing Scala: the TASTY intermediate representation](https://www.youtube.com/watch?v=zQFjC3zLYwo) by [Guillaume Martres](http://guillaume.martres.me/).
 
-- (Mar 21, 2017) [Dotty Internals 1: Trees & Symbols](https://www.youtube.com/watch?v=yYd-zuDd3S8) by [Dmitry Petrashko](http://x.com/darkdimius) [\[meeting notes\]](https://dotty.epfl.ch/docs/internals/dotty-internals-1-notes.html).
+- (Mar 21, 2017) [Dotty Internals 1: Trees & Symbols](https://www.youtube.com/watch?v=yYd-zuDd3S8) by [Dmitry Petrashko](http://x.com/darkdimius) [\[meeting notes\]](https://nightly.scala-lang.org/docs/internals/dotty-internals-1-notes.html).
   This is a recorded meeting between EPFL and Waterloo, where we introduce first notions inside Dotty: Trees and Symbols.
 
 - (Mar 21, 2017) [Dotty Internals 2: Types](https://www.youtube.com/watch?v=3gmLIYlGbKc) by [Martin Odersky](http://x.com/odersky) and [Dmitry Petrashko](http://x.com/darkdimius).

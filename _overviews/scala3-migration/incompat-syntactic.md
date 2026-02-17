@@ -26,7 +26,7 @@ It is worth noting that most of the changes can be automatically handled during 
 
 ## Restricted Keywords
 
-The list of Scala 3 keywords can be found [here](https://dotty.epfl.ch/docs/internals/syntax.html#keywords).
+The list of Scala 3 keywords can be found [here](https://nightly.scala-lang.org/docs/internals/syntax.html#keywords).
 _Regular_ keywords cannot be used as identifiers, whereas _soft_ keywords are not restricted.
 
 For the matter of migrating from Scala 2.13 to Scala 3, only the subset of new _regular_ keywords are problematic.

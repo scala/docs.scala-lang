@@ -18,8 +18,8 @@ Example JSON file:
 ```
 {
   "versions": {
-    "3.0.x": "https://dotty.epfl.ch/3.0.x/docs/index.html",
-    "Nightly": "https://dotty.epfl.ch/docs/index.html"
+    "3.0.x": "https://nightly.scala-lang.org/3.0.x/docs/index.html",
+    "Nightly": "https://nightly.scala-lang.org/docs/index.html"
   }
 }
 ```
@@ -29,7 +29,7 @@ This enforce us to provide the setting while generating docs for each of the ver
 The important thing to note is that there is only one JSON file to avoid redundancy and each scaladoc must set up its URL location beforehand, for example, in sbt:
 
 ```
-doc / scalacOptions ++= Seq("-versions-dictionary-url", "https://dotty.epfl.ch/versions.json")
+doc / scalacOptions ++= Seq("-versions-dictionary-url", "https://nightly.scala-lang.org/versions.json")
 ```
 
 

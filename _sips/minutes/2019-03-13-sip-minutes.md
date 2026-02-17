@@ -188,7 +188,7 @@ So we intend to accept the proposal as-is, with just an addition that we are exp
 
 Miles expressed some doubt about the proposal, but he's not going to make a stand about it.
 
-Martin: The text at [https://dotty.epfl.ch/docs/reference/changed-features/pattern-matching.html](https://dotty.epfl.ch/docs/reference/changed-features/pattern-matching.html) needs to be updated (in other respects than just the implicits question) before we vote on it. (Maybe there's an inflight PR about it? Not sure.)
+Martin: The text at [https://nightly.scala-lang.org/docs/reference/changed-features/pattern-matching.html](https://nightly.scala-lang.org/docs/reference/changed-features/pattern-matching.html) needs to be updated (in other respects than just the implicits question) before we vote on it. (Maybe there's an inflight PR about it? Not sure.)
 
 ### **structural types**
 
@@ -318,7 +318,7 @@ The "A takes more inferable parameters than B" clause of point 7 is under discus
 
 Note that for compatibility, 3.0 will still have to allow implicit def for conversions, for cross-building. See "relationship with Scala 2 implicits" section on the Dotty site, under "Contextual" (add link).
 
-Guillaume is uncomfortable with implied mapping to different underlying semantics (points 1, 2, 3 at [https://dotty.epfl.ch/docs/reference/contextual/relationship-implicits.html](https://dotty.epfl.ch/docs/reference/contextual/relationship-implicits.html)). Will users think of these things in terms of the desugaring into Scala 2 implicits (as Guillaume is doing), or will they understand them directly (as Martin hopes)?
+Guillaume is uncomfortable with implied mapping to different underlying semantics (points 1, 2, 3 at [https://nightly.scala-lang.org/docs/reference/contextual/relationship-implicits.html](https://nightly.scala-lang.org/docs/reference/contextual/relationship-implicits.html)). Will users think of these things in terms of the desugaring into Scala 2 implicits (as Guillaume is doing), or will they understand them directly (as Martin hopes)?
 
 Miles shares Guillaume's worry about implied mapping down to different underlying constructs/semantics.
 
@@ -346,7 +346,7 @@ Seb: there are two widely different things in this proposal that are mixed toget
 
 Martin: avoiding the word implicit was something of an exercise, to avoid confusing the old system and new system in the minds of people who know the old system. In the long run, it might be better to just go ahead and talk about "implicits".
 
-Seth: how will we teach this from scratch? Martin: pages like [https://dotty.epfl.ch/docs/reference/contextual/givens.html](https://dotty.epfl.ch/docs/reference/contextual/givens.html) actually are an attempt at this.
+Seth: how will we teach this from scratch? Martin: pages like [https://nightly.scala-lang.org/docs/reference/contextual/givens.html](https://nightly.scala-lang.org/docs/reference/contextual/givens.html) actually are an attempt at this.
 
 Miles: in the `ListOrd[T]` example, it's essentially a function definition, a function from `Ord[T]` to `Ord[List[T]]`, why doesn't it look like I'm writing a function?
 
@@ -544,7 +544,7 @@ The "perhaps changing" part is JEP 301 which hasn't been updated recently, is it
 
 ### **ADTs**
 
-[https://dotty.epfl.ch/docs/reference/enums/adts.html](https://dotty.epfl.ch/docs/reference/enums/adts.html)
+[https://nightly.scala-lang.org/docs/reference/enums/adts.html](https://nightly.scala-lang.org/docs/reference/enums/adts.html)
 
 Guillaume & Martin: this went through many iterations, there were hundreds of comments, we're pretty sure this is the design.
 

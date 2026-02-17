@@ -32,7 +32,7 @@ compiler_resources:
   - title: "Scala 3 contributing guide"
     description: "Guide to the Scala 3 Compiler and fixing an issue"
     icon: "fa fa-code-merge"
-    link: https://dotty.epfl.ch/docs/contributing/index.html
+    link: https://nightly.scala-lang.org/docs/contributing/index.html
 
 spree_resources:
   - title: "Scala open source sprees"

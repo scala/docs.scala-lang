@@ -13,7 +13,7 @@ The agenda distributed to the attendees is [here](https://docs.google.com/docume
 
 ### Implicit conversions
 
-[https://dotty.epfl.ch/docs/reference/contextual/conversions.html](https://dotty.epfl.ch/docs/reference/contextual/conversions.html)
+[https://nightly.scala-lang.org/docs/reference/contextual/conversions.html](https://nightly.scala-lang.org/docs/reference/contextual/conversions.html)
 
 Mostly an uncontroversial change.
 
@@ -44,7 +44,7 @@ Decision: let's try that
 
 ### Exports
 
-[https://dotty.epfl.ch/docs/reference/other-new-features/export.html](https://dotty.epfl.ch/docs/reference/other-new-features/export.html)
+[https://nightly.scala-lang.org/docs/reference/other-new-features/export.html](https://nightly.scala-lang.org/docs/reference/other-new-features/export.html)
 
 The motivation is the same as package objects, and is by-and-large replaced by top-level definitions.
 
@@ -185,7 +185,7 @@ If we get nullability over the summer, then we'll try to land it in Scala 3
 
 ### Inline
 
-[https://dotty.epfl.ch/docs/reference/metaprogramming/inline.html](https://dotty.epfl.ch/docs/reference/metaprogramming/inline.html)
+[https://nightly.scala-lang.org/docs/reference/metaprogramming/inline.html](https://nightly.scala-lang.org/docs/reference/metaprogramming/inline.html)
 
 Presented by Nicolas
 
@@ -204,7 +204,7 @@ Martin: Hmm, we might not need inline on parameters
 
 ### Staging
 
-[https://dotty.epfl.ch/docs/reference/metaprogramming/macros.html](https://dotty.epfl.ch/docs/reference/metaprogramming/macros.html)
+[https://nightly.scala-lang.org/docs/reference/metaprogramming/macros.html](https://nightly.scala-lang.org/docs/reference/metaprogramming/macros.html)
 
 Presented by Olivier
 
@@ -236,7 +236,7 @@ Miles: how long to finish everything?
 
 ### Typeclass Derivation
 
-[https://dotty.epfl.ch/docs/reference/contextual/derivation.html](https://dotty.epfl.ch/docs/reference/contextual/derivation.html)
+[https://nightly.scala-lang.org/docs/reference/contextual/derivation.html](https://nightly.scala-lang.org/docs/reference/contextual/derivation.html)
 
 Presented by Miles.
 
@@ -255,7 +255,7 @@ Martin: But we said we weren't adding anything to the standard library in 3.0
 
 ### Erased Terms
 
-[https://dotty.epfl.ch/docs/reference/experimental/erased-defs.html](https://dotty.epfl.ch/docs/reference/experimental/erased-defs.html)
+[https://nightly.scala-lang.org/docs/reference/experimental/erased-defs.html](https://nightly.scala-lang.org/docs/reference/experimental/erased-defs.html)
 
 Olivier: Are they necessary?
   * Yes's and No's
