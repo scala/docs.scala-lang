@@ -83,7 +83,7 @@ library_resources:
     description: "Our code of conduct is practical agreement for a healthy community"
     icon: "fa fa-handshake-simple"
     link: "https://scala-lang.org/conduct"
-  - title: Binary Compatability Guide
+  - title: Binary Compatibility Guide
     description: "Evolve your library over time, giving users the confidence to upgrade safely."
     icon: "fa fa-puzzle-piece"
     link: "/overviews/core/binary-compatibility-for-library-authors.html"
