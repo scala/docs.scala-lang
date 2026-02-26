@@ -105,12 +105,12 @@ val newNumbers = oldNumbers.map(_ * 2)
 ### Лаконичный синтаксис
 
 Scala имеет краткий, удобочитаемый синтаксис. 
-Например, переменные создаются лаконично, а их типы понятны:
+Например, переменные и значения создаются лаконично, а их типы понятны:
 
 {% tabs scala-features-3 %}
 {% tab 'Scala 2 и 3' for=scala-features-3 %}
 ```scala
-val nums = List(1,2,3)
+var nums = List(1,2,3)
 val p = Person("Martin", "Odersky")
 ```
 {% endtab %}
