@@ -33,121 +33,112 @@ The instructions below cover both Scala 2 and Scala 3.
 
 {% include inner-documentation-sections.html links=page.newcomer_resources %}
 
-##  Install Scala on your computer
+##  Install the Scala CLI
 
-Installing Scala means installing various command-line tools such as the Scala compiler and build tools.
-We recommend using the Scala installer tool "Coursier" that automatically installs all the requirements, but you can still manually install each tool.
+The Scala CLI is a powerful tool that allows you to compile and run Scala code without needing to install anything else
+(not even Java!). It is a great way to get started with Scala quickly. However, it is not a full build tool like
+[sbt](https://www.scala-sbt.org) or [Mill](https://mill-build.org). Please refer to their websites if you want to get
+started with them.
 
-### Using the Scala Installer (recommended way)
+The Scala CLI can be installed on your computer for global access, and/or in your project directory as a launcher script
+for anyone to build your project without the need to install anything.\
+Installing on both your computer and in your project will cover you and anyone else trying to build your project!
 
-The Scala installer is a tool named [Coursier](https://get-coursier.io/docs/cli-overview), whose main command is named `cs`.
-It ensures that a JVM and standard Scala tools are installed on your system.
-Install it on your system with the following instructions.
+### On your computer
 
 <!-- Display tabs for each OS -->
-{% tabs install-cs-setup-tabs class=platform-os-options %}
+{% tabs install-scala-computer-os class=platform-os-options %}
 
 <!-- macOS -->
-{% tab macOS for=install-cs-setup-tabs %}
-Run the following command in your terminal, following the on-screen instructions:
-{% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-brew %}
-{% altDetails cs-setup-macos-nobrew  "Alternatively, if you don't use Homebrew:" %}
-  On the Apple Silicon (M1, M2, …) architecture:
-  {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-arm64 %}
-  Otherwise, on the x86-64 architecture:
-  {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macOS-x86-64 %}
-{% endaltDetails %}
+{% tab macOS for=install-scala-computer-os %}
+Install Scala CLI with [Homebrew](https://brew.sh/) by running the following one-line command in your terminal:
+{% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.macos-install-cli %}
+Follow [the documentation on Scala CLI's website](https://scala-cli.virtuslab.org/install) for more install options.
 {% endtab %}
 <!-- end macOS -->
 
 <!-- Linux -->
-{% tab Linux for=install-cs-setup-tabs %}
-  Run the following command in your terminal, following the on-screen instructions.
-
-  On the x86-64 architecture:
-  {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.linux-x86-64 %}
-  Otherwise, on the ARM64 architecture:
-  {% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.linux-arm64 %}
+{% tab Linux for=install-scala-computer-os %}
+Run the following one-line command in your terminal:
+{% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.linux-install-cli %}
+Follow [the documentation on Scala CLI's website](https://scala-cli.virtuslab.org/install) for more install options.
 {% endtab %}
 <!-- end Linux -->
 
 <!-- Windows -->
-{% tab Windows for=install-cs-setup-tabs %}
-  Download and execute [the Scala installer for Windows]({{site.data.setup-scala.windows-link}})
-  based on Coursier, and follow the on-screen instructions.
+{% tab Windows for=install-scala-computer-os %}
+Install Scala CLI with [WinGet](https://learn.microsoft.com/en-us/windows/package-manager/winget/#install-winget)
+by running the following one-line command in your terminal:
+{% include code-snippet.html language='bash' codeSnippet=site.data.setup-scala.windows-install-cli %}
+Follow [the documentation on Scala CLI's website](https://scala-cli.virtuslab.org/install) for more install options.
 {% endtab %}
 <!-- end Windows -->
 
 <!-- Other -->
-{% tab Other for=install-cs-setup-tabs defaultTab %}
-  <noscript>
-    <p><span style="font-style:italic;">JavaScript is disabled, click the tab relevant for your OS.</span></p>
-  </noscript>
-  Follow the documentation from Coursier on
-    [how to install and run `cs setup`](https://get-coursier.io/docs/cli-installation).
+{% tab Other for=install-scala-computer-os defaultTab %}
+<noscript>
+<p><span style="font-style:italic;">JavaScript is disabled, click the tab relevant for your OS.</span></p>
+</noscript>
+Follow [the documentation on Scala CLI's website](https://scala-cli.virtuslab.org/install) for more install options.
 {% endtab %}
 <!-- end Other -->
 
 {% endtabs %}
-<!-- End tabs -->
+<!-- End tabs for each OS -->
 
-> <i class="fa fa-info"></i>&nbsp;&nbsp; You may need to restart your terminal, log out,
-> or reboot in order for the changes to take effect.
-{: .help-info}
+### In your project
 
-<!-- Alternative Detail - test the `scala` command -->
-{% altDetails testing-your-setup 'Testing your setup' %}
-Check your setup with the command `scala -version`, which should output:
-```bash
-$ scala -version
-Scala code runner version: 1.4.3
-Scala version (default): {{site.scala-3-version}}
+<!-- Display tabs for each OS -->
+{% tabs install-scala-project-os class=platform-os-options %}
+
+<!-- macOS/Linux -->
+{% tab macOS/Linux for=install-scala-project-os %}
+Download the Scala CLI launcher in your project directory:
+```sh
+curl https://raw.githubusercontent.com/VirtusLab/scala-cli/refs/heads/main/scala-cli.sh > scala && chmod +x scala
 ```
-{% endaltDetails %}
-<!-- end Alternative Detail -->
+We also recommend downloading the corresponding launcher for Windows users:
+```sh
+curl https://raw.githubusercontent.com/VirtusLab/scala-cli/refs/heads/main/scala-cli.bat > scala.bat
+```
+{% endtab %}
+<!-- end macOS/Linux -->
 
+<!-- Windows -->
+{% tab Windows for=install-scala-project-os %}
+Download the Scala CLI launcher in your project directory:
+```sh
+Invoke-WebRequest "https://raw.githubusercontent.com/VirtusLab/scala-cli/refs/heads/main/scala-cli.bat" -OutFile "scala.bat”
+```
+We also recommend downloading the corresponding launcher for macOS and Linux users:
+```sh
+Invoke-WebRequest "https://raw.githubusercontent.com/VirtusLab/scala-cli/refs/heads/main/scala-cli.sh" > scala
+git update-index --chmod=+x scala
+```
+{% endtab %}
+<!-- end Windows -->
 
-Along with managing JVMs, `cs setup` also installs useful command-line tools:
+<!-- Other -->
+{% tab Other for=install-scala-project-os defaultTab %}
+<noscript>
+<p><span style="font-style:italic;">JavaScript is disabled, click the tab relevant for your OS.</span></p>
+</noscript>
+Follow [the documentation on Scala CLI's website](https://scala-cli.virtuslab.org/install) for more install options.
+{% endtab %}
+<!-- end Other -->
 
-| Commands | Description |
-|----------|-------------|
-| `scalac` | the Scala compiler |
-| `scala`, `scala-cli` | [Scala CLI](https://scala-cli.virtuslab.org), interactive toolkit for Scala |
-| `sbt`, `sbtn` | The [sbt](https://www.scala-sbt.org/) build tool |
-| `amm` | [Ammonite](https://ammonite.io/) is an enhanced REPL |
-| `scalafmt` | [Scalafmt](https://scalameta.org/scalafmt/) is the Scala code formatter |
+{% endtabs %}
+<!-- End tabs for each OS -->
 
-For more information about `cs`, read
-[coursier-cli documentation](https://get-coursier.io/docs/cli-overview).
-
-> `cs setup` installs the Scala 3 compiler and runner by default (the `scalac` and
-> `scala` commands, respectively). Whether you intend to use Scala 2 or 3,
-> this is usually not an issue because most projects use a build tool that will
-> use the correct version of Scala irrespective of the one installed "globally".
-> Nevertheless, you can always launch a specific version of Scala using
-> ```
-> $ cs launch scala:{{ site.scala-version }}
-> $ cs launch scalac:{{ site.scala-version }}
-> ```
-> If you prefer Scala 2 to be run by default, you can force that version to be installed with:
-> ```
-> $ cs install scala:{{ site.scala-version }} scalac:{{ site.scala-version }}
-> ```
-
-### ...or manually
-
-You only need two tools to compile, run, test, and package a Scala project: Java 8 or 11,
-and Scala CLI.
-To install them manually:
-
-1. if you don't have Java 8 or 11 installed, download
-   Java from [Oracle Java 8](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html), [Oracle Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html),
-   or [AdoptOpenJDK 8/11](https://adoptopenjdk.net/). Refer to [JDK Compatibility](/overviews/jdk-compatibility/overview.html) for Scala/Java compatibility detail.
-1. Install [Scala CLI](https://scala-cli.virtuslab.org/install)
+We recommend committing the launchers together with your code so that everyone working on your project can compile and
+run the code without needing to install anything (not even Java).
 
 ## Using the Scala CLI
 
-In a directory of your choice, which we will call `<project-dir>`, create a file named `hello.scala` with the following code:
+This section assumes you installed the Scala CLI on your computer. If you installed the Scala CLI in your project
+directory only, you should run the following commands with `./scala` instead of `scala`.
+
+In your project directory, which we will call `<project-dir>`, create a file named `hello.scala` with the following code:
 ```scala
 //> using scala {{site.scala-3-version}}
 
@@ -250,7 +241,7 @@ Type in expressions for evaluation. Or try :help.
 scala>
 ```
 
-Write a line of code to be executed and press enter.
+Write a line of code to be executed and press enter:
 ```
 scala> println("Hello, World!")
 Hello, World!
@@ -266,7 +257,7 @@ val i: Int = 1
 scala>
 ```
 
-A new value of type `Int` has been created. If you provide an expression that can be evaluated, its result will be stored in an automatically created value.
+A new value of type `Int` has been created. If you provide an expression that can be evaluated, its result will be stored in an automatically created value:
 ```
 scala> i + 3
 val res0: Int = 4
