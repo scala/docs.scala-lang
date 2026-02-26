@@ -89,7 +89,11 @@ Links to social sites. For example:
 
 `-social-links:github::https://github.com/scala/scala3,discord::https://discord.com/invite/scala,twitter::https://x.com/scala_lang`
 
-Valid values are of the form: `[github|twitter|gitter|discord]::link`. Scaladoc also supports `custom::link::white_icon_name::black_icon_name`. In this case icons must be present in `images/` directory.
+Valid values are of the form: `[github|twitter|gitter|discord]::link`. Scaladoc also supports `custom::link::light_icon_name[::dark_icon_name]`(Dark icon is optional). For example:
+  
+`-social-links:scalalang::https://docs.scala-lang.org/::logo-scalalang.png[::logo-scalalang-dark.png]`
+
+In this case icons must be present in `docs/_assets/images/` directory.
 
 ##### -skip-by-id
 
