@@ -160,9 +160,34 @@ After configuring this feature in our example, the code looks like this:
 and the output looks like this:
 ![]({{ site.baseurl }}/resources/images/scala3/scaladoc/snippet-includes.png)
 
-You can specify more than one include. Note that the order in which they are specified defines the order of inclusion. 
+You can specify more than one include. Note that the order in which they are specified defines the order of inclusion.
 
 **Warning**: you can only include snippets that are defined above the target snippet.
+
+### Hidden snippets
+
+Sometimes you need a snippet solely as a preamble for other snippets (via `sc-compile-with`), but you don't want it to appear in the rendered documentation. For this, you can use the `sc-hidden` flag. A hidden snippet is compiled and available for inclusion, but it is not rendered in the output.
+
+To use this feature, add `sc-hidden` along with `sc-name` to the snippet:
+
+````
+```scala sc-hidden sc-name:my-preamble
+import scala.collection.immutable.List
+val xs: List[Int] = List(1, 2, 3)
+```
+````
+
+Then reference it from a later snippet with `sc-compile-with`:
+
+````
+```scala sc-compile-with:my-preamble
+val ys = xs.map(x => x * 2)
+```
+````
+
+Only the second snippet will be visible in the rendered documentation, but both are compiled and the preamble is included in the compilation context of the second snippet.
+
+**Note**: `sc-hidden` should always be used together with `sc-name`, since a hidden snippet without a name cannot be referenced and would serve no purpose. A warning is issued if `sc-name` is missing.
 
 ## Advanced configuration
 
