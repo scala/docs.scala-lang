@@ -47,10 +47,8 @@ redirect_from:
 
 ## Nightly builds
 
-API documentation for nightly builds is not currently available in browsable form.
-
-Jars of nightly builds, including scaladoc jars, are available from
-https://scala-ci.typesafe.com/artifactory/scala-integration/org/scala-lang/
+* Scala nightly following {{site.scala-3-version}}
+  * [Library API](https://nightly.scala-lang.org/index.html)
 
 <!-- https://github.com/scala/scala-dev/issues/759
 
