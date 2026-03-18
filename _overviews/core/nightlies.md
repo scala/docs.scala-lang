@@ -34,11 +34,11 @@ Note: The nightly repository is supported since Scala CLI v1.9.0 onwards (or `sc
 
 You can run nightlies with commands such as:
 
-    scala -e 'println("Hello") -S 3.nightly
-    scala -e 'println("Hello") -S 3.3.nightly
-    scala -e 'println("Hello") -S 2.13.nightly
-    scala -e 'println("Hello") -S 2.nightly # same as 2.13.nightly
-    scala -e 'println("Hello") -S 2.12.nightly
+    scala -e 'println("Hello")' -S 3.nightly
+    scala -e 'println("Hello")' -S 3.3.nightly
+    scala -e 'println("Hello")' -S 2.13.nightly
+    scala -e 'println("Hello")' -S 2.nightly # same as 2.13.nightly
+    scala -e 'println("Hello")' -S 2.12.nightly
 
 The default command is `repl` (unless sources are passed, in which case it switches to `run`), but all the other scala-cli subcommands such as `compile` and `run` work, too. It also works with `//> using` directives in your script itself, for example:
 
