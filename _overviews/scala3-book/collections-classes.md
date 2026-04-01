@@ -87,9 +87,10 @@ The basics of each type are demonstrated in the following sections.
 
 ### A note about immutable collections
 
-In the sections that follow, whenever the word _immutable_ is used, it’s safe to assume that the type is intended for use in a _functional programming_ (FP) style.
-With these types you don’t modify the collection; you apply functional methods to the collection to create a new result.
+Immutable collections can safely be shared directly, no need for a copy (including a deep copy if all elements are immutable as well).
 
+Using them works slightly differently from using mutable collections. So, in the sections that follow, whenever the word _immutable_ is used it’s safe to assume that the type is intended for use in a _functional programming_ (FP) style.
+In FP you don’t modify a collection directly; instead you apply functional methods which will return a new collection, and continue with the result. See [Adding elements to a List](https://docs.scala-lang.org/scala3/book/collections-classes.html#adding-elements-to-a-list) below for some examples.
 
 
 ## Choosing a sequence
@@ -120,7 +121,7 @@ The next several sections briefly demonstrate the `List`, `Vector`, and `ArrayBu
 ## `List`
 
 [The List type](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html) is a linear, immutable sequence.
-This just means that it’s a linked-list that you can’t modify.
+This just means that it’s a (singly) linked-list that you can’t modify.
 Any time you want to add or remove `List` elements, you create a new `List` from an existing `List`.
 
 ### Creating Lists
@@ -191,31 +192,33 @@ val a = List(1, 2, 3)
 
 {% endtabs %}
 
-When working with a `List`, _prepend_ one element with `::`, and prepend another `List` with `:::`, as shown here:
+When working with a `List`, _prepend_ one element with `+:`, and prepend another `List` with `++:`, as shown here:
 
 {% tabs adding-elements-example %}
 
 {% tab 'Scala 2 and 3' %}
 ```scala
-val b = 0 :: a              // List(0, 1, 2, 3)
-val c = List(-1, 0) ::: a   // List(-1, 0, 1, 2, 3)
+val b = 0 +: a              // List(0, 1, 2, 3)
+val c = -1 +: b             // List(-1, 0, 1, 2, 3)
+val c1 = List(-1, 0) ++: a  // List(-1, 0, 1, 2, 3)
 ```
 {% endtab %}
 
 {% endtabs %}
 
-You can also _append_ elements to a `List`, but because `List` is a singly-linked list, you should generally only prepend elements to it;
+You can also _append_ a `List` (`:+` for a single element, `:++` for another `List`), but because `List` is a singly-linked list, you should generally only prepend elements to it;
 appending elements to it is a relatively slow operation, especially when you work with large sequences.
 
-> Tip: If you want to prepend and append elements to an immutable sequence, use `Vector` instead.
+> If you want to prepend _and_ append elements to an immutable sequence, use `Vector` instead.
 
 Because `List` is a linked-list, you shouldn’t try to access the elements of large lists by their index value.
 For instance, if you have a `List` with one million elements in it, accessing an element like `myList(999_999)` will take a relatively long time, because that request has to traverse all those elements.
-If you have a large collection and want to access elements by their index, use a `Vector` or `ArrayBuffer` instead.
+
+> If you have a large collection and want to access elements by their index, use a `Vector` or `ArrayBuffer` instead.
 
 ### How to remember the method names
 
-These days IDEs help us out tremendously, but one way to remember those method names is to think that the `:` character represents the side that the sequence is on, so when you use `+:` you know that the list needs to be on the right, like this:
+These days IDEs help us out tremendously, but one way to remember those method names is to think that the **col**on (`:`) is on the same side as the **col**lection, so when you use `+:` you know that the list needs to be on the right, like this:
 
 {% tabs list-prepending %}
 
