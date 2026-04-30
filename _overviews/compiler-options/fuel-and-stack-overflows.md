@@ -6,10 +6,7 @@ versionSpecific: false
 
 ## Fuel and Stack Overflows
 
-Scala lets you, the programmer, write deeply nested types if you find it necessary to model your business logic.
-
-Because types can refer to other types in ways that recurse without the base case being obvious, it's possible to write incorrect code whose recursion never terminates,
-or correct code whose recursion is so deep that the compiler could run out of stack space while compiling.
+Scala's type system is expressive enough to describe types with deeply nested or recursive structure. When the compiler operates on such types, it may recurse very deeply and eventually exhaust its allocated stack. This can happen with incorrect code whose recursion never terminates, but also with correct code whose recursion is simply too deep.
 
 **Starting with Scala 3.9.0**, the compiler tracks its stack use using "fuel", an abstract resource.
 Recursive operations in the compiler consume fuel, and once a predefined fuel limit is reached, compilation fails.
