@@ -51,6 +51,9 @@ it's likely you'll run into stack overflow errors.
 
 ### Increasing stack space (all versions)
 
+This depends on where you're running the compiler, _not_ on what target you're compiling for.
+For instance, if you're running the Scala compiler on your laptop using `scala-cli` to target Scala.js, you should follow the JVM instructions.
+
 On the **JVM**, pass `-Xss...` to the JVM, for example `-Xss16M`.
 How to do this depends on what IDE and/or build tool you are using. For sbt, add it to `.jvmopts`.
 
