@@ -414,3 +414,7 @@ documents include:
 
 It's also useful to look at other plugins and to study existing phases
 within the compiler source code.
+
+## What about Scala 3?
+
+[This page](https://docs.scala-lang.org/scala3/reference/changed-features/compiler-plugins.html) describes what's different about Scala 3 compiler plugins.
