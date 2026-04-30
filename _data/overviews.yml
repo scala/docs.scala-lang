@@ -302,6 +302,11 @@
       icon: cog
       url: "compiler-options/optimizer.html"
       description: "The compiler can perform various optimizations."
+    - title: Fuel and Stack Overflows
+      by: Solal Pirelli
+      icon: cog
+      url: "compiler-options/fuel-and-stack-overflows.html"
+      description: "When compiling deeply nested types, be aware of stack space limitations."
 
 - category: Legacy
   description: "Guides covering features no longer relevant to recent Scala versions (2.12+)."
