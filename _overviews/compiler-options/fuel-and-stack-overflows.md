@@ -32,7 +32,7 @@ For **Scala 3.8 and earlier**, as well as **Scala 2**:
   In that case, then it's a compiler bug. Please report it on the [Scala 2 bug tracker](https://github.com/scala/bug/issues)
   or [Scala 3 bug tracker](https://github.com/scala/scala3/issues), but check first if it's a duplicate of an existing ticket.
 
-### I ran out of fuel...
+### I ran out of fuel... (Scala 3.9+)
 
 This means your types contain unusually deep recursion.
 
