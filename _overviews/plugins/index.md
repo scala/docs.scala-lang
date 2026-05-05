@@ -1,6 +1,6 @@
 ---
 layout: singlepage-overview
-title: Scala Compiler Plugins
+title: Scala 2 Compiler Plugins
 ---
 
 **Lex Spoon (2008)**  
@@ -12,17 +12,17 @@ A compiler plugin is a compiler component that lives in a separate JAR
 file from the main compiler. The compiler can then load that plugin and
 gain extra functionality.
 
-This tutorial briefly walks you through writing a plugin for the Scala
+This tutorial briefly walks you through writing a plugin for the Scala 2
 compiler. It does not go into depth on how to make your plugin
 actually do something useful, but just shows the basics needed to
-write a plugin and hook it into the Scala compiler.
+write a plugin and hook it into the Scala 2 compiler.
 
 ## You can read, but you can also watch TV
 
 The contents of this guide overlaps substantially with Seth Tisue's
 talk "Scala Compiler Plugins 101" ([32 minute video](https://www.youtube.com/watch?v=h5NZjuxS5Qo)).
-Although the talk is from April 2018, nearly all of the information
-in it still applies (as of November 2020).
+Although the talk is from April 2018, virtually all of the information
+in it still applies (as of April 2026).
 
 ## When to write a plugin
 
@@ -226,22 +226,44 @@ so publishing a plugin is like publishing any library.
 See the [Library Author Guide]({{site.baseurl}}/overviews/contributors/index.html)
 and/or your build tool's documentation on publishing.
 
+### Binary compatibility of compiler plugins
+
+Unlike the Scala standard library, the Scala compiler APIs are not guaranteed to be either forwards or backwards binary compatible. Therefore, **all compiler plugins should be published fully cross-versioned**.
+
+What is full cross-versioning? It means that when you publish, you should publish only for a _specific_ Scala 2 version, for example version 2.13.18, since nothing guarantees that the same plugin JAR will work on earlier or later versions such as 2.13.17 or 2.13.19.
+
+A fully cross-versioned artifact has an artifact suffix of (for example) `_2.13.18` rather than the `_2.13` that an ordinary library would use.
+
+It is normal to publish your plugin only for the _latest_ Scala 2 version. Some plugin authors do publish new versions of their plugins across a spectrum of recent Scala 2 versions, but it's not universally done. For many plugins, it's fine to require that your users use the latest Scala 2 if they want to use the latest version of your plugin.
+
+If you are building your plugin with sbt, you can publish it fully cross-versioned by adding this to your `build.sbt`:
+
+    crossVersion := CrossVersion.full
+
+Depending on your sbt version, you may also need to set `crossTarget`, as per [sbt issue 5097](https://github.com/sbt/sbt/issues/5097).
+
+Note that full cross-versioning comes with a cost for plugin maintainers. Namely, every time a new Scala 2 version comes out, you must re-publish your plugin for the new Scala version.
+
+You may find that your plugin still works without any changes even on the new Scala version. If that's the case, the usual practice is to publish for the new Scala version without changing the plugin's version number. This is known as "back-publishing". Doing it this way allows your users to bump their Scala versions without needing to also bump the version of your plugin.
+
 ## Using a plugin from sbt
 
 To make it convenient for end users to use your plugin once it has
 been published, sbt provides an `addCompilerPlugin` method you can
 call in your build definition, e.g.:
 
-    addCompilerPlugin("org.divbyzero" %% "divbyzero" % "1.0")
+    addCompilerPlugin(
+      "org.divbyzero" %% "divbyzero" % "1.0"
+      cross CrossVersion.full)
 
 `addCompilerPlugin` performs multiple actions. It adds the JAR to the
 classpath (the compilation classpath only, not the runtime classpath)
 via `libraryDependencies`, and it also customizes `scalacOptions` to
 enable the plugin using `-Xplugin`.
 
-For more details, see [Compiler Plugin
-Support](https://www.scala-sbt.org/1.x/docs/Compiler-Plugins.html) in
-the sbt manual.
+Note the use of `cross CrossVersion.full`, which is necessary if (and only if) the plugin is published with full cross-versioning, as described in the previous section. Most plugins are published this way.
+
+For more details, see [Compiler Plugin Support](https://www.scala-sbt.org/1.x/docs/Compiler-Plugins.html) in the sbt manual.
 
 ## Using your plugin in Mill
 
@@ -267,13 +289,9 @@ object foo extends ScalaModule {
 
 ```
 
-Please notice, that compiler plugins are typically bound to the full
-version of the compiler, hence you have to use the `:::` (instead of
-normal `::`) between the organization and the artifact name,
-to declare your dependency.
+Because compiler plugins are typically fully cross-versioned (as described above), users must use `:::` (instead of normal `::`) between the organization and the artifact name when adding the plugin.
 
-For more information about plugin usage in Mill, please refer to the
-[Mill documentation for Scala compiler plugins](https://mill-build.org/mill/Scala_Module_Config.html#_scala_compiler_plugins).
+For more information about plugin usage in Mill, please refer to the [Mill documentation for Scala compiler plugins](https://mill-build.org/mill/Scala_Module_Config.html#_scala_compiler_plugins).
 
 ## Developing compiler plugins with an IDE
 
@@ -396,3 +414,7 @@ documents include:
 
 It's also useful to look at other plugins and to study existing phases
 within the compiler source code.
+
+## What about Scala 3?
+
+[This page](https://docs.scala-lang.org/scala3/reference/changed-features/compiler-plugins.html) describes what's different about Scala 3 compiler plugins.
