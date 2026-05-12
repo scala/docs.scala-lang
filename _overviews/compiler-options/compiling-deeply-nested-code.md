@@ -56,5 +56,3 @@ How to do this depends on what IDE and/or build tool you are using. For sbt, add
 
 On **Scala.js**, you cannot increase the stack space, because neither JavaScript nor WebAssembly allow this.
 You can try increasing the fuel limit anyway, but you may have to instead limit your use of recursive types.
-
-On **Scala Native**, ...TODO what?...
