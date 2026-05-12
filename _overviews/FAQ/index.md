@@ -335,7 +335,7 @@ See [answer on Stack Overflow](https://stackoverflow.com/a/65258340/4111404).
 
 ### I got a `StackOverflowError` while compiling my code. Is it a compiler bug?
 
-It might be. Please read the [page on fuel and stack overflows](/overviews/compiler-options/fuel-and-stack-overflows.html).
+It might be. Please read the [page on compiling deeply nested code](/overviews/compiler-options/compiling-deeply-nested-code.html).
 
 ### I set a setting in sbt but nothing happened. Why?
 

@@ -1,10 +1,10 @@
 ---
 layout: singlepage-overview
-title: Fuel and Stack Overflows
+title: Compiling Deeply Nested Code
 versionSpecific: false
 ---
 
-## Fuel and Stack Overflows
+## Compiling Deeply Nested Code
 
 Scala's type system is expressive enough to describe types with deeply nested or recursive structure. When the compiler operates on such types, it may recurse very deeply and eventually exhaust its allocated stack. This can happen with incorrect code whose recursion never terminates, but also with correct code whose recursion is simply too deep.
 
