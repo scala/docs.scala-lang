@@ -40,7 +40,7 @@ If it is intentional, you must increase the fuel limit, **and** increase the sta
 ### Increasing the fuel limit (Scala 3.9+)
 
 To increase the fuel limit, pass `-Xmax-fuel:...` to the compiler.
-You can check the default limit with ...TODO how?...
+You can check the default limit by calling the compiler with `-Xmax-fuel:help`.
 
 If possible, also increase the stack space, see below.
 The default fuel limit is meant to work with normally-sized stacks, so if you increase the fuel limit without also increasing the stack space,
