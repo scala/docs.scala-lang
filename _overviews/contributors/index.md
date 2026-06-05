@@ -213,8 +213,8 @@ $ sbt publishSigned
 ~~~
 
 `sbt-sonatype` will package your project and ask your PGP passphrase to sign the files with your PGP key.
-It will then upload the files to Sonatype using your account credentials. When the task is finished, you can
-check the artifacts in the [Nexus Repository Manager](https://oss.sonatype.org) (under “Staging Repositories” in the side menu − if you do not see it, make sure you are logged in).
+It will then upload the files to Sonatype using your account credentials. Deployments can be viewed in the
+[Central Publisher Portal](https://central.sonatype.com/publishing/deployments) once the staging repository has been closed (see `sonatypeRelease` below).
 
 Finally, perform the release with the `sonatypeRelease` sbt task:
 
