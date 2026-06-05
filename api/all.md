@@ -62,6 +62,8 @@ redirect_from:
 
 ## Previous releases
 
+* Scala 3.8.3
+  * [Library API](https://www.scala-lang.org/api/3.8.3/)
 * Scala 3.8.2
   * [Library API](https://www.scala-lang.org/api/3.8.2/)
 * Scala 3.8.1
