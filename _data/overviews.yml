@@ -165,6 +165,14 @@
       description: "We regularly publish 'nightlies' of both Scala 3 and Scala 2 so that users can preview and test the contents of upcoming releases. Here's how to find and use these versions."
       url: "core/nightlies.html"
 
+- category: Security
+  description: "Writing secure Scala applications."
+  overviews:
+    - title: Deserialization Security and Gadget Chains
+      description: "Deserializing data from untrusted sources is a common source of remote code execution vulnerabilities on the JVM. This guide explains how deserialization attacks and gadget chains work, how they affect Scala programs and the standard library, and how to protect your applications."
+      icon: shield
+      url: "core/deserialization-security.html"
+
 - category: "Tools"
   description: "Reference material on core Scala tools like the Scala REPL and Scaladoc generation."
   overviews:
