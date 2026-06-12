@@ -13,7 +13,6 @@ layout: multipage-overview
 permalink: "/zh-cn/scala3/book/:title.html"
 ---
 
-
 {% comment %}
 TODO: mention Array, ArrayDeque, ListBuffer, Queue, Stack, StringBuilder?
 LATER: note that methods like `+`, `++`, etc., are aliases for other methods
@@ -31,9 +30,9 @@ Scala 提供了丰富的集合类型，但您可以从其中的几个开始，�
 
 从高层次看 Scala 集合，有三个主要类别可供选择：
 
-- **序列**是元素的顺序集合，可以是_有索引的_（如数组）或_线性的_（如链表）
+- **序列** 是元素的顺序集合，可以是*有索引的*（如数组）或*线性的*（如链表）
 - **映射** 包含键/值对的集合，例如 Java `Map`、Python 字典或 Ruby `Hash`
-- **集合** 是无重复元素的无序集合
+- **集合（Set）** 是无重复元素的无序集合
 
 所有这些都是基本类型，并且具有用于特定目的的子类型，例如并发、缓存和流式传输。
 除了这三个主要类别之外，还有其他有用的集合类型，包括范围、堆栈和队列。
@@ -42,8 +41,8 @@ Scala 提供了丰富的集合类型，但您可以从其中的几个开始，�
 
 作为简要概述，接下来的三个图显示了 Scala 集合中类和 trait 的层次结构。
 
-第一张图显示了_scala.collection_包中的集合类型。
-这些都是高级抽象类或 traits，它们通常有_不可变_和_可变_的实现。
+第一张图显示了*scala.collection*包中的集合类型。
+这些都是高级抽象类或 traits，它们通常有*不可变*和*可变*的实现。
 
 ![一般集合层次结构][collections1]
 
@@ -65,15 +64,15 @@ NOTE: those images come from this page: https://docs.scala-lang.org/overviews/co
 
 您经常使用的主要集合是：
 
-| 集合类型      | 不可变    | 可变     | 说明         |
-| ------------- | --------- | -------- | ------------ |
-| `List`        | &#10003;  |          | 线性（链表）、不可变序列 |
-| `Vector`      | &#10003;  |          | 一个索引的、不可变的序列 |
-| `LazyList`    | &#10003;  |          | 一个惰性不可变链表，它的元素仅在需要时才计算；适用于大型或无限序列。 |
-| `ArrayBuffer` |           | &#10003; | 可变索引序列的首选类型 |
-| `ListBuffer`  |           | &#10003; | 当你想要一个可变的 `List` 时使用；通常转换为“列表” |
-| `Map`         | &#10003;  | &#10003; | 由键和值对组成的可迭代集合。 |
-| `Set`         | &#10003;  | &#10003; | 没有重复元素的可迭代集合 |
+| 集合类型      | 不可变   | 可变     | 说明                                                                 |
+| ------------- | -------- | -------- | -------------------------------------------------------------------- |
+| `List`        | &#10003; |          | 线性（链表）、不可变序列                                             |
+| `Vector`      | &#10003; |          | 一个索引的、不可变的序列                                             |
+| `LazyList`    | &#10003; |          | 一个惰性不可变链表，它的元素仅在需要时才计算；适用于大型或无限序列。 |
+| `ArrayBuffer` |          | &#10003; | 可变索引序列的首选类型                                               |
+| `ListBuffer`  |          | &#10003; | 当你想要一个可变的 `List` 时使用；通常转换为“列表”                   |
+| `Map`         | &#10003; | &#10003; | 由键和值对组成的可迭代集合。                                         |
+| `Set`         | &#10003; | &#10003; | 没有重复元素的可迭代集合                                             |
 
 如图所示，`Map` 和 `Set` 有不可变和可变版本。
 
@@ -83,22 +82,22 @@ NOTE: those images come from this page: https://docs.scala-lang.org/overviews/co
 
 ### 关于不可变集合的说明
 
-在接下来的部分中，无论何时使用_不可变_这个词，都可以安全地假设该类型旨在用于_函数式编程_(FP) 风格。
-使用这些类型，您无需修改​​集合；您将函数式方法应用于该集合以创建新的结果。
+在接下来的部分中，无论何时使用*不可变*这个词，都可以安全地假设该类型旨在用于*函数式编程*(FP) 风格。
+使用这些类型，您无需修改 ​​ 集合；您将函数式方法应用于该集合以创建新的结果。
 
 ## 选择序列
 
-选择_序列_ -- 一个顺序集合元素时 -- 您有两个主要决定：
+选择*序列* -- 一个顺序集合元素时 -- 您有两个主要决定：
 
 - 是否应该对序列进行索引（如数组），允许快速访问任何元素，还是应该将其实现为线性链表？
 - 你想要一个可变的还是不可变的集合？
 
 此处显示了推荐的通用顺序集合，用于可变/不可变和索引/线性组合：
 
-| 类型/类别             | 不可变    | 可变         |
-| --------------------- | --------- | ------------ |
-|索引                  | `Vector`  |`ArrayBuffer` |
-|线性（链表）           | `List`    |`ListBuffer`  |
+| 类型/类别    | 不可变   | 可变          |
+| ------------ | -------- | ------------- |
+| 索引         | `Vector` | `ArrayBuffer` |
+| 线性（链表） | `List`   | `ListBuffer`  |
 
 例如，如果您需要一个不可变的索引集合，通常您应该使用 `Vector`。
 相反，如果您需要一个可变的索引集合，请使用 `ArrayBuffer`。
@@ -121,6 +120,7 @@ NOTE: those images come from this page: https://docs.scala-lang.org/overviews/co
 
 {% tabs list-creation %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val ints = List(1, 2, 3)
 val names = List("Joel", "Chris", "Ed")
@@ -128,6 +128,7 @@ val names = List("Joel", "Chris", "Ed")
 // another way to construct a List
 val namesAgain = "Joel" :: "Chris" :: "Ed" :: Nil
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -135,10 +136,12 @@ val namesAgain = "Joel" :: "Chris" :: "Ed" :: Nil
 
 {% tabs list-type %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val ints: List[Int] = List(1, 2, 3)
 val names: List[String] = List("Joel", "Chris", "Ed")
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -146,16 +149,20 @@ val names: List[String] = List("Joel", "Chris", "Ed")
 
 {% tabs list-mixed-types class=tabs-scala-version %}
 {% tab 'Scala 2' %}
+
 ```scala
 val things: List[Any] = List(1, "two", 3.0)
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' %}
+
 ```scala
 val things: List[String | Int | Double] = List(1, "two", 3.0) // with union types
 val thingsAny: List[Any] = List(1, "two", 3.0)                // with any
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -167,20 +174,24 @@ val thingsAny: List[Any] = List(1, "two", 3.0)                // with any
 
 {% tabs adding-elements-init %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val a = List(1, 2, 3)
 ```
+
 {% endtab %}
 {% endtabs %}
 
-使用 `List` 时，用 `::` 来_附加_一个元素，用 `:::` 把另一个 `List` 插在这个 `List` 之前，如下所示：
+使用 `List` 时，用 `::` 来*附加*一个元素，用 `:::` 把另一个 `List` 插在这个 `List` 之前，如下所示：
 
 {% tabs adding-elements-example %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val b = 0 :: a // List(0, 1, 2, 3)
 val c = List(-1, 0) ::: a // List(-1, 0, 1, 2, 3)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -199,9 +210,11 @@ val c = List(-1, 0) ::: a // List(-1, 0, 1, 2, 3)
 
 {% tabs list-prepending %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 0 +： a
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -209,9 +222,11 @@ val c = List(-1, 0) ::: a // List(-1, 0, 1, 2, 3)
 
 {% tabs list-appending %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 a ：+ 4
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -231,9 +246,11 @@ LATER: Add a discussion of `:` on method names, right-associativity, and infix o
 
 {% tabs list-loop-init %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val names = List("Joel", "Chris", "Ed")
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -241,15 +258,19 @@ val names = List("Joel", "Chris", "Ed")
 
 {% tabs list-loop-example class=tabs-scala-version %}
 {% tab 'Scala 2' %}
+
 ```scala
 for (name <- names) println(name)
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' %}
+
 ```scala
 for name <- names do println(name)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -257,21 +278,25 @@ for name <- names do println(name)
 
 {% tabs list-loop-repl class=tabs-scala-version %}
 {% tab 'Scala 2' %}
+
 ```scala
 scala> for (name <- names) println(name)
 Joel
 Chris
 Ed
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' %}
+
 ```scala
 scala> for name <-names do println(name)
 Joel
 Chris
 Ed
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -279,14 +304,16 @@ Ed
 
 ### 一点历史
 
-对于那些对历史感兴趣的人，Scala `List` 类似于 [Lisp 编程语言](https://en.wikipedia.org/wiki/Lisp_(programming_language)) 中的 `List`，它是最初于 1958 年确定的。
+对于那些对历史感兴趣的人，Scala `List` 类似于 [Lisp 编程语言](<https://en.wikipedia.org/wiki/Lisp_(programming_language)>) 中的 `List`，它是最初于 1958 年确定的。
 实际上，除了像这样创建一个 `List` 之外：
 
 {% tabs list-history-init %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val ints = List(1, 2, 3)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -294,9 +321,11 @@ val ints = List(1, 2, 3)
 
 {% tabs list-history-init2 %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val list = 1 :: 2 :: 3 :: Nil
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -304,10 +333,12 @@ REPL 展示了它是如何工作的：
 
 {% tabs list-history-repl %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 scala> val list = 1 :: 2 :: 3 :: Nil
 list: List[Int] = List(1, 2, 3)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -315,19 +346,21 @@ list: List[Int] = List(1, 2, 3)
 
 ### 旁白：LazyList
 
-Scala 集合还包括一个 [LazyList](https://www.scala-lang.org/api/current/scala/collection/immutable/LazyList.html)，它是一个 _惰性_不可变链表。
+Scala 集合还包括一个 [LazyList](https://www.scala-lang.org/api/current/scala/collection/immutable/LazyList.html)，它是一个 *惰性*不可变链表。
 它被称为“惰性”——或非严格——因为它仅在需要时计算其元素。
 
 你可以看到 REPL 中的 `LazyList` 有多懒惰：
 
 {% tabs lazylist-example %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val x = LazyList.range(1, Int.MaxValue)
 x.take(1)      // LazyList(<not computed>)
 x.take(5)      // LazyList(<not computed>)
 x.map(_ + 1)   // LazyList(<not computed>)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -336,14 +369,16 @@ x.map(_ + 1)   // LazyList(<not computed>)
 
 {% tabs lazylist-evaluation-example %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 scala> x.take(1).foreach(println)
 1
 ```
+
 {% endtab %}
 {% endtabs %}
 
-有关严格和非严格的用途、好处和缺点的更多信息严格（惰性）集合，请参阅 [Scala 2.13集合的架构][strict] 页面上的“严格”和“非严格”讨论。
+有关严格和非严格的用途、好处和缺点的更多信息严格（惰性）集合，请参阅 [Scala 2.13 集合的架构][strict] 页面上的“严格”和“非严格”讨论。
 
 <!--
 Given that definition, collections can also be thought of in terms of being strict or lazy. In a _strict_ collection, memory for the elements is allocated immediately, and all of its elements are immediately evaluated when a transformer method is invoked. In a _lazy_ collection, memory for the elements is not allocated immediately, and transformer methods do not construct new elements until they are demanded.
@@ -360,6 +395,7 @@ Given that definition, collections can also be thought of in terms of being stri
 
 {% tabs vector-creation %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val nums = Vector(1, 2, 3, 4, 5)
 
@@ -372,32 +408,37 @@ val people = Vector(
   Person("Grover")
 )
 ```
+
 {% endtab %}
 {% endtabs %}
 
 因为 `Vector` 是不可变的，所以你不能向它添加新元素。
 相反，您通过将元素附加或插入头部到现有的 `Vector`，从而创建新序列。
-这些示例展示了如何将元素_附加_到 `Vector`：
+这些示例展示了如何将元素*附加*到 `Vector`：
 
 {% tabs vector-appending %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val a = Vector(1,2,3)         // Vector(1, 2, 3)
 val b = a :+ 4                // Vector(1, 2, 3, 4)
 val c = a ++ Vector(4, 5)     // Vector(1, 2, 3, 4, 5)
 ```
+
 {% endtab %}
 {% endtabs %}
 
-这就是你_插入头部_元素的方式：
+这就是你*插入头部*元素的方式：
 
 {% tabs vector-prepending %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val a = Vector(1,2,3)         // Vector(1, 2, 3)
 val b = 0 +: a                // Vector(0, 1, 2, 3)
 val c = Vector(-1, 0) ++: a   // Vector(-1, 0, 1, 2, 3)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -409,6 +450,7 @@ val c = Vector(-1, 0) ++: a   // Vector(-1, 0, 1, 2, 3)
 
 {% tabs vector-loop class=tabs-scala-version %}
 {% tab 'Scala 2' %}
+
 ```scala
 scala> val names = Vector("Joel", "Chris", "Ed")
 val names: Vector[String] = Vector(Joel, Chris, Ed)
@@ -418,9 +460,11 @@ Joel
 Chris
 Ed
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' %}
+
 ```scala
 scala> val names = Vector("Joel", "Chris", "Ed")
 val names: Vector[String] = Vector(Joel, Chris, Ed)
@@ -430,6 +474,7 @@ Joel
 Chris
 Ed
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -445,9 +490,11 @@ Ed
 
 {% tabs arraybuffer-import %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 import scala.collection.mutable.ArrayBuffer
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -455,11 +502,13 @@ import scala.collection.mutable.ArrayBuffer
 
 {% tabs arraybuffer-creation %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 var strings = ArrayBuffer[String]()
 var ints = ArrayBuffer[Int]()
 var people = ArrayBuffer[Person]()
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -467,10 +516,12 @@ var people = ArrayBuffer[Person]()
 
 {% tabs list-creation-with-size %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 // ready to hold 100,000 ints
 val buf = new ArrayBuffer[Int](100_000)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -478,6 +529,7 @@ val buf = new ArrayBuffer[Int](100_000)
 
 {% tabs arraybuffer-init %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val nums = ArrayBuffer(1, 2, 3)
 val people = ArrayBuffer(
@@ -486,6 +538,7 @@ val people = ArrayBuffer(
   Person("Grover")
 )
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -498,11 +551,13 @@ val people = ArrayBuffer(
 
 {% tabs arraybuffer-add %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val nums = ArrayBuffer(1, 2, 3)   // ArrayBuffer(1, 2, 3)
 nums += 4                         // ArrayBuffer(1, 2, 3, 4)
 nums ++= List(5, 6)               // ArrayBuffer(1, 2, 3, 4, 5, 6)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -513,12 +568,14 @@ nums ++= List(5, 6)               // ArrayBuffer(1, 2, 3, 4, 5, 6)
 
 {% tabs arraybuffer-remove %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val a = ArrayBuffer.range('a', 'h')   // ArrayBuffer(a, b, c, d, e, f, g)
 a -= 'a'                              // ArrayBuffer(b, c, d, e, f, g)
 a --= Seq('b', 'c')                   // ArrayBuffer(d, e, f, g)
 a --= Set('d', 'e')                   // ArrayBuffer(f, g)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -528,18 +585,20 @@ a --= Set('d', 'e')                   // ArrayBuffer(f, g)
 
 {% tabs arraybuffer-update %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val a = ArrayBuffer.range(1,5)        // ArrayBuffer(1, 2, 3, 4)
 a(2) = 50                             // ArrayBuffer(1, 2, 50, 4)
 a.update(0, 10)                       // ArrayBuffer(10, 2, 50, 4)
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ## 映射
 
 `Map` 是由键值对组成的可迭代集合。
-Scala 有可变和不可变的 `Map` 类型，本节演示如何使用_不可变_ `Map`。
+Scala 有可变和不可变的 `Map` 类型，本节演示如何使用*不可变* `Map`。
 
 ### 创建不可变映射
 
@@ -547,6 +606,7 @@ Scala 有可变和不可变的 `Map` 类型，本节演示如何使用_不可变
 
 {% tabs map-init %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val states = Map(
   "AK" -> "Alaska",
@@ -554,6 +614,7 @@ val states = Map(
   "AZ" -> "Arizona"
 )
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -561,15 +622,19 @@ val states = Map(
 
 {% tabs map-loop class=tabs-scala-version %}
 {% tab 'Scala 2' %}
+
 ```scala
 for ((k, v) <- states)  println(s"key: $k, value: $v")
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' %}
+
 ```scala
 for (k, v) <- states do println(s"key: $k, value: $v")
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -577,21 +642,25 @@ REPL 展示了它是如何工作的：
 
 {% tabs map-repl class=tabs-scala-version %}
 {% tab 'Scala 2' %}
+
 ```scala
 scala> for ((k, v) <- states)  println(s"key: $k, value: $v")
 key: AK, value: Alaska
 key: AL, value: Alabama
 key: AZ, value: Arizona
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' %}
+
 ```scala
 scala> for (k, v) <- states do println(s"key: $k, value: $v")
 key: AK, value: Alaska
 key: AL, value: Alabama
 key: AZ, value: Arizona
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -601,10 +670,12 @@ key: AZ, value: Arizona
 
 {% tabs map-access-element %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val ak = states("AK") // ak: String = Alaska
 val al = states("AL") // al: String = Alabama
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -616,6 +687,7 @@ val al = states("AL") // al: String = Alabama
 
 {% tabs map-add-element %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val a = Map(1 -> "one")    // a: Map(1 -> one)
 val b = a + (2 -> "two")   // b: Map(1 -> one, 2 -> two)
@@ -625,6 +697,7 @@ val c = b ++ Seq(
 )
 // c: Map(1 -> one, 2 -> two, 3 -> three, 4 -> four)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -634,6 +707,7 @@ val c = b ++ Seq(
 
 {% tabs map-remove-element %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val a = Map(
   1 -> "one",
@@ -645,6 +719,7 @@ val a = Map(
 val b = a - 4       // b: Map(1 -> one, 2 -> two, 3 -> three)
 val c = a - 4 - 3   // c: Map(1 -> one, 2 -> two)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -654,6 +729,7 @@ val c = a - 4 - 3   // c: Map(1 -> one, 2 -> two)
 
 {% tabs map-update-element %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val a = Map(
   1 -> "one",
@@ -664,6 +740,7 @@ val a = Map(
 val b = a.updated(3, "THREE!")   // b: Map(1 -> one, 2 -> two, 3 -> THREE!)
 val c = a + (2 -> "TWO...")      // c: Map(1 -> one, 2 -> TWO..., 3 -> three)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -673,6 +750,7 @@ val c = a + (2 -> "TWO...")      // c: Map(1 -> one, 2 -> TWO..., 3 -> three)
 
 {% tabs map-traverse class=tabs-scala-version %}
 {% tab 'Scala 2' %}
+
 ```scala
 val states = Map(
   "AK" -> "Alaska",
@@ -682,9 +760,11 @@ val states = Map(
 
 for ((k, v) <- states) println(s"key: $k, value: $v")
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' %}
+
 ```scala
 val states = Map(
   "AK" -> "Alaska",
@@ -694,10 +774,11 @@ val states = Map(
 
 for (k, v) <- states do println(s"key: $k, value: $v")
 ```
+
 {% endtab %}
 {% endtabs %}
 
-话虽如此，有_许多_方法可以使用映射中的键和值。
+话虽如此，有*许多*方法可以使用映射中的键和值。
 常见的 `Map` 方法包括 `foreach`、`map`、`keys` 和 `values`。
 
 Scala 有许多更专业的`Map` 类型，包括`CollisionProofHashMap`、`HashMap`、`LinkedHashMap`、`ListMap`、`SortedMap`、`TreeMap`、`WeakHashMap` 等等。
@@ -707,7 +788,7 @@ Scala 有许多更专业的`Map` 类型，包括`CollisionProofHashMap`、`HashM
 Scala [集合]({{site.baseurl}}/overviews/collections-2.13/sets.html) 是一个没有重复元素的可迭代集合。
 
 Scala 有可变和不可变的 `Set` 类型。
-本节演示_不可变_ `Set`。
+本节演示*不可变* `Set`。
 
 ### 创建一个集合
 
@@ -715,10 +796,12 @@ Scala 有可变和不可变的 `Set` 类型。
 
 {% tabs set-creation %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val nums = Set[Int]()
 val letters = Set[Char]()
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -726,10 +809,12 @@ val letters = Set[Char]()
 
 {% tabs set-init %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val nums = Set(1, 2, 3, 3, 3)           // Set(1, 2, 3)
 val letters = Set('a', 'b', 'c', 'c')   // Set('a', 'b', 'c')
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -739,11 +824,13 @@ val letters = Set('a', 'b', 'c', 'c')   // Set('a', 'b', 'c')
 
 {% tabs set-add-element %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val a = Set(1, 2)                // Set(1, 2)
 val b = a + 3                    // Set(1, 2, 3)
 val c = b ++ Seq(4, 1, 5, 5)     // HashSet(5, 1, 2, 3, 4)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -757,11 +844,13 @@ val c = b ++ Seq(4, 1, 5, 5)     // HashSet(5, 1, 2, 3, 4)
 
 {% tabs set-remove-element %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val a = Set(1, 2, 3, 4, 5)   // HashSet(5, 1, 2, 3, 4)
 val b = a - 5                // HashSet(1, 2, 3, 4)
 val c = b -- Seq(3, 4)       // HashSet(1, 2)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -776,12 +865,14 @@ LATER: the dotty repl currently shows results differently
 
 {% tabs range-init %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 1 to 5         // Range(1, 2, 3, 4, 5)
 1 until 5      // Range(1, 2, 3, 4)
 1 to 10 by 2   // Range(1, 3, 5, 7, 9)
 'a' to 'c'     // NumericRange(a, b, c)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -789,10 +880,12 @@ LATER: the dotty repl currently shows results differently
 
 {% tabs range-conversion %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val x = (1 to 5).toList     // List(1, 2, 3, 4, 5)
 val x = (1 to 5).toBuffer   // ArrayBuffer(1, 2, 3, 4, 5)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -800,21 +893,25 @@ val x = (1 to 5).toBuffer   // ArrayBuffer(1, 2, 3, 4, 5)
 
 {% tabs range-iteration class=tabs-scala-version %}
 {% tab 'Scala 2' %}
+
 ```scala
 scala> for (i <- 1 to 3) println(i)
 1
 2
 3
 ```
+
 {% endtab %}
 
 {% tab 'Scala 3' %}
+
 ```scala
 scala> for i <- 1 to 3 do println(i)
 1
 2
 3
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -822,18 +919,21 @@ scala> for i <- 1 to 3 do println(i)
 
 {% tabs range-methods %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 Vector.range(1, 5)       // Vector(1, 2, 3, 4)
 List.range(1, 10, 2)     // List(1, 3, 5, 7, 9)
 Set.range(1, 10)         // HashSet(5, 1, 6, 9, 2, 7, 3, 8, 4)
 ```
+
 {% endtab %}
 {% endtabs %}
 
-当您运行测试时，范围对于生成​​测试集合也很有用：
+当您运行测试时，范围对于生成 ​​ 测试集合也很有用：
 
 {% tabs range-tests %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val evens = (0 to 10 by 2).toList     // List(0, 2, 4, 6, 8, 10)
 val odds = (1 to 10 by 2).toList      // List(1, 3, 5, 7, 9)
@@ -843,6 +943,7 @@ val doubles = (1 to 5).map(_ * 2.0)   // Vector(2.0, 4.0, 6.0, 8.0, 10.0)
 val map = (1 to 3).map(e => (e,s"$e")).toMap
     // map: Map[Int, String] = Map(1 -> "1", 2 -> "2", 3 -> "3")
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -853,7 +954,6 @@ val map = (1 to 3).map(e => (e,s"$e")).toMap
 - [具体的不可变集合类](https://docs.scala-lang.org/overviews/collections-2.13/concrete-immutable-collection-classes.html)
 - [具体的可变集合类](https://docs.scala-lang.org/overviews/collections-2.13/concrete-mutable-collection-classes.html)
 - [集合是如何构造的？ 我应该选择哪一个？](https://docs.scala-lang.org/tutorials/FAQ/collections.html)
-
 
 [strict]: {% link _overviews/core/architecture-of-scala-213-collections.md %}
 [collections1]: /resources/images/tour/collections-diagram-213.svg
