@@ -14,7 +14,7 @@ next-page: http-client-json
 To send a POST request with a string body, you can chain `post` and `body` on a `quickRequest`:
 {% tabs 'body' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
-```scala mdoc
+```scala mdoc:compile-only
 import sttp.client4.quick._
 
 val response = quickRequest
@@ -49,7 +49,9 @@ The `body` method can also take a `Array[Byte]`, a `ByteBuffer` or an `InputStre
 
 {% tabs 'binarydata' %}
 {% tab 'Scala 2 and 3' %}
-```scala mdoc
+```scala mdoc:compile-only
+import sttp.client4.quick._
+
 val bytes: Array[Byte] = "john".getBytes
 val request = quickRequest.post(uri"https://httpbin.org/post").body(bytes)
 ```

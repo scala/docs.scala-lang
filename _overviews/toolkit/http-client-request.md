@@ -17,7 +17,7 @@ You can define a GET request with `.get` and send it with `.send`.
 
 {% tabs 'request' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
-```scala mdoc
+```scala mdoc:compile-only
 import sttp.client4.quick._
 import sttp.client4.Response
 
