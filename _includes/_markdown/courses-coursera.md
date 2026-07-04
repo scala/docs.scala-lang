@@ -2,6 +2,10 @@
 
 The [Scala Center](https://scala.epfl.ch) at EPFL offers free online courses of various levels, from beginner to advanced.
 
+<blockquote class="help-info">
+Due to circumstances beyond our control, the Center's Coursera courses are not currently available for free. We are attempting restoration of free access. You can watch <a href="https://github.com/scala/scala-lang/issues/1912">this GitHub ticket</a> for news.
+</blockquote>
+
 For beginners:
 
 - [Effective Programming in Scala](https://www.coursera.org/learn/effective-scala): a practical introduction to Scala for professional developers
