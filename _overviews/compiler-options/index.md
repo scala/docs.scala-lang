@@ -1,6 +1,6 @@
 ---
 layout: singlepage-overview
-title: Scala Compiler Options
+title: Scala 2 Compiler Options
 ---
 <style type="text/css">
 .definition-list dd { 
@@ -21,7 +21,11 @@ title: Scala Compiler Options
 }
 </style>
 
+## Maintenance status
 
+We do not yet have a Scala 3 version of this page. Also, even the Scala 2 information is somewhat out of date.
+
+If your `scala` command is Scala-CLI, you may run `scala --scalac-help` for a list of supported options, with brief descriptions, for any Scala version. For example, `scala -S 2.13.18 --scalac-help` will print the options help text for Scala 2.13.18.
 
 ## Introduction
 
