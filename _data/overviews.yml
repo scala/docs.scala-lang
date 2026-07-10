@@ -310,6 +310,11 @@
       icon: cog
       url: "compiler-options/optimizer.html"
       description: "The compiler can perform various optimizations."
+    - title: Compiling Deeply Nested Code
+      by: Solal Pirelli
+      icon: cog
+      url: "compiler-options/compiling-deeply-nested-code.html"
+      description: "When compiling deeply nested code, be aware of stack space and fuel limits."
 
 - category: Legacy
   description: "Guides covering features no longer relevant to recent Scala versions (2.12+)."
