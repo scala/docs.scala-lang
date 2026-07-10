@@ -74,6 +74,4 @@ Si consiglia di continuare al tutorial successivo della serie  _getting started 
 
 **oppure**
 
-- Continuare ad imparare Scala online e in maniera interattiva su
- [Scala Exercises](https://www.scala-exercises.org/scala_tutorial).
 - Imparare le feature di Scala tramite articoli più concisi su [Tour of Scala]({{ site.baseurl }}/tour/tour-of-scala.html).

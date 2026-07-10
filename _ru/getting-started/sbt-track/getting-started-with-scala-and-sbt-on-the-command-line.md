@@ -104,8 +104,6 @@ libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % 
 
 **или**
 
-- Продолжайте изучать Scala в интерактивном режиме на
- [Scala Exercises](https://www.scala-exercises.org/scala_tutorial).
 - Узнайте о возможностях Scala с помощью небольших статей, ознакомившись с нашим [туром по Scala]({{ site.baseurl }}/ru/tour/tour-of-scala.html).
 
 [sbt-docs-lib-dependencies]: https://www.scala-sbt.org/1.x/docs/Library-Dependencies.html#Getting+the+right+Scala+version+with

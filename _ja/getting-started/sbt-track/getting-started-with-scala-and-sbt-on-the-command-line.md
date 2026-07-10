@@ -80,5 +80,4 @@ libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % 
 
 **あるいは**
 
-- インタラクティブなオンラインコース [Scala Exercises](https://www.scala-exercises.org/scala_tutorial) で Scala を学習します。
 - [Scala ツアー](/ja//tour/tour-of-scala.html) で Scala の特徴を一口大のサイズでステップバイステップに学びます。
