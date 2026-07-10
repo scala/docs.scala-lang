@@ -15,12 +15,6 @@ Each lesson provides code examples and exercises that compiles and runs directly
 
 In the [Scala Learning Discord](http://sca.la/learning-community), you can connect with fellow Scala learners and engage with the Tour of Scala community.
 
-### Scala Exercises
-
-[Scala Exercises](https://www.scala-exercises.org/) is a series of lessons and exercises created by [47 Degrees](https://xebia.com/).
-It's a great way to get a brief introduction to Scala while testing your knowledge along the way.
-It also covers some libraries of the ecosystem such as cats, doobie, scalacheck etc.
-
 ### DevInsideYou
 
 [DevInsideYou](https://youtube.com/devinsideyou) is a YouTube channel with hundreds of hours of free Scala content.

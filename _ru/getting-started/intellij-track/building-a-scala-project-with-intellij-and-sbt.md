@@ -101,4 +101,3 @@ libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % 
 * [The Scala Book](/scala3/book/introduction.html), содержащая набор коротких уроков, знакомящих с основными функциями Scala.
 * [Тур по Scala](/ru/tour/tour-of-scala.html) для краткого ознакомления с возможностями Scala.
 - Продолжайте изучать Scala в интерактивном режиме на
- [Scala Exercises](https://www.scala-exercises.org/scala_tutorial).

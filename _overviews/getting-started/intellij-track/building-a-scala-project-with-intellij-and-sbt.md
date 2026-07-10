@@ -107,4 +107,3 @@ Continue to the next tutorial in the _getting started with IntelliJ_ series, and
 * [The Scala Book](/scala3/book/introduction.html), which provides a set of short lessons introducing Scala’s main features.
 * [The Tour of Scala](/tour/tour-of-scala.html) for bite-sized introductions to Scala's features.
 - Continue learning Scala interactively online on
- [Scala Exercises](https://www.scala-exercises.org/scala_tutorial).

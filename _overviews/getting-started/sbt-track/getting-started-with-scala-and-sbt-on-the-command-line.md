@@ -110,8 +110,6 @@ Continue to the next tutorial in the _getting started with sbt_ series, and lear
 
 **or**
 
-- Continue learning Scala interactively online on
- [Scala Exercises](https://www.scala-exercises.org/scala_tutorial).
 - Learn about Scala's features in bite-sized pieces by stepping through our [Tour of Scala]({{ site.baseurl }}/tour/tour-of-scala.html).
 
 [sbt-docs-lib-dependencies]: https://www.scala-sbt.org/1.x/docs/Library-Dependencies.html#Getting+the+right+Scala+version+with

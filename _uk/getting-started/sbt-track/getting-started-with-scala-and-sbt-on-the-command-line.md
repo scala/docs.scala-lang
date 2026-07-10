@@ -80,5 +80,4 @@ libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % 
 
 **або**
 
-- Продовжить вивчати Scala інтерактивно нам [Вправи зі Scala](https://www.scala-exercises.org/scala_tutorial).
 - Дізнайтеся про можливості Scala у коротких статтях, переглянувши наш [Тур по Scala]({{ site.baseurl }}/tour/tour-of-scala.html).
