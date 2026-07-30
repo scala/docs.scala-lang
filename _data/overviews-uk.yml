@@ -291,7 +291,7 @@
       url: "compiler-options/errors.html"
       description: "Новий механізм для більш зручних повідомлень про помилки, друку ланцюжків залежних неявних параметрів та кольорових відмінностей знайдених/потрібних типів."
     - title: Оптимізатор
-      by: Lukas Rytz та Andrew Marki
+      by: Lukas Rytz, Andrew Marki, та Solal Pirelli
       icon: cog
       url: "compiler-options/optimizer.html"
       description: "Компілятор може виконувати різні оптимізації."
