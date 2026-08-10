@@ -15,6 +15,8 @@ By **[Lukas Rytz](https://github.com/lrytz) (2018)**, **[Andrew Marki](https://g
   as it breaks binary compatibility, prevents the use of newer dependencies, and breaks incremental compilation.
 - The typical way to enable the optimizer is with the compiler arguments `-opt -opt-inline:**,!java.**`,
   which enables local optimizations and allows inlining of anything not in the JDK itself.
+  - When compiling an application with such global inlining, ensure that the run-time classpath is **exactly the same** as the compile-time classpath.
+  - Alternatively, use `-opt:inline:my.package.**` to only inline from packages within your library, or within libraries you control.
 - The optimizer's main focus is to _inline_ functions and methods that are considered worth inlining, in particular higher-order functions.
   You can tell the inliner to always inline a specific method with the `@inline` annotation and to never do so with the `@noinline` annotation,
   but you should normally not need these annotations.
@@ -105,7 +107,7 @@ The reason for this restriction is that dependency management tools like sbt wil
 ## Using and interacting with the optimizer
 
 There are two compiler flags you should know about:
-- `-opt` enables local optimizations. While these do not break binary compatibility and can always be used, they typically do not improve performance on their own, such as:
+- `-opt` enables local optimizations. While these do not break binary compatibility and can always be used, they typically do not improve performance on their own.
   - Elimination of code that loads unused values
   - Rewriting of null and `isInstanceOf` checks whose result is known at compile-time
   - Elimination of value boxes like `java.lang.Integer` or `scala.runtime.DoubleRef` that are created within a method and don't escape it
