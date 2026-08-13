@@ -32,7 +32,7 @@ jobs:
 
       - name: Create Pull Request
         if: steps.changes.outputs.changed == 'true'
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v8
         with:
           commit-message: "Sync SIPs from scala/improvement-proposals"
           title: "Sync SIPs from scala/improvement-proposals"
