@@ -6,7 +6,8 @@ redirect_from:
   - /sips/:number
   - /sips/:title.html
 stage: completed
-status: accepted
+status: shipped
+shipped: 3.10.0
 title: Unroll Default Arguments for Binary Compatibility
 ---
 
