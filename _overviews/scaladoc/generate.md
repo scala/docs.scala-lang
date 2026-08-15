@@ -32,7 +32,7 @@ For additional information about configuring Scaladoc in sbt, see the [Generate 
 
 ## Using scaladoc command
 
-If you use Scala commands directly to start a console with `scala` or compile with `scalac`, then you should have a `scaladoc` command-line utility, as well.  This is a more advanced and less commonly used method of generating Scaladoc.
+If you use Scala commands directly to start a console with `scala` or compile with `scalac`, then you should have a `scaladoc` command-line utility, as well. The `scaladoc` command can also be installed using Coursier: `coursier install scaladoc`. Using the command-line utility is a more advanced and less commonly used method of generating Scaladoc.
 
     $ scaladoc src/main/scala/App.scala
     model contains 1 documentable templates
@@ -47,4 +47,5 @@ This command is harder to operate with more complex projects containing both mul
 
 The Scaladoc command exists because it preceded the development of sbt, but also because it is useful to the Scala development team with studying bug reports for Scaladoc.
 
-More information on directly using the Scala commands, like `scaladoc`, is discussed at [your first lines of Scala](https://www.scala-lang.org/documentation/your-first-lines-of-scala.html).
+More information on directly using the Scala commands, like `scaladoc`, is discussed at [your first Scala program](https://docs.scala-lang.org/scala3/book/taste-hello-world.html).
+
