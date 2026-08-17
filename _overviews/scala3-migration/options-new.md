@@ -40,6 +40,14 @@ The current page only contains the options that were added in Scala 3.0.x.
 | `-Vprofile-sorted-by:<column-name>` | Show metrics about sources and internal representations sorted by given column name. |
 | `-Vprofile-details N` | Like -Vprofile, but also show metrics about sources and internal representations of the N most complex methods |
 
+## Warning settings
+
+| 3.3.x | description |
+|-|-|
+| `-Wunused:all`       | Enable all warnings |
+| `-Wnonunit-statement` |  Warn when block statements are non-Unit expressions (added in 3.3.1) |
+
+
 ## Advanced settings
 
 | 3.0.x | description |
