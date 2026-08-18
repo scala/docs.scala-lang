@@ -46,7 +46,7 @@ To use this feature you must use the backtick notation as documented by mdoc,
 ## Submitting Docs
 
 To contribute a new document, you should first
-[fork](https://help.github.com/articles/fork-a-repo/) the
+[fork](https://docs.github.com/en/pull-requests/how-tos/work-with-forks/fork-a-repo) the
 [repo](https://github.com/scala/docs.scala-lang), then write your article in
 [Markdown](https://daringfireball.net/projects/markdown/syntax) (example below), and finally submit a pull request.
 Likely after some edits and discussion, your document will be made live

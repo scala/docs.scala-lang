@@ -52,7 +52,7 @@ and [GitHub](https://github.com/). This section of the guide provides a short wa
 it probably makes sense to familiarize yourself with Git first. We recommend
 
 * the [Git Pro](https://git-scm.com/book/en/v2) online book.
-* the help page on [Forking a Git Repository](https://help.github.com/articles/fork-a-repo).
+* the help page on [Forking a Git Repository](https://docs.github.com/en/pull-requests/how-tos/work-with-forks/fork-a-repo).
 * this great training tool [LearnGitBranching](https://pcottle.github.io/learnGitBranching/). One-hour hands-on training helps more than 1000 hours reading.
 
 ### Fork
@@ -67,7 +67,7 @@ If you're new to Git, don't be afraid of messing up-- there is no way you can co
 ### Clone
 
 If everything went okay, you will be redirected to your own fork at `https://github.com/user-name/scala`, where `username`
-is your GitHub username. You might find it helpful to read [https://help.github.com/fork-a-repo/](https://help.github.com/fork-a-repo/),
+is your GitHub username. You might find it helpful to read [https://docs.github.com/en/pull-requests/how-tos/work-with-forks/fork-a-repo](https://docs.github.com/en/pull-requests/how-tos/work-with-forks/fork-a-repo),
 which covers some things that will follow below. Then, _clone_ your repository (i.e. pull a copy from GitHub to your local machine) by running the following on the command line:
 
     16:35 ~/Projects$ git clone https://github.com/xeno-by/scala
