@@ -97,8 +97,8 @@ Because a default `timeout` value is supplied in the method declaration, the met
 {% tabs method_7 %}
 {% tab 'Scala 2 and 3' for=method_7 %}
 ```scala
-makeConnection("https://localhost")         // url=http://localhost, timeout=5000
-makeConnection("https://localhost", 2500)   // url=http://localhost, timeout=2500
+makeConnection("https://localhost")         // url=https://localhost, timeout=5000
+makeConnection("https://localhost", 2500)   // url=https://localhost, timeout=2500
 ```
 {% endtab %}
 {% endtabs %}
