@@ -12,9 +12,14 @@ prerequisite-knowledge: expressions, classes, generics, objects, companion-objec
 redirect_from: "/tutorials/tour/traits.html"
 ---
 
-Traits are used to share interfaces and fields between classes. They are similar to Java 8's interfaces. Classes and objects can extend traits, but traits cannot be instantiated and therefore have no parameters.
+Traits are used to represent shared aspects of multiple types. They are similar to Java's interfaces.
+
+A trait may contain members which may be abstract or concrete. "Concrete" means the trait includes an implementation for that member.
+
+A trait can be extended by classes, objects, and other traits. Extending multiple traits is allowed. A trait may extend a class.
 
 ## Defining a trait
+
 A minimal trait is simply the keyword `trait` and an identifier:
 
 {% tabs trait-hair-color %}
@@ -130,7 +135,7 @@ val cat = new Cat("Sally")
 val animals = ArrayBuffer.empty[Pet]
 animals.append(dog)
 animals.append(cat)
-animals.foreach(pet => println(pet.name))  // Prints Harry Sally
+animals.foreach(pet => println(pet.name))  // prints Harry Sally
 ```
 {% endtab %}
 
@@ -150,14 +155,28 @@ val cat = Cat("Sally")
 val animals = ArrayBuffer.empty[Pet]
 animals.append(dog)
 animals.append(cat)
-animals.foreach(pet => println(pet.name))  // Prints Harry Sally
+animals.foreach(pet => println(pet.name))  // prints Harry Sally
 ```
 {% endtab %}
 
 {% endtabs %}
 
-The `trait Pet` has an abstract field `name` that gets implemented by Cat and Dog in their constructors. On the last line, we call `pet.name`, which must be implemented in any subtype of the trait `Pet`.
+The `trait Pet` has an abstract field `name` that gets implemented by `Cat` and `Dog` in their constructors. On the last line, we call `pet.name`, which must be implemented in any subtype of the trait `Pet`.
 
+## Trait parameters
+
+In Scala 3, a trait may accept constructor parameters:
+
+{% tabs trait-parameter %}
+{% tab 'Scala 3 only' for=trait-parameter %}
+```scala mdoc
+trait HasLegs(val legCount: Int)
+class Spider extends HasLegs(8)
+val boris = Spider()
+println(boris.legCount)  // prints 8
+```
+{% endtab %}
+{% endtabs %}
 
 ## More resources
 
