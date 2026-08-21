@@ -27,6 +27,8 @@ log("User not found", "WARNING")  // prints WARNING: User not found
 
 The parameter `level` has a default value so it is optional. On the last line, the argument `"WARNING"` overrides the default argument `"INFO"`. Where you might do overloaded methods in Java, you can use methods with optional parameters to achieve the same effect. However, if the caller omits an argument, any following arguments must be named.
 
+Place `optional parameters` (with default values) at the end of the parameter list. This ensures that callers using positional arguments can omit them without ambiguity. If a `mandatory parameter` appears after an optional one, it will still need to be provided, making the `optional parameter` effectively required in positional calls.
+
 {% tabs default-parameter-values-2 %}
 {% tab 'Scala 2 and 3' for=default-parameter-values-2 %}
 ```scala mdoc
