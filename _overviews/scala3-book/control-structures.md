@@ -8,6 +8,7 @@ previous-page: string-interpolation
 next-page: domain-modeling-intro
 ---
 
+**Note:** In Scala 3, indentation is significant. Code blocks are defined by indentation rather than curly braces in many examples. Incorrect indentation can lead to compilation errors, so make sure your code is consistently aligned.
 
 Scala has the control structures you expect to find in a programming language, including:
 
@@ -29,14 +30,18 @@ A one-line Scala `if` statement looks like this:
 
 {% tabs control-structures-1 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-1 %}
+
 ```scala
 if (x == 1) println(x)
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-1 %}
+
 ```scala
 if x == 1 then println(x)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -44,19 +49,23 @@ When you need to run multiple lines of code after an `if` equality comparison, u
 
 {% tabs control-structures-2 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-2 %}
+
 ```scala
 if (x == 1) {
   println("x is 1, as you can see:")
   println(x)
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-2 %}
+
 ```scala
 if x == 1 then
   println("x is 1, as you can see:")
   println(x)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -64,6 +73,7 @@ The `if`/`else` syntax looks like this:
 
 {% tabs control-structures-3 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-3 %}
+
 ```scala
 if (x == 1) {
   println("x is 1, as you can see:")
@@ -72,8 +82,10 @@ if (x == 1) {
   println("x was not 1")
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-3 %}
+
 ```scala
 if x == 1 then
   println("x is 1, as you can see:")
@@ -81,6 +93,7 @@ if x == 1 then
 else
   println("x was not 1")
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -88,6 +101,7 @@ And this is the `if`/`else if`/`else` syntax:
 
 {% tabs control-structures-4 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-4 %}
+
 ```scala
 if (x < 0)
   println("negative")
@@ -96,8 +110,10 @@ else if (x == 0)
 else
   println("positive")
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-4 %}
+
 ```scala
 if x < 0 then
   println("negative")
@@ -106,6 +122,7 @@ else if x == 0 then
 else
   println("positive")
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -137,14 +154,18 @@ Because of this, there’s no need for a special ternary operator:
 
 {% tabs control-structures-6 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-6 %}
+
 ```scala
 val minValue = if (a < b) a else b
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-6 %}
+
 ```scala
 val minValue = if a < b then a else b
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -152,6 +173,7 @@ Because they return a value, you can use `if`/`else` expressions as the body of 
 
 {% tabs control-structures-7 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-7 %}
+
 ```scala
 def compare(a: Int, b: Int): Int =
   if (a < b)
@@ -161,8 +183,10 @@ def compare(a: Int, b: Int): Int =
   else
     1
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-7 %}
+
 ```scala
 def compare(a: Int, b: Int): Int =
   if a < b then
@@ -172,6 +196,7 @@ def compare(a: Int, b: Int): Int =
   else
     1
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -182,14 +207,18 @@ For example, this is an _expression_:
 
 {% tabs control-structures-8 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-8 %}
+
 ```scala
 val minValue = if (a < b) a else b
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-8 %}
+
 ```scala
 val minValue = if a < b then a else b
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -198,16 +227,20 @@ For example, these lines of code don’t return values, so they’re used for th
 
 {% tabs control-structures-9 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-9 %}
+
 ```scala
 if (a == b) action()
 println("Hello")
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-9 %}
+
 ```scala
 if a == b then action()
 println("Hello")
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -222,19 +255,22 @@ For example, given a sequence of integers, you can loop over its elements and pr
 
 {% tabs control-structures-10 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-10 %}
+
 ```scala
 val ints = Seq(1, 2, 3)
 for (i <- ints) println(i)
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-10 %}
+
 ```scala
 val ints = Seq(1, 2, 3)
 for i <- ints do println(i)
 ```
+
 {% endtab %}
 {% endtabs %}
-
 
 The code `i <- ints` is referred to as a _generator_. In any generator `p <- e`, the expression `e` can generate zero or many bindings to the pattern `p`.
 
@@ -242,7 +278,8 @@ This is what the result looks like in the Scala REPL:
 
 {% tabs control-structures-11 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-11 %}
-````
+
+```
 scala> val ints = Seq(1,2,3)
 ints: Seq[Int] = List(1, 2, 3)
 
@@ -250,10 +287,12 @@ scala> for (i <- ints) println(i)
 1
 2
 3
-````
+```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-11 %}
-````
+
+```
 scala> val ints = Seq(1,2,3)
 ints: Seq[Int] = List(1, 2, 3)
 
@@ -261,32 +300,35 @@ scala> for i <- ints do println(i)
 1
 2
 3
-````
+```
+
 {% endtab %}
 {% endtabs %}
-
 
 When you need a multiline block of code following the `for` generator, use the following syntax:
 
 {% tabs control-structures-12 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-12 %}
+
 ```scala
 for (i <- ints) {
   val x = i * 2
   println(s"i = $i, x = $x")
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-12 %}
+
 ```scala
 for i <- ints
 do
   val x = i * 2
   println(s"i = $i, x = $x")
 ```
+
 {% endtab %}
 {% endtabs %}
-
 
 ### Multiple generators
 
@@ -294,6 +336,7 @@ do
 
 {% tabs control-structures-13 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-13 %}
+
 ```scala
 for {
   i <- 1 to 2
@@ -303,8 +346,10 @@ for {
   println(s"i = $i, j = $j, k = $k")
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-13 %}
+
 ```scala
 for
   i <- 1 to 2
@@ -313,13 +358,13 @@ for
 do
   println(s"i = $i, j = $j, k = $k")
 ```
+
 {% endtab %}
 {% endtabs %}
 
-
 That expression prints this output:
 
-````
+```
 i = 1, j = a, k = 1
 i = 1, j = a, k = 6
 i = 1, j = b, k = 1
@@ -328,7 +373,7 @@ i = 2, j = a, k = 1
 i = 2, j = a, k = 6
 i = 2, j = b, k = 1
 i = 2, j = b, k = 6
-````
+```
 
 ### Guards
 
@@ -336,6 +381,7 @@ i = 2, j = b, k = 6
 
 {% tabs control-structures-14 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-14 %}
+
 ```scala
 for {
   i <- 1 to 5
@@ -344,8 +390,10 @@ for {
   println(i)
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-14 %}
+
 ```scala
 for
   i <- 1 to 5
@@ -353,22 +401,23 @@ for
 do
   println(i)
 ```
+
 {% endtab %}
 {% endtabs %}
 
-
 The output of that loop is:
 
-````
+```
 2
 4
-````
+```
 
 A `for` loop can have as many guards as needed.
 This example shows one way to print the number `4`:
 
 {% tabs control-structures-15 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-15 %}
+
 ```scala
 for {
   i <- 1 to 10
@@ -379,8 +428,10 @@ for {
   println(i)
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-15 %}
+
 ```scala
 for
   i <- 1 to 10
@@ -390,6 +441,7 @@ for
 do
   println(i)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -400,13 +452,15 @@ For example, given this `Map` of state abbreviations and their full names:
 
 {% tabs map %}
 {% tab 'Scala 2 and 3' for=map %}
+
 ```scala
 val states = Map(
   "AK" -> "Alaska",
-  "AL" -> "Alabama", 
+  "AL" -> "Alabama",
   "AZ" -> "Arizona"
 )
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -414,14 +468,18 @@ You can print the keys and values using `for`, like this:
 
 {% tabs control-structures-16 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-16 %}
+
 ```scala
 for ((abbrev, fullName) <- states) println(s"$abbrev: $fullName")
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-16 %}
+
 ```scala
 for (abbrev, fullName) <- states do println(s"$abbrev: $fullName")
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -429,20 +487,24 @@ Here’s what that looks like in the REPL:
 
 {% tabs control-structures-17 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-17 %}
+
 ```scala
 scala> for ((abbrev, fullName) <- states) println(s"$abbrev: $fullName")
 AK: Alaska
 AL: Alabama
 AZ: Arizona
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-17 %}
+
 ```scala
 scala> for (abbrev, fullName) <- states do println(s"$abbrev: $fullName")
 AK: Alaska
 AL: Alabama
 AZ: Arizona
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -463,6 +525,7 @@ You create a `for` expression by adding the `yield` keyword and an expression to
 
 {% tabs control-structures-18 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-18 %}
+
 ```scala
 val list =
   for (i <- 10 to 12)
@@ -470,8 +533,10 @@ val list =
 
 // list: IndexedSeq[Int] = Vector(20, 22, 24)
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-18 %}
+
 ```scala
 val list =
   for i <- 10 to 12
@@ -479,9 +544,9 @@ val list =
 
 // list: IndexedSeq[Int] = Vector(20, 22, 24)
 ```
+
 {% endtab %}
 {% endtabs %}
-
 
 After that `for` expression runs, the variable `list` is a `Vector` that contains the values shown.
 This is how the expression works:
@@ -492,7 +557,7 @@ This is how the expression works:
    It multiplies it by `2`, then yields the value `22`.
    You can think of these yielded values as accumulating in a temporary holding place.
 3. Finally, the loop gets the number `12` from the range, multiplies it by `2`, yielding the number `24`.
-  The loop completes at this point and yields the final result, the `Vector(20, 22, 24)`.
+   The loop completes at this point and yields the final result, the `Vector(20, 22, 24)`.
 
 {% comment %}
 NOTE: This is a place where it would be great to have a TIP or NOTE block:
@@ -502,9 +567,11 @@ While the intent of this section is to demonstrate `for` expressions, it can hel
 
 {% tabs map-call %}
 {% tab 'Scala 2 and 3' for=map-call %}
+
 ```scala
 val list = (10 to 12).map(i => i * 2)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -514,10 +581,11 @@ Here’s an example that shows how to use a block of code after the `yield`:
 
 {% tabs control-structures-19 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-19 %}
+
 ```scala
 val names = List("_olivia", "_walter", "_peter")
 
-val capNames = for (name <- names) yield { 
+val capNames = for (name <- names) yield {
   val nameWithoutUnderscore = name.drop(1)
   val capName = nameWithoutUnderscore.capitalize
   capName
@@ -525,8 +593,10 @@ val capNames = for (name <- names) yield {
 
 // capNames: List[String] = List(Olivia, Walter, Peter)
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-19 %}
+
 ```scala
 val names = List("_olivia", "_walter", "_peter")
 
@@ -537,6 +607,7 @@ val capNames = for name <- names yield
 
 // capNames: List[String] = List(Olivia, Walter, Peter)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -547,6 +618,7 @@ This method returns all the values in a given list of integers that are between 
 
 {% tabs control-structures-20 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-20 %}
+
 ```scala
 def between3and10(xs: List[Int]): List[Int] =
   for {
@@ -557,8 +629,10 @@ def between3and10(xs: List[Int]): List[Int] =
 
 between3and10(List(1, 3, 7, 11))   // : List[Int] = List(3, 7)
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-20 %}
+
 ```scala
 def between3and10(xs: List[Int]): List[Int] =
   for
@@ -569,6 +643,7 @@ def between3and10(xs: List[Int]): List[Int] =
 
 between3and10(List(1, 3, 7, 11))   // : List[Int] = List(3, 7)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -578,6 +653,7 @@ Scala `while` loop syntax looks like this:
 
 {% tabs control-structures-21 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-21 %}
+
 ```scala
 var i = 0
 
@@ -586,8 +662,10 @@ while (i < 3) {
   i += 1
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-21 %}
+
 ```scala
 var i = 0
 
@@ -595,6 +673,7 @@ while i < 3 do
   println(i)
   i += 1
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -607,6 +686,7 @@ Notice that this really is an expression, as it evaluates to a result:
 
 {% tabs control-structures-22 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-22 %}
+
 ```scala
 // `i` is an integer
 val day = i match {
@@ -620,8 +700,10 @@ val day = i match {
   case _ => "invalid day"   // the default, catch-all
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-22 %}
+
 ```scala
 // `i` is an integer
 val day = i match
@@ -634,6 +716,7 @@ val day = i match
   case 6 => "Saturday"
   case _ => "invalid day"   // the default, catch-all
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -652,6 +735,7 @@ When you need to access the catch-all, default value in a `match` expression, ju
 
 {% tabs control-structures-23 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-23 %}
+
 ```scala
 i match {
   case 0 => println("1")
@@ -659,14 +743,17 @@ i match {
   case what => println(s"You gave me: $what")
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-23 %}
+
 ```scala
 i match
   case 0 => println("1")
   case 1 => println("2")
   case what => println(s"You gave me: $what")
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -675,6 +762,7 @@ A name beginning with an uppercase letter does not introduce a variable, but mat
 
 {% tabs control-structures-24 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-24 %}
+
 ```scala
 val N = 42
 i match {
@@ -684,8 +772,10 @@ i match {
   case n => println(s"You gave me: $n" )
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-24 %}
+
 ```scala
 val N = 42
 i match
@@ -694,6 +784,7 @@ i match
   case N => println("42")
   case n => println(s"You gave me: $n" )
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -706,6 +797,7 @@ This example shows how to use multiple possible pattern matches in each `case` s
 
 {% tabs control-structures-25 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-25 %}
+
 ```scala
 val evenOrOdd = i match {
   case 1 | 3 | 5 | 7 | 9 => println("odd")
@@ -713,14 +805,17 @@ val evenOrOdd = i match {
   case _ => println("some other number")
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-25 %}
+
 ```scala
 val evenOrOdd = i match
   case 1 | 3 | 5 | 7 | 9 => println("odd")
   case 2 | 4 | 6 | 8 | 10 => println("even")
   case _ => println("some other number")
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -731,6 +826,7 @@ In this example the second and third `case` both use guards to match multiple in
 
 {% tabs control-structures-26 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-26 %}
+
 ```scala
 i match {
   case 1 => println("one, a lonely number")
@@ -739,8 +835,10 @@ i match {
   case _ => println("i’m guessing your number is zero or less")
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-26 %}
+
 ```scala
 i match
   case 1 => println("one, a lonely number")
@@ -748,6 +846,7 @@ i match
   case x if x > 3 => println("4+, that’s a party")
   case _ => println("i’m guessing your number is zero or less")
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -755,6 +854,7 @@ Here’s another example, which shows how to match a given value against ranges 
 
 {% tabs control-structures-27 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-27 %}
+
 ```scala
 i match {
   case a if 0 to 9 contains a => println(s"0-9 range: $a")
@@ -763,8 +863,10 @@ i match {
   case _ => println("Hmmm...")
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-27 %}
+
 ```scala
 i match
   case a if 0 to 9 contains a => println(s"0-9 range: $a")
@@ -772,6 +874,7 @@ i match
   case c if 20 to 29 contains c => println(s"20-29 range: $c")
   case _ => println("Hmmm...")
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -782,6 +885,7 @@ Here’s an example using a simple `Person` case class:
 
 {% tabs control-structures-28 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-28 %}
+
 ```scala
 case class Person(name: String)
 
@@ -794,8 +898,10 @@ def speak(p: Person) = p match {
 speak(Person("Fred"))      // "Fred says, Yubba dubba doo"
 speak(Person("Bam Bam"))   // "Bam Bam says, Bam bam!"
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-28 %}
+
 ```scala
 case class Person(name: String)
 
@@ -807,6 +913,7 @@ def speak(p: Person) = p match
 speak(Person("Fred"))      // "Fred says, Yubba dubba doo"
 speak(Person("Bam Bam"))   // "Bam Bam says, Bam bam!"
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -816,6 +923,7 @@ You can bind the matched pattern to a variable to use type-specific behavior:
 
 {% tabs pattern-binding class=tabs-scala-version %}
 {% tab 'Scala 2' for=pattern-binding %}
+
 ```scala
 trait Animal {
   val name: String
@@ -836,8 +944,10 @@ def speak(animal: Animal) = animal match {
 speak(Cat("Felix")) // "Felix says, Meow!"
 speak(Dog("Rex"))   // "Rex says, Bark!"
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=pattern-binding %}
+
 ```scala
 trait Animal:
   val name: String
@@ -854,6 +964,7 @@ def speak(animal: Animal) = animal match
 speak(Cat("Felix")) // "Felix says, Meow!"
 speak(Dog("Rex"))   // "Rex says, Bark!"
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -864,30 +975,35 @@ This method takes a `Matchable` value as an input parameter, and returns a `Bool
 
 {% tabs control-structures-29 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-29 %}
+
 ```scala
 def isTruthy(a: Matchable) = a match {
   case 0 | "" | false => false
   case _              => true
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-29 %}
+
 ```scala
 def isTruthy(a: Matchable) = a match
   case 0 | "" | false => false
   case _              => true
 ```
+
 {% endtab %}
 {% endtabs %}
 
 The input parameter `a` is defined to be the [`Matchable` type][matchable]---which is the root of all Scala types that pattern matching can be performed on.
 The method is implemented by matching on the input, providing two cases:
-The first one checks whether the given value is either the integer `0`,  an empty string or `false` and returns `false` in this case.
+The first one checks whether the given value is either the integer `0`, an empty string or `false` and returns `false` in this case.
 In the default case, we return `true` for any other value.
 These examples show how this method works:
 
 {% tabs is-truthy-call %}
 {% tab 'Scala 2 and 3' for=is-truthy-call %}
+
 ```scala
 isTruthy(0)      // false
 isTruthy(false)  // false
@@ -896,6 +1012,7 @@ isTruthy(1)      // true
 isTruthy(" ")    // true
 isTruthy(2F)     // true
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -916,6 +1033,7 @@ All of these kinds of patterns are shown in the following `pattern` method, whic
 
 {% tabs control-structures-30 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-30 %}
+
 ```scala
 def pattern(x: Matchable): String = x match {
 
@@ -952,8 +1070,10 @@ def pattern(x: Matchable): String = x match {
   case _ => "Unknown"
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-30 %}
+
 ```scala
 def pattern(x: Matchable): String = x match
 
@@ -989,6 +1109,7 @@ def pattern(x: Matchable): String = x match
   // the default wildcard pattern
   case _ => "Unknown"
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -996,31 +1117,35 @@ You can also write the code on the right side of the `=>` on multiple lines if y
 
 {% tabs control-structures-31 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-31 %}
+
 ```scala
 count match {
   case 1 =>
     println("one, a lonely number")
-  case x if x == 2 || x == 3 => 
+  case x if x == 2 || x == 3 =>
     println("two's company, three's a crowd")
   case x if x > 3 =>
     println("4+, that's a party")
-  case _ => 
+  case _ =>
     println("i'm guessing your number is zero or less")
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-31 %}
+
 ```scala
 count match
-  case 1 => 
+  case 1 =>
     println("one, a lonely number")
-  case x if x == 2 || x == 3 => 
+  case x if x == 2 || x == 3 =>
     println("two's company, three's a crowd")
-  case x if x > 3 => 
+  case x if x > 3 =>
     println("4+, that's a party")
-  case _ => 
+  case _ =>
     println("i'm guessing your number is zero or less")
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -1028,6 +1153,7 @@ In Scala 3, `match` expressions can be chained:
 
 {% tabs 'control-structures-32' %}
 {% tab 'Scala 3 Only' %}
+
 ```scala
 i match
   case odd: Int if odd % 2 == 1 => "odd"
@@ -1037,6 +1163,7 @@ match
   case "even" => true
   case _ => false
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -1044,6 +1171,7 @@ The `match` expression can also follow a period, which simplifies matching on re
 
 {% tabs 'control-structures-33' %}
 {% tab 'Scala 3 Only' %}
+
 ```scala
 List(1, 2, 3)
   .map(_ * 2)
@@ -1052,6 +1180,7 @@ List(1, 2, 3)
     case Some(value) => println(s"The head is: $value")
     case None => println("The list is empty")
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -1064,6 +1193,7 @@ In the following example, `openAndReadAFile` is a method that does what its name
 
 {% tabs control-structures-34 class=tabs-scala-version %}
 {% tab 'Scala 2' for=control-structures-34 %}
+
 ```scala
 var text = ""
 try {
@@ -1076,8 +1206,10 @@ try {
   println("Came to the 'finally' clause.")
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=control-structures-34 %}
+
 ```scala
 var text = ""
 try
@@ -1089,6 +1221,7 @@ finally
   // close your resources here
   println("Came to the 'finally' clause.")
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -1108,6 +1241,7 @@ Here is an example of a simple `repeat` loop that runs a block of code a specifi
 
 {% tabs custom-control-1 class=tabs-scala-version %}
 {% tab 'Scala 2' for=custom-control-1 %}
+
 ```scala
 def repeat(n: Int)(body: => Unit): Unit = {
   if (n > 0) {
@@ -1121,8 +1255,10 @@ repeat(3) {
   println("Hello")
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' for=custom-control-1 %}
+
 ```scala
 def repeat(n: Int)(body: => Unit): Unit =
   if n > 0 then
@@ -1134,6 +1270,7 @@ repeat(3) {
   println("Hello")
 }
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -1153,6 +1290,7 @@ Here is an example of a method that searches for the first index of a target ele
 
 {% tabs custom-control-2 %}
 {% tab 'Scala 3 Only' %}
+
 ```scala
 import scala.util.boundary, boundary.break
 
@@ -1166,16 +1304,17 @@ val xs = List(1, 2, 3, 4, 5)
 val found = firstIndex(xs, 3)   // 2
 val notFound = firstIndex(xs, 99) // -1
 ```
+
 {% endtab %}
 {% endtabs %}
 
 In this example:
+
 1. `boundary` establishes a scope.
 2. The `for` loop iterates through the list.
 3. If `x == target`, `break(i)` is called. This immediately exits the `boundary` block and returns `i`.
 4. If the loop finishes without breaking, the code after the loop (`-1`) is returned.
 
 This mechanism provides a structured alternative to using exceptions for control flow. Note that the compiler will optimize `boundary` and `break` to simple jumps if possible (for example, when the break doesn't happen within a nested method call), avoiding the overhead of exception handling.
-
 
 [matchable]: {{ site.scala3ref }}/other-new-features/matchable.html
