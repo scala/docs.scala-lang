@@ -99,8 +99,8 @@ case class VoiceRecording(contactName: String, link: String) extends Notificatio
 ```scala
 def showNotification(notification: Notification): String = {
   notification match {
-    case Email(sender, title, _) =>
-      s"You got an email from $sender with title: $title"
+    case Email(sender, subject, _) =>
+      s"You got an email from $sender with subject: $subject"
     case SMS(number, message) =>
       s"You got an SMS from $number! Message: $message"
     case VoiceRecording(name, link) =>
@@ -119,8 +119,8 @@ println(showNotification(someVoiceRecording))  // prints You received a Voice Re
 ```scala
 def showNotification(notification: Notification): String =
   notification match
-    case Email(sender, title, _) =>
-      s"You got an email from $sender with title: $title"
+    case Email(sender, subject, _) =>
+      s"You got an email from $sender with subject: $subject"
     case SMS(number, message) =>
       s"You got an SMS from $number! Message: $message"
     case VoiceRecording(name, link) =>
@@ -136,7 +136,31 @@ println(showNotification(someVoiceRecording))  // prints You received a Voice Re
 {% endtab %}
 {% endtabs %}
 
-The function `showNotification` takes as a parameter the abstract type `Notification` and matches on the type of `Notification` (i.e. it figures out whether it's an `Email`, `SMS`, or `VoiceRecording`). In the `case Email(sender, title, _)` the fields `sender` and `title` are used in the return value but the `body` field is ignored with `_`.
+The method `showNotification` takes a parameter of type `Notification`
+and uses a pattern match to operate on the specific concrete class,
+which is one of `Email`, `SMS`, or `VoiceRecording`.
+Each case in the pattern match has the same form as an expression constructing an instance of the case class.
+The pattern variables correspond to the case class parameters and can be used on the right hand side of the arrow.
+
+The name of the variable can be different from the parameter. For example,
+```scala
+case Email(sender, subject, _) =>
+```
+introduces a variable `subject` for the `title` field,
+and ignores `body` with the special pattern that is just an underscore, `_`.
+
+The fields of interest can also be named in Scala 3, like named arguments, of the form `name = pattern`:
+
+{% tabs named-pattern-match %}
+{% tab 'Scala 3 Only' for=named-pattern-match %}
+```scala
+case Email(sender = sender, title = subject) =>
+```
+{% endtab %}
+{% endtabs %}
+
+As when matching on named tuples, only the fields of interest are supplied, but they must all be named,
+even when the name and the pattern are the same, as shown here with `sender`.
 
 ## Matching on string
 
