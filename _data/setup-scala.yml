@@ -1,6 +1,3 @@
-linux-x86-64: curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && ./cs setup
-linux-arm64: curl -fL https://github.com/VirtusLab/coursier-m1/releases/latest/download/cs-aarch64-pc-linux.gz | gzip -d > cs && chmod +x cs && ./cs setup
-macOS-x86-64: curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-apple-darwin.gz | gzip -d > cs && chmod +x cs && (xattr -d com.apple.quarantine cs || true) && ./cs setup
-macOS-arm64: curl -fL https://github.com/VirtusLab/coursier-m1/releases/latest/download/cs-aarch64-apple-darwin.gz | gzip -d > cs && chmod +x cs && (xattr -d com.apple.quarantine cs || true) && ./cs setup
-macOS-brew: brew install coursier && coursier setup
-windows-link: https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-win32.zip
+macos-install-cli: brew install Virtuslab/scala-cli/scala-cli
+linux-install-cli: curl -sSLf https://scala-cli.virtuslab.org/get | sh
+windows-install-cli: winget install virtuslab.scalacli
