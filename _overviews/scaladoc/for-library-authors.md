@@ -56,32 +56,33 @@ Scaladoc comments can go before fields, methods, classes, traits, objects and
 even (especially) package objects. Scaladoc comments for package objects make
 a great place to put an overview of a specific package or API.
 
-For class *primary constructors* which in Scala coincide with the definition
+For class _primary constructors_ which in Scala coincide with the definition
 of the class itself, a `@constructor` tag is used to target a comment to be
 put on the primary constructor documentation rather than the class overview.
 
 ## Tags
+
 Scaladoc uses `@` tags to provide specific detail fields in the comments. These
 include:
 
-
 ### Class specific tags
+
 - `@constructor` placed in the class comment will describe the primary constructor.
 
-
 ### Method specific tags
+
 - `@return` detail the return value from a method (one per method).
 
-
 ### Method, Constructor and/or Class tags
+
 - `@throws` what exceptions (if any) the method or constructor may throw.
 - `@param` detail a value parameter for a method or constructor, provide one
   per parameter to the method/constructor.
 - `@tparam` detail a type parameter for a method, constructor or class. Provide
   one per type parameter.
 
-
 ### Usage tags
+
 - `@see` reference other sources of information like external document links or
   related entities in the documentation.
 - `@note` add a note for pre- or post-conditions, or any other notable restrictions
@@ -91,16 +92,16 @@ include:
   definition is too complex or noisy. An example is (in the collections API),
   providing documentation for methods that omit the implicit `canBuildFrom`.
 
-
 ### Member grouping tags
 
 These tags are well-suited to larger types or packages, with many members.
 They allow you to organize the Scaladoc page into distinct sections, with
 each one shown separately, in the order that you choose.
 
-These tags are *not* enabled by default! You must pass the `-groups`
+These tags are _not_ enabled by default! You must pass the `-groups`
 flag to Scaladoc in order to turn them on. Typically, the sbt for this
 will look something like:
+
 ```
 scalacOptions in (Compile, doc) ++= Seq(
   "-groups"
@@ -129,20 +130,21 @@ the resulting documentation.
   an implicit priority of 1000. Use a value between 0 and 999 to set a relative position to other groups. Low values
   will appear before high values.
 
-
 ### Diagram tags
+
 - `@contentDiagram` - use with traits and classes to include a content hierarchy diagram showing included types.
-   The diagram content can be fine-tuned with additional specifiers taken from `hideNodes`, `hideOutgoingImplicits`,
-   `hideSubclasses`, `hideEdges`, `hideIncomingImplicits`, `hideSuperclasses` and `hideInheritedNode`.
-   `hideDiagram` can be supplied to prevent a diagram from being created if it would be created by default. Packages
-   and objects have content diagrams by default.
+  The diagram content can be fine-tuned with additional specifiers taken from `hideNodes`, `hideOutgoingImplicits`,
+  `hideSubclasses`, `hideEdges`, `hideIncomingImplicits`, `hideSuperclasses` and `hideInheritedNode`.
+  `hideDiagram` can be supplied to prevent a diagram from being created if it would be created by default. Packages
+  and objects have content diagrams by default.
 - `@inheritanceDiagram` - TODO
 
 ### Other tags
+
 - `@author` provide author information for the following entity
 - `@version` the version of the system or API that this entity is a part of.
 - `@since` like `@version` but defines the system or API that this entity was
-  *first* defined in.
+  _first_ defined in.
 - `@todo` for documenting unimplemented features or unimplemented aspects of
   an entity.
 - `@deprecated` marks the entity as deprecated, **providing both** the
@@ -152,20 +154,21 @@ the resulting documentation.
   provided locally.
 - `@documentable` Expand a type alias and abstract type into a full template page. - TODO: Test the "abstract type" claim - no examples of this in the Scala code base
 
-
 ### Macros
+
 - `@define <name> <definition>` allows use of `$name` in other Scaladoc comments
   within the same source file which will be expanded to the contents of
   `<definition>`.
 
-
 ### 2.12 tags - TODO: Move these into the above groups with a 2.12 note
+
 - `@shortDescription` ???
 - `@hideImplicitConversion` ???
 
 ## Comment Inheritance
 
 ### Implicit
+
 If a comment is not provided for an entity at the current inheritance level, but
 is supplied for the overridden entity at a higher level in the inheritance
 hierarchy, the comment from the super-class will be used.
@@ -174,8 +177,8 @@ Likewise, if `@param`, `@tparam`, `@return` and other entity tags are omitted
 but available from a superclass, those comments will be used.
 
 ### Explicit
-For explicit comment inheritance, use the `@inheritdoc` tag.
 
+For explicit comment inheritance, use the `@inheritdoc` tag.
 
 ## Markup
 
@@ -230,7 +233,7 @@ The markup for list blocks looks like:
       *   1. Third item
       */
 
-## General Notes for Writing Scaladoc Comments ##
+## General Notes for Writing Scaladoc Comments
 
 - Concise is nice! Get to the point quickly, people have limited time to spend
   on your documentation, use it wisely.
@@ -239,62 +242,80 @@ The markup for list blocks looks like:
 - DRY - don't repeat yourself. Resist duplicating the method description in the
   `@return` tag and other forms of repetitive commenting.
 
-## Resolving Ambiguous Links within Scaladoc Comments
-When two methods are indistinguishable from each other lexically, it can cause Scaladoc to
-report that there are ambiguous methods. As an example:
+## Disambiguating Overloaded Methods
+
+When linking to overloaded methods in Scaladoc, a simple reference such as
+`[[foo]]` may be ambiguous. In such cases, the method signature must be
+elaborated enough to uniquely identify the desired overload.
+
+### Example
 
 ```scala
 import scala.collection.mutable.ListBuffer
-class bar {
-    def foo(x: Int): Boolean = ???
-    def foo(x: ListBuffer[Int], y: String): Int = ???
+
+class Bar {
+  def foo(x: Int): Boolean = ???
+  def foo(x: ListBuffer[Int], y: String): Int = ???
 }
 ```
 
-If one references `foo` via `[[foo]]`, then the Scaladoc will complain and offer both
-alternatives. Fixing this means elaborating the signature _enough_ so that it becomes unambiguous.
-There are a few things to be aware of in general:
+Using `[[foo]]` here will result in an ambiguous reference. Instead, specify
+(part of) the method signature.
 
-* You must not use a space in the description of the signature: this will cause Scaladoc to
-  think the link has ended and move onto its description.
-* You must fully qualify any types you are using: assume that you have written your program without
-  any import statements!
+### Rules for disambiguating overloads
 
-Then, to disambiguate between objects and types, append `$` to designate a term name
-and `!` for a type name. Term names include members which are not types, such as `val`, `def`, and
-`object` definitions. For example:
- - `[[scala.collection.immutable.List!.apply class List's apply method]]` and
- - `[[scala.collection.immutable.List$.apply object List's apply method]]`
+- **No spaces** are allowed inside the signature. A space terminates the link.
+- **Argument names must match exactly** as defined in the method.
+- **Fully qualify all types**, as if no imports were present.
+- End the signature with `*`, which acts as a wildcard once the reference
+  becomes unambiguous.
 
-When dealing with ambiguous overloads, however, it gets a bit more complex:
+### Valid and invalid examples
 
-* You must finish the signature, complete or otherwise, with a `*`, which serves as a wildcard
-  that allows you to cut off the signature when it is umambiguous.
-* You must specify the names of the arguments and they must be _exactly_ as written in the
-  function definition:
-  - `[[bar.foo(Int)*]]` is **illegal** (no name)
-  - `[[bar.foo(y:Int)*]]` is **illegal** (wrong name)
-  - `[[bar.foo(x: Int)*]]` is **illegal** (space! Scaladoc sees this as `bar.foo(x:`)
-  - `[[bar.foo(x:Int):Boolean]]` is **illegal** (no `*`)
-  - `[[bar.foo(x:Int)*]]` is **legal** and unambiguous
-  - `[[bar.foo(x:Int*]]` is **legal**, the `Int` is enough to disambiguate so no closing paren needed
-* The enclosing scope (package/class/object etc) of the method must use `.`, but within the arguments
-  and return type `\.` must be used instead to fully qualify types:
-  - `[[bar.foo(x:ListBuffer[Int],y:String)*]]` is **illegal** (no qualification on `ListBuffer`)
-  - `[[bar.foo(x:scala.collection.mutable.ListBuffer[Int],y:String)*]]` is **illegal** (non-escaped dots!)
-  - `[[bar\.foo(x:scala\.collection\.mutable\.ListBuffer[Int],y:String)*]]` is **illegal** (must not escape dots in the prefix)
-  - `[[bar.foo(x:scala\.collection\.mutable\.ListBuffer[Int],y:String)*]]` is **legal**
-  - `[[bar.foo(x:scala\.collection\.mutable\.ListBuffer[Int]*]]` is **legal**, the first argument is
-    enough to disambiguate.
-* When generics are involved, additional square brackets may be used to avoid the
-  signature accidentally closing the link. Essentially, the number of leading left brackets
-  determines the number of right brackets required to complete the link:
-  - `[[baz(x:List[List[A]])*]]` is **illegal** (it is read as `baz(x:List[List[A`)
-  - `[[[baz(x:List[List[A]])*]]]` is **legal** (the `]]` is no longer a terminator, `]]]` is)
+```md
+[[Bar.foo(x:Int)*]] // valid
+[[Bar.foo(x:Int*]] // valid (enough to disambiguate)
 
-### Known Limitations
-  * `#` syntax does not seem to be supported for parameters and return types.
-  * Spaces cannot be escaped with `\ `, so `implicit` parameters seem not to be supported either.
+[[Bar.foo(Int)*]] // invalid (missing parameter name)
+[[Bar.foo(x: Int)*]] // invalid (space in signature)
+[[Bar.foo(x:Int):Boolean]] // invalid (missing `*`)
+```
+
+### Fully qualified types
+
+When types are involved, dots inside parameter types must be escaped using `\.`:
+
+```md
+[[Bar.foo(x:scala\.collection\.mutable\.ListBuffer[Int],y:String)*]]
+```
+
+Only the prefix (package / class path) uses normal dots.
+
+### Generic types
+
+When using nested generics, additional brackets may be required to prevent
+premature termination of the link:
+
+```md
+[[[baz(x:List[List[A]])\*]]]
+```
+
+### Term names vs type names
+
+To disambiguate between term and type names:
+
+- Append `$` for **term names** (`val`, `def`, `object`)
+- Append `!` for **type names** (`class`, `trait`)
+
+```md
+[[scala.collection.immutable.List$.apply]] // object List
+[[scala.collection.immutable.List!.apply]] // class List
+```
+
+### Known limitations
+
+- `#` syntax is not supported for parameters or return types.
+- Spaces cannot be escaped, so `implicit` parameters cannot be referenced.
 
 ## More details on writing Scaladoc
 
