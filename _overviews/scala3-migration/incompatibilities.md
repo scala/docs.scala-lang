@@ -1,10 +1,12 @@
 ---
 title: Incompatibility Table
 type: chapter
-description: This chapter list all the known incompatibilities between Scala 2.13 and Scala 3 
-num: 16
-previous-page: tooling-syntax-rewriting
+description: The known incompatibilities between Scala 2.13 and Scala 3
+num: 10
+previous-page: macro-mixing
 next-page: incompat-syntactic
+redirect_from:
+  - /scala3/guides/migration/incompatibility-table.html
 ---
 
 An incompatibility is a piece of code that can be compiled with Scala 2.13 but not with Scala 3.
@@ -15,7 +17,7 @@ In this page we propose a classification of the known incompatibilities.
 Each incompatibility is described by:
  - Its short name with a link towards the detailed description and proposed solutions
  - Whether the Scala 2.13 compiler emits a deprecation or a feature warning
- - The existence of a [Scala 3 migration](tooling-migration-mode.html) rule for it
+ - The existence of a [Scala 3 migration](migrating-to-3-3.html) rule for it
  - The existence of a Scalafix rule that can fix it
 
 > #### Scala 2.13 deprecations and feature warnings
@@ -123,4 +125,4 @@ This fundamental change leads to a few incompatibilities:
 The Scala 3 compiler is not able to expand Scala 2.13 macros.
 Under such circumstances it is necessary to re-implement the Scala 2.13 macros using the new Scala 3 metaprogramming features.
 
-You can go back to the [Metaprogramming](compatibility-metaprogramming.html) page to learn about the new metaprogramming features.
+You can go back to the [Metaprogramming](macros.html) page to learn about the new metaprogramming features.

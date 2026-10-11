@@ -1,10 +1,12 @@
 ---
 title: Scala 2 with -Xsource:3
 type: chapter
-description: This section describes the Scala 2 compiler's -Xsource:3 flag
-num: 7
-previous-page: tooling-tour
-next-page: tooling-migration-mode
+description: The -Xsource:3 option of the Scala 2.13 compiler
+num: 17
+previous-page: incompat-type-inference
+next-page: syntax-rewriting
+redirect_from:
+  - /scala3/guides/migration/tooling-scala2-xsource3.html
 ---
 
 The Scala 2.13 compiler issues helpful migration warnings with the `-Xsource:3` flag.

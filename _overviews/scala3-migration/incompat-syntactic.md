@@ -1,9 +1,9 @@
 ---
 title: Syntactic Changes
 type: section
-description: This chapter details all the incompatibilities caused by syntactic changes
-num: 17
-previous-page: incompatibility-table
+description: Incompatibilities caused by syntactic changes
+num: 11
+previous-page: incompatibilities
 next-page: incompat-dropped-features
 ---
 
@@ -12,7 +12,7 @@ It comes at the cost of some minimal restrictions in the preexisting syntax.
 
 Other syntactic changes are intended to make the syntax less surprising and more consistent.
 
-It is worth noting that most of the changes can be automatically handled during the [Scala 3 migration compilation](tooling-migration-mode.html).
+It is worth noting that most of the changes can be automatically handled during the [Scala 3 migration compilation](migrating-to-3-3.html).
 
 |Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|
 |--- |--- |--- |--- |
@@ -52,7 +52,7 @@ object given { // In Scala 3, Error: given is now a keyword.
 {% endtab %}
 {% endtabs %}
 
-The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the code into:
+The [Scala 3 migration compilation](migrating-to-3-3.html) rewrites the code into:
 {% highlight diff %}
 -object given {
 +object `given` {
@@ -82,7 +82,7 @@ object Bar {
 {% endtab %}
 {% endtabs %}
 
-The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the code into.
+The [Scala 3 migration compilation](migrating-to-3-3.html) rewrites the code into.
 {% highlight diff %}
  object Bar {
 -  def print() {
@@ -105,7 +105,7 @@ val f = { x: Int => x * x } // In Scala 3, Error: parentheses are required aroun
 {% endtab %}
 {% endtabs %}
 
-The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the code into:
+The [Scala 3 migration compilation](migrating-to-3-3.html) rewrites the code into:
 {% highlight diff %}
 -val f = { x: Int => x * x }
 +val f = { (x: Int) => x * x }
@@ -127,7 +127,7 @@ test("my test")
 {% endtab %}
 {% endtabs %}
 
-The [Scala 3 migration compiler](tooling-migration-mode.html) indents the first line of the block.
+The [Scala 3 migration compiler](migrating-to-3-3.html) indents the first line of the block.
 {% highlight diff %}
  test("my test")
 -{

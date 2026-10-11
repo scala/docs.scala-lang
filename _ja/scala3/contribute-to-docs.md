@@ -40,7 +40,7 @@ Scala 3 の高品質なドキュメンテーションを作るためのいくつ
 - [Issues](https://github.com/scala/docs.scala-lang/issues)
 
 ## Migration Guide
-[Scala 3 Migration Guide](/scala3/guides/migration/compatibility-intro.html) は Scala 2 と Scala 3 の互換性、移行に役立つツールの紹介、そして詳しい移行のガイドを含んだ包括的なドキュメントである。
+[Scala 3 Migration Guide](/scala3/guides/migration/planning.html) は Scala 2 と Scala 3 の互換性、移行に役立つツールの紹介、そして詳しい移行のガイドを含んだ包括的なドキュメントである。
 
 - [Source](https://github.com/scala/docs.scala-lang/tree/main/_overviews/scala3-migration)
 - [Issues](https://github.com/scalacenter/docs.scala-lang/issues)

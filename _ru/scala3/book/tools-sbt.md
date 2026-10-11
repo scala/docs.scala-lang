@@ -20,7 +20,7 @@ next-page: tools-worksheets
 Начнем с использования sbt для создания Scala-проектов, а затем рассмотрим, как использовать sbt и ScalaTest вместе для тестирования.
 
 > Если вы хотите узнать об инструментах, которые помогут вам перенести код Scala 2 на Scala 3,
-> ознакомьтесь с нашим [Руководством по миграции на Scala 3](/scala3/guides/migration/compatibility-intro.html).
+> ознакомьтесь с нашим [Руководством по миграции на Scala 3](/scala3/guides/migration/planning.html).
 
 ## Создание проектов Scala с помощью sbt
 

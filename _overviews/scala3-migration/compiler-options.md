@@ -1,10 +1,14 @@
 ---
 title: Compiler Options Lookup Table
-type: section
-description: This section contains the compiler options lookup tables
-num: 24
-previous-page: options-intro
-next-page: options-new
+type: chapter
+description: Scala 2.13 compiler options and their Scala 3 equivalents
+num: 19
+previous-page: syntax-rewriting
+next-page: scaladoc-settings
+redirect_from:
+  - /scala3/guides/migration/options-lookup.html
+  - /scala3/guides/migration/options-intro.html
+  - /scala3/guides/migration/options-new.html
 ---
 
 This table lists the Scala 2.13 compiler options with their equivalent in Scala 3.

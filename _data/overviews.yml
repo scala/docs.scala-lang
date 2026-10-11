@@ -63,7 +63,7 @@
       by: Adrien Piquerez
       icon: suitcase
       root: "scala3/guides/"
-      url: "migration/compatibility-intro.html"
+      url: "migration/planning.html"
       description: "Everything you need to know about compatibility and migration to Scala 3."
     - title: Scala 3 Macros
       by: Nicolas Stucki

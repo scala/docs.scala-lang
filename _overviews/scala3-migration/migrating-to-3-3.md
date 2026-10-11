@@ -1,10 +1,15 @@
 ---
-title: Scala 3 Migration Mode
+title: Migrating to Scala 3.3
 type: chapter
-description: This section describes the migration mode of the Scala 3 compiler 
-num: 8
-previous-page: tooling-scala2-xsource3
-next-page: tutorial-intro
+description: Migrating code from Scala 2.13 to Scala 3.3
+num: 4
+previous-page: preparing
+next-page: migrating-to-3-9
+redirect_from:
+  - /scala3/guides/migration/tooling-migration-mode.html
+  - /scala3/guides/migration/tutorial-sbt.html
+  - /scala3/guides/migration/tutorial-intro.html
+  - /scala3/guides/migration/tooling-tour.html
 ---
 
 The Scala 3 compiler provides some helpful utilities to ease the migration.
@@ -50,7 +55,7 @@ To do so you just need to compile again, this time with the `-source:3.0-migrati
 > - The rewrites are not applied if the code compiles in error.
 > - You cannot choose which rules are applied, the compiler runs all of them.
 
-You can refer to the [Incompatibility Table](incompatibility-table.html) to see the list of Scala 3 migration rewrites.
+You can refer to the [Incompatibility Table](incompatibilities.html) to see the list of Scala 3 migration rewrites.
 
 ## Error explanations
 

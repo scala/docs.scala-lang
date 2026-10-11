@@ -1,10 +1,12 @@
 ---
-title: Metaprogramming
-type: section
-description: This section discuss the metaprogramming transition 
-num: 5
-previous-page: compatibility-runtime
-next-page: tooling-tour
+title: Macro Libraries
+type: chapter
+description: Using and porting Scala 2 macro libraries
+num: 7
+previous-page: scala3-migrate
+next-page: macro-cross-building
+redirect_from:
+  - /scala3/guides/migration/compatibility-metaprogramming.html
 ---
 
 A call to a macro method is executed during the compiler phase called macro expansion to generate a part of the program---an abstract syntax tree.
@@ -68,8 +70,8 @@ There are two different approaches, the traditional cross-building technique and
 The benefit of macro mixing is that consumers who take advantage of the `-Ytasty-reader` option can still use your macros.
 
 You can learn about them by reading these tutorials:
-- [Cross-Building a Macro Library](tutorial-macro-cross-building.html)
-- [Mixing Scala 2.13 and Scala 3 Macros](tutorial-macro-mixing.html)
+- [Cross-Building a Macro Library](macro-cross-building.html)
+- [Mixing Scala 2.13 and Scala 3 Macros](macro-mixing.html)
 
 ## Additional Resources
 

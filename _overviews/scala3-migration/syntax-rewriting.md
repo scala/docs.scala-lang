@@ -1,10 +1,12 @@
 ---
 title: Scala 3 Syntax Rewriting
 type: chapter
-description: This section describes the syntax rewriting capability of the Scala 3 compiler 
-num: 15
-previous-page: tutorial-macro-mixing
-next-page: incompatibility-table
+description: Rewriting code to the new, optional Scala 3 syntax
+num: 18
+previous-page: scala2-xsource3
+next-page: compiler-options
+redirect_from:
+  - /scala3/guides/migration/tooling-syntax-rewriting.html
 ---
 
 Scala 3 extends the syntax of the Scala language with the new control structures and the significant indentation syntax.

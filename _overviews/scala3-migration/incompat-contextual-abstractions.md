@@ -1,8 +1,8 @@
 ---
 title: Contextual Abstractions
 type: section
-description: This chapter details all incompatibilities caused by the redesign of contextual abstractions
-num: 19
+description: Incompatibilities caused by the redesign of contextual abstractions
+num: 13
 previous-page: incompat-dropped-features
 next-page: incompat-other-changes
 ---
@@ -42,7 +42,7 @@ def pretty[A](a: A)(implicit ev: A => Pretty): String =
 {% endtab %}
 {% endtabs %}
 
-The [Scala 3 migration compilation](tooling-migration-mode.html) can warn you about those cases, but it does not try to fix it.
+The [Scala 3 migration compilation](migrating-to-3-3.html) can warn you about those cases, but it does not try to fix it.
 
 Be aware that this incompatibility can produce a runtime incompatibility and break your program.
 Indeed the compiler can find another implicit conversion from a broader scope, which would eventually cause an undesired behavior at runtime.

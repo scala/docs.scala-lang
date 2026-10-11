@@ -172,7 +172,7 @@ IDE の使用に慣れている場合は、IDE から _Main.scala_ のコード�
 * [The Tour of Scala](/tour/tour-of-scala.html) Scalaの機能を一口サイズで紹介します。
 * [Learning Courses](/online-courses.html) オンラインのインタラクティブなチュートリアルやコースです。
 * [books](/books.html) 人気のある Scalaの 書籍を紹介します
-* [The migration guide](/scala3/guides/migration/compatibility-intro.html) 既存の Scala 2コードベースを Scala 3に移行する際に役立ちます。
+* [The migration guide](/scala3/guides/migration/planning.html) 既存の Scala 2コードベースを Scala 3に移行する際に役立ちます。
 
 ## ヘルプが必要な人は
 他の Scala ユーザーとすぐに連絡を取りたい場合は、多くのメーリングリストやリアルタイムのチャットルームがあります。これらのリソースのリストや、どこに問い合わせればよいかについては、[コミュニティページ](https://scala-lang.org/community/)をご覧ください。

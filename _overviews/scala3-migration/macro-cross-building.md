@@ -1,18 +1,20 @@
 ---
 title: Cross-Building a Macro Library
 type: section
-description: This section shows how to cross-build a macro library
-num: 13
-previous-page: tutorial-sbt
-next-page: tutorial-macro-mixing
+description: Cross-building a macro library for Scala 2.13 and Scala 3
+num: 8
+previous-page: macros
+next-page: macro-mixing
+redirect_from:
+  - /scala3/guides/migration/tutorial-macro-cross-building.html
 ---
 
 Macro libraries must be re-implemented from the ground-up.
 
-Before starting you should be familiar with the Scala 3 migration as described in the [Porting an sbt Project](tutorial-sbt.html) tutorial.
+Before starting you should be familiar with the Scala 3 migration as described in the [Porting an sbt Project](migrating-to-3-3.html) tutorial.
 The purpose of the current tutorial is to cross-build an existing Scala 2.13 macro library so that it becomes available in both Scala 3 and Scala 2.13.
 
-An alternative solution called *Mixing Macros* is explained in the [next tutorial](tutorial-macro-mixing.html).
+An alternative solution called *Mixing Macros* is explained in the [next tutorial](macro-mixing.html).
 You are encouraged to read both solutions to choose the technique that is best suited for your needs.
 
 ## Introduction
@@ -173,7 +175,7 @@ object Macros:
 ## 3. Implement the Scala 3 macro
 
 There is no magic formula to port a Scala 2 macro into Scala 3.
-One needs to learn about the new [Metaprogramming](compatibility-metaprogramming.html) features.
+One needs to learn about the new [Metaprogramming](macros.html) features.
 
 We eventually come up with this implementation:
 

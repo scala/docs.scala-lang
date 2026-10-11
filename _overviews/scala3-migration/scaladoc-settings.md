@@ -1,10 +1,12 @@
 ---
 title: Scaladoc settings compatibility between Scala2 and Scala3
 type: section
-description: This chapter lists all the scaladoc options for Scala 2 and Scala 3, and explains the relations between them.
-num: 26
-previous-page: options-new
-next-page: plugin-intro
+description: Scaladoc settings in Scala 2 and Scala 3
+num: 20
+previous-page: compiler-options
+next-page: kind-projector
+redirect_from:
+  - /scala3/guides/migration/scaladoc-settings-compatibility.html
 ---
 
 The current page is stating the status of scaladoc settings. The related Github issue can be found here for [discussion](https://github.com/scala/scala3/issues/11907)

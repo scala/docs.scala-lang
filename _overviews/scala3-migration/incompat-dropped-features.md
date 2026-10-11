@@ -1,14 +1,14 @@
 ---
 title: Dropped Features
 type: section
-description: This chapter details all the dropped features
-num: 18
+description: Incompatibilities caused by dropped features
+num: 12
 previous-page: incompat-syntactic
 next-page: incompat-contextual-abstractions
 ---
 
 Some features are dropped to simplify the language.
-Most of these changes can be handled automatically during the [Scala 3 migration compilation](tooling-migration-mode.html).
+Most of these changes can be handled automatically during the [Scala 3 migration compilation](migrating-to-3-3.html).
 
 |Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|
 |--- |--- |--- |--- |
@@ -38,7 +38,7 @@ val abc = values('abc) // In Scala 3, Migration Warning: symbol literal 'abc is 
 {% endtab %}
 {% endtabs %}
 
-The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites the code into:
+The [Scala 3 migration compilation](migrating-to-3-3.html) rewrites the code into:
 {% highlight diff %}
 val values: Map[Symbol, Int] = Map(Symbol("abc") -> 1)
 
@@ -68,7 +68,7 @@ do { // In Scala 3, Migration Warning: `do <body> while <cond>` is no longer sup
 {% endtab %}
 {% endtabs %}
 
-The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites it into. 
+The [Scala 3 migration compilation](migrating-to-3-3.html) rewrites it into. 
 {% tabs scala-3-do_while_2 %}
 {% tab 'Scala 3 Only' %}
 ~~~ scala
@@ -98,7 +98,7 @@ println(Hello.message) // In Scala 3, Migration Warning: method message must be 
 {% endtab %}
 {% endtabs %}
 
-The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites it into:
+The [Scala 3 migration compilation](migrating-to-3-3.html) rewrites it into:
 {% highlight diff %}
 object Hello {
   def message(): String = "Hello"
@@ -126,7 +126,7 @@ val f: () => Int = x _ // In Scala 3, Migration Warning: The syntax `<function> 
 {% endtab %}
 {% endtabs %}
 
-The [Scala 3 migration compilation](tooling-migration-mode.html) rewrites it into:
+The [Scala 3 migration compilation](migrating-to-3-3.html) rewrites it into:
 {% highlight diff %}
 val x = 1
 -val f: () => Int = x _

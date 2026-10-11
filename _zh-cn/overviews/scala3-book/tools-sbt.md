@@ -21,7 +21,7 @@ permalink: "/zh-cn/scala3/book/:title.html"
 
 我们将首先展示如何使用 sbt 构建您的 Scala 项目，然后我们将展示如何一起使用 sbt 和 ScalaTest 来测试您的 Scala 项目。
 
-> 如果您想了解帮助您将 Scala 2 代码迁移到 Scala 3 的工具，请参阅我们的 [Scala 3 迁移指南](/scala3/guides/migration/compatibility-intro.html)。
+> 如果您想了解帮助您将 Scala 2 代码迁移到 Scala 3 的工具，请参阅我们的 [Scala 3 迁移指南](/scala3/guides/migration/planning.html)。
 
 ## 使用 sbt 构建 Scala 项目
 

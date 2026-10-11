@@ -1,10 +1,13 @@
 ---
-title: Classpath Level
-type: section
-description: This section describes the compatibility between Scala 2.13 and Scala 3 class files.
-num: 3
-previous-page: compatibility-source
-next-page: compatibility-runtime
+title: Interoperability
+type: chapter
+description: How Scala 2.13 and Scala 3 modules and libraries can depend on each other
+num: 2
+previous-page: planning
+next-page: preparing
+redirect_from:
+  - /scala3/guides/migration/compatibility-classpath.html
+  - /scala3/guides/migration/compatibility-runtime.html
 ---
 
 In your code you can use public types and terms, and call public methods that are defined in a different module or library.

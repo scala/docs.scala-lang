@@ -22,7 +22,7 @@
     - title: What's New?
       url: "/scala3/new-in-scala3.html"
     - title: Migrating From Scala 2
-      url: "/scala3/guides/migration/compatibility-intro.html"
+      url: "/scala3/guides/migration/planning.html"
     - title: New Features for Scaladoc
       url: "/scala3/scaladoc.html"
     - title: Videos and Talks

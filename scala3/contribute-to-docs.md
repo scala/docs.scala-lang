@@ -39,7 +39,7 @@ The [Macros Tutorial](/scala3/guides/macros) is being written by Nicolas Stucki 
 - [Issues](https://github.com/scala/docs.scala-lang/issues)
 
 ## Migration Guide
-The [Scala 3 Migration Guide](/scala3/guides/migration/compatibility-intro.html)
+The [Scala 3 Migration Guide](/scala3/guides/migration/planning.html)
 contains a comprehensive overview over compatibility between Scala 2 and Scala 3,
 a tour presenting the migration tools, and detailed migration guides.
 

@@ -1,13 +1,16 @@
 ---
-title: Prerequisites
-type: section
-description: This section details the prerequisites of migration to Scala 3
-num: 10
-previous-page: tutorial-intro
-next-page: scala3-migrate
+title: Preparing on Scala 2.13
+type: chapter
+description: Changes to make on Scala 2.13 before migrating to Scala 3
+num: 3
+previous-page: interoperability
+next-page: migrating-to-3-3
+redirect_from:
+  - /scala3/guides/migration/tutorial-prerequisites.html
+  - /scala3/guides/migration/dependencies.html
 ---
 
-The migration to Scala 3 is made easier thanks to the interoperability between Scala 2.13 and Scala 3, as described in the [Compatibility Reference](compatibility-intro.html) page.
+The migration to Scala 3 is made easier thanks to the interoperability between Scala 2.13 and Scala 3, as described in the [Compatibility Reference](planning.html) page.
 
 However, there are a few prerequisites that a Scala 2.13 project must meet before being ported to Scala 3:
 - It must not depend on a macro library that has not yet been ported to Scala 3.
@@ -16,7 +19,7 @@ However, there are a few prerequisites that a Scala 2.13 project must meet befor
 
 The following paragraphs explain how to check those prerequisites and, in case they are unmet, what you can do about it.
 
-If you are ready to proceed with the migration you can jump straight to the [sbt Migration Tutorial](tutorial-sbt.html).
+If you are ready to proceed with the migration you can jump straight to the [sbt Migration Tutorial](migrating-to-3-3.html).
 
 ## Macro dependencies
 
@@ -114,13 +117,13 @@ AdditionalLy, we now have the following features that make `kind-projector` not 
 - [Polymorphic Functions](http://nightly.scala-lang.org/docs/reference/new-types/polymorphic-function-types.html)
 - [Kind Polymorphism](http://nightly.scala-lang.org/docs/reference/other-new-features/kind-polymorphism.html)
 
-You can learn more about the Kind Projector migration in its [dedicated page](plugin-kind-projector.html).
+You can learn more about the Kind Projector migration in its [dedicated page](kind-projector.html).
 
 ## Runtime reflection
 
 `scala-reflect` will not be ported to Scala 3 because it exposes Scala 2 compiler internals that do not exist in Scala 3.
 
 If your project depends on `scala-reflect`, or consumes instances of the `Manifest` class, it cannot be compiled by the Scala 3 compiler.
-To remedy this situation, you can try to re-implement the corresponding parts of the code, using Java reflection or the [Scala 3 metaprogramming features](compatibility-metaprogramming.html).
+To remedy this situation, you can try to re-implement the corresponding parts of the code, using Java reflection or the [Scala 3 metaprogramming features](macros.html).
 
 If `scala-reflect` is transitively added in your classpath, you probably need to upgrade the dependency that brings it.

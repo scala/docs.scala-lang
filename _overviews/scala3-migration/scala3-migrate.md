@@ -1,10 +1,10 @@
 ---
-title: Porting an sbt Project (using sbt-scala3-migrate)
-type: section
-description: This section shows how to use scala3-migrate to migrate a project
-num: 11
-previous-page: tutorial-prerequisites
-next-page: tutorial-sbt
+title: Using sbt-scala3-migrate
+type: chapter
+description: Using the sbt-scala3-migrate plugin to migrate an sbt module to Scala 3.3
+num: 6
+previous-page: migrating-to-3-9
+next-page: macros
 ---
 
 `sbt-scala3-migrate` is an sbt plugin to assist you during the migration of your sbt project to Scala 3.
@@ -23,7 +23,7 @@ Each one of these commands is described in details below.
 >
 > #### Recommendation
 > Before the migration, add `-Xsource:3` to your scalac options to enable Scala 3 migration warnings in the Scala 2 compiler.
-> See the page [Scala 2 with -Xsource:3](tooling-scala2-xsource3.html) for more details.
+> See the page [Scala 2 with -Xsource:3](scala2-xsource3.html) for more details.
 
 In this tutorial, we will migrate the project in [scalacenter/scala3-migration-example](https://github.com/scalacenter/scala3-migration-example).
 To learn about the migration, and train yourself, you can clone this repository and follow the tutorial steps.
@@ -251,7 +251,7 @@ You are now ready to migrate the compiler options.
 **Usage:** `migrateScalacOptions <project>`
 
 The Scala 3 compiler does not contain the exact same set of options as the Scala 2 compiler.
-You can check out the [the Compiler Options Table](options-lookup.html) to get a full comparison of all the compilers options.
+You can check out the [the Compiler Options Table](compiler-options.html) to get a full comparison of all the compilers options.
 
 The `migrateScalacOptions` will help you update the list of `scalacOptions` in your build.
 
@@ -344,9 +344,9 @@ The list of applied Scalafix rules are:
 - [fix.scala213.Any2StringAdd](https://github.com/lightbend-labs/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/Any2StringAdd.scala)
 - [ExplicitResultTypes](https://scalacenter.github.io/scalafix/docs/rules/ExplicitResultTypes.html)
 
-For more information about the syntax changes between Scala 2.13 and Scala 3, you can refer to [the Incompatibility Table](incompatibility-table.html).
+For more information about the syntax changes between Scala 2.13 and Scala 3, you can refer to [the Incompatibility Table](incompatibilities.html).
 
-> Some incompatibilities listed in [the Incompatibility Table](incompatibility-table.html) are not fixed by migrateSyntax.
+> Some incompatibilities listed in [the Incompatibility Table](incompatibilities.html) are not fixed by migrateSyntax.
 > Most of them are not frequent and can easily be fixed by hand. 
 > If you want to contribute with a Scalafix rewrite rule, we will be more than happy to add it in the `migrateSyntax` command.
 

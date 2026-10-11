@@ -1,8 +1,8 @@
 ---
 title: Other Changed Features
 type: section
-description: This chapter details all incompatibilities caused by changed features
-num: 20
+description: Incompatibilities caused by other changed features
+num: 14
 previous-page: incompat-contextual-abstractions
 next-page: incompat-type-checker
 ---
@@ -73,7 +73,7 @@ But if you try to compile with Scala 3 you should see an error of the same kind 
   |              and inherited subsequently in class C
 {% endhighlight %}
 
-The [Scala 3 migration compilation](tooling-migration-mode.html) can automatically disambiguate the code by replacing `println(x)` with `println(this.x)`.
+The [Scala 3 migration compilation](migrating-to-3-3.html) can automatically disambiguate the code by replacing `println(x)` with `println(this.x)`.
 
 ## Non-private Constructor In Private Class
 
@@ -99,7 +99,7 @@ If you try to compile in scala 3 you should get the following error message:
   |      in its type signature (): foo.Foo.Bar
 {% endhighlight %}
 
-The [Scala 3 migration compilation](tooling-migration-mode.html) warns about this but no automatic rewrite is provided.
+The [Scala 3 migration compilation](migrating-to-3-3.html) warns about this but no automatic rewrite is provided.
 
 The solution is to make the constructor private, since the class is private.
 

@@ -1,10 +1,13 @@
 ---
 title: Kind Projector Migration
-type: section
-description: This section shows how to migrate from the kind-projector plugin to Scala 3 kind-projector syntax
-num: 28
-previous-page: plugin-intro
+type: chapter
+description: Migrating from the kind-projector plugin to Scala 3 type lambdas
+num: 21
+previous-page: scaladoc-settings
 next-page: external-resources
+redirect_from:
+  - /scala3/guides/migration/plugin-kind-projector.html
+  - /scala3/guides/migration/plugin-intro.html
 ---
 
 In the future, Scala 3 will use the `_` underscore symbol for placeholders in type lambdas---just as the underscore is currently used for placeholders in (ordinary) term-level lambdas.
