@@ -10,57 +10,66 @@ redirect_from:
   - /scala3/guides/migration/compatibility-runtime.html
 ---
 
-In your code you can use public types and terms, and call public methods that are defined in a different module or library.
-It works well as long as the type checker, which is the compiler phase that validates the semantic consistency of the code, is able to read the signatures of those types, terms and methods, from the class files containing them.
+To use a module or library, the compiler reads the signatures of its definitions from the class files.
+Scala 2.13 stores the signatures in the Pickle format, Scala 3 in the TASTy format.
 
-In Scala 2 the signatures are stored in a dedicated format called the Pickle format.
-In Scala 3 the story is a bit different because it relies on the TASTy format which is a lot more than a signature layout.
-But, for the purpose of moving from Scala 2.13 to Scala 3, only the signatures are useful.
+## Scala 3 Can Use Scala 2.13 Binaries
 
-## The Scala 3 Unpickler
-
-The first piece of good news is that the Scala 3 compiler is able to read the Scala 2.13 Pickle format and thus it can type check code that depends on modules or libraries compiled with Scala 2.13.
-
-The Scala 3 unpickler has been extensively tested in the community build for many years now. It is safe to use.
-
-### A Scala 3 module can depend on a Scala 2.13 artifact
+The Scala 3 compiler reads the Scala 2.13 Pickle format, so a Scala 3 module can depend on modules and libraries compiled with Scala 2.13.
+This works with every Scala 3 version.
 
 ![Scala 3 module depending on a Scala 2.13 artifact](/resources/images/scala3-migration/compatibility-3-to-213.svg)
 
-As an sbt build, it looks like this:
+In sbt:
 
 ```scala
-// build.sbt (sbt 1.5 or higher)
+// build.sbt
 lazy val foo = project.in(file("foo"))
-  .settings(scalaVersion := "3.3.1")
+  .settings(scalaVersion := "3.9.0")
   .dependsOn(bar)
 
 lazy val bar = project.in(file("bar"))
-  .settings(scalaVersion := "2.13.11")
+  .settings(scalaVersion := "2.13.18")
 ```
 
-Or, in case bar is a published Scala 2.13 library, we can have:
+For a published Scala 2.13 library, `CrossVersion.for3Use2_13` makes sbt resolve `bar_2.13` instead of `bar_3`:
 
 ```scala
 lazy val foo = project.in(file("foo"))
   .settings(
-    scalaVersion := "3.3.1",
+    scalaVersion := "3.9.0",
     libraryDependencies += ("org.bar" %% "bar" % "1.0.0").cross(CrossVersion.for3Use2_13)
   )
 ```
 
-We use `CrossVersion.for3Use2_13` in sbt to resolve `bar_2.13` instead of `bar_3`.
+The Scala 3 compiler cannot expand Scala 2 macros, see [Macro Libraries](macros.html).
 
 ### The Standard Library
 
-One notable example is the Scala 2.13 library.
-We have indeed decided that the Scala 2.13 library is the official standard library for Scala 3.
+Up to 3.7, Scala 3 uses the Scala 2.13 standard library.
+Since 3.8, the standard library is compiled with Scala 3. It is binary compatible with the 2.13 standard library, so code compiled with an earlier Scala 3 version or Scala 2.13 continues to work.
 
-Let's note that the standard library is automatically provided by the build tool, you should not need to configure it manually.
+## Scala 2.13 Can Use Scala 3 Binaries
 
-## The Scala 2.13 TASTy Reader
+With the `-Ytasty-reader` option, Scala 2.13 can read the TASTy format of Scala 3 up to version 3.7.
+It cannot read code compiled with Scala 3.8 or later.
 
-The second piece of good news is that Scala 2.13 can consume Scala 3 libraries with `-Ytasty-reader`.
+![Scala 2 module depending on a Scala 3 artifact](/resources/images/scala3-migration/compatibility-213-to-3.svg)
+
+In sbt:
+
+```scala
+// build.sbt
+lazy val foo = project.in(file("foo"))
+  .settings(
+    scalaVersion := "2.13.18",
+    scalacOptions += "-Ytasty-reader"
+  )
+  .dependsOn(bar)
+
+lazy val bar = project.in(file("bar"))
+  .settings(scalaVersion := "3.3.8")
+```
 
 ### Supported Features
 
@@ -74,7 +83,7 @@ The TASTy reader supports all the traditional language features as well as the f
 - [Export Clauses]({{ site.scala3ref }}/other-new-features/export.html)
 
 It partially supports:
-- [Top-Level Definitions]({{ site.scala3ref }}/dropped-features/package-objects.html)
+- [Top-Level Definitions]({{ site.scala3ref }}/dropped-features/package-objects.html): they are only accessible through their synthetic object, for example `p.File$package.f` for a definition `f` in `p/File.scala`.
 - [Extension Methods]({{ site.scala3ref }}/contextual/extension-methods.html)
 
 It does not support the more advanced features:
@@ -90,55 +99,21 @@ It does not support the more advanced features:
 - [Inline]({{ site.scala3ref }}/metaprogramming/inline.html) (including Scala 3 macros)
 - [Kind Polymorphism]({{ site.scala3ref }}/other-new-features/kind-polymorphism.html) (the `scala.AnyKind` upper bound)
 
-### A Scala 2.13 module can depend on a Scala 3 artifact
+Using an unsupported definition is an error at the use site; other definitions of the same module can still be used.
 
-By enabling the TASTy reader with `-Ytasty-reader`, a Scala 2.13 module can depend on a Scala 3 artifact.
+## Mixing Scala 2.13 and Scala 3 Modules
 
-![Scala 2 module depending on a Scala 3 artifact](/resources/images/scala3-migration/compatibility-213-to-3.svg)
-
-As an sbt build, it looks like this:
-
-```scala
-// build.sbt (sbt 1.5 or higher)
-lazy val foo = project.in.file("foo")
-  .settings(
-    scalaVersion := "2.13.11",
-    scalacOptions += "-Ytasty-reader"
-  )
-  .dependsOn(bar)
-
-lazy val bar = project.in(file("bar"))
-  .settings(scalaVersion := "3.3.1")
-```
-
-Or, in case `bar` is a published Scala 3 library:
-
-```scala
-lazy val foo = project.in.file("foo")
-  .settings(
-    scalaVersion := "2.13.11",
-    scalacOptions += "-Ytasty-reader",
-    libraryDependencies += ("org.bar" %% "bar" % "1.0.0").cross(CrossVersion.for2_13Use3)
-  )
-```
-
-Similarly to `CrossVersion.for2_13Use3`, we use `CrossVersion.for3Use2_13` in sbt to resolve `bar_3` instead of `bar_2.13`.
-
-## Interoperability Overview
-
-In short, we have backward and forward compatibility and so **migration can happen gradually**.
-
-You can port a big Scala application one module at a time, even if its library dependencies have not yet been ported (excepting the macro libraries).
-
-During the transition period, you can have a Scala 3 module layered in between two 2.13 modules.
+During a migration, a build can contain both Scala 2.13 and Scala 3 modules that depend on each other in both directions.
 
 ![Sandwich pattern](/resources/images/scala3-migration/compatibility-sandwich.svg)
 
-This is permitted as long as all libraries are resolved to a single binary version: you can have `lib-foo_3` and `lib-bar_2.13` in the same classpath, but you cannot have `lib-foo_3` and `lib-foo_2.13`.
+A library can only be on the classpath once: either as `foo_2.13` or as `foo_3`, not both.
+sbt reports an error when a build resolves both.
+While the build is mixed, the project will use the `_2.13` artifacts of all Scala libraries, using `CrossVersion.for3Use2_13` in the Scala 3 modules.
 
-The inverted pattern, with a 2.13 module in the middle, is also possible.
+For example, if the project uses `cats_2.13` in some 2.13 module, downstream dependencies such as `http4s` need to stay on `_2.13` too, even if they are only used in Scala 3 modules.
 
 > #### Disclaimer for library maintainers
-> 
+>
 > Unless you know exactly what you are doing, it is discouraged to publish a Scala 3 library that depends on a Scala 2.13 library (the scala-library being excluded) or vice versa.
 > The reason is to prevent library users from ending up with two conflicting versions `foo_2.13` and `foo_3` of the same foo library in their classpath, this problem being unsolvable in some cases.
