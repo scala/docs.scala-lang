@@ -1,5 +1,5 @@
 ---
-title: Scaladoc settings compatibility between Scala2 and Scala3
+title: Scaladoc Settings
 type: section
 description: Scaladoc settings in Scala 2 and Scala 3
 num: 20
