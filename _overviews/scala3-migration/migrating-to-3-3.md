@@ -12,55 +12,99 @@ redirect_from:
   - /scala3/guides/migration/tooling-tour.html
 ---
 
-The Scala 3 compiler provides some helpful utilities to ease the migration.
+This step moves the code from Scala 2.13 to Scala 3.3, using the Scala 3.3 compiler.
+Depending on the [migration route](planning.html#migration-routes), the result is released with Scala 3.3, or the code continues to [Scala 3.9 or 3.10](migrating-to-3-9.html) before the build switches to Scala 3.
+In a build with several modules, the step is done for each module, in the order of the route.
 
-Try running `scalac` to have a glimpse of those utilities:
+The steps are shown with sbt; they are the same with other build tools.
+Optionally, the [sbt-scala3-migrate](scala3-migrate.html) plugin automates part of them.
 
-> `scalac` is the executable of the Scala compiler, it can be downloaded from [Github](https://github.com/scala/scala3/releases/).
-> 
-> It can also be installed using Coursier with `cs install scala3-compiler`, in which case `scalac` is aliased `scala3-compiler`.
+## 1. Add Scala 3 to the build
+
+Add Scala 3.3 to the `crossScalaVersions` of the module:
+
+```scala
+scalaVersion := "2.13.18"
+crossScalaVersions := Seq("2.13.18", "3.3.8")
+```
+
+In the sbt shell, `++3.3.8` switches the module to Scala 3.3.8, and `++2.13.18` back to Scala 2.13.
+This way, the tests can run on Scala 2.13 after each change.
+
+## 2. Configure the Scala 3 compiler
+
+The Scala 3 compiler options are different, see the [Compiler Options Lookup Table](compiler-options.html).
+
+Add the `-source:3.0-migration` option.
+It makes the Scala 3 compiler accept Scala 2 code, and report the code that needs to change as migration warnings.
+When the Scala 3 rules for implicit resolution find an ambiguity, the compiler uses the Scala 2 result and reports a warning.
+
+```scala
+scalacOptions ++= {
+  CrossVersion.partialVersion(scalaVersion.value) match {
+    case Some((3, _)) => Seq("-source:3.0-migration")
+    case _            => Seq("-Xsource:3")
+  }
+}
+```
+
+If the build makes warnings fatal (`-Werror`), disable that for Scala 3 during the migration.
+
+## 3. Fix the errors
+
+Compile the main and test sources with Scala 3.3:
 
 {% highlight text %}
-$ scalac
-Usage: scalac <options> <source files>
-where possible standard options include:
-
-...
--explain           Explain errors in more detail.
-...
--rewrite           When used in conjunction with a `...-migration` source version, rewrites sources to migrate to new version.
-...
--source            source version
-                   Default: 3.0.
-                   Choices: 3.0, future, 3.0-migration, future-migration.
-...
+sbt:example> ++3.3.8
+sbt:example> example / Test / compile
 {% endhighlight %}
 
-## Migration mode
+If sbt cannot find a dependency, it is not published for Scala 3; see [Dependencies](preparing.html#2-dependencies).
 
-The `-source:3.0-migration` option makes the compiler forgiving on most of the dropped features, printing warnings in place of errors.
-Each warning is a strong indication that the compiler is even capable of safely rewriting the deprecated pieces of code into their cross-compiling counterparts.
+The compiler reports two kinds of problems:
+- *Migration warnings*: most of them are fixed automatically in the next step.
+- *Errors* must be fixed by hand.
+  The [Incompatibility Table](incompatibilities.html) describes the known incompatibilities and their solutions.
+  The `-explain` option makes the compiler describe errors in more detail.
 
-We call this the **Scala 3 migration compilation**.
+In case you are cross-building the project, changes must work on both Scala 2.13 and 3. You can check the code by running the tests with Scala 2.13:
 
-## Automatic rewrites
+{% highlight text %}
+sbt:example> ++2.13.18
+sbt:example> example / test
+{% endhighlight %}
 
-Once your code compiles in the migration mode, almost all warnings can be resolved automatically by the compiler itself.
-To do so you just need to compile again, this time with the `-source:3.0-migration` and the `-rewrite` options.
+## 4. Apply the rewrites
 
-> Beware that the compiler will modify the code! It is intended to be safe.
-> However you may want to commit the initial state so that you can print the diff applied by the compiler and revert it if necessary.
+Once only migration warnings are left, compile again with `-rewrite`:
+
+{% highlight text %}
+sbt:example> ++3.3.8
+sbt:example> set example / scalacOptions += "-rewrite"
+sbt:example> example / Test / compile
+...
+[info] [patched file /example/src/main/scala/app/Main.scala]
+{% endhighlight %}
+
+The [Incompatibility Table](incompatibilities.html) shows which changes are rewritten.
+Fix the remaining warnings about implicit resolution now, for example by passing the implicit argument explicitly: they are only reported under `-source:3.0-migration`.
+
+Then replace `-source:3.0-migration` in the build by `-source:3.3-migration`, `reload`, and run the three commands above again.
+This fixes deprecations of Scala 3.2 and 3.3, such as refutable patterns in `for` generators and `val` definitions, which Scala 3.3 otherwise reports as warnings.
 
 > #### Good to know
-> - The rewrites are not applied if the code compiles in error.
-> - You cannot choose which rules are applied, the compiler runs all of them.
+> - The rewrites change the source files. Commit before each run, to review the changes.
+> - The rewrites are only applied if the compilation has no errors.
+>   A single error, in any file, prevents all rewrites.
+> - You cannot choose which rewrites are applied, the compiler runs all of them.
 
-You can refer to the [Incompatibility Table](incompatibilities.html) to see the list of Scala 3 migration rewrites.
+## 5. Check the result
 
-## Error explanations
+Remove `-source:3.3-migration` from the build, and run the tests with both Scala 2.13 and Scala 3.3.
+Different implicits can be resolved in rare cases, which only the tests can detect.
 
-The `-source:3.0-migration` mode handles many of the changed features but not all of them.
-The compiler can give you more details about the remaining errors when invoked with the `-explain` and/or the `-explain-types` options.
+The module now compiles with Scala 3.3.
+To release it with Scala 3.3, set its `scalaVersion` to `3.3.8`; 2.13 modules that depend on it need the `-Ytasty-reader` option.
+Depending on your migration route, continue with [Migrating to Scala 3.9 and 3.10](migrating-to-3-9.html).
 
-> The `-explain` and `-explain-types` options are not limited to the migration.
-> They can, in general, assist you to learn and code in Scala 3.
+If you use [Scalafmt](https://scalameta.org/scalafmt/), set `runner.dialect = scala3` in `.scalafmt.conf`.

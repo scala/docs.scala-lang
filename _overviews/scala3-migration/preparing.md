@@ -10,65 +10,68 @@ redirect_from:
   - /scala3/guides/migration/dependencies.html
 ---
 
-The migration to Scala 3 is made easier thanks to the interoperability between Scala 2.13 and Scala 3, as described in the [Compatibility Reference](planning.html) page.
+A first round of changes should be made while the project is still on Scala 2.13, to keep the migration itself smaller.
+Make each of them as a separate change:
 
-However, there are a few prerequisites that a Scala 2.13 project must meet before being ported to Scala 3:
-- It must not depend on a macro library that has not yet been ported to Scala 3.
-- It must not use a compiler plugin that has no equivalent in Scala 3.
-- It must not depend on `scala-reflect`.
+1. Upgrade to JDK 17.
+2. Update the dependencies to versions that are published for Scala 3, and replace those that do not exist for Scala 3.
+3. Replace compiler plugins.
+4. Enable `-Xsource:3` and fix the migration warnings.
 
-The following paragraphs explain how to check those prerequisites and, in case they are unmet, what you can do about it.
+## 1. JDK 17
 
-If you are ready to proceed with the migration you can jump straight to the [sbt Migration Tutorial](migrating-to-3-3.html).
+Scala 3.8 and later require JDK 17 or newer, both to compile and to run.
+See [JDK Compatibility]({% link _overviews/jdk-compatibility/overview.md %}).
+This step is not strictly required when migrating to Scala 3.3 only, but recommended.
+Even on 3.3, some dependencies might require you to switch to JDK 17.
 
-## Macro dependencies
+## 2. Dependencies
 
-A macro library is a Scala library that exposes a macro method.
+Update each dependency to a version that is published for both Scala 2.13 and Scala 3.
 
-Those libraries tend to be more expressive and as such they are widely used in Scala 2.
-We can mention as examples: 
-- [lightbend/scala-logging](https://index.scala-lang.org/lightbend/scala-logging)
-- [milessabin/shapeless](https://index.scala-lang.org/milessabin/shapeless)
-- [playframework/play-json](https://index.scala-lang.org/playframework/play-json)
-- [scalatest/scalatest](https://index.scala-lang.org/scalatest/scalatest)
+With the module-by-module and top-down routes, the build keeps using the `_2.13` versions of all libraries until the migration is complete (see [Interoperability](interoperability.html)), so the updates could wait.
+But the final switch to Scala 3 needs versions that are published for Scala 3, so it is simplest to update first in every case.
 
-But the Scala 3 compiler cannot expand Scala 2.13 macros.
-So, before jumping to Scala 3, you should make sure that your project does not depend on a macro library that has not yet been ported.
+### Finding versions for Scala 3
 
-You can find the migration status of many macro libraries in the [Scala Macro Libraries](https://scalacenter.github.io/scala-3-migration-guide/docs/macros/macro-libraries.html) page.
-Hopefully many will already be ported by the time you read these lines.
+The version matrix of a library on [Scaladex](https://index.scala-lang.org/) shows which versions are published for Scala 2.13 and Scala 3.
 
-For each of these macro dependencies in your project, you need to upgrade it to a cross-built version---a version available on both Scala 2.13 and Scala 3.
-
-Let's take a quick example.
-
-The dependency to `"scalatest" %% "scalatest" % "3.0.9"` must be upgraded because:
-- The `scalatest` API is based on some macro definitions.
-- The `3.0.9` version is not published for Scala 3.
-
-We can upgrade it to version `3.2.19`, which is cross-published in Scala 2.13 and Scala 3.
+For example, `"org.scalatest" %% "scalatest" % "3.0.9"` is not published for Scala 3, but 3.2.20 is:
 
 ```scala
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.20"
 ```
 
-## Compiler plugins
+In sbt, the `migrateDependencies` command of [sbt-scala3-migrate](scala3-migrate.html) lists the versions that are published for Scala 3.
 
-The Scala 2 compiler plugins are not compatible with Scala 3.
+### Libraries without a direct replacement
 
-Compiler plugins are generally configured in the `build.sbt` file by one of these settings:
+Some libraries rely on Scala 2 features that do not exist in Scala 3: macros, macro annotations, compiler plugins or `scala-reflect`.
+Some have no Scala 3 version, others have one with a different API:
 
-```scala
-// build.sbt
-libraryDependencies +=
-  compilerPlugin("org.typelevel" %% "kind-projector" % "0.11.0" cross CrossVersion.full)
+| Scala 2.13 | Scala 3 |
+|-|-|
+| [shapeless 2](https://github.com/milessabin/shapeless) | [shapeless 3](https://github.com/typelevel/shapeless-3), with a different API, or the built-in [type class derivation]({{ site.scala3ref }}/contextual/derivation.html) |
+| Macro annotations, such as circe's `@JsonCodec` | `derives` clauses, such as `derives Codec.AsObject` |
+| `scala-reflect`, for example `TypeTag` | `ClassTag`, Java reflection, or [izumi-reflect](https://github.com/zio/izumi-reflect) (also for Scala 2.13) |
+| The silencer compiler plugin | `@nowarn` (also in Scala 2.13) |
 
-addCompilerPlugin("org.typelevel" %% "kind-projector" % "0.11.0" cross CrossVersion.full)
-```
+Libraries often depend on `scala-reflect` transitively; sbt's `dependencyTree` task shows where it comes from.
 
-Some compiler plugins may also be automatically added by an sbt plugin.
+When a replacement exists for Scala 2.13 too, switch to it before the migration.
+Otherwise, the change is part of the migration, or the code goes to the version-specific `scala-2` and `scala-3` source directories of a cross-built module.
 
-You can find all configured compiler plugins by looking at the compiler options of your project.
+### Libraries not published for Scala 3
+
+Scala 3 can use the Scala 2.13 version of a library, with `CrossVersion.for3Use2_13`, unless the code uses its Scala 2 macros.
+This has limitations, explained in [Interoperability](interoperability.html).
+If this does not work, replace the library, or help its maintainers publish it for Scala 3.
+
+## 3. Compiler Plugins
+
+Scala 2 compiler plugins do not work with Scala 3.
+They are configured in `build.sbt` with `addCompilerPlugin(...)` or `compilerPlugin(...)`, or added by sbt plugins.
+The compiler options show all of them:
 
 {% highlight text %}
 sbt:example> show example / Compile / scalacOptions
@@ -78,52 +81,27 @@ sbt:example> show example / Compile / scalacOptions
 [info] * -P:semanticdb:targetroot:/example/target/scala-2.13/meta
 {% endhighlight %}
 
-In the above example we can see that two compiler plugins are used: wartremover and semanticdb.
-For each of these plugins, we need to check that there is an alternative solution, or we need to disable it.
+Some plugins have a replacement in Scala 3:
 
-Alternative solutions to the most used compiler plugins are given below.
+- **SemanticDB** is built into the Scala 3 compiler.
+  sbt configures it with the setting `semanticdbEnabled := true`.
+- **Scala.js** and **Scala Native** support Scala 3 with recent versions of their sbt plugins.
+- **Kind projector**: Scala 3 supports a subset of its syntax under `-Xkind-projector` (`-Ykind-projector` before Scala 3.5).
+  See [Kind Projector Migration](kind-projector.html).
 
-### SemanticDB
+For the other plugins, check whether the project provides a Scala 3 version, or remove them.
 
-The support of [SemanticDB](https://scalameta.org/docs/semanticdb/guide.html) is now shipped into the Scala 3 compiler:
-- The `-Ysemanticdb` option activates the generation of semanticDB files.
-- The `-semanticdb-target` option can be used to specify the output directory of semanticDB files.
+## 4. `-Xsource:3`
 
-sbt is able to configure SemanticDB automatically with this single setting: `semanticdbEnabled := true`.
-
-### Scala.js
-
-The [Scala.js](https://www.scala-js.org/) compilation on Scala 3 does not rely on a compiler plugin anymore.
-
-To compile your Scala.js project you can use the `sbt-scalajs` plugin version `1.5.0` or higher.
+With the `-Xsource:3` option, the Scala 2.13 compiler reports code that changes or breaks in Scala 3.
+Many of these messages have a quick fix, which the compiler applies with `-quickfix:cat=scala3-migration`:
 
 ```scala
-// project/plugins.sbt
-addSbtPlugin("org.scala-js" % "sbt-scalajs" % "1.5.0")
+scalacOptions ++= Seq("-Xsource:3", "-quickfix:cat=scala3-migration")
 ```
 
-### Scala Native
+The messages are reported as errors, but the quick fixes are applied to the source files.
+Then remove `-quickfix`, keep `-Xsource:3`, and fix the remaining messages by hand.
+If some of them need to wait, report them as warnings with `-Wconf:cat=scala3-migration:w`.
 
-Scala 3 is supported in [Scala Native](https://scala-native.org/) since v0.4.3.
-
-The minimal version of Scala 3 supported by Scala Native is 3.1.0, due to fatal blockers in Scala 3.0.x
-
-### Kind Projector
-
-A subset of [the Kind Projector](https://github.com/typelevel/kind-projector) syntax is supported by Scala 3 under the `-Ykind-projector` option.
-
-AdditionalLy, we now have the following features that make `kind-projector` not needed in many cases:
-- [Type Lambdas](http://nightly.scala-lang.org/docs/reference/new-types/type-lambdas.html)
-- [Polymorphic Functions](http://nightly.scala-lang.org/docs/reference/new-types/polymorphic-function-types.html)
-- [Kind Polymorphism](http://nightly.scala-lang.org/docs/reference/other-new-features/kind-polymorphism.html)
-
-You can learn more about the Kind Projector migration in its [dedicated page](kind-projector.html).
-
-## Runtime reflection
-
-`scala-reflect` will not be ported to Scala 3 because it exposes Scala 2 compiler internals that do not exist in Scala 3.
-
-If your project depends on `scala-reflect`, or consumes instances of the `Manifest` class, it cannot be compiled by the Scala 3 compiler.
-To remedy this situation, you can try to re-implement the corresponding parts of the code, using Java reflection or the [Scala 3 metaprogramming features](macros.html).
-
-If `scala-reflect` is transitively added in your classpath, you probably need to upgrade the dependency that brings it.
+[Scala 2 with -Xsource:3](scala2-xsource3.html) describes the option in detail, including `-Xsource-features` for projects that cross-build with Scala 2.13 and Scala 3.
