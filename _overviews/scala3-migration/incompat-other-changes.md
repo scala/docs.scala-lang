@@ -9,17 +9,6 @@ next-page: incompat-type-checker
 
 Some other features are simplified or restricted to make the language easier, safer or more consistent.
 
-|Incompatibility|Scala 3 Migration Rewrite|
-|--- |--- |
-|[Inheritance shadowing](#inheritance-shadowing)|✅|
-|[Non-private constructor in private class](#non-private-constructor-in-private-class)|Migration Warning|
-|[Abstract override](#abstract-override)||
-|[Case class companion](#case-class-companion)||
-|[Explicit call to unapply](#explicit-call-to-unapply)||
-|[Invisible bean property](#invisible-bean-property)||
-|[`=>T` as type argument](#-t-as-type-argument)||
-|[Wildcard type argument](#wildcard-type-argument)||
-
 ## Inheritance Shadowing
 
 An inherited member, from a parent trait or class, can shadow an identifier defined in an outer scope.
@@ -73,7 +62,7 @@ But if you try to compile with Scala 3 you should see an error of the same kind 
   |              and inherited subsequently in class C
 {% endhighlight %}
 
-The [Scala 3 migration compilation](migrating-to-3-3.html) can automatically disambiguate the code by replacing `println(x)` with `println(this.x)`.
+Compiling with [`-source:3.0-migration -rewrite`](migrating-to-3-3.html) disambiguates the code by replacing `println(x)` with `println(this.x)`.
 
 ## Non-private Constructor In Private Class
 
@@ -90,7 +79,7 @@ private class Bar private[foo] () {}
 {% endtab %}
 {% endtabs %}
 
-If you try to compile in scala 3 you should get the following error message:
+If you try to compile in Scala 3 you should get the following error message:
 {% highlight text %}
 -- Error: /home/piquerez/scalacenter/scala-3-migration-guide/incompat/access-modifier/src/main/scala-2.13/access-modifier.scala:4:19 
 4 |  private class Bar private[foo] ()
@@ -99,7 +88,7 @@ If you try to compile in scala 3 you should get the following error message:
   |      in its type signature (): foo.Foo.Bar
 {% endhighlight %}
 
-The [Scala 3 migration compilation](migrating-to-3-3.html) warns about this but no automatic rewrite is provided.
+Compiling with [`-source:3.0-migration`](migrating-to-3-3.html) reports a warning, but there is no automatic rewrite.
 
 The solution is to make the constructor private, since the class is private.
 
@@ -124,7 +113,7 @@ class C extends B // In Scala 3, Error: class C needs to be abstract, since def 
 {% endtab %}
 {% endtabs %}
 
-This behavior was decided in [Dotty issue #4770](https://github.com/scala/scala3/issues/4770).
+This behavior was decided in [Scala 3 issue 4770](https://github.com/scala/scala3/issues/4770).
 
 An easy fix is simply to remove the abstract def, since in practice it had no effect in Scala 2.
 

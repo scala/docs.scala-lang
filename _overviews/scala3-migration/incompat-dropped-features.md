@@ -8,18 +8,7 @@ next-page: incompat-contextual-abstractions
 ---
 
 Some features are dropped to simplify the language.
-Most of these changes can be handled automatically during the [Scala 3 migration compilation](migrating-to-3-3.html).
-
-|Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|
-|--- |--- |--- |--- |
-|[Symbol literals](#symbol-literals)|Deprecation|✅||
-|[`do`-`while` construct](#do-while-construct)||✅||
-|[Auto-application](#auto-application)|Deprecation|✅|[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/ExplicitNonNullaryApply.scala)|
-|[Value eta-expansion](#value-eta-expansion)|Deprecation|✅|[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/ExplicitNullaryEtaExpansion.scala)|
-|[`any2stringadd` conversion](#any2stringadd-conversion)|Deprecation||[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/Any2StringAdd.scala)|
-|[Early initializer](#early-initializer)|Deprecation|||
-|[Existential type](#existential-type)|Feature warning|||
-|[@specialized](#specialized)|Deprecation|||
+Some of these changes are rewritten automatically with [`-source:3.0-migration -rewrite`](migrating-to-3-3.html).
 
 ## Symbol literals
 
@@ -38,7 +27,7 @@ val abc = values('abc) // In Scala 3, Migration Warning: symbol literal 'abc is 
 {% endtab %}
 {% endtabs %}
 
-The [Scala 3 migration compilation](migrating-to-3-3.html) rewrites the code into:
+Compiling with [`-source:3.0-migration -rewrite`](migrating-to-3-3.html) rewrites the code into:
 {% highlight diff %}
 val values: Map[Symbol, Int] = Map(Symbol("abc") -> 1)
 
@@ -68,7 +57,7 @@ do { // In Scala 3, Migration Warning: `do <body> while <cond>` is no longer sup
 {% endtab %}
 {% endtabs %}
 
-The [Scala 3 migration compilation](migrating-to-3-3.html) rewrites it into. 
+Compiling with [`-source:3.0-migration -rewrite`](migrating-to-3-3.html) rewrites it into:
 {% tabs scala-3-do_while_2 %}
 {% tab 'Scala 3 Only' %}
 ~~~ scala
@@ -98,7 +87,7 @@ println(Hello.message) // In Scala 3, Migration Warning: method message must be 
 {% endtab %}
 {% endtabs %}
 
-The [Scala 3 migration compilation](migrating-to-3-3.html) rewrites it into:
+Compiling with [`-source:3.0-migration -rewrite`](migrating-to-3-3.html) rewrites it into:
 {% highlight diff %}
 object Hello {
   def message(): String = "Hello"
@@ -126,7 +115,7 @@ val f: () => Int = x _ // In Scala 3, Migration Warning: The syntax `<function> 
 {% endtab %}
 {% endtabs %}
 
-The [Scala 3 migration compilation](migrating-to-3-3.html) rewrites it into:
+Compiling with [`-source:3.0-migration -rewrite`](migrating-to-3-3.html) rewrites it into:
 {% highlight diff %}
 val x = 1
 -val f: () => Int = x _
@@ -153,7 +142,7 @@ The conversion to `String` must be applied explicitly, for instance with `String
 +val str = String.valueOf(new AnyRef) + "foo"
 {% endhighlight %}
 
-This rewrite can be applied by the `fix.scala213.Any2StringAdd` Scalafix rule in [`scala/scala-rewrites`](https://index.scala-lang.org/scala/scala-rewrites/scala-rewrites/0.1.2?target=_2.13).
+This rewrite can be applied by the `fix.scala213.Any2StringAdd` Scalafix rule in [`scala-rewrites`](https://github.com/scala-garden/scala-rewrites).
 
 ## Early Initializer
 
