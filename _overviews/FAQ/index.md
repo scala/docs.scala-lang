@@ -260,7 +260,7 @@ differ from a function value such as:
     val square: Int => Int = x => x * x
 
 For **Scala 2**, there is a [complete answer on Stack Overflow](https://stackoverflow.com/a/2530007/4111404)
-and a [summary with practical differences](https://tpolecat.github.io/2014/06/09/methods-functions.html).
+and a [summary with practical differences](https://web.archive.org/web/20250122180216/https://tpolecat.github.io/2014/06/09/methods-functions.html).
 
 In **Scala 3**, the differences are fewer.
 [Context functions]({{ site.scala3ref }}/contextual/context-functions.html)
@@ -312,9 +312,9 @@ What does work for returning other values of the same type?
 
 Possible solutions include F-bounded polymorphism _(familiar to Java
 programmers)_, type members, and the [typeclass
-pattern](http://tpolecat.github.io/2013/10/12/typeclass.html).
+pattern](https://web.archive.org/web/20241006061200/https://tpolecat.github.io/2013/10/12/typeclass.html).
 
-This [blog post](http://tpolecat.github.io/2015/04/29/f-bounds.html)
+This [blog post](https://web.archive.org/web/20241125080839/https://tpolecat.github.io/2015/04/29/f-bounds.html)
 argues against F-bounds and in favor of typeclasses;
 see also [this Stack Overflow post](https://stackoverflow.com/questions/59813323/advantages-of-f-bounded-polymorphism-over-typeclass-for-return-current-type-prob) for some counterpoint.
 
