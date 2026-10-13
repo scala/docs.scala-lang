@@ -128,6 +128,10 @@ A directory containing static files from which to generate documentation. Defaul
 
 Suppress warnings for ambiguous or incorrect links in members’ lookup. Doesn't affect warnings for incorrect links of assets etc.
 
+#### -no-link-asset-warnings
+
+Suppress warnings for ambiguous or incrrect links of assets like images, static pages, etc.
+
 ##### -versions-dictionary-url
 
 A URL pointing to a JSON document containing a dictionary: `version label -> documentation location`.
