@@ -8,7 +8,7 @@ num: 10
 previous-page: concrete-mutable-collection-classes
 next-page: strings
 
-languages: [ru]
+languages: [uk, ru]
 permalink: /overviews/collections-2.13/:title.html
 ---
 
