@@ -15,6 +15,8 @@ This guide explains how to migrate a project from Scala 2.13 to Scala 3.
 Most Scala 2.13 code compiles with Scala 3, and the compiler rewrites much of the rest automatically.
 The main exception is Scala 2 macros, which have to be reimplemented (see [Macro Libraries](macros.html)).
 
+VirtusLab offers **commercial support** for Scala 3 migration, including up to [10 person-days of free Scala migration support](https://lp.virtuslab.com/campaigns/free-support-for-scala-3-migration-and-adoption/).
+
 ## Choosing the Scala 3 Version
 
 Scala 3 has two [long-term support](https://www.scala-lang.org/blog/2022/08/17/long-term-compatibility-plans.html) (LTS) versions:
