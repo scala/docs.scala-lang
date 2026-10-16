@@ -1,10 +1,10 @@
 ---
 title: Type Inference
 type: section
-description: This chapter details the incompatibilities caused by the new type inference algorithm
-num: 22
+description: Incompatibilities caused by the new type inference algorithm
+num: 16
 previous-page: incompat-type-checker
-next-page: options-intro
+next-page: scala2-xsource3
 ---
 
 The two incompatibilities described in this page are intentional changes in the type inference rules.

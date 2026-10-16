@@ -214,7 +214,7 @@ Scala version (default): {{site.scala-3-version}}
 * [Тур по Scala](/tour/tour-of-scala.html) for bite-sized introductions to Scala's features.
 * [Навчальні ресурси](/online-courses.html), що містять інтерактивні онлайн путівники та курси.
 * [Наш список деяких популярних книжок по Scala](/books.html).
-* [Посібник з міграції](/scala3/guides/migration/compatibility-intro.html) допомагає перевести ваш наявний проєкт зі Scala 2 на Scala 3.
+* [Посібник з міграції](/scala3/guides/migration/planning.html) допомагає перевести ваш наявний проєкт зі Scala 2 на Scala 3.
 
 ## Отримати допомогу
 Існує безліч поштових розсилок та чатів в режимі реального часу, якщо ви захочете зв'язатися з іншими користувачами Scala. Перейдіть на сторінку нашої [спільноти](https://scala-lang.org/community/), щоб побачити перелік можливих способів та попросити про допомогу.

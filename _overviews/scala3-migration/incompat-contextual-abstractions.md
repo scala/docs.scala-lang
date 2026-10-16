@@ -1,20 +1,13 @@
 ---
 title: Contextual Abstractions
 type: section
-description: This chapter details all incompatibilities caused by the redesign of contextual abstractions
-num: 19
+description: Incompatibilities caused by the redesign of contextual abstractions
+num: 13
 previous-page: incompat-dropped-features
 next-page: incompat-other-changes
 ---
 
 The redesign of [contextual abstractions]({{ site.scala3ref }}/contextual) brings some incompatibilities.
-
-|Incompatibility|Scala 2.13|Scala 3 Migration Rewrite|Scalafix Rule|Runtime Incompatibiltiy|
-|--- |--- |--- |--- |--- |
-|[Type of implicit def](#type-of-implicit-definition)|||[✅](https://scalacenter.github.io/scalafix/docs/rules/ExplicitResultTypes.html)||
-|[Implicit views](#implicit-views)||||**Possible**|
-|[View bounds](#view-bounds)|Deprecation||||
-|[Ambiguous conversion on `A` and `=> A`](#ambiguous-conversion-on-a-and--a)|||||
 
 ## Type Of Implicit Definition
 
@@ -42,7 +35,7 @@ def pretty[A](a: A)(implicit ev: A => Pretty): String =
 {% endtab %}
 {% endtabs %}
 
-The [Scala 3 migration compilation](tooling-migration-mode.html) can warn you about those cases, but it does not try to fix it.
+Compiling with [`-source:3.0-migration`](migrating-to-3-3.html) warns about those cases, but does not fix them.
 
 Be aware that this incompatibility can produce a runtime incompatibility and break your program.
 Indeed the compiler can find another implicit conversion from a broader scope, which would eventually cause an undesired behavior at runtime.

@@ -77,7 +77,7 @@ sections:
       - title: "Руководство по миграции"
         description: "Руководство, которое поможет вам перейти от Scala 2 к Scala 3."
         icon: "fa fa-suitcase"
-        link: /scala3/guides/migration/compatibility-intro.html
+        link: /scala3/guides/migration/planning.html
       - title: "Новое в Scala 3"
         description: "Обзор новой функциональности в Scala 3."
         icon: "fa fa-star"

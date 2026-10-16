@@ -236,7 +236,7 @@ sbt — это инструмент сборки для Scala. sbt компил�
 * [The Tour of Scala](/ru/tour/tour-of-scala.html) для краткого ознакомления с функциями Scala.
 * [Обучающие ресурсы](/online-courses.html), которые включают в себя интерактивные онлайн-учебники и курсы.
 * [Наш список некоторых популярных книг по Scala](/books.html).
-* [Руководство по миграции](/scala3/guides/migration/compatibility-intro.html) поможет перенести существующую кодовую базу Scala 2 на Scala 3.
+* [Руководство по миграции](/scala3/guides/migration/planning.html) поможет перенести существующую кодовую базу Scala 2 на Scala 3.
 
 ## Получение помощи
 

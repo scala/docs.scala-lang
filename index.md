@@ -83,7 +83,7 @@ sections:
       - title: "Migration Guide"
         description: "A guide to help you move from Scala 2 to Scala 3."
         icon: "fa fa-suitcase"
-        link: /scala3/guides/migration/compatibility-intro.html
+        link: /scala3/guides/migration/planning.html
       - title: "New in Scala 3"
         description: "An overview of the exciting new features in Scala 3."
         icon: "fa fa-star"

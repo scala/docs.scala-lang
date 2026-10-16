@@ -1,10 +1,12 @@
 ---
 title: Scala 2 with -Xsource:3
 type: chapter
-description: This section describes the Scala 2 compiler's -Xsource:3 flag
-num: 7
-previous-page: tooling-tour
-next-page: tooling-migration-mode
+description: The -Xsource:3 option of the Scala 2.13 compiler
+num: 17
+previous-page: incompat-type-inference
+next-page: syntax-rewriting
+redirect_from:
+  - /scala3/guides/migration/tooling-scala2-xsource3.html
 ---
 
 The Scala 2.13 compiler issues helpful migration warnings with the `-Xsource:3` flag.
@@ -17,7 +19,7 @@ Usage information is shown with `scalac -Xsource:help`.
 
 With Scala 2.13.14 and newer, the `-Xsource:3` flag supports two scenarios:
 
-  - `Xsource:3` enables warnings relevant for migrating a codebase to Scala 3.
+  - `-Xsource:3` enables warnings relevant for migrating a codebase to Scala 3.
     In addition to new warnings, the flag enables certain benign Scala 3 syntaxes such as `import p.*`.
   - Adding the `-Xsource-features:<features>` flag is useful to reduce the maintenance burden of projects that cross-build between Scala 2 and 3.
     Certain language constructs have been backported from Scala 3 in order to improve compatibility.
@@ -35,7 +37,7 @@ Diagnostics are suppressed before they are promoted to errors, so that `@nowarn`
 
 The Scala 2.13 compiler implements quick fixes for many Scala 3 migration warnings.
 Quick fixes are displayed in Metals-based IDEs (not yet in IntelliJ), or they can be applied directly to the source code using the `-quickfix` flag, for example `-quickfix:cat=scala3-migration`.
-See also `scala -quickfix:help`.
+See also `scalac -quickfix:help`.
 
 ## Enabled Scala 3 syntax
 

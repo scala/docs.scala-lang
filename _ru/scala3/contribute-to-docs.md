@@ -45,7 +45,7 @@ language: ru
 - [Вопросы](https://github.com/scala/docs.scala-lang/issues)
 
 ## Руководство по миграции
-[Руководство по миграции на Scala 3](/scala3/guides/migration/compatibility-intro.html) содержит исчерпывающий обзор 
+[Руководство по миграции на Scala 3](/scala3/guides/migration/planning.html) содержит исчерпывающий обзор 
 совместимости между Scala 2 и Scala 3, презентацию по инструментам миграции и подробные руководства по миграции.
 
 - [Исходники](https://github.com/scala/docs.scala-lang/tree/main/_overviews/scala3-migration)

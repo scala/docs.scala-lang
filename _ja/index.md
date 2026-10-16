@@ -73,7 +73,7 @@ sections:
       - title: "Migration Guide"
         description: "Scala 2 から Scala 3 へ移行するためのガイド"
         icon: "fa fa-suitcase"
-        link: /scala3/guides/migration/compatibility-intro.html
+        link: /scala3/guides/migration/planning.html
       - title: "Scala 3 の新機能"
         description: "Scala 3 で追加されたさまざまな新機能の概要"
         icon: "fa fa-star"

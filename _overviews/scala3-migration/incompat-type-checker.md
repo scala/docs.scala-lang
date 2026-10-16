@@ -1,8 +1,8 @@
 ---
 title: Type Checker
 type: section
-description: This chapter details the unsoundness fixes in the type checker
-num: 21
+description: Unsoundness fixes in the type checker
+num: 15
 previous-page: incompat-other-changes
 next-page: incompat-type-inference
 ---

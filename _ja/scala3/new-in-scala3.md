@@ -99,7 +99,7 @@ Scala 3 のメタプログラミングについてもっと知りたいかたは
 [overload-resolution]: {{ site.scala3ref }}/changed-features/overload-resolution.html
 [reference]: {{ site.scala3ref }}/overview.html
 [creator]: {{ site.scala3ref }}/other-new-features/creator-applications.html
-[migration]: {% link _overviews/scala3-migration/compatibility-intro.md %}
+[migration]: {% link _overviews/scala3-migration/planning.md %}
 [contribution]: {% link _overviews/scala3-contribution/contribution-intro.md %}
 
 [implicits]: {{ site.scala3ref }}/contextual

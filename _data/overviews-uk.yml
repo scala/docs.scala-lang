@@ -62,7 +62,7 @@
       by: Adrien Piquerez
       icon: suitcase
       root: "scala3/guides/"
-      url: "migration/compatibility-intro.html"
+      url: "migration/planning.html"
       description: "Все, що потрібно знати про сумісність і міграцію на Scala 3."
     - title: Макроси Scala 3
       by: Nicolas Stucki

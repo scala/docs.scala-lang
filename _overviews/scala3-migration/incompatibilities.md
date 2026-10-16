@@ -1,10 +1,12 @@
 ---
 title: Incompatibility Table
 type: chapter
-description: This chapter list all the known incompatibilities between Scala 2.13 and Scala 3 
-num: 16
-previous-page: tooling-syntax-rewriting
+description: The known incompatibilities between Scala 2.13 and Scala 3
+num: 10
+previous-page: macro-mixing
 next-page: incompat-syntactic
+redirect_from:
+  - /scala3/guides/migration/incompatibility-table.html
 ---
 
 An incompatibility is a piece of code that can be compiled with Scala 2.13 but not with Scala 3.
@@ -15,15 +17,15 @@ In this page we propose a classification of the known incompatibilities.
 Each incompatibility is described by:
  - Its short name with a link towards the detailed description and proposed solutions
  - Whether the Scala 2.13 compiler emits a deprecation or a feature warning
- - The existence of a [Scala 3 migration](tooling-migration-mode.html) rule for it
+ - Whether compiling with [`-source:3.0-migration -rewrite`](migrating-to-3-3.html) fixes it
  - The existence of a Scalafix rule that can fix it
 
 > #### Scala 2.13 deprecations and feature warnings
 > Run the 2.13 compilation with `-Xsource:3` to locate those incompatibilities in the code.
 
-> #### Scala 3 migration versus Scalafix rewrites
-> The Scala 3 migration mode comes out-of-the-box.
-> On the contrary, Scalafix is a tool that must be installed and configured manually.
+> #### Compiler rewrites versus Scalafix
+> The rewrites of the Scala 3 compiler need no setup.
+> Scalafix must be installed and configured.
 > However Scalafix has its own advantages:
 > - It runs on Scala 2.13.
 > - It is composed of individual rules that you can apply one at a time.
@@ -51,11 +53,12 @@ Some features are dropped to simplify the language.
 |--- |--- |--- |--- |
 |[Symbol literals](incompat-dropped-features.html#symbol-literals)|Deprecation|✅||
 |[`do`-`while` construct](incompat-dropped-features.html#do-while-construct)||✅||
-|[Auto-application](incompat-dropped-features.html#auto-application)|Deprecation|✅|[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/ExplicitNonNullaryApply.scala)|
-|[Value eta-expansion](incompat-dropped-features.html#value-eta-expansion)|Deprecation|✅|[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/ExplicitNullaryEtaExpansion.scala)|
-|[`any2stringadd` conversion](incompat-dropped-features.html#any2stringadd-conversion)|Deprecation||[✅](https://github.com/scala/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/Any2StringAdd.scala)|
+|[Auto-application](incompat-dropped-features.html#auto-application)|Deprecation|✅|[✅](https://github.com/scala-garden/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/ExplicitNonNullaryApply.scala)|
+|[Value eta-expansion](incompat-dropped-features.html#value-eta-expansion)|Deprecation|✅|[✅](https://github.com/scala-garden/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/ExplicitNullaryEtaExpansion.scala)|
+|[`any2stringadd` conversion](incompat-dropped-features.html#any2stringadd-conversion)|Deprecation||[✅](https://github.com/scala-garden/scala-rewrites/blob/main/rewrites/src/main/scala/fix/scala213/Any2StringAdd.scala)|
 |[Early initializer](incompat-dropped-features.html#early-initializer)|Deprecation|||
 |[Existential type](incompat-dropped-features.html#existential-type)|Feature warning|||
+|[`@specialized`](incompat-dropped-features.html#specialized)||||
 
 ### Contextual Abstractions
 
@@ -123,4 +126,8 @@ This fundamental change leads to a few incompatibilities:
 The Scala 3 compiler is not able to expand Scala 2.13 macros.
 Under such circumstances it is necessary to re-implement the Scala 2.13 macros using the new Scala 3 metaprogramming features.
 
-You can go back to the [Metaprogramming](compatibility-metaprogramming.html) page to learn about the new metaprogramming features.
+See [Macro Libraries](macros.html).
+
+### Changes Since Scala 3.3
+
+The changes between Scala 3.3 and later versions are described in [Migrating to Scala 3.9 and 3.10](migrating-to-3-9.html).

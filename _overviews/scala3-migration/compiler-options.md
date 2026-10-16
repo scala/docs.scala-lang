@@ -1,16 +1,23 @@
 ---
 title: Compiler Options Lookup Table
-type: section
-description: This section contains the compiler options lookup tables
-num: 24
-previous-page: options-intro
-next-page: options-new
+type: chapter
+description: Scala 2.13 compiler options and their Scala 3 equivalents
+num: 19
+previous-page: syntax-rewriting
+next-page: scaladoc-settings
+redirect_from:
+  - /scala3/guides/migration/options-lookup.html
+  - /scala3/guides/migration/options-intro.html
+  - /scala3/guides/migration/options-new.html
 ---
 
 This table lists the Scala 2.13 compiler options with their equivalent in Scala 3.
 Some options have cross-version support, such as `-Vprint`.
 Others have a close equivalent with a different name. A number of Scala 2 options
 have no equivalent in Scala 3, such as options for debugging Scala 2 macros.
+Scala 3 ignores the options it does not know, with a warning.
+
+The Scaladoc options are compared in [Scaladoc Settings](scaladoc-settings.html).
 
 The compiler options are shown as displayed by the help output `scalac -help`, `scalac -X`, etc.
 A few aliases are shown here, but most older aliases, such as `-Xprint` for `-Vprint`,
@@ -29,11 +36,13 @@ since the configuration syntax and the error messages it matches are different.
 | `<new-name>` | It has been renamed to `<new-name>`. |
 | <i class="fa fa-times fa-lg"></i> | It is not yet available but could be added later. |
 
-> The current comparison is based on Scala 2.13.10 and 3.3.0.
+> The current comparison is based on Scala 2.13.18 and 3.9.0.
+>
+> Scala 3.3 does not have the optimizer options (`-opt`, `-opt-inline`, `-Wopt`), and some options still have their `-Y` names: `-Ykind-projector`, `-Ysafe-init`, `-Ydump-classes`, `-Yno-generic-signatures`, `-Yresolve-term-conflict` and `-Yjar-compression-level`.
 
 ## Standard Settings
 
-| 2.13.x | 3.3.x |
+| 2.13.x | 3.9.x |
 |-|-|
 | `-Dproperty=value` | <i class="fa fa-check fa-lg"></i> |
 | `-J<flag>` | <i class="fa fa-check fa-lg"></i> |
@@ -48,7 +57,7 @@ since the configuration syntax and the error messages it matches are different.
 | `-dependencyfile` | <i class="fa fa-times fa-lg"></i> |
 | `-deprecation` |<i class="fa fa-check fa-lg"></i>| 
 | `-encoding` |<i class="fa fa-check fa-lg"></i>| 
-| `-explaintypes` | `-explain-types` | 
+| `-explaintypes` | `-explain` |
 | `-extdirs` |<i class="fa fa-check fa-lg"></i>| 
 | `-feature` |<i class="fa fa-check fa-lg"></i>|
 | `-g` | <i class="fa fa-times fa-lg"></i> |
@@ -59,32 +68,36 @@ since the configuration syntax and the error messages it matches are different.
 | `-no-specialization` | <i class="fa fa-times fa-lg"></i> |
 | `-nobootcp` | <i class="fa fa-times fa-lg"></i> |
 | `-nowarn` |<i class="fa fa-check fa-lg"></i>|
-| `-opt` | <i class="fa fa-times fa-lg"></i> |
-| `-opt-inline-from` | <i class="fa fa-times fa-lg"></i> |
-| `-opt-warnings` | <i class="fa fa-times fa-lg"></i> |
+| `-opt:local` | `-opt` |
+| `-opt:inline:<patterns>` | `-opt-inline:<patterns>` |
+| `-opt-inline-from` | `-opt-inline` |
+| `-opt-warnings` | `-Wopt` |
 | `-optimize` | <i class="fa fa-times fa-lg"></i> |
-| `-print` |<i class="fa fa-check fa-lg"></i>| 
+| `-print` | <i class="fa fa-times fa-lg"></i> |
+| `-quickfix` | `-rewrite` |
 | `-release` |<i class="fa fa-check fa-lg"></i>|
 | `-rootdir` | <i class="fa fa-times fa-lg"></i> |
 | `-sourcepath` |<i class="fa fa-check fa-lg"></i>| 
-| `-target` | `-Xtarget` |
+| `-system` | <i class="fa fa-times fa-lg"></i> |
+| `-target` | `-Xunchecked-java-output-version` |
 | `-toolcp` | <i class="fa fa-times fa-lg"></i> |
 | `-unchecked` |<i class="fa fa-check fa-lg"></i>| 
 | `-uniqid` |<i class="fa fa-check fa-lg"></i>| 
 | `-usejavacp` |<i class="fa fa-check fa-lg"></i>|
-| `-usemanifestc` | <i class="fa fa-times fa-lg"></i> |
+| `-usemanifestcp` | <i class="fa fa-times fa-lg"></i> |
 | `-verbose` |<i class="fa fa-check fa-lg"></i>| 
 | `-version` |<i class="fa fa-check fa-lg"></i>|
 
 ## Verbose Settings
 
-| 2.13.x | 3.3.x |
+| 2.13.x | 3.9.x |
 |-|-|
 | `-Vbrowse:<phases>` | <i class="fa fa-times fa-lg"></i> |
 | `-Vclasspath` | `-Ylog-classpath` |
+| `-Vcyclic` | `-Ydebug-cyclic` |
 | `-Vdebug` | `-Ydebug` |
 | `-Vdebug-tasty` | <i class="fa fa-times fa-lg"></i> |
-| `-Vdebug-type-error` | <i class="fa fa-times fa-lg"></i> |
+| `-Vdebug-type-error` | `-Ydebug-error` |
 | `-Vdoc` | <i class="fa fa-times fa-lg"></i> |
 | `-Vfree-terms` | <i class="fa fa-times fa-lg"></i> |
 | `-Vfree-types` | <i class="fa fa-times fa-lg"></i> |
@@ -94,12 +107,13 @@ since the configuration syntax and the error messages it matches are different.
 | `-Vimplicits`| <i class="fa fa-times fa-lg"></i> |
 | `-Vimplicits-max-refined`| <i class="fa fa-times fa-lg"></i> |
 | `-Vimplicits-verbose-tree`| <i class="fa fa-times fa-lg"></i> |
-| `-Vinline <package/Class.method>` | <i class="fa fa-times fa-lg"></i> |
+| `-Vinline <package/Class.method>` | `-Yopt-log-inline` |
 | `-Vlog:<phases>` | `-Ylog:<phases>`|
 | `-Vmacro` | <i class="fa fa-times fa-lg"></i> |
 | `-Vmacro-lite` | <i class="fa fa-times fa-lg"></i> |
-| `-Vopt <package/Class.method>` | <i class="fa fa-times fa-lg"></i> |
+| `-Vopt <package/Class.method>` | `-Yopt-trace` |
 | `-Vpatmat` | <i class="fa fa-times fa-lg"></i> |
+| `-Vphase-graph` | <i class="fa fa-times fa-lg"></i> |
 | `-Vphases` | <i class="fa fa-check fa-lg"></i> |
 | `-Vpos`| <i class="fa fa-times fa-lg"></i> |
 | `-Vprint:<phases>` | <i class="fa fa-check fa-lg"></i> |
@@ -122,26 +136,30 @@ since the configuration syntax and the error messages it matches are different.
 
 ## Warning Settings
 
-| 2.13.x | 3.3.x |
+| 2.13.x | 3.9.x |
 |-|-|
 | `-Wconf` | <i class="fa fa-check fa-lg"></i> |
 | `-Wdead-code` | <i class="fa fa-times fa-lg"></i> |
 | `-Werror` | <i class="fa fa-check fa-lg"></i> |
 | `-Wextra-implicit` | <i class="fa fa-times fa-lg"></i> |
 | `-Wmacros:<mode>` | <i class="fa fa-times fa-lg"></i> |
+| `-Wmultiarg-infix` | <i class="fa fa-times fa-lg"></i> |
 | `-Wnonunit-if` | <i class="fa fa-times fa-lg"></i> |
 | `-Wnonunit-statement` | <i class="fa fa-check fa-lg"></i> |
 | `-Wnumeric-widen` | <i class="fa fa-times fa-lg"></i> |
 | `-Woctal-literal` | <i class="fa fa-times fa-lg"></i> |
-| `-Wopt` | <i class="fa fa-times fa-lg"></i> |
+| `-Wopt` | <i class="fa fa-check fa-lg"></i> |
 | `-Wperformance` | <i class="fa fa-times fa-lg"></i> |
 | `-Wself-implicit` | <i class="fa fa-times fa-lg"></i> |
+| `-Wtostring-interpolated` | <i class="fa fa-check fa-lg"></i> |
+| `-Wunnamed-boolean-literal` | <i class="fa fa-times fa-lg"></i> |
+| `-Wunnamed-boolean-literal-strict` | <i class="fa fa-times fa-lg"></i> |
 | `-Wunused:<warnings>` | <i class="fa fa-check fa-lg"></i> |
 | `-Wvalue-discard`| <i class="fa fa-check fa-lg"></i> |
 
 ## Advanced Settings
 
-| 2.13.x | 3.3.x |
+| 2.13.x | 3.9.x |
 |-|-|
 | `-Xasync` | <i class="fa fa-times fa-lg"></i> |
 | `-Xcheckinit` | `-Wsafe-init` |
@@ -150,12 +168,15 @@ since the configuration syntax and the error messages it matches are different.
 | `-Xelide-below` | <i class="fa fa-times fa-lg"></i> |
 | `-Xexperimental` | <i class="fa fa-times fa-lg"></i> |
 | `-Xfuture` | <i class="fa fa-times fa-lg"></i> |
-| `-Xgenerate-phase-graph` | <i class="fa fa-times fa-lg"></i> |
 | `-Xjline` | <i class="fa fa-times fa-lg"></i> |
 | `-Xlint:deprecation` | `-deprecation` |
 | `-Xlint:<warnings>` | <i class="fa fa-times fa-lg"></i> |
-| `-Xmacro-settings` | <i class="fa fa-times fa-lg"></i> |
-| `-Xmain-class` | <i class="fa fa-times fa-lg"></i> |
+| `-Xlint:private-shadow` | `-Wshadow:private-shadow` |
+| `-Xlint:recurse-with-default` | `-Wrecurse-with-default` |
+| `-Xlint:type-parameter-shadow` | `-Wshadow:type-parameter-shadow` |
+| `-Xlint:unused` | `-Wunused:linted` |
+| `-Xmacro-settings` | <i class="fa fa-check fa-lg"></i> |
+| `-Xmain-class` | <i class="fa fa-check fa-lg"></i> |
 | `-Xmaxerrs` | <i class="fa fa-times fa-lg"></i> |
 | `-Xmaxwarns` | <i class="fa fa-times fa-lg"></i> |
 | `-Xmigration` |<i class="fa fa-check fa-lg"></i>|
@@ -170,42 +191,43 @@ since the configuration syntax and the error messages it matches are different.
 | `-Xplugin-require` |<i class="fa fa-check fa-lg"></i>|
 | `-Xpluginsdir` |<i class="fa fa-check fa-lg"></i>|
 | `-Xprompt` |<i class="fa fa-check fa-lg"></i>|
-| `-Xreporter` | <i class="fa fa-times fa-lg"></i> |
+| `-Xreporter` | `-Yreporter` |
 | `-Xresident` | <i class="fa fa-times fa-lg"></i> |
 | `-Xscript` | <i class="fa fa-times fa-lg"></i> |
 | `-Xsource` | `-source` |
+| `-Xsource-features` | <i class="fa fa-times fa-lg"></i> |
 | `-Xsource-reader` | <i class="fa fa-times fa-lg"></i> |
 | `-Xverify` | `-Xverify-signatures` |
 | `-Xxml` | <i class="fa fa-times fa-lg"></i> |
 
 ## Private settings
 
-| 2.13.x | 3.0.x |
+| 2.13.x | 3.9.x |
 |-|-|
-| `-Ybackend-parallelism` | <i class="fa fa-times fa-lg"></i> |
-| `-Ybackend-worker-queue` | <i class="fa fa-times fa-lg"></i> |
+| `-Ybackend-parallelism` | <i class="fa fa-check fa-lg"></i> |
+| `-Ybackend-worker-queue` | <i class="fa fa-check fa-lg"></i> |
 | `-Ybreak-cycles` | <i class="fa fa-times fa-lg"></i> |
 | `-Ycache-macro-class-loader` | <i class="fa fa-times fa-lg"></i> |
 | `-Ycache-plugin-class-loader` | <i class="fa fa-times fa-lg"></i> |
 | `-Ycheck` |<i class="fa fa-check fa-lg"></i>|
+| `-Ycollect-statistics` | <i class="fa fa-times fa-lg"></i> |
 | `-Ycompact-trees` | <i class="fa fa-times fa-lg"></i> |
 | `-Ydelambdafy` | <i class="fa fa-times fa-lg"></i> |
-| `-Ydump-classes` |<i class="fa fa-check fa-lg"></i>|
+| `-Ydump-classes` | `-Xdump-classes` |
 | `-Ygen-asmp` | <i class="fa fa-times fa-lg"></i> |
-| `-Yimports` | <i class="fa fa-times fa-lg"></i> |
-| `-Yissue-debug` | <i class="fa fa-times fa-lg"></i> |
-| `-Yjar-compression-level` | <i class="fa fa-times fa-lg"></i> |
+| `-Yimports` | <i class="fa fa-check fa-lg"></i> |
+| `-Yjar-compression-level` | `-Xjar-compression-level` |
 | `-YjarFactory` | <i class="fa fa-times fa-lg"></i> |
 | `-Ymacro-annotations` | <i class="fa fa-times fa-lg"></i> |
 | `-Ymacro-classpath` | <i class="fa fa-times fa-lg"></i> |
 | `-Ymacro-expand` | <i class="fa fa-times fa-lg"></i> |
 | `-Ymacro-global-fresh-names` | <i class="fa fa-times fa-lg"></i> |
 | `-Yno-completion` | <i class="fa fa-times fa-lg"></i> |
-| `-Yno-flat-classpath-cache` | <i class="fa fa-times fa-lg"></i> |
-| `-Yno-generic-signatures` |<i class="fa fa-check fa-lg"></i>| 
+| `-Yno-flat-classpath-cache` | `-YdisableFlatCpCaching` |
+| `-Yno-generic-signatures` | `-Xno-generic-signatures` |
 | `-Yno-imports` |<i class="fa fa-check fa-lg"></i>|
 | `-Yno-predef` |<i class="fa fa-check fa-lg"></i>|
-| `-Yopt-inline-heuristics` | <i class="fa fa-times fa-lg"></i> |
+| `-Yopt-inline-heuristics` | <i class="fa fa-check fa-lg"></i> |
 | `-Ypatmat-exhaust-depth` | <i class="fa fa-times fa-lg"></i> |
 | `-Ypresentation-any-thread` | <i class="fa fa-times fa-lg"></i> |
 | `-Ypresentation-debug` | <i class="fa fa-times fa-lg"></i> |
@@ -220,14 +242,15 @@ since the configuration syntax and the error messages it matches are different.
 | `-Yprofile-enabled` |<i class="fa fa-check fa-lg"></i>|
 | `-Yprofile-external-tool` |<i class="fa fa-check fa-lg"></i>|
 | `-Yprofile-run-gc` |<i class="fa fa-check fa-lg"></i>|
-| `-Yprofile-trace` | <i class="fa fa-times fa-lg"></i> |
+| `-Yprofile-trace` | <i class="fa fa-check fa-lg"></i> |
 | `-Yrangepos` | <i class="fa fa-times fa-lg"></i> |
 | `-Yrecursion` | <i class="fa fa-times fa-lg"></i> |
+| `-Yrelease` | <i class="fa fa-times fa-lg"></i> |
 | `-Yreify-copypaste` | <i class="fa fa-times fa-lg"></i> |
 | `-Yrepl-class-based` | <i class="fa fa-times fa-lg"></i> |
 | `-Yrepl-outdir` | <i class="fa fa-times fa-lg"></i> |
 | `-Yrepl-use-magic-imports` | <i class="fa fa-times fa-lg"></i> |
-| `-Yresolve-term-conflict` |<i class="fa fa-check fa-lg"></i>|
+| `-Yresolve-term-conflict` | `-Xresolve-term-conflict` |
 | `-Yscala3-implicit-resolution` | <i class="fa fa-times fa-lg"></i> |
 | `-Yscriptrunner` | <i class="fa fa-times fa-lg"></i> |
 | `-Yskip` |<i class="fa fa-check fa-lg"></i>|
@@ -245,7 +268,7 @@ You can enable and configure them with some new native options.
 
 ### Scala.js
 
-| 2.13.x | 3.0.x |
+| 2.13.x | 3.9.x |
 |-|-|
 | `-Xplugin:scalajs-compiler_<version>.jar` | `-scalajs` |
 | `-P:scalajs:genStaticForwardersForNonTopLevelObjects` | `-scalajs-genStaticForwardersForNonTopLevelObjects` |
@@ -253,13 +276,13 @@ You can enable and configure them with some new native options.
 
 ### SemanticDB
 
-| 2.13.x | 3.0.x |
+| 2.13.x | 3.9.x |
 |-|-|
 | `-Xplugin:semanticdb-scalac_<version>.jar`| `-Xsemanticdb` |
 | `-P:semanticdb:targetroot:<path>` | `-semanticdb-target:<path>` |
 
 ### Kind-Projector
 
-| 2.13.x | 3.0.x |
+| 2.13.x | 3.9.x |
 |-|-|
-| `-Xplugin:kind-projector_<version>.jar` | `-Ykind-projector` |
+| `-Xplugin:kind-projector_<version>.jar` | `-Xkind-projector` |

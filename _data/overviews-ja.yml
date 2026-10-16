@@ -61,7 +61,7 @@
     - title: "Scala 2 から Scala 3 への移行"
       icon: suitcase
       root: "scala3/guides/"
-      url: "migration/compatibility-intro.html"
+      url: "migration/planning.html"
       description: "Scala 3 との互換性と移行について知っておくべきことすべて"
     - title: "Scala 3 マクロ"
       by: Nicolas Stucki

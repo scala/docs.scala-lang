@@ -23,5 +23,5 @@ num: 9
 * *More Coming soon*
 
 
-[migration]: {% link _overviews/scala3-migration/tutorial-macro-cross-building.md %}
+[migration]: {% link _overviews/scala3-migration/macro-cross-building.md %}
 [migration-status]: https://scalacenter.github.io/scala-3-migration-guide/docs/macros/macro-libraries.html#macro-libraries

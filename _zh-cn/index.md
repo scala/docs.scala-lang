@@ -83,7 +83,7 @@ sections:
       - title: "迁移指引"
         description: "一份帮你从 Scala 2 迁移到 Scala 3 的指引。"
         icon: "fa fa-suitcase"
-        link: /scala3/guides/migration/compatibility-intro.html
+        link: /scala3/guides/migration/planning.html
       - title: "Scala 3 中的新东西"
         description: "Scala 3 中令人兴奋的新特性概览"
         icon: "fa fa-star"

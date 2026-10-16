@@ -1,30 +1,32 @@
 ---
 title: Cross-Building a Macro Library
 type: section
-description: This section shows how to cross-build a macro library
-num: 13
-previous-page: tutorial-sbt
-next-page: tutorial-macro-mixing
+description: Cross-building a macro library for Scala 2.13 and Scala 3
+num: 8
+previous-page: macros
+next-page: macro-mixing
+redirect_from:
+  - /scala3/guides/migration/tutorial-macro-cross-building.html
 ---
 
 Macro libraries must be re-implemented from the ground-up.
 
-Before starting you should be familiar with the Scala 3 migration as described in the [Porting an sbt Project](tutorial-sbt.html) tutorial.
-The purpose of the current tutorial is to cross-build an existing Scala 2.13 macro library so that it becomes available in both Scala 3 and Scala 2.13.
+Before starting you should be familiar with the Scala 3 migration as described in [Migrating to Scala 3.3](migrating-to-3-3.html).
+This page shows how to cross-build an existing Scala 2.13 macro library, so that it becomes available in both Scala 3 and Scala 2.13.
 
-An alternative solution called *Mixing Macros* is explained in the [next tutorial](tutorial-macro-mixing.html).
+An alternative solution called *Mixing Macros* is explained in [Mixing Scala 2.13 and Scala 3 Macros](macro-mixing.html).
 You are encouraged to read both solutions to choose the technique that is best suited for your needs.
 
 ## Introduction
 
-In order to exemplify this tutorial, we will consider the minimal macro library defined below.
+As an example, consider the minimal macro library defined below.
 
 ```scala
 // build.sbt
 lazy val example = project
   .in(file("example"))
   .settings(
-    scalaVersion := "2.13.11",
+    scalaVersion := "2.13.18",
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaVersion.value
     )
@@ -73,7 +75,7 @@ The main idea is to build the artifact twice and to publish two releases:
 You can add Scala 3 to the list of `crossScalaVersions` of your project:
 
 ```scala
-crossScalaVersions := Seq("2.13.11", "3.3.1")
+crossScalaVersions := Seq("2.13.18", "3.3.8")
 ```
 
 The `scala-reflect` dependency won't be useful in Scala 3.
@@ -91,15 +93,15 @@ libraryDependencies ++= {
 }
 ```
 
-After reloading sbt, you can switch to the Scala 3 context by running `++3.3.1`.
-At any point you can go back to the Scala 2.13 context by running `++2.13.11`.
+After reloading sbt, you can switch to the Scala 3 context by running `++3.3.8`.
+At any point you can go back to the Scala 2.13 context by running `++2.13.18`.
 
 ## 2. Rearrange the code in version-specific source directories
 
 If you try to compile with Scala 3 you should see some errors of the same kind as:
 
 {% highlight text %}
-sbt:example> ++3.3.1
+sbt:example> ++3.3.8
 sbt:example> example / compile
 [error] -- Error: /example/src/main/scala/location/Location.scala:15:35
 [error] 15 |    val location = typeOf[Location]
@@ -173,7 +175,7 @@ object Macros:
 ## 3. Implement the Scala 3 macro
 
 There is no magic formula to port a Scala 2 macro into Scala 3.
-One needs to learn about the new [Metaprogramming](compatibility-metaprogramming.html) features.
+One needs to learn about the new [metaprogramming]({% link _overviews/scala3-macros/tutorial/index.md %}) features.
 
 We eventually come up with this implementation:
 
@@ -222,13 +224,13 @@ class MacrosSpec extends munit.FunSuite {
 You should now be able to run the tests in both versions.
 
 {% highlight text %}
-sbt:example> ++2.13.11
+sbt:example> ++2.13.18
 sbt:example> example / test
 location.MacrosSpec:
   + location
 [info] Passed: Total 1, Failed 0, Errors 0, Passed 1
 [success]
-sbt:example> ++3.3.1
+sbt:example> ++3.3.8
 sbt:example> example / test
 location.MacrosSpec:
   + location

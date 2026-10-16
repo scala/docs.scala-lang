@@ -1,18 +1,22 @@
 ---
 title: Mixing Scala 2.13 and Scala 3 Macros
 type: section
-description: This section shows how to mix Scala 2.13 and Scala 3 macros in a single artifact
-num: 14
-previous-page: tutorial-macro-mixing
-next-page: tooling-syntax-rewriting
+description: Mixing Scala 2.13 and Scala 3 macros in a single artifact
+num: 9
+previous-page: macro-cross-building
+next-page: incompatibilities
+redirect_from:
+  - /scala3/guides/migration/tutorial-macro-mixing.html
 ---
 
-This tutorial shows how to mix Scala 2.13 and Scala 3 macros in a single artifact.  This means that consumers can use `-Ytasty-reader` from Scala 2.13 code that uses your macros.
+This page shows how to publish a single Scala 3 artifact that contains both a Scala 2.13 and a Scala 3 macro implementation, so that Scala 2.13 code compiled with `-Ytasty-reader` can call the macros.
 
 There are two main benefits of this:
 
-1. Making a new or existing scala 3 macro library available for Scala 2.13 users without having to provide a separate 2.13 version
+1. Making a new or existing Scala 3 macro library available for Scala 2.13 users without having to provide a separate 2.13 version
 2. Allowing your macros to be usable in multi-project builds that are being upgraded module by module.
+
+The Scala 2.13 TASTy reader can only read code compiled with Scala 3.7 or older, so the library must be built with one of these versions, for example the 3.3 LTS.
 
 ## Introduction
 
@@ -102,13 +106,13 @@ However, in many cases you will have to move the Scala 2.13 macro implementation
 
 lazy val example = project.in(file("example"))
   .settings(
-    scalaVersion := "3.3.1"
+    scalaVersion := "3.3.8"
   )
   .dependsOn(`example-compat`)
 
 lazy val `example-compat` = project.in(file("example-compat"))
   .settings(
-    scalaVersion := "2.13.12",
+    scalaVersion := "2.13.18",
     libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.value
   )
 ```
@@ -140,7 +144,7 @@ object Scala2MacrosCompat {
 {% endtab %}
 {% endtabs %}
 
-Note that we had to move the `Location` class downstream.
+Note that we had to move the `Location` class into `example-compat`.
 
 ## 3. Cross-validate the macro
 
@@ -152,15 +156,15 @@ Since we want to execute the tests in Scala 2.13 and Scala 3, we create a cross-
 // build.sbt
 lazy val `example-test` = project.in(file("example-test"))
   .settings(
-    scalaVersion := "3.3.1",
-    crossScalaVersions := Seq("3.3.1", "2.13.12"),
+    scalaVersion := "3.3.8",
+    crossScalaVersions := Seq("3.3.8", "2.13.18"),
     scalacOptions ++= {
       CrossVersion.partialVersion(scalaVersion.value) match {
         case Some((2, 13)) => Seq("-Ytasty-reader")
         case _ => Seq.empty
       }
     },
-    libraryDependencies += "org.scalameta" %% "munit" % "0.7.26" % Test
+    libraryDependencies += "org.scalameta" %% "munit" % "1.3.6" % Test
   )
   .dependsOn(example)
 ```
@@ -187,13 +191,13 @@ class MacrosSpec extends munit.FunSuite {
 You should now be able to run the tests in both versions.
 
 {% highlight text %}
-sbt:example> ++2.13.12
+sbt:example> ++2.13.18
 sbt:example> example-test / test
 location.MacrosSpec:
   + location
 [info] Passed: Total 1, Failed 0, Errors 0, Passed 1
 [success]
-sbt:example> ++3.3.1
+sbt:example> ++3.3.8
 sbt:example> example-test / test
 location.MacrosSpec:
   + location
@@ -203,7 +207,7 @@ location.MacrosSpec:
 
 ## Final Overview
 
-You library is now composed of:
+Your library is now composed of:
 -  The main Scala 3 module containing the mixed macro definitions and the Scala 3 macro implementation.
 -  The Scala 2.13 compatibility module containing the Scala 2.13 macro implementation.
 It will only be consumed in Scala 2.13 during the macro expansion phase of the compiler.
@@ -215,7 +219,7 @@ You are now ready to publish your library.
 It can be used in Scala 3 projects, or in Scala 2.13 projects with these settings:
 
 ```scala
-scalaVersion := "2.13.12"
+scalaVersion := "2.13.18"
 libraryDependencies += ("org" %% "example" % "x.y.z").cross(CrossVersion.for2_13Use3)
 scalacOptions += "-Ytasty-reader"
 ```

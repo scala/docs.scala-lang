@@ -141,6 +141,6 @@ val x = xs.get(0).asInstanceOf[Int]   // more Scala-like
 [benefits]: https://www.scala-lang.org/blog/2018/04/30/in-a-nutshell.html
 [erasure]: https://www.scala-lang.org/files/archive/spec/2.13/03-types.html#type-erasure
 [binary]: {% link _overviews/tutorials/binary-compatibility-for-library-authors.md %}
-[compatibility-ref]: {% link _overviews/scala3-migration/compatibility-classpath.md %}
+[compatibility-ref]: {% link _overviews/scala3-migration/interoperability.md %}
 [quotes-reflect]: {{ site.scala3ref }}/metaprogramming/reflection.html
 [macros]: {{ site.scala3ref }}/metaprogramming/macros.html
