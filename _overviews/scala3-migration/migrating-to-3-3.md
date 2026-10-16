@@ -13,6 +13,7 @@ redirect_from:
 ---
 
 This step moves the code from Scala 2.13 to Scala 3.3, using the Scala 3.3 compiler.
+Note that support for Scala 3.3 is planned to end in September 2027.
 Depending on the [migration route](planning.html#migration-routes), the result is released with Scala 3.3, or the code continues to [Scala 3.9 or 3.10](migrating-to-3-9.html) before the build switches to Scala 3.
 In a build with several modules, the step is done for each module, in the order of the route.
 
