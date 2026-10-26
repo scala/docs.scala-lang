@@ -12,7 +12,7 @@ redirect_from:
   * [Library API](https://www.scala-lang.org/api/{{site.scala-3-version}}/)
 * Scala 3.9.0 LTS
   * [Library API](https://www.scala-lang.org/api/3.9_LTS/)
-* Scala 3.3.8 LTS
+* Scala 3.3.9 LTS
   * [Library API](https://www.scala-lang.org/api/3.3_LTS/)
 * Scala 2.13.18
   * [Library API](https://www.scala-lang.org/api/2.13.18/)
@@ -104,6 +104,8 @@ redirect_from:
   * [Library API](https://www.scala-lang.org/api/3.4.1/)
 * Scala 3.4.0
   * [Library API](https://www.scala-lang.org/api/3.4.0/)
+* Scala 3.3.8 LTS
+  * [Library API](https://www.scala-lang.org/api/3.3.8/)
 * Scala 3.3.7 LTS
   * [Library API](https://www.scala-lang.org/api/3.3.7/)
 * Scala 3.3.6 LTS
