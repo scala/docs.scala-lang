@@ -2,7 +2,7 @@
 layout: singlepage-overview
 title: Getting Started
 partof: getting-started
-languages: [fr, ja, ru, uk]
+languages: [fr, ja, ru, uk, es]
 includeTOC: true
 newcomer_resources:
   - title: Are You Coming From Java?
