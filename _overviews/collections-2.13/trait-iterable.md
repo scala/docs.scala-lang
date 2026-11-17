@@ -28,19 +28,19 @@ Collection classes that implement `Iterable` just need to define this method; al
 
 * **Addition**, `concat`, which appends two collections together, or appends all elements of an iterator to a collection.
 * **Map** operations `map`, `flatMap`, and `collect`, which produce a new collection by applying some function to collection elements.
-* **Conversions** `to`, `toList`, `toVector`, `toMap`, `toSet`, `toSeq`, `toIndexedSeq`, `toBuffer`, `toArray` which turn an `Iterable` collection into something more specific. If the destination is a mutable collection(`to(collection.mutable.X)`, `toArray`, `toBuffer`), a new collection is created by copying the original elements. All these conversions return their receiver argument unchanged if the run-time type of the collection already matches the demanded collection type. For instance, applying `toList` to a list will yield the list itself.
+* **Conversions** `to`, `toList`, `toVector`, `toMap`, `toSet`, `toSeq`, `toIndexedSeq`, `toBuffer`, `toArray`, which turn an `Iterable` collection into something more specific. If the destination is a mutable collection (`to(collection.mutable.X)`, `toArray`, `toBuffer`), a new collection is created by copying the original elements. All these conversions return their receiver argument unchanged if the run-time type of the collection already matches the demanded collection type. For instance, applying `toList` to a list will yield the list itself.
 * **Copying operations**  `copyToArray`. As its name implies, this copies collection elements to an array.
-* **Size info** operations `isEmpty`, `nonEmpty`, `size`, `knownSize`, `sizeIs`. The number of elements of a collections can require a traversal in some cases (e.g. `List`). In other cases the collection can have an infinite number of elements (e.g. `LazyList.from(1)`).
-* **Element retrieval** operations `head`, `last`, `headOption`, `lastOption`, and `find`. These select the first or last element of a collection, or else the first element matching a condition. Note, however, that not all collections have a well-defined meaning of what "first" and "last" means. For instance, a hash set might store elements according to their hash keys, which might change from run to run. In that case, the "first" element of a hash set could also be different for every run of a program. A collection is _ordered_ if it always yields its elements in the same order. Most collections are ordered, but some (_e.g._ hash sets) are not-- dropping the ordering gives a little bit of extra efficiency. Ordering is often essential to give reproducible tests and to help in debugging. That's why Scala collections give ordered alternatives for all collection types. For instance, the ordered alternative for `HashSet` is `LinkedHashSet`.
+* **Size info** operations `isEmpty`, `nonEmpty`, `size`, `knownSize`, `sizeIs`. Finding the number of elements in a collection can require a traversal in some cases (e.g. `List`). In other cases, the collection can have an infinite number of elements (e.g. `LazyList.from(1)`).
+* **Element retrieval** operations `head`, `last`, `headOption`, `lastOption`, and `find`. These select the first or last element of a collection, or else the first element matching a condition. Note, however, that not all collections have a well-defined meaning of what "first" and "last" means. For instance, a hash set might store elements according to their hash keys, which might change from run to run. In that case, the "first" element of a hash set could also be different for every run of a program. A collection is _ordered_ if it always yields its elements in the same order. Most collections are ordered, but some (_e.g._ hash sets) are not—dropping the ordering gives a little bit of extra efficiency. Ordering is often essential to give reproducible tests and to help in debugging. That's why Scala collections give ordered alternatives for all collection types. For instance, the ordered alternative for `HashSet` is `LinkedHashSet`.
 * **Sub-collection retrieval operations** `tail`, `init`, `slice`, `take`, `drop`, `takeWhile`, `dropWhile`, `filter`, `filterNot`, `withFilter`. These all return some sub-collection identified by an index range or some predicate.
 * **Subdivision operations** `splitAt`, `span`, `partition`, `partitionMap`, `groupBy`, `groupMap`, `groupMapReduce`, which split the elements of this collection into several sub-collections.
-* **Element tests** `exists`, `forall`, `count` which test collection elements with a given predicate.
-* **Folds** `foldLeft`, `foldRight`, `reduceLeft`, `reduceRight` which apply a binary operation to successive elements.
+* **Element tests** `exists`, `forall`, `count`, which test collection elements with a given predicate.
+* **Folds** `foldLeft`, `foldRight`, `reduceLeft`, `reduceRight`, which apply a binary operation to successive elements.
 * **Specific folds** `sum`, `product`, `min`, `max`, which work on collections of specific types (numeric or comparable).
-* **String** operations `mkString` and `addString` which give alternative ways of converting a collection to a string.
-* **View** operation: A view is a collection that's evaluated lazily. You'll learn more about views in [later]({% link _overviews/collections-2.13/views.md %}).
+* **String** operations `mkString` and `addString`, which give alternative ways of converting a collection to a string.
+* **View** operation: A view is a collection that's evaluated lazily. You'll learn more about views [later]({% link _overviews/collections-2.13/views.md %}).
 
-Two more methods exist in `Iterable` that return iterators: `grouped` and `sliding`. These iterators, however, do not return single elements but whole subsequences of elements of the original collection. The maximal size of these subsequences is given as an argument to these methods. The `grouped` method returns its elements in "chunked" increments, where `sliding` yields a sliding "window" over the elements. The difference between the two should become clear by looking at the following REPL interaction:
+Two more methods exist in `Iterable` that return iterators: `grouped` and `sliding`. These iterators, however, do not return single elements but whole subsequences of elements of the original collection. The maximal size of these subsequences is given as an argument to these methods. The `grouped` method returns its elements in "chunked" increments, whereas `sliding` yields a sliding "window" over the elements. The difference between the two should become clear by looking at the following REPL interaction:
 
 {% tabs trait-iterable_2 %}
 {% tab 'Scala 2 and 3' for=trait-iterable_2 %}
@@ -76,9 +76,9 @@ res7: List[Int] = List(3, 4, 5)
 | `xs.grouped(size)`   	                    |An iterator that yields fixed-sized "chunks" of this collection.|
 | `xs.sliding(size)`   	                    |An iterator that yields a sliding fixed-sized window of elements in this collection.|
 | **Addition:**     	                       |						     |
-| `xs.concat(ys)`<br>(or `xs ++ ys`)	       |A collection consisting of the elements of both `xs` and `ys`. `ys` is a [IterableOnce](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IterableOnce.html) collection, i.e., either an [Iterable](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterable.html) or an [Iterator](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html).|
+| `xs.concat(ys)`<br>(or `xs ++ ys`)	       |A collection consisting of the elements of both `xs` and `ys`. `ys` is an [IterableOnce](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/IterableOnce.html) collection, i.e., either an [Iterable](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterable.html) or an [Iterator](https://www.scala-lang.org/api/{{ site.scala-version }}/scala/collection/Iterator.html).|
 | **Maps:**     	                           |						     |
-| `xs.map(f)`		                             |The collection obtained from applying the function f to every element in `xs`.|
+| `xs.map(f)`		                             |The collection obtained from applying the function `f` to every element in `xs`.|
 | `xs.flatMap(f)`	                          |The collection obtained from applying the collection-valued function `f` to every element in `xs` and concatenating the results.|
 | `xs.collect(f)`	                          |The collection obtained from applying the partial function `f` to every element in `xs` for which it is defined and collecting the results.|
 | **Conversions:**                          |						     |
@@ -97,15 +97,15 @@ res7: List[Int] = List(3, 4, 5)
 | `xs.isEmpty`	    	                        |Tests whether the collection is empty.	     |
 | `xs.nonEmpty`    	                        |Tests whether the collection contains elements. |
 | `xs.size`	    	                           |The number of elements in the collection.	     |
-| `xs.knownSize`	    	                      |The number of elements, if this one takes constant time to compute, otherwise `-1`.	     |
-| `xs.sizeCompare(ys)`	                     |Returns a negative value if `xs` is shorter than the `ys` collection, a positive value if it is longer, and `0` if they have the same size. Works even if the collection is infinite, for example `LazyList.from(1) sizeCompare List(1, 2)` returns a positive value.	     |
-| `xs.sizeCompare(n)`	                      |Returns a negative value if `xs` is shorter than `n`, a positive value if it is longer, and `0` if it is of size `n`. Works even if the collection is infinite, for example `LazyList.from(1) sizeCompare 42` returns a positive value.	     |
+| `xs.knownSize`	    	                      |The number of elements, if it can be computed in constant time, otherwise `-1`.	     |
+| `xs.sizeCompare(ys)`	                     |Returns a negative value if `xs` is shorter than the collection `ys`, a positive value if it is longer, and `0` if they have the same size. Works even if the collection is infinite, for example `LazyList.from(1) sizeCompare List(1, 2)` returns a positive value.	     |
+| `xs.sizeCompare(n)`	                      |Returns a negative value if the size of `xs` is smaller than `n`, a positive value if it is larger, and `0` if it is equal to `n`. Works even if the collection is infinite, for example `LazyList.from(1) sizeCompare 42` returns a positive value.	     |
 | `xs.sizeIs < 42`, `xs.sizeIs != 42`, etc. |Provides a more convenient syntax for `xs.sizeCompare(42) < 0`, `xs.sizeCompare(42) != 0`, etc., respectively.|
 | **Element Retrieval:**                    |						     |
 | `xs.head`	    	                           |The first element of the collection (or, some element, if no order is defined).|
-| `xs.headOption`	                          |The first element of `xs` in an option value, or None if `xs` is empty.|
+| `xs.headOption`	                          |The first element of `xs` in an option value, or `None` if `xs` is empty.|
 | `xs.last`	    	                           |The last element of the collection (or, some element, if no order is defined).|
-| `xs.lastOption`	                          |The last element of `xs` in an option value, or None if `xs` is empty.|
+| `xs.lastOption`	                          |The last element of `xs` in an option value, or `None` if `xs` is empty.|
 | `xs.find(p)`	    	                        |An option containing the first element in `xs` that satisfies `p`, or `None` if no element qualifies.|
 | **Subcollections:**                       |						     |
 | `xs.tail`	    	                           |The rest of the collection except `xs.head`.    |
@@ -117,13 +117,13 @@ res7: List[Int] = List(3, 4, 5)
 | `xs.dropWhile(p)`	                        |The collection without the longest prefix of elements that all satisfy `p`.|
 | `xs.takeRight(n)`	                        |A collection consisting of the last `n` elements of `xs` (or, some arbitrary `n` elements, if no order is defined).|
 | `xs.dropRight(n)`	                        |The rest of the collection except `xs.takeRight(n)`.|
-| `xs.filter(p)`	                           |The collection consisting of those elements of xs that satisfy the predicate `p`.|
+| `xs.filter(p)`	                           |The collection consisting of those elements of `xs` that satisfy the predicate `p`.|
 | `xs.withFilter(p)`	                       |A non-strict filter of this collection. Subsequent calls to `map`, `flatMap`, `foreach`, and `withFilter` will only apply to those elements of `xs` for which the condition `p` is true.|
 | `xs.filterNot(p)`	                        |The collection consisting of those elements of `xs` that do not satisfy the predicate `p`.|
 | **Subdivisions:**                         |						     |
 | `xs.splitAt(n)`	                          |Split `xs` at a position, giving the pair of collections `(xs take n, xs drop n)`.|
 | `xs.span(p)`	    	                        |Split `xs` according to a predicate, giving the pair of collections `(xs takeWhile p, xs.dropWhile p)`.|
-| `xs.partition(p)`	                        |Split `xs` into a pair of collections; one with elements that satisfy the predicate `p`, the other with elements that do not, giving the pair of collections `(xs filter p, xs.filterNot p)`|
+| `xs.partition(p)`	                        |Split `xs` into a pair of collections; one with elements that satisfy the predicate `p`, the other with elements that do not, giving the pair of collections `(xs filter p, xs filterNot p)`|
 | `xs.groupBy(f)`	                          |Partition `xs` into a map of collections according to a discriminator function `f`.|
 | `xs.groupMap(f)(g)`                       |Partition `xs` into a map of collections according to a discriminator function `f`, and applies the transformation function `g` to each element in a group.|
 | `xs.groupMapReduce(f)(g)(h)`              |Partition `xs` according to a discriminator function `f`, and then combine the results of applying the function `g` to each element in a group using the `h` function.|
@@ -149,7 +149,7 @@ res7: List[Int] = List(3, 4, 5)
 | **Zippers:** 	                            |						     |
 | `xs.zip(ys)`	    	                        |A collection of pairs of corresponding elements from `xs` and `ys`.|
 | `xs.zipAll(ys, x, y)`                     |A collection of pairs of corresponding elements from `xs` and `ys`, where the shorter sequence is extended to match the longer one by appending elements `x` or `y`.|
-| `xs.zipWithIndex`	                        |An collection of pairs of elements from `xs` with their indices.|
+| `xs.zipWithIndex`	                        |A collection of pairs of elements from `xs` with their corresponding indices.|
 | **Views:**                                |						     |
 | `xs.view`	    	                           |Produces a view over `xs`.|
 
