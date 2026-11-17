@@ -88,14 +88,14 @@ be defined by an implicit method (read more in the Scala 2 tab).
 For example, this code defines an implicit conversion from `Int` to `Long`:
 
 ```scala
-given int2long: Conversion[Int, Long] with
+given int2long: Conversion[Int, Long]:
   def apply(x: Int): Long = x.toLong
 ```
 
 Like other given definitions, implicit conversions can be anonymous:
 
 ~~~ scala
-given Conversion[Int, Long] with
+given Conversion[Int, Long]:
   def apply(x: Int): Long = x.toLong
 ~~~
 
