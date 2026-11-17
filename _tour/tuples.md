@@ -121,8 +121,33 @@ for (a, b) <- numPairs do
 
 ## Tuples and case classes
 
-Users may sometimes find it hard to choose between tuples and case classes. Case classes have named elements. The names can improve the readability of some kinds of code. In the planet example above, we might define `case class Planet(name: String, distance: Double)` rather than using tuples.
+Tuples may be seen as a lightweight alternative to case classes,
+where names of elements and of the class itself are omitted.
+But those names can improve the readability of code.
+For instance, the planet data shown above might be expressed by defining a `Planet` class:
+```scala
+case class Planet(name: String, distance: Double)
+```
 
+In Scala 3, tuples can have named elements, with similar verbosity:
+
+{% tabs named-tuple-usage %}
+{% tab 'Scala 3 Only' for=named-tuple-usage %}
+```scala
+type Planet = (name: String, distance: Double)
+val planets: List[Planet] = (name = "Mercury", distance = 57.9) :: ... :: Nil
+```
+{% endtab %}
+{% endtabs %}
+The element names can be used in pattern matching:
+{% tabs named-tuple-match %}
+{% tab 'Scala 3 Only' for=named-tuple-match %}
+```scala
+planets.map { case (name = n) => n }
+```
+{% endtab %}
+{% endtabs %}
+where only the fields of interest are supplied in the named tuple pattern of the case statement.
 
 ## More resources
 
