@@ -1055,6 +1055,81 @@ List(1, 2, 3)
 {% endtab %}
 {% endtabs %}
 
+## Custom Control Structures
+
+Scala 3 allows defining your own control structures using **inline methods**, **by-name parameters**, and special syntax.  
+Two common examples are `boundary` and `break`, which let you control flow more flexibly.
+
+### `boundary` expression
+
+The `boundary` expression is used to define a block where a `break` can exit early.  
+It helps manage nested loops or recursive calls without using exceptions.
+
+```scala
+import scala.util.control.Breaks.{break, breakable}
+
+boundary {
+  for i <- 1 to 5 do
+    println(i)
+    if i == 3 then break
+}
+
+// Output:
+// 1
+// 2
+// 3
+```
+
+- The block inside `boundary` can be exited at any point using `break`.  
+- `boundary` ensures the `break` only affects its own block.
+
+### `break` expression
+
+The `break` expression exits the nearest enclosing `boundary`.  
+It’s useful when you want to exit a loop early without breaking the program flow.
+
+```scala
+boundary {
+  var sum = 0
+  for i <- 1 to 10 do
+    if i > 5 then break
+    sum += i
+  println(s"Sum is $sum")
+}
+
+// Output:
+// Sum is 15
+```
+
+- `break` is only valid **inside a `boundary`** block.  
+- It works similarly to `break` in other languages but in a **type-safe, Scala 3 way**.
+
+### Defining your own custom control structure
+
+You can define custom control structures by combining **inline methods** and **by-name parameters**:
+
+```scala
+inline def repeat(times: Int)(inline body: => Unit): Unit =
+  var i = 0
+  while i < times do
+    body
+    i += 1
+
+repeat(3) {
+  println("Hello Scala 3!")
+}
+
+// Output:
+// Hello Scala 3!
+// Hello Scala 3!
+// Hello Scala 3!
+```
+
+- `inline` ensures the method can be treated as a control structure.  
+- `body: => Unit` is a **by-name parameter**, so it’s evaluated each time it’s called.
+
+This approach allows Scala 3 developers to create **flexible and readable custom loops** and control structures.
+
 ## try/catch/finally
 
 Like Java, Scala has a `try`/`catch`/`finally` construct to let you catch and manage exceptions.
