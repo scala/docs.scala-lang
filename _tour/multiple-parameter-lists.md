@@ -137,7 +137,7 @@ This definition doesn't need any type hints and can infer all of its type parame
 
 #### Implicit parameters
 
-To specify only certain parameters as [`implicit`](https://docs.scala-lang.org/tour/implicit-parameters.html), they must be placed in their own `implicit` parameter list.
+To specify only certain parameters as [`implicit`](https://docs.scala-lang.org/tour/implicit-parameters.html), they must be placed in their own parameter list starting with the keyword `using` (or `implicit` in Scala 2).
 
 An example of this is:
 
