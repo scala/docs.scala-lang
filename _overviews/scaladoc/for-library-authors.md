@@ -230,6 +230,40 @@ The markup for list blocks looks like:
       *   1. Third item
       */
 
+## Linking to Other Symbols
+
+Scaladoc supports linking to other classes, methods, and members using
+either the `@link` tag or wiki-style links.
+
+### Using `@link`
+
+The `@link` tag can be used inside Scaladoc comments to reference other
+symbols inline.
+
+Example:
+
+    /** Returns the length of the given string.
+      *
+      *  @return the number of characters in this {@link java.lang.String}
+      */
+    def length(s: String): Int = s.length
+
+You can also link to Scala library types:
+
+    /** Wraps the value in an {@link scala.Option}. */
+    def wrap[A](value: A): Option[A] = Option(value)
+
+### Using Wiki-Style Links
+
+Alternatively, Scaladoc supports wiki-style links using double brackets:
+
+    /** Returns an [[scala.Option]] containing the result. */
+    def find(): Option[Int] = ...
+
+You can also link to fully-qualified names:
+
+    /** See also [[java.time.LocalDate]] for date handling. */
+
 ## General Notes for Writing Scaladoc Comments ##
 
 - Concise is nice! Get to the point quickly, people have limited time to spend
